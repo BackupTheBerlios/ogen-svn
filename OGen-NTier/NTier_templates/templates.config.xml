@@ -1,0 +1,1306 @@
+<!--
+
+OGen
+Copyright (C) 2002 Francisco Monteiro
+
+This file is part of OGen.
+
+OGen is free software; you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published by 
+the Free Software Foundation; either version 2 of the License, or 
+(at your option) any later version.
+
+OGen is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License 
+along with OGen; if not, write to the
+
+	Free Software Foundation, Inc., 
+	59 Temple Place, Suite 330, 
+	Boston, MA 02111-1307 USA 
+
+							- or -
+
+	http://www.fsf.org/licensing/licenses/gpl.txt
+
+-->
+<templates>
+	<!--template name="__XSLT-TEST.txt.xslt" 
+			parserType="xslt"
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/__XSLT-TEST-${ROOT.tables.table[n].name}.txt" 
+				type="File" replace="True" />
+		</outputs>
+		<dependencies />
+	</template-->
+	<template name="DO-DB-v0_SomeTable__onlyKeys-PostgreSQL.sql.aspx" 
+			parserType="aspx"
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="v0_${ROOT.tables.table[n].name}__onlyKeys"
+				type="PostgreSQL_View" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="app0.config.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_test/app.config"
+				type="File" replace="False" />
+			<output to="${CONFIG.outputPath}/app0.config"
+				type="File" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="SomeApplication_AssemblyInfo.cs.txt" 
+			parserType="none" 
+			iterationType="ROOT">
+		<arguments />
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/AssemblyInfo.cs" 
+				type="File" replace="False" />
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/AssemblyInfo.cs" 
+				type="File" replace="False" />
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer/AssemblyInfo.cs" 
+				type="File" replace="False" />
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/AssemblyInfo.cs" 
+				type="File" replace="False" />
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_test/AssemblyInfo.cs" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="SomeApplication_test_MainClass.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_test/MainClass.cs" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="SomeApplication.ndoc.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}.ndoc" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="SomeApplication.sln.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}.sln" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="SomeApplication.cmbx.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<!--argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" /-->
+			<argument name="ApplicationName" value="${ROOT.applicationName}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}.cmbx" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-SomeApplication_datalayer.csproj.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/${ROOT.applicationName}_datalayer.csproj" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-SomeApplication_datalayer.prjx.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/${ROOT.applicationName}_datalayer.prjx" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-SomeApplication_datalayer.cmbx.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/${ROOT.applicationName}_datalayer.cmbx" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-UT-SomeApplication_datalayer_UTs.csproj.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/${ROOT.applicationName}_datalayer_UTs.csproj" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-UT-SomeApplication_datalayer_UTs.prjx.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/${ROOT.applicationName}_datalayer_UTs.prjx" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-UT-SomeApplication_datalayer_UTs.cmbx.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/${ROOT.applicationName}_datalayer_UTs.cmbx" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="BO-SomeApplication_businesslayer.csproj.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer/${ROOT.applicationName}_businesslayer.csproj" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="BO-SomeApplication_businesslayer.prjx.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer/${ROOT.applicationName}_businesslayer.prjx" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="BO-SomeApplication_businesslayer.cmbx.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer/${ROOT.applicationName}_businesslayer.cmbx" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="SomeApplication_test.csproj.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_test/${ROOT.applicationName}_test.csproj" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="SomeApplication_test.prjx.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_test/${ROOT.applicationName}_test.prjx" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="SomeApplication_test.cmbx.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_test/${ROOT.applicationName}_test.cmbx" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-UT-UT0_SomeTable.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/_base/UT0_${ROOT.tables.table[n].name}.cs" 
+				type="File" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-UT-UT_SomeTable.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/UT_${ROOT.tables.table[n].name}.cs" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-UT-UT_app.config.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/app.config" 
+				type="File" replace="False" />
+			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.datalayer.UTs.config" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-UT-SomeNamespace.lib.datalayer.UTs.nunit.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<!--argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" /-->
+			<argument name="ApplicationName" value="${ROOT.applicationName}" />
+			<argument name="Namespace" value="${ROOT.namespace}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.datalayer.UTs.nunit" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="BO-UT-SomeApplication_businesslayer_UTs.csproj.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/${ROOT.applicationName}_businesslayer_UTs.csproj" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="BO-UT-SomeApplication_businesslayer_UTs.prjx.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/${ROOT.applicationName}_businesslayer_UTs.prjx" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="BO-UT-SomeApplication_businesslayer_UTs.cmbx.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/${ROOT.applicationName}_businesslayer_UTs.cmbx" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="BO-UT-UT0_SomeTable.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/_base/UT0_${ROOT.tables.table[n].name}.cs" 
+				type="File" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="BO-UT-UT_SomeTable.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/UT_${ROOT.tables.table[n].name}.cs" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="BO-UT-UT_app.config.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/app.config" 
+				type="File" replace="False" />
+			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.businesslayer.UTs.config" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="BO-UT-SomeNamespace.lib.businesslayer.UTs.nunit.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<!--argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" /-->
+			<argument name="ApplicationName" value="${ROOT.applicationName}" />
+			<argument name="Namespace" value="${ROOT.namespace}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.businesslayer.UTs.nunit" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DO0__utils.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/_base-${ROOT.default_DBServerType}/DO0__utils.cs" 
+				type="File" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DO__utils.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/DO__utils.cs" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-RO0_SomeTable.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/_base-${ROOT.default_DBServerType}/RO0_${ROOT.tables.table[n].name}.cs" 
+				type="File" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DO0_SomeTable.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/_base-${ROOT.default_DBServerType}/DO0_${ROOT.tables.table[n].name}.cs" 
+				type="File" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DO_SomeTable.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/DO_${ROOT.tables.table[n].name}.cs" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="BO-BO0_SomeTable.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer/_base/BO0_${ROOT.tables.table[n].name}.cs" 
+				type="File" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="BO-BO_SomeTable.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer/BO_${ROOT.tables.table[n].name}.cs" 
+				type="File" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DB-fnc0_SomeTable__ConstraintExist-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.hasExplicitUniqueIndex" to="True" />
+		</conditions>
+		<outputs>
+			<output to="fnc0_${ROOT.tables.table[n].name}__ConstraintExist" 
+				type="PostgreSQL_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-fnc0_SomeTable__ConstraintExist-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.hasExplicitUniqueIndex" to="True" />
+		</conditions>
+		<outputs>
+			<output to="fnc0_${ROOT.tables.table[n].name}__ConstraintExist"
+				type="SQLServer_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-fnc0_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="False" />
+		</conditions>
+		<outputs>
+			<output to="fnc0_${ROOT.tables.table[n].name}_isObject_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="PostgreSQL_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-fnc0_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="False" />
+		</conditions>
+		<outputs>
+			<output to="fnc0_${ROOT.tables.table[n].name}_isObject_${ROOT.tables.table[n].searches.search[n].name}"
+				type="SQLServer_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-fnc0_SomeTable_isObject-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="fnc0_${ROOT.tables.table[n].name}_isObject" 
+				type="PostgreSQL_Function" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="fnc0_${ROOT.tables.table[n].name}_isObject"
+				type="SQLServer_Function" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DB-fnc0_SomeTable_Record_count_bySomeCriteria-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="fnc0_${ROOT.tables.table[n].name}_Record_count_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="PostgreSQL_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-fnc0_SomeTable_Record_count_bySomeCriteria-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="fnc0_${ROOT.tables.table[n].name}_Record_count_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="SQLServer_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="fnc0_${ROOT.tables.table[n].name}_Record_hasObject_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="PostgreSQL_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="fnc0_${ROOT.tables.table[n].name}_Record_hasObject_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="SQLServer_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_insObject-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].hasIdentityKey" to="True" />
+			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_insObject" 
+				type="PostgreSQL_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-PostgreSQL.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].hasIdentityKey" to="True" />
+			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_insObject" 
+				type="SQLServer_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-SQLServer.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_updObject-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].hasIdentityKey" to="True" />
+			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_updObject" 
+				type="PostgreSQL_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-PostgreSQL.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].hasIdentityKey" to="True" />
+			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_updObject" 
+				type="SQLServer_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-SQLServer.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_setObject-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].hasIdentityKey" to="False" />
+			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_setObject" 
+				type="PostgreSQL_Function" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DB-sp0_SomeTable_setObject-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].hasIdentityKey" to="False" />
+			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_setObject" 
+				type="SQLServer_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DB-sp0_SomeTable_delObject-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.hasExplicitUniqueIndex" to="False" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_delObject" 
+				type="PostgreSQL_Function" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.hasExplicitUniqueIndex" to="False" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_delObject" 
+				type="SQLServer_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DB-sp0_SomeTable_delObject_bySomeCriteria-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="False" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_delObject_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="PostgreSQL_Function" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DB-sp0_SomeTable_delObject_bySomeCriteria-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="False" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_delObject_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="SQLServer_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_Record_delete_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="PostgreSQL_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-v0_SomeTable__onlyKeys-PostgreSQL.sql.aspx" />
+			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_Record_delete_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="SQLServer_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="False" />
+		</conditions>
+		<outputs>
+			<output to="fnc_${ROOT.tables.table[n].name}_isObject_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="PostgreSQL_Function" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="False" />
+		</conditions>
+		<outputs>
+			<output to="fnc_${ROOT.tables.table[n].name}_isObject_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="SQLServer_Function" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="fnc_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="PostgreSQL_Function" replace="False" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-v0_SomeTable__onlyKeys-PostgreSQL.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="fnc_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="SQLServer_Function" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="sp_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="PostgreSQL_Function" replace="False" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-v0_SomeTable__onlyKeys-PostgreSQL.sql.aspx" />
+			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="sp_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="SQLServer_StoredProcedure" replace="False" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_getObject-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_getObject" 
+				type="PostgreSQL_Function" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_getObject" 
+				type="SQLServer_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DB-sp0_SomeTable_getObject_bySomeCriteria-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="False" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_getObject_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="PostgreSQL_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_getObject_bySomeCriteria-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="False" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_getObject_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="SQLServer_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_fullmode" 
+				type="PostgreSQL_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_fullmode" 
+				type="SQLServer_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_page" 
+				type="PostgreSQL_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-v0_SomeTable__onlyKeys-PostgreSQL.sql.aspx" />
+			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_page" 
+				type="SQLServer_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_page_fullmode" 
+				type="PostgreSQL_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_page_fullmode" 
+				type="SQLServer_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_Record_update_SomeUpdate_bySomeCriteria-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n].updates.update[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+			<argument name="UpdateName" value="${ROOT.tables.table[n].searches.search[n].updates.update[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_Record_update_${ROOT.tables.table[n].searches.search[n].updates.update[n].name}_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="PostgreSQL_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_Record_update_SomeUpdate_bySomeCriteria-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n].updates.update[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+			<argument name="UpdateName" value="${ROOT.tables.table[n].searches.search[n].updates.update[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_Record_update_${ROOT.tables.table[n].searches.search[n].updates.update[n].name}_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="SQLServer_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_updObject_SomeUpdate-PostgreSQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].updates.update[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="UpdateName" value="${ROOT.tables.table[n].updates.update[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_updObject_${ROOT.tables.table[n].updates.update[n].name}" 
+				type="PostgreSQL_Function" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DB-sp0_SomeTable_updObject_SomeUpdate-SQLServer.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].updates.update[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="UpdateName" value="${ROOT.tables.table[n].updates.update[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_updObject_${ROOT.tables.table[n].updates.update[n].name}" 
+				type="SQLServer_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
+</templates>
