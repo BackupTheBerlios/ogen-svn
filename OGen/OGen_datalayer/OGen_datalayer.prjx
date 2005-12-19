@@ -5,16 +5,16 @@
     <File name=".\cDBTransaction.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
     <File name=".\eDBServerTypes.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
     <File name=".\utils.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
-    <File name=".\LICENSE.LGPL.txt" subtype="Code" buildaction="Nothing" dependson="" data="" />
-    <File name=".\LICENSE.txt" subtype="Code" buildaction="Nothing" dependson="" data="" />
-    <File name=".\COPYING.LIB" subtype="Code" buildaction="Nothing" dependson="" data="" />
     <File name=".\cDBTable.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
     <File name=".\cDBTableField.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
     <File name=".\cDBType.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\COPYING" subtype="Code" buildaction="Nothing" dependson="" data="" />
+    <File name=".\LICENSE.GPL.txt" subtype="Code" buildaction="Nothing" dependson="" data="" />
+    <File name=".\LICENSE.txt" subtype="Code" buildaction="Nothing" dependson="" data="" />
   </Contents>
   <References>
     <Reference type="Project" refto="OGen_config" localcopy="True" />
-    <Reference type="Gac" refto="Npgsql, Version=0.7.0.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7" localcopy="True" />
+    <Reference type="Gac" refto="Npgsql, Version=0.7.1.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7" localcopy="True" />
   </References>
   <DeploymentInformation target="" script="" strategy="File">
     <Exclude file=".\COPYING.LIB" />

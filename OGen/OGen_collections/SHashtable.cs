@@ -33,9 +33,9 @@ using System;
 using System.Collections;
 
 namespace OGen.lib.collections {
-	#region public class IrontableItem;
-	public class IrontableItem {
-		public IrontableItem(
+	#region public class SHashtableItem;
+	public class SHashtableItem {
+		public SHashtableItem(
 			string name_in,
 			object value_in
 		) {
@@ -51,32 +51,32 @@ namespace OGen.lib.collections {
 	/// implements similar Hashtable's interface, it difers in that it keeps it's table sorted
 	/// </summary>
 	/// <example>
-	///Irontable it = new Irontable();
-	///it["um"] = 1;
-	///it["dois"] = 2;
-	///it["tres"] = 3;
-	///Console.WriteLine(it["um"]);
-	///for (int i = 0; i &lt; it.Count; i++) {
-	///	Console.WriteLine(it[i]);
+	///SHashtable sh = new SHashtable();
+	///sh["um"] = 1;
+	///sh["dois"] = 2;
+	///sh["tres"] = 3;
+	///Console.WriteLine(sh["um"]);
+	///for (int i = 0; i &lt; sh.Count; i++) {
+	///	Console.WriteLine(sh[i]);
 	///}
-	///for (int k = 0; k &lt; it.Keys.Count; k++) {
+	///for (int k = 0; k &lt; sh.Keys.Count; k++) {
 	///	Console.WriteLine(
 	///		"{0}:{1}", 
-	///		it.Keys[k], 
-	///		it[it.Keys[k]]
+	///		sh.Keys[k], 
+	///		sh[sh.Keys[k]]
 	///	);
 	///}
 	/// </example>
-	public class Irontable /*: IIrontable*/ {
-		#region public Irontable(...);
-		public Irontable() {
+	public class SHashtable /*: ISHashtable*/ {
+		#region public SHashtable(...);
+		public SHashtable() {
 			arraylist_ = new ArrayList();
-			keys_ = new IrontableKeys(this);
+			keys_ = new SHashtableKeys(this);
 		}
 		#endregion
 
-		#region public interface IIrontableKeys;
-		public interface IIrontableKeys {
+		#region public interface ISHashtableKeys;
+		public interface ISHashtableKeys {
 			int Count { get; }
 			string this[int index_in] { get; }
 		}
@@ -84,16 +84,16 @@ namespace OGen.lib.collections {
 
 		#region private Properties...
 		private ArrayList arraylist_;
-		#region private class IrontableKeys;
-		private class IrontableKeys : IIrontableKeys {
-			#region public IrontableKeys(...);
-			private IrontableKeys() {}
-			public IrontableKeys(Irontable parent_ref_in) {
+		#region private class SHashtableKeys;
+		private class SHashtableKeys : ISHashtableKeys {
+			#region public SHashtableKeys(...);
+			private SHashtableKeys() {}
+			public SHashtableKeys(SHashtable parent_ref_in) {
 				parent_ref_ = parent_ref_in;
 			}
 			#endregion
 
-			private Irontable parent_ref_;
+			private SHashtable parent_ref_;
 
 			#region public int Count { get; }
 			public int Count {
@@ -103,7 +103,7 @@ namespace OGen.lib.collections {
 			#region public string this[int index_in] { get; }
 			public string this[int index_in] {
 				get {
-					return ((IrontableItem)parent_ref_.arraylist_[index_in]).Name;
+					return ((SHashtableItem)parent_ref_.arraylist_[index_in]).Name;
 				}
 			}
 			#endregion
@@ -111,9 +111,9 @@ namespace OGen.lib.collections {
 		#endregion
 		#endregion
 		#region public Properties...
-		#region public IrontableKeys Keys { get; }
-		private IrontableKeys keys_;
-		public IIrontableKeys Keys {
+		#region public SHashtableKeys Keys { get; }
+		private SHashtableKeys keys_;
+		public ISHashtableKeys Keys {
 			get { return keys_; }
 		}
 		#endregion
@@ -126,11 +126,11 @@ namespace OGen.lib.collections {
 		public object this[int index_in] {
 			get {
 				return (index_in >= 0) 
-					? ((IrontableItem)arraylist_[index_in]).Value 
+					? ((SHashtableItem)arraylist_[index_in]).Value 
 					: null;
 			}
 			set {
-				((IrontableItem)arraylist_[index_in]).Value = value;
+				((SHashtableItem)arraylist_[index_in]).Value = value;
 			}
 		}
 		public object this[string name_in] {
@@ -140,7 +140,7 @@ namespace OGen.lib.collections {
 			set {
 				int _i = Search(name_in);
 				if (_i >= 0)
-					((IrontableItem)arraylist_[_i]).Value = value;
+					((SHashtableItem)arraylist_[_i]).Value = value;
 				else
 					Add(name_in, value);
 			}
@@ -152,7 +152,7 @@ namespace OGen.lib.collections {
 		#region public int Search(...);
 		public int Search(string name_in) {
 			for (int i = 0; i < arraylist_.Count; i++) {
-				if (((IrontableItem)arraylist_[i]).Name == name_in) {
+				if (((SHashtableItem)arraylist_[i]).Name == name_in) {
 					return i;
 				}
 			}
@@ -160,24 +160,24 @@ namespace OGen.lib.collections {
 		}
 		#endregion
 		#region public int Add(...);
-		public int Add(IrontableItem item_in) {
+		public int Add(SHashtableItem item_in) {
 			return arraylist_.Add(item_in);
 		}
 		public int Add(string name_in, object value_in) {
-			return Add(new IrontableItem(name_in, value_in));
+			return Add(new SHashtableItem(name_in, value_in));
 		}
 		#endregion
 		#endregion
 	}
 
-//	public interface IIrontable {
-//		Irontable.IIrontableKeys Keys { get; }
+//	public interface ISHashtable {
+//		SHashtable.ISHashtableKeys Keys { get; }
 //		int Count { get; }
 //		object this[int index_in] { get; set; }
 //		object this[string name_in] { get; set; }
 //
 //		int Search(string name_in);
-//		int Add(IrontableItem item_in);
+//		int Add(SHashtableItem item_in);
 //		int Add(string name_in, object value_in);
 //	}
 }

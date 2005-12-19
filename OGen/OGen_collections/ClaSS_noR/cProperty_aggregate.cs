@@ -34,34 +34,34 @@ using System;
 namespace OGen.lib.collections {
 	public class cProperty_aggregate {
 		public cProperty_aggregate() {
-			irontable_ = new Irontable();
+			shashtable_ = new SHashtable();
 		}
 
-		private Irontable irontable_;
+		private SHashtable shashtable_;
 
-		public Irontable.IIrontableKeys Keys {
-			get { return irontable_.Keys; }
+		public SHashtable.ISHashtableKeys Keys {
+			get { return shashtable_.Keys; }
 		}
 		public int Count {
-			get { return irontable_.Count; }
+			get { return shashtable_.Count; }
 		}
 		public iClaSS this[int index_in] {
-			get { return (iClaSS)irontable_[index_in]; }
-			set { irontable_[index_in] = value; }
+			get { return (iClaSS)shashtable_[index_in]; }
+			set { shashtable_[index_in] = value; }
 		}
 		public iClaSS this[string name_in] {
-			get { return (iClaSS)irontable_[name_in]; }
-			set { irontable_[name_in] = value; }
+			get { return (iClaSS)shashtable_[name_in]; }
+			set { shashtable_[name_in] = value; }
 		}
 
 		public int Search(string name_in) {
-			return irontable_.Search(name_in);
+			return shashtable_.Search(name_in);
 		}
-		public int Add(IrontableItem item_in) {
-			return irontable_.Add(item_in);
+		public int Add(SHashtableItem item_in) {
+			return shashtable_.Add(item_in);
 		}
 		public int Add(string name_in, iClaSS value_in) {
-			return irontable_.Add(name_in, value_in);
+			return shashtable_.Add(name_in, value_in);
 		}
 	}
 }
