@@ -93,17 +93,17 @@
                     BuildAction = "None"
                 />
                 <File
-                    RelPath = "SHashtable.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
                     RelPath = "LICENSE.GPL.txt"
                     BuildAction = "Content"
                 />
                 <File
                     RelPath = "LICENSE.txt"
                     BuildAction = "Content"
+                />
+                <File
+                    RelPath = "SHashtable.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
                 />
                 <File
                     RelPath = "utils.cs"
@@ -173,7 +173,6 @@
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
-                <Folder RelPath = "ClaSSe-Gen\" />
             </Include>
         </Files>
     </CSHARP>
