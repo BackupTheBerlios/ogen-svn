@@ -3,27 +3,27 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_generator", "NTier_ge
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_collections", "..\OGen.SVN\OGen_collections\OGen_collections.csproj", "{A6E837F8-780F-4D05-B3ED-2FF1906B5766}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_collections", "..\OGen\OGen_collections\OGen_collections.csproj", "{A6E837F8-780F-4D05-B3ED-2FF1906B5766}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_config", "..\OGen.SVN\OGen_config\OGen_config.csproj", "{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_config", "..\OGen\OGen_config\OGen_config.csproj", "{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer", "..\OGen.SVN\OGen_datalayer\OGen_datalayer.csproj", "{4AE20414-478E-4859-849E-929741A5936C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer", "..\OGen\OGen_datalayer\OGen_datalayer.csproj", "{4AE20414-478E-4859-849E-929741A5936C}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_generator", "..\OGen.SVN\OGen_generator\OGen_generator.csproj", "{668ACF34-6104-4DD9-BB8A-65D9D94B0BB6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_generator", "..\OGen\OGen_generator\OGen_generator.csproj", "{668ACF34-6104-4DD9-BB8A-65D9D94B0BB6}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_templates", "..\OGen.SVN\OGen_templates\OGen_templates.csproj", "{8377EF00-063B-451A-8408-FE2F8EAD5C32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_templates", "..\OGen\OGen_templates\OGen_templates.csproj", "{8377EF00-063B-451A-8408-FE2F8EAD5C32}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_webforms", "..\OGen.SVN\OGen_webforms\OGen_webforms.csproj", "{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_webforms", "..\OGen\OGen_webforms\OGen_webforms.csproj", "{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
@@ -47,7 +47,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier-console", "NTier-cons
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_winforms", "..\OGen.SVN\OGen_winforms\OGen_winforms.csproj", "{B3835B3F-C899-416F-BA94-625A4B32A4AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_winforms", "..\OGen\OGen_winforms\OGen_winforms.csproj", "{B3835B3F-C899-416F-BA94-625A4B32A4AC}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
@@ -55,7 +55,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_metadata", "NTier_met
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_parser", "..\OGen.SVN\OGen_parser\OGen_parser.csproj", "{981BC7DE-D93C-446E-861E-60A20E4E3391}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_parser", "..\OGen\OGen_parser\OGen_parser.csproj", "{981BC7DE-D93C-446E-861E-60A20E4E3391}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject

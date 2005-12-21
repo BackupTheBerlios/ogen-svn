@@ -1,0 +1,7 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\AssemblyFolders\OGen]
+@="X:\\MyDocuments\\_RAM-unsorted-COPY\\MySharedProjects.BerliOS.SVN\\_release.no-svn"
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\AssemblyFolders\Npgsql]
+@="C:\\Program Files\\Npgsql_0_7_1"

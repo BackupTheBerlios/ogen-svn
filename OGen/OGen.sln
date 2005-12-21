@@ -39,11 +39,19 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_parser", "OGen_parser\
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen-test", "OGen-test\OGen-test.csproj", "{41414A60-A257-49F2-9707-51C3D425CEF1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_config_UTs", "OGen_config_UTs\OGen_config_UTs.csproj", "{E7913B59-B92D-40D9-A82E-0B38A68472D7}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_config_UTs", "OGen_config_UTs\OGen_config_UTs.csproj", "{E7913B59-B92D-40D9-A82E-0B38A68472D7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_webforms_UTs", "OGen_webforms_UTs\OGen_webforms_UTs.csproj", "{73D08732-CC2D-432D-BF9D-AA669059446A}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_winforms_UTs", "OGen_winforms_UTs\OGen_winforms_UTs.csproj", "{78AF375C-E64E-49D0-AD35-24447821F7CD}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_parser_UTs", "OGen_parser_UTs\OGen_parser_UTs.csproj", "{41D123D7-BA39-4661-8285-8FE17E89AB33}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
@@ -93,14 +101,22 @@ Global
 		{981BC7DE-D93C-446E-861E-60A20E4E3391}.Debug.Build.0 = Debug|.NET
 		{981BC7DE-D93C-446E-861E-60A20E4E3391}.Release.ActiveCfg = Release|.NET
 		{981BC7DE-D93C-446E-861E-60A20E4E3391}.Release.Build.0 = Release|.NET
-		{41414A60-A257-49F2-9707-51C3D425CEF1}.Debug.ActiveCfg = Debug|.NET
-		{41414A60-A257-49F2-9707-51C3D425CEF1}.Debug.Build.0 = Debug|.NET
-		{41414A60-A257-49F2-9707-51C3D425CEF1}.Release.ActiveCfg = Release|.NET
-		{41414A60-A257-49F2-9707-51C3D425CEF1}.Release.Build.0 = Release|.NET
 		{E7913B59-B92D-40D9-A82E-0B38A68472D7}.Debug.ActiveCfg = Debug|.NET
 		{E7913B59-B92D-40D9-A82E-0B38A68472D7}.Debug.Build.0 = Debug|.NET
 		{E7913B59-B92D-40D9-A82E-0B38A68472D7}.Release.ActiveCfg = Release|.NET
 		{E7913B59-B92D-40D9-A82E-0B38A68472D7}.Release.Build.0 = Release|.NET
+		{73D08732-CC2D-432D-BF9D-AA669059446A}.Debug.ActiveCfg = Debug|.NET
+		{73D08732-CC2D-432D-BF9D-AA669059446A}.Debug.Build.0 = Debug|.NET
+		{73D08732-CC2D-432D-BF9D-AA669059446A}.Release.ActiveCfg = Release|.NET
+		{73D08732-CC2D-432D-BF9D-AA669059446A}.Release.Build.0 = Release|.NET
+		{78AF375C-E64E-49D0-AD35-24447821F7CD}.Debug.ActiveCfg = Debug|.NET
+		{78AF375C-E64E-49D0-AD35-24447821F7CD}.Debug.Build.0 = Debug|.NET
+		{78AF375C-E64E-49D0-AD35-24447821F7CD}.Release.ActiveCfg = Release|.NET
+		{78AF375C-E64E-49D0-AD35-24447821F7CD}.Release.Build.0 = Release|.NET
+		{41D123D7-BA39-4661-8285-8FE17E89AB33}.Debug.ActiveCfg = Debug|.NET
+		{41D123D7-BA39-4661-8285-8FE17E89AB33}.Debug.Build.0 = Debug|.NET
+		{41D123D7-BA39-4661-8285-8FE17E89AB33}.Release.ActiveCfg = Release|.NET
+		{41D123D7-BA39-4661-8285-8FE17E89AB33}.Release.Build.0 = Release|.NET
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

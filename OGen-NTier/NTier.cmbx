@@ -18,17 +18,17 @@
     <Execute entry="NTier_metadata_UTs" type="None" />
   </StartMode>
   <Entries>
-    <Entry filename="..\OGen.SVN\OGen_config\OGen_config.prjx" />
-    <Entry filename="..\OGen.SVN\OGen_datalayer\OGen_datalayer.prjx" />
-    <Entry filename="..\OGen.SVN\OGen_generator\OGen_generator.prjx" />
-    <Entry filename="..\OGen.SVN\OGen_templates\OGen_templates.prjx" />
-    <Entry filename="..\OGen.SVN\OGen_collections\OGen_collections.prjx" />
-    <Entry filename="..\OGen.SVN\OGen_webforms\OGen_webforms.prjx" />
-    <Entry filename="..\OGen.SVN\OGen_parser\OGen_parser.prjx" />
+    <Entry filename="..\OGen\OGen_config\OGen_config.prjx" />
+    <Entry filename="..\OGen\OGen_datalayer\OGen_datalayer.prjx" />
+    <Entry filename="..\OGen\OGen_generator\OGen_generator.prjx" />
+    <Entry filename="..\OGen\OGen_templates\OGen_templates.prjx" />
+    <Entry filename="..\OGen\OGen_collections\OGen_collections.prjx" />
+    <Entry filename="..\OGen\OGen_webforms\OGen_webforms.prjx" />
+    <Entry filename="..\OGen\OGen_parser\OGen_parser.prjx" />
     <Entry filename=".\NTier_generator\NTier_generator.prjx" />
     <Entry filename=".\NTier_datalayer\NTier_datalayer.prjx" />
     <Entry filename=".\NTier_businesslayer\NTier_businesslayer.prjx" />
-    <Entry filename="..\OGen.SVN\OGen_winforms\OGen_winforms.prjx" />
+    <Entry filename="..\OGen\OGen_winforms\OGen_winforms.prjx" />
     <Entry filename=".\NTier-console\NTier-console.prjx" />
     <Entry filename=".\NTier\NTier.prjx" />
     <Entry filename=".\NTier_metadata\NTier_metadata.prjx" />

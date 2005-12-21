@@ -62,7 +62,7 @@ using System.Runtime.CompilerServices;
 //
 #if !DEBUG
 [assembly: AssemblyDelaySign(false)]
-[assembly: AssemblyKeyFile("..\\..\\..\\OGen-GAC.SVN\\OGen.snk")]
+[assembly: AssemblyKeyFile("..\\..\\..\\_admin\\OGen.no-svn.snk")]
 #else
 [assembly: AssemblyDelaySign(false)]
 [assembly: AssemblyKeyFile("..\\..\\OGen-shared.snk")]

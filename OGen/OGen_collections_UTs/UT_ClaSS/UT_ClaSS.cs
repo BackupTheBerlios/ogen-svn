@@ -103,8 +103,10 @@ namespace OGen.lib.collections.UTs {
 		#region public void TestFixtureTearDown();
 		[TestFixtureTearDown]
 		public void TestFixtureTearDown() {
-			//File.Delete(file1_);
-			//File.Delete(file2_);
+			for (int T = 0; T < tables_.Length; T++) {
+				//if (File.Exists(file1_[T])) File.Delete(file1_[T]);
+				//if (File.Exists(file2_[T])) File.Delete(file2_[T]);
+			}
 		}
 		#endregion
 

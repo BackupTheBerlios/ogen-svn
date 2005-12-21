@@ -116,6 +116,11 @@
                     BuildAction = "Content"
                 />
                 <File
+                    RelPath = "UT_SHashtable.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "UT_ClaSS\UT_ClaSS.cs"
                     SubType = "Code"
                     BuildAction = "Compile"

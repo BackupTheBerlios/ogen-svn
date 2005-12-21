@@ -69,10 +69,10 @@ namespace OGen.lib.parser {
 			_denum.Reset();
 			while (_denum.MoveNext()) {
 				_xsltparameters.AddParam(
-					(string)_denum.Key, 
+					_denum.Key.ToString(), 
 					"", 
 					System.Web.HttpUtility.UrlEncode(
-						(string)_denum.Value
+						_denum.Value.ToString()
 					)
 				);
 			}

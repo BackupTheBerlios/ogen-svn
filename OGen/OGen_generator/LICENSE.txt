@@ -13,8 +13,11 @@ OGen is licensed under various different licenses.
 	* OGen.lib.collections: GNU GPL
 	* OGen.lib.collections.UTs: GNU GPL
 	* OGen.lib.presentationlayer.webforms: GNU GPL
+	* OGen.lib.presentationlayer.webforms.UTs: GNU GPL
 	* OGen.lib.presentationlayer.winforms: GNU GPL
+	* OGen.lib.presentationlayer.winforms.UTs: GNU GPL
 	* OGen.lib.parser: GNU GPL
+	* OGen.lib.parser.UTs: GNU GPL
 	* OGen.lib.templates: GNU GPL
 	* OGen.lib.generator: GNU GPL
 	* OGen.test: GNU GPL
@@ -36,4 +39,5 @@ OGen is licensed under various different licenses.
 	* OGen.Doc.test: GNU GPL
 	* OGen-Doc: GNU FDL
 	* OGen-NTier-Doc: GNU FDL
+	* OGen-Doc-Doc: GNU FDL
 
