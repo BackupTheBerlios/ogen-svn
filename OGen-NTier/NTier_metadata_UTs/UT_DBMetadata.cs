@@ -36,7 +36,7 @@ using OGen.NTier.lib.metadata;
 
 namespace OGen.NTier.lib.metadata.UTs {
 	[TestFixture]
-	public class UT_ConfigurationSettingsBinder { public UT_ConfigurationSettingsBinder() {}
+	public class UT_DBMetadata { public UT_DBMetadata() {}
 		#region public void TestFixtureSetUp();
 		[TestFixtureSetUp]
 		public void TestFixtureSetUp() {

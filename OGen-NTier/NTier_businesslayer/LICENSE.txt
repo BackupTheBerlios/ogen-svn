@@ -25,7 +25,9 @@ OGen is licensed under various different licenses.
 	* OGen.NTier.lib.metadata.UTs: GNU GPL
 	* OGen.NTier.lib.generator: GNU GPL
 	* OGen.NTier.lib.datalayer: GNU GPL
+	* OGen.NTier.lib.datalayer.UTs: GNU GPL
 	* OGen.NTier.lib.businesslayer: GNU GPL
+	* OGen.NTier.lib.businesslayer.UTs: GNU GPL
 	* OGen.NTier.lib.templates: GNU GPL
 	* OGen.NTier.presentationlayer.winforms: GNU GPL
 	* OGen.NTier.presentationlayer.console: GNU GPL

@@ -31,7 +31,7 @@
     <Entry filename=".\OGen_winforms_UTs\OGen_winforms_UTs.prjx" />
     <Entry filename=".\OGen_parser_UTs\OGen_parser_UTs.prjx" />
   </Entries>
-  <Configurations active="Debug">
+  <Configurations active="Release">
     <Configuration name="Release">
       <Entry name="OGen_config" configurationname="Debug" build="False" />
       <Entry name="OGen_datalayer" configurationname="Debug" build="False" />

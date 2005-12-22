@@ -16,6 +16,8 @@
     <Execute entry="NTier_metadata" type="None" />
     <Execute entry="NTier_templates" type="None" />
     <Execute entry="NTier_metadata_UTs" type="None" />
+    <Execute entry="NTier_businesslayer_UTs" type="None" />
+    <Execute entry="NTier_datalayer_UTs" type="None" />
   </StartMode>
   <Entries>
     <Entry filename="..\OGen\OGen_config\OGen_config.prjx" />
@@ -34,8 +36,10 @@
     <Entry filename=".\NTier_metadata\NTier_metadata.prjx" />
     <Entry filename=".\NTier_templates\NTier_templates.prjx" />
     <Entry filename=".\NTier_metadata_UTs\NTier_metadata_UTs.prjx" />
+    <Entry filename=".\NTier_businesslayer_UTs\NTier_businesslayer_UTs.prjx" />
+    <Entry filename=".\NTier_datalayer_UTs\NTier_datalayer_UTs.prjx" />
   </Entries>
-  <Configurations active="Debug">
+  <Configurations active="Release">
     <Configuration name="Release">
       <Entry name="OGen_config" configurationname="Debug" build="False" />
       <Entry name="OGen_datalayer" configurationname="Debug" build="False" />
@@ -53,6 +57,8 @@
       <Entry name="NTier_metadata" configurationname="Debug" build="False" />
       <Entry name="NTier_templates" configurationname="Debug" build="False" />
       <Entry name="NTier_metadata_UTs" configurationname="Debug" build="False" />
+      <Entry name="NTier_businesslayer_UTs" configurationname="Debug" build="False" />
+      <Entry name="NTier_datalayer_UTs" configurationname="Debug" build="False" />
     </Configuration>
     <Configuration name="Debug">
       <Entry name="OGen_config" configurationname="Debug" build="False" />
@@ -71,6 +77,8 @@
       <Entry name="NTier_metadata" configurationname="Debug" build="False" />
       <Entry name="NTier_templates" configurationname="Debug" build="False" />
       <Entry name="NTier_metadata_UTs" configurationname="Debug" build="False" />
+      <Entry name="NTier_businesslayer_UTs" configurationname="Debug" build="False" />
+      <Entry name="NTier_datalayer_UTs" configurationname="Debug" build="False" />
     </Configuration>
   </Configurations>
 </Combine>

@@ -29,7 +29,7 @@
     <Entry filename=".\Doc_templates\Doc_templates.prjx" />
     <Entry filename=".\Doc_metadata_UTs\Doc_metadata_UTs.prjx" />
   </Entries>
-  <Configurations active="Debug">
+  <Configurations active="Release">
     <Configuration name="Release">
       <Entry name="OGen_config" configurationname="Debug" build="False" />
       <Entry name="OGen_datalayer" configurationname="Debug" build="False" />

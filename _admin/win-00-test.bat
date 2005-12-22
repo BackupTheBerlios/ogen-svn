@@ -3,7 +3,10 @@ IF NOT '%1' == '' GOTO test
 
 
 ::CALL "c:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat"
+SET errorFound=
 FOR /F "tokens=1,2,3,4,5,6,7,8 delims=, " %%a IN (OGen-projects.txt) DO CALL %0 %%a %%b %%c %%d %%e %%f %%g %%h
+IF '%errorFound%' == '' ECHO no errors!
+SET errorFound=
 PAUSE
 GOTO eof
 
@@ -23,7 +26,7 @@ GOTO eof
 
 	IF NOT '%paramError%' == '' ECHO %1, %2, %3, %4, %5, %6, %7, %8
 	IF NOT '%paramError%' == '' ECHO %paramError%
-	::IF '%paramError%' == '' ECHO no errors
+	IF NOT '%paramError%' == '' SET errorFound=1
 
 	SET error=
 :eof

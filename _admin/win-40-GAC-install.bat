@@ -1,11 +1,11 @@
 @ECHO OFF
-:: is a doc project, hence:
-IF '%8' == 't' GOTO eof
+:: is not a Release, hence:
+IF '%9' == 'f' GOTO eof
 IF NOT '%1' == '' GOTO install
 
 
 CALL "c:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat"
-FOR /F "tokens=1,2,3,4,5,6,7,8 delims=, " %%a IN (OGen-projects.txt) DO CALL %0 %%a %%b %%c %%d %%e %%f %%g %%h
+FOR /F "tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (OGen-projects.txt) DO CALL %0 %%a %%b %%c %%d %%e %%f %%g %%h %%i
 PAUSE
 GOTO eof
 
@@ -19,8 +19,7 @@ GOTO eof
 	::IF NOT EXIST ..\%1\%2\%binDir%\%3.dll GOTO tryinstall
 
 	IF EXIST ..\%1\%2\%binDir%\%3.dll COPY ..\%1\%2\%binDir%\%3.dll ..\_release.no-svn
-	IF EXIST ..\%1\%2\%binDir%\%3.xml COPY ..\%1\%2\%binDir%\%3.xml ..\_release.no-svn
-	IF EXIST ..\%1\%2\%binDir%\%3.xml COPY ..\%1\%2\%binDir%\%3.xml ..\_release.no-svn
+	::IF EXIST ..\%1\%2\%binDir%\%3.xml COPY ..\%1\%2\%binDir%\%3.xml ..\_release.no-svn
 
 	IF '%6' == 't' IF EXIST ..\%1\%2\%binDir%\%3.exe COPY ..\%1\%2\%binDir%\%3.exe ..\_release.no-svn
 	IF '%6' == 't' IF EXIST ..\%1\%2\%binDir%\%3.exe.config COPY ..\%1\%2\%binDir%\%3.exe.config ..\_release.no-svn

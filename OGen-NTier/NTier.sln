@@ -63,6 +63,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_metadata_UTs", "NTier
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_businesslayer_UTs", "NTier_businesslayer_UTs\NTier_businesslayer_UTs.csproj", "{21037A3C-D93B-45B2-B78A-76C92BA93A11}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_datalayer_UTs", "NTier_datalayer_UTs\NTier_datalayer_UTs.csproj", "{CC28B2F4-2235-4605-98B5-8889F7BBC118}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -133,6 +141,14 @@ Global
 		{9F1EEE8C-2097-4B8D-87D8-DA171FAE3480}.Debug.Build.0 = Debug|.NET
 		{9F1EEE8C-2097-4B8D-87D8-DA171FAE3480}.Release.ActiveCfg = Release|.NET
 		{9F1EEE8C-2097-4B8D-87D8-DA171FAE3480}.Release.Build.0 = Release|.NET
+		{21037A3C-D93B-45B2-B78A-76C92BA93A11}.Debug.ActiveCfg = Debug|.NET
+		{21037A3C-D93B-45B2-B78A-76C92BA93A11}.Debug.Build.0 = Debug|.NET
+		{21037A3C-D93B-45B2-B78A-76C92BA93A11}.Release.ActiveCfg = Release|.NET
+		{21037A3C-D93B-45B2-B78A-76C92BA93A11}.Release.Build.0 = Release|.NET
+		{CC28B2F4-2235-4605-98B5-8889F7BBC118}.Debug.ActiveCfg = Debug|.NET
+		{CC28B2F4-2235-4605-98B5-8889F7BBC118}.Debug.Build.0 = Debug|.NET
+		{CC28B2F4-2235-4605-98B5-8889F7BBC118}.Release.ActiveCfg = Release|.NET
+		{CC28B2F4-2235-4605-98B5-8889F7BBC118}.Release.Build.0 = Release|.NET
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection
