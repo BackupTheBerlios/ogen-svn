@@ -34,7 +34,8 @@ ECHO are you sure?
 PAUSE
 
 
-::CALL "c:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat"
+::IF EXIST "C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" CALL "C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" x86
+::IF NOT EXIST "C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" CALL "c:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat"
 FOR /F "tokens=1,2,3,4,5,6,7,8 delims=, " %%a IN (OGen-projects.txt) DO CALL %0 %%a %%b %%c %%d %%e %%f %%g %%h
 ::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\LICENSE.txt DEL /q ..\%%a\LICENSE.txt
 ::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO FOR %%b IN (COPYING, COPYING.DOC, COPYING.LIB, LICENSE.FDL.txt, LICENSE.GPL.txt, LICENSE.LGPL.txt) DO IF EXIST ..\%%a\%%b DEL /q ..\%%a\%%b

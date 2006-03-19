@@ -1,243 +1,191 @@
-<VisualStudioProject>
-    <CSHARP
-        ProjectType = "Local"
-        ProductVersion = "7.10.3077"
-        SchemaVersion = "2.0"
-        ProjectGuid = "{0E77A4DB-AF8B-4290-BB33-F9EC97655433}"
-    >
-        <Build>
-            <Settings
-                ApplicationIcon = ""
-                AssemblyKeyContainerName = ""
-                AssemblyName = "OGen.NTier.lib.metadata"
-                AssemblyOriginatorKeyFile = ""
-                DefaultClientScript = "JScript"
-                DefaultHTMLPageLayout = "Grid"
-                DefaultTargetSchema = "IE50"
-                DelaySign = "false"
-                OutputType = "Library"
-                PreBuildEvent = ""
-                PostBuildEvent = ""
-                RootNamespace = "OGen.NTier.lib.metadata"
-                RunPostBuildEvent = "OnBuildSuccess"
-                StartupObject = ""
-            >
-                <Config
-                    Name = "Debug"
-                    AllowUnsafeBlocks = "false"
-                    BaseAddress = "285212672"
-                    CheckForOverflowUnderflow = "false"
-                    ConfigurationOverrideFile = ""
-                    DefineConstants = "DEBUG;TRACE"
-                    DocumentationFile = ""
-                    DebugSymbols = "true"
-                    FileAlignment = "4096"
-                    IncrementalBuild = "false"
-                    NoStdLib = "false"
-                    NoWarn = ""
-                    Optimize = "false"
-                    OutputPath = "bin\Debug\"
-                    RegisterForComInterop = "false"
-                    RemoveIntegerChecks = "false"
-                    TreatWarningsAsErrors = "false"
-                    WarningLevel = "4"
-                />
-                <Config
-                    Name = "Release"
-                    AllowUnsafeBlocks = "false"
-                    BaseAddress = "285212672"
-                    CheckForOverflowUnderflow = "false"
-                    ConfigurationOverrideFile = ""
-                    DefineConstants = "TRACE"
-                    DocumentationFile = ""
-                    DebugSymbols = "false"
-                    FileAlignment = "4096"
-                    IncrementalBuild = "false"
-                    NoStdLib = "false"
-                    NoWarn = ""
-                    Optimize = "true"
-                    OutputPath = "bin\Release\"
-                    RegisterForComInterop = "false"
-                    RemoveIntegerChecks = "false"
-                    TreatWarningsAsErrors = "false"
-                    WarningLevel = "4"
-                />
-            </Settings>
-            <References>
-                <Reference
-                    Name = "System"
-                    AssemblyName = "System"
-                    HintPath = "..\..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.dll"
-                />
-                <Reference
-                    Name = "System.Data"
-                    AssemblyName = "System.Data"
-                    HintPath = "..\..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
-                />
-                <Reference
-                    Name = "System.XML"
-                    AssemblyName = "System.Xml"
-                    HintPath = "..\..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
-                />
-                <Reference
-                    Name = "OGen_collections"
-                    Project = "{A6E837F8-780F-4D05-B3ED-2FF1906B5766}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
-                    Name = "OGen_config"
-                    Project = "{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
-                    Name = "OGen_datalayer"
-                    Project = "{4AE20414-478E-4859-849E-929741A5936C}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
-                    Name = "Npgsql"
-                    AssemblyName = "Npgsql"
-                    HintPath = "C:\Program Files\Npgsql_0_7\OGen-Release\Npgsql.dll"
-                    AssemblyFolderKey = "hklm\dn\ogen"
-                />
-            </References>
-        </Build>
-        <Files>
-            <Include>
-                <File
-                    RelPath = "AssemblyInfo.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "COPYING"
-                    BuildAction = "None"
-                />
-                <File
-                    RelPath = "LICENSE.GPL.txt"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "LICENSE.txt"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "ClaSSe\cDBMetadata.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\utils.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\DBs\cDBMetadata_DBs.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\DBs\iDBMetadata_DBs.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\DBs\DB\cDBMetadata_DB.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\Tables\cDBMetadata_Tables.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\Tables\iDBMetadata_Tables.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\Tables\Field-generic\cDBMetadata_Field_ref.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\Tables\Field-generic\cDBMetadata_Field_refs.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\Tables\Field-generic\iDBMetadata_Field_refs__base.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\Tables\Field-generic\iDBMetadata_Field_refs_SearchParameters.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\Tables\Field-generic\iDBMetadata_Field_refs_UpdateParameters.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\Tables\Table\cDBMetadata_Table.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\Tables\Table\Fields\cDBMetadata_Table_Fields.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\Tables\Table\Fields\iDBMetadata_Table_Fields.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\Tables\Table\Fields\Field\cDBMetadata_Table_Field.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\Tables\Table\Fields-generic\cDBMetadata_Table_Fields_FK.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\Tables\Table\Fields-generic\cDBMetadata_Table_Fields_PK.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\Tables\Table\Searches\cDBMetadata_Table_Searches.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\Tables\Table\Searches\iDBMetadata_Table_Searches.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\Tables\Table\Searches\Search\cDBMetadata_Table_Search.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\Tables\Updates-generic\cDBMetadata_Updates.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "ClaSSe\Tables\Updates-generic\Update\cDBMetadata_Update.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-            </Include>
-        </Files>
-    </CSHARP>
-</VisualStudioProject>
-
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectType>Local</ProjectType>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0E77A4DB-AF8B-4290-BB33-F9EC97655433}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ApplicationIcon>
+    </ApplicationIcon>
+    <AssemblyKeyContainerName>
+    </AssemblyKeyContainerName>
+    <AssemblyName>OGen.NTier.lib.metadata</AssemblyName>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+    <DefaultClientScript>JScript</DefaultClientScript>
+    <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
+    <DefaultTargetSchema>IE50</DefaultTargetSchema>
+    <DelaySign>false</DelaySign>
+    <OutputType>Library</OutputType>
+    <RootNamespace>OGen.NTier.lib.metadata</RootNamespace>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <StartupObject>
+    </StartupObject>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>false</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <BaseAddress>285212672</BaseAddress>
+    <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
+    <ConfigurationOverrideFile>
+    </ConfigurationOverrideFile>
+    <DefineConstants>TRACE</DefineConstants>
+    <DocumentationFile>
+    </DocumentationFile>
+    <DebugSymbols>false</DebugSymbols>
+    <FileAlignment>4096</FileAlignment>
+    <NoStdLib>false</NoStdLib>
+    <NoWarn>
+    </NoWarn>
+    <Optimize>true</Optimize>
+    <RegisterForComInterop>false</RegisterForComInterop>
+    <RemoveIntegerChecks>false</RemoveIntegerChecks>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <WarningLevel>4</WarningLevel>
+    <DebugType>none</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Npgsql">
+      <Name>Npgsql</Name>
+      <HintPath>C:\Program Files\Npgsql_0_7\OGen-Release\Npgsql.dll</HintPath>
+      <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Data">
+      <Name>System.Data</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <ProjectReference Include="..\..\OGen\OGen_collections\OGen_collections.csproj">
+      <Name>OGen_collections</Name>
+      <Project>{A6E837F8-780F-4D05-B3ED-2FF1906B5766}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OGen\OGen_config\OGen_config.csproj">
+      <Name>OGen_config</Name>
+      <Project>{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OGen\OGen_datalayer\OGen_datalayer.csproj">
+      <Name>OGen_datalayer</Name>
+      <Project>{4AE20414-478E-4859-849E-929741A5936C}</Project>
+      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\cDBMetadata.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\DBs\cDBMetadata_DBs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\DBs\DB\cDBMetadata_DB.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\DBs\iDBMetadata_DBs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\Tables\cDBMetadata_Tables.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\Tables\Field-generic\cDBMetadata_Field_ref.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\Tables\Field-generic\cDBMetadata_Field_refs.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\Tables\Field-generic\iDBMetadata_Field_refs_SearchParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\Tables\Field-generic\iDBMetadata_Field_refs_UpdateParameters.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\Tables\Field-generic\iDBMetadata_Field_refs__base.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\Tables\iDBMetadata_Tables.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\Tables\Table\cDBMetadata_Table.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\Tables\Table\Fields-generic\cDBMetadata_Table_Fields_FK.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\Tables\Table\Fields-generic\cDBMetadata_Table_Fields_PK.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\Tables\Table\Fields\cDBMetadata_Table_Fields.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\Tables\Table\Fields\Field\cDBMetadata_Table_Field.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\Tables\Table\Fields\iDBMetadata_Table_Fields.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\Tables\Table\Searches\cDBMetadata_Table_Searches.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\Tables\Table\Searches\iDBMetadata_Table_Searches.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\Tables\Table\Searches\Search\cDBMetadata_Table_Search.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\Tables\Updates-generic\cDBMetadata_Updates.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\Tables\Updates-generic\Update\cDBMetadata_Update.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ClaSSe\utils.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="COPYING" />
+    <Content Include="LICENSE.GPL.txt" />
+    <Content Include="LICENSE.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>
