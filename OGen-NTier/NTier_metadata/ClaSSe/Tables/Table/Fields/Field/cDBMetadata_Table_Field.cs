@@ -33,6 +33,7 @@ using System;
 using System.Reflection;
 using System.Data;
 using NpgsqlTypes;
+using MySql.Data.MySqlClient;
 
 using OGen.lib.datalayer;
 using OGen.lib.collections;
@@ -307,12 +308,16 @@ namespace OGen.NTier.lib.metadata {
 					case eDBServerTypes.PostgreSQL:
 						dbtype_generic_out.Value = OGen.lib.datalayer.utils.convert.PgsqlDbType2DbType((NpgsqlDbType)DBType_inDB);
 						break;
+					case eDBServerTypes.MySQL:
+						dbtype_generic_out.Value = OGen.lib.datalayer.utils.convert.MySqlDbType2DbType((MySqlDbType)DBType_inDB);
+						break;
 					default:
 						throw new Exception(
 							string.Format(
-								"{0}.{1}.DBType_generic(): - invalid db type", 
+								"{0}.{1}.DBType_generic.get(): - unsoported db server: {2}", 
 								this.GetType().Namespace, 
-								this.GetType().Name
+								this.GetType().Name,
+								parent_ref_.Parent_ref.Parent_ref.Parent_ref.default_dbservertype_
 							)
 						);
 				}
@@ -329,21 +334,27 @@ namespace OGen.NTier.lib.metadata {
 				switch (parent_ref_.Parent_ref.Parent_ref.Parent_ref.default_dbservertype_) {
 					case eDBServerTypes.SQLServer:
 						return (int)OGen.lib.datalayer.utils.convert.SqlDbType_Parse(
-							//base.Property_standard["type"), 
+							//base.Property_standard["type"], 
 							DBType_inDB_name, 
 							false
 						);
 					case eDBServerTypes.PostgreSQL:
 						return (int)OGen.lib.datalayer.utils.convert.PgsqlDbType_Parse(
-							//base.Property_standard["type"), 
+							//base.Property_standard["type"], 
+							DBType_inDB_name
+						);
+					case eDBServerTypes.MySQL:
+						return (int)OGen.lib.datalayer.utils.convert.MySqlDbType_Parse(
+							//base.Property_standard["type"], 
 							DBType_inDB_name
 						);
 					default:
 						throw new Exception(
 							string.Format(
-								"{0}.{1}.DBType_generic(): - invalid db server type", 
+								"{0}.{1}.DBType_inDB.get(): - unsoported db server: {2}", 
 								this.GetType().Namespace, 
-								this.GetType().Name
+								this.GetType().Name,
+								parent_ref_.Parent_ref.Parent_ref.Parent_ref.default_dbservertype_
 							)
 						);
 				}

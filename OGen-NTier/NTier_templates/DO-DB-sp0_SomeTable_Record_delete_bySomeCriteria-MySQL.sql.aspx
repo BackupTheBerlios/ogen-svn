@@ -31,35 +31,45 @@ along with OGen; if not, write to the
 #region arguments...
 string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
 string arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["TableName"]);
+string arg_SearchName = System.Web.HttpUtility.UrlDecode(Request.QueryString["SearchName"]);
 #endregion
 
 #region varaux...
 cDBMetadata aux_metadata = new cDBMetadata();
 aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
 cDBMetadata_Table aux_table = aux_metadata.Tables[arg_TableName];
+cDBMetadata_Table_Search aux_search = aux_table.Searches[arg_SearchName];
 int aux_table_hasidentitykey = aux_table.hasIdentityKey();
 
 cDBMetadata_Table_Field aux_field;
+string aux_field_name;
+bool isFirst;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE OR REPLACE FUNCTION `sp0_<%=aux_table.Name%>_delObject`(<%
+%>CREATE PROCEDURE `sp0_<%=aux_table.Name%>_Record_delete_<%=aux_search.Name%>`(<%
+for (int f = 0; f < aux_search.SearchParameters.Count; f++) {
+	aux_field = aux_search.SearchParameters[f].Field;
+	aux_field_name = aux_search.SearchParameters[f].ParamName;%>
+	IN `<%=aux_field_name%>_search_` <%=aux_field.DBType_inDB_name%><%=(aux_field.isText) ? "(" + aux_field.Size + ")" : ""%><%=(f != aux_search.SearchParameters.Count - 1) ? ", " : ""%><%
+}%>
+)
+	NOT DETERMINISTIC
+	SQL SECURITY DEFINER
+	COMMENT ''
+BEGIN
+	DELETE `<%=aux_table.Name%>`
+	FROM `<%=aux_table.Name%>` t1
+	INNER JOIN `fnc_<%=aux_table.Name%>_Record_open_<%=aux_search.Name%>`(<%
+	for (int f = 0; f < aux_search.SearchParameters.Count; f++) {
+		aux_field = aux_search.SearchParameters[f].Field;
+		aux_field_name = aux_search.SearchParameters[f].ParamName;%>
+		`<%=aux_field_name%>_search_`<%=(f != aux_search.SearchParameters.Count - 1) ? ", " : ""%><%
+	}%>
+	) t2 ON<%
 	for (int k = 0; k < aux_table.Fields_onlyPK.Count; k++) {
-		aux_field = aux_table.Fields_onlyPK[k];
-	%>`<%=aux_field.Name%>_` <%=aux_field.DBType_inDB_name%><%=(k != aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
-	}%>)
-RETURNS void
-AS '
-	BEGIN
-		DELETE
-		FROM `<%=aux_table.Name%>`
-		WHERE<%
-			for (int k = 0; k < aux_table.Fields_onlyPK.Count; k++) {
-				aux_field = aux_table.Fields_onlyPK[k];%>
-			(`<%=aux_field.Name%>` = `<%=aux_field.Name%>_`)<%=(k != aux_table.Fields_onlyPK.Count - 1) ? " AND" : ";"%><%
-			}%>
-
-		RETURN;
-	END;
-' LANGUAGE 'plpgsql' VOLATILE;<%
+		aux_field = aux_table.Fields_onlyPK[k];%>
+		(t2.`<%=aux_field.Name%>` = t1.`<%=aux_field.Name%>`)<%=(k != aux_table.Fields_onlyPK.Count - 1) ? " AND" : ""%><%
+	}%>;
+END;<%
 //-----------------------------------------------------------------------------------------
 %>

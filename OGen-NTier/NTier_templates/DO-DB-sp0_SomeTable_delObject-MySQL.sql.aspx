@@ -42,24 +42,30 @@ int aux_table_hasidentitykey = aux_table.hasIdentityKey();
 cDBMetadata_Table_Field aux_field;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE OR REPLACE FUNCTION `sp0_<%=aux_table.Name%>_delObject`(<%
+%>CREATE PROCEDURE `sp0_<%=aux_table.Name%>_delObject`(<%
 	for (int k = 0; k < aux_table.Fields_onlyPK.Count; k++) {
-		aux_field = aux_table.Fields_onlyPK[k];
-	%>`<%=aux_field.Name%>_` <%=aux_field.DBType_inDB_name%><%=(k != aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
-	}%>)
-RETURNS void
-AS '
-	BEGIN
-		DELETE
-		FROM `<%=aux_table.Name%>`
-		WHERE<%
-			for (int k = 0; k < aux_table.Fields_onlyPK.Count; k++) {
-				aux_field = aux_table.Fields_onlyPK[k];%>
-			(`<%=aux_field.Name%>` = `<%=aux_field.Name%>_`)<%=(k != aux_table.Fields_onlyPK.Count - 1) ? " AND" : ";"%><%
-			}%>
+		aux_field = aux_table.Fields_onlyPK[k];%>
+	IN `<%=aux_field.Name%>_` <%=aux_field.DBType_inDB_name%><%=(aux_field.isText) ? "(" + aux_field.Size + ")" : ""%><%=(k != aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
+	}%>
+)
+	NOT DETERMINISTIC
+	SQL SECURITY DEFINER
+	COMMENT ''
+BEGIN<%if (aux_metadata.CopyrightTextLong != string.Empty) {
+%>
+/*
 
-		RETURN;
-	END;
-' LANGUAGE 'plpgsql' VOLATILE;<%
+<%=aux_metadata.CopyrightTextLong%>
+
+*/<%
+}%>
+	DELETE
+	FROM `<%=aux_table.Name%>`
+	WHERE<%
+		for (int k = 0; k < aux_table.Fields_onlyPK.Count; k++) {
+			aux_field = aux_table.Fields_onlyPK[k];%>
+		(`<%=aux_field.Name%>` = `<%=aux_field.Name%>_`)<%=(k != aux_table.Fields_onlyPK.Count - 1) ? " AND" : ""%><%
+		}%>;
+END<%
 //-----------------------------------------------------------------------------------------
 %>

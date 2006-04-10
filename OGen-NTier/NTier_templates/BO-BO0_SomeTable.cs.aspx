@@ -42,6 +42,7 @@ bool isListItem = aux_table.isListItem();
 cDBMetadata_Table_Field aux_field;
 #endregion
 //-----------------------------------------------------------------------------------------
+if ((aux_metadata.CopyrightText != string.Empty) && (aux_metadata.CopyrightTextLong != string.Empty)) {
 %>#region <%=aux_metadata.CopyrightText%>
 /*
 
@@ -49,7 +50,8 @@ cDBMetadata_Table_Field aux_field;
 
 */
 #endregion
-using System;
+<%
+}%>using System;
 
 using OGen.NTier.lib.datalayer;
 using OGen.NTier.lib.businesslayer;

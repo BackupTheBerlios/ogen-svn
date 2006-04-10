@@ -65,14 +65,17 @@ namespace OGen.lib.templates {
 		#region public enum eType;
 		public enum eType {
 			File = 0,
-			PostgreSQL_Function = 1, 
-			PostgreSQL_StoredProcedure = 2, 
+			PostgreSQL_Function = 1,
+			PostgreSQL_StoredProcedure = 2,
 			PostgreSQL_View = 3, 
 			SQLServer_Function = 4, 
 			SQLServer_StoredProcedure = 5, 
-			SQLServer_View = 6, 
+			SQLServer_View = 6,
+			MySQL_Function = 7,
+			MySQL_StoredProcedure = 8,
+			MySQL_View = 9, 
 
-			invalid = 7
+			invalid = 10
 		}
 		#endregion
 		#endregion

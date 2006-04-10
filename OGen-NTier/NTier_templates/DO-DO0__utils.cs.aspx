@@ -45,6 +45,7 @@ int aux_table_hasidentitykey;
 string[] aux_configmodes = aux_metadata.ConfigModes();
 #endregion
 //-----------------------------------------------------------------------------------------
+if ((aux_metadata.CopyrightText != string.Empty) && (aux_metadata.CopyrightTextLong != string.Empty)) {
 %>#region <%=aux_metadata.CopyrightText%>
 /*
 
@@ -52,7 +53,8 @@ string[] aux_configmodes = aux_metadata.ConfigModes();
 
 */
 #endregion
-using System;
+<%
+}%>using System;
 using System.Data;
 
 using OGen.lib.datalayer;

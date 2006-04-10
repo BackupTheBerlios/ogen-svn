@@ -42,6 +42,7 @@ int aux_table_hasidentitykey = aux_table.hasIdentityKey();
 cDBMetadata_Table_Field aux_field;
 #endregion
 //-----------------------------------------------------------------------------------------
+if ((aux_metadata.CopyrightText != string.Empty) && (aux_metadata.CopyrightTextLong != string.Empty)) {
 %>#region <%=aux_metadata.CopyrightText%>
 /*
 
@@ -49,7 +50,8 @@ cDBMetadata_Table_Field aux_field;
 
 */
 #endregion
-using System;
+<%
+}%>using System;
 using System.Data;
 
 using OGen.lib.datalayer;

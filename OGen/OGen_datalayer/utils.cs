@@ -32,6 +32,7 @@ along with OGen; if not, write to the
 using System;
 using System.Data;
 using NpgsqlTypes;
+using MySql.Data.MySqlClient;
 using OGen.lib.config;
 
 namespace OGen.lib.datalayer {
@@ -193,6 +194,14 @@ namespace OGen.lib.datalayer {
 								userPassword_in, 
 								dataBaseName_in
 							);
+						case eDBServerTypes.MySQL:
+							return string.Format(
+								"Server={0};Uid={1};Pwd={2};Database={3};",
+								serverName_in,
+								userName_in,
+								userPassword_in,
+								dataBaseName_in
+							);
 						case eDBServerTypes.ODBC:
 						case eDBServerTypes.Access:
 						case eDBServerTypes.Excel:
@@ -340,6 +349,7 @@ namespace OGen.lib.datalayer {
 				if (object_in == null) {
 					switch (dbServerType_in) {
 						case eDBServerTypes.PostgreSQL:
+						case eDBServerTypes.MySQL:
 						case eDBServerTypes.SQLServer: {
 							return "null";
 						}
@@ -350,7 +360,9 @@ namespace OGen.lib.datalayer {
 						case "System.String": {
 							switch (dbServerType_in) {
 								//case eDBServerTypes.PostgreSQL: {
-								//	return string.Format("''{0}''", object_in.ToString ().Replace("'", "''"));
+								//	// ToDos: here! check if changes made are correct (I need test units for this)
+								//	// return string.Format("''{0}''", object_in.ToString ().Replace("'", "''"));
+								//	return string.Format("'{0}'", object_in.ToString ().Replace("'", "''"));
 								//}
 								case eDBServerTypes.SQLServer: {
 									return string.Format("\'{0}\'", object_in.ToString ().Replace("\'", "\'\'"));
@@ -364,8 +376,11 @@ namespace OGen.lib.datalayer {
 								return object2SQLobject(null, dbServerType_in);
 							} else {
 								switch (dbServerType_in) {
-									case eDBServerTypes.PostgreSQL: {
-										return string.Format("timestamp ''{0}''", _datetime.ToString("yyyy-MM-dd HH:mm:ss"));
+									case eDBServerTypes.PostgreSQL:
+									case eDBServerTypes.MySQL: {
+										// ToDos: here! check if changes made are correct (I need test units for this)
+										// return string.Format("timestamp ''{0}''", _datetime.ToString("yyyy-MM-dd HH:mm:ss"));
+										return string.Format("timestamp '{0}'", _datetime.ToString("yyyy-MM-dd HH:mm:ss"));
 									}
 									case eDBServerTypes.SQLServer: {
 										return string.Format("CONVERT(DATETIME, \'{0}\', 120)", _datetime.ToString("yyyy-MM-dd HH:mm:ss"));
@@ -376,7 +391,8 @@ namespace OGen.lib.datalayer {
 						}
 						case "System.Boolean": {
 							switch (dbServerType_in) {
-								case eDBServerTypes.PostgreSQL: {
+								case eDBServerTypes.PostgreSQL:
+								case eDBServerTypes.MySQL: {
 									return (((bool)object_in) ? "true" : "false");
 								}
 								case eDBServerTypes.SQLServer: {
@@ -396,6 +412,9 @@ namespace OGen.lib.datalayer {
 								//	return object_in.ToString().Replace(",", ".");
 								//}
 								case eDBServerTypes.SQLServer: {
+									// ToDos: here! this will likely change accordingly with regional 
+									// settings configurations, I need to come up with a better 
+									// approach to this:
 									return object_in.ToString().Replace(",", ".");
 								}
 							}
@@ -413,7 +432,7 @@ namespace OGen.lib.datalayer {
 			}
 			#endregion
 
-			// ToDos: here! ver: _lixo\sSqlDbType.cs
+			// ToDos: here! have a look at: sSqlDbType.cs
 			#region public static string DbType2NSysType(...);
 			// <summary>
 			// Aimed for code generator, hence returning straight string.
@@ -443,7 +462,7 @@ namespace OGen.lib.datalayer {
 						return typeof(UInt64).Name;
 					}
 					case DbType.String: {
-						return "string"; //typeof(string).Name;
+							return "string"; //typeof(string).Name;
 					}
 					case DbType.DateTime:
 					case DbType.Date:
@@ -461,19 +480,19 @@ namespace OGen.lib.datalayer {
 					}
 
 					case DbType.Single: {
-						// ToDos: here! check if apropriate...
+						// ToDos: here! check if appropriate...
 						return typeof(Single).Name;
 					}
 					case DbType.Binary: {
-						// ToDos: here! check if apropriate...
+						// ToDos: here! check if appropriate...
 						return typeof(Byte[]).Name;
 					}
 					case DbType.Decimal: {
-						// ToDos: here! check if apropriate...
+						// ToDos: here! check if appropriate...
 						return typeof(Decimal).Name;
 					}
 					case DbType.Double: {
-						// ToDos: here! check if apropriate...
+						// ToDos: here! check if appropriate...
 						return typeof(Double).Name;
 					}
 
@@ -586,7 +605,7 @@ namespace OGen.lib.datalayer {
 						return "new Byte[] { 1, 2, 3 }";
 					}
 
-// ToDos: here! check if apropriate...
+// ToDos: here! check if appropriate...
 //case DbType.Single:
 //return "0F";
 
@@ -642,7 +661,7 @@ namespace OGen.lib.datalayer {
 			}
 			#endregion
 
-			#region public static DbType DbType_Parse(...);
+			#region public static DbType DbType_Parse(string value_in);
 			public static DbType DbType_Parse(string value_in) {
 				return DbType_Parse(value_in, true);
 			}
@@ -665,10 +684,10 @@ namespace OGen.lib.datalayer {
 						return (DbType)i;
 					}
 				}
-				throw new Exception("invalid db type");
+				throw new Exception(string.Format("invalid db type: {0}", value_in));
 			}
 			#endregion
-			#region public static SqlDbType SqlDbType_Parse(...);
+			#region public static SqlDbType SqlDbType_Parse(string value_in);
 			public static SqlDbType SqlDbType_Parse(string value_in) {
 				return SqlDbType_Parse(value_in, true);
 			}
@@ -691,82 +710,90 @@ namespace OGen.lib.datalayer {
 						return (SqlDbType)i;
 					}
 				}
-				throw new Exception("invalid db type");
+				throw new Exception(string.Format("invalid db type: {0}", value_in));
 			}
 			#endregion
-			#region public static ePgsqlDbType PgsqlDbType_Parse(...);
+			#region public static NpgsqlDbType PgsqlDbType_Parse(string value_in);
 			public static NpgsqlDbType PgsqlDbType_Parse(string value_in) {
 				switch (value_in.ToLower()) {
 					case "timestamp with time zone": 
 					case "timestamptz": 
 					case "timestamp without time zone": 
-					case "timestamp": {
-						return NpgsqlDbType.Timestamp;
-					}
+					case "timestamp": { return NpgsqlDbType.Timestamp; }
+
 					case "boolean": 
-					case "bool": {
-						return NpgsqlDbType.Boolean;
-					}
+					case "bool": { return NpgsqlDbType.Boolean; }
+
 					case "bigint": 
-					case "int8": {
-						return NpgsqlDbType.Bigint;
-					}
+					case "int8": { return NpgsqlDbType.Bigint; }
+
 					case "integer": 
-					case "int4": {
-						return NpgsqlDbType.Integer;
-					}
+					case "int4": { return NpgsqlDbType.Integer; }
+
 					case "smallint": 
-					case "int2": {
-						return NpgsqlDbType.Smallint;
-					}
-					case "text": {
-						return NpgsqlDbType.Text;
-					}
+					case "int2": { return NpgsqlDbType.Smallint; }
+
+					case "text": { return NpgsqlDbType.Text; }
+
 					case "character varying": 
-					case "varchar": {
-						return NpgsqlDbType.Varchar;
-					}
+					case "varchar": { return NpgsqlDbType.Varchar; }
+
 					case "real": 
-					case "float4": {
-						return NpgsqlDbType.Real;
-					}
+					case "float4": { return NpgsqlDbType.Real; }
+
 					case "double precision": 
-					case "float8": {
-						return NpgsqlDbType.Double;
-					}
-					case "numeric": {
-						return NpgsqlDbType.Numeric;
-					}
-					case "bytea": {
-						return NpgsqlDbType.Bytea;
-					}
-					case "date": {
-						return NpgsqlDbType.Date;
-					}
+					case "float8": { return NpgsqlDbType.Double; }
+
+					case "numeric": { return NpgsqlDbType.Numeric; }
+
+					case "bytea": { return NpgsqlDbType.Bytea; }
+
+					case "date": { return NpgsqlDbType.Date; }
+
 					case "time without time zone": 
 					case "time": 
 					case "time with time zone": 
-					case "timetz": {
-						return NpgsqlDbType.Time;
-					}
-					case "money": {
-						return NpgsqlDbType.Money;
-					}
+					case "timetz": { return NpgsqlDbType.Time; }
 
-					#region ...
+					case "money": { return NpgsqlDbType.Money; }
+
+					#region default: throw new Exception("...");
 					//case "bigserial":
 					//case "serial8":
 					//	return ePgsqlDbType.BigSerial;
 					//case "serial":
 					//case "serial4":
 					//	return ePgsqlDbType.Serial;
-					default: {
-						throw new Exception(string.Format(
-							"invalid db type: {0}", 
-							value_in
-						));
-					}
+					default: { throw new Exception(string.Format("invalid db type: {0}", value_in)); }
 					#endregion
+				}
+			}
+			#endregion
+			#region public static MySqlDbType MySqlDbType_Parse(string value_in);
+			public static MySqlDbType MySqlDbType_Parse(string value_in) {
+				switch (value_in.ToLower()) {
+					case "float": { return MySqlDbType.Float; }
+					case "double": { return MySqlDbType.Double; }
+					case "decimal": { return MySqlDbType.Decimal; }
+					case "date": { return MySqlDbType.Date; }
+					case "datetime": { return MySqlDbType.Datetime; }
+					case "timestamp": { return MySqlDbType.Timestamp; }
+					case "time": { return MySqlDbType.Time; }
+					case "year": { return MySqlDbType.Year; }
+					case "varchar": { return MySqlDbType.VarChar; }
+					case "tinyblob": { return MySqlDbType.TinyBlob; }
+					case "blob": { return MySqlDbType.Blob; }
+					case "mediumblob": { return MySqlDbType.MediumBlob; }
+					case "longblob": { return MySqlDbType.LongBlob; }
+					case "geometry": { return MySqlDbType.Geometry; }
+					case "bit": { return MySqlDbType.Bit; }
+					case "tinyint": { return MySqlDbType.Byte; }
+					case "smallint": { return MySqlDbType.Int16; }
+					case "mediumint": { return MySqlDbType.Int24; }
+					case "int": { return MySqlDbType.Int32; }
+					case "bigint": { return MySqlDbType.Int64; }
+
+					default: { throw new Exception(string.Format("invalid db type: {0}", value_in)); }
 				}
 			}
 			#endregion
@@ -774,117 +801,112 @@ namespace OGen.lib.datalayer {
 			#region public static DbType SqlDbType2DbType(...);
 			public static DbType SqlDbType2DbType(SqlDbType sqlDbType_in) {
 				switch (sqlDbType_in) {
-					case SqlDbType.BigInt: {
-						return DbType.Int64;
-					}
-					case SqlDbType.Bit: {
-						return DbType.Boolean;
-					}
+					case SqlDbType.BigInt: { return DbType.Int64; }
+					case SqlDbType.Bit: { return DbType.Boolean; }
+
 					case SqlDbType.Char:
 					case SqlDbType.NChar:
 					case SqlDbType.NText:
 					case SqlDbType.NVarChar:
 					case SqlDbType.Text:
-					case SqlDbType.VarChar: {
-						return DbType.String;
-					}
+					case SqlDbType.VarChar: { return DbType.String; }
+
 					case SqlDbType.DateTime:
-					case SqlDbType.SmallDateTime: {
-						return DbType.DateTime;
-					}
+					case SqlDbType.SmallDateTime: { return DbType.DateTime; }
+
 					case SqlDbType.Decimal:
 					case SqlDbType.Money:
-					case SqlDbType.SmallMoney: {
-						return DbType.Decimal;
-					}
-					case SqlDbType.Float: {
-						return DbType.Double;
-					}
-					case SqlDbType.Int: {
-						return DbType.Int32;
-					}
-					case SqlDbType.Real: {
-						return DbType.Single;
-					}
-					case SqlDbType.UniqueIdentifier: {
-						return DbType.Guid;
-					}
-					case SqlDbType.SmallInt: {
-						return DbType.Int16;
-					}
-					case SqlDbType.TinyInt: {
-						return DbType.Byte;
-					}
-					case SqlDbType.Variant: {
-						return DbType.Object;
-					}
-					case SqlDbType.Binary: {
-						return DbType.Binary;
-					}
+					case SqlDbType.SmallMoney: { return DbType.Decimal; }
+
+					case SqlDbType.Float: { return DbType.Double; }
+					case SqlDbType.Int: { return DbType.Int32; }
+					case SqlDbType.Real: { return DbType.Single; }
+					case SqlDbType.UniqueIdentifier: { return DbType.Guid; }
+					case SqlDbType.SmallInt: { return DbType.Int16; }
+					case SqlDbType.TinyInt: { return DbType.Byte; }
+					case SqlDbType.Variant: { return DbType.Object; }
+					case SqlDbType.Binary: { return DbType.Binary; }
 
 					case SqlDbType.Image:
 					case SqlDbType.Timestamp:
 					case SqlDbType.VarBinary:
-					default: {
-						break;
-					}
-				}
 
-				throw new Exception(string.Format(
-					"undefined variable type: {0}",
-					sqlDbType_in.GetType().ToString()
-				));
+					#region default: throw new Exception("...");
+					default: {
+						throw new Exception(string.Format(
+							"undefined variable type: {0}",
+							sqlDbType_in.ToString()
+						));
+					}
+					#endregion
+				}
 			}
 			#endregion
 			#region public static DbType PgsqlDbType2DbType(...);
 			public static DbType PgsqlDbType2DbType(NpgsqlDbType pgsqlDbType_in) {
 				switch (pgsqlDbType_in) {
-					case NpgsqlDbType.Bigint: {
-						return DbType.Int64;
-					}
-					case NpgsqlDbType.Integer: {
-						return DbType.Int32;
-					}
-					case NpgsqlDbType.Smallint: {
-						return DbType.Int16;
-					}
-					case NpgsqlDbType.Boolean: {
-						return DbType.Boolean;
-					}
+					case NpgsqlDbType.Bigint: { return DbType.Int64; }
+					case NpgsqlDbType.Integer: { return DbType.Int32; }
+					case NpgsqlDbType.Smallint: { return DbType.Int16; }
+					case NpgsqlDbType.Boolean: { return DbType.Boolean; }
+
 					case NpgsqlDbType.Varchar:
-					case NpgsqlDbType.Text: {
-						return DbType.String;
-					}
-					case NpgsqlDbType.Timestamp: {
-						return DbType.DateTime;
-					}
-					case NpgsqlDbType.Real: {
-						return DbType.Single;
-					}
-					case NpgsqlDbType.Double: {
-						return DbType.Double;
-					}
-					case NpgsqlDbType.Numeric: {
-						return DbType.Decimal;
-					}
-					case NpgsqlDbType.Bytea: {
-						return DbType.Binary;
-					}
-					case NpgsqlDbType.Date: {
-						return DbType.Date;
-					}
-					case NpgsqlDbType.Time: {
-						return DbType.Time;
-					}
-					case NpgsqlDbType.Money: {
-						return DbType.Decimal;
-					}
+					case NpgsqlDbType.Text: { return DbType.String; }
+
+					case NpgsqlDbType.Timestamp: { return DbType.DateTime; }
+					case NpgsqlDbType.Real: { return DbType.Single; }
+					case NpgsqlDbType.Double: { return DbType.Double; }
+					case NpgsqlDbType.Numeric: { return DbType.Decimal; }
+					case NpgsqlDbType.Bytea: { return DbType.Binary; }
+					case NpgsqlDbType.Date: { return DbType.Date; }
+					case NpgsqlDbType.Time: { return DbType.Time; }
+					case NpgsqlDbType.Money: { return DbType.Decimal; }
+
+					#region default: throw new Exception("...");
 					default: {
 						throw new Exception(string.Format(
 							"undefined variable type: {0}",
-							pgsqlDbType_in.GetType().ToString()
+							pgsqlDbType_in.ToString()
 						));
 					}
+					#endregion
+				}
+			}
+			#endregion
+			#region public static DbType MySqlDbType2DbType(MySqlDbType mySqlDbType_in);
+			public static DbType MySqlDbType2DbType(MySqlDbType mySqlDbType_in) {
+				switch (mySqlDbType_in) {
+					case MySqlDbType.Float: { return DbType.Double; }
+					case MySqlDbType.Double: { return DbType.Double; }
+					case MySqlDbType.Decimal: { return DbType.Decimal; }
+					case MySqlDbType.Date: { return DbType.Date; }
+					case MySqlDbType.Datetime: { return DbType.DateTime; }
+					case MySqlDbType.Timestamp: { return DbType.DateTime; } // ToDos: here! check if appropriate
+					case MySqlDbType.Time: { return DbType.Time; }
+					case MySqlDbType.Year: { return DbType.DateTime; } // ToDos: here! check if appropriate
+
+//					case MySqlDbType.TinyBlob:
+//					case MySqlDbType.Blob:
+//					case MySqlDbType.MediumBlob:
+//					case MySqlDbType.LongBlob:
+					case MySqlDbType.VarChar: { return DbType.String; } // ToDos: here! check if appropriate
+
+//					case MySqlDbType.Geometry: { return DbType.Geometry; }
+					case MySqlDbType.Bit: { return DbType.Boolean; } // ToDos: here! check if appropriate
+					case MySqlDbType.Byte: { return DbType.Byte; }
+					case MySqlDbType.Int16: { return DbType.Int16; }
+//					case MySqlDbType.Int24: { return DbType.Int24; }
+					case MySqlDbType.Int32: { return DbType.Int32; }
+					case MySqlDbType.Int64: { return DbType.Int64; }
+
+					#region default: throw new Exception("...");
+					default: {
+						throw new Exception(string.Format(
+							"undefined variable type: {0}",
+							mySqlDbType_in.ToString()
+						));
+					}
+					#endregion
 				}
 			}
 			#endregion

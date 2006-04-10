@@ -38,28 +38,54 @@ cDBMetadata aux_metadata = new cDBMetadata();
 aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
 cDBMetadata_Table aux_table = aux_metadata.Tables[arg_TableName];
 int aux_table_hasidentitykey = aux_table.hasIdentityKey();
+bool aux_table_searches_hasexplicituniqueindex = aux_table.Searches.hasExplicitUniqueIndex();
 
 cDBMetadata_Table_Field aux_field;
+bool isFirst;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE OR REPLACE FUNCTION `sp0_<%=aux_table.Name%>_delObject`(<%
-	for (int k = 0; k < aux_table.Fields_onlyPK.Count; k++) {
-		aux_field = aux_table.Fields_onlyPK[k];
-	%>`<%=aux_field.Name%>_` <%=aux_field.DBType_inDB_name%><%=(k != aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
-	}%>)
-RETURNS void
-AS '
-	BEGIN
-		DELETE
-		FROM `<%=aux_table.Name%>`
-		WHERE<%
-			for (int k = 0; k < aux_table.Fields_onlyPK.Count; k++) {
-				aux_field = aux_table.Fields_onlyPK[k];%>
-			(`<%=aux_field.Name%>` = `<%=aux_field.Name%>_`)<%=(k != aux_table.Fields_onlyPK.Count - 1) ? " AND" : ";"%><%
-			}%>
+%>CREATE PROCEDURE `sp0_<%=aux_table.Name%>_updObject`(<%
+	for (int f = 0; f < aux_table.Fields.Count; f++) {
+		aux_field = aux_table.Fields[f];%>
+	IN `<%=aux_field.Name%>_` <%=aux_field.DBType_inDB_name%><%=(aux_field.isText) ? "(" + aux_field.Size + ")" : ""%><%=(f != aux_table.Fields.Count - 1) ? ", " : ""%><%
+	}%><%
+	if (aux_table_searches_hasexplicituniqueindex) {%>, 
+	OUT `ConstraintExist_` BOOLEAN<%
+	}%>
+)
+	NOT DETERMINISTIC
+	SQL SECURITY DEFINER
+	COMMENT ''
+BEGIN<%
+	if (aux_table_searches_hasexplicituniqueindex) {%>
+	SET `ConstraintExist_` = `fnc0_<%=aux_table.Name%>__ConstraintExist`(<%
+		for (int f = 0; f < aux_table.Fields.Count; f++) {
+			aux_field = aux_table.Fields[f];%>
+		`<%=aux_field.Name%>_`<%=(f != aux_table.Fields.Count - 1) ? ", " : ""%><%
+		}%>
+	);
 
-		RETURN;
-	END;
-' LANGUAGE 'plpgsql' VOLATILE;<%
+	IF (NOT `ConstraintExist_`) THEN<%
+	}%>
+		UPDATE `<%=aux_table.Name%>`
+		SET<%
+		isFirst = true;
+		for (int f = 0; f < aux_table.Fields.Count; f++) {
+			aux_field = aux_table.Fields[f];
+			if (!aux_field.isIdentity) {
+				if (!isFirst) {
+					%>, <%
+				} else {
+					isFirst = false;
+				}%>
+			`<%=aux_field.Name%>` = `<%=aux_field.Name%>_`<%
+			}
+		}%>
+		WHERE
+			`<%=aux_table.Fields[aux_table_hasidentitykey].Name%>` = `<%=aux_table.Fields[aux_table_hasidentitykey].Name%>_`;<%
+	if (aux_table_searches_hasexplicituniqueindex) {%>
+	END IF;<%
+	}%>
+END<%
 //-----------------------------------------------------------------------------------------
 %>

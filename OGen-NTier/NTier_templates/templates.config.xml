@@ -550,6 +550,24 @@ along with OGen; if not, write to the
 		</outputs>
 		<dependencies />
 	</template>
+	<template name="DO-DB-fnc0_SomeTable__ConstraintExist-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.hasExplicitUniqueIndex" to="True" />
+		</conditions>
+		<outputs>
+			<output to="fnc0_${ROOT.tables.table[n].name}__ConstraintExist" 
+				type="MySQL_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" />
+		</dependencies>
+	</template>
 	<template name="DO-DB-fnc0_SomeTable__ConstraintExist-PostgreSQL.sql.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
@@ -584,6 +602,25 @@ along with OGen; if not, write to the
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-fnc0_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="False" />
+		</conditions>
+		<outputs>
+			<output to="fnc0_${ROOT.tables.table[n].name}_isObject_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="MySQL_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" />
 		</dependencies>
 	</template>
 	<template name="DO-DB-fnc0_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx" 
@@ -624,6 +661,20 @@ along with OGen; if not, write to the
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx" />
 		</dependencies>
 	</template>
+	<template name="DO-DB-fnc0_SomeTable_isObject-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="fnc0_${ROOT.tables.table[n].name}_isObject"
+				type="MySQL_Function" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
 	<template name="DO-DB-fnc0_SomeTable_isObject-PostgreSQL.sql.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
@@ -651,6 +702,25 @@ along with OGen; if not, write to the
 				type="SQLServer_Function" replace="True" />
 		</outputs>
 		<dependencies />
+	</template>
+	<template name="DO-DB-fnc0_SomeTable_Record_count_bySomeCriteria-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="fnc0_${ROOT.tables.table[n].name}_Record_count_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="MySQL_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" />
+		</dependencies>
 	</template>
 	<template name="DO-DB-fnc0_SomeTable_Record_count_bySomeCriteria-PostgreSQL.sql.aspx" 
 			parserType="aspx" 
@@ -688,6 +758,25 @@ along with OGen; if not, write to the
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="fnc0_${ROOT.tables.table[n].name}_Record_hasObject_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="MySQL_Function" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" />
 		</dependencies>
 	</template>
 	<template name="DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-PostgreSQL.sql.aspx" 
@@ -728,6 +817,25 @@ along with OGen; if not, write to the
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
 		</dependencies>
 	</template>
+	<template name="DO-DB-sp0_SomeTable_insObject-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].hasIdentityKey" to="True" />
+			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_insObject" 
+				type="MySQL_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-MySQL.sql.aspx" />
+		</dependencies>
+	</template>
 	<template name="DO-DB-sp0_SomeTable_insObject-PostgreSQL.sql.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
@@ -764,6 +872,25 @@ along with OGen; if not, write to the
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-SQLServer.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_updObject-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].hasIdentityKey" to="True" />
+			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_updObject" 
+				type="MySQL_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-MySQL.sql.aspx" />
 		</dependencies>
 	</template>
 	<template name="DO-DB-sp0_SomeTable_updObject-PostgreSQL.sql.aspx" 
@@ -804,6 +931,23 @@ along with OGen; if not, write to the
 			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-SQLServer.sql.aspx" />
 		</dependencies>
 	</template>
+	<template name="DO-DB-sp0_SomeTable_setObject-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].hasIdentityKey" to="False" />
+			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_setObject" 
+				type="MySQL_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
 	<template name="DO-DB-sp0_SomeTable_setObject-PostgreSQL.sql.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
@@ -838,6 +982,22 @@ along with OGen; if not, write to the
 		</outputs>
 		<dependencies />
 	</template>
+	<template name="DO-DB-sp0_SomeTable_delObject-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.hasExplicitUniqueIndex" to="False" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_delObject" 
+				type="MySQL_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
 	<template name="DO-DB-sp0_SomeTable_delObject-PostgreSQL.sql.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
@@ -854,7 +1014,7 @@ along with OGen; if not, write to the
 		</outputs>
 		<dependencies />
 	</template>
-	<template name="DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx.sql.aspx" 
+	<template name="DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
@@ -869,6 +1029,26 @@ along with OGen; if not, write to the
 				type="SQLServer_StoredProcedure" replace="True" />
 		</outputs>
 		<dependencies />
+	</template>
+	<template name="DO-DB-sp0_SomeTable_delObject_bySomeCriteria-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="False" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_delObject_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="MySQL_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" />
+		</dependencies>
 	</template>
 	<template name="DO-DB-sp0_SomeTable_delObject_bySomeCriteria-PostgreSQL.sql.aspx" 
 			parserType="aspx" 
@@ -886,7 +1066,9 @@ along with OGen; if not, write to the
 			<output to="sp0_${ROOT.tables.table[n].name}_delObject_${ROOT.tables.table[n].searches.search[n].name}" 
 				type="PostgreSQL_Function" replace="True" />
 		</outputs>
-		<dependencies />
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" />
+		</dependencies>
 	</template>
 	<template name="DO-DB-sp0_SomeTable_delObject_bySomeCriteria-SQLServer.sql.aspx" 
 			parserType="aspx" 
@@ -904,7 +1086,29 @@ along with OGen; if not, write to the
 			<output to="sp0_${ROOT.tables.table[n].name}_delObject_${ROOT.tables.table[n].searches.search[n].name}" 
 				type="SQLServer_StoredProcedure" replace="True" />
 		</outputs>
-		<dependencies />
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_Record_delete_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="MySQL_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" />
+		</dependencies>
 	</template>
 	<template name="DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-PostgreSQL.sql.aspx" 
 			parserType="aspx" 
@@ -947,6 +1151,23 @@ along with OGen; if not, write to the
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
 		</dependencies>
 	</template>
+	<template name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="False" />
+		</conditions>
+		<outputs>
+			<output to="fnc_${ROOT.tables.table[n].name}_isObject_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="MySQL_Function" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
 	<template name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
@@ -978,6 +1199,23 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="fnc_${ROOT.tables.table[n].name}_isObject_${ROOT.tables.table[n].searches.search[n].name}" 
 				type="SQLServer_Function" replace="False" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="fnc_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="MySQL_Function" replace="False" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -1016,6 +1254,25 @@ along with OGen; if not, write to the
 				type="SQLServer_Function" replace="False" />
 		</outputs>
 		<dependencies />
+	</template>
+	<template name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="sp_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="MySQL_StoredProcedure" replace="False" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" />
+		</dependencies>
 	</template>
 	<template name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" 
 			parserType="aspx" 
@@ -1056,6 +1313,20 @@ along with OGen; if not, write to the
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
 		</dependencies>
 	</template>
+	<template name="DO-DB-sp0_SomeTable_getObject-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_getObject" 
+				type="MySQL_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
 	<template name="DO-DB-sp0_SomeTable_getObject-PostgreSQL.sql.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
@@ -1083,6 +1354,25 @@ along with OGen; if not, write to the
 				type="SQLServer_StoredProcedure" replace="True" />
 		</outputs>
 		<dependencies />
+	</template>
+	<template name="DO-DB-sp0_SomeTable_getObject_bySomeCriteria-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="False" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_getObject_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="MySQL_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" />
+		</dependencies>
 	</template>
 	<template name="DO-DB-sp0_SomeTable_getObject_bySomeCriteria-PostgreSQL.sql.aspx" 
 			parserType="aspx" 
@@ -1122,6 +1412,25 @@ along with OGen; if not, write to the
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx" />
 		</dependencies>
 	</template>
+	<template name="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_fullmode" 
+				type="MySQL_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" />
+		</dependencies>
+	</template>
 	<template name="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-PostgreSQL.sql.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
@@ -1158,6 +1467,25 @@ along with OGen; if not, write to the
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_page" 
+				type="MySQL_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" />
 		</dependencies>
 	</template>
 	<template name="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-PostgreSQL.sql.aspx" 
@@ -1199,6 +1527,25 @@ along with OGen; if not, write to the
 			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
 		</dependencies>
 	</template>
+	<template name="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+		</arguments>
+		<conditions>
+			<condition eval="ROOT.tables.table[n].searches.search[n].isRange" to="True" />
+		</conditions>
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_page_fullmode" 
+				type="MySQL_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" />
+		</dependencies>
+	</template>
 	<template name="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-PostgreSQL.sql.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
@@ -1237,6 +1584,24 @@ along with OGen; if not, write to the
 			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
 		</dependencies>
 	</template>
+	<template name="DO-DB-sp0_SomeTable_Record_update_SomeUpdate_bySomeCriteria-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].searches.search[n].updates.update[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
+			<argument name="UpdateName" value="${ROOT.tables.table[n].searches.search[n].updates.update[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_Record_update_${ROOT.tables.table[n].searches.search[n].updates.update[n].name}_${ROOT.tables.table[n].searches.search[n].name}" 
+				type="MySQL_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" />
+		</dependencies>
+	</template>
 	<template name="DO-DB-sp0_SomeTable_Record_update_SomeUpdate_bySomeCriteria-PostgreSQL.sql.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n].updates.update[n]">
@@ -1272,6 +1637,21 @@ along with OGen; if not, write to the
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
 		</dependencies>
+	</template>
+	<template name="DO-DB-sp0_SomeTable_updObject_SomeUpdate-MySQL.sql.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n].updates.update[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+			<argument name="UpdateName" value="${ROOT.tables.table[n].updates.update[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="sp0_${ROOT.tables.table[n].name}_updObject_${ROOT.tables.table[n].updates.update[n].name}" 
+				type="MySQL_StoredProcedure" replace="True" />
+		</outputs>
+		<dependencies />
 	</template>
 	<template name="DO-DB-sp0_SomeTable_updObject_SomeUpdate-PostgreSQL.sql.aspx" 
 			parserType="aspx" 

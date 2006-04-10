@@ -42,24 +42,39 @@ int aux_table_hasidentitykey = aux_table.hasIdentityKey();
 cDBMetadata_Table_Field aux_field;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE OR REPLACE FUNCTION `sp0_<%=aux_table.Name%>_delObject`(<%
-	for (int k = 0; k < aux_table.Fields_onlyPK.Count; k++) {
-		aux_field = aux_table.Fields_onlyPK[k];
-	%>`<%=aux_field.Name%>_` <%=aux_field.DBType_inDB_name%><%=(k != aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
-	}%>)
-RETURNS void
-AS '
-	BEGIN
-		DELETE
-		FROM `<%=aux_table.Name%>`
-		WHERE<%
-			for (int k = 0; k < aux_table.Fields_onlyPK.Count; k++) {
-				aux_field = aux_table.Fields_onlyPK[k];%>
-			(`<%=aux_field.Name%>` = `<%=aux_field.Name%>_`)<%=(k != aux_table.Fields_onlyPK.Count - 1) ? " AND" : ";"%><%
-			}%>
-
-		RETURN;
-	END;
-' LANGUAGE 'plpgsql' VOLATILE;<%
+%>CREATE FUNCTION `fnc0_<%=aux_table.Name%>__ConstraintExist`(<%
+	for (int f = 0; f < aux_table.Fields.Count; f++) {
+		aux_field = aux_table.Fields[f];%>
+	`<%=aux_field.Name%>` <%=aux_field.DBType_inDB_name%><%=(aux_field.isText) ? "(" + aux_field.Size + ")" : ""%><%=(f != aux_table.Fields.Count - 1) ? ", " : ""%><%
+	}%>
+)
+	RETURNS BOOLEAN
+	NOT DETERMINISTIC
+	SQL SECURITY DEFINER
+	COMMENT ''
+BEGIN
+	DECLARE `ConstraintExist` BOOLEAN DEFAULT false;
+	<%for (int s = 0; s < aux_table.Searches.Count; s++) {
+		if (aux_table.Searches[s].isExplicitUniqueIndex) {%>
+	IF (NOT `ConstraintExist`) THEN
+		SELECT
+			true INTO `ConstraintExist`
+		FROM `fnc_<%=aux_table.Name%>_isObject_<%=aux_table.Searches[s].Name%>`(<%
+		for (int p = 0; p < aux_table.Searches[s].SearchParameters.Count; p++) {%>
+			`<%=aux_table.Searches[s].SearchParameters[p].FieldName%>`<%=(p != aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
+		}%>
+		)
+		WHERE
+			NOT (<%
+				for (int f = 0; f < aux_table.Fields_onlyPK.Count; f++) {
+					aux_field = aux_table.Fields_onlyPK[f];%>
+				(`<%=aux_field.Name%>` = `<%=aux_field.Name%>`)<%=(f != aux_table.Fields_onlyPK.Count - 1) ? " AND" : ""%><%
+				}%>
+			)
+	END IF;
+		<%}
+	}%>
+	RETURN `ConstraintExist`;
+END<%
 //-----------------------------------------------------------------------------------------
 %>

@@ -35,6 +35,7 @@ using System.Data.Odbc;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using Npgsql;
+using MySql.Data.MySqlClient;
 
 namespace OGen.lib.datalayer {
 	#region /// <summary>...</summary>
@@ -239,6 +240,9 @@ namespace OGen.lib.datalayer {
 				case eDBServerTypes.PostgreSQL: {
 					return new NpgsqlConnection(connectionstring_);
 				}
+				case eDBServerTypes.MySQL: {
+					return new MySql.Data.MySqlClient.MySqlConnection(connectionstring_);
+				}
 				default: {
 					throw new Exception("invalid DBServerType");
 				}
@@ -258,6 +262,12 @@ namespace OGen.lib.datalayer {
 					return new NpgsqlCommand(
 						command_in,
 						(NpgsqlConnection)connection_in
+					);
+				}
+				case eDBServerTypes.MySQL: {
+					return new MySql.Data.MySqlClient.MySqlCommand(
+						command_in,
+						(MySql.Data.MySqlClient.MySqlConnection)connection_in
 					);
 				}
 				case eDBServerTypes.Excel:
@@ -294,6 +304,12 @@ namespace OGen.lib.datalayer {
 						(NpgsqlConnection)connection_in
 					);
 				}
+				case eDBServerTypes.MySQL: {
+					return new MySql.Data.MySqlClient.MySqlDataAdapter(
+						query_in,
+						(MySql.Data.MySqlClient.MySqlConnection)connection_in
+					);
+				}
 				case eDBServerTypes.Excel:
 				case eDBServerTypes.Access: {
 					return new OleDbDataAdapter(
@@ -315,6 +331,32 @@ namespace OGen.lib.datalayer {
 		#endregion
 		#endregion
 		#region public Methods...
+		#region public string Connectionstring_database();
+		public string Connectionstring_database() {
+			string _connectionstring_database_out;
+
+			System.Text.RegularExpressions.Regex fields_reg = new System.Text.RegularExpressions.Regex(
+				"^(?<before>.*)database=(?<db>.*);(?<after>.*)",
+				System.Text.RegularExpressions.RegexOptions.Compiled |
+				System.Text.RegularExpressions.RegexOptions.IgnoreCase
+			);
+			System.Text.RegularExpressions.Match matchingfields = fields_reg.Match(Connectionstring);
+			if (!matchingfields.Success) {
+				throw new Exception(
+					string.Format(
+						"{0}.{1}.getTableFields: - error parsing db connectionstring to find database name: '{2}'",
+						this.GetType().Namespace,
+						this.GetType().Name,
+						Connectionstring
+					)
+				);
+			} else {
+				_connectionstring_database_out = matchingfields.Groups["db"].Value;
+			}
+
+			return _connectionstring_database_out;
+		}
+		#endregion
 		#region public IDbDataParameter newDBDataParameter(...);
 		/// <summary>
 		/// Instantiates a new IDbDataParameter for the Connection's taking in consideration the appropriate DataBase Server Type.
@@ -357,6 +399,11 @@ namespace OGen.lib.datalayer {
 				case eDBServerTypes.PostgreSQL: {
 					newDBDataParameter_out = new NpgsqlParameter();
 					newDBDataParameter_out.ParameterName = ":\"" + name_in + "\"";
+					break;
+				}
+				case eDBServerTypes.MySQL: {
+					newDBDataParameter_out = new MySql.Data.MySqlClient.MySqlParameter();
+					newDBDataParameter_out.ParameterName = "?" + name_in;
 					break;
 				}
 				case eDBServerTypes.Excel:
@@ -467,7 +514,7 @@ namespace OGen.lib.datalayer {
 			} catch (Exception e) {
 				throw new Exception(
 					string.Format(
-						"query: {0}\nConnectionString: {1}\nexception: {2}\n",
+						"--- query:\n{0}\n\n--- ConnectionString:\n{1}\n\n--- exception:\n{2}\n",
 						query_in,
 						connectionstring_, 
 						e.ToString()
@@ -608,7 +655,13 @@ namespace OGen.lib.datalayer {
 		#endregion
 		#region public object Execute_SQLFunction(...);
 		#region private object Execute_SQLFunction(...);
-		private object Execute_SQLFunction(string function_in, IDbDataParameter[] dataParameters_in, IDbCommand command_in, DbType returnValue_DbType_in, int returnValue_Size_in) {
+		private object Execute_SQLFunction(
+			string function_in, 
+			IDbDataParameter[] dataParameters_in, 
+			IDbCommand command_in, 
+			DbType returnValue_DbType_in, 
+			int returnValue_Size_in
+		) {
 			object Execute_SQLFunction_out = null;
 			#region command_.Parameters = dataParameters_in;
 			for (int i = 0; i < dataParameters_in.Length; i++) {
@@ -651,40 +704,48 @@ namespace OGen.lib.datalayer {
 //				command_.CommandText = Storedprocedure_;
 //			}
 			#endregion
+			#region command_in.CommandText = function_in;
 			switch (dbservertype_) {
-				case eDBServerTypes.PostgreSQL:
+				case eDBServerTypes.PostgreSQL: {
 					command_in.CommandText =
 						string.Format("\"{0}\"", function_in);
 					break;
+				}
 				case eDBServerTypes.SQLServer:
-				default:
+				case eDBServerTypes.MySQL:
+				default: {
 					command_in.CommandText = function_in;
 					break;
+				}
 			}
+			#endregion
 			command_in.CommandType = CommandType.StoredProcedure;
 			try {
 				if (returnValue_Size_in >= 0) {
 					switch (dbservertype_) {
 						case eDBServerTypes.SQLServer:
+						case eDBServerTypes.MySQL: {
 							command_in.Parameters.Add(
 								newDBDataParameter(
-									"SomeOutput", 
+									"SomeOutput",
 									(DbType)returnValue_DbType_in,
-									ParameterDirection.ReturnValue, 
-									null, 
+									ParameterDirection.ReturnValue,
+									null,
 									returnValue_Size_in
 								)
 							);
 							command_in.ExecuteNonQuery();
 							Execute_SQLFunction_out
-								= ((SqlParameter)command_in.Parameters[
+								= ((IDbDataParameter)command_in.Parameters[
 									command_in.Parameters.Count - 1
 								]).Value;
 							break;
-						case eDBServerTypes.PostgreSQL:
+						}
+						case eDBServerTypes.PostgreSQL: {
 							Execute_SQLFunction_out = 
 								command_in.ExecuteScalar();
 							break;
+						}
 						default:
 							throw new Exception("invalid DBServerType");
 					}
@@ -751,7 +812,12 @@ namespace OGen.lib.datalayer {
 		/// Thrown when an empty Connection String has been supplied
 		/// </exception>
 		/// <returns>populated Object with SQL Function's Output</returns>
-		public object Execute_SQLFunction(string function_in, IDbDataParameter[] dataParameters_in, DbType returnValue_DbType_in, int returnValue_Size_in) {
+		public object Execute_SQLFunction(
+			string function_in, 
+			IDbDataParameter[] dataParameters_in, 
+			DbType returnValue_DbType_in, 
+			int returnValue_Size_in
+		) {
 			object Execute_SQLFunction_out;
 
 			if (isopen_) {
@@ -936,22 +1002,41 @@ namespace OGen.lib.datalayer {
 		private string sqlfunction_exists(string name_in) {
 			return sqlfunction_exists(name_in, dbservertype_);
 		}
-		private static string sqlfunction_exists(string name_in, eDBServerTypes dbServerType_in) {
+		private /*static*/ string sqlfunction_exists(string name_in, eDBServerTypes dbServerType_in) {
 			switch (dbServerType_in) {
 				case eDBServerTypes.SQLServer:
 				case eDBServerTypes.PostgreSQL: {
 					return string.Format(
 						#region "SELECT ...", 
 						@"
-SELECT CAST(1 AS Int)
+SELECT null
 FROM INFORMATION_SCHEMA.ROUTINES
 WHERE
 	(routine_type = 'FUNCTION')
 	AND
-	(routine_name = '{0}');
+	(routine_name = '{0}')
 ", 
 						#endregion
 						name_in
+					);
+				}
+				case eDBServerTypes.MySQL: {
+					string _database = Connectionstring_database();
+					return string.Format(
+						#region "SELECT ...", 
+@"
+SELECT null
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE
+	(routine_type = 'FUNCTION')
+	AND
+	(routine_name = '{0}')
+	AND
+	(routine_schema = '{1}')
+", 
+						#endregion
+						name_in, 
+						_database
 					);
 				}
 				default: {
@@ -972,7 +1057,7 @@ WHERE
 		public bool SQLFunction_exists(string name_in) {
 			return (Execute_SQLQuery_returnDataTable(
 				sqlfunction_exists(name_in)
-			).Rows.Count > 0);
+			).Rows.Count == 1);
 		}
 		#endregion
 		#region public bool SQLFunction_delete(...);
@@ -987,7 +1072,20 @@ WHERE
 						name_in
 					);
 				}
+				case eDBServerTypes.MySQL: {
+					return string.Format(
+						"DROP FUNCTION `{0}`",
+						name_in
+					);
+				}
 				case eDBServerTypes.PostgreSQL:
+					// ToDos: here! not implemented
+					// NOTES: It's not as easy as it is for SQLServer and MySQL. PostgreSQL 
+					// allows you to create diferent signatures for the same function, so in 
+					// order to drop a function we need to know the parameters for such 
+					// function.
+					// To overcome such probleme, remember that in PostgreSQL you can use:
+					// CREATE OR REPLACE FUNCTION "some_function"
 				default: {
 					throw new Exception(
 						string.Format(
@@ -1018,14 +1116,14 @@ WHERE
 		private string sqlstoredprocedure_exists(string name_in) {
 			return sqlstoredprocedure_exists(name_in, dbservertype_);
 		}
-		private static string sqlstoredprocedure_exists(string name_in, eDBServerTypes dbServerType_in) {
+		private /*static*/ string sqlstoredprocedure_exists(string name_in, eDBServerTypes dbServerType_in) {
 			switch (dbServerType_in) {
 				case eDBServerTypes.SQLServer:
 				case eDBServerTypes.PostgreSQL: {
 					return string.Format(
 						#region "SELECT ...", 
 						@"
-SELECT CAST(1 AS Int)
+SELECT null
 FROM INFORMATION_SCHEMA.ROUTINES
 WHERE
 	(routine_type = 'PROCEDURE')
@@ -1034,6 +1132,25 @@ WHERE
 ", 
 						#endregion
 						name_in
+					);
+				}
+				case eDBServerTypes.MySQL: {
+					string _database = Connectionstring_database();
+					return string.Format(
+						#region "SELECT ...", 
+						@"
+SELECT null
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE
+	(routine_type = 'PROCEDURE')
+	AND
+	(routine_name = '{0}')
+	AND
+	(routine_schema = '{1}')
+", 
+						#endregion
+						name_in, 
+						_database
 					);
 				}
 				default: {
@@ -1049,7 +1166,7 @@ WHERE
 		public bool SQLStoredProcedure_exists(string name_in) {
 			return (Execute_SQLQuery_returnDataTable(
 				sqlstoredprocedure_exists(name_in)
-			).Rows.Count > 0);
+			).Rows.Count == 1);
 		}
 		#endregion
 		#region public bool SQLStoredProcedure_delete(...);
@@ -1064,7 +1181,21 @@ WHERE
 						name_in
 					);
 				}
+				case eDBServerTypes.MySQL: {
+					return string.Format(
+						"DROP PROCEDURE `{0}`",
+						name_in
+					);
+				}
 				case eDBServerTypes.PostgreSQL:
+					// ToDos: here! not implemented
+					// NOTES: It's not as easy as it is for SQLServer and MySQL. PostgreSQL 
+					// allows you to create diferent signatures for the same procedure, so in 
+					// order to drop a procedure we need to know the parameters for such 
+					// procedure.
+					// To overcome such probleme, remember that in PostgreSQL you can use:
+					// CREATE OR REPLACE PROCEDURE "some_procedure"
+					// PostgreSQL supports Stored Procedures.
 				default: {
 					throw new Exception(
 						string.Format(
@@ -1094,24 +1225,41 @@ WHERE
 		private string sqlview_exists(string name_in) {
 			return sqlview_exists(name_in, dbservertype_);
 		}
-		private static string sqlview_exists(string name_in, eDBServerTypes dbServerType_in) {
+		private /*static*/ string sqlview_exists(string name_in, eDBServerTypes dbServerType_in) {
 			switch (dbServerType_in) {
 				case eDBServerTypes.SQLServer:
 				case eDBServerTypes.PostgreSQL: {
 					return string.Format(
 						#region "SELECT ...", 
 						@"
-SELECT
-	CAST(1 AS Int)
+SELECT null
 FROM INFORMATION_SCHEMA.TABLES
 WHERE
 	(TABLE_TYPE = 'VIEW')
 	AND
 	(TABLE_NAME = '{0}')
-;
 ", 
 						#endregion
 						name_in
+					);
+				}
+				case eDBServerTypes.MySQL: {
+					string _database = Connectionstring_database();
+					return string.Format(
+						#region "SELECT ...", 
+@"
+SELECT null
+FROM INFORMATION_SCHEMA.TABLES
+WHERE
+	(TABLE_TYPE = 'VIEW')
+	AND
+	(TABLE_NAME = '{0}')
+	AND
+	(TABLE_SCHEMA = '{1}')
+", 
+						#endregion
+						name_in, 
+						_database
 					);
 				}
 				default: {
@@ -1131,7 +1279,7 @@ WHERE
 		public bool SQLView_exists(string name_in) {
 			return (Execute_SQLQuery_returnDataTable(
 				sqlview_exists(name_in)
-			).Rows.Count > 0);
+			).Rows.Count == 1);
 		}
 		#endregion
 		#region public bool SQLView_delete(...);
@@ -1146,7 +1294,16 @@ WHERE
 						name_in
 					);
 				}
+				case eDBServerTypes.MySQL: {
+					return string.Format(
+						"DROP VIEW `{0}`",
+						name_in
+					);
+				}
 				case eDBServerTypes.PostgreSQL:
+					// ToDos: here! not implemented, needed if droping, 
+					// no need when replacing, you can use:
+					// CREATE OR REPLACE VIEW "some_view"
 				default: {
 					throw new Exception(
 						string.Format(
@@ -1201,6 +1358,16 @@ WHERE
 					_query += "ORDER BY CATALOG_NAME ";
 					break;
 				}
+				case eDBServerTypes.MySQL: {
+					_query += "SELECT SCHEMA_NAME ";
+					_query += "FROM INFORMATION_SCHEMA.SCHEMATA ";
+					_query += "WHERE ";
+					_query += "	(SCHEMA_NAME != 'information_schema') ";
+					_query += "	AND ";
+					_query += "	(SCHEMA_NAME != 'mysql') ";
+					_query += "ORDER BY SCHEMA_NAME ";
+					break;
+				}
 				default: {
 					throw new Exception(
 						string.Format(
@@ -1216,7 +1383,7 @@ WHERE
 
 			getBDs_out = new string[_datatable.Rows.Count];
 			for (int i = 0; i < _datatable.Rows.Count; i++)
-				getBDs_out[i] = (string) _datatable.Rows[i][0];
+				getBDs_out[i] = (string)_datatable.Rows[i][0];
 
 			_datatable.Dispose(); _datatable = null;		
 
@@ -1294,6 +1461,38 @@ WHERE
 					#endregion
 					break;
 				}
+				case eDBServerTypes.MySQL: {
+					string _database = Connectionstring_database();
+					#region query += "SELECT ...";
+					_query += string.Format(@"
+SELECT
+	TABLE_NAME AS ""Name"",
+	CASE
+		WHEN (TABLE_TYPE = 'VIEW') THEN
+			CAST(1 AS Signed Int)
+		ELSE
+			CAST(0 AS Signed Int)
+	END AS ""isVT""
+FROM INFORMATION_SCHEMA.TABLES
+WHERE
+	(
+		(TABLE_TYPE = 'BASE TABLE')
+		OR
+		(TABLE_TYPE = 'VIEW')
+	)
+	AND
+	(TABLE_SCHEMA = '{0}')
+", 
+						_database
+					);
+					if (subAppName_in != "" ) {
+						_query += "	AND ";
+						_query += "	(TABLE_NAME LIKE '" + subAppName_in + "%') ";
+					}
+					_query += @"ORDER BY ""Name"" ";
+					#endregion
+					break;
+				}
 				default: {
 					throw new Exception("not implemented");
 				}
@@ -1304,7 +1503,7 @@ WHERE
 			for (int r = 0; r < _dtemp.Rows.Count; r++)
 				getTables_out[r] = new cDBTable(
 					(string)_dtemp.Rows[r]["Name"],
-					((int)_dtemp.Rows[r]["isVT"] == 1)
+					(dbservertype_ == eDBServerTypes.MySQL) ? ((long)_dtemp.Rows[r]["isVT"] == 1L) : ((int)_dtemp.Rows[r]["isVT"] == 1)
 				);
 			_dtemp.Dispose(); _dtemp = null;
 			#endregion
@@ -1515,29 +1714,29 @@ SELECT
 		ELSE
 			CAST(0 AS Int)
 	END AS ""isIdentity"", 
-	CASE
-		WHEN (t6.TABLE_TYPE != 'VIEW') THEN
---			CASE
---				WHEN t4.CONSTRAINT_NAME IS NULL THEN
-					NULL
---				ELSE
---					t4.table_name
---			END
-		ELSE
+--	CASE
+--		WHEN (t6.TABLE_TYPE != 'VIEW') THEN
+----			CASE
+----				WHEN t4.CONSTRAINT_NAME IS NULL THEN
+--					NULL
+----				ELSE
+----					t4.table_name
+----			END
+--		ELSE
 			NULL
-	END
+--	END
 	AS ""FK_TableName"", 
-	CASE
-		WHEN (t6.TABLE_TYPE != 'VIEW') THEN
---			CASE
---				WHEN t4.CONSTRAINT_NAME IS NULL THEN
-					NULL
---				ELSE
---					t4.column_name
---			END
-		ELSE
+--	CASE
+--		WHEN (t6.TABLE_TYPE != 'VIEW') THEN
+----			CASE
+----				WHEN t4.CONSTRAINT_NAME IS NULL THEN
+--					NULL
+----				ELSE
+----					t4.column_name
+----			END
+--		ELSE
 			NULL
-	END
+--	END
 	AS ""FK_FieldName""
 FROM INFORMATION_SCHEMA.COLUMNS AS t1
 	LEFT JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE t7 ON (
@@ -1562,6 +1761,46 @@ ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 					#endregion
 					break;
 				}
+				case eDBServerTypes.MySQL: {
+					string _database = Connectionstring_database();
+					#region _query += "SELECT ...";
+					_query += @"
+SELECT
+	t1.COLUMN_NAME AS ""Name"", 
+--	CASE
+--		WHEN t1.IS_NULLABLE = 'NO' THEN
+			CAST(0 AS Signed Int)
+--		ELSE
+--			CAST(1 AS Signed Int)
+--	END
+	AS ""isNullable"", 
+	t1.DATA_TYPE AS ""Type"", 
+	t1.CHARACTER_MAXIMUM_LENGTH AS ""Size"", 
+	CASE
+		WHEN ((t6.TABLE_TYPE != 'VIEW') AND (t1.COLUMN_KEY = 'PRI')) THEN
+			CAST(1 AS Signed Int)
+		ELSE
+			CAST(0 AS Signed Int)
+	END AS ""isPK"", 
+	CASE
+		WHEN ((t6.TABLE_TYPE != 'VIEW') AND (t1.EXTRA = 'auto_increment')) THEN
+			CAST(1 AS Signed Int)
+		ELSE
+			CAST(0 AS Signed Int)
+	END AS ""isIdentity"", 
+	NULL AS ""FK_TableName"", 
+	NULL AS ""FK_FieldName""
+FROM INFORMATION_SCHEMA.COLUMNS AS t1
+	LEFT JOIN INFORMATION_SCHEMA.TABLES t6 ON ((t6.TABLE_SCHEMA = t1.TABLE_SCHEMA) AND (t6.TABLE_NAME = t1.TABLE_NAME))
+WHERE 
+	(t1.TABLE_NAME = '" + tableName_in + @"') 
+	AND
+	(t1.TABLE_SCHEMA = '" + _database + @"')
+ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
+";
+					#endregion
+					break;
+				}
 				default: {
 					throw new Exception(string.Format(
 						"{0}.{1}.getTableFields: - not implemented", 
@@ -1576,16 +1815,41 @@ ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 				getTableFields_out[r] = new cDBTableField();
 
 				getTableFields_out[r].Name				= (string)_dtemp.Rows[r]["Name"];
-				getTableFields_out[r].Size				= (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Size"];
-				getTableFields_out[r].isNullable		= ((int)_dtemp.Rows[r]["isNullable"] == 1);
-				//---						
-				getTableFields_out[r].FK_TableName		= (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_TableName"];
-				getTableFields_out[r].FK_FieldName		= (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_FieldName"];
+				switch (dbservertype_) {
+					case eDBServerTypes.MySQL: {
+						getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Size"];
+						getTableFields_out[r].isNullable = ((long)_dtemp.Rows[r]["isNullable"] == 1L);
+						//---						
+						getTableFields_out[r].FK_TableName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_TableName"];
+						getTableFields_out[r].FK_FieldName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_FieldName"];
+						//---
+						getTableFields_out[r].isIdentity = ((long)_dtemp.Rows[r]["isIdentity"] == 1L);
+						getTableFields_out[r].isPK = ((long)_dtemp.Rows[r]["isPK"] == 1L);
+						break;
+					}
+					case eDBServerTypes.PostgreSQL:
+					case eDBServerTypes.SQLServer: {
+						getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Size"];
+						getTableFields_out[r].isNullable = ((int)_dtemp.Rows[r]["isNullable"] == 1);
+						//---						
+						getTableFields_out[r].FK_TableName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_TableName"];
+						getTableFields_out[r].FK_FieldName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_FieldName"];
+						//---
+						getTableFields_out[r].isIdentity = ((int)_dtemp.Rows[r]["isIdentity"] == 1);
+						getTableFields_out[r].isPK = ((int)_dtemp.Rows[r]["isPK"] == 1);
+						break;
+					}
+					default: {
+						throw new Exception(
+							string.Format(
+								"{0}.{1}.getTables: - not implemented", 
+								this.GetType().Namespace, 
+								this.GetType().Name
+							)
+						);
+					}
+				}
 				//---
-				getTableFields_out[r].isIdentity		= ((int)_dtemp.Rows[r]["isIdentity"] == 1);
-				getTableFields_out[r].isPK				= ((int)_dtemp.Rows[r]["isPK"] == 1);
-				//---
-
 				#region //getTableFields_out[r].DBType_inDB_name = ...;
 				//switch (dbservertype_) {
 				//	case eDBServerTypes.SQLServer:

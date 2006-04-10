@@ -46,6 +46,7 @@ cDBMetadata_Update aux_update;
 int firstKey = aux_table.firstKey();
 #endregion
 //-----------------------------------------------------------------------------------------
+if ((aux_metadata.CopyrightText != string.Empty) && (aux_metadata.CopyrightTextLong != string.Empty)) {
 %>#region <%=aux_metadata.CopyrightText%>
 /*
 
@@ -53,7 +54,8 @@ int firstKey = aux_table.firstKey();
 
 */
 #endregion
-using System;
+<%
+}%>using System;
 using System.Data;
 using NUnit.Framework;
 

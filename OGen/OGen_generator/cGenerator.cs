@@ -261,6 +261,12 @@ namespace OGen.lib.generator {
 							if (connectiontype_ != eDBServerTypes.PostgreSQL) continue;
 							break;
 						}
+						case cOutput.eType.MySQL_Function: 
+						case cOutput.eType.MySQL_StoredProcedure: 
+						case cOutput.eType.MySQL_View: {
+							if (connectiontype_ != eDBServerTypes.MySQL) continue;
+							break;
+						}
 						case cOutput.eType.SQLServer_Function: 
 						case cOutput.eType.SQLServer_StoredProcedure: 
 						case cOutput.eType.SQLServer_View: {
@@ -280,16 +286,19 @@ namespace OGen.lib.generator {
 							_exists = File.Exists(_ouputTo);
 							break;
 						}
+						case cOutput.eType.MySQL_Function: 
 						case cOutput.eType.PostgreSQL_Function: 
 						case cOutput.eType.SQLServer_Function: {
 							_exists = connection_.SQLFunction_exists(_ouputTo);
 							break;
 						}
+						case cOutput.eType.MySQL_StoredProcedure: 
 						case cOutput.eType.PostgreSQL_StoredProcedure: 
 						case cOutput.eType.SQLServer_StoredProcedure: {
 							_exists = connection_.SQLStoredProcedure_exists(_ouputTo);
 							break;
 						}
+						case cOutput.eType.MySQL_View: 
 						case cOutput.eType.PostgreSQL_View: 
 						case cOutput.eType.SQLServer_View: {
 							_exists = connection_.SQLView_exists(_ouputTo);
@@ -323,10 +332,11 @@ namespace OGen.lib.generator {
 							if (xmltemplatesfileuri_.IsFile) {
 								switch (templates_[template_].ParserType) {
 									case cTemplate.eParserType.aspx: {
-										_parsedOutput = ParserASPX.Parse(
+										ParserASPX.Parse(
 											xmltemplatesdir_, 
 											templates_[template_].Name, 
-											_args
+											_args, 
+											out _parsedOutput
 										);
 										break;
 									}
@@ -395,6 +405,9 @@ namespace OGen.lib.generator {
 								}
 								break;
 							}
+							case cOutput.eType.MySQL_Function: 
+							case cOutput.eType.MySQL_StoredProcedure: 
+							case cOutput.eType.MySQL_View: 
 							case cOutput.eType.PostgreSQL_Function: 
 							case cOutput.eType.PostgreSQL_StoredProcedure: 
 							case cOutput.eType.PostgreSQL_View: 
@@ -404,14 +417,17 @@ namespace OGen.lib.generator {
 								#region if (_exists) connection_.Function_delete(_ouputTo);
 								if (_exists) {
 									switch (templates_[template_].Outputs[o].Type) {
+										case cOutput.eType.MySQL_Function:
 										case cOutput.eType.SQLServer_Function: {
 											connection_.SQLFunction_delete(_ouputTo);
 											break;
 										}
+										case cOutput.eType.MySQL_StoredProcedure: 
 										case cOutput.eType.SQLServer_StoredProcedure: {
 											connection_.SQLStoredProcedure_delete(_ouputTo);
 											break;
 										}
+										case cOutput.eType.MySQL_View: 
 										case cOutput.eType.SQLServer_View: {
 											connection_.SQLView_delete(_ouputTo);
 											break;
@@ -422,6 +438,7 @@ namespace OGen.lib.generator {
 											// No Need! unlike SQL Server,
 											// PostgreSQL allows:
 											// "CREATE OR REPLACE FUNCTION/VIEW" :)
+											break;
 										default: {
 											break;
 										}

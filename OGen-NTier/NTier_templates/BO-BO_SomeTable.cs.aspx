@@ -41,6 +41,7 @@ cDBMetadata_Table aux_table = aux_metadata.Tables[arg_TableName];
 cDBMetadata_Table_Field aux_field;
 #endregion
 //-----------------------------------------------------------------------------------------
+if ((aux_metadata.CopyrightText != string.Empty) && (aux_metadata.CopyrightTextLong != string.Empty)) {
 %>#region <%=aux_metadata.CopyrightText%>
 /*
 
@@ -48,7 +49,8 @@ cDBMetadata_Table_Field aux_field;
 
 */
 #endregion
-using System;
+<%
+}%>using System;
 
 using <%=aux_metadata.Namespace%>.lib.datalayer;
 

@@ -40,22 +40,22 @@ namespace OGen.lib.datalayer {
 		/// <summary>
 		/// ODBC
 		/// </summary>
-		ODBC = 0,			// ODBC
+		ODBC = 0,				// ODBC
 
 		/// <summary>
 		/// Microsoft Access, through OleDB
 		/// </summary>
-		Access = 1,			// OleDB
+		Access = 1,				// OleDB
 
 		/// <summary>
 		/// Microsoft Excel, through OleDB
 		/// </summary>
-		Excel = 2,			// OleDB
+		Excel = 2,				// OleDB
 
 		/// <summary>
 		/// SQL Server Client
 		/// </summary>
-		SQLServer = 3,		// SQLClient
+		SQLServer = 3,			// SQLClient
 
 		/// <summary>
 		/// PostgreSQL Client
@@ -63,9 +63,14 @@ namespace OGen.lib.datalayer {
 		PostgreSQL = 4,		// PostgreSQL
 
 		/// <summary>
+		/// MySQL Client
+		/// </summary>
+		MySQL = 5,				// MySQL
+
+		/// <summary>
 		/// invalid type
 		/// </summary>
-		invalid = 5
+		invalid = 6
 	}
 	#endregion
 	#region public enum eDBServerTypes_supportedForGeneration;
@@ -81,12 +86,17 @@ namespace OGen.lib.datalayer {
 		/// <summary>
 		/// PostgreSQL Client
 		/// </summary>
-		PostgreSQL = 4, 
+		PostgreSQL = 4,
+
+		/// <summary>
+		/// MySQL Client
+		/// </summary>
+		MySQL = 5,				// MySQL
 
 		/// <summary>
 		/// invalid type
 		/// </summary>
-		invalid = 5
+		invalid = 6
 	}
 	#endregion
 

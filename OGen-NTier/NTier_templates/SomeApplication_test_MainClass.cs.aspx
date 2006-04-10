@@ -42,6 +42,7 @@ aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
 //string[] aux_configmodes = aux_metadata.ConfigModes();
 #endregion
 //-----------------------------------------------------------------------------------------
+if ((aux_metadata.CopyrightText != string.Empty) && (aux_metadata.CopyrightTextLong != string.Empty)) {
 %>#region <%=aux_metadata.CopyrightText%>
 /*
 
@@ -49,7 +50,8 @@ aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
 
 */
 #endregion
-using System;
+<%
+}%>using System;
 using System.IO;
 using System.Xml;
 using System.Reflection;
