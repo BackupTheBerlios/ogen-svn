@@ -44,7 +44,7 @@ cDBMetadata_Table_Field aux_field;
 bool isFirst;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE PROCEDURE "dbo"."sp0_<%=aux_table.Name%>_updObject"<%
+%>CREATE PROCEDURE dbo."sp0_<%=aux_table.Name%>_updObject"<%
 	for (int f = 0; f < aux_table.Fields.Count; f++) {
 		aux_field = aux_table.Fields[f];%>
 	@<%=aux_field.Name%>_ <%=aux_field.DBType_inDB_name%><%=(aux_field.isText) ? " (" + aux_field.Size + ")" : ""%><%=(f != aux_table.Fields.Count - 1) ? ", " : ""%><%
@@ -54,7 +54,7 @@ bool isFirst;
 	}%>
 AS<%
 	if (aux_table_searches_hasexplicituniqueindex) {%>
-	SET @ConstraintExist_ = "dbo"."fnc0_<%=aux_table.Name%>__ConstraintExist"(<%
+	SET @ConstraintExist_ = dbo."fnc0_<%=aux_table.Name%>__ConstraintExist"(<%
 		for (int f = 0; f < aux_table.Fields.Count; f++) {
 			aux_field = aux_table.Fields[f];%>
 		@<%=aux_field.Name%>_<%=(f != aux_table.Fields.Count - 1) ? ", " : ""%><%

@@ -71,11 +71,7 @@ namespace OGen.NTier.presentationlayer.console {
 				}
 			} else {
 #if DEBUG
-				//DoIt(@"X:\MyDocuments\_RAM-unsorted-COPY\MySharedProjects\OGen-NTier-CaseStudy.SVN\OGen-metadatas\NAO_apagar--MD_NTierCaseStudy-PostgreSQL.OGen-metadata.xml");
-				//DoIt(@"X:\MyDocuments\_RAM.SVN\MyWork\dotNET\AnaPreto\AnaPreto-webserver\OGen-metadatas\MD_AnaPreto_webserver-PostgreSQL.OGen-metadata.xml");
-				//DoIt(@"C:\Documents and Settings\fmonteiro\Desktop\TESTES_APAGAR!\OGen-metadatas\MD_OGenTest-PostgreSQL.OGen-metadata.xml");
-				//DoIt(@"C:\Documents and Settings\fmonteiro\Desktop\OGen-test\OGen-metadatas\_NAOAPAGAR-OGenTest.PostgreSQL.ogen-metadata.xml");
-				DoIt(@"C:\Documents and Settings\Administrator\Desktop\yyy\OGen-metadatas\MD_yyy-MySQL.OGen-metadata.xml");
+				DoIt(@"X:\MyDocuments\_RAM-unsorted-COPY\MySharedProjects.BerliOS.SVN\OGen-NTier_UTs\OGen-metadatas\MD_OGen-NTier_UTs-PostgreSQL.OGen-metadata.xml");
 #else
 				Console.WriteLine("must provide xml file");
 #endif

@@ -48,7 +48,7 @@ bool isFirst;
 bool makeItAComment = false;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE FUNCTION "dbo"."fnc_<%=aux_table.Name%>_isObject_<%=aux_search.Name%>"(<%
+%>CREATE FUNCTION dbo."fnc_<%=aux_table.Name%>_isObject_<%=aux_search.Name%>"(<%
 for (int f = 0; f < aux_search.SearchParameters.Count; f++) {
 	if (aux_search.SearchParameters[f].TableIndex() != aux_table_index) makeItAComment = true;
 	aux_field = aux_search.SearchParameters[f].Field;

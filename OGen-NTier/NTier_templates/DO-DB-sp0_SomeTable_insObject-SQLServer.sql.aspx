@@ -43,7 +43,7 @@ bool aux_table_searches_hasexplicituniqueindex = aux_table.Searches.hasExplicitU
 cDBMetadata_Table_Field aux_field;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE PROCEDURE "dbo"."sp0_<%=aux_table.Name%>_insObject"<%
+%>CREATE PROCEDURE dbo."sp0_<%=aux_table.Name%>_insObject"<%
 	for (int f = 0; f < aux_table.Fields.Count; f++) {
 		aux_field = aux_table.Fields[f];%>
 	@<%=aux_field.Name%>_ <%=aux_field.DBType_inDB_name%><%=(aux_field.isText) ? " (" + aux_field.Size + ")" : ""%><%=(aux_field.isIdentity) ? " OUT" : ""%>, <%
@@ -52,7 +52,7 @@ cDBMetadata_Table_Field aux_field;
 AS<%
 	if (aux_table_searches_hasexplicituniqueindex) {%>
 	DECLARE @ConstraintExist Bit
-	SET @ConstraintExist = "dbo"."fnc0_<%=aux_table.Name%>__ConstraintExist"(<%
+	SET @ConstraintExist = dbo."fnc0_<%=aux_table.Name%>__ConstraintExist"(<%
 		for (int f = 0; f < aux_table.Fields.Count; f++) {
 			aux_field = aux_table.Fields[f];%><%=""%>
 		<%=(aux_field.isPK) ? aux_field.DBType_generic.DBEmptyValue : "@" + aux_field.Name + "_"%><%=(f != aux_table.Fields.Count - 1) ? ", " : ""%><%

@@ -1,24 +1,68 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<%/*
+
+OGen
+Copyright (C) 2002 Francisco Monteiro
+
+This file is part of OGen.
+
+OGen is free software; you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published by 
+the Free Software Foundation; either version 2 of the License, or 
+(at your option) any later version.
+
+OGen is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License 
+along with OGen; if not, write to the
+
+	Free Software Foundation, Inc., 
+	59 Temple Place, Suite 330, 
+	Boston, MA 02111-1307 USA 
+
+							- or -
+
+	http://www.fsf.org/licensing/licenses/gpl.txt
+
+*/%><%@ Page language="c#" contenttype="text/html" %>
+<%@ import namespace="OGen.NTier.lib.metadata" %><%
+#region arguments...
+string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+#endregion
+
+#region varaux...
+cDBMetadata aux_metadata = new cDBMetadata();
+aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
+
+cDBMetadata_Table aux_table;
+cDBMetadata_Table_Field aux_field;
+int aux_table_hasidentitykey;
+//string[] aux_configmodes = aux_metadata.ConfigModes();
+#endregion
+//-----------------------------------------------------------------------------------------
+%><Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{82FA3D98-C5E7-42EC-A117-21C14D117EFD}</ProjectGuid>
+    <ProjectGuid>{<%=aux_metadata.GUIDTest%>}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ApplicationIcon>
     </ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
-    <AssemblyName>OGen.Doc.lib.templates</AssemblyName>
+    <AssemblyName><%=aux_metadata.Namespace%>.test</AssemblyName>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
-    <OutputType>Library</OutputType>
-    <RootNamespace>OGen.Doc.lib.templates</RootNamespace>
+    <OutputType>Exe</OutputType>
+    <RootNamespace><%=aux_metadata.Namespace%>.test</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <StartupObject>
     </StartupObject>
@@ -28,7 +72,7 @@
     </UpgradeBackupLocation>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <OutputPath>bin\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
@@ -51,7 +95,7 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <OutputPath>bin\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
@@ -74,9 +118,17 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Npgsql">
-      <Name>Npgsql</Name>
-      <HintPath>..\..\Npgsql\bin\ms1.1\Npgsql.dll</HintPath>
+    <Reference Include="OGen.lib.datalayer">
+      <Name>OGen.lib.datalayer</Name>
+      <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="OGen.NTier.lib.businesslayer">
+      <Name>OGen.NTier.lib.businesslayer</Name>
+      <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="OGen.NTier.lib.datalayer">
+      <Name>OGen.NTier.lib.datalayer</Name>
+      <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
     </Reference>
     <Reference Include="System">
       <Name>System</Name>
@@ -84,58 +136,28 @@
     <Reference Include="System.Data">
       <Name>System.Data</Name>
     </Reference>
-    <Reference Include="System.Drawing">
-      <Name>System.Drawing</Name>
-    </Reference>
-    <Reference Include="System.Web">
-      <Name>System.Web</Name>
-    </Reference>
-    <Reference Include="System.Xml">
+    <Reference Include="System.XML">
       <Name>System.XML</Name>
     </Reference>
-    <ProjectReference Include="..\..\OGen\OGen_collections\OGen_collections.csproj">
-      <Name>OGen_collections</Name>
-      <Project>{A6E837F8-780F-4D05-B3ED-2FF1906B5766}</Project>
+    <ProjectReference Include="..\<%=aux_metadata.ApplicationName%>_businesslayer\<%=aux_metadata.ApplicationName%>_businesslayer-8.csproj">
+      <Name><%=aux_metadata.ApplicationName%>_businesslayer</Name>
+      <Project>{<%=aux_metadata.GUIDBusinesslayer%>}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\..\OGen\OGen_config\OGen_config.csproj">
-      <Name>OGen_config</Name>
-      <Project>{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
-    <ProjectReference Include="..\..\OGen\OGen_datalayer\OGen_datalayer.csproj">
-      <Name>OGen_datalayer</Name>
-      <Project>{4AE20414-478E-4859-849E-929741A5936C}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
-    <ProjectReference Include="..\Doc_metadata\Doc_metadata.csproj">
-      <Name>Doc_metadata</Name>
-      <Project>{9DF6791A-1771-4EB6-8FEB-7F54AC2D9078}</Project>
+    <ProjectReference Include="..\<%=aux_metadata.ApplicationName%>_datalayer\<%=aux_metadata.ApplicationName%>_datalayer-8.csproj">
+      <Name><%=aux_metadata.ApplicationName%>_datalayer</Name>
+      <Project>{<%=aux_metadata.GUIDDatalayer%>}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssemblyInfo-VisualStudio.cs">
+    <None Include="app.config" />
+    <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
+    <Compile Include="MainClass.cs">
       <SubType>Code</SubType>
     </Compile>
-    <None Include="COPYING" />
-    <Content Include="doc.css" />
-    <Content Include="FAQ-id.html.aspx" />
-    <Content Include="Global.asax" />
-    <Content Include="Help-id.html.aspx" />
-    <Content Include="index.html.aspx" />
-    <Content Include="lib_doc.js" />
-    <Content Include="LICENSE.GPL.txt" />
-    <Content Include="LICENSE.txt" />
-    <Content Include="templates.config.xml" />
-    <Content Include="Web.config" />
-    <EmbeddedResource Include="Global.asax.resx">
-      <DependentUpon>Global.asax.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -144,6 +144,7 @@
     <Content Include="BO-SomeApplication_businesslayer.cmbx.aspx" />
     <Content Include="BO-SomeApplication_businesslayer.prjx.aspx" />
     <Content Include="BO-UT-SomeApplication_businesslayer_UTs-7.1.csproj.aspx">
+      <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="BO-UT-SomeApplication_businesslayer_UTs-8.csproj.aspx" />
     <Content Include="BO-UT-SomeApplication_businesslayer_UTs.cmbx.aspx" />
@@ -218,21 +219,23 @@
     <Content Include="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
     <Content Include="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
     <Content Include="DO-DB-v0_SomeTable__onlyKeys-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DO0_SomeTable.cs.aspx" />
-    <Content Include="DO-DO0__utils.cs.aspx" />
+    <Content Include="DO-DO0_SomeTable.cs.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="DO-DO0__utils.cs.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DO_SomeTable.cs.aspx" />
     <Content Include="DO-DO__utils.cs.aspx" />
     <Content Include="DO-RO0_SomeTable.cs.aspx" />
     <Content Include="DO-SomeApplication_datalayer-8.csproj.aspx" />
     <Content Include="DO-SomeApplication_datalayer.cmbx.aspx" />
     <Content Include="DO-SomeApplication_datalayer-7.1.csproj.aspx">
-      <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="DO-SomeApplication_datalayer.prjx.aspx" />
     <Content Include="DO-UT-SomeApplication_datalayer_UTs-8.csproj.aspx" />
     <Content Include="DO-UT-SomeApplication_datalayer_UTs.cmbx.aspx" />
     <Content Include="DO-UT-SomeApplication_datalayer_UTs-7.1.csproj.aspx">
-      <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="DO-UT-SomeApplication_datalayer_UTs.prjx.aspx" />
     <Content Include="DO-UT-SomeNamespace.lib.datalayer.UTs.nunit.aspx" />

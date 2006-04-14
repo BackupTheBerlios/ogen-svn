@@ -1,53 +1,53 @@
 Microsoft Visual Studio Solution File, Format Version 8.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_config", "..\OGen\OGen_config\OGen_config_vs7.csproj"", "{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_config", "..\OGen\OGen_config\OGen_config-7.1.csproj"", "{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer", "..\OGen\OGen_datalayer\OGen_datalayer_vs7.csproj"", "{4AE20414-478E-4859-849E-929741A5936C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer", "..\OGen\OGen_datalayer\OGen_datalayer-7.1.csproj"", "{4AE20414-478E-4859-849E-929741A5936C}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_collections", "..\OGen\OGen_collections\OGen_collections_vs7.csproj"", "{A6E837F8-780F-4D05-B3ED-2FF1906B5766}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_collections", "..\OGen\OGen_collections\OGen_collections-7.1.csproj"", "{A6E837F8-780F-4D05-B3ED-2FF1906B5766}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_winforms", "..\OGen\OGen_winforms\OGen_winforms_vs7.csproj"", "{B3835B3F-C899-416F-BA94-625A4B32A4AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_winforms", "..\OGen\OGen_winforms\OGen_winforms-7.1.csproj"", "{B3835B3F-C899-416F-BA94-625A4B32A4AC}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_webforms", "..\OGen\OGen_webforms\OGen_webforms_vs7.csproj"", "{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_webforms", "..\OGen\OGen_webforms\OGen_webforms-7.1.csproj"", "{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_generator", "..\OGen\OGen_generator\OGen_generator_vs7.csproj"", "{668ACF34-6104-4DD9-BB8A-65D9D94B0BB6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_generator", "..\OGen\OGen_generator\OGen_generator-7.1.csproj"", "{668ACF34-6104-4DD9-BB8A-65D9D94B0BB6}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_templates", "..\OGen\OGen_templates\OGen_templates_vs7.csproj"", "{8377EF00-063B-451A-8408-FE2F8EAD5C32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_templates", "..\OGen\OGen_templates\OGen_templates-7.1.csproj"", "{8377EF00-063B-451A-8408-FE2F8EAD5C32}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc-console", "Doc-console\Doc-console_vs7.csproj"", "{D4BA7561-1BEB-403C-933C-AE740D4889BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc-console", "Doc-console\Doc-console-7.1.csproj"", "{D4BA7561-1BEB-403C-933C-AE740D4889BE}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc_generator", "Doc_generator\Doc_generator_vs7.csproj"", "{0D8CBBD6-841B-4A03-9733-8AFE3B4D5C86}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc_generator", "Doc_generator\Doc_generator-7.1.csproj"", "{0D8CBBD6-841B-4A03-9733-8AFE3B4D5C86}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc_metadata", "Doc_metadata\Doc_metadata_vs7.csproj"", "{9DF6791A-1771-4EB6-8FEB-7F54AC2D9078}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc_metadata", "Doc_metadata\Doc_metadata-7.1.csproj"", "{9DF6791A-1771-4EB6-8FEB-7F54AC2D9078}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_parser", "..\OGen\OGen_parser\OGen_parser_vs7.csproj"", "{981BC7DE-D93C-446E-861E-60A20E4E3391}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_parser", "..\OGen\OGen_parser\OGen_parser-7.1.csproj"", "{981BC7DE-D93C-446E-861E-60A20E4E3391}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc_templates", "Doc_templates\Doc_templates_vs7.csproj"", "{D5FDB433-994F-404C-B535-FB90B005B6B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc_templates", "Doc_templates\Doc_templates-7.1.csproj"", "{D5FDB433-994F-404C-B535-FB90B005B6B8}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc_metadata_UTs", "Doc_metadata_UTs\Doc_metadata_UTs_vs7.csproj"", "{0464029F-0B64-4520-AFF3-D048C14F3CFF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc_metadata_UTs", "Doc_metadata_UTs\Doc_metadata_UTs-7.1.csproj"", "{0464029F-0B64-4520-AFF3-D048C14F3CFF}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject

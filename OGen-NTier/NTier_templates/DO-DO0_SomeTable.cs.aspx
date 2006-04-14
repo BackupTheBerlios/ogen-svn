@@ -365,11 +365,12 @@ namespace <%=aux_metadata.Namespace%>.lib.datalayer {
 								);
 								ConfigTable = connection.Execute_SQLQuery_returnDataTable(
 									string.Format(
-										"SELECT \"{0}\", \"{1}\", \"{2}\" FROM \"{3}\" ORDER BY \"{0}\"",
-										NameField, 
-										ConfigField, 
-										DatatypeField, 
-										aux_table.Name
+							            "SELECT {4}{0}{4}, {4}{1}{4}, {4}{2}{4} FROM {4}{3}{4} ORDER BY {4}{0}{4}",
+							            /*00*/ NameField,
+                                        /*01*/ ConfigField,
+                                        /*02*/ DatatypeField,
+                                        /*03*/ aux_table.Name, 
+                                        /*04*/ (aux_metadata.DBs.Default.DBServerType == eDBServerTypes.MySQL) ? "`" :"\""
 									)
 								);%>
 					switch (<%=NameField.ToLower()%>_) {<%
