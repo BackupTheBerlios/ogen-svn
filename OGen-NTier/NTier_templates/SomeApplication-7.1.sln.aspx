@@ -43,23 +43,23 @@ aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
 #endregion
 //-----------------------------------------------------------------------------------------
 %>Microsoft Visual Studio Solution File, Format Version 8.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=aux_metadata.ApplicationName%>_datalayer", "<%=aux_metadata.ApplicationName%>_datalayer\<%=aux_metadata.ApplicationName%>_datalayer.csproj", "{<%=aux_metadata.GUIDDatalayer%>}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=aux_metadata.ApplicationName%>_datalayer", "<%=aux_metadata.ApplicationName%>_datalayer\<%=aux_metadata.ApplicationName%>_datalayer-7.1.csproj", "{<%=aux_metadata.GUIDDatalayer%>}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=aux_metadata.ApplicationName%>_datalayer_UTs", "<%=aux_metadata.ApplicationName%>_datalayer_UTs\<%=aux_metadata.ApplicationName%>_datalayer_UTs.csproj", "{<%=aux_metadata.GUIDDatalayer_UTs%>}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=aux_metadata.ApplicationName%>_datalayer_UTs", "<%=aux_metadata.ApplicationName%>_datalayer_UTs\<%=aux_metadata.ApplicationName%>_datalayer_UTs-7.1.csproj", "{<%=aux_metadata.GUIDDatalayer_UTs%>}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=aux_metadata.ApplicationName%>_businesslayer", "<%=aux_metadata.ApplicationName%>_businesslayer\<%=aux_metadata.ApplicationName%>_businesslayer.csproj", "{<%=aux_metadata.GUIDBusinesslayer%>}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=aux_metadata.ApplicationName%>_businesslayer", "<%=aux_metadata.ApplicationName%>_businesslayer\<%=aux_metadata.ApplicationName%>_businesslayer-7.1.csproj", "{<%=aux_metadata.GUIDBusinesslayer%>}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=aux_metadata.ApplicationName%>_businesslayer_UTs", "<%=aux_metadata.ApplicationName%>_businesslayer_UTs\<%=aux_metadata.ApplicationName%>_businesslayer_UTs.csproj", "{<%=aux_metadata.GUIDBusinesslayer_UTs%>}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=aux_metadata.ApplicationName%>_businesslayer_UTs", "<%=aux_metadata.ApplicationName%>_businesslayer_UTs\<%=aux_metadata.ApplicationName%>_businesslayer_UTs-7.1.csproj", "{<%=aux_metadata.GUIDBusinesslayer_UTs%>}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=aux_metadata.ApplicationName%>_test", "<%=aux_metadata.ApplicationName%>_test\<%=aux_metadata.ApplicationName%>_test.csproj", "{<%=aux_metadata.GUIDTest%>}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=aux_metadata.ApplicationName%>_test", "<%=aux_metadata.ApplicationName%>_test\<%=aux_metadata.ApplicationName%>_test-7.1.csproj", "{<%=aux_metadata.GUIDTest%>}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject

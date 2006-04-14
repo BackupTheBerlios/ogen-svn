@@ -140,10 +140,12 @@
     <Content Include="BO-BO_SomeTable.cs.aspx" />
     <Content Include="BO-SomeApplication_businesslayer-7.1.csproj.aspx">
     </Content>
+    <Content Include="BO-SomeApplication_businesslayer-8.csproj.aspx" />
     <Content Include="BO-SomeApplication_businesslayer.cmbx.aspx" />
     <Content Include="BO-SomeApplication_businesslayer.prjx.aspx" />
     <Content Include="BO-UT-SomeApplication_businesslayer_UTs-7.1.csproj.aspx">
     </Content>
+    <Content Include="BO-UT-SomeApplication_businesslayer_UTs-8.csproj.aspx" />
     <Content Include="BO-UT-SomeApplication_businesslayer_UTs.cmbx.aspx" />
     <Content Include="BO-UT-SomeApplication_businesslayer_UTs.prjx.aspx" />
     <Content Include="BO-UT-SomeNamespace.lib.businesslayer.UTs.nunit.aspx" />
@@ -221,11 +223,13 @@
     <Content Include="DO-DO_SomeTable.cs.aspx" />
     <Content Include="DO-DO__utils.cs.aspx" />
     <Content Include="DO-RO0_SomeTable.cs.aspx" />
+    <Content Include="DO-SomeApplication_datalayer-8.csproj.aspx" />
     <Content Include="DO-SomeApplication_datalayer.cmbx.aspx" />
     <Content Include="DO-SomeApplication_datalayer-7.1.csproj.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="DO-SomeApplication_datalayer.prjx.aspx" />
+    <Content Include="DO-UT-SomeApplication_datalayer_UTs-8.csproj.aspx" />
     <Content Include="DO-UT-SomeApplication_datalayer_UTs.cmbx.aspx" />
     <Content Include="DO-UT-SomeApplication_datalayer_UTs-7.1.csproj.aspx">
       <SubType>ASPXCodeBehind</SubType>
@@ -238,12 +242,14 @@
     <Content Include="Global.asax" />
     <Content Include="LICENSE.GPL.txt" />
     <Content Include="LICENSE.txt" />
+    <Content Include="SomeApplication-8.sln.aspx" />
     <Content Include="SomeApplication.cmbx.aspx" />
     <Content Include="SomeApplication.ndoc.aspx" />
     <Content Include="SomeApplication-7.1.sln.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="SomeApplication_AssemblyInfo.cs.txt" />
+    <Content Include="SomeApplication_test-8.csproj.aspx" />
     <Content Include="SomeApplication_test.cmbx.aspx" />
     <Content Include="SomeApplication_test-7.1.csproj.aspx">
       <SubType>ASPXCodeBehind</SubType>
