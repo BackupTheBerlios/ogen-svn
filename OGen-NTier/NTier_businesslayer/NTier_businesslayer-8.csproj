@@ -86,17 +86,17 @@
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
-    <ProjectReference Include="..\..\OGen\OGen_config\OGen_config.csproj">
+    <ProjectReference Include="..\..\OGen\OGen_config\OGen_config-8.csproj">
       <Name>OGen_config</Name>
       <Project>{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\..\OGen\OGen_datalayer\OGen_datalayer.csproj">
+    <ProjectReference Include="..\..\OGen\OGen_datalayer\OGen_datalayer-8.csproj">
       <Name>OGen_datalayer</Name>
       <Project>{4AE20414-478E-4859-849E-929741A5936C}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\NTier_datalayer\NTier_datalayer.csproj">
+    <ProjectReference Include="..\NTier_datalayer\NTier_datalayer-8.csproj">
       <Name>NTier_datalayer</Name>
       <Project>{38BEF535-92F1-4C55-9CEA-8F8D3E82CAFD}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>

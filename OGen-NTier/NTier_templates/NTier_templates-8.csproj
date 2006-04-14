@@ -95,40 +95,40 @@
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
-    <ProjectReference Include="..\..\OGen\OGen_collections\OGen_collections.csproj">
+    <ProjectReference Include="..\..\OGen\OGen_collections\OGen_collections-8.csproj">
       <Name>OGen_collections</Name>
       <Project>{A6E837F8-780F-4D05-B3ED-2FF1906B5766}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\..\OGen\OGen_config\OGen_config.csproj">
+    <ProjectReference Include="..\..\OGen\OGen_config\OGen_config-8.csproj">
       <Name>OGen_config</Name>
       <Project>{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\..\OGen\OGen_datalayer\OGen_datalayer.csproj">
+    <ProjectReference Include="..\..\OGen\OGen_datalayer\OGen_datalayer-8.csproj">
       <Name>OGen_datalayer</Name>
       <Project>{4AE20414-478E-4859-849E-929741A5936C}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\..\OGen\OGen_parser\OGen_parser.csproj">
+    <ProjectReference Include="..\..\OGen\OGen_parser\OGen_parser-8.csproj">
       <Project>{981BC7DE-D93C-446E-861E-60A20E4E3391}</Project>
       <Name>OGen_parser</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\OGen\OGen_webforms\OGen_webforms.csproj">
+    <ProjectReference Include="..\..\OGen\OGen_webforms\OGen_webforms-8.csproj">
       <Project>{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}</Project>
       <Name>OGen_webforms</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NTier_businesslayer\NTier_businesslayer.csproj">
+    <ProjectReference Include="..\NTier_businesslayer\NTier_businesslayer-8.csproj">
       <Name>NTier_businesslayer</Name>
       <Project>{8AEBEA64-6FC4-430C-922C-B88D105AE91C}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\NTier_datalayer\NTier_datalayer.csproj">
+    <ProjectReference Include="..\NTier_datalayer\NTier_datalayer-8.csproj">
       <Name>NTier_datalayer</Name>
       <Project>{38BEF535-92F1-4C55-9CEA-8F8D3E82CAFD}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\NTier_metadata\NTier_metadata.csproj">
+    <ProjectReference Include="..\NTier_metadata\NTier_metadata-8.csproj">
       <Name>NTier_metadata</Name>
       <Project>{0E77A4DB-AF8B-4290-BB33-F9EC97655433}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
@@ -138,14 +138,11 @@
     <Content Include="app0.config.aspx" />
     <Content Include="BO-BO0_SomeTable.cs.aspx" />
     <Content Include="BO-BO_SomeTable.cs.aspx" />
-    <Content Include="BO-SomeApplication_businesslayer-7.1.csproj.aspx">
-    </Content>
+    <Content Include="BO-SomeApplication_businesslayer-7.1.csproj.aspx" />
     <Content Include="BO-SomeApplication_businesslayer-8.csproj.aspx" />
     <Content Include="BO-SomeApplication_businesslayer.cmbx.aspx" />
     <Content Include="BO-SomeApplication_businesslayer.prjx.aspx" />
-    <Content Include="BO-UT-SomeApplication_businesslayer_UTs-7.1.csproj.aspx">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
+    <Content Include="BO-UT-SomeApplication_businesslayer_UTs-7.1.csproj.aspx" />
     <Content Include="BO-UT-SomeApplication_businesslayer_UTs-8.csproj.aspx" />
     <Content Include="BO-UT-SomeApplication_businesslayer_UTs.cmbx.aspx" />
     <Content Include="BO-UT-SomeApplication_businesslayer_UTs.prjx.aspx" />
@@ -186,9 +183,7 @@
     <Content Include="DO-DB-sp0_SomeTable_getObject_bySomeCriteria-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_getObject_bySomeCriteria-PostgreSQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_getObject_bySomeCriteria-SQLServer.sql.aspx" />
-    <Content Include="DO-DB-sp0_SomeTable_insObject-MySQL.sql.aspx">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
+    <Content Include="DO-DB-sp0_SomeTable_insObject-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_insObject-PostgreSQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-MySQL.sql.aspx" />
@@ -219,24 +214,18 @@
     <Content Include="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
     <Content Include="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
     <Content Include="DO-DB-v0_SomeTable__onlyKeys-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DO0_SomeTable.cs.aspx">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
-    <Content Include="DO-DO0__utils.cs.aspx">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
+    <Content Include="DO-DO0_SomeTable.cs.aspx" />
+    <Content Include="DO-DO0__utils.cs.aspx" />
     <Content Include="DO-DO_SomeTable.cs.aspx" />
     <Content Include="DO-DO__utils.cs.aspx" />
     <Content Include="DO-RO0_SomeTable.cs.aspx" />
     <Content Include="DO-SomeApplication_datalayer-8.csproj.aspx" />
     <Content Include="DO-SomeApplication_datalayer.cmbx.aspx" />
-    <Content Include="DO-SomeApplication_datalayer-7.1.csproj.aspx">
-    </Content>
+    <Content Include="DO-SomeApplication_datalayer-7.1.csproj.aspx" />
     <Content Include="DO-SomeApplication_datalayer.prjx.aspx" />
     <Content Include="DO-UT-SomeApplication_datalayer_UTs-8.csproj.aspx" />
     <Content Include="DO-UT-SomeApplication_datalayer_UTs.cmbx.aspx" />
-    <Content Include="DO-UT-SomeApplication_datalayer_UTs-7.1.csproj.aspx">
-    </Content>
+    <Content Include="DO-UT-SomeApplication_datalayer_UTs-7.1.csproj.aspx" />
     <Content Include="DO-UT-SomeApplication_datalayer_UTs.prjx.aspx" />
     <Content Include="DO-UT-SomeNamespace.lib.datalayer.UTs.nunit.aspx" />
     <Content Include="DO-UT-UT0_SomeTable.cs.aspx" />
@@ -248,15 +237,11 @@
     <Content Include="SomeApplication-8.sln.aspx" />
     <Content Include="SomeApplication.cmbx.aspx" />
     <Content Include="SomeApplication.ndoc.aspx" />
-    <Content Include="SomeApplication-7.1.sln.aspx">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
+    <Content Include="SomeApplication-7.1.sln.aspx" />
     <Content Include="SomeApplication_AssemblyInfo.cs.txt" />
     <Content Include="SomeApplication_test-8.csproj.aspx" />
     <Content Include="SomeApplication_test.cmbx.aspx" />
-    <Content Include="SomeApplication_test-7.1.csproj.aspx">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
+    <Content Include="SomeApplication_test-7.1.csproj.aspx" />
     <Content Include="SomeApplication_test.prjx.aspx" />
     <Content Include="SomeApplication_test_MainClass.cs.aspx" />
     <Content Include="templates.config.xml" />

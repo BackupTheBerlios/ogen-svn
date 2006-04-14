@@ -87,52 +87,52 @@
     <Reference Include="System.Xml">
       <Name>System.XML</Name>
     </Reference>
-    <ProjectReference Include="..\..\OGen\OGen_collections\OGen_collections.csproj">
+    <ProjectReference Include="..\..\OGen\OGen_collections\OGen_collections-8.csproj">
       <Name>OGen_collections</Name>
       <Project>{A6E837F8-780F-4D05-B3ED-2FF1906B5766}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\..\OGen\OGen_config\OGen_config.csproj">
+    <ProjectReference Include="..\..\OGen\OGen_config\OGen_config-8.csproj">
       <Name>OGen_config</Name>
       <Project>{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\..\OGen\OGen_datalayer\OGen_datalayer.csproj">
+    <ProjectReference Include="..\..\OGen\OGen_datalayer\OGen_datalayer-8.csproj">
       <Name>OGen_datalayer</Name>
       <Project>{4AE20414-478E-4859-849E-929741A5936C}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\..\OGen\OGen_generator\OGen_generator.csproj">
+    <ProjectReference Include="..\..\OGen\OGen_generator\OGen_generator-8.csproj">
       <Name>OGen_generator</Name>
       <Project>{668ACF34-6104-4DD9-BB8A-65D9D94B0BB6}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\..\OGen\OGen_parser\OGen_parser.csproj">
+    <ProjectReference Include="..\..\OGen\OGen_parser\OGen_parser-8.csproj">
       <Name>OGen_parser</Name>
       <Project>{981BC7DE-D93C-446E-861E-60A20E4E3391}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\..\OGen\OGen_templates\OGen_templates.csproj">
+    <ProjectReference Include="..\..\OGen\OGen_templates\OGen_templates-8.csproj">
       <Name>OGen_templates</Name>
       <Project>{8377EF00-063B-451A-8408-FE2F8EAD5C32}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\..\OGen\OGen_webforms\OGen_webforms.csproj">
+    <ProjectReference Include="..\..\OGen\OGen_webforms\OGen_webforms-8.csproj">
       <Name>OGen_webforms</Name>
       <Project>{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\Doc_generator\Doc_generator.csproj">
+    <ProjectReference Include="..\Doc_generator\Doc_generator-8.csproj">
       <Name>Doc_generator</Name>
       <Project>{0D8CBBD6-841B-4A03-9733-8AFE3B4D5C86}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\Doc_metadata\Doc_metadata.csproj">
+    <ProjectReference Include="..\Doc_metadata\Doc_metadata-8.csproj">
       <Name>Doc_metadata</Name>
       <Project>{9DF6791A-1771-4EB6-8FEB-7F54AC2D9078}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\Doc_templates\Doc_templates.csproj">
+    <ProjectReference Include="..\Doc_templates\Doc_templates-8.csproj">
       <Name>Doc_templates</Name>
       <Project>{D5FDB433-994F-404C-B535-FB90B005B6B8}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
