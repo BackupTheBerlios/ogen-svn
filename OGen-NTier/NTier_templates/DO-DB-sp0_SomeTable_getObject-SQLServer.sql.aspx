@@ -42,7 +42,7 @@ int aux_table_hasidentitykey = aux_table.hasIdentityKey();
 cDBMetadata_Table_Field aux_field;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE PROCEDURE dbo."sp0_<%=aux_table.Name%>_getObject"<%
+%>CREATE PROCEDURE [dbo].[sp0_<%=aux_table.Name%>_getObject]<%
 	for (int f = 0; f < aux_table.Fields.Count; f++) {
 		aux_field = aux_table.Fields[f];%>
 	@<%=aux_field.Name%>_ <%=aux_field.DBType_inDB_name%><%=(aux_field.isText) ? " (" + aux_field.Size + ")" : ""%> OUT<%=(f != aux_table.Fields.Count - 1) ? ", " : ""%><%

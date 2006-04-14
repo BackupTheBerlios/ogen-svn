@@ -1,7 +1,7 @@
 <metadata 
 	applicationName="OGen-NTier_UTs" 
 	namespace="OGen.NTier.UTs" 
-	default_DBServerType="PostgreSQL" 
+	default_DBServerType="SQLServer" 
 	default_ConfigMode="DEBUG" 
 	subAppName="" 
 	pseudoReflectionable="False" 
@@ -39,15 +39,15 @@ along with OGen; if not, write to the
 
 	http://www.fsf.org/licensing/licenses/gpl.txt">
   <dbs>
-    <db dbServerType="PostgreSQL" configMode="DEBUG" dbConnectionstring="Server=127.0.0.1;Port=5432;User ID=postgres;Password=passpub;Database=OGen-NTier_UTs;" />
-    <db dbServerType="PostgreSQL" configMode="!DEBUG" dbConnectionstring="Server=127.0.0.1;Port=5432;User ID=postgres;Password=passpub;Database=OGen-NTier_UTs;" />
+    <db dbServerType="SQLServer" configMode="DEBUG" dbConnectionstring="server=127.0.0.1;uid=sa;pwd=passpub;database=OGen-NTier_UTs;" />
+    <db dbServerType="SQLServer" configMode="!DEBUG" dbConnectionstring="server=127.0.0.1;uid=sa;pwd=passpub;database=OGen-NTier_UTs;" />
   </dbs>
   <tables>
     <table name="Config" isVirtualTable="False" isConfig="True">
       <fields>
-        <field name="Name" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="True" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
-        <field name="Config" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="True" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
-        <field name="Type" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="True" fkTableName="" fkFieldName="" isNullable="False" size="0" type="integer" />
+        <field name="Name" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="True" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="varchar" />
+        <field name="Config" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="True" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="varchar" />
+        <field name="Type" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="True" fkTableName="" fkFieldName="" isNullable="False" size="0" type="int" />
       </fields>
       <searches>
         <search name="all" isRange="True" isExplicitUniqueIndex="False">
@@ -60,7 +60,7 @@ along with OGen; if not, write to the
     <table name="Group" isVirtualTable="False" isConfig="False">
       <fields>
         <field name="IDGroup" isPK="True" isIdentity="True" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
-        <field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
+        <field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="varchar" />
       </fields>
       <searches />
       <updates />
@@ -68,8 +68,8 @@ along with OGen; if not, write to the
     <table name="User" isVirtualTable="False" isConfig="False">
       <fields>
         <field name="IDUser" isPK="True" isIdentity="True" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
-        <field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
-        <field name="Password" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
+        <field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="varchar" />
+        <field name="Password" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="varchar" />
       </fields>
       <searches>
         <search name="all" isRange="True" isExplicitUniqueIndex="False">
@@ -107,8 +107,8 @@ along with OGen; if not, write to the
       <fields>
         <field name="IDUser" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
         <field name="IDGroup" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
-        <field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="timestamp without time zone" />
-        <field name="Defaultrelation" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="boolean" />
+        <field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="datetime" />
+        <field name="Defaultrelation" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bit" />
       </fields>
       <searches />
       <updates />
@@ -116,10 +116,10 @@ along with OGen; if not, write to the
     <table name="vUserDefaultGroup" isVirtualTable="True" isConfig="False">
       <fields>
         <field name="IDUser" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
-        <field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
+        <field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="varchar" />
         <field name="IDGroup" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
-        <field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
-        <field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="timestamp without time zone" />
+        <field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="varchar" />
+        <field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="datetime" />
       </fields>
       <searches>
         <search name="all" isRange="True" isExplicitUniqueIndex="False">
@@ -132,10 +132,10 @@ along with OGen; if not, write to the
     <table name="vUserGroup" isVirtualTable="True" isConfig="False">
       <fields>
         <field name="IDUser" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
-        <field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
+        <field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="varchar" />
         <field name="IDGroup" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
-        <field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
-        <field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="timestamp without time zone" />
+        <field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="varchar" />
+        <field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="datetime" />
       </fields>
       <searches />
       <updates />

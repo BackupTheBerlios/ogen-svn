@@ -46,7 +46,7 @@ string aux_field_name;
 bool isFirst;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE PROCEDURE dbo."sp_<%=aux_table.Name%>_Record_open_<%=aux_search.Name%>"<%
+%>CREATE PROCEDURE [dbo].[sp_<%=aux_table.Name%>_Record_open_<%=aux_search.Name%>]<%
 	for (int f = 0; f < aux_search.SearchParameters.Count; f++) {
 		aux_field = aux_search.SearchParameters[f].Field;
 		aux_field_name = aux_search.SearchParameters[f].ParamName;%>
@@ -59,7 +59,7 @@ AS
 	t1.[<%=aux_field.Name%>]<%=(k != aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
 	}%>
 	FROM [<%=aux_table.Name%>] t1
-	INNER JOIN dbo."fnc_<%=aux_table.Name%>_Record_open_<%=aux_search.Name%>"(<%
+	INNER JOIN [dbo].[fnc_<%=aux_table.Name%>_Record_open_<%=aux_search.Name%>](<%
 	for (int f = 0; f < aux_search.SearchParameters.Count; f++) {
 		aux_field = aux_search.SearchParameters[f].Field;
 		aux_field_name = aux_search.SearchParameters[f].ParamName;%>
@@ -72,7 +72,7 @@ AS
 	}%>
 	)
 
-	-- CHANGE WHERE CONDITION IN: dbo."fnc_<%=aux_table.Name%>_Record_open_<%=aux_search.Name%>"
+	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_<%=aux_table.Name%>_Record_open_<%=aux_search.Name%>]
 	-- NOT HERE!
 
 	-- CHANGE ORDER BY HERE:

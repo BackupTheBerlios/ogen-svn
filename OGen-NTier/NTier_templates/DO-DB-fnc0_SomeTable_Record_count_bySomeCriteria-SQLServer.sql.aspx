@@ -44,7 +44,7 @@ string aux_field_name;
 cDBMetadata_Table_Field aux_field;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE FUNCTION dbo."fnc0_<%=aux_table.Name%>_Record_count_<%=aux_search.Name%>"(<%
+%>CREATE FUNCTION [dbo].[fnc0_<%=aux_table.Name%>_Record_count_<%=aux_search.Name%>](<%
 	for (int f = 0; f < aux_search.SearchParameters.Count; f++) {
 		aux_field = aux_search.SearchParameters[f].Field;
 		aux_field_name = aux_search.SearchParameters[f].ParamName;%>
@@ -57,7 +57,7 @@ BEGIN
 	SET @Record_count_out = 0
 
 	SELECT @Record_count_out = COUNT([<%=aux_table.Fields_onlyPK[0].Name%>])
-	FROM dbo."fnc_<%=aux_table.Name%>_Record_open_<%=aux_search.Name%>"(<%
+	FROM [dbo].[fnc_<%=aux_table.Name%>_Record_open_<%=aux_search.Name%>](<%
 		for (int f = 0; f < aux_search.SearchParameters.Count; f++) {
 			aux_field = aux_search.SearchParameters[f].Field;
 			aux_field_name = aux_search.SearchParameters[f].ParamName;%>

@@ -180,7 +180,7 @@ namespace OGen.lib.datalayer {
 					switch (dbServerTypes_in) {
 						case eDBServerTypes.SQLServer:
 							return string.Format(
-								"server={0};uid={1};pwd={2};database={3}", 
+								"server={0};uid={1};pwd={2};database={3};", 
 								serverName_in, 
 								userName_in, 
 								userPassword_in, 

@@ -48,7 +48,7 @@ string aux_field_name;
 bool isFirst;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE PROCEDURE dbo."sp0_<%=aux_table.Name%>_Record_update_<%=update.Name%>_<%=aux_search.Name%>"<%
+%>CREATE PROCEDURE [dbo].[sp0_<%=aux_table.Name%>_Record_update_<%=update.Name%>_<%=aux_search.Name%>]<%
 for (int f = 0; f < aux_search.SearchParameters.Count; f++) {
 	aux_field = aux_search.SearchParameters[f].Field;
 	aux_field_name = aux_search.SearchParameters[f].ParamName;%>
@@ -65,7 +65,7 @@ AS
 		aux_field = update.UpdateParameters[f].Field;%>
 		[<%=aux_field.Name%>] = @<%=aux_field.Name%>_update_<%=(f != update.UpdateParameters.Count - 1) ? ", " : ""%><%
 	}%>
-	FROM dbo."fnc_<%=aux_table.Name%>_Record_open_<%=aux_search.Name%>"(<%
+	FROM [dbo].[fnc_<%=aux_table.Name%>_Record_open_<%=aux_search.Name%>](<%
 	for (int f = 0; f < aux_search.SearchParameters.Count; f++) {
 		aux_field = aux_search.SearchParameters[f].Field;
 		aux_field_name = aux_search.SearchParameters[f].ParamName;%>

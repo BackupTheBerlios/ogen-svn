@@ -43,7 +43,7 @@ cDBMetadata_Table_Field aux_field;
 bool isFirst;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE PROCEDURE dbo."sp0_<%=aux_table.Name%>_setObject"<%
+%>CREATE PROCEDURE [dbo].[sp0_<%=aux_table.Name%>_setObject]<%
 	for (int f = 0; f < aux_table.Fields.Count; f++) {
 		aux_field = aux_table.Fields[f];%>
 	@<%=aux_field.Name%>_ <%=aux_field.DBType_inDB_name%><%=(aux_field.isText) ? " (" + aux_field.Size + ")" : ""%>, <%

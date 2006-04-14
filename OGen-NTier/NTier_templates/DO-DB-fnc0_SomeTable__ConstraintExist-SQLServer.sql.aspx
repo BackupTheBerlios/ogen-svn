@@ -42,7 +42,7 @@ int aux_table_hasidentitykey = aux_table.hasIdentityKey();
 cDBMetadata_Table_Field aux_field;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE FUNCTION dbo."fnc0_<%=aux_table.Name%>__ConstraintExist"(<%
+%>CREATE FUNCTION [dbo].[fnc0_<%=aux_table.Name%>__ConstraintExist](<%
 	for (int f = 0; f < aux_table.Fields.Count; f++) {
 		aux_field = aux_table.Fields[f];%>
 	@<%=aux_field.Name%> <%=aux_field.DBType_inDB_name%><%=(aux_field.isText) ? " (" + aux_field.Size + ")" : ""%><%=(f != aux_table.Fields.Count - 1) ? ", " : ""%><%
@@ -58,7 +58,7 @@ BEGIN
 	IF (@ConstraintExist = 0) BEGIN
 		SELECT
 			@ConstraintExist = 1
-		FROM dbo."fnc_<%=aux_table.Name%>_isObject_<%=aux_table.Searches[s].Name%>"(<%
+		FROM [dbo].[fnc_<%=aux_table.Name%>_isObject_<%=aux_table.Searches[s].Name%>](<%
 		for (int p = 0; p < aux_table.Searches[s].SearchParameters.Count; p++) {%>
 			@<%=aux_table.Searches[s].SearchParameters[p].FieldName%><%=(p != aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
 		}%>

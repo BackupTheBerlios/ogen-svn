@@ -46,7 +46,7 @@ string aux_field_name;
 bool isFirst;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE FUNCTION dbo."fnc0_<%=aux_table.Name%>_Record_hasObject_<%=aux_search.Name%>"(<%
+%>CREATE FUNCTION [dbo].[fnc0_<%=aux_table.Name%>_Record_hasObject_<%=aux_search.Name%>](<%
 for (int k = 0; k < aux_table.Fields_onlyPK.Count; k++) {
 	aux_field = aux_table.Fields_onlyPK[k];%>
 	@<%=aux_field.Name%>_ <%=aux_field.DBType_inDB_name%><%=(aux_field.isText) ? " (" + aux_field.Size + ")" : ""%><%=(k != aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
@@ -64,7 +64,7 @@ BEGIN
 	SET @Record_hasObject_out = 0
 
 	SELECT @Record_hasObject_out = 1
-	FROM dbo."fnc_<%=aux_table.Name%>_Record_open_<%=aux_search.Name%>"(<%
+	FROM [dbo].[fnc_<%=aux_table.Name%>_Record_open_<%=aux_search.Name%>](<%
 		for (int f = 0; f < aux_search.SearchParameters.Count; f++) {
 			//aux_field = aux_metadata.Tables[aux_search.SearchParameters[f].TableIndex].Fields[aux_search.SearchParameters[f].FieldIndex];
 			aux_field = aux_search.SearchParameters[f].Field;
