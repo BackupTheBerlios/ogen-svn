@@ -1,0 +1,139 @@
+<metadata 
+	applicationName="OGen-NTier_UTs" 
+	namespace="OGen.NTier.UTs" 
+	default_DBServerType="PostgreSQL" 
+	default_ConfigMode="DEBUG" 
+	subAppName="" 
+	pseudoReflectionable="False" 
+	sqlScriptOption="RunImmediately" 
+	guidDatalayer="2C45EF1A-75BE-4B12-A232-62DEB5662239" 
+	guidDatalayer_UTs="4F18877D-A981-426B-8A09-5EDF95E9AE2B" 
+	guidBusinesslayer="B3555514-3A7D-4159-B05D-E8D0C265B649" 
+	guidBusinesslayer_UTs="980912F1-6877-4BD1-A2E0-61D366839C52" 
+	guidTest="2E2A748F-E72A-4B23-9011-F7AE725AB330" 
+	feedbackEmailAddress="francisco.r.monteiro@gmail.com" 
+	copyrightText="Copyright (C) 2002 Francisco Monteiro" 
+	copyrightTextLong="OGen
+Copyright (C) 2002 Francisco Monteiro
+
+This file is part of OGen.
+
+OGen is free software; you can redistribute it and/or modify 
+it under the terms of the GNU General Public License as published by 
+the Free Software Foundation; either version 2 of the License, or 
+(at your option) any later version.
+
+OGen is distributed in the hope that it will be useful, 
+but WITHOUT ANY WARRANTY; without even the implied warranty of 
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the 
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License 
+along with OGen; if not, write to the
+
+	Free Software Foundation, Inc., 
+	59 Temple Place, Suite 330, 
+	Boston, MA 02111-1307 USA 
+
+							- or -
+
+	http://www.fsf.org/licensing/licenses/gpl.txt">
+  <dbs>
+    <db dbServerType="PostgreSQL" configMode="DEBUG" dbConnectionstring="Server=127.0.0.1;Port=5432;User ID=postgres;Password=passpub;Database=OGen-NTier_UTs;" />
+    <db dbServerType="PostgreSQL" configMode="!DEBUG" dbConnectionstring="Server=127.0.0.1;Port=5432;User ID=postgres;Password=passpub;Database=OGen-NTier_UTs;" />
+  </dbs>
+  <tables>
+    <table name="Config" isVirtualTable="False" isConfig="True">
+      <fields>
+        <field name="Name" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="True" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
+        <field name="Config" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="True" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
+        <field name="Type" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="True" fkTableName="" fkFieldName="" isNullable="False" size="0" type="integer" />
+      </fields>
+      <searches />
+      <updates />
+    </table>
+    <table name="Group" isVirtualTable="False" isConfig="False">
+      <fields>
+        <field name="IDGroup" isPK="True" isIdentity="True" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
+        <field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
+      </fields>
+      <searches />
+      <updates />
+    </table>
+    <table name="User" isVirtualTable="False" isConfig="False">
+      <fields>
+        <field name="IDUser" isPK="True" isIdentity="True" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
+        <field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
+        <field name="Password" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
+      </fields>
+      <searches>
+        <search name="all" isRange="True" isExplicitUniqueIndex="False">
+          <searchParameters />
+          <updates />
+        </search>
+        <search name="byLogin" isRange="False" isExplicitUniqueIndex="True">
+          <searchParameters>
+            <fieldRef tableName="User" fieldName="Login" paramName="Login" />
+          </searchParameters>
+          <updates />
+        </search>
+        <search name="byGroup" isRange="True" isExplicitUniqueIndex="False">
+          <searchParameters>
+            <fieldRef tableName="UserGroup" fieldName="IDGroup" paramName="IDGroup" />
+          </searchParameters>
+          <updates>
+            <update name="SomeUpdateTest">
+              <updateParameters>
+                <fieldRef tableName="User" fieldName="Password" paramName="" />
+              </updateParameters>
+            </update>
+          </updates>
+        </search>
+      </searches>
+      <updates>
+        <update name="SomeUpdateTest">
+          <updateParameters>
+            <fieldRef tableName="User" fieldName="Password" paramName="" />
+          </updateParameters>
+        </update>
+      </updates>
+    </table>
+    <table name="UserGroup" isVirtualTable="False" isConfig="False">
+      <fields>
+        <field name="IDUser" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
+        <field name="IDGroup" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
+        <field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="timestamp without time zone" />
+        <field name="Defaultrelation" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="boolean" />
+      </fields>
+      <searches />
+      <updates />
+    </table>
+    <table name="vUserDefaultGroup" isVirtualTable="True" isConfig="False">
+      <fields>
+        <field name="IDUser" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
+        <field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
+        <field name="IDGroup" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
+        <field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
+        <field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="timestamp without time zone" />
+      </fields>
+      <searches>
+        <search name="all" isRange="True" isExplicitUniqueIndex="False">
+          <searchParameters />
+          <updates />
+        </search>
+      </searches>
+      <updates />
+    </table>
+    <table name="vUserGroup" isVirtualTable="True" isConfig="False">
+      <fields>
+        <field name="IDUser" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
+        <field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
+        <field name="IDGroup" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
+        <field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
+        <field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="timestamp without time zone" />
+      </fields>
+      <searches />
+      <updates />
+    </table>
+  </tables>
+</metadata>

@@ -1,0 +1,46 @@
+<project SchemaVersion="1.3">
+    <assemblies>
+        <assembly location="C:\WINDOWS\assembly\GAC_MSIL\OGen.lib.config\0.1.2295.32201__66a788813bfe4b51\OGen.lib.config.dll" documentation="C:\WINDOWS\assembly\GAC_MSIL\OGen.lib.config\0.1.2295.32201__66a788813bfe4b51\OGen.lib.config.xml" />
+        <assembly location="C:\WINDOWS\assembly\GAC_MSIL\OGen.lib.datalayer\0.1.2295.32202__66a788813bfe4b51\OGen.lib.datalayer.dll" documentation="C:\WINDOWS\assembly\GAC_MSIL\OGen.lib.datalayer\0.1.2295.32202__66a788813bfe4b51\OGen.lib.datalayer.xml" />
+        <assembly location="C:\WINDOWS\assembly\GAC_MSIL\OGen.NTier.lib.datalayer\0.1.2295.32202__66a788813bfe4b51\OGen.NTier.lib.datalayer.dll" documentation="C:\WINDOWS\assembly\GAC_MSIL\OGen.NTier.lib.datalayer\0.1.2295.32202__66a788813bfe4b51\OGen.NTier.lib.datalayer.xml" />
+        <assembly location="C:\WINDOWS\assembly\GAC_MSIL\OGen.NTier.lib.businesslayer\0.1.2295.32204__66a788813bfe4b51\OGen.NTier.lib.businesslayer.dll" documentation="C:\WINDOWS\assembly\GAC_MSIL\OGen.NTier.lib.businesslayer\0.1.2295.32204__66a788813bfe4b51\OGen.NTier.lib.businesslayer.xml" />
+        <assembly location=".\OGen-NTier_UTs_datalayer\bin\Debug\OGen.NTier.UTs.lib.datalayer.dll" documentation=".\OGen-NTier_UTs_datalayer\bin\Debug\OGen.NTier.UTs.lib.datalayer.xml" />
+        <assembly location=".\OGen-NTier_UTs_businesslayer\bin\Debug\OGen.NTier.UTs.lib.businesslayer.dll" documentation=".\OGen-NTier_UTs_businesslayer\bin\Debug\OGen.NTier.UTs.lib.businesslayer.xml" />
+    </assemblies>
+    <documenters>
+        <documenter name="JavaDoc">
+            <property name="OutputDirectory" value=".\doc\" />
+        </documenter>
+        <documenter name="LaTeX">
+            <property name="OutputDirectory" value=".\doc\" />
+            <property name="TextFileFullName" value="Documentation.tex" />
+            <property name="TexFileBaseName" value="Documentation" />
+            <property name="LatexCompiler" value="latex" />
+            <property name="TexFileFullPath" value=".\doc\Documentation.tex" />
+        </documenter>
+        <documenter name="LinearHtml">
+            <property name="OutputDirectory" value=".\doc\" />
+            <property name="Title" value="An NDoc Documented Class Library" />
+        </documenter>
+        <documenter name="MSDN">
+            <property name="OutputDirectory" value=".\OGen-NTier_UTs-NDoc\" />
+            <property name="HtmlHelpName" value="OGen-NTier_UTs" />
+            <property name="Title" value="OGen-NTier_UTs Programmer's Reference" />
+            <property name="OutputTarget" value="Web" />
+            <property name="CopyrightText" value="Copyright (C) 2002 Francisco Monteiro" />
+            <property name="FeedbackEmailAddress" value="francisco.r.monteiro@gmail.com" />
+        </documenter>
+        <documenter name="MSDN 2003">
+            <property name="OutputDirectory" value=".\doc\" />
+            <property name="Title" value="An NDoc Documented Class Library" />
+        </documenter>
+        <documenter name="VS.NET 2003">
+            <property name="OutputDirectory" value=".\doc\" />
+            <property name="HtmlHelpName" value="Documentation" />
+            <property name="Title" value="An NDoc documented library" />
+        </documenter>
+        <documenter name="XML">
+            <property name="OutputFile" value=".\doc\doc.xml" />
+        </documenter>
+    </documenters>
+</project>
