@@ -82,11 +82,11 @@ BEGIN<%
 		IF (`SelectIdentity_`) THEN
 			SET `<%=aux_table.Fields[aux_table_hasidentitykey]%>_` = @@IDENTITY;
 		ELSE
-			SET `<%=aux_table.Fields[aux_table_hasidentitykey]%>_` = CAST(0 AS SIGNED <%=aux_table.Fields[aux_table_hasidentitykey].DBType_inDB_name%>);
+			SET `<%=aux_table.Fields[aux_table_hasidentitykey]%>_` = CAST(0 AS SIGNED INTEGER/*<%=aux_table.Fields[aux_table_hasidentitykey].DBType_inDB_name%>*/);
 		END IF;<%
 	if (aux_table_searches_hasexplicituniqueindex) {%>
 	ELSE
-		SET `<%=aux_table.Fields[aux_table_hasidentitykey]%>_` = CAST(-1 AS SIGNED <%=aux_table.Fields[aux_table_hasidentitykey].DBType_inDB_name%>);
+		SET `<%=aux_table.Fields[aux_table_hasidentitykey]%>_` = CAST(-1 AS SIGNED INTEGER/*<%=aux_table.Fields[aux_table_hasidentitykey].DBType_inDB_name%>*/);
 	END IF;<%
 	}%>
 END;<%
