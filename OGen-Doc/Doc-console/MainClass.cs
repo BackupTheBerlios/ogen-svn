@@ -72,7 +72,7 @@ namespace OGen.Doc.presentationlayer.console {
 			} else {
 #if DEBUG
 				DoIt(@"X:\MyDocuments\_RAM-unsorted-COPY\MySharedProjects.BerliOS.SVN\OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen-NTier.OGenDoc-metadata.xml");
-				DoIt(@"X:\MyDocuments\_RAM-unsorted-COPY\MySharedProjects.BerliOS.SVN\OGen\OGen-Doc\OGenDoc-metadatas\MD_OGen.OGenDoc-metadata.xml");
+				//DoIt(@"X:\MyDocuments\_RAM-unsorted-COPY\MySharedProjects.BerliOS.SVN\OGen\OGen-Doc\OGenDoc-metadatas\MD_OGen.OGenDoc-metadata.xml");
 #else
 				Console.WriteLine("must provide xml file");
 #endif

@@ -30,6 +30,7 @@ along with OGen; if not, write to the
 */
 #endregion
 using System;
+using System.Data;
 using System.Collections;
 using NUnit.Framework;
 
@@ -342,6 +343,229 @@ namespace OGen.lib.datalayer.UTs {
 				Assert.AreEqual(4, _tablesnum, "4 tables expected, only {0} were found", _tablesnum);
 				#endregion
 			}
+		}
+		#endregion
+		#region public void UT_Execute_SQLQuery();
+		[Test]
+		public void UT_Execute_SQLQuery() {
+			string _newguid = DateTime.Now.Ticks.ToString();// Guid.NewGuid().ToString();
+			string _query1;
+			string _query2;
+			string _query3;
+			string _login;
+			string _password;
+			long _iduser;
+			DataTable _datatable;
+
+			for (int c = 0; c < dbconnections_.Length; c++) {
+				switch (dbconnections_[c].DBServerType) {
+					case eDBServerTypes.SQLServer:
+					case eDBServerTypes.PostgreSQL: {
+						_query1 = string.Format(
+							"insert into \"User\" (\"Login\", \"Password\") values ('test-{0}', 'password')",
+							_newguid
+						);
+						_query2 = string.Format(
+							"select \"IDUser\", \"Login\", \"Password\" from \"User\" where \"Login\" = 'test-{0}'",
+							_newguid
+						);
+						_query3 = string.Format(
+							"delete from \"User\" where \"Login\" = 'test-{0}'",
+							_newguid
+						);
+						break;
+					}
+					default: {
+						throw new Exception(
+							string.Format(
+								"unsuported db type: {0}", 
+								dbconnections_[c].DBServerType.ToString()
+							)
+						);
+					}
+				}
+				dbconnections_[c].Execute_SQLQuery(_query1);
+
+				_datatable = dbconnections_[c].Execute_SQLQuery_returnDataTable(_query2);
+				Assert.AreEqual(1, _datatable.Rows.Count, "expected 1 row instead of {0}", _datatable.Rows.Count);
+
+				Assert.AreEqual(typeof(string), _datatable.Rows[0]["Login"].GetType(), "expected string type for Login field");
+				_login = (string)_datatable.Rows[0]["Login"];
+				Assert.AreEqual(typeof(string), _datatable.Rows[0]["Password"].GetType(), "expected string type for Password field");
+				_password = (string)_datatable.Rows[0]["Password"];
+				Assert.AreEqual(typeof(long), _datatable.Rows[0]["IDUser"].GetType(), "expected string type for IDUser field");
+				_iduser = (long)_datatable.Rows[0]["IDUser"];
+
+				dbconnections_[c].Execute_SQLQuery(_query3);
+				_datatable = dbconnections_[c].Execute_SQLQuery_returnDataTable(_query2);
+				Assert.AreEqual(0, _datatable.Rows.Count, "expected 0 rows instead of {0}", _datatable.Rows.Count);
+			}
+		}
+		#endregion
+		#region public void UT_Execute_SQLFunction_andCheckExistence();
+		[Test]
+		public void UT_Execute_SQLFunction_andCheckExistence() {
+			string _newguid = DateTime.Now.Ticks.ToString();
+			string _query1;
+			string _query2;
+			IDbDataParameter[] _dataparameters;
+
+			for (int c = 0; c < dbconnections_.Length; c++) {
+				switch (dbconnections_[c].DBServerType) {
+					case eDBServerTypes.SQLServer:
+					case eDBServerTypes.PostgreSQL: {
+						_query1 = string.Format(
+							"insert into \"User\" (\"Login\", \"Password\") values ('test-{0}', 'password')",
+							_newguid
+						);
+						_query2 = string.Format(
+							"delete from \"User\" where \"Login\" = 'test-{0}'",
+							_newguid
+						);
+						break;
+					}
+					default: {
+						throw new Exception(
+							string.Format(
+								"unsuported db type: {0}", 
+								dbconnections_[c].DBServerType.ToString()
+							)
+						);
+					}
+				}
+				dbconnections_[c].Execute_SQLQuery(_query1);
+
+
+				Assert.IsTrue(dbconnections_[c].SQLFunction_exists("fnc0_User_isObject_byLogin"), "sql function: \"fnc0_User_isObject_byLogin\" doesn't exist");
+
+
+				_dataparameters = new IDbDataParameter[] {
+					dbconnections_[c].newDBDataParameter(
+						"Login_search_", 
+						DbType.String, 
+						ParameterDirection.Input, 
+						string.Format("test-{0}", _newguid), 
+						50
+					)
+				};
+				Assert.IsTrue(
+					(bool)dbconnections_[c].Execute_SQLFunction(
+						"fnc0_User_isObject_byLogin",
+						_dataparameters,
+						DbType.Boolean,
+						0
+					), 
+					"user: '{0}' should exist",
+					(string)_dataparameters[0].Value
+				);
+
+
+				dbconnections_[c].Execute_SQLQuery(_query2);
+
+
+				_dataparameters = new IDbDataParameter[] {
+					dbconnections_[c].newDBDataParameter(
+						"Login_search_", 
+						DbType.String, 
+						ParameterDirection.Input, 
+						string.Format("test-{0}", _newguid), 
+						50
+					)
+				};
+				Assert.IsFalse(
+					(bool)dbconnections_[c].Execute_SQLFunction(
+						"fnc0_User_isObject_byLogin",
+						_dataparameters,
+						DbType.Boolean,
+						0
+					),
+					"user: '{0}' should NOT exist",
+					(string)_dataparameters[0].Value
+				);
+			}
+		}
+		#endregion
+		#region public void UT_Execute_SQLStoredProcedure_andCheckExistence();
+		[Test]
+		public void UT_Execute_SQLStoredProcedure_andCheckExistence() {
+			//string _newguid = DateTime.Now.Ticks.ToString();
+			//string _query1;
+			//string _query2;
+			//IDbDataParameter[] _dataparameters;
+
+			//for (int c = 0; c < dbconnections_.Length; c++) {
+			//    switch (dbconnections_[c].DBServerType) {
+			//        case eDBServerTypes.SQLServer:
+			//        case eDBServerTypes.PostgreSQL: {
+			//            _query1 = string.Format(
+			//                "insert into \"User\" (\"Login\", \"Password\") values ('test-{0}', 'password')",
+			//                _newguid
+			//            );
+			//            _query2 = string.Format(
+			//                "delete from \"User\" where \"Login\" = 'test-{0}'",
+			//                _newguid
+			//            );
+			//            break;
+			//        }
+			//        default: {
+			//            throw new Exception(
+			//                string.Format(
+			//                    "unsuported db type: {0}", 
+			//                    dbconnections_[c].DBServerType.ToString()
+			//                )
+			//            );
+			//        }
+			//    }
+			//    dbconnections_[c].Execute_SQLQuery(_query1);
+
+
+			//    Assert.IsTrue(dbconnections_[c].SQLFunction_exists("fnc0_User_isObject_byLogin"), "sql function: \"fnc0_User_isObject_byLogin\" doesn't exist");
+
+
+			//    _dataparameters = new IDbDataParameter[] {
+			//        dbconnections_[c].newDBDataParameter(
+			//            "Login_search_", 
+			//            DbType.String, 
+			//            ParameterDirection.Input, 
+			//            string.Format("test-{0}", _newguid), 
+			//            50
+			//        )
+			//    };
+			//    Assert.IsTrue(
+			//        (bool)dbconnections_[c].Execute_SQLFunction(
+			//            "fnc0_User_isObject_byLogin",
+			//            _dataparameters,
+			//            DbType.Boolean,
+			//            0
+			//        ), 
+			//        "user: '{0}' should exist",
+			//        (string)_dataparameters[0].Value
+			//    );
+
+
+			//    dbconnections_[c].Execute_SQLQuery(_query2);
+
+
+			//    _dataparameters = new IDbDataParameter[] {
+			//        dbconnections_[c].newDBDataParameter(
+			//            "Login_search_", 
+			//            DbType.String, 
+			//            ParameterDirection.Input, 
+			//            string.Format("test-{0}", _newguid), 
+			//            50
+			//        )
+			//    };
+			//    Assert.IsFalse(
+			//        (bool)dbconnections_[c].Execute_SQLFunction(
+			//            "fnc0_User_isObject_byLogin",
+			//            _dataparameters,
+			//            DbType.Boolean,
+			//            0
+			//        ),
+			//        "user: '{0}' should NOT exist",
+			//        (string)_dataparameters[0].Value
+			//    );
+			//}
 		}
 		#endregion
 	}
