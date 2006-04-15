@@ -1068,7 +1068,8 @@ along with OGen; if not, write to the
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions>
-			<condition eval="ROOT.tables.table[n].searches.hasExplicitUniqueIndex" to="False" />
+			<!-- condition eval="ROOT.tables.table[n].searches.hasExplicitUniqueIndex" to="False" / -->
+			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_delObject" 
@@ -1084,7 +1085,8 @@ along with OGen; if not, write to the
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions>
-			<condition eval="ROOT.tables.table[n].searches.hasExplicitUniqueIndex" to="False" />
+			<!-- condition eval="ROOT.tables.table[n].searches.hasExplicitUniqueIndex" to="False" / -->
+			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_delObject" 
@@ -1100,7 +1102,8 @@ along with OGen; if not, write to the
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions>
-			<condition eval="ROOT.tables.table[n].searches.hasExplicitUniqueIndex" to="False" />
+			<!-- condition eval="ROOT.tables.table[n].searches.hasExplicitUniqueIndex" to="False" / -->
+			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_delObject" 

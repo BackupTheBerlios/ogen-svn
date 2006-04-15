@@ -45,6 +45,65 @@ namespace OGen.lib.datalayer {
 		/// Provides means of manipulating ConnectionsStrings.
 		/// </summary>
 		public class Connectionstring { private Connectionstring() {}
+
+			public enum eParameter {
+				Server = 0, 
+				User = 1, 
+				Database = 2,
+
+				invalid = 3
+			}
+
+			public static string ParseParameter(string connectionstring_in, eDBServerTypes dbServerTypes_in, string parameter_in) {
+				System.Text.RegularExpressions.Regex fields_reg = new System.Text.RegularExpressions.Regex(
+					string.Format("^(?<before>.*){0}=(?<param>.*);(?<after>.*)", parameter_in),
+					System.Text.RegularExpressions.RegexOptions.IgnoreCase
+				);
+				System.Text.RegularExpressions.Match matchingfields = fields_reg.Match(connectionstring_in);
+				if (!matchingfields.Success) {
+					throw new Exception(
+						string.Format(
+							"{0}.{1}.ParseParameter(): - error parsing db connectionstring: '{2}'",
+							typeof(Connectionstring).Namespace,
+							typeof(Connectionstring).Name,
+							connectionstring_in
+						)
+					);
+				} else {
+					return matchingfields.Groups["param"].Value;
+				}
+			}
+			public static string ParseParameter(string connectionstring_in, eDBServerTypes dbServerTypes_in, eParameter parameter_in) {
+				switch (parameter_in) {
+					case eParameter.Database: {
+						return ParseParameter(connectionstring_in, dbServerTypes_in, "database");
+					}
+					case eParameter.Server: {
+						return ParseParameter(connectionstring_in, dbServerTypes_in, "server");
+					}
+					case eParameter.User: {
+						switch (dbServerTypes_in) {
+							case eDBServerTypes.PostgreSQL: {
+								return ParseParameter(connectionstring_in, dbServerTypes_in, "User ID");
+							}
+							case eDBServerTypes.MySQL:
+							case eDBServerTypes.SQLServer: {
+								return ParseParameter(connectionstring_in, dbServerTypes_in, "uid");
+							}
+						}
+						break;
+					}
+				}
+				throw new Exception(
+					string.Format(
+						"{0}.{1}.ParseParameter(): - error parsing db connectionstring: '{2}'",
+						typeof(Connectionstring).Namespace,
+						typeof(Connectionstring).Name,
+						connectionstring_in
+					)
+				);
+			}
+
 			/// <summary>
 			/// Provides a number of static methods to build a ConnectionString.
 			/// </summary>

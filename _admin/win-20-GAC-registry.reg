@@ -4,7 +4,7 @@ Windows Registry Editor Version 5.00
 @="X:\\MyDocuments\\_RAM-unsorted-COPY\\MySharedProjects.BerliOS.SVN\\_release.no-svn"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\AssemblyFolders\Npgsql]
-@="C:\\Program Files\\Npgsql_0_7_1"
+@="C:\\Program Files\\Npgsql"
 
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\AssemblyFolders\MySQL]
 @="C:\\Program Files\\MySQL\MySQL Connector Net 1.0.7\\bin\\.NET 2.0"

@@ -60,7 +60,7 @@ namespace OGen.lib.datalayer {
 		/// <summary>
 		/// PostgreSQL Client
 		/// </summary>
-		PostgreSQL = 4,		// PostgreSQL
+		PostgreSQL = 4,			// PostgreSQL
 
 		/// <summary>
 		/// MySQL Client
@@ -87,11 +87,6 @@ namespace OGen.lib.datalayer {
 		/// PostgreSQL Client
 		/// </summary>
 		PostgreSQL = 4,
-
-		/// <summary>
-		/// MySQL Client
-		/// </summary>
-		MySQL = 5,				// MySQL
 
 		/// <summary>
 		/// invalid type

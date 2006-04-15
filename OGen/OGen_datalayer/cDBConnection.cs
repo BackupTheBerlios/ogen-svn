@@ -332,29 +332,41 @@ namespace OGen.lib.datalayer {
 		#endregion
 		#region public Methods...
 		#region public string Connectionstring_database();
+		/// <summary>
+		/// Parses the ConnectionString to look for DataBase name.
+		/// </summary>
+		/// <returns>DataBase name</returns>
 		public string Connectionstring_database() {
-			string _connectionstring_database_out;
-
-			System.Text.RegularExpressions.Regex fields_reg = new System.Text.RegularExpressions.Regex(
-				"^(?<before>.*)database=(?<db>.*);(?<after>.*)",
-				System.Text.RegularExpressions.RegexOptions.Compiled |
-				System.Text.RegularExpressions.RegexOptions.IgnoreCase
+			return utils.Connectionstring.ParseParameter(
+				Connectionstring, 
+				DBServerType, 
+				utils.Connectionstring.eParameter.Database
 			);
-			System.Text.RegularExpressions.Match matchingfields = fields_reg.Match(Connectionstring);
-			if (!matchingfields.Success) {
-				throw new Exception(
-					string.Format(
-						"{0}.{1}.getTableFields: - error parsing db connectionstring to find database name: '{2}'",
-						this.GetType().Namespace,
-						this.GetType().Name,
-						Connectionstring
-					)
-				);
-			} else {
-				_connectionstring_database_out = matchingfields.Groups["db"].Value;
-			}
 
-			return _connectionstring_database_out;
+			#region // old stuff...
+			//string _connectionstring_database_out;
+
+			//System.Text.RegularExpressions.Regex fields_reg = new System.Text.RegularExpressions.Regex(
+			//    "^(?<before>.*)database=(?<db>.*);(?<after>.*)",
+			//    System.Text.RegularExpressions.RegexOptions.Compiled |
+			//    System.Text.RegularExpressions.RegexOptions.IgnoreCase
+			//);
+			//System.Text.RegularExpressions.Match matchingfields = fields_reg.Match(Connectionstring);
+			//if (!matchingfields.Success) {
+			//    throw new Exception(
+			//        string.Format(
+			//            "{0}.{1}.getTableFields: - error parsing db connectionstring to find database name: '{2}'",
+			//            this.GetType().Namespace,
+			//            this.GetType().Name,
+			//            Connectionstring
+			//        )
+			//    );
+			//} else {
+			//    _connectionstring_database_out = matchingfields.Groups["db"].Value;
+			//}
+
+			//return _connectionstring_database_out;
+			#endregion
 		}
 		#endregion
 		#region public IDbDataParameter newDBDataParameter(...);

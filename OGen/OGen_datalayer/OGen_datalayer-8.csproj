@@ -76,11 +76,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\MySQL\MySQL Connector Net 1.0.7\bin\.NET 2.0\MySql.Data.dll</HintPath>
     </Reference>
-    <Reference Include="Npgsql">
-      <Name>Npgsql</Name>
-      <HintPath>C:\Program Files\Npgsql_0_7_1\Npgsql.dll</HintPath>
-      <AssemblyFolderKey>hklm\dn\npgsql</AssemblyFolderKey>
-    </Reference>
+    <Reference Include="Npgsql, Version=0.99.1.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL" />
     <Reference Include="System">
       <Name>System</Name>
     </Reference>
