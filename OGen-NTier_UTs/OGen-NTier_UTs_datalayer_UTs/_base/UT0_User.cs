@@ -48,7 +48,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 				_user = new DO_User();
 			} catch (Exception e) {
 				Assert.IsTrue(false, "some error trying to instantiate DO_User\n---\n{0}\n---", e.Message);
-				return;
+				return; // no need...
 			}
 			_user.Login = "123";
 			_user.Password = "123";

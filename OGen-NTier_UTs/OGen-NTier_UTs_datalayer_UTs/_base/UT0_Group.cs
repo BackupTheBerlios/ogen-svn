@@ -48,7 +48,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 				_group = new DO_Group();
 			} catch (Exception e) {
 				Assert.IsTrue(false, "some error trying to instantiate DO_Group\n---\n{0}\n---", e.Message);
-				return;
+				return; // no need...
 			}
 			_group.Name = "123";
 			long _idgroup;
@@ -56,24 +56,24 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 				_idgroup = _group.insObject(true);
 			} catch (Exception e) {
 				Assert.IsTrue(false, "some error running insObject\n---\n{0}\n---", e.Message);
-				return;
+				return; // no need...
 			}
-			Assert.IsTrue(_idgroup >= 0L, "failed to retrieve identity seed (insObject)");
+			Assert.IsTrue(_idgroup > 0L, "failed to retrieve identity seed (insObject)");
 			_group.clrObject();
 			bool _exists;
 			try {
 				_exists = _group.getObject(_idgroup);
 			} catch (Exception e) {
 				Assert.IsTrue(false, "some error running getObject\n---\n{0}\n---", e.Message);
-				return;
+				return; // no need...
 			}
 			Assert.IsTrue(_exists, "can't read inserted item (getObject)");
-			Assert.IsTrue(_group.Name == "123", "inserted values are diferent from just read ones (insObject/getObject)");
+			Assert.AreEqual("123", _group.Name, "inserted values are diferent from just read ones (insObject/getObject)");
 			try {
 				_group.delObject(_idgroup);
 			} catch (Exception e) {
 				Assert.IsTrue(false, "some error trying to delete (delObject)\n---\n{0}\n---", e.Message);
-				return;
+				return; // no need...
 			}
 			_group = null;
 		}

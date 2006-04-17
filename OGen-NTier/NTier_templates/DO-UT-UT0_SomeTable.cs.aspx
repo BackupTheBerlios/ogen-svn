@@ -74,7 +74,7 @@ namespace <%=aux_metadata.Namespace%>.lib.datalayer.UTs {
 				_<%=aux_table.Name.ToLower()%> = new DO_<%=aux_table.Name%>();
 			} catch (Exception e) {
 				Assert.IsTrue(false, "some error trying to instantiate DO_<%=aux_table.Name%>\n---\n{0}\n---", e.Message);
-				return;
+				return; // no need...
 			}<%
 
 
@@ -95,29 +95,29 @@ namespace <%=aux_metadata.Namespace%>.lib.datalayer.UTs {
 				_<%=aux_field.Name.ToLower()%> = _<%=aux_table.Name.ToLower()%>.insObject(true);
 			} catch (Exception e) {
 				Assert.IsTrue(false, "some error running insObject\n---\n{0}\n---", e.Message);
-				return;
+				return; // no need...
 			}
-			Assert.IsTrue(_<%=aux_field.Name.ToLower()%> >= 0L, "failed to retrieve identity seed (insObject)");
+			Assert.IsTrue(_<%=aux_field.Name.ToLower()%> > 0L, "failed to retrieve identity seed (insObject)");
 			_<%=aux_table.Name.ToLower()%>.clrObject();
 			bool _exists;
 			try {
 				_exists = _<%=aux_table.Name.ToLower()%>.getObject(_<%=aux_field.Name.ToLower()%>);
 			} catch (Exception e) {
 				Assert.IsTrue(false, "some error running getObject\n---\n{0}\n---", e.Message);
-				return;
+				return; // no need...
 			}
 			Assert.IsTrue(_exists, "can't read inserted item (getObject)");<%
 					for (int f = 0; f < aux_table.Fields.Count; f++) {
 						if (f == aux_table_hasidentitykey) continue;
 						aux_field = aux_table.Fields[f];%><%=""%>
-			Assert.IsTrue(_<%=aux_table.Name.ToLower()%>.<%=aux_field.Name%> == <%=aux_field.DBType_generic.FWUnitTestValue%>, "inserted values are diferent from just read ones (insObject/getObject)");<%
+			Assert.AreEqual(<%=aux_field.DBType_generic.FWUnitTestValue%>, _<%=aux_table.Name.ToLower()%>.<%=aux_field.Name%>, "inserted values difer those just read (insObject/getObject)");<%
 					}
 					aux_field = aux_table.Fields[aux_table_hasidentitykey];%>
 			try {
 				_<%=aux_table.Name.ToLower()%>.delObject(_<%=aux_field.Name.ToLower()%>);
 			} catch (Exception e) {
 				Assert.IsTrue(false, "some error trying to delete (delObject)\n---\n{0}\n---", e.Message);
-				return;
+				return; // no need...
 			}<%
 
 

@@ -223,7 +223,9 @@
     <Content Include="DO-UT-SomeApplication_datalayer_UTs-7.1.csproj.aspx" />
     <Content Include="DO-UT-SomeApplication_datalayer_UTs.prjx.aspx" />
     <Content Include="DO-UT-SomeNamespace.lib.datalayer.UTs.nunit.aspx" />
-    <Content Include="DO-UT-UT0_SomeTable.cs.aspx" />
+    <Content Include="DO-UT-UT0_SomeTable.cs.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-UT-UT_app.config.aspx" />
     <Content Include="DO-UT-UT_SomeTable.cs.aspx" />
     <Content Include="Global.asax" />

@@ -120,7 +120,9 @@
     <Content Include="LICENSE.GPL.txt" />
     <Content Include="LICENSE.txt" />
     <Content Include="UT_ParserASPX\resources\metadata.xml" />
-    <Content Include="UT_ParserASPX\resources\template.aspx" />
+    <Content Include="UT_ParserASPX\resources\template.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="UT_ParserXSLT\resources\metadata.xml" />
     <Content Include="UT_ParserXSLT\resources\template.xslt" />
   </ItemGroup>

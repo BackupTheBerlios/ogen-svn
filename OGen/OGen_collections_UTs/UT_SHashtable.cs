@@ -58,16 +58,16 @@ namespace OGen.lib.collections.UTs {
 
 		[Test]
 		public void UT_SomeTest() {
-			Assert.IsTrue(_hash.Count == 3);
-			Assert.IsTrue(_hash.Count == _hash.Keys.Count);
+			Assert.AreEqual(3, _hash.Count);
+			Assert.AreEqual(3, _hash.Keys.Count);
 
-			Assert.IsTrue(_hash.Keys[0] == "três");
-			Assert.IsTrue(_hash.Keys[1] == "um");
-			Assert.IsTrue(_hash.Keys[2] == "dois");
+			Assert.AreEqual("três", _hash.Keys[0]);
+			Assert.AreEqual("um", _hash.Keys[1]);
+			Assert.AreEqual("dois", _hash.Keys[2]);
 
-			Assert.IsTrue((int)_hash["três"] == 3);
-			Assert.IsTrue((int)_hash["um"] == 1);
-			Assert.IsTrue((int)_hash["dois"] == 2);
+			Assert.AreEqual(3, (int)_hash["três"]);
+			Assert.AreEqual(1, (int)_hash["um"]);
+			Assert.AreEqual(2, (int)_hash["dois"]);
 		}
 	}
 }

@@ -48,7 +48,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 				_vusergroup = new DO_vUserGroup();
 			} catch (Exception e) {
 				Assert.IsTrue(false, "some error trying to instantiate DO_vUserGroup\n---\n{0}\n---", e.Message);
-				return;
+				return; // no need...
 			}
 			_vusergroup.IDUser = 123L;
 			_vusergroup.Login = "123";

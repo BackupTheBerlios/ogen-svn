@@ -51,8 +51,47 @@ namespace OGen.lib.datalayer.UTs {
 		}
 		#endregion
 
+		#region public void UT_Connectionstring_ParseParameter();
+		#region private void UT_Connectionstring_ParseParameter_auxiliar(Hashtable hash_in);
+		private void UT_Connectionstring_ParseParameter_auxiliar(Hashtable hash_in) {
+			string _constring;
+			IDictionaryEnumerator _enumerator;
+
+			for (int i = 0; ; i++) {
+				if (((eDBServerTypes_supportedForGeneration)i).ToString() == "invalid") {
+					break;
+				} else if (((eDBServerTypes_supportedForGeneration)i).ToString() == i.ToString()) {
+					continue;
+				} else {
+					_constring = utils.Connectionstring.Buildwith.Parameters(
+						(string)hash_in[utils.Connectionstring.eParameter.Server],
+						(string)hash_in[utils.Connectionstring.eParameter.User], 
+						"somepassword",
+						(string)hash_in[utils.Connectionstring.eParameter.Database], 
+						(eDBServerTypes)i
+					);
+
+					_enumerator = hash_in.GetEnumerator();
+					while (_enumerator.MoveNext()) {
+						Assert.AreEqual(
+//						Console.WriteLine(
+//"'{0}'\n'{1}'\n{2}\n",
+							(string)_enumerator.Value, 
+							utils.Connectionstring.ParseParameter(
+								_constring,
+								(eDBServerTypes)i,
+								(utils.Connectionstring.eParameter)_enumerator.Key
+							)
+//, _constring
+						);
+					}
+				}
+			}
+		}
+		#endregion
+
 		[Test]
-		public void UT_Connectionstring_ParseParameter() {
+		public void UT_Connectionstring_ParseParameter_ItTriggersAKnownBUG() {
 			Hashtable _hash;
 
 			_hash  = new Hashtable();
@@ -99,42 +138,6 @@ namespace OGen.lib.datalayer.UTs {
 					utils.Connectionstring.eParameter.Database
 				)
 			);
-		}
-		#region private void UT_Connectionstring_ParseParameter_auxiliar(Hashtable hash_in);
-		private void UT_Connectionstring_ParseParameter_auxiliar(Hashtable hash_in) {
-			string _constring;
-			IDictionaryEnumerator _enumerator;
-
-			for (int i = 0; ; i++) {
-				if (((eDBServerTypes_supportedForGeneration)i).ToString() == "invalid") {
-					break;
-				} else if (((eDBServerTypes_supportedForGeneration)i).ToString() == i.ToString()) {
-					continue;
-				} else {
-					_constring = utils.Connectionstring.Buildwith.Parameters(
-						(string)hash_in[utils.Connectionstring.eParameter.Server],
-						(string)hash_in[utils.Connectionstring.eParameter.User], 
-						"somepassword",
-						(string)hash_in[utils.Connectionstring.eParameter.Database], 
-						(eDBServerTypes)i
-					);
-
-					_enumerator = hash_in.GetEnumerator();
-					while (_enumerator.MoveNext()) {
-						Assert.AreEqual(
-//						Console.WriteLine(
-//"'{0}'\n'{1}'\n{2}\n",
-							(string)_enumerator.Value, 
-							utils.Connectionstring.ParseParameter(
-								_constring,
-								(eDBServerTypes)i,
-								(utils.Connectionstring.eParameter)_enumerator.Key
-							)
-//, _constring
-						);
-					}
-				}
-			}
 		}
 		#endregion
 	}
