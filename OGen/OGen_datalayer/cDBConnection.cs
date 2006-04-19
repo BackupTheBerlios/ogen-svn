@@ -836,7 +836,7 @@ namespace OGen.lib.datalayer {
 				#region Using Opened Connection...
 				IDbCommand _command = newDBCommand(
 					function_in, 
-					(SqlConnection)connection_
+					(IDbConnection)connection_
 				);
 				if ((transaction__ != null) && transaction__.inTransaction)
 					_command.Transaction = transaction__.exposeTransaction;
