@@ -162,11 +162,15 @@
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "BO-SomeApplication_businesslayer.csproj.aspx"
+                    RelPath = "BO-SomeApplication_businesslayer.prjx.aspx"
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "BO-SomeApplication_businesslayer.prjx.aspx"
+                    RelPath = "BO-SomeApplication_businesslayer-7.1.csproj.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "BO-SomeApplication_businesslayer-8.csproj.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -174,11 +178,15 @@
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "BO-UT-SomeApplication_businesslayer_UTs.csproj.aspx"
+                    RelPath = "BO-UT-SomeApplication_businesslayer_UTs.prjx.aspx"
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "BO-UT-SomeApplication_businesslayer_UTs.prjx.aspx"
+                    RelPath = "BO-UT-SomeApplication_businesslayer_UTs-7.1.csproj.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "BO-UT-SomeApplication_businesslayer_UTs-8.csproj.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -202,11 +210,19 @@
                     BuildAction = "None"
                 />
                 <File
+                    RelPath = "DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "DO-DB-fnc_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
                     RelPath = "DO-DB-fnc_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -218,11 +234,19 @@
                     BuildAction = "Content"
                 />
                 <File
+                    RelPath = "DO-DB-fnc0_SomeTable__ConstraintExist-MySQL.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "DO-DB-fnc0_SomeTable__ConstraintExist-PostgreSQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
                     RelPath = "DO-DB-fnc0_SomeTable__ConstraintExist-SQLServer.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "DO-DB-fnc0_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -234,11 +258,19 @@
                     BuildAction = "Content"
                 />
                 <File
+                    RelPath = "DO-DB-fnc0_SomeTable_isObject-MySQL.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "DO-DB-fnc0_SomeTable_isObject-PostgreSQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
                     RelPath = "DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "DO-DB-fnc0_SomeTable_Record_count_bySomeCriteria-MySQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -250,11 +282,19 @@
                     BuildAction = "Content"
                 />
                 <File
+                    RelPath = "DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-MySQL.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-PostgreSQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
                     RelPath = "DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "DO-DB-sp_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -266,6 +306,10 @@
                     BuildAction = "Content"
                 />
                 <File
+                    RelPath = "DO-DB-sp0_SomeTable_delObject_bySomeCriteria-MySQL.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "DO-DB-sp0_SomeTable_delObject_bySomeCriteria-PostgreSQL.sql.aspx"
                     BuildAction = "Content"
                 />
@@ -274,11 +318,19 @@
                     BuildAction = "Content"
                 />
                 <File
+                    RelPath = "DO-DB-sp0_SomeTable_delObject-MySQL.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "DO-DB-sp0_SomeTable_delObject-PostgreSQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx.sql.aspx"
+                    RelPath = "DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "DO-DB-sp0_SomeTable_getObject_bySomeCriteria-MySQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -290,11 +342,19 @@
                     BuildAction = "Content"
                 />
                 <File
+                    RelPath = "DO-DB-sp0_SomeTable_getObject-MySQL.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "DO-DB-sp0_SomeTable_getObject-PostgreSQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
                     RelPath = "DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "DO-DB-sp0_SomeTable_insObject-MySQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -306,11 +366,19 @@
                     BuildAction = "Content"
                 />
                 <File
+                    RelPath = "DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-MySQL.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-PostgreSQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
                     RelPath = "DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-SQLServer.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-MySQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -322,11 +390,19 @@
                     BuildAction = "Content"
                 />
                 <File
+                    RelPath = "DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-MySQL.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-PostgreSQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
                     RelPath = "DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-MySQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -338,11 +414,19 @@
                     BuildAction = "Content"
                 />
                 <File
+                    RelPath = "DO-DB-sp0_SomeTable_Record_update_SomeUpdate_bySomeCriteria-MySQL.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "DO-DB-sp0_SomeTable_Record_update_SomeUpdate_bySomeCriteria-PostgreSQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
                     RelPath = "DO-DB-sp0_SomeTable_Record_update_SomeUpdate_bySomeCriteria-SQLServer.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "DO-DB-sp0_SomeTable_setObject-MySQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -354,11 +438,19 @@
                     BuildAction = "Content"
                 />
                 <File
+                    RelPath = "DO-DB-sp0_SomeTable_updObject_SomeUpdate-MySQL.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "DO-DB-sp0_SomeTable_updObject_SomeUpdate-PostgreSQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
                     RelPath = "DO-DB-sp0_SomeTable_updObject_SomeUpdate-SQLServer.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "DO-DB-sp0_SomeTable_updObject-MySQL.sql.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -398,11 +490,15 @@
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "DO-SomeApplication_datalayer.csproj.aspx"
+                    RelPath = "DO-SomeApplication_datalayer.prjx.aspx"
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "DO-SomeApplication_datalayer.prjx.aspx"
+                    RelPath = "DO-SomeApplication_datalayer-7.1.csproj.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "DO-SomeApplication_datalayer-8.csproj.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -410,11 +506,15 @@
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "DO-UT-SomeApplication_datalayer_UTs.csproj.aspx"
+                    RelPath = "DO-UT-SomeApplication_datalayer_UTs.prjx.aspx"
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "DO-UT-SomeApplication_datalayer_UTs.prjx.aspx"
+                    RelPath = "DO-UT-SomeApplication_datalayer_UTs-7.1.csproj.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "DO-UT-SomeApplication_datalayer_UTs-8.csproj.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -465,10 +565,6 @@
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "SomeApplication.sln.aspx"
-                    BuildAction = "Content"
-                />
-                <File
                     RelPath = "SomeApplication_AssemblyInfo.cs.txt"
                     BuildAction = "Content"
                 />
@@ -477,15 +573,27 @@
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "SomeApplication_test.csproj.aspx"
-                    BuildAction = "Content"
-                />
-                <File
                     RelPath = "SomeApplication_test.prjx.aspx"
                     BuildAction = "Content"
                 />
                 <File
                     RelPath = "SomeApplication_test_MainClass.cs.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "SomeApplication_test-7.1.csproj.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "SomeApplication_test-8.csproj.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "SomeApplication-7.1.sln.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "SomeApplication-8.sln.aspx"
                     BuildAction = "Content"
                 />
                 <File
