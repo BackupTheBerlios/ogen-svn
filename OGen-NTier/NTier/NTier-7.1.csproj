@@ -141,6 +141,12 @@
                     AssemblyFolderKey = "hklm\dn\ogen"
                 />
                 <Reference
+                    Name = "MySql.Data"
+                    AssemblyName = "MySql.Data"
+                    HintPath = "..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 1.0.7\bin\.NET 1.1\MySql.Data.dll"
+                    AssemblyFolderKey = "hklm\mysql connector net 1.0.7"
+                />
+                <Reference
                     Name = "OGen_parser"
                     Project = "{981BC7DE-D93C-446E-861E-60A20E4E3391}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"

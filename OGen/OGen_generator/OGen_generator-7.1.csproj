@@ -115,6 +115,12 @@
                     HintPath = "C:\Program Files\Npgsql_0_7\OGen-Release\Npgsql.dll"
                     AssemblyFolderKey = "hklm\dn\ogen"
                 />
+                <Reference
+                    Name = "MySql.Data"
+                    AssemblyName = "MySql.Data"
+                    HintPath = "..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 1.0.7\bin\.NET 1.1\MySql.Data.dll"
+                    AssemblyFolderKey = "hklm\mysql connector net 1.0.7"
+                />
             </References>
         </Build>
         <Files>

@@ -68,7 +68,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 				return; // no need...
 			}
 			Assert.IsTrue(_exists, "can't read inserted item (getObject)");
-			Assert.AreEqual("123", _group.Name, "inserted values are diferent from just read ones (insObject/getObject)");
+			Assert.AreEqual("123", _group.Name, "inserted values difer those just read (insObject/getObject)");
 			try {
 				_group.delObject(_idgroup);
 			} catch (Exception e) {
