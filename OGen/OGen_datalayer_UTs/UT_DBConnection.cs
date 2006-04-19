@@ -577,5 +577,74 @@ namespace OGen.lib.datalayer.UTs {
 			}
 		}
 		#endregion
+
+		#region public void UT_Transaction_Rollback();
+		[Test]
+		public void UT_Transaction_Rollback() {
+			for (int c = 0; c < dbconnections_.Length; c++) {
+				dbconnections_[c].Open();
+				dbconnections_[c].Transaction.Begin();
+
+				Execute_SQL__insert(dbconnections_[c]);
+
+				dbconnections_[c].Transaction.Rollback();
+				dbconnections_[c].Transaction.Terminate();
+
+				Assert.AreEqual(
+					0, 
+					Execute_SQL__select(dbconnections_[c]).Rows.Count, 
+					"transaction rollback failed somehow, changes to db have been commited"
+				);
+
+				dbconnections_[c].Close();
+			}
+		}
+		#endregion
+		#region public void UT_Transaction_Commit();
+		[Test]
+		public void UT_Transaction_Commit() {
+			for (int c = 0; c < dbconnections_.Length; c++) {
+				dbconnections_[c].Open();
+				dbconnections_[c].Transaction.Begin();
+
+				Execute_SQL__insert(dbconnections_[c]);
+
+				dbconnections_[c].Transaction.Commit();
+				dbconnections_[c].Transaction.Terminate();
+
+				Assert.AreEqual(
+					1, 
+					Execute_SQL__select(dbconnections_[c]).Rows.Count, 
+					"transaction commit failed somehow"
+				);
+
+				Execute_SQL__delete(dbconnections_[c]);
+
+				dbconnections_[c].Close();
+			}
+		}
+		#endregion
+		#region public void UT_Connection_Open_andClose();
+		[Test]
+		public void UT_Connection_Open_andClose() {
+			for (int c = 0; c < dbconnections_.Length; c++) {
+				dbconnections_[c].Open();
+				Assert.AreEqual(
+					ConnectionState.Open, 
+					dbconnections_[c].exposeConnection.State, 
+					"connection expected to be opened, instead it's: {0}", 
+					dbconnections_[c].exposeConnection.State.ToString()
+				);
+
+				dbconnections_[c].Close();
+				//Assert.AreEqual(
+				//	ConnectionState.Closed, 
+				//	dbconnections_[c].exposeConnection.State, 
+				//	"connection expected to be closed, instead it's: {0}", 
+				//	dbconnections_[c].exposeConnection.State.ToString()
+				//);
+			}
+		}
+		#endregion
 	}
 }
