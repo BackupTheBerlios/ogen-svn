@@ -253,10 +253,22 @@ namespace OGen.lib.datalayer {
 		private IDbCommand newDBCommand(string command_in, IDbConnection connection_in) {
 			switch (dbservertype_) {
 				case eDBServerTypes.SQLServer: {
-					return new SqlCommand(
-						command_in,
-						(SqlConnection)connection_in
-					);
+					SqlCommand _sqlcommand;
+
+					if (Transaction.inTransaction) {
+						_sqlcommand = new SqlCommand(
+							command_in,
+							(SqlConnection)connection_in, 
+							(SqlTransaction)Transaction.exposeTransaction
+						);
+					} else {
+						_sqlcommand = new SqlCommand(
+							command_in,
+							(SqlConnection)connection_in
+						);
+					}
+
+					return _sqlcommand;
 				}
 				case eDBServerTypes.PostgreSQL: {
 					return new NpgsqlCommand(
@@ -293,10 +305,14 @@ namespace OGen.lib.datalayer {
 		private IDbDataAdapter newDBDataAdapter(string query_in, IDbConnection connection_in, bool isQuery_notProcedure_in) {
 			switch (DBServerType) {
 				case eDBServerTypes.SQLServer: {
-					return new SqlDataAdapter(
+					SqlDataAdapter _sqldataadapter = new SqlDataAdapter(
 						query_in,
 						(SqlConnection)connection_in
 					);
+					if (Transaction.inTransaction) {
+						_sqldataadapter.SelectCommand.Transaction = (SqlTransaction)Transaction.exposeTransaction;
+					}
+					return _sqldataadapter;
 				}
 				case eDBServerTypes.PostgreSQL: {
 					return new NpgsqlDataAdapter(
