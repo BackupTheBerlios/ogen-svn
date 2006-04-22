@@ -449,11 +449,19 @@ namespace OGen.lib.datalayer {
 					throw new Exception("invalid DBServerType");
 				}
 			}
-			newDBDataParameter_out.DbType		= dbType_in;
-			newDBDataParameter_out.Direction	= parameterDirection_in;
-			newDBDataParameter_out.Value		= value_in;
-			if (size_in != 0)
-				newDBDataParameter_out.Size		= size_in;
+			newDBDataParameter_out.DbType = dbType_in;
+			newDBDataParameter_out.Direction = parameterDirection_in;
+			if ((value_in == null) || (value_in == DBNull.Value)) {
+				if (DBServerType == eDBServerTypes.SQLServer) {
+					((SqlParameter)newDBDataParameter_out).IsNullable = true;
+				}
+				newDBDataParameter_out.Value = DBNull.Value;
+			} else {
+				newDBDataParameter_out.Value = value_in;
+			}
+			if (size_in != 0) {
+				newDBDataParameter_out.Size = size_in;
+			}
 
 			return newDBDataParameter_out;
 		}
@@ -1704,12 +1712,12 @@ ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 					_query += @"
 SELECT
 	t1.COLUMN_NAME AS ""Name"", 
---	CASE
---		WHEN t1.IS_NULLABLE = 'NO' THEN
+	CASE
+		WHEN t1.IS_NULLABLE = 'NO' THEN
 			CAST(0 AS Int)
---		ELSE
---			CAST(1 AS Int)
---	END
+		ELSE
+			CAST(1 AS Int)
+	END
 	AS ""isNullable"", 
 	t1.DATA_TYPE AS ""Type"", 
 	t1.CHARACTER_MAXIMUM_LENGTH AS ""Size"", 

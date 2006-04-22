@@ -123,20 +123,33 @@ namespace <%=aux_metadata.Namespace%>.lib.datalayer {
 		#endregion
 		//---<%
 		for (int f = 0; f < aux_table.Fields.Count; f++) {
-			aux_field = aux_table.Fields[f];%>
+			aux_field = aux_table.Fields[f];
+
+            if (aux_field.isNullable && !aux_table.isVirtualTable) {%>
+        #region public virtual bool <%=aux_field.Name%>_isNull { get; set; }
+		public virtual bool <%=aux_field.Name%>_isNull {
+			get { return (<%=aux_field.Name.ToLower()%>_ == null); }
+			set { if (value) <%=aux_field.Name.ToLower()%>_ = null; }
+		}
+        #endregion<%
+        }%>
 		#region public virtual <%=aux_field.DBType_generic.FWType%> <%=aux_field.Name%> { get; set; }
-		internal <%=aux_field.DBType_generic.FWType%> <%=aux_field.Name.ToLower()%>_;// = <%=aux_field.DBType_generic.FWEmptyValue%>;
+		internal <%=(aux_field.isNullable && !aux_table.isVirtualTable) ? "object" : aux_field.DBType_generic.FWType%> <%=aux_field.Name.ToLower()%>_;// = <%=(aux_field.DefaultValue == "") ? aux_field.DBType_generic.FWEmptyValue : aux_field.DefaultValue%>;
 		
 		/// <summary>
 		/// <%=aux_table.Name%>'s <%=aux_field.Name%>.
 		/// </summary>
 		[DOPropertyAttribute("<%=aux_field.Name%>", <%=aux_field.isPK.ToString().ToLower()%>, <%=aux_field.isIdentity.ToString().ToLower()%>, <%=aux_field.isNullable.ToString().ToLower()%>, <%=(aux_field.DefaultValue == string.Empty) ? "\"\"" : aux_field.DefaultValue%>, "<%=aux_field.FK_TableName%>", "<%=aux_field.FK_FieldName%>", <%=aux_field.isConfig_Name.ToString().ToLower()%>, <%=aux_field.isConfig_Config.ToString().ToLower()%>, <%=aux_field.isConfig_Datatype.ToString().ToLower()%>, <%=aux_field.isBool.ToString().ToLower()%>, <%=aux_field.isDateTime.ToString().ToLower()%>, <%=aux_field.isInt.ToString().ToLower()%>, <%=aux_field.isDecimal.ToString().ToLower()%>, <%=aux_field.isText.ToString().ToLower()%>)]
 		public virtual <%=aux_field.DBType_generic.FWType%> <%=aux_field.Name%> {
-			get {
-				return <%=aux_field.Name.ToLower()%>_;
+			get {<%
+            if (aux_field.isNullable && !aux_table.isVirtualTable) {%>
+                return (<%=aux_field.Name.ToLower()%>_ == null) ? <%=(aux_field.DefaultValue == "") ? aux_field.DBType_generic.FWEmptyValue : aux_field.DefaultValue%> : (<%=aux_field.DBType_generic.FWType%>)<%=aux_field.Name.ToLower()%>_;<%
+            } else {%>
+				return <%=aux_field.Name.ToLower()%>_;<%
+            }%>
 			}
 			set {
-				if (<%=aux_field.Name.ToLower()%>_ != value) {
+				if (!value.Equals(<%=aux_field.Name.ToLower()%>_)) {
 					<%=aux_field.Name.ToLower()%>_ = value;
 					haschanges_ = true;
 				}
@@ -153,8 +166,12 @@ namespace <%=aux_metadata.Namespace%>.lib.datalayer {
 		/// </summary>
 		public virtual void clrObject() {<%
 			for (int f = 0; f < aux_table.Fields.Count; f++) {
-				aux_field = aux_table.Fields[f];%><%=""%>
-			<%=aux_field.Name%> = <%=(aux_field.DefaultValue == "") ? aux_field.DBType_generic.FWEmptyValue : aux_field.DefaultValue%>;<%
+				aux_field = aux_table.Fields[f];
+                if (aux_field.isNullable && !aux_table.isVirtualTable) {%><%=""%>
+			<%=aux_field.Name%>_isNull = true;<%
+                } else {%><%=""%>
+            <%=aux_field.Name%> = <%=(aux_field.DefaultValue == "") ? aux_field.DBType_generic.FWEmptyValue : aux_field.DefaultValue%>;<%
+                }
 			}%>
 		}
 		#endregion
@@ -197,11 +214,20 @@ namespace <%=aux_metadata.Namespace%>.lib.datalayer {
 				};
 				base.Connection.Execute_SQLFunction("sp0_<%=aux_table.Name%>_getObject", _dataparameters);
 
-				if (_dataparameters[<%=firstKey%>].Value != DBNull.Value) {
-					<%for (int f = 0; f < aux_table.Fields.Count; f++) {
-						aux_field = aux_table.Fields[f];
-					%><%=aux_field.Name.ToLower()%>_ = (_dataparameters[<%=f%>].Value == System.DBNull.Value) ? <%=aux_field.DBType_generic.FWEmptyValue%> : (<%=aux_field.DBType_generic.FWType%>)_dataparameters[<%=f%>].Value;
-					<%}%>
+				if (_dataparameters[<%=firstKey%>].Value != DBNull.Value) {<%
+	                for (int f = 0; f < aux_table.Fields.Count; f++) {
+						aux_field = aux_table.Fields[f];%>
+					if (_dataparameters[<%=f%>].Value == System.DBNull.Value) {<%
+					    if (aux_field.isNullable && !aux_table.isVirtualTable) {%><%=""%>
+					    <%=aux_field.Name%>_isNull = true;<%
+                        } else {%><%=""%>
+					    <%=aux_field.Name.ToLower()%>_ = <%=aux_field.DBType_generic.FWEmptyValue%>;<%
+                        }%>
+                    } else {
+					    <%=aux_field.Name.ToLower()%>_ = (<%=aux_field.DBType_generic.FWType%>)_dataparameters[<%=f%>].Value;
+					}<%
+                    }%>
+
 					haschanges_ = false;
 					return true;
 				}<%
@@ -523,11 +549,20 @@ namespace <%=aux_metadata.Namespace%>.lib.datalayer {
 				_dataparameters
 			);
 
-			if (_dataparameters[<%=aux_table.Searches[s].SearchParameters.Count + firstKey%>].Value != DBNull.Value) {
-				<%for (int f = 0; f < aux_table.Fields.Count; f++) {
-					aux_field = aux_table.Fields[f];
-				%><%=aux_field.Name.ToLower()%>_ = (_dataparameters[<%=aux_table.Searches[s].SearchParameters.Count + f%>].Value == System.DBNull.Value) ? <%=aux_field.DBType_generic.FWEmptyValue%> : (<%=aux_field.DBType_generic.FWType%>)_dataparameters[<%=aux_table.Searches[s].SearchParameters.Count + f%>].Value;
-				<%}%>
+			if (_dataparameters[<%=aux_table.Searches[s].SearchParameters.Count + firstKey%>].Value != DBNull.Value) {<%
+                for (int f = 0; f < aux_table.Fields.Count; f++) {
+					aux_field = aux_table.Fields[f];%>
+				if (_dataparameters[<%=aux_table.Searches[s].SearchParameters.Count + f%>].Value == System.DBNull.Value) {<%
+				    if (aux_field.isNullable && !aux_table.isVirtualTable) {%><%=""%>
+				    <%=aux_field.Name%>_isNull = true;<%
+                    } else {%><%=""%>
+				    <%=aux_field.Name.ToLower()%>_ = <%=aux_field.DBType_generic.FWEmptyValue%>;<%
+                    }%>
+                } else {
+				    <%=aux_field.Name.ToLower()%>_ = (<%=aux_field.DBType_generic.FWType%>)_dataparameters[<%=aux_table.Searches[s].SearchParameters.Count + f%>].Value;
+				}<%
+                }%>
+
 				haschanges_ = false;
 				return true;
 			}

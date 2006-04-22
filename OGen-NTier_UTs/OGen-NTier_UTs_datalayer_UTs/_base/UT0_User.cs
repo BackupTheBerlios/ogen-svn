@@ -50,10 +50,20 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 				Assert.IsTrue(false, "some error trying to instantiate DO_User\n---\n{0}\n---", e.Message);
 				return; // no need...
 			}
+			_user.Connection.Open();
+			_user.Connection.Transaction.Begin();
+
+
+
 			_user.Login = "123";
 			_user.Password = "123";
 			// handle Constraints // ToDos: here!
-			_user = null;
+
+
+			_user.Connection.Transaction.Rollback();
+			_user.Connection.Transaction.Terminate();
+			_user.Connection.Close();
+			_user.Dispose(); _user = null;
 		}
 	}
 }

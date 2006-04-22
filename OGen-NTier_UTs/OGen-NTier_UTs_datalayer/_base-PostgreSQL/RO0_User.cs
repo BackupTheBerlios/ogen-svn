@@ -72,16 +72,24 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		public override bool Read(bool doNOTgetObject_in) {
 			if (base.read()) {
 				if (base.Fullmode) {
-					//parent_ref_.iduser_ = (long)base.Record.Rows[Current]["IDUser"];
-					parent_ref_.iduser_ = (base.Record.Rows[Current]["IDUser"] == System.DBNull.Value) ? 0L : (long)base.Record.Rows[Current]["IDUser"];
-					//parent_ref_.login_ = (string)base.Record.Rows[Current]["Login"];
-					parent_ref_.login_ = (base.Record.Rows[Current]["Login"] == System.DBNull.Value) ? string.Empty : (string)base.Record.Rows[Current]["Login"];
-					//parent_ref_.password_ = (string)base.Record.Rows[Current]["Password"];
-					parent_ref_.password_ = (base.Record.Rows[Current]["Password"] == System.DBNull.Value) ? string.Empty : (string)base.Record.Rows[Current]["Password"];
+					if (base.Record.Rows[Current]["IDUser"] == System.DBNull.Value) {
+					    parent_ref_.iduser_ = 0L;
+					} else {
+					    parent_ref_.iduser_ = (long)base.Record.Rows[Current]["IDUser"];
+					}
+					if (base.Record.Rows[Current]["Login"] == System.DBNull.Value) {
+					    parent_ref_.login_ = string.Empty;
+					} else {
+					    parent_ref_.login_ = (string)base.Record.Rows[Current]["Login"];
+					}
+					if (base.Record.Rows[Current]["Password"] == System.DBNull.Value) {
+					    parent_ref_.password_ = string.Empty;
+					} else {
+					    parent_ref_.password_ = (string)base.Record.Rows[Current]["Password"];
+					}
 
 					parent_ref_.haschanges_ = false;
 				} else {
-					//parent_ref_.iduser_ = (long)base.Record.Rows[Current]["IDUser"];
 					parent_ref_.iduser_ = (base.Record.Rows[Current]["IDUser"] == System.DBNull.Value) ? 0L : (long)base.Record.Rows[Current]["IDUser"];
 
 					if (!doNOTgetObject_in) {

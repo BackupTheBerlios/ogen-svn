@@ -104,7 +104,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return idgroup_;
 			}
 			set {
-				if (idgroup_ != value) {
+				if (!value.Equals(idgroup_)) {
 					idgroup_ = value;
 					haschanges_ = true;
 				}
@@ -123,7 +123,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return name_;
 			}
 			set {
-				if (name_ != value) {
+				if (!value.Equals(name_)) {
 					name_ = value;
 					haschanges_ = true;
 				}
@@ -138,8 +138,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Clears all DO0_Group properties, assigning them with their appropriate default property value.
 		/// </summary>
 		public virtual void clrObject() {
-			IDGroup = 0L;
-			Name = string.Empty;
+            IDGroup = 0L;
+            Name = string.Empty;
 		}
 		#endregion
 		#region public virtual bool getObject(...);
@@ -168,9 +168,17 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				base.Connection.Execute_SQLFunction("sp0_Group_getObject", _dataparameters);
 
 				if (_dataparameters[0].Value != DBNull.Value) {
-					idgroup_ = (_dataparameters[0].Value == System.DBNull.Value) ? 0L : (long)_dataparameters[0].Value;
-					name_ = (_dataparameters[1].Value == System.DBNull.Value) ? string.Empty : (string)_dataparameters[1].Value;
-					
+					if (_dataparameters[0].Value == System.DBNull.Value) {
+					    idgroup_ = 0L;
+                    } else {
+					    idgroup_ = (long)_dataparameters[0].Value;
+					}
+					if (_dataparameters[1].Value == System.DBNull.Value) {
+					    name_ = string.Empty;
+                    } else {
+					    name_ = (string)_dataparameters[1].Value;
+					}
+
 					haschanges_ = false;
 					return true;
 				}

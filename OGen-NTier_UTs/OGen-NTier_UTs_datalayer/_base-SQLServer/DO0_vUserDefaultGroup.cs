@@ -104,7 +104,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return iduser_;
 			}
 			set {
-				if (iduser_ != value) {
+				if (!value.Equals(iduser_)) {
 					iduser_ = value;
 					haschanges_ = true;
 				}
@@ -123,7 +123,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return login_;
 			}
 			set {
-				if (login_ != value) {
+				if (!value.Equals(login_)) {
 					login_ = value;
 					haschanges_ = true;
 				}
@@ -142,7 +142,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return idgroup_;
 			}
 			set {
-				if (idgroup_ != value) {
+				if (!value.Equals(idgroup_)) {
 					idgroup_ = value;
 					haschanges_ = true;
 				}
@@ -161,7 +161,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return name_;
 			}
 			set {
-				if (name_ != value) {
+				if (!value.Equals(name_)) {
 					name_ = value;
 					haschanges_ = true;
 				}
@@ -180,7 +180,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return relationdate_;
 			}
 			set {
-				if (relationdate_ != value) {
+				if (!value.Equals(relationdate_)) {
 					relationdate_ = value;
 					haschanges_ = true;
 				}
@@ -195,11 +195,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Clears all DO0_vUserDefaultGroup properties, assigning them with their appropriate default property value.
 		/// </summary>
 		public virtual void clrObject() {
-			IDUser = 0L;
-			Login = string.Empty;
-			IDGroup = 0L;
-			Name = string.Empty;
-			Relationdate = new DateTime(1900, 1, 1);
+            IDUser = 0L;
+            Login = string.Empty;
+            IDGroup = 0L;
+            Name = string.Empty;
+            Relationdate = new DateTime(1900, 1, 1);
 		}
 		#endregion
 		#region public virtual bool getObject(...);
@@ -230,12 +230,32 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				base.Connection.Execute_SQLFunction("sp0_vUserDefaultGroup_getObject", _dataparameters);
 
 				if (_dataparameters[0].Value != DBNull.Value) {
-					iduser_ = (_dataparameters[0].Value == System.DBNull.Value) ? 0L : (long)_dataparameters[0].Value;
-					login_ = (_dataparameters[1].Value == System.DBNull.Value) ? string.Empty : (string)_dataparameters[1].Value;
-					idgroup_ = (_dataparameters[2].Value == System.DBNull.Value) ? 0L : (long)_dataparameters[2].Value;
-					name_ = (_dataparameters[3].Value == System.DBNull.Value) ? string.Empty : (string)_dataparameters[3].Value;
-					relationdate_ = (_dataparameters[4].Value == System.DBNull.Value) ? new DateTime(1900, 1, 1) : (DateTime)_dataparameters[4].Value;
-					
+					if (_dataparameters[0].Value == System.DBNull.Value) {
+					    iduser_ = 0L;
+                    } else {
+					    iduser_ = (long)_dataparameters[0].Value;
+					}
+					if (_dataparameters[1].Value == System.DBNull.Value) {
+					    login_ = string.Empty;
+                    } else {
+					    login_ = (string)_dataparameters[1].Value;
+					}
+					if (_dataparameters[2].Value == System.DBNull.Value) {
+					    idgroup_ = 0L;
+                    } else {
+					    idgroup_ = (long)_dataparameters[2].Value;
+					}
+					if (_dataparameters[3].Value == System.DBNull.Value) {
+					    name_ = string.Empty;
+                    } else {
+					    name_ = (string)_dataparameters[3].Value;
+					}
+					if (_dataparameters[4].Value == System.DBNull.Value) {
+					    relationdate_ = new DateTime(1900, 1, 1);
+                    } else {
+					    relationdate_ = (DateTime)_dataparameters[4].Value;
+					}
+
 					haschanges_ = false;
 					return true;
 				}

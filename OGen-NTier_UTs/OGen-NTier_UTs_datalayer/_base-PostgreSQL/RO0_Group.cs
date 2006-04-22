@@ -72,14 +72,19 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		public override bool Read(bool doNOTgetObject_in) {
 			if (base.read()) {
 				if (base.Fullmode) {
-					//parent_ref_.idgroup_ = (long)base.Record.Rows[Current]["IDGroup"];
-					parent_ref_.idgroup_ = (base.Record.Rows[Current]["IDGroup"] == System.DBNull.Value) ? 0L : (long)base.Record.Rows[Current]["IDGroup"];
-					//parent_ref_.name_ = (string)base.Record.Rows[Current]["Name"];
-					parent_ref_.name_ = (base.Record.Rows[Current]["Name"] == System.DBNull.Value) ? string.Empty : (string)base.Record.Rows[Current]["Name"];
+					if (base.Record.Rows[Current]["IDGroup"] == System.DBNull.Value) {
+					    parent_ref_.idgroup_ = 0L;
+					} else {
+					    parent_ref_.idgroup_ = (long)base.Record.Rows[Current]["IDGroup"];
+					}
+					if (base.Record.Rows[Current]["Name"] == System.DBNull.Value) {
+					    parent_ref_.name_ = string.Empty;
+					} else {
+					    parent_ref_.name_ = (string)base.Record.Rows[Current]["Name"];
+					}
 
 					parent_ref_.haschanges_ = false;
 				} else {
-					//parent_ref_.idgroup_ = (long)base.Record.Rows[Current]["IDGroup"];
 					parent_ref_.idgroup_ = (base.Record.Rows[Current]["IDGroup"] == System.DBNull.Value) ? 0L : (long)base.Record.Rows[Current]["IDGroup"];
 
 					if (!doNOTgetObject_in) {

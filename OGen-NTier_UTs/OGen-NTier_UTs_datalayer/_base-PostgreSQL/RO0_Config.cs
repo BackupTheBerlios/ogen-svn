@@ -72,16 +72,24 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		public override bool Read(bool doNOTgetObject_in) {
 			if (base.read()) {
 				if (base.Fullmode) {
-					//parent_ref_.name_ = (string)base.Record.Rows[Current]["Name"];
-					parent_ref_.name_ = (base.Record.Rows[Current]["Name"] == System.DBNull.Value) ? string.Empty : (string)base.Record.Rows[Current]["Name"];
-					//parent_ref_.config_ = (string)base.Record.Rows[Current]["Config"];
-					parent_ref_.config_ = (base.Record.Rows[Current]["Config"] == System.DBNull.Value) ? string.Empty : (string)base.Record.Rows[Current]["Config"];
-					//parent_ref_.type_ = (int)base.Record.Rows[Current]["Type"];
-					parent_ref_.type_ = (base.Record.Rows[Current]["Type"] == System.DBNull.Value) ? 0 : (int)base.Record.Rows[Current]["Type"];
+					if (base.Record.Rows[Current]["Name"] == System.DBNull.Value) {
+					    parent_ref_.name_ = string.Empty;
+					} else {
+					    parent_ref_.name_ = (string)base.Record.Rows[Current]["Name"];
+					}
+					if (base.Record.Rows[Current]["Config"] == System.DBNull.Value) {
+					    parent_ref_.config_ = string.Empty;
+					} else {
+					    parent_ref_.config_ = (string)base.Record.Rows[Current]["Config"];
+					}
+					if (base.Record.Rows[Current]["Type"] == System.DBNull.Value) {
+					    parent_ref_.type_ = 0;
+					} else {
+					    parent_ref_.type_ = (int)base.Record.Rows[Current]["Type"];
+					}
 
 					parent_ref_.haschanges_ = false;
 				} else {
-					//parent_ref_.name_ = (string)base.Record.Rows[Current]["Name"];
 					parent_ref_.name_ = (base.Record.Rows[Current]["Name"] == System.DBNull.Value) ? string.Empty : (string)base.Record.Rows[Current]["Name"];
 
 					if (!doNOTgetObject_in) {

@@ -1,0 +1,12 @@
+SELECT
+	t2.specific_name, 
+	t1.routine_name, 
+	t2.ordinal_position, 
+	t2.data_type
+FROM INFORMATION_SCHEMA.ROUTINES t1
+	INNER JOIN INFORMATION_SCHEMA.Parameters t2 ON (t2.specific_name = t1.specific_name)
+WHERE
+	(t1.routine_name LIKE 'sp0_%')
+	OR
+	(t1.routine_name LIKE 'fnc0_%')
+ORDER BY t2.specific_name, t2.ordinal_position;

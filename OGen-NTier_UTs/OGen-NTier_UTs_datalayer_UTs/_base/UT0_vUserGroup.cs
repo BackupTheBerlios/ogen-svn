@@ -50,13 +50,23 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 				Assert.IsTrue(false, "some error trying to instantiate DO_vUserGroup\n---\n{0}\n---", e.Message);
 				return; // no need...
 			}
+			_vusergroup.Connection.Open();
+			_vusergroup.Connection.Transaction.Begin();
+
+
+
 			_vusergroup.IDUser = 123L;
 			_vusergroup.Login = "123";
 			_vusergroup.IDGroup = 123L;
 			_vusergroup.Name = "123";
 			_vusergroup.Relationdate = new DateTime(1234, 12, 12);
 			// setObject(); // ToDos: here!
-			_vusergroup = null;
+
+
+			_vusergroup.Connection.Transaction.Rollback();
+			_vusergroup.Connection.Transaction.Terminate();
+			_vusergroup.Connection.Close();
+			_vusergroup.Dispose(); _vusergroup = null;
 		}
 	}
 }

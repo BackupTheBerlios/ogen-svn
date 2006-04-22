@@ -50,11 +50,21 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 				Assert.IsTrue(false, "some error trying to instantiate DO_Config\n---\n{0}\n---", e.Message);
 				return; // no need...
 			}
+			_config.Connection.Open();
+			_config.Connection.Transaction.Begin();
+
+
+
 			_config.Name = "123";
 			_config.Config = "123";
 			_config.Type = 123;
 			// setObject(); // ToDos: here!
-			_config = null;
+
+
+			_config.Connection.Transaction.Rollback();
+			_config.Connection.Transaction.Terminate();
+			_config.Connection.Close();
+			_config.Dispose(); _config = null;
 		}
 	}
 }

@@ -1,0 +1,15 @@
+SELECT 
+	routine_name
+FROM INFORMATION_SCHEMA.ROUTINES
+WHERE
+	(
+		(routine_type = 'FUNCTION')
+		OR
+		(routine_type = 'PROCEDURE')
+	)
+	AND
+	(
+		(routine_name LIKE 'sp%')
+		OR
+		(routine_name LIKE 'fnc%')
+	)

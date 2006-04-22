@@ -104,7 +104,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return name_;
 			}
 			set {
-				if (name_ != value) {
+				if (!value.Equals(name_)) {
 					name_ = value;
 					haschanges_ = true;
 				}
@@ -123,7 +123,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return config_;
 			}
 			set {
-				if (config_ != value) {
+				if (!value.Equals(config_)) {
 					config_ = value;
 					haschanges_ = true;
 				}
@@ -142,7 +142,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return type_;
 			}
 			set {
-				if (type_ != value) {
+				if (!value.Equals(type_)) {
 					type_ = value;
 					haschanges_ = true;
 				}
@@ -157,9 +157,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Clears all DO0_Config properties, assigning them with their appropriate default property value.
 		/// </summary>
 		public virtual void clrObject() {
-			Name = string.Empty;
-			Config = string.Empty;
-			Type = 0;
+            Name = string.Empty;
+            Config = string.Empty;
+            Type = 0;
 		}
 		#endregion
 		#region public virtual bool getObject(...);
@@ -188,10 +188,22 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				base.Connection.Execute_SQLFunction("sp0_Config_getObject", _dataparameters);
 
 				if (_dataparameters[0].Value != DBNull.Value) {
-					name_ = (_dataparameters[0].Value == System.DBNull.Value) ? string.Empty : (string)_dataparameters[0].Value;
-					config_ = (_dataparameters[1].Value == System.DBNull.Value) ? string.Empty : (string)_dataparameters[1].Value;
-					type_ = (_dataparameters[2].Value == System.DBNull.Value) ? 0 : (int)_dataparameters[2].Value;
-					
+					if (_dataparameters[0].Value == System.DBNull.Value) {
+					    name_ = string.Empty;
+                    } else {
+					    name_ = (string)_dataparameters[0].Value;
+					}
+					if (_dataparameters[1].Value == System.DBNull.Value) {
+					    config_ = string.Empty;
+                    } else {
+					    config_ = (string)_dataparameters[1].Value;
+					}
+					if (_dataparameters[2].Value == System.DBNull.Value) {
+					    type_ = 0;
+                    } else {
+					    type_ = (int)_dataparameters[2].Value;
+					}
+
 					haschanges_ = false;
 					return true;
 				}

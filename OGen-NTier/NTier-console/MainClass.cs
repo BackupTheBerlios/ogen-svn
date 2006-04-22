@@ -72,6 +72,7 @@ namespace OGen.NTier.presentationlayer.console {
 			} else {
 #if DEBUG
 				DoIt(@"X:\MyDocuments\_RAM-unsorted-COPY\MySharedProjects.BerliOS.SVN\OGen-NTier_UTs\OGen-metadatas\MD_OGen-NTier_UTs-PostgreSQL.OGen-metadata.xml");
+				DoIt(@"X:\MyDocuments\_RAM-unsorted-COPY\MySharedProjects.BerliOS.SVN\OGen-NTier_UTs\OGen-metadatas\MD_OGen-NTier_UTs-SQLServer.OGen-metadata.xml");
 #else
 				Console.WriteLine("must provide xml file");
 #endif

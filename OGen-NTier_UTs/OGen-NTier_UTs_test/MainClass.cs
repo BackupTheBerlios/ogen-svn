@@ -35,6 +35,7 @@ using System.Xml;
 using System.Reflection;
 using System.Collections;
 using System.Data;
+using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 
 using OGen.lib.datalayer;

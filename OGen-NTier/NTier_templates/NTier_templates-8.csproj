@@ -163,12 +163,18 @@
     <Content Include="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" />
     <Content Include="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx" />
     <Content Include="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx" />
-    <Content Include="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" />
-    <Content Include="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-sp0_SomeTable_delObject-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_delObject-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx.sql.aspx" />
+    <Content Include="DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_delObject_bySomeCriteria-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_delObject_bySomeCriteria-PostgreSQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_delObject_bySomeCriteria-SQLServer.sql.aspx" />
@@ -209,11 +215,15 @@
     <Content Include="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
     <Content Include="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
     <Content Include="DO-DB-v0_SomeTable__onlyKeys-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DO0_SomeTable.cs.aspx" />
+    <Content Include="DO-DO0_SomeTable.cs.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DO0__utils.cs.aspx" />
     <Content Include="DO-DO_SomeTable.cs.aspx" />
     <Content Include="DO-DO__utils.cs.aspx" />
-    <Content Include="DO-RO0_SomeTable.cs.aspx" />
+    <Content Include="DO-RO0_SomeTable.cs.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-SomeApplication_datalayer-8.csproj.aspx" />
     <Content Include="DO-SomeApplication_datalayer.cmbx.aspx" />
     <Content Include="DO-SomeApplication_datalayer-7.1.csproj.aspx" />

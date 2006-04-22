@@ -98,13 +98,13 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// vUserDefaultGroup's IDUser.
 		/// </summary>
-		[DOPropertyAttribute("IDUser", true, false, false, "", "", "", false, false, false, false, false, true, false, false)]
+		[DOPropertyAttribute("IDUser", true, false, true, "", "", "", false, false, false, false, false, true, false, false)]
 		public virtual long IDUser {
 			get {
 				return iduser_;
 			}
 			set {
-				if (iduser_ != value) {
+				if (!value.Equals(iduser_)) {
 					iduser_ = value;
 					haschanges_ = true;
 				}
@@ -117,13 +117,13 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// vUserDefaultGroup's Login.
 		/// </summary>
-		[DOPropertyAttribute("Login", false, false, false, "", "", "", false, false, false, false, false, false, false, true)]
+		[DOPropertyAttribute("Login", false, false, true, "", "", "", false, false, false, false, false, false, false, true)]
 		public virtual string Login {
 			get {
 				return login_;
 			}
 			set {
-				if (login_ != value) {
+				if (!value.Equals(login_)) {
 					login_ = value;
 					haschanges_ = true;
 				}
@@ -136,13 +136,13 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// vUserDefaultGroup's IDGroup.
 		/// </summary>
-		[DOPropertyAttribute("IDGroup", false, false, false, "", "", "", false, false, false, false, false, true, false, false)]
+		[DOPropertyAttribute("IDGroup", false, false, true, "", "", "", false, false, false, false, false, true, false, false)]
 		public virtual long IDGroup {
 			get {
 				return idgroup_;
 			}
 			set {
-				if (idgroup_ != value) {
+				if (!value.Equals(idgroup_)) {
 					idgroup_ = value;
 					haschanges_ = true;
 				}
@@ -155,13 +155,13 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// vUserDefaultGroup's Name.
 		/// </summary>
-		[DOPropertyAttribute("Name", false, false, false, "", "", "", false, false, false, false, false, false, false, true)]
+		[DOPropertyAttribute("Name", false, false, true, "", "", "", false, false, false, false, false, false, false, true)]
 		public virtual string Name {
 			get {
 				return name_;
 			}
 			set {
-				if (name_ != value) {
+				if (!value.Equals(name_)) {
 					name_ = value;
 					haschanges_ = true;
 				}
@@ -174,13 +174,13 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// vUserDefaultGroup's Relationdate.
 		/// </summary>
-		[DOPropertyAttribute("Relationdate", false, false, false, "", "", "", false, false, false, false, true, false, false, false)]
+		[DOPropertyAttribute("Relationdate", false, false, true, "", "", "", false, false, false, false, true, false, false, false)]
 		public virtual DateTime Relationdate {
 			get {
 				return relationdate_;
 			}
 			set {
-				if (relationdate_ != value) {
+				if (!value.Equals(relationdate_)) {
 					relationdate_ = value;
 					haschanges_ = true;
 				}
@@ -195,11 +195,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Clears all DO0_vUserDefaultGroup properties, assigning them with their appropriate default property value.
 		/// </summary>
 		public virtual void clrObject() {
-			IDUser = 0L;
-			Login = string.Empty;
-			IDGroup = 0L;
-			Name = string.Empty;
-			Relationdate = new DateTime(1900, 1, 1);
+            IDUser = 0L;
+            Login = string.Empty;
+            IDGroup = 0L;
+            Name = string.Empty;
+            Relationdate = new DateTime(1900, 1, 1);
 		}
 		#endregion
 		#region public virtual bool getObject(...);
@@ -230,12 +230,32 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				base.Connection.Execute_SQLFunction("sp0_vUserDefaultGroup_getObject", _dataparameters);
 
 				if (_dataparameters[0].Value != DBNull.Value) {
-					iduser_ = (_dataparameters[0].Value == System.DBNull.Value) ? 0L : (long)_dataparameters[0].Value;
-					login_ = (_dataparameters[1].Value == System.DBNull.Value) ? string.Empty : (string)_dataparameters[1].Value;
-					idgroup_ = (_dataparameters[2].Value == System.DBNull.Value) ? 0L : (long)_dataparameters[2].Value;
-					name_ = (_dataparameters[3].Value == System.DBNull.Value) ? string.Empty : (string)_dataparameters[3].Value;
-					relationdate_ = (_dataparameters[4].Value == System.DBNull.Value) ? new DateTime(1900, 1, 1) : (DateTime)_dataparameters[4].Value;
-					
+					if (_dataparameters[0].Value == System.DBNull.Value) {
+					    iduser_ = 0L;
+                    } else {
+					    iduser_ = (long)_dataparameters[0].Value;
+					}
+					if (_dataparameters[1].Value == System.DBNull.Value) {
+					    login_ = string.Empty;
+                    } else {
+					    login_ = (string)_dataparameters[1].Value;
+					}
+					if (_dataparameters[2].Value == System.DBNull.Value) {
+					    idgroup_ = 0L;
+                    } else {
+					    idgroup_ = (long)_dataparameters[2].Value;
+					}
+					if (_dataparameters[3].Value == System.DBNull.Value) {
+					    name_ = string.Empty;
+                    } else {
+					    name_ = (string)_dataparameters[3].Value;
+					}
+					if (_dataparameters[4].Value == System.DBNull.Value) {
+					    relationdate_ = new DateTime(1900, 1, 1);
+                    } else {
+					    relationdate_ = (DateTime)_dataparameters[4].Value;
+					}
+
 					haschanges_ = false;
 					return true;
 				}

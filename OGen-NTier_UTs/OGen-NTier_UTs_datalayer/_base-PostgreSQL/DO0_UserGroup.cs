@@ -104,7 +104,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return iduser_;
 			}
 			set {
-				if (iduser_ != value) {
+				if (!value.Equals(iduser_)) {
 					iduser_ = value;
 					haschanges_ = true;
 				}
@@ -123,45 +123,57 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return idgroup_;
 			}
 			set {
-				if (idgroup_ != value) {
+				if (!value.Equals(idgroup_)) {
 					idgroup_ = value;
 					haschanges_ = true;
 				}
 			}
 		}
 		#endregion
+        #region public virtual bool Relationdate_isNull { get; set; }
+		public virtual bool Relationdate_isNull {
+			get { return (relationdate_ == null); }
+			set { if (value) relationdate_ = null; }
+		}
+        #endregion
 		#region public virtual DateTime Relationdate { get; set; }
-		internal DateTime relationdate_;// = new DateTime(1900, 1, 1);
+		internal object relationdate_;// = new DateTime(1900, 1, 1);
 		
 		/// <summary>
 		/// UserGroup's Relationdate.
 		/// </summary>
-		[DOPropertyAttribute("Relationdate", false, false, false, "", "", "", false, false, false, false, true, false, false, false)]
+		[DOPropertyAttribute("Relationdate", false, false, true, "", "", "", false, false, false, false, true, false, false, false)]
 		public virtual DateTime Relationdate {
 			get {
-				return relationdate_;
+                return (relationdate_ == null) ? new DateTime(1900, 1, 1) : (DateTime)relationdate_;
 			}
 			set {
-				if (relationdate_ != value) {
+				if (!value.Equals(relationdate_)) {
 					relationdate_ = value;
 					haschanges_ = true;
 				}
 			}
 		}
 		#endregion
+        #region public virtual bool Defaultrelation_isNull { get; set; }
+		public virtual bool Defaultrelation_isNull {
+			get { return (defaultrelation_ == null); }
+			set { if (value) defaultrelation_ = null; }
+		}
+        #endregion
 		#region public virtual bool Defaultrelation { get; set; }
-		internal bool defaultrelation_;// = false;
+		internal object defaultrelation_;// = false;
 		
 		/// <summary>
 		/// UserGroup's Defaultrelation.
 		/// </summary>
-		[DOPropertyAttribute("Defaultrelation", false, false, false, "", "", "", false, false, false, true, false, false, false, false)]
+		[DOPropertyAttribute("Defaultrelation", false, false, true, "", "", "", false, false, false, true, false, false, false, false)]
 		public virtual bool Defaultrelation {
 			get {
-				return defaultrelation_;
+                return (defaultrelation_ == null) ? false : (bool)defaultrelation_;
 			}
 			set {
-				if (defaultrelation_ != value) {
+				if (!value.Equals(defaultrelation_)) {
 					defaultrelation_ = value;
 					haschanges_ = true;
 				}
@@ -176,10 +188,10 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Clears all DO0_UserGroup properties, assigning them with their appropriate default property value.
 		/// </summary>
 		public virtual void clrObject() {
-			IDUser = 0L;
-			IDGroup = 0L;
-			Relationdate = new DateTime(1900, 1, 1);
-			Defaultrelation = false;
+            IDUser = 0L;
+            IDGroup = 0L;
+			Relationdate_isNull = true;
+			Defaultrelation_isNull = true;
 		}
 		#endregion
 		#region public virtual bool getObject(...);
@@ -212,11 +224,27 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				base.Connection.Execute_SQLFunction("sp0_UserGroup_getObject", _dataparameters);
 
 				if (_dataparameters[0].Value != DBNull.Value) {
-					iduser_ = (_dataparameters[0].Value == System.DBNull.Value) ? 0L : (long)_dataparameters[0].Value;
-					idgroup_ = (_dataparameters[1].Value == System.DBNull.Value) ? 0L : (long)_dataparameters[1].Value;
-					relationdate_ = (_dataparameters[2].Value == System.DBNull.Value) ? new DateTime(1900, 1, 1) : (DateTime)_dataparameters[2].Value;
-					defaultrelation_ = (_dataparameters[3].Value == System.DBNull.Value) ? false : (bool)_dataparameters[3].Value;
-					
+					if (_dataparameters[0].Value == System.DBNull.Value) {
+					    iduser_ = 0L;
+                    } else {
+					    iduser_ = (long)_dataparameters[0].Value;
+					}
+					if (_dataparameters[1].Value == System.DBNull.Value) {
+					    idgroup_ = 0L;
+                    } else {
+					    idgroup_ = (long)_dataparameters[1].Value;
+					}
+					if (_dataparameters[2].Value == System.DBNull.Value) {
+					    Relationdate_isNull = true;
+                    } else {
+					    relationdate_ = (DateTime)_dataparameters[2].Value;
+					}
+					if (_dataparameters[3].Value == System.DBNull.Value) {
+					    Defaultrelation_isNull = true;
+                    } else {
+					    defaultrelation_ = (bool)_dataparameters[3].Value;
+					}
+
 					haschanges_ = false;
 					return true;
 				}

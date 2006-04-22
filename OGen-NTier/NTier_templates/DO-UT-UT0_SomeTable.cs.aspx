@@ -75,7 +75,12 @@ namespace <%=aux_metadata.Namespace%>.lib.datalayer.UTs {
 			} catch (Exception e) {
 				Assert.IsTrue(false, "some error trying to instantiate DO_<%=aux_table.Name%>\n---\n{0}\n---", e.Message);
 				return; // no need...
-			}<%
+			}
+			_<%=aux_table.Name.ToLower()%>.Connection.Open();
+			_<%=aux_table.Name.ToLower()%>.Connection.Transaction.Begin();
+
+
+<%
 
 
 
@@ -132,7 +137,13 @@ namespace <%=aux_metadata.Namespace%>.lib.datalayer.UTs {
 
 
 			%>
-			_<%=aux_table.Name.ToLower()%> = null;
+
+
+
+			_<%=aux_table.Name.ToLower()%>.Connection.Transaction.Rollback();
+			_<%=aux_table.Name.ToLower()%>.Connection.Transaction.Terminate();
+			_<%=aux_table.Name.ToLower()%>.Connection.Close();
+			_<%=aux_table.Name.ToLower()%>.Dispose(); _<%=aux_table.Name.ToLower()%> = null;
 		}
 	}
 }<%

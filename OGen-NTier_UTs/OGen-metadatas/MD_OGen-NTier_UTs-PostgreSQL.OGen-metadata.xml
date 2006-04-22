@@ -107,19 +107,33 @@ along with OGen; if not, write to the
       <fields>
         <field name="IDUser" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
         <field name="IDGroup" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
-        <field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="timestamp without time zone" />
-        <field name="Defaultrelation" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="boolean" />
+        <field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="0" type="timestamp without time zone" />
+        <field name="Defaultrelation" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="0" type="boolean" />
       </fields>
-      <searches />
+      <searches>
+        <search name="byUser_Defaultrelation" isRange="True" isExplicitUniqueIndex="False">
+          <searchParameters>
+            <fieldRef tableName="UserGroup" fieldName="IDUser" paramName="IDUser" />
+						<fieldRef tableName="UserGroup" fieldName="Relationdate" paramName="Relationdate" />
+          </searchParameters>
+          <updates>
+            <update name="SomeUpdateTest">
+              <updateParameters>
+                <fieldRef tableName="UserGroup" fieldName="Relationdate" paramName="Relationdate" />
+              </updateParameters>
+            </update>
+          </updates>
+        </search>
+      </searches>
       <updates />
     </table>
     <table name="vUserDefaultGroup" isVirtualTable="True" isConfig="False">
       <fields>
-        <field name="IDUser" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
-        <field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
-        <field name="IDGroup" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
-        <field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
-        <field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="timestamp without time zone" />
+        <field name="IDUser" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="0" type="bigint" />
+        <field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="50" type="character varying" />
+        <field name="IDGroup" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="0" type="bigint" />
+        <field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="50" type="character varying" />
+        <field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="0" type="timestamp without time zone" />
       </fields>
       <searches>
         <search name="all" isRange="True" isExplicitUniqueIndex="False">
@@ -131,11 +145,11 @@ along with OGen; if not, write to the
     </table>
     <table name="vUserGroup" isVirtualTable="True" isConfig="False">
       <fields>
-        <field name="IDUser" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
-        <field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
-        <field name="IDGroup" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="bigint" />
-        <field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" type="character varying" />
-        <field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" type="timestamp without time zone" />
+        <field name="IDUser" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="0" type="bigint" />
+        <field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="50" type="character varying" />
+        <field name="IDGroup" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="0" type="bigint" />
+        <field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="50" type="character varying" />
+        <field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="0" type="timestamp without time zone" />
       </fields>
       <searches />
       <updates />

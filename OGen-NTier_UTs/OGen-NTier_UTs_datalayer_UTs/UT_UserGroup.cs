@@ -33,6 +33,7 @@ using System;
 using System.Data;
 using NUnit.Framework;
 
+using OGen.lib.datalayer;
 using OGen.NTier.UTs.lib.datalayer;
 
 namespace OGen.NTier.UTs.lib.datalayer.UTs {
@@ -40,12 +41,142 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 	public class UT_UserGroup : UT0_UserGroup {
 		public UT_UserGroup() {}
 
-		#region protected Properties...
+		private cDBConnection[] dbconnections_;
+		private string testid_;
+
+		#region public void TestFixtureSetUp();
+		[TestFixtureSetUp]
+		public void TestFixtureSetUp() {
+			testid_ = DateTime.Now.Ticks.ToString();// Guid.NewGuid().ToString();
+			//---
+			eDBServerTypes _dbtype;
+			string[] _dbtypes = OGen.lib.datalayer.utils.DBServerTypes.Names_supportedForGeneration();
+			dbconnections_ = new cDBConnection[_dbtypes.Length];
+			for (int d = 0; d < _dbtypes.Length; d++) {
+				_dbtype 
+					= OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(_dbtypes[d]);
+
+				dbconnections_[d] = new cDBConnection(
+					_dbtype,
+					System.Configuration.ConfigurationSettings.AppSettings[
+						string.Format("DBConnectionstring-{0}", _dbtypes[d])
+					]
+				);
+			}
+
+		}
+		#endregion
+		#region public void TestFixtureTearDown();
+		[TestFixtureTearDown]
+		public void TestFixtureTearDown() {
+			for (int d = 0; d < dbconnections_.Length; d++) {
+				dbconnections_[d].Dispose();
+				dbconnections_[d] = null;
+			}
+		}
 		#endregion
 
+		#region public void UT_NullableFields();
 		[Test]
-		public void UT_someTest2() {
-			Assert.IsTrue(true, "some error!");
+		public void UT_NullableFields() {
+			bool _contraint;
+			long _iduser;
+			long _idgroup;
+
+			for (int c = 0; c < dbconnections_.Length; c++) {
+				dbconnections_[c].Open();
+				dbconnections_[c].Transaction.Begin();
+
+				#region _iduser = new DO_User(dbconnections_[c]).insObject(true);
+				DO_User _user = new DO_User(dbconnections_[c]);
+				_user.Login = testid_;
+				_user.Password = testid_;
+				_iduser = _user.insObject(true, out _contraint);
+				_user.Dispose(); _user = null;
+				#endregion
+				#region _idgroup = new DO_Group(dbconnections_[c]).insObject(true);
+				DO_Group _group = new DO_Group(dbconnections_[c]);
+				_group.Name = testid_;
+				_idgroup = _group.insObject(true);
+				_group.Dispose(); _group = null;
+				#endregion
+
+				DO_UserGroup _usergroup = new DO_UserGroup(dbconnections_[c]);
+				_usergroup.IDUser = _iduser;
+				_usergroup.IDGroup = _idgroup;
+				_usergroup.Relationdate_isNull = true;
+				_usergroup.Defaultrelation_isNull = true;
+				_usergroup.setObject(true);
+
+				#region test1...
+				_usergroup.clrObject();
+				_usergroup.getObject(_iduser, _idgroup);
+				Assert.IsTrue(_usergroup.Relationdate_isNull, "expected true");
+				Assert.IsTrue(_usergroup.Defaultrelation_isNull, "expected true");
+				#endregion
+				#region test2...
+				for (int i = 0; i < 2; i++) { // test both fullmode and not
+					_usergroup.Record.Open_byUser_Defaultrelation(
+						_iduser,
+						null,
+						(i == 0) // test both fullmode and not
+					);
+					while (_usergroup.Record.Read()) {
+						Assert.IsTrue(_usergroup.Relationdate_isNull, "expected true");
+						Assert.IsTrue(_usergroup.Defaultrelation_isNull, "expected true");
+					}
+					_usergroup.Record.Close();
+				}
+				#endregion
+				#region test3...
+				Assert.IsTrue(
+					_usergroup.Record.hasObject_byUser_Defaultrelation(
+						_iduser,
+						_idgroup,
+						_iduser,
+						null
+					)
+				);
+				Assert.AreEqual(
+					1L,
+					_usergroup.Record.Count_byUser_Defaultrelation(
+						_iduser,
+						null
+					)
+				);
+				#endregion
+				#region test4...
+				DateTime _now = DateTime.Now;
+				_usergroup.Record.Update_SomeUpdateTest_byUser_Defaultrelation(
+					_iduser,
+					null,
+					_now
+				);
+
+				Assert.IsTrue(
+					_usergroup.Record.hasObject_byUser_Defaultrelation(
+						_iduser,
+						_idgroup,
+						_iduser,
+						_now
+					)
+				);
+				Assert.AreEqual(
+					1L,
+					_usergroup.Record.Count_byUser_Defaultrelation(
+						_iduser,
+						_now
+					)
+				);
+				#endregion
+
+				_usergroup.Dispose(); _usergroup = null;
+
+				dbconnections_[c].Transaction.Rollback();
+				dbconnections_[c].Transaction.Terminate();
+				dbconnections_[c].Close();
+			}
 		}
+		#endregion
 	}
 }

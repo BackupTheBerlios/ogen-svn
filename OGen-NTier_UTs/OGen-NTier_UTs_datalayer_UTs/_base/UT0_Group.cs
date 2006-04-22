@@ -50,6 +50,11 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 				Assert.IsTrue(false, "some error trying to instantiate DO_Group\n---\n{0}\n---", e.Message);
 				return; // no need...
 			}
+			_group.Connection.Open();
+			_group.Connection.Transaction.Begin();
+
+
+
 			_group.Name = "123";
 			long _idgroup;
 			try {
@@ -75,7 +80,12 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 				Assert.IsTrue(false, "some error trying to delete (delObject)\n---\n{0}\n---", e.Message);
 				return; // no need...
 			}
-			_group = null;
+
+
+			_group.Connection.Transaction.Rollback();
+			_group.Connection.Transaction.Terminate();
+			_group.Connection.Close();
+			_group.Dispose(); _group = null;
 		}
 	}
 }
