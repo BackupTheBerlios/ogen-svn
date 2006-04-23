@@ -78,6 +78,8 @@ namespace OGen.NTier.UTs.test {
 			long _conter = 0L;
 			for (int _compiled = 0; _compiled < 2; _compiled++) {
 				for (int _con = 0; _con < _cons.Length; _con++) {
+					_cons[_con].Open();
+					_cons[_con].Transaction.Begin();
 					for (int _cached = 0; _cached < 2; _cached++) {
 						DO_Config _config = new DO_Config(_cons[_con]);
 						#region _config.setObject();
@@ -203,6 +205,9 @@ namespace OGen.NTier.UTs.test {
 
 						_user.Dispose(); _user = null;
 					}
+					_cons[_con].Transaction.Rollback();
+					_cons[_con].Transaction.Terminate();
+					_cons[_con].Close();
 				}
 			}
 		}

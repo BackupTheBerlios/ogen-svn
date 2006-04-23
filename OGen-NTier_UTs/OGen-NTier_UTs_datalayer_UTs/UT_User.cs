@@ -31,9 +31,12 @@ along with OGen; if not, write to the
 #endregion
 using System;
 using System.Data;
+using System.Reflection;
+
 using NUnit.Framework;
 
 using OGen.lib.datalayer;
+using OGen.NTier.lib.datalayer;
 using OGen.NTier.UTs.lib.datalayer;
 
 namespace OGen.NTier.UTs.lib.datalayer.UTs {
@@ -76,6 +79,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 		}
 		#endregion
 
+		#region public void UT_Constraints();
 		[Test]
 		public void UT_Constraints() {
 			string _testid = DateTime.Now.Ticks.ToString();
@@ -102,5 +106,70 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 				dbconnections_[c].Close();
 			}
 		}
+		#endregion
+		#region public void UT_Reflection_GetProperty();
+		[Test]
+		public void UT_Reflection_GetProperty() {
+			long _initialvalue = 123L;
+			long _replacingvalue = 456L;
+
+			DO_User _user = new DO_User();
+			_user.IDUser = _initialvalue;
+			//---
+			PropertyInfo _iduser = typeof(DO_User).GetProperty("IDUser");
+			//---
+			Assert.AreEqual(_initialvalue, (long)_iduser.GetValue(_user, null));
+			_iduser.SetValue(
+				_user,
+				Convert.ChangeType(
+					_replacingvalue,
+					_iduser.PropertyType
+				),
+				null
+			);
+			Assert.AreEqual(_replacingvalue, (long)_iduser.GetValue(_user, null));
+			//---
+			_user.Dispose(); _user = null;
+
+			#region //oldstuff...
+			//PropertyInfo[] properties = typeof(DO_User).GetProperties(
+			//    BindingFlags.Public |
+			//    BindingFlags.Instance
+			//);
+			//for (int p = 0; p < properties.Length; p++) {
+			//    if (Attribute.IsDefined(
+			//        properties[p],
+			//        typeof(DOPropertyAttribute)
+			//    )) {
+			//        Assert.AreEqual("123", properties[p].GetValue(_user, null).ToString());
+			//        properties[p].SetValue(
+			//            _user,
+			//            Convert.ChangeType(
+			//                456,
+			//                properties[p].PropertyType
+			//            ),
+			//            null
+			//        );
+			//        Assert.AreEqual("456", properties[p].GetValue(_user, null).ToString());
+			//    }
+			//}
+			#endregion
+		}
+		#endregion
+		#region public void UT_Reflection_GetCustomAttribute();
+		[Test]
+		public void UT_Reflection_GetCustomAttribute() {
+			Assert.IsTrue(Attribute.IsDefined(typeof(DO_User).GetProperty("IDUser"), typeof(DOPropertyAttribute)));
+
+			DOPropertyAttribute _att = (DOPropertyAttribute)Attribute.GetCustomAttribute(
+			  typeof(DO_User).GetProperty("IDUser"),
+			  typeof(DOPropertyAttribute),
+			  true
+			);
+			Assert.AreEqual("IDUser", _att.Name);
+			Assert.IsTrue(_att.isPK);
+			Assert.IsTrue(_att.isIdentity);
+		}
+		#endregion
 	}
 }

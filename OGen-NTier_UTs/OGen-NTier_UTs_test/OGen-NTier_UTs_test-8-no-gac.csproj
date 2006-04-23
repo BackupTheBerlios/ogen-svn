@@ -78,6 +78,9 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="HowTos_andFAQ\OGen-NTier__Docs__Contrib_HowTo_List_DataObjects.cs" />
+    <Compile Include="HowTos_andFAQ\OGen-NTier__Docs__Contrib_HowTo_Read_and_Write_to_DataObject_Properties.cs" />
+    <Compile Include="HowTos_andFAQ\OGen-NTier__Docs__Contrib_HowTo_Read_DataObject_Property_Attributes.cs" />
     <Compile Include="MainClass.cs">
       <SubType>Code</SubType>
     </Compile>

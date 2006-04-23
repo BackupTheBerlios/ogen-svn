@@ -2,6 +2,7 @@
   <Contents>
     <File name=".\AssemblyInfo.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
     <File name=".\app.config" subtype="Code" buildaction="Nothing" dependson="" data="" />
+    <File name=".\UT__utils.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
     <File name=".\_base" subtype="Directory" buildaction="Compile" dependson="" data="" />
     <File name=".\_base\UT0_Config.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
     <File name=".\UT_Config.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
