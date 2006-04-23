@@ -30,8 +30,6 @@ along with OGen; if not, write to the
 */
 #endregion
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 using OGen.NTier.lib.datalayer;
 using OGen.NTier.UTs.lib.datalayer;
