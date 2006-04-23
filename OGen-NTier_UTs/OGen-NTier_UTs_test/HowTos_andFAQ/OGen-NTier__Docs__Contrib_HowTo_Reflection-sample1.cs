@@ -43,7 +43,7 @@ namespace OGen.NTier.UTs.test {
 			  true
 			);
 			Console.WriteLine(
-			  "{0}:{1}:{2}:{3}",
+			  "name:{0};\tisPK:{1};\tisIdentity:{2};\tDefaultValue:{3};",
 			  att.Name,
 			  att.isPK,
 			  att.isIdentity,
