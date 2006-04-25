@@ -6,6 +6,9 @@
     <documenters>
         <documenter name="JavaDoc">
             <property name="OutputDirectory" value=".\doc\" />
+            <property name="UseNamespaceDocSummaries" value="True" />
+            <property name="DocumentAttributes" value="True" />
+            <property name="CleanIntermediates" value="True" />
         </documenter>
         <documenter name="LaTeX">
             <property name="OutputDirectory" value=".\doc\" />
