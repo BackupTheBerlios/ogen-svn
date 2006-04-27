@@ -1438,7 +1438,7 @@ WHERE
 		/// <summary>
 		/// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
 		/// </summary>
-		/// <param name="subAppName_in">Table Filter. If your Application is to be hosted at some ASP, which provides you with one DataBase only, and you're using that DataBase for more than one Application. I assume you're using some convention for Table naming like: AP1_Table1, AP1_Table2, AP2_Table1, ... . If so, you can use this parameter to filter Table names for some specific Application, like: AP1 or AP2</param>
+		/// <param name="subAppName_in">Table Filter. If your Application is to be hosted at some ASP, which provides you with one DataBase only, and you're using that DataBase for more than one Application. I assume you're using some convention for Table naming like: AP1_Table1, AP1_Table2, AP2_Table1, ... . Or even if you have several modules sharing same data base. If so, you can use this parameter to filter Table names for some specific Application, like: AP1 or AP2</param>
 		/// <returns>String array, representing a list of Table names</returns>
 		public cDBTable[] getTables(
 			string subAppName_in
