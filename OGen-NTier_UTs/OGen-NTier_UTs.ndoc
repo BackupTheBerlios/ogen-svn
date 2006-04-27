@@ -26,7 +26,7 @@
             <property name="Title" value="An NDoc Documented Class Library" />
         </documenter>
         <documenter name="MSDN">
-            <property name="OutputDirectory" value=".\OGen-NTier_UTs-NDoc\" />
+            <property name="OutputDirectory" value=".\OGen-NTier_UTs-Doc\NDoc\" />
             <property name="HtmlHelpName" value="OGen-NTier_UTs" />
             <property name="Title" value="OGen-NTier_UTs Programmer's Reference" />
             <property name="OutputTarget" value="Web" />

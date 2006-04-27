@@ -33,6 +33,7 @@ OGen-NTier_UTs, OGen-NTier_UTs_datalayer_UTs, OGen.NTier.UTs.lib.datalayer.UTs, 
 OGen-NTier_UTs, OGen-NTier_UTs_test, OGen.NTier.UTs.test, f, f, t, GNU_GPL, f, f
 OGen-NTier_UTs, OGen-NTier_UTs-PostgreSQL, OGen-NTier_UTs-PostgreSQL, f, f, f, GNU_GPL, f, f
 OGen-NTier_UTs, OGen-metadatas, OGen-metadatas, f, f, f, GNU_GPL, f, f
+OGen-NTier_UTs, OGen-NTier_UTs-Doc, OGen-NTier_UTs-Doc, f, f, f, GNU_FDL, t, f
 OGen-Doc, Doc_generator, OGen.Doc.lib.generator, t, f, f, GNU_GPL, f, t
 OGen-Doc, Doc_metadata, OGen.Doc.lib.metadata, t, f, f, GNU_GPL, f, t
 OGen-Doc, Doc_metadata_UTs, OGen.Doc.lib.metadata.UTs, f, f, f, GNU_GPL, f, f

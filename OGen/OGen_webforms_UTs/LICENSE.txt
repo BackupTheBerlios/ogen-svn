@@ -48,5 +48,6 @@ OGen is licensed under various different licenses.
 	* OGen.Doc.test: GNU GPL
 	* OGen-Doc: GNU FDL
 	* OGen-NTier-Doc: GNU FDL
+	* OGen-NTier_UTs-Doc: GNU FDL
 	* OGen-Doc-Doc: GNU FDL
 
