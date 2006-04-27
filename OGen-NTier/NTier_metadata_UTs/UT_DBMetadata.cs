@@ -32,6 +32,7 @@ along with OGen; if not, write to the
 using System;
 using NUnit.Framework;
 
+using OGen.lib.datalayer;
 using OGen.NTier.lib.metadata;
 
 namespace OGen.NTier.lib.metadata.UTs {
@@ -50,10 +51,14 @@ namespace OGen.NTier.lib.metadata.UTs {
 		}
 		#endregion
 
-		[Test]
-		public void UT_SomeTest() {
-			// ToDos: here!
-			Assert.IsTrue(true, "some test");
-		}
+		//[Test]
+		//public void UT_cDBMetadata_DB_ToString__override_test() {
+		//    eDBServerTypes _dbservertype = eDBServerTypes.PostgreSQL;
+		//    string _configmode = "DEBUG";
+
+		//    cDBMetadata _dbmetadata = new cDBMetadata();
+		//    _dbmetadata.DBs.Add(_dbservertype, _configmode, false);
+		//    Assert.AreEqual(string.Format("{0}-{1}", _dbservertype.ToString(), _configmode), _dbmetadata.DBs[0].ToString());
+		//}
 	}
 }

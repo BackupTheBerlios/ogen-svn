@@ -117,6 +117,8 @@
     <Compile Include="ClaSSe\DBs\DB\cDBMetadata_DB.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ClaSSe\DBs\DB\Connections\cDBMetadata_DB_Connections.cs" />
+    <Compile Include="ClaSSe\DBs\DB\Connections\Connection\cDBMetadata_DB_Connection.cs" />
     <Compile Include="ClaSSe\DBs\iDBMetadata_DBs.cs">
       <SubType>Code</SubType>
     </Compile>

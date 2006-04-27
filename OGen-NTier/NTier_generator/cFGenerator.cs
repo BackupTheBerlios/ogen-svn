@@ -30,6 +30,7 @@ along with OGen; if not, write to the
 */
 #endregion
 using System;
+using System.Collections;
 using System.IO;
 using OGen.lib.config;
 using OGen.lib.templates;
@@ -84,6 +85,8 @@ namespace OGen.NTier.lib.generator {
 			cDBMetadata_DB[] dbs_in, 
 			cDBMetadata.dLoadState_fromDB notifyBack_in
 		) {
+			int _justadded;
+
 			if (notifyBack_in != null) notifyBack_in("creating...", true);
 			#region cDBMetadata _metadata_temp = new cDBMetadata(); ...;
 			cDBMetadata _metadata_temp = new cDBMetadata();
@@ -91,18 +94,19 @@ namespace OGen.NTier.lib.generator {
 			_metadata_temp.Namespace = namespace_in;
 			_metadata_temp.DBs.Clear();
 			for (int d = 0; d < dbs_in.Length; d++) {
-				int _added = _metadata_temp.DBs.Add(
+				_justadded = _metadata_temp.DBs.Add(
 					dbs_in[d].DBServerType, 
-					dbs_in[d].ConfigMode, 
 					false
 				);
-				_metadata_temp.DBs[_added].Connectionstring
-					= dbs_in[d].Connectionstring;
+				_metadata_temp.DBs[_justadded].CopyFrom(
+					dbs_in[d]
+				);
 
 				if (d == 0) {
+					// ToDos: here! document this behaviour and describe it throught unit testing
 					// first item in the array, represents default db connection
-					_metadata_temp.DBs.Default = 
-						_metadata_temp.DBs[_added];
+					_metadata_temp.Default_DBServerType = _metadata_temp.DBs[_justadded].DBServerType;
+					_metadata_temp.Default_ConfigMode = _metadata_temp.DBs[_justadded].Connections[0].ConfigMode;
 				}
 			}
 			_metadata_temp.GUIDDatalayer = System.Guid.NewGuid().ToString("D").ToUpper();
@@ -165,8 +169,8 @@ namespace OGen.NTier.lib.generator {
 						notifyBack_in
 					) 
 					: null, 
-				_metadata_temp.DBs.Default.DBServerType, 
-				_metadata_temp.DBs.Default.Connectionstring, 
+				_metadata_temp.Default_DBServerType, 
+				_metadata_temp.Default_Connectionstring(), 
 				_metadata_temp.SubAppName
 			);
 			#endregion
@@ -216,20 +220,40 @@ namespace OGen.NTier.lib.generator {
 				"{0}{1}OGen-metadatas{1}MD0_{2}-{3}.OGen-metadata.xml", 
 				/*00*/ _outputDir, 
 				/*01*/ Path.DirectorySeparatorChar, 
-				/*02*/ metadata_.ApplicationName, 
-				/*03*/ metadata_.DBs.Default.DBServerType.ToString()
+				/*02*/ metadata_.ApplicationName,
+				/*03*/ metadata_.Default_DBServerType.ToString()
 			);
 			#endregion
 			if (notifyBase_in != null) notifyBase_in("generating...", true);
 			metadata_.SaveState_toFile(_metadata0);
 
+
+
+
+ArrayList _dbservertypes = new ArrayList(metadata_.DBs.Count);
+Hashtable _connectionstrings = new Hashtable(/*metadata_.DBs.Count*/);
+for (int _dbservertype = 0; _dbservertype < metadata_.DBs.Count; _dbservertype++) {
+	_dbservertypes.Add(
+		metadata_.DBs[_dbservertype].DBServerType
+	);
+	for (int _con = 0; _con < metadata_.DBs[_dbservertype].Connections.Count; _con++) {
+		_connectionstrings.Add(
+		    metadata_.DBs[_dbservertype].DBServerType, 
+		    metadata_.DBs[_dbservertype].Connections[_con].Connectionstring
+		); // ToDos: here! i'm replacing added connectionstrings, in case dbservertype repeats!
+	}
+}
+
+
+
+
 			new cGenerator(
 				filename_, 
 				cDBMetadata.root4xml, 
 				ConfigurationSettingsBinder.Read("Templates"), 
-				cTemplates.root4xml, 
-				metadata_.DBs.Default.DBServerType, 
-				metadata_.DBs.Default.Connectionstring, 
+				cTemplates.root4xml,
+				_dbservertypes, //metadata_.Default_DBServerType, 
+				_connectionstrings, //metadata_.Default_Connectionstring(), 
 				_outputDir
 			).Build(
 				notifyBase_in, 

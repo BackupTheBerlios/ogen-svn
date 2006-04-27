@@ -53,8 +53,9 @@ namespace OGen.lib.generator {
 			xmlMetadataRoot_in, 
 			xmlTemplatesFile_in, 
 			xmlTemplatesRoot_in, 
-			eDBServerTypes.invalid, 
-			string.Empty, 
+// ToDos: here! check this
+null, //eDBServerTypes.invalid, 
+null, //string.Empty, 
 			outputDir_in
 		) {}
 
@@ -73,8 +74,8 @@ namespace OGen.lib.generator {
 			string					xmlMetadataRoot_in, 
 			string					xmlTemplatesFile_in, 
 			string					xmlTemplatesRoot_in, 
-			eDBServerTypes			connectionType_in, 
-			string					connectionString_in, 
+			ArrayList				connectionTypes_in, 
+			Hashtable				connectionString_in, 
 			string					outputDir_in
 		) {
 			//---
@@ -82,7 +83,7 @@ namespace OGen.lib.generator {
 			xmlmetadataroot_		= xmlMetadataRoot_in;
 			xmltemplatesfileuri_	= new Uri(xmlTemplatesFile_in);
 			xmltemplatesroot_		= xmlTemplatesRoot_in;
-			connectiontype_			= connectionType_in;
+			connectiontypes_		= connectionTypes_in;
 			connectionstring_		= connectionString_in;
 			outputdir_				= outputDir_in;
 			//---
@@ -92,7 +93,7 @@ namespace OGen.lib.generator {
 		#region private Fields/Properties...
 		private Uri xmltemplatesfileuri_;
 		private string xmltemplatesdir_;
-		private cDBConnection connection_;
+		private Hashtable connection_;
 		private iClaSSe metadata_;
 		private cTemplates templates_;
 		private int template_;
@@ -117,15 +118,15 @@ namespace OGen.lib.generator {
 			get { return xmltemplatesroot_; }
 		}
 		#endregion
-		#region eDBServerTypes ConnectionType { get; }
-		private eDBServerTypes connectiontype_;
-		public eDBServerTypes ConnectionType {
-			get { return connectiontype_; }
+		#region ArrayList ConnectionTypes { get; }
+		private ArrayList connectiontypes_;
+		public ArrayList ConnectionTypes {
+			get { return connectiontypes_; }
 		}
 		#endregion
-		#region string ConnectionString { get; }
-		private string connectionstring_;
-		public string ConnectionString {
+		#region Hashtable ConnectionString { get; }
+		private Hashtable connectionstring_;
+		public Hashtable ConnectionString {
 			get { return connectionstring_; }
 		}
 		#endregion
@@ -225,6 +226,7 @@ namespace OGen.lib.generator {
 		private void notifyme(string message_in) {
 			// ToDos: here!
 			Exception notifyme_Exception = new Exception("ToDos: here!");
+			cDBConnection _con = null;
 
 			#region int _verifiedConditions = ...;
 			int _verifiedConditions = 0;
@@ -253,24 +255,27 @@ namespace OGen.lib.generator {
 				#endregion
 
 				for (int o = 0; o < templates_[template_].Outputs.Count; o++) {
-					#region if (connectiontype_ != eDBServerTypes. ...) continue;
+					#region if (!connectiontypes_.Contains(eDBServerTypes. ...)) continue;
 					switch (templates_[template_].Outputs[o].Type) {
 						case cOutput.eType.PostgreSQL_Function: 
 						case cOutput.eType.PostgreSQL_StoredProcedure: 
 						case cOutput.eType.PostgreSQL_View: {
-							if (connectiontype_ != eDBServerTypes.PostgreSQL) continue;
+							if (!connectiontypes_.Contains(eDBServerTypes.PostgreSQL)) continue;
+							_con = (cDBConnection)connection_[eDBServerTypes.PostgreSQL];
 							break;
 						}
 						case cOutput.eType.MySQL_Function: 
 						case cOutput.eType.MySQL_StoredProcedure: 
 						case cOutput.eType.MySQL_View: {
-							if (connectiontype_ != eDBServerTypes.MySQL) continue;
+							if (!connectiontypes_.Contains(eDBServerTypes.MySQL)) continue;
+							_con = (cDBConnection)connection_[eDBServerTypes.MySQL];
 							break;
 						}
 						case cOutput.eType.SQLServer_Function: 
 						case cOutput.eType.SQLServer_StoredProcedure: 
 						case cOutput.eType.SQLServer_View: {
-							if (connectiontype_ != eDBServerTypes.SQLServer) continue;
+							if (!connectiontypes_.Contains(eDBServerTypes.SQLServer)) continue;
+							_con = (cDBConnection)connection_[eDBServerTypes.SQLServer];
 							break;
 						}
 					}
@@ -289,19 +294,20 @@ namespace OGen.lib.generator {
 						case cOutput.eType.MySQL_Function: 
 						case cOutput.eType.PostgreSQL_Function: 
 						case cOutput.eType.SQLServer_Function: {
-							_exists = connection_.SQLFunction_exists(_ouputTo);
+							_exists = _con.SQLFunction_exists(_ouputTo);
 							break;
 						}
+
 						case cOutput.eType.MySQL_StoredProcedure: 
 						case cOutput.eType.PostgreSQL_StoredProcedure: 
 						case cOutput.eType.SQLServer_StoredProcedure: {
-							_exists = connection_.SQLStoredProcedure_exists(_ouputTo);
+							_exists = _con.SQLStoredProcedure_exists(_ouputTo);
 							break;
 						}
 						case cOutput.eType.MySQL_View: 
 						case cOutput.eType.PostgreSQL_View: 
 						case cOutput.eType.SQLServer_View: {
-							_exists = connection_.SQLView_exists(_ouputTo);
+							_exists = _con.SQLView_exists(_ouputTo);
 							break;
 						}
 						default: {
@@ -419,17 +425,17 @@ namespace OGen.lib.generator {
 									switch (templates_[template_].Outputs[o].Type) {
 										case cOutput.eType.MySQL_Function:
 										case cOutput.eType.SQLServer_Function: {
-											connection_.SQLFunction_delete(_ouputTo);
+											_con.SQLFunction_delete(_ouputTo);
 											break;
 										}
 										case cOutput.eType.MySQL_StoredProcedure: 
 										case cOutput.eType.SQLServer_StoredProcedure: {
-											connection_.SQLStoredProcedure_delete(_ouputTo);
+											_con.SQLStoredProcedure_delete(_ouputTo);
 											break;
 										}
 										case cOutput.eType.MySQL_View: 
 										case cOutput.eType.SQLServer_View: {
-											connection_.SQLView_delete(_ouputTo);
+											_con.SQLView_delete(_ouputTo);
 											break;
 										}
 										case cOutput.eType.PostgreSQL_Function: 
@@ -445,7 +451,7 @@ namespace OGen.lib.generator {
 									}
 								}
 								#endregion
-								connection_.Execute_SQLQuery(_parsedOutput);
+								_con.Execute_SQLQuery(_parsedOutput);
 								break;
 							}
 							default: {
@@ -482,17 +488,15 @@ namespace OGen.lib.generator {
 			}
 
 			#region connection_ = ...;
-			if (
-				(connectiontype_ != eDBServerTypes.invalid)
-				&&
-				(connectionstring_.Trim() != string.Empty)
-			) {
-				connection_ = new cDBConnection(
-					connectiontype_,
-					connectionstring_
+			connection_ = new Hashtable();
+			for (int _dbtype = 0; _dbtype < connectiontypes_.Count; _dbtype++) {
+				connection_.Add(
+					(eDBServerTypes)connectiontypes_[_dbtype], 
+					new cDBConnection(
+						(eDBServerTypes)connectiontypes_[_dbtype],
+						(string)connectionstring_[_dbtype]
+					)
 				);
-			} else {
-				connection_ = null;
 			}
 			#endregion
 
@@ -589,9 +593,10 @@ namespace OGen.lib.generator {
 			}
 			#endregion
 
-			if (connection_ != null) {
-				connection_.Dispose(); connection_ = null;
+			for (int _dbtype = 0; _dbtype < connectiontypes_.Count; _dbtype++) {
+				((cDBConnection)connection_[(eDBServerTypes)connectiontypes_[_dbtype]]).Dispose();
 			}
+			connection_ = null;
 		}
 		#endregion
 		public void Build(

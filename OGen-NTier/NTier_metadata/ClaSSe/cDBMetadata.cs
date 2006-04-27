@@ -158,9 +158,10 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 		#region internal eDBServerTypes default_dbservertype_ { get; set; }
 		internal eDBServerTypes default_dbservertype_;
-		//public  eDBServerTypes Default_DBServerType {
-		//	get { return default_dbservertype_; }
-		//}
+		public  eDBServerTypes Default_DBServerType {
+			get { return default_dbservertype_; }
+			set { default_dbservertype_ = value; }
+		}
 
 		[ClaSSPropertyAttribute("default_DBServerType", ClaSSPropertyAttribute.eType.standard, true)]
 		private string default_dbservertype_reflection {
@@ -170,9 +171,10 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 		#region internal string default_configmode_ { get; set; }
 		internal string default_configmode_;
-		//public  string Default_ConfigMode {
-		//	get { return default_configmode_; }
-		//}
+		public  string Default_ConfigMode {
+			get { return default_configmode_; }
+			set { default_configmode_ = value; }
+		}
 
 		[ClaSSPropertyAttribute("default_ConfigMode", ClaSSPropertyAttribute.eType.standard, true)]
 		private string default_configmode_reflection {
@@ -316,16 +318,23 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 
 		//#region Methods...
+		#region public string Default_Connectionstring();
+		public string Default_Connectionstring() {
+			return DBs[Default_DBServerType].Connections[Default_ConfigMode].Connectionstring;
+		}
+		#endregion
 		#region public string[] ConfigModes();
 		public string[] ConfigModes() {
 			ArrayList _configmodes = new ArrayList();
 			for (int d = 0; d < dbs_.Count; d++) {
-				if (!_configmodes.Contains(
-					dbs_[d].ConfigMode
-				)) {
-					_configmodes.Add(
-						dbs_[d].ConfigMode
-					);
+				for (int c = 0; c < dbs_[d].Connections.Count; c++) {
+					if (!_configmodes.Contains(
+						dbs_[d].Connections[c].ConfigMode
+					)) {
+						_configmodes.Add(
+							dbs_[d].Connections[c].ConfigMode
+						);
+					}
 				}
 			}
 			return (string[])_configmodes.ToArray(typeof(string));

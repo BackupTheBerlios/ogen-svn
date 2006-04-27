@@ -19,13 +19,13 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License 
 along with OGen; if not, write to the
 
-	Free Software Foundation, Inc., 
-	59 Temple Place, Suite 330, 
-	Boston, MA 02111-1307 USA 
+    Free Software Foundation, Inc., 
+    59 Temple Place, Suite 330, 
+    Boston, MA 02111-1307 USA 
 
-							- or -
+                            - or -
 
-	http://www.fsf.org/licensing/licenses/gpl.txt
+    http://www.fsf.org/licensing/licenses/gpl.txt
 
 */
 #endregion
@@ -36,18 +36,15 @@ using OGen.lib.collections;
 using OGen.lib.datalayer;
 
 namespace OGen.NTier.lib.metadata {
-	public class cDBMetadata_DBs : cClaSSe, iDBMetadata_DBs {
-		#region public cDBMetadata_DBs(...);
-		public cDBMetadata_DBs(
-			iClaSSe aggregateloopback_ref_in, 
-			cDBMetadata root_ref_in
-		) : base (
+	public class cDBMetadata_DB_Connections : cClaSSe {
+		#region public cDBMetadata_DB_Connections(...);
+		public cDBMetadata_DB_Connections(
+			iClaSSe aggregateloopback_ref_in
+		) : base(
 			aggregateloopback_ref_in
 		) {
-			root_ref_ = root_ref_in;
-
 			//#region ClaSSe...
-			dbs_ = new ArrayList();
+			connections_ = new ArrayList();
 			//#endregion
 		}
 		#endregion
@@ -56,11 +53,11 @@ namespace OGen.NTier.lib.metadata {
 		#region public override object Property_new(string name_in);
 		public override object Property_new(string name_in) {
 			switch (name_in) {
-				case "db":
-					return new cDBMetadata_DB(this, eDBServerTypes.invalid);
+				case "connection":
+					return new cDBMetadata_DB_Connection(this, false, string.Empty);
 				default:
 					throw new Exception(string.Format(
-						"{0}.{1}.Property_new(): - invalid Name: {2}", 
+						"{0}.{1}.Property_new(): - invalid Name: {2}",
 						this.GetType().Namespace,
 						this.GetType().Name,
 						name_in
@@ -74,7 +71,7 @@ namespace OGen.NTier.lib.metadata {
 			get {
 				if (properties__ == null) {
 					InitializeStaticFields(
-						ref properties__, 
+						ref properties__,
 						ref attributes__
 					);
 				}
@@ -88,7 +85,7 @@ namespace OGen.NTier.lib.metadata {
 			get {
 				if (attributes__ == null) {
 					InitializeStaticFields(
-						ref properties__, 
+						ref properties__,
 						ref attributes__
 					);
 				}
@@ -99,40 +96,40 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 
 		#region Properties - ClaSSe...
-		#region private ArrayList dbs_ { get; set; }
-		private ArrayList dbs_;
+		#region private ArrayList connections_ { get; set; }
+		private ArrayList connections_;
 
-		[ClaSSPropertyAttribute("db", ClaSSPropertyAttribute.eType.aggregate_collection, true)]
-		private ArrayList dbs_reflection {
-			get { return dbs_; }
-			set { dbs_ = value; }
+		[ClaSSPropertyAttribute("connection", ClaSSPropertyAttribute.eType.aggregate_collection, true)]
+		private ArrayList connections_reflection {
+			get { return connections_; }
+			set { connections_ = value; }
 		}
 		#endregion
 		#endregion
 		#region Properties...
-		#region public cDBMetadata Root_ref;
-		private cDBMetadata root_ref_;
-		public cDBMetadata Root_ref {
-			get { return root_ref_; }
-		}
-		#endregion
+		//#region public cDBMetadata Root_ref;
+		//private cDBMetadata root_ref_;
+		//public cDBMetadata Root_ref {
+		//    get { return root_ref_; }
+		//}
+		//#endregion
 		//---
 		#region public int Count { get; }
 		public int Count {
-			get { return dbs_.Count; }
+			get { return connections_.Count; }
 		}
 		#endregion
-		#region public new cDBMetadata_DB this[...];
-		public cDBMetadata_DB this[int index_in] {
+		#region public new cDBMetadata_DB_Connection this[...];
+		public cDBMetadata_DB_Connection this[int index_in] {
 			get {
-				return (cDBMetadata_DB)dbs_[index_in];
+				return (cDBMetadata_DB_Connection)connections_[index_in];
 			}
 		}
-		public cDBMetadata_DB this[eDBServerTypes dbservertype_in] {
+		public cDBMetadata_DB_Connection this[string configMode_in] {
 			get {
-				int _ti = Search(dbservertype_in);
+				int _ti = Search(configMode_in);
 				return (_ti >= 0) ?
-					(cDBMetadata_DB)dbs_[_ti] :
+					(cDBMetadata_DB_Connection)connections_[_ti] :
 					null;
 			}
 		}
@@ -142,48 +139,50 @@ namespace OGen.NTier.lib.metadata {
 		#region Methods...
 		#region public void Clear(...);
 		public void Clear() {
-			dbs_.Clear();
+			connections_.Clear();
 		}
 		#endregion
 		#region public int Add(...)
-		public int Add(eDBServerTypes dbservertype_in, bool verifyExistenz_in) {
+		public int Add(bool generateSQL_in, string configMode_in, bool verifyExistenz_in) {
 			int _ti;
 
 			if (verifyExistenz_in) {
-				_ti = Search(dbservertype_in);
+				_ti = Search(configMode_in);
 				if (_ti != -1)
 					return _ti;
 			}
 
-			_ti = dbs_.Add(
-				new cDBMetadata_DB(
+			_ti = connections_.Add(
+				new cDBMetadata_DB_Connection(
 					this, 
-					dbservertype_in
+					generateSQL_in, 
+					configMode_in
 				)
 			);
 			return _ti; // returns it's position
 		}
 		#endregion
 		#region public int Search(...)
-		public int Search(eDBServerTypes dbservertype_in) {
-			for (int t = 0; t < dbs_.Count; t++)
-				if (((cDBMetadata_DB)dbs_[t]).DBServerType == dbservertype_in) // already exists!
+		public int Search(string configMode_in) {
+			for (int t = 0; t < connections_.Count; t++)
+				if (((cDBMetadata_DB_Connection)connections_[t]).ConfigMode == configMode_in) // already exists!
 					return t; // returns it's position
 
 			return -1;
 		}
 		#endregion
-		#region public void CopyFrom(...);
-		public void CopyFrom(iDBMetadata_DBs dbMetadata_DBs_in) {
+		#region public void CopyFrom(cDBMetadata_DB_Connections dbMetadata_DB_Connections_in);
+		public void CopyFrom(cDBMetadata_DB_Connections dbMetadata_DB_Connections_in) {
 			Clear();
 
 			int _justadded;
-			for (int d = 0; d < dbMetadata_DBs_in.Count; d++) {
+			for (int c = 0; c < dbMetadata_DB_Connections_in.Count; c++) {
 				_justadded = Add(
-				    dbMetadata_DBs_in[d].DBServerType, 
-				    true
+					dbMetadata_DB_Connections_in[c].GenerateSQL,
+					dbMetadata_DB_Connections_in[c].ConfigMode,
+					true
 				);
-				this[_justadded].CopyFrom(dbMetadata_DBs_in[d]);
+				this[_justadded].CopyFrom(dbMetadata_DB_Connections_in[c]);
 			}
 		}
 		#endregion

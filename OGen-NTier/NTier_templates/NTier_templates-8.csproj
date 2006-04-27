@@ -138,7 +138,9 @@
     <Content Include="BO-SomeApplication_businesslayer.cmbx.aspx" />
     <Content Include="BO-SomeApplication_businesslayer.prjx.aspx" />
     <Content Include="BO-UT-SomeApplication_businesslayer_UTs-7.1.csproj.aspx" />
-    <Content Include="BO-UT-SomeApplication_businesslayer_UTs-8.csproj.aspx" />
+    <Content Include="BO-UT-SomeApplication_businesslayer_UTs-8.csproj.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="BO-UT-SomeApplication_businesslayer_UTs.cmbx.aspx" />
     <Content Include="BO-UT-SomeApplication_businesslayer_UTs.prjx.aspx" />
     <Content Include="BO-UT-SomeNamespace.lib.businesslayer.UTs.nunit.aspx" />

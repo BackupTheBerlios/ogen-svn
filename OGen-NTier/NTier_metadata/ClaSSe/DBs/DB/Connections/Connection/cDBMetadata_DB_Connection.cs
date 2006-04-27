@@ -36,18 +36,19 @@ using OGen.lib.collections;
 using OGen.lib.datalayer;
 
 namespace OGen.NTier.lib.metadata {
-	public class cDBMetadata_DB : cClaSSe {
-		#region public cDBMetadata_DB(...);
-		public cDBMetadata_DB(
-			iClaSSe aggregateloopback_ref_in, 
-			eDBServerTypes dbServerType_in
+	public class cDBMetadata_DB_Connection : cClaSSe {
+		#region public cDBMetadata_DB_Connection(...);
+		public cDBMetadata_DB_Connection(
+			iClaSSe aggregateloopback_ref_in,
+			bool generateSQL_in, 
+			string configMode_in
 		) : base (
 			aggregateloopback_ref_in
 		) {
 			//#region ClaSSe...
-			DBServerType = dbServerType_in;
-			//---
-			connections_ = new cDBMetadata_DB_Connections(this);
+			GenerateSQL = generateSQL_in;
+			ConfigMode = configMode_in;
+			Connectionstring = string.Empty;
 			//#endregion
 		}
 		#endregion
@@ -95,42 +96,56 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 
 		#region Properties - ClaSSe...
-		#region public eDBServerTypes DBServerType { get; set; }
-		private eDBServerTypes dbservertype_;
-		public eDBServerTypes DBServerType {
-			get { return dbservertype_; }
-			set { dbservertype_ = value; }
+		#region public bool GenerateSQL { get; set; }
+		private bool generatesql_;
+		public bool GenerateSQL {
+			get { return generatesql_; }
+			set { generatesql_ = value; }
 		}
 
-		[ClaSSPropertyAttribute("dbServerType", ClaSSPropertyAttribute.eType.standard, true)]
-		private string dbservertype_reflection {
-			get { return dbservertype_.ToString(); }
-			set { dbservertype_ = OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(value); }
+		[ClaSSPropertyAttribute("generateSQL", ClaSSPropertyAttribute.eType.standard, true)]
+		private string generatesql_reflection {
+			get { return generatesql_.ToString(); }
+			set { generatesql_ = bool.Parse(value); }
 		}
 		#endregion
-		//---
-		#region private cDBMetadata_DB_Connections connections_ { get; set; }
-		private cDBMetadata_DB_Connections connections_;
+		#region public string ConfigMode { get; set; }
+		private string configmode_;
 
-		[ClaSSPropertyAttribute("connections", ClaSSPropertyAttribute.eType.aggregate, true)]
-		public cDBMetadata_DB_Connections Connections {
-			get { return connections_; }
+		[ClaSSPropertyAttribute("configMode", ClaSSPropertyAttribute.eType.standard, true)]
+		public string ConfigMode {
+			get { return configmode_; }
+			set { configmode_ = value; }
+		}
+		#endregion
+		#region public string Connectionstring { get; set; }
+		private string connectionstring_;
+
+		[ClaSSPropertyAttribute("connectionstring", ClaSSPropertyAttribute.eType.standard, true)]
+		public string Connectionstring {
+			get { return connectionstring_; }
+			set { connectionstring_ = value; }
 		}
 		#endregion
 		#endregion
 		#region Properties...
 		#endregion
 
-		#region Methods...
-		public void CopyFrom(cDBMetadata_DB dbMetadata_DB_in) {
-			dbservertype_ = dbMetadata_DB_in.dbservertype_;
-			connections_.CopyFrom(dbMetadata_DB_in.connections_);
-		}
-		#region public override string ToString();
-		public override string ToString() {
-			throw new Exception("//ToDos: here!");
+		#region public Methods...
+		#region public void CopyFrom(cDBMetadata_DB_Connection dbMetadata_DB_Connection_in);
+		public void CopyFrom(cDBMetadata_DB_Connection dbMetadata_DB_Connection_in) {
+			generatesql_ = dbMetadata_DB_Connection_in.generatesql_;
+			configmode_ = dbMetadata_DB_Connection_in.configmode_;
+			connectionstring_ = dbMetadata_DB_Connection_in.connectionstring_;
 		}
 		#endregion
 		#endregion
 	}
 }
+#region //oldstuff...
+//#region public override string ToString();
+//public override string ToString() {
+//    return string.Format("{0}-{1}", DBServerType.ToString(), ConfigMode);
+//}
+//#endregion
+#endregion

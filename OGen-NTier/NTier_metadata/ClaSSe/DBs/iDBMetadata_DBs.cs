@@ -39,13 +39,11 @@ namespace OGen.NTier.lib.metadata {
 		cDBMetadata Root_ref { get; }
 
 		cDBMetadata_DB this[int index_in] { get; }
-		cDBMetadata_DB this[eDBServerTypes dbservertype_in, string configMode_in] { get; }
+		cDBMetadata_DB this[eDBServerTypes dbservertype_in] { get; }
 		int Count { get; }
 
-		cDBMetadata_DB Default { get; set; }
-
-		int Add(eDBServerTypes dbservertype_in, string configMode_in, bool verifyExistenz_in);
-		int Search(eDBServerTypes dbservertype_in, string configMode_in);
+		int Add(eDBServerTypes dbservertype_in, bool verifyExistenz_in);
+		int Search(eDBServerTypes dbservertype_in);
 		void Clear();
 
 		void CopyFrom(iDBMetadata_DBs dbMetadata_DBs_in);
