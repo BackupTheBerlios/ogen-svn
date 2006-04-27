@@ -646,5 +646,23 @@ namespace OGen.lib.datalayer.UTs {
 			}
 		}
 		#endregion
+//		#region public void UT_Connection_SQLFunction_exists_and_delete();
+//		[Test]
+//		public void UT_Connection_SQLFunction_exists_and_delete() {
+//			for (int c = 0; c < dbconnections_.Length; c++) {
+//				switch (dbconnections_[c].DBServerType) {
+//					case eDBServerTypes.PostgreSQL: {
+//						break;
+//					}
+//					case eDBServerTypes.SQLServer: {
+//						break;
+//					}
+//					default: {
+//						throw new Exception(string.Format("tests need to be made to support db server type: '{0}'", dbconnections_[c].DBServerType));
+//					}
+//				}
+//			}
+//		}
+//		#endregion
 	}
 }
