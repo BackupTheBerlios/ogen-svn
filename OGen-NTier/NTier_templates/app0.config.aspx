@@ -35,17 +35,16 @@ string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryStri
 #region varaux...
 cDBMetadata aux_metadata = new cDBMetadata();
 aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
-
-cDBMetadata_DB aux_db;
 #endregion
 //-----------------------------------------------------------------------------------------
 %><configuration>
-	<appSettings><%
-		aux_db = aux_metadata.DBs.Default;%>
-		<add key="DBServerType" value="<%=aux_db.DBServerType.ToString()%>" />
-<%		for (int d = 0; d < aux_metadata.DBs.Count; d++) {
-			aux_db = aux_metadata.DBs[d];%>
-		<add key="<%=aux_metadata.ApplicationName%>-<%=aux_db.DBServerType.ToString()%>-<%=aux_db.ConfigMode%>" value="<%=aux_db.Connectionstring%>"/><%
+	<appSettings>
+		<add key="DBServerType" value="<%=aux_metadata.Default_DBServerType.ToString()%>" />
+<%
+		for (int d = 0; d < aux_metadata.DBs.Count; d++) {
+			for (int c = 0; c < aux_metadata.DBs[d].Connections.Count; c++) {%>
+		<add key="<%=aux_metadata.ApplicationName%>-<%=aux_metadata.DBs[d].DBServerType.ToString()%>-<%=aux_metadata.DBs[d].Connections[c].ConfigMode%>" value="<%=aux_metadata.DBs[d].Connections[c].Connectionstring%>"/><%
+			}
 		}%>
 	</appSettings>
 </configuration><%

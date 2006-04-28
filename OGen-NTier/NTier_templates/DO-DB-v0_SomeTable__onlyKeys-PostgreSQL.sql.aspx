@@ -29,26 +29,28 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
-string arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["TableName"]);
+string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["TableName"]);
 #endregion
 
 #region varaux...
-cDBMetadata aux_metadata = new cDBMetadata();
-aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
-cDBMetadata_Table aux_table = aux_metadata.Tables[arg_TableName];
+eDBServerTypes _aux_dbservertype = eDBServerTypes.PostgreSQL;
 
-cDBMetadata_Table_Field aux_field;
+cDBMetadata _aux_metadata = new cDBMetadata();
+_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
+cDBMetadata_Table _aux_table = _aux_metadata.Tables[_arg_TableName];
+
+cDBMetadata_Table_Field _aux_field;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE OR REPLACE VIEW "v0_<%=aux_table.Name%>__onlyKeys"
+%>CREATE OR REPLACE VIEW "v0_<%=_aux_table.Name%>__onlyKeys"
 AS
 	SELECT<%
-		for (int k = 0; k < aux_table.Fields_onlyPK.Count; k++) {
-			aux_field = aux_table.Fields_onlyPK[k];%>
-		"<%=aux_field.Name%>"<%=(k == aux_table.Fields_onlyPK.Count - 1) ? "" : ", "%><%
+		for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
+			_aux_field = _aux_table.Fields_onlyPK[k];%>
+		"<%=_aux_field.Name%>"<%=(k == _aux_table.Fields_onlyPK.Count - 1) ? "" : ", "%><%
 		}%>
-	FROM "<%=aux_table.Name%>"
+	FROM "<%=_aux_table.Name%>"
 ;
 <%
 //-----------------------------------------------------------------------------------------

@@ -34,7 +34,7 @@ using System.Data;
 
 using OGen.lib.datalayer;
 
-namespace OGen.UTs.test {
+namespace OGen.UTs.howtos {
 	class HowTo_Execute_SQLFunction_returnDataTable {
 		public HowTo_Execute_SQLFunction_returnDataTable() {
 			long _idgroup_search = 1L;

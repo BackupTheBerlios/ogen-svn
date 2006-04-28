@@ -38,7 +38,6 @@ using OGen.lib.templates;
 using OGen.lib.datalayer;
 using OGen.lib.parser;
 
-
 namespace OGen.lib.generator {
 	public class cGenerator {
 		#region public cGenerator(...);
@@ -53,9 +52,7 @@ namespace OGen.lib.generator {
 			xmlMetadataRoot_in, 
 			xmlTemplatesFile_in, 
 			xmlTemplatesRoot_in, 
-// ToDos: here! check this
-null, //eDBServerTypes.invalid, 
-null, //string.Empty, 
+			new DBConnectionstrings(), 
 			outputDir_in
 		) {}
 
@@ -74,8 +71,7 @@ null, //string.Empty,
 			string					xmlMetadataRoot_in, 
 			string					xmlTemplatesFile_in, 
 			string					xmlTemplatesRoot_in, 
-			ArrayList				connectionTypes_in, 
-			Hashtable				connectionString_in, 
+			DBConnectionstrings		dbconnectionstrings_in, 
 			string					outputDir_in
 		) {
 			//---
@@ -83,8 +79,7 @@ null, //string.Empty,
 			xmlmetadataroot_		= xmlMetadataRoot_in;
 			xmltemplatesfileuri_	= new Uri(xmlTemplatesFile_in);
 			xmltemplatesroot_		= xmlTemplatesRoot_in;
-			connectiontypes_		= connectionTypes_in;
-			connectionstring_		= connectionString_in;
+			dbconnectionstrings_	= dbconnectionstrings_in;
 			outputdir_				= outputDir_in;
 			//---
 		}
@@ -93,7 +88,6 @@ null, //string.Empty,
 		#region private Fields/Properties...
 		private Uri xmltemplatesfileuri_;
 		private string xmltemplatesdir_;
-		private Hashtable connection_;
 		private iClaSSe metadata_;
 		private cTemplates templates_;
 		private int template_;
@@ -118,16 +112,10 @@ null, //string.Empty,
 			get { return xmltemplatesroot_; }
 		}
 		#endregion
-		#region ArrayList ConnectionTypes { get; }
-		private ArrayList connectiontypes_;
-		public ArrayList ConnectionTypes {
-			get { return connectiontypes_; }
-		}
-		#endregion
-		#region Hashtable ConnectionString { get; }
-		private Hashtable connectionstring_;
-		public Hashtable ConnectionString {
-			get { return connectionstring_; }
+		#region DBConnectionstrings DBConnectionstrings { get; }
+		private DBConnectionstrings dbconnectionstrings_;
+		public DBConnectionstrings DBConnectionstrings {
+			get { return dbconnectionstrings_; }
 		}
 		#endregion
 		#region string OutputDir { get; }
@@ -222,11 +210,11 @@ null, //string.Empty,
 			return translate_out;
 		}
 //		#endregion
-		#region private void notifyme(string message_in);
+//		#region private void notifyme(string message_in);
 		private void notifyme(string message_in) {
 			// ToDos: here!
 			Exception notifyme_Exception = new Exception("ToDos: here!");
-			cDBConnection _con = null;
+//			cDBConnection _con = null;
 
 			#region int _verifiedConditions = ...;
 			int _verifiedConditions = 0;
@@ -253,69 +241,95 @@ null, //string.Empty,
 					);
 				}
 				#endregion
-
 				for (int o = 0; o < templates_[template_].Outputs.Count; o++) {
-					#region if (!connectiontypes_.Contains(eDBServerTypes. ...)) continue;
+//					#region if (!dbconnectionstrings_.Contains(eDBServerTypes. ...)) continue;
 					switch (templates_[template_].Outputs[o].Type) {
 						case cOutput.eType.PostgreSQL_Function: 
 						case cOutput.eType.PostgreSQL_StoredProcedure: 
 						case cOutput.eType.PostgreSQL_View: {
-							if (!connectiontypes_.Contains(eDBServerTypes.PostgreSQL)) continue;
-							_con = (cDBConnection)connection_[eDBServerTypes.PostgreSQL];
+							if (!dbconnectionstrings_.Contains_disableIfNot(eDBServerTypes.PostgreSQL)) continue;
+//							_con = (cDBConnection)connection_[eDBServerTypes.PostgreSQL];
 							break;
 						}
 						case cOutput.eType.MySQL_Function: 
 						case cOutput.eType.MySQL_StoredProcedure: 
 						case cOutput.eType.MySQL_View: {
-							if (!connectiontypes_.Contains(eDBServerTypes.MySQL)) continue;
-							_con = (cDBConnection)connection_[eDBServerTypes.MySQL];
+							if (!dbconnectionstrings_.Contains_disableIfNot(eDBServerTypes.MySQL)) continue;
+//							_con = (cDBConnection)connection_[eDBServerTypes.MySQL];
 							break;
 						}
 						case cOutput.eType.SQLServer_Function: 
 						case cOutput.eType.SQLServer_StoredProcedure: 
 						case cOutput.eType.SQLServer_View: {
-							if (!connectiontypes_.Contains(eDBServerTypes.SQLServer)) continue;
-							_con = (cDBConnection)connection_[eDBServerTypes.SQLServer];
+							if (!dbconnectionstrings_.Contains_disableIfNot(eDBServerTypes.SQLServer)) continue;
+//							_con = (cDBConnection)connection_[eDBServerTypes.SQLServer];
 							break;
 						}
 					}
-					#endregion
+//					#endregion
 					string _ouputTo = translateFully(
 						templates_[template_].Outputs[o].To, 
 						message_in
 					);
-					#region bool _exists = ...;
-					bool _exists;
+//					#region bool _exists = ...;
+bool _exists_aux = false;
+for (int d = 0; d < dbconnectionstrings_.Count; d++) {
+	dbconnectionstrings_[d].exists_aux__ = false;
+}
 					switch (templates_[template_].Outputs[o].Type) {
 						case cOutput.eType.File: {
-							_exists = File.Exists(_ouputTo);
+							_exists_aux = File.Exists(_ouputTo);
 							break;
 						}
 						case cOutput.eType.MySQL_Function: 
 						case cOutput.eType.PostgreSQL_Function: 
 						case cOutput.eType.SQLServer_Function: {
-							_exists = _con.SQLFunction_exists(_ouputTo);
+//_exists = _con.SQLFunction_exists(_ouputTo);
+for (int d = 0; d < dbconnectionstrings_.Count; d++) {
+	if (!dbconnectionstrings_[d].enabled_aux__) continue;
+
+	dbconnectionstrings_[d].exists_aux__ 
+		= dbconnectionstrings_[d].Connection.SQLFunction_exists(_ouputTo);
+
+	if (!_exists_aux && dbconnectionstrings_[d].exists_aux__) _exists_aux = true;
+}
 							break;
 						}
 
 						case cOutput.eType.MySQL_StoredProcedure: 
 						case cOutput.eType.PostgreSQL_StoredProcedure: 
 						case cOutput.eType.SQLServer_StoredProcedure: {
-							_exists = _con.SQLStoredProcedure_exists(_ouputTo);
+//_exists = _con.SQLStoredProcedure_exists(_ouputTo);
+for (int d = 0; d < dbconnectionstrings_.Count; d++) {
+	if (!dbconnectionstrings_[d].enabled_aux__) continue;
+
+	dbconnectionstrings_[d].exists_aux__ 
+		= dbconnectionstrings_[d].Connection.SQLStoredProcedure_exists(_ouputTo);
+
+	if (!_exists_aux && dbconnectionstrings_[d].exists_aux__) _exists_aux = true;
+}
 							break;
 						}
 						case cOutput.eType.MySQL_View: 
 						case cOutput.eType.PostgreSQL_View: 
 						case cOutput.eType.SQLServer_View: {
-							_exists = _con.SQLView_exists(_ouputTo);
+//_exists = _con.SQLView_exists(_ouputTo);
+for (int d = 0; d < dbconnectionstrings_.Count; d++) {
+	if (!dbconnectionstrings_[d].enabled_aux__) continue;
+
+	dbconnectionstrings_[d].exists_aux__ 
+		= dbconnectionstrings_[d].Connection.SQLView_exists(_ouputTo);
+
+	if (!_exists_aux && dbconnectionstrings_[d].exists_aux__) _exists_aux = true;
+}
 							break;
 						}
 						default: {
 							throw notifyme_Exception;
 						}
 					}
-					#endregion
-					if (!_exists || templates_[template_].Outputs[o].Replace) {
+//					#endregion
+					if (!_exists_aux || templates_[template_].Outputs[o].Replace) {
 						#region string _parsedOutput = ...;
 						string _parsedOutput;
 						if (templates_[template_].ParserType == cTemplate.eParserType.xslt) {
@@ -420,22 +434,58 @@ null, //string.Empty,
 							case cOutput.eType.SQLServer_Function: 
 							case cOutput.eType.SQLServer_StoredProcedure: 
 							case cOutput.eType.SQLServer_View: {
-								#region if (_exists) connection_.Function_delete(_ouputTo);
-								if (_exists) {
+//								#region if (_exists_aux) connection_.Function_delete(_ouputTo);
+								if (_exists_aux) {
 									switch (templates_[template_].Outputs[o].Type) {
 										case cOutput.eType.MySQL_Function:
 										case cOutput.eType.SQLServer_Function: {
-											_con.SQLFunction_delete(_ouputTo);
+//_con.SQLFunction_delete(_ouputTo);
+for (int d = 0; d < dbconnectionstrings_.Count; d++) {
+	if (!dbconnectionstrings_[d].enabled_aux__) continue;
+
+	switch (dbconnectionstrings_[d].Connection.DBServerType) {
+		case eDBServerTypes.MySQL:
+		case eDBServerTypes.SQLServer: {
+			if (dbconnectionstrings_[d].exists_aux__) 
+				dbconnectionstrings_[d].Connection.SQLFunction_delete(_ouputTo);
+			break;
+		}
+	}
+}
 											break;
 										}
 										case cOutput.eType.MySQL_StoredProcedure: 
 										case cOutput.eType.SQLServer_StoredProcedure: {
-											_con.SQLStoredProcedure_delete(_ouputTo);
+//_con.SQLStoredProcedure_delete(_ouputTo);
+for (int d = 0; d < dbconnectionstrings_.Count; d++) {
+	if (!dbconnectionstrings_[d].enabled_aux__) continue;
+
+	switch (dbconnectionstrings_[d].Connection.DBServerType) {
+		case eDBServerTypes.MySQL:
+		case eDBServerTypes.SQLServer: {
+			if (dbconnectionstrings_[d].exists_aux__) 
+				dbconnectionstrings_[d].Connection.SQLStoredProcedure_delete(_ouputTo);
+			break;
+		}
+	}
+}
 											break;
 										}
 										case cOutput.eType.MySQL_View: 
 										case cOutput.eType.SQLServer_View: {
-											_con.SQLView_delete(_ouputTo);
+//_con.SQLView_delete(_ouputTo);
+for (int d = 0; d < dbconnectionstrings_.Count; d++) {
+	if (!dbconnectionstrings_[d].enabled_aux__) continue;
+
+	switch (dbconnectionstrings_[d].Connection.DBServerType) {
+		case eDBServerTypes.MySQL:
+		case eDBServerTypes.SQLServer: {
+			if (dbconnectionstrings_[d].exists_aux__) 
+				dbconnectionstrings_[d].Connection.SQLView_delete(_ouputTo);
+			break;
+		}
+	}
+}
 											break;
 										}
 										case cOutput.eType.PostgreSQL_Function: 
@@ -450,8 +500,12 @@ null, //string.Empty,
 										}
 									}
 								}
-								#endregion
-								_con.Execute_SQLQuery(_parsedOutput);
+//								#endregion
+//_con.Execute_SQLQuery(_parsedOutput);
+for (int d = 0; d < dbconnectionstrings_.Count; d++) {
+	if (!dbconnectionstrings_[d].enabled_aux__) continue;
+	dbconnectionstrings_[d].Connection.Execute_SQLQuery(_parsedOutput);
+}
 								break;
 							}
 							default: {
@@ -462,7 +516,7 @@ null, //string.Empty,
 				}
 			}
 		}
-		#endregion
+//		#endregion
 //		#endregion
 		#region public Methods...
 		#region public void Build();
@@ -487,16 +541,9 @@ null, //string.Empty,
 				);
 			}
 
-			#region connection_ = ...;
-			connection_ = new Hashtable();
-			for (int _dbtype = 0; _dbtype < connectiontypes_.Count; _dbtype++) {
-				connection_.Add(
-					(eDBServerTypes)connectiontypes_[_dbtype], 
-					new cDBConnection(
-						(eDBServerTypes)connectiontypes_[_dbtype],
-						(string)connectionstring_[_dbtype]
-					)
-				);
+			#region dbconnectionstrings_[0..n].Connection_createInstance();
+			for (int d = 0; d < dbconnectionstrings_.Count; d++) {
+				dbconnectionstrings_[d].Connection_createInstance();
 			}
 			#endregion
 
@@ -593,10 +640,11 @@ null, //string.Empty,
 			}
 			#endregion
 
-			for (int _dbtype = 0; _dbtype < connectiontypes_.Count; _dbtype++) {
-				((cDBConnection)connection_[(eDBServerTypes)connectiontypes_[_dbtype]]).Dispose();
+			#region dbconnectionstrings_[0..n].Connection_clearInstance();
+			for (int d = 0; d < dbconnectionstrings_.Count; d++) {
+				dbconnectionstrings_[d].Connection_clearInstance();
 			}
-			connection_ = null;
+			#endregion
 		}
 		#endregion
 		public void Build(

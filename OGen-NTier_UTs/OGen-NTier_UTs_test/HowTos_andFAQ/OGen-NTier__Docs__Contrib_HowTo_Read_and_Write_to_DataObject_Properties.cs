@@ -35,7 +35,7 @@ using System.Reflection;
 using OGen.NTier.lib.datalayer;
 using OGen.NTier.UTs.lib.datalayer;
 
-namespace OGen.NTier.UTs.test {
+namespace OGen.NTier.UTs.howtos {
 	class HowTo_Read_and_Write_to_DataObject_Properties {
 		public HowTo_Read_and_Write_to_DataObject_Properties() {
 

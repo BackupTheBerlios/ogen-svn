@@ -29,38 +29,40 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
-string arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["TableName"]);
-string arg_SearchName = System.Web.HttpUtility.UrlDecode(Request.QueryString["SearchName"]);
+string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["TableName"]);
+string _arg_SearchName = System.Web.HttpUtility.UrlDecode(Request.QueryString["SearchName"]);
 #endregion
 
 #region varaux...
-cDBMetadata aux_metadata = new cDBMetadata();
-aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
-cDBMetadata_Table aux_table = aux_metadata.Tables[arg_TableName];
-cDBMetadata_Table_Search aux_search = aux_table.Searches[arg_SearchName];
-int aux_table_hasidentitykey = aux_table.hasIdentityKey();
+eDBServerTypes _aux_dbservertype = eDBServerTypes.MySQL;
 
-cDBMetadata_Table_Field aux_field;
-string aux_field_name;
+cDBMetadata _aux_metadata = new cDBMetadata();
+_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
+cDBMetadata_Table _aux_table = _aux_metadata.Tables[_arg_TableName];
+cDBMetadata_Table_Search _aux_search = _aux_table.Searches[_arg_SearchName];
+int _aux_table_hasidentitykey = _aux_table.hasIdentityKey();
+
+cDBMetadata_Table_Field _aux_field;
+string _aux_field_name;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE FUNCTION `fnc0_<%=aux_table.Name%>_isObject_<%=aux_search.Name%>`(<%
-	for (int f = 0; f < aux_search.SearchParameters.Count; f++) {
-		aux_field = aux_search.SearchParameters[f].Field;
-		aux_field_name = aux_search.SearchParameters[f].ParamName;%>
-	`<%=aux_field_name%>_search_` <%=aux_field.DBType_inDB_name%><%=(aux_field.isText) ? "(" + aux_field.Size + ")" : ""%><%=(f != aux_search.SearchParameters.Count - 1) ? ", " : ""%><%
+%>CREATE FUNCTION `fnc0_<%=_aux_table.Name%>_isObject_<%=_aux_search.Name%>`(<%
+	for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
+		_aux_field = _aux_search.SearchParameters[f].Field;
+		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%>
+	`<%=_aux_field_name%>_search_` <%=_aux_field.DBs[_aux_dbervertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbervertype].Size + ")" : ""%><%=(f != _aux_search.SearchParameters.Count - 1) ? ", " : ""%><%
 	}%>
 )
 	RETURNS BOOLEAN
 	NOT DETERMINISTIC
 	SQL SECURITY DEFINER
 	COMMENT ''
-BEGIN<%if (aux_metadata.CopyrightTextLong != string.Empty) {
+BEGIN<%if (_aux_metadata.CopyrightTextLong != string.Empty) {
 %>
 /*
 
-<%=aux_metadata.CopyrightTextLong%>
+<%=_aux_metadata.CopyrightTextLong%>
 
 */<%
 }%>
@@ -68,11 +70,11 @@ BEGIN<%if (aux_metadata.CopyrightTextLong != string.Empty) {
 
 	SELECT
 		true INTO `isObject`
-	FROM `fnc_<%=aux_table.Name%>_isObject_<%=aux_search.Name%>`(<%
-		for (int f = 0; f < aux_search.SearchParameters.Count; f++) {
-			aux_field = aux_search.SearchParameters[f].Field;
-			aux_field_name = aux_search.SearchParameters[f].ParamName;%>
-		`<%=aux_field_name%>_search_`<%=(f != aux_search.SearchParameters.Count - 1) ? ", " : ""%><%
+	FROM `fnc_<%=_aux_table.Name%>_isObject_<%=_aux_search.Name%>`(<%
+		for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
+			_aux_field = _aux_search.SearchParameters[f].Field;
+			_aux_field_name = _aux_search.SearchParameters[f].ParamName;%>
+		`<%=_aux_field_name%>_search_`<%=(f != _aux_search.SearchParameters.Count - 1) ? ", " : ""%><%
 		}%>
 	);
 

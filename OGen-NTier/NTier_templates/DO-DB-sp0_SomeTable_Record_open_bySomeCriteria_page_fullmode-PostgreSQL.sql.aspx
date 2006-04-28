@@ -29,61 +29,63 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
-string arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["TableName"]);
-string arg_SearchName = System.Web.HttpUtility.UrlDecode(Request.QueryString["SearchName"]);
+string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["TableName"]);
+string _arg_SearchName = System.Web.HttpUtility.UrlDecode(Request.QueryString["SearchName"]);
 #endregion
 
 #region varaux...
-cDBMetadata aux_metadata = new cDBMetadata();
-aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
-cDBMetadata_Table aux_table = aux_metadata.Tables[arg_TableName];
-cDBMetadata_Table_Search aux_search = aux_table.Searches[arg_SearchName];
-int aux_table_hasidentitykey = aux_table.hasIdentityKey();
+eDBServerTypes _aux_dbservertype = eDBServerTypes.PostgreSQL;
 
-cDBMetadata_Table_Field aux_field;
-string aux_field_name;
+cDBMetadata _aux_metadata = new cDBMetadata();
+_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
+cDBMetadata_Table _aux_table = _aux_metadata.Tables[_arg_TableName];
+cDBMetadata_Table_Search _aux_search = _aux_table.Searches[_arg_SearchName];
+int _aux_table_hasidentitykey = _aux_table.hasIdentityKey();
+
+cDBMetadata_Table_Field _aux_field;
+string _aux_field_name;
 bool isFirst;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE OR REPLACE FUNCTION "sp0_<%=aux_table.Name%>_Record_open_<%=aux_search.Name%>_page_fullmode"(<%
-	for (int f = 0; f < aux_search.SearchParameters.Count; f++) {
-		aux_field = aux_search.SearchParameters[f].Field;
-		aux_field_name = aux_search.SearchParameters[f].ParamName;%>
-	"<%=aux_field_name%>_search_" <%=aux_field.DBType_inDB_name%>, <%
+%>CREATE OR REPLACE FUNCTION "sp0_<%=_aux_table.Name%>_Record_open_<%=_aux_search.Name%>_page_fullmode"(<%
+	for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
+		_aux_field = _aux_search.SearchParameters[f].Field;
+		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%>
+	"<%=_aux_field_name%>_search_" <%=_aux_field.DBs[_aux_dbervertype].DBType_inDB_name%>, <%
 	}%>
 	"page_" Int,
 	"page_numRecords_" Int
 )
-RETURNS SETOF "<%=aux_table.Name%>"
+RETURNS SETOF "<%=_aux_table.Name%>"
 AS '
 	DECLARE
-		_Output "<%=aux_table.Name%>";
+		_Output "<%=_aux_table.Name%>";
 	BEGIN
 		FOR _Output IN
 			SELECT<%
-			for (int f = 0; f < aux_table.Fields.Count; f++) {
-				aux_field = aux_table.Fields[f];%>
-				t1."<%=aux_field.Name%>"<%=(f != aux_table.Fields.Count - 1) ? ", " : ""%><%
+			for (int f = 0; f < _aux_table.Fields.Count; f++) {
+				_aux_field = _aux_table.Fields[f];%>
+				t1."<%=_aux_field.Name%>"<%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
 			}%>
-			FROM "<%=aux_table.Name%>" t1
-			INNER JOIN "sp_<%=aux_table.Name%>_Record_open_<%=aux_search.Name%>"(<%
-			for (int f = 0; f < aux_search.SearchParameters.Count; f++) {
-				aux_field = aux_search.SearchParameters[f].Field;
-				aux_field_name = aux_search.SearchParameters[f].ParamName;%>
-				"<%=aux_field_name%>_search_"<%=(f != aux_search.SearchParameters.Count - 1) ? ", " : ""%><%
+			FROM "<%=_aux_table.Name%>" t1
+			INNER JOIN "sp_<%=_aux_table.Name%>_Record_open_<%=_aux_search.Name%>"(<%
+			for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
+				_aux_field = _aux_search.SearchParameters[f].Field;
+				_aux_field_name = _aux_search.SearchParameters[f].ParamName;%>
+				"<%=_aux_field_name%>_search_"<%=(f != _aux_search.SearchParameters.Count - 1) ? ", " : ""%><%
 			}%>
 			) t2 ON (<%
-			for (int k = 0; k < aux_table.Fields_onlyPK.Count; k++) {
-				aux_field = aux_table.Fields_onlyPK[k];%>
-				(t2."<%=aux_field.Name%>" = t1."<%=aux_field.Name%>")<%=(k != aux_table.Fields_onlyPK.Count - 1) ? " AND" : ""%><%
+			for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
+				_aux_field = _aux_table.Fields_onlyPK[k];%>
+				(t2."<%=_aux_field.Name%>" = t1."<%=_aux_field.Name%>")<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? " AND" : ""%><%
 			}%>
 			)
 
-			-- change where condition in: "fnc_<%=aux_table.Name%>_Record_open_<%=aux_search.Name%>"
+			-- change where condition in: "fnc_<%=_aux_table.Name%>_Record_open_<%=_aux_search.Name%>"
 			-- NOT HERE!
 
-			-- change order by in: "sp_<%=aux_table.Name%>_Record_open_<%=aux_search.Name%>"
+			-- change order by in: "sp_<%=_aux_table.Name%>_Record_open_<%=_aux_search.Name%>"
 			-- NOT HERE!
 
 			LIMIT "page_numRecords_" OFFSET "page_numRecords_" * ("page_" - 1)

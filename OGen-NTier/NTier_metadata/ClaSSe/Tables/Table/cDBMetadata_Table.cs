@@ -142,6 +142,7 @@ namespace OGen.NTier.lib.metadata {
 			set { isconfig_ = bool.Parse(value); }
 		}
 		#endregion
+		//---
 		#region private iDBMetadata_Table_Fields fields_ { get; set; }
 		private iDBMetadata_Table_Fields fields_;
 

@@ -63,8 +63,10 @@ namespace OGen.NTier.lib.metadata {
 			FK_TableName = string.Empty;
 			FK_FieldName = string.Empty;
 			isNullable = false;
-			Size = 0;
-			DBType_inDB_name = string.Empty;
+//			Size = 0;
+//			DBType_inDB_name = string.Empty;
+			//---
+			dbs_ = new cDBMetadata_Table_Field_DBs(this, this);
 			//#endregion
 		}
 		#endregion
@@ -111,7 +113,7 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 		#endregion
 
-		#region Properties - ClaSSe...
+		//#region Properties - ClaSSe...
 		#region public string Name { get; set; }
 		private string name_;
 
@@ -267,29 +269,39 @@ namespace OGen.NTier.lib.metadata {
 			set { isnullable_ = bool.Parse(value); }
 		}
 		#endregion
-		#region public int Size { get; set; }
-		private int size_;
-		public int Size {
-			get { return size_; }
-			set { size_ = value; }
-		}
+//		#region public int Size { get; set; }
+//		private int size_;
+//		public int Size {
+//			get { return size_; }
+//			set { size_ = value; }
+//		}
+//
+//		[ClaSSPropertyAttribute("size", ClaSSPropertyAttribute.eType.standard, true)]
+//		private string size_reflection {
+//			get { return size_.ToString(); }
+//			set { size_ = int.Parse(value); }
+//		}
+//		#endregion
+//		#region public string DBType_inDB_name { get; }
+//		private string dbtype_indb_name_;
+//
+//		[ClaSSPropertyAttribute("type", ClaSSPropertyAttribute.eType.standard, true)]
+//		public string DBType_inDB_name {
+//			set { dbtype_indb_name_ = value; }
+//			get { return dbtype_indb_name_; }
+//		}
+//		#endregion
+		//---
+		#region private cDBMetadata_Table_Field_DBs dbs_ { get; set; }
+		private cDBMetadata_Table_Field_DBs dbs_;
 
-		[ClaSSPropertyAttribute("size", ClaSSPropertyAttribute.eType.standard, true)]
-		private string size_reflection {
-			get { return size_.ToString(); }
-			set { size_ = int.Parse(value); }
+		[ClaSSPropertyAttribute("dbs", ClaSSPropertyAttribute.eType.aggregate, true)]
+		private cDBMetadata_Table_Field_DBs dbs_reflection {
+			get { return dbs_; }
+			//set { fields_ = value; }
 		}
 		#endregion
-		#region public string DBType_inDB_name { get; }
-		private string dbtype_indb_name_;
-
-		[ClaSSPropertyAttribute("type", ClaSSPropertyAttribute.eType.standard, true)]
-		public string DBType_inDB_name {
-			set { dbtype_indb_name_ = value; }
-			get { return dbtype_indb_name_; }
-		}
-		#endregion
-		#endregion
+		//#endregion
 //		#region Properties...
 		#region public iDBMetadata_Table_Fields Parent_ref { get; }
 		private iDBMetadata_Table_Fields parent_ref_;
@@ -297,102 +309,114 @@ namespace OGen.NTier.lib.metadata {
 			get { return parent_ref_; }
 		}
 		#endregion
-		#region public cDBType DBType_generic { get; }
-		public cDBType DBType_generic {
-			get {
-				cDBType dbtype_generic_out = new cDBType(parent_ref_.Parent_ref.Parent_ref.Parent_ref.default_dbservertype_);
-				switch (parent_ref_.Parent_ref.Parent_ref.Parent_ref.default_dbservertype_) {
-					case eDBServerTypes.SQLServer:
-						dbtype_generic_out.Value = OGen.lib.datalayer.utils.convert.SqlDbType2DbType((SqlDbType)DBType_inDB);
-						break;
-					case eDBServerTypes.PostgreSQL:
-						dbtype_generic_out.Value = OGen.lib.datalayer.utils.convert.PgsqlDbType2DbType((NpgsqlDbType)DBType_inDB);
-						break;
-					case eDBServerTypes.MySQL:
-						dbtype_generic_out.Value = OGen.lib.datalayer.utils.convert.MySqlDbType2DbType((MySqlDbType)DBType_inDB);
-						break;
-					default:
-						throw new Exception(
-							string.Format(
-								"{0}.{1}.DBType_generic.get(): - unsoported db server: {2}", 
-								this.GetType().Namespace, 
-								this.GetType().Name,
-								parent_ref_.Parent_ref.Parent_ref.Parent_ref.default_dbservertype_
-							)
-						);
-				}
-
-				return dbtype_generic_out;
-			}
+		//---
+		#region public cDBMetadata_Table_Field_DBs DBs { get; }
+		public cDBMetadata_Table_Field_DBs DBs {
+			get { return dbs_; }
 		}
 		#endregion
-		#region public int DBType_inDB { get; set; }
-		public int DBType_inDB {
-			get {
-				//return int.Parse(base.Property_standard["type"));
-
-				switch (parent_ref_.Parent_ref.Parent_ref.Parent_ref.default_dbservertype_) {
-					case eDBServerTypes.SQLServer:
-						return (int)OGen.lib.datalayer.utils.convert.SqlDbType_Parse(
-							//base.Property_standard["type"], 
-							DBType_inDB_name, 
-							false
-						);
-					case eDBServerTypes.PostgreSQL:
-						return (int)OGen.lib.datalayer.utils.convert.PgsqlDbType_Parse(
-							//base.Property_standard["type"], 
-							DBType_inDB_name
-						);
-					case eDBServerTypes.MySQL:
-						return (int)OGen.lib.datalayer.utils.convert.MySqlDbType_Parse(
-							//base.Property_standard["type"], 
-							DBType_inDB_name
-						);
-					default:
-						throw new Exception(
-							string.Format(
-								"{0}.{1}.DBType_inDB.get(): - unsoported db server: {2}", 
-								this.GetType().Namespace, 
-								this.GetType().Name,
-								parent_ref_.Parent_ref.Parent_ref.Parent_ref.default_dbservertype_
-							)
-						);
-				}
-			}
-		}
-		#endregion
+		//---
+//		#region public cDBType DBType_generic { get; }
+//		public cDBType DBType_generic {
+//			get {
+//				cDBType dbtype_generic_out = new cDBType(parent_ref_.Parent_ref.Parent_ref.Parent_ref.default_dbservertype_);
+//				switch (parent_ref_.Parent_ref.Parent_ref.Parent_ref.default_dbservertype_) {
+//					case eDBServerTypes.SQLServer:
+//						dbtype_generic_out.Value = OGen.lib.datalayer.utils.convert.SqlDbType2DbType((SqlDbType)DBType_inDB);
+//						break;
+//					case eDBServerTypes.PostgreSQL:
+//						dbtype_generic_out.Value = OGen.lib.datalayer.utils.convert.PgsqlDbType2DbType((NpgsqlDbType)DBType_inDB);
+//						break;
+//					case eDBServerTypes.MySQL:
+//						dbtype_generic_out.Value = OGen.lib.datalayer.utils.convert.MySqlDbType2DbType((MySqlDbType)DBType_inDB);
+//						break;
+//					default:
+//						throw new Exception(
+//							string.Format(
+//								"{0}.{1}.DBType_generic.get(): - unsoported db server: {2}", 
+//								this.GetType().Namespace, 
+//								this.GetType().Name,
+//								parent_ref_.Parent_ref.Parent_ref.Parent_ref.default_dbservertype_
+//							)
+//						);
+//				}
+//
+//				return dbtype_generic_out;
+//			}
+//		}
+//		#endregion
+//		#region public int DBType_inDB { get; set; }
+//		public int DBType_inDB {
+//			get {
+//				//return int.Parse(base.Property_standard["type"));
+//
+//				switch (parent_ref_.Parent_ref.Parent_ref.Parent_ref.default_dbservertype_) {
+//					case eDBServerTypes.SQLServer:
+//						return (int)OGen.lib.datalayer.utils.convert.SqlDbType_Parse(
+//							//base.Property_standard["type"], 
+//							DBType_inDB_name, 
+//							false
+//						);
+//					case eDBServerTypes.PostgreSQL:
+//						return (int)OGen.lib.datalayer.utils.convert.PgsqlDbType_Parse(
+//							//base.Property_standard["type"], 
+//							DBType_inDB_name
+//						);
+//					case eDBServerTypes.MySQL:
+//						return (int)OGen.lib.datalayer.utils.convert.MySqlDbType_Parse(
+//							//base.Property_standard["type"], 
+//							DBType_inDB_name
+//						);
+//					default:
+//						throw new Exception(
+//							string.Format(
+//								"{0}.{1}.DBType_inDB.get(): - unsoported db server: {2}", 
+//								this.GetType().Namespace, 
+//								this.GetType().Name,
+//								parent_ref_.Parent_ref.Parent_ref.Parent_ref.default_dbservertype_
+//							)
+//						);
+//				}
+//			}
+//		}
+//		#endregion
 		#region public bool isBool { get; }
 		public bool isBool {
 			get {
-				return OGen.lib.datalayer.utils.isBool(DBType_generic.Value);
+//				return OGen.lib.datalayer.utils.isBool(DBType_generic.Value);
+				return DBs[0].isBool;
 			}
 		}
 		#endregion
 		#region public bool isDateTime { get; }
 		public bool isDateTime {
 			get {
-				return OGen.lib.datalayer.utils.isDateTime(DBType_generic.Value);
+//				return OGen.lib.datalayer.utils.isDateTime(DBType_generic.Value);
+				return DBs[0].isDateTime;
 			}
 		}
 		#endregion
 		#region public bool isInt { get; }
 		public bool isInt {
 			get {
-				return OGen.lib.datalayer.utils.isInt(DBType_generic.Value);
+//				return OGen.lib.datalayer.utils.isInt(DBType_generic.Value);
+				return DBs[0].isInt;
 			}
 		}
 		#endregion
 		#region public bool isDecimal { get; }
 		public bool isDecimal {
 			get {
-				return OGen.lib.datalayer.utils.isDecimal(DBType_generic.Value);
+//				return OGen.lib.datalayer.utils.isDecimal(DBType_generic.Value);
+				return DBs[0].isDecimal;
 			}
 		}
 		#endregion
 		#region public bool isText { get; }
 		public bool isText {
 			get {
-				return OGen.lib.datalayer.utils.isText(DBType_generic.Value);
+//				return OGen.lib.datalayer.utils.isText(DBType_generic.Value);
+				return DBs[0].isText;
 			}
 		}
 		#endregion

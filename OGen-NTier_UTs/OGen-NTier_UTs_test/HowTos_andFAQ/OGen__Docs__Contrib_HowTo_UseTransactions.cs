@@ -33,7 +33,7 @@ using System;
 
 using OGen.lib.datalayer;
 
-namespace OGen.UTs.test {
+namespace OGen.UTs.howtos {
 	public class HowTo_UseTransactions {
 		public HowTo_UseTransactions() {
 			long _iduser = 0L;

@@ -29,24 +29,26 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
-string arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["TableName"]);
+string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["TableName"]);
 #endregion
 
 #region varaux...
-cDBMetadata aux_metadata = new cDBMetadata();
-aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
-cDBMetadata_Table aux_table = aux_metadata.Tables[arg_TableName];
-bool aux_table_searches_hasexplicituniqueindex = aux_table.Searches.hasExplicitUniqueIndex();
+eDBServerTypes _aux_dbservertype = eDBServerTypes.SQLServer;
 
-cDBMetadata_Table_Field aux_field;
+cDBMetadata _aux_metadata = new cDBMetadata();
+_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
+cDBMetadata_Table _aux_table = _aux_metadata.Tables[_arg_TableName];
+bool _aux_table_searches_hasexplicituniqueindex = _aux_table.Searches.hasExplicitUniqueIndex();
+
+cDBMetadata_Table_Field _aux_field;
 bool isFirst;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE PROCEDURE [dbo].[sp0_<%=aux_table.Name%>_setObject]<%
-	for (int f = 0; f < aux_table.Fields.Count; f++) {
-		aux_field = aux_table.Fields[f];%>
-	@<%=aux_field.Name%>_ <%=aux_field.DBType_inDB_name%><%=(aux_field.isText) ? " (" + aux_field.Size + ")" : ""%>, <%
+%>CREATE PROCEDURE [dbo].[sp0_<%=_aux_table.Name%>_setObject]<%
+	for (int f = 0; f < _aux_table.Fields.Count; f++) {
+		_aux_field = _aux_table.Fields[f];%>
+	@<%=_aux_field.Name%>_ <%=_aux_field.DBs[_aux_dbervertype].DBType_inDB_name%><%=(_aux_field.isText) ? " (" + _aux_field.DBs[_aux_dbervertype].Size + ")" : ""%>, <%
 	}%>
 
 	@Output_ Int OUT
@@ -55,36 +57,36 @@ AS
 	DECLARE @ConstraintExist Bit
 
 	IF NOT EXISTS (
-		SELECT NULL--[<%=aux_table.Fields[0].Name%>]
-		FROM [<%=aux_table.Name%>]
+		SELECT NULL--[<%=_aux_table.Fields[0].Name%>]
+		FROM [<%=_aux_table.Name%>]
 		WHERE<%
-			for (int k = 0; k < aux_table.Fields_onlyPK.Count; k++) {
-				aux_field = aux_table.Fields_onlyPK[k];%>
-			([<%=aux_field.Name%>] = @<%=aux_field.Name%>_)<%=(k != aux_table.Fields_onlyPK.Count - 1) ? " AND" : ""%><%
+			for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
+				_aux_field = _aux_table.Fields_onlyPK[k];%>
+			([<%=_aux_field.Name%>] = @<%=_aux_field.Name%>_)<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? " AND" : ""%><%
 			}%>
 	) BEGIN
 		SET @Exists = 0
 		SET @ConstraintExist = <%
-		if (aux_table_searches_hasexplicituniqueindex) {
-			%>"dbo"."fnc0_<%=aux_table.Name%>__ConstraintExist"(<%
-			for (int f = 0; f < aux_table.Fields.Count; f++) {
-				aux_field = aux_table.Fields[f];%><%=""%>
-			<%=(aux_field.isPK) ? aux_field.DBType_generic.DBEmptyValue : "@" + aux_field.Name + "_"%><%=(f != aux_table.Fields.Count - 1) ? ", " : ""%><%
+		if (_aux_table_searches_hasexplicituniqueindex) {
+			%>"dbo"."fnc0_<%=_aux_table.Name%>__ConstraintExist"(<%
+			for (int f = 0; f < _aux_table.Fields.Count; f++) {
+				_aux_field = _aux_table.Fields[f];%><%=""%>
+			<%=(_aux_field.isPK) ? _aux_field.DBs[_aux_dbervertype].DBType_generic.DBEmptyValue : "@" + _aux_field.Name + "_"%><%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
 			}%>
 		)<%
 		} else {
 			%>0<%
 		}%>
 		IF (@ConstraintExist = 0) BEGIN
-			INSERT INTO [<%=aux_table.Name%>] (<%
-			for (int f = 0; f < aux_table.Fields.Count; f++) {
-				aux_field = aux_table.Fields[f];%>
-				[<%=aux_field.Name%>]<%=(f != aux_table.Fields.Count - 1) ? ", " : ""%><%
+			INSERT INTO [<%=_aux_table.Name%>] (<%
+			for (int f = 0; f < _aux_table.Fields.Count; f++) {
+				_aux_field = _aux_table.Fields[f];%>
+				[<%=_aux_field.Name%>]<%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
 			}%>
 			) VALUES (<%
-			for (int f = 0; f < aux_table.Fields.Count; f++) {
-				aux_field = aux_table.Fields[f];%>
-				@<%=aux_field.Name%>_<%=(f != aux_table.Fields.Count - 1) ? ", " : ""%><%
+			for (int f = 0; f < _aux_table.Fields.Count; f++) {
+				_aux_field = _aux_table.Fields[f];%>
+				@<%=_aux_field.Name%>_<%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
 			}%>
 			)
 		END
@@ -93,37 +95,37 @@ AS
 
 	// Comment: no need to update if table has only (it's) keys,
 	// no other fields to update
-	if (aux_table.Fields.Count == aux_table.Fields.Count_onlyPK()) {%>
+	if (_aux_table.Fields.Count == _aux_table.Fields.Count_onlyPK()) {%>
 		SET @ConstraintExist = 0<%
 	} else {%>
 		SET @ConstraintExist = <%
-		if (aux_table_searches_hasexplicituniqueindex) {
-			%>"dbo"."fnc0_<%=aux_table.Name%>__ConstraintExist"(<%
-			for (int f = 0; f < aux_table.Fields.Count; f++) {
-				aux_field = aux_table.Fields[f];%>
-			@<%=aux_field.Name%>_<%=(f != aux_table.Fields.Count - 1) ? ", " : ""%><%
+		if (_aux_table_searches_hasexplicituniqueindex) {
+			%>"dbo"."fnc0_<%=_aux_table.Name%>__ConstraintExist"(<%
+			for (int f = 0; f < _aux_table.Fields.Count; f++) {
+				_aux_field = _aux_table.Fields[f];%>
+			@<%=_aux_field.Name%>_<%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
 			}%>
 		)<%
 		} else {
 			%>0<%
 		}
-		if (aux_table.Fields_noPK.Count == 0) {%>
+		if (_aux_table.Fields_noPK.Count == 0) {%>
 		/* no need!<%
 		}%>
 		IF (@ConstraintExist = 0) BEGIN
-			UPDATE [<%=aux_table.Name%>]
+			UPDATE [<%=_aux_table.Name%>]
 			SET<%
-				for (int nk = 0; nk < aux_table.Fields_noPK.Count; nk++) {
-					aux_field = aux_table.Fields_noPK[nk];%>
-				[<%=aux_field.Name%>] = @<%=aux_field.Name%>_<%=(nk != aux_table.Fields_noPK.Count - 1) ? ", " : ""%><%
+				for (int nk = 0; nk < _aux_table.Fields_noPK.Count; nk++) {
+					_aux_field = _aux_table.Fields_noPK[nk];%>
+				[<%=_aux_field.Name%>] = @<%=_aux_field.Name%>_<%=(nk != _aux_table.Fields_noPK.Count - 1) ? ", " : ""%><%
 				}%>
 			WHERE<%
-				for (int k = 0; k < aux_table.Fields_onlyPK.Count; k++) {
-					aux_field = aux_table.Fields_onlyPK[k];%>
-				([<%=aux_field.Name%>] = @<%=aux_field.Name%>_)<%=(k != aux_table.Fields_onlyPK.Count - 1) ? " AND" : ""%><%
+				for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
+					_aux_field = _aux_table.Fields_onlyPK[k];%>
+				([<%=_aux_field.Name%>] = @<%=_aux_field.Name%>_)<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? " AND" : ""%><%
 				}%>
 		END<%
-		if (aux_table.Fields_noPK.Count == 0) {
+		if (_aux_table.Fields_noPK.Count == 0) {
 		%>
 		*/<%
 		}

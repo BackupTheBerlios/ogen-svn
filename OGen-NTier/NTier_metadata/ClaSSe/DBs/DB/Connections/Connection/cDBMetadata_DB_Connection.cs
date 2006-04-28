@@ -49,6 +49,7 @@ namespace OGen.NTier.lib.metadata {
 			GenerateSQL = generateSQL_in;
 			ConfigMode = configMode_in;
 			Connectionstring = string.Empty;
+			isIndexed_andReadOnly = false;
 			//#endregion
 		}
 		#endregion
@@ -125,6 +126,19 @@ namespace OGen.NTier.lib.metadata {
 		public string Connectionstring {
 			get { return connectionstring_; }
 			set { connectionstring_ = value; }
+		}
+		#endregion
+		#region public bool isIndexed_andReadOnly { get; set; }
+		private bool isindexed_andreadonly_;
+		public bool isIndexed_andReadOnly {
+			get { return isindexed_andreadonly_; }
+			set { isindexed_andreadonly_ = value; }
+		}
+
+		[ClaSSPropertyAttribute("isIndexed_andReadOnly", ClaSSPropertyAttribute.eType.standard, true)]
+		private string isindexed_andreadonly_reflection {
+			get { return isindexed_andreadonly_.ToString(); }
+			set { isindexed_andreadonly_ = bool.Parse(value); }
 		}
 		#endregion
 		#endregion

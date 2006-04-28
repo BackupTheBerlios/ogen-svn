@@ -34,7 +34,7 @@ using System.Data;
 
 using OGen.lib.datalayer;
 
-namespace OGen.UTs.test {
+namespace OGen.UTs.howtos {
 	class HowTo_Execute_SQLFunction_returnSomevalue {
 		public HowTo_Execute_SQLFunction_returnSomevalue() {
 			long _iduser = 0L;

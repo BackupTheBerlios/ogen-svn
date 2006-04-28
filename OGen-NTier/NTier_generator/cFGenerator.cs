@@ -208,7 +208,7 @@ namespace OGen.NTier.lib.generator {
 			}
 		}
 		#endregion
-		#region public void Build(cGenerator.dBuild notifyBase_in);
+//		#region public void Build(cGenerator.dBuild notifyBase_in);
 		public void Build(cGenerator.dBuild notifyBase_in) {
 			#region string _outputDir = ...;
 			string _outputDir = System.IO.Directory.GetParent(
@@ -230,17 +230,14 @@ namespace OGen.NTier.lib.generator {
 
 
 
-ArrayList _dbservertypes = new ArrayList(metadata_.DBs.Count);
-Hashtable _connectionstrings = new Hashtable(/*metadata_.DBs.Count*/);
+DBConnectionstrings _dbconnectionstrings = new DBConnectionstrings();
 for (int _dbservertype = 0; _dbservertype < metadata_.DBs.Count; _dbservertype++) {
-	_dbservertypes.Add(
-		metadata_.DBs[_dbservertype].DBServerType
-	);
 	for (int _con = 0; _con < metadata_.DBs[_dbservertype].Connections.Count; _con++) {
-		_connectionstrings.Add(
-		    metadata_.DBs[_dbservertype].DBServerType, 
-		    metadata_.DBs[_dbservertype].Connections[_con].Connectionstring
-		); // ToDos: here! i'm replacing added connectionstrings, in case dbservertype repeats!
+		if (metadata_.DBs[_dbservertype].Connections[_con].GenerateSQL)
+			_dbconnectionstrings.Add(
+				metadata_.DBs[_dbservertype].DBServerType, 
+				metadata_.DBs[_dbservertype].Connections[_con].Connectionstring
+			);
 	}
 }
 
@@ -252,8 +249,7 @@ for (int _dbservertype = 0; _dbservertype < metadata_.DBs.Count; _dbservertype++
 				cDBMetadata.root4xml, 
 				ConfigurationSettingsBinder.Read("Templates"), 
 				cTemplates.root4xml,
-				_dbservertypes, //metadata_.Default_DBServerType, 
-				_connectionstrings, //metadata_.Default_Connectionstring(), 
+				_dbconnectionstrings, 
 				_outputDir
 			).Build(
 				notifyBase_in, 
@@ -261,7 +257,7 @@ for (int _dbservertype = 0; _dbservertype < metadata_.DBs.Count; _dbservertype++
 			);
 			if (notifyBase_in != null) notifyBase_in("...finished", true);
 		}
-		#endregion
+//		#endregion
 		//#endregion
 	}
 }

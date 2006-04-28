@@ -29,27 +29,29 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
-string arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["TableName"]);
+string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["TableName"]);
 #endregion
 
 #region varaux...
-cDBMetadata aux_metadata = new cDBMetadata();
-aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
-cDBMetadata_Table aux_table = aux_metadata.Tables[arg_TableName];
-int aux_table_hasidentitykey = aux_table.hasIdentityKey();
-bool aux_table_searches_hasexplicituniqueindex = aux_table.Searches.hasExplicitUniqueIndex();
+eDBServerTypes _aux_dbservertype = eDBServerTypes.MySQL;
 
-cDBMetadata_Table_Field aux_field;
+cDBMetadata _aux_metadata = new cDBMetadata();
+_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
+cDBMetadata_Table _aux_table = _aux_metadata.Tables[_arg_TableName];
+int _aux_table_hasidentitykey = _aux_table.hasIdentityKey();
+bool _aux_table_searches_hasexplicituniqueindex = _aux_table.Searches.hasExplicitUniqueIndex();
+
+cDBMetadata_Table_Field _aux_field;
 bool isFirst;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE PROCEDURE `sp0_<%=aux_table.Name%>_updObject`(<%
-	for (int f = 0; f < aux_table.Fields.Count; f++) {
-		aux_field = aux_table.Fields[f];%>
-	IN `<%=aux_field.Name%>_` <%=aux_field.DBType_inDB_name%><%=(aux_field.isText) ? "(" + aux_field.Size + ")" : ""%><%=(f != aux_table.Fields.Count - 1) ? ", " : ""%><%
+%>CREATE PROCEDURE `sp0_<%=_aux_table.Name%>_updObject`(<%
+	for (int f = 0; f < _aux_table.Fields.Count; f++) {
+		_aux_field = _aux_table.Fields[f];%>
+	IN `<%=_aux_field.Name%>_` <%=_aux_field.DBs[_aux_dbervertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbervertype].Size + ")" : ""%><%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
 	}%><%
-	if (aux_table_searches_hasexplicituniqueindex) {%>, 
+	if (_aux_table_searches_hasexplicituniqueindex) {%>, 
 	OUT `ConstraintExist_` BOOLEAN<%
 	}%>
 )
@@ -57,33 +59,33 @@ bool isFirst;
 	SQL SECURITY DEFINER
 	COMMENT ''
 BEGIN<%
-	if (aux_table_searches_hasexplicituniqueindex) {%>
-	SET `ConstraintExist_` = `fnc0_<%=aux_table.Name%>__ConstraintExist`(<%
-		for (int f = 0; f < aux_table.Fields.Count; f++) {
-			aux_field = aux_table.Fields[f];%>
-		`<%=aux_field.Name%>_`<%=(f != aux_table.Fields.Count - 1) ? ", " : ""%><%
+	if (_aux_table_searches_hasexplicituniqueindex) {%>
+	SET `ConstraintExist_` = `fnc0_<%=_aux_table.Name%>__ConstraintExist`(<%
+		for (int f = 0; f < _aux_table.Fields.Count; f++) {
+			_aux_field = _aux_table.Fields[f];%>
+		`<%=_aux_field.Name%>_`<%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
 		}%>
 	);
 
 	IF (NOT `ConstraintExist_`) THEN<%
 	}%>
-		UPDATE `<%=aux_table.Name%>`
+		UPDATE `<%=_aux_table.Name%>`
 		SET<%
 		isFirst = true;
-		for (int f = 0; f < aux_table.Fields.Count; f++) {
-			aux_field = aux_table.Fields[f];
-			if (!aux_field.isIdentity) {
+		for (int f = 0; f < _aux_table.Fields.Count; f++) {
+			_aux_field = _aux_table.Fields[f];
+			if (!_aux_field.isIdentity) {
 				if (!isFirst) {
 					%>, <%
 				} else {
 					isFirst = false;
 				}%>
-			`<%=aux_field.Name%>` = `<%=aux_field.Name%>_`<%
+			`<%=_aux_field.Name%>` = `<%=_aux_field.Name%>_`<%
 			}
 		}%>
 		WHERE
-			`<%=aux_table.Fields[aux_table_hasidentitykey].Name%>` = `<%=aux_table.Fields[aux_table_hasidentitykey].Name%>_`;<%
-	if (aux_table_searches_hasexplicituniqueindex) {%>
+			`<%=_aux_table.Fields[_aux_table_hasidentitykey].Name%>` = `<%=_aux_table.Fields[_aux_table_hasidentitykey].Name%>_`;<%
+	if (_aux_table_searches_hasexplicituniqueindex) {%>
 	END IF;<%
 	}%>
 END<%

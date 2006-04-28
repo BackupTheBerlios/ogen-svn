@@ -153,6 +153,16 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "ClaSSe\DBs\DB\Connections\cDBMetadata_DB_Connections.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ClaSSe\DBs\DB\Connections\Connection\cDBMetadata_DB_Connection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "ClaSSe\Tables\cDBMetadata_Tables.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
@@ -204,6 +214,16 @@
                 />
                 <File
                     RelPath = "ClaSSe\Tables\Table\Fields\Field\cDBMetadata_Table_Field.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ClaSSe\Tables\Table\Fields\Field\DBs\cDBMetadata_Table_Field_DBs.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "ClaSSe\Tables\Table\Fields\Field\DBs\DB\cDBMetadata_Table_Field_DB.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />

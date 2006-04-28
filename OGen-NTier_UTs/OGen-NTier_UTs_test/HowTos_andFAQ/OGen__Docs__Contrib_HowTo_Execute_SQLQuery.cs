@@ -33,7 +33,7 @@ using System;
 
 using OGen.lib.datalayer;
 
-namespace OGen.UTs.test {
+namespace OGen.UTs.howtos {
 	class HowTo_Execute_SQLQuery {
 		public HowTo_Execute_SQLQuery() {
 			long _iduser = 0L;

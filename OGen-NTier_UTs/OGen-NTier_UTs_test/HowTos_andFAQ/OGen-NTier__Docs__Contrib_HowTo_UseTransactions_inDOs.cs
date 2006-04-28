@@ -35,7 +35,7 @@ using OGen.lib.datalayer;
 using OGen.NTier.lib.datalayer;
 using OGen.NTier.UTs.lib.datalayer;
 
-namespace OGen.NTier.UTs.test {
+namespace OGen.NTier.UTs.howtos {
 	public class HowTo_UseTransactions_inDOs {
 		public HowTo_UseTransactions_inDOs() {
 			string _testid = DateTime.Now.Ticks.ToString();

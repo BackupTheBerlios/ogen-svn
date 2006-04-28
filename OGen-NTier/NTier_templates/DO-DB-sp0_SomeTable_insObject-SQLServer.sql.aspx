@@ -29,60 +29,62 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
-string arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["TableName"]);
+string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["TableName"]);
 #endregion
 
 #region varaux...
-cDBMetadata aux_metadata = new cDBMetadata();
-aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
-cDBMetadata_Table aux_table = aux_metadata.Tables[arg_TableName];
-int aux_table_hasidentitykey = aux_table.hasIdentityKey();
-bool aux_table_searches_hasexplicituniqueindex = aux_table.Searches.hasExplicitUniqueIndex();
+eDBServerTypes _aux_dbservertype = eDBServerTypes.SQLServer;
 
-cDBMetadata_Table_Field aux_field;
+cDBMetadata _aux_metadata = new cDBMetadata();
+_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
+cDBMetadata_Table _aux_table = _aux_metadata.Tables[_arg_TableName];
+int _aux_table_hasidentitykey = _aux_table.hasIdentityKey();
+bool _aux_table_searches_hasexplicituniqueindex = _aux_table.Searches.hasExplicitUniqueIndex();
+
+cDBMetadata_Table_Field _aux_field;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>CREATE PROCEDURE [dbo].[sp0_<%=aux_table.Name%>_insObject]<%
-	for (int f = 0; f < aux_table.Fields.Count; f++) {
-		aux_field = aux_table.Fields[f];%>
-	@<%=aux_field.Name%>_ <%=aux_field.DBType_inDB_name%><%=(aux_field.isText) ? " (" + aux_field.Size + ")" : ""%><%=(aux_field.isIdentity) ? " OUT" : ""%>, <%
+%>CREATE PROCEDURE [dbo].[sp0_<%=_aux_table.Name%>_insObject]<%
+	for (int f = 0; f < _aux_table.Fields.Count; f++) {
+		_aux_field = _aux_table.Fields[f];%>
+	@<%=_aux_field.Name%>_ <%=_aux_field.DBs[_aux_dbervertype].DBType_inDB_name%><%=(_aux_field.isText) ? " (" + _aux_field.DBs[_aux_dbervertype].Size + ")" : ""%><%=(_aux_field.isIdentity) ? " OUT" : ""%>, <%
 	}%>
 	@SelectIdentity_ Bit
 AS<%
-	if (aux_table_searches_hasexplicituniqueindex) {%>
+	if (_aux_table_searches_hasexplicituniqueindex) {%>
 	DECLARE @ConstraintExist Bit
-	SET @ConstraintExist = [dbo].[fnc0_<%=aux_table.Name%>__ConstraintExist](<%
-		for (int f = 0; f < aux_table.Fields.Count; f++) {
-			aux_field = aux_table.Fields[f];%><%=""%>
-		<%=(aux_field.isPK) ? aux_field.DBType_generic.DBEmptyValue : "@" + aux_field.Name + "_"%><%=(f != aux_table.Fields.Count - 1) ? ", " : ""%><%
+	SET @ConstraintExist = [dbo].[fnc0_<%=_aux_table.Name%>__ConstraintExist](<%
+		for (int f = 0; f < _aux_table.Fields.Count; f++) {
+			_aux_field = _aux_table.Fields[f];%><%=""%>
+		<%=(_aux_field.isPK) ? _aux_field.DBs[_aux_dbervertype].DBType_generic.DBEmptyValue : "@" + _aux_field.Name + "_"%><%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
 		}%>
 	)
 	IF (@ConstraintExist = 0) BEGIN<%
 	}%>
-		INSERT INTO [<%=aux_table.Name%>] (<%
-			for (int f = 0; f < aux_table.Fields.Count; f++) {
-				if (aux_table_hasidentitykey != f) {
-					aux_field = aux_table.Fields[f];%>
-			[<%=aux_field.Name%>]<%=(f != aux_table.Fields.Count - 1) ? ", " : ""%><%
+		INSERT INTO [<%=_aux_table.Name%>] (<%
+			for (int f = 0; f < _aux_table.Fields.Count; f++) {
+				if (_aux_table_hasidentitykey != f) {
+					_aux_field = _aux_table.Fields[f];%>
+			[<%=_aux_field.Name%>]<%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
 				}
 			}%>
 		) VALUES (<%
-			for (int f = 0; f < aux_table.Fields.Count; f++) {
-				if (aux_table_hasidentitykey != f) {
-					aux_field = aux_table.Fields[f];%>
-			@<%=aux_field.Name%>_<%=(f != aux_table.Fields.Count - 1) ? ", " : ""%><%
+			for (int f = 0; f < _aux_table.Fields.Count; f++) {
+				if (_aux_table_hasidentitykey != f) {
+					_aux_field = _aux_table.Fields[f];%>
+			@<%=_aux_field.Name%>_<%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
 				}
 			}%>
 		)
 		IF (@SelectIdentity_ = 1) BEGIN
-			SET @<%=aux_table.Fields[aux_table_hasidentitykey]%>_ = @@IDENTITY
+			SET @<%=_aux_table.Fields[_aux_table_hasidentitykey]%>_ = @@IDENTITY
 		END ELSE BEGIN
-			SET @<%=aux_table.Fields[aux_table_hasidentitykey]%>_ = CAST(0 AS <%=aux_table.Fields[aux_table_hasidentitykey].DBType_inDB_name%>)
+			SET @<%=_aux_table.Fields[_aux_table_hasidentitykey]%>_ = CAST(0 AS <%=_aux_table.Fields[_aux_table_hasidentitykey].DBType_inDB_name%>)
 		END<%
-	if (aux_table_searches_hasexplicituniqueindex) {%>
+	if (_aux_table_searches_hasexplicituniqueindex) {%>
 	END ELSE BEGIN
-		SET @<%=aux_table.Fields[aux_table_hasidentitykey]%>_ = CAST(-1 AS <%=aux_table.Fields[aux_table_hasidentitykey].DBType_inDB_name%>)
+		SET @<%=_aux_table.Fields[_aux_table_hasidentitykey]%>_ = CAST(-1 AS <%=_aux_table.Fields[_aux_table_hasidentitykey].DBType_inDB_name%>)
 	END<%
 	}
 //-----------------------------------------------------------------------------------------

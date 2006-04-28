@@ -374,11 +374,24 @@ if (notifyBack_in != null) notifyBack_in(string.Format("#{0}/{1} - {2}", t + 1, 
 					tables_[T].Fields[F].Name				= _fields_aux[f].Name;
 					tables_[T].Fields[F].isIdentity			= _fields_aux[f].isIdentity;
 					tables_[T].Fields[F].isPK				= _fields_aux[f].isPK;
-					tables_[T].Fields[F].DBType_inDB_name	= _fields_aux[f].DBType_inDB_name;
 					tables_[T].Fields[F].FK_TableName		= _fields_aux[f].FK_TableName;
 					tables_[T].Fields[F].FK_FieldName		= _fields_aux[f].FK_FieldName;
-					tables_[T].Fields[F].Size				= _fields_aux[f].Size;
 					tables_[T].Fields[F].isNullable			= _fields_aux[f].isNullable;
+					//---
+
+
+					int D = tables_[T].Fields[F].DBs.Add(
+						_connection.DBServerType, 
+						true
+					);
+					tables_[T].Fields[F].DBs[D].Size = _fields_aux[f].Size;
+					tables_[T].Fields[F].DBs[D].DBType_inDB_name = _fields_aux[f].DBType_inDB_name;
+					#region //oldstuff...
+					//tables_[T].Fields[F].DBType_inDB_name	= _fields_aux[f].DBType_inDB_name;
+					//tables_[T].Fields[F].Size				= _fields_aux[f].Size;
+					#endregion
+
+
 				}
 				_fields_aux = null;
 			}

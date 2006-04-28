@@ -33,7 +33,7 @@ using System;
 
 using OGen.lib.datalayer;
 
-namespace OGen.UTs.test {
+namespace OGen.UTs.howtos {
 	class HowTo_List_DB_Tables {
 		public HowTo_List_DB_Tables() {
 

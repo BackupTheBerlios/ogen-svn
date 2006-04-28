@@ -140,6 +140,16 @@
                     BuildAction = "None"
                 />
                 <File
+                    RelPath = "DBConnectionstring.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "DBConnectionstrings.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "LICENSE.GPL.txt"
                     BuildAction = "Content"
                 />
