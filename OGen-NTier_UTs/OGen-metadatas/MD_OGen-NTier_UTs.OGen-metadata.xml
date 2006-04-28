@@ -56,16 +56,16 @@ along with OGen; if not, write to the
     <table name="Config" isVirtualTable="False" isConfig="True">
       <fields>
         <field name="Name" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="True" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="50" dbValueType="character varying" />
- 	      	<dbServerType name="SQLServer" size="50" dbValueType="varchar" />
+        	<dbServerType name="PostgreSQL" dbValueSize="50" dbValueType="character varying" />
+ 	      	<dbServerType name="SQLServer" dbValueSize="50" dbValueType="varchar" />
         </field>
         <field name="Config" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="True" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="50" dbValueType="character varying" />
-        	<dbServerType name="SQLServer" size="50" dbValueType="varchar" />
+        	<dbServerType name="PostgreSQL" dbValueSize="50" dbValueType="character varying" />
+        	<dbServerType name="SQLServer" dbValueSize="50" dbValueType="varchar" />
         </field>
         <field name="Type" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="True" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="0" dbValueType="integer" />
-        	<dbServerType name="SQLServer" size="0" dbValueType="int" />
+        	<dbServerType name="PostgreSQL" dbValueSize="0" dbValueType="integer" />
+        	<dbServerType name="SQLServer" dbValueSize="0" dbValueType="int" />
         </field>
       </fields>
       <searches>
@@ -79,12 +79,12 @@ along with OGen; if not, write to the
     <table name="Group" isVirtualTable="False" isConfig="False">
       <fields>
         <field name="IDGroup" isPK="True" isIdentity="True" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="0" dbValueType="bigint" />
-        	<dbServerType name="SQLServer" size="0" dbValueType="bigint" />
+        	<dbServerType name="PostgreSQL" dbValueSize="0" dbValueType="bigint" />
+        	<dbServerType name="SQLServer" dbValueSize="0" dbValueType="bigint" />
         </field>
         <field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="50" dbValueType="character varying" />
-        	<dbServerType name="SQLServer" size="50" dbValueType="varchar" />
+        	<dbServerType name="PostgreSQL" dbValueSize="50" dbValueType="character varying" />
+        	<dbServerType name="SQLServer" dbValueSize="50" dbValueType="varchar" />
         </field>
       </fields>
       <searches />
@@ -93,16 +93,16 @@ along with OGen; if not, write to the
     <table name="User" isVirtualTable="False" isConfig="False">
       <fields>
         <field name="IDUser" isPK="True" isIdentity="True" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="0" dbValueType="bigint" />
-        	<dbServerType name="SQLServer" size="0" dbValueType="bigint" />
+        	<dbServerType name="PostgreSQL" dbValueSize="0" dbValueType="bigint" />
+        	<dbServerType name="SQLServer" dbValueSize="0" dbValueType="bigint" />
         </field>
         <field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="50" dbValueType="character varying" />
-        	<dbServerType name="SQLServer" size="50" dbValueType="varchar" />
+        	<dbServerType name="PostgreSQL" dbValueSize="50" dbValueType="character varying" />
+        	<dbServerType name="SQLServer" dbValueSize="50" dbValueType="varchar" />
         </field>
         <field name="Password" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="50" dbValueType="character varying" />
-        	<dbServerType name="SQLServer" size="50" dbValueType="varchar" />
+        	<dbServerType name="PostgreSQL" dbValueSize="50" dbValueType="character varying" />
+        	<dbServerType name="SQLServer" dbValueSize="50" dbValueType="varchar" />
         </field>
       </fields>
       <searches>
@@ -140,20 +140,20 @@ along with OGen; if not, write to the
     <table name="UserGroup" isVirtualTable="False" isConfig="False">
       <fields>
         <field name="IDUser" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="0" dbValueType="bigint" />
-        	<dbServerType name="SQLServer" size="0" dbValueType="bigint" />
+        	<dbServerType name="PostgreSQL" dbValueSize="0" dbValueType="bigint" />
+        	<dbServerType name="SQLServer" dbValueSize="0" dbValueType="bigint" />
         </field>
         <field name="IDGroup" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="0" dbValueType="bigint" />
-        	<dbServerType name="SQLServer" size="0" dbValueType="bigint" />
+        	<dbServerType name="PostgreSQL" dbValueSize="0" dbValueType="bigint" />
+        	<dbServerType name="SQLServer" dbValueSize="0" dbValueType="bigint" />
         </field>
         <field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True">
-        	<dbServerType name="PostgreSQL" size="0" dbValueType="timestamp without time zone" />
-        	<dbServerType name="SQLServer" size="0" dbValueType="datetime" />
+        	<dbServerType name="PostgreSQL" dbValueSize="0" dbValueType="timestamp without time zone" />
+        	<dbServerType name="SQLServer" dbValueSize="0" dbValueType="datetime" />
         </field>
         <field name="Defaultrelation" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True">
-        	<dbServerType name="PostgreSQL" size="0" dbValueType="boolean" />
-        	<dbServerType name="SQLServer" size="0" dbValueType="bit" />
+        	<dbServerType name="PostgreSQL" dbValueSize="0" dbValueType="boolean" />
+        	<dbServerType name="SQLServer" dbValueSize="0" dbValueType="bit" />
         </field>
       </fields>
       <searches>
@@ -176,24 +176,24 @@ along with OGen; if not, write to the
     <table name="vUserDefaultGroup" isVirtualTable="True" isConfig="False">
       <fields>
         <field name="IDUser" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="0" dbValueType="bigint" />
-        	<dbServerType name="SQLServer" size="0" dbValueType="bigint" />
+        	<dbServerType name="PostgreSQL" dbValueSize="0" dbValueType="bigint" />
+        	<dbServerType name="SQLServer" dbValueSize="0" dbValueType="bigint" />
         </field>
         <field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="50" dbValueType="character varying" />
-        	<dbServerType name="SQLServer" size="50" dbValueType="varchar" />
+        	<dbServerType name="PostgreSQL" dbValueSize="50" dbValueType="character varying" />
+        	<dbServerType name="SQLServer" dbValueSize="50" dbValueType="varchar" />
         </field>
         <field name="IDGroup" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="0" dbValueType="bigint" />
-        	<dbServerType name="SQLServer" size="0" dbValueType="bigint" />
+        	<dbServerType name="PostgreSQL" dbValueSize="0" dbValueType="bigint" />
+        	<dbServerType name="SQLServer" dbValueSize="0" dbValueType="bigint" />
         </field>
         <field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="50" dbValueType="character varying" />
-        	<dbServerType name="SQLServer" size="50" dbValueType="varchar" />
+        	<dbServerType name="PostgreSQL" dbValueSize="50" dbValueType="character varying" />
+        	<dbServerType name="SQLServer" dbValueSize="50" dbValueType="varchar" />
         </field>
         <field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="0" dbValueType="timestamp without time zone" />
-        	<dbServerType name="SQLServer" size="0" dbValueType="datetime" />
+        	<dbServerType name="PostgreSQL" dbValueSize="0" dbValueType="timestamp without time zone" />
+        	<dbServerType name="SQLServer" dbValueSize="0" dbValueType="datetime" />
         </field>
       </fields>
       <searches>
@@ -207,24 +207,24 @@ along with OGen; if not, write to the
     <table name="vUserGroup" isVirtualTable="True" isConfig="False">
       <fields>
         <field name="IDUser" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="0" dbValueType="bigint" />
-        	<dbServerType name="SQLServer" size="0" dbValueType="bigint" />
+        	<dbServerType name="PostgreSQL" dbValueSize="0" dbValueType="bigint" />
+        	<dbServerType name="SQLServer" dbValueSize="0" dbValueType="bigint" />
         </field>
         <field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="50" dbValueType="character varying" />
-        	<dbServerType name="SQLServer" size="50" dbValueType="varchar" />
+        	<dbServerType name="PostgreSQL" dbValueSize="50" dbValueType="character varying" />
+        	<dbServerType name="SQLServer" dbValueSize="50" dbValueType="varchar" />
         </field>
         <field name="IDGroup" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="0" dbValueType="bigint" />
-        	<dbServerType name="SQLServer" size="0" dbValueType="bigint" />
+        	<dbServerType name="PostgreSQL" dbValueSize="0" dbValueType="bigint" />
+        	<dbServerType name="SQLServer" dbValueSize="0" dbValueType="bigint" />
         </field>
         <field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="50" dbValueType="character varying" />
-        	<dbServerType name="SQLServer" size="50" dbValueType="varchar" />
+        	<dbServerType name="PostgreSQL" dbValueSize="50" dbValueType="character varying" />
+        	<dbServerType name="SQLServer" dbValueSize="50" dbValueType="varchar" />
         </field>
         <field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False">
-        	<dbServerType name="PostgreSQL" size="0" dbValueType="timestamp without time zone" />
-        	<dbServerType name="SQLServer" size="0" dbValueType="datetime" />
+        	<dbServerType name="PostgreSQL" dbValueSize="0" dbValueType="timestamp without time zone" />
+        	<dbServerType name="SQLServer" dbValueSize="0" dbValueType="datetime" />
         </field>
       </fields>
       <searches />
