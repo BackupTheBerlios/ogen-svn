@@ -29,19 +29,19 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
 #endregion
 
 #region varaux...
-cDBMetadata aux_metadata = new cDBMetadata();
-aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
+cDBMetadata _aux_metadata = new cDBMetadata();
+_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
 #endregion
 //-----------------------------------------------------------------------------------------
-if ((aux_metadata.CopyrightText != string.Empty) && (aux_metadata.CopyrightTextLong != string.Empty)) {
-%>#region <%=aux_metadata.CopyrightText%>
+if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTextLong != string.Empty)) {
+%>#region <%=_aux_metadata.CopyrightText%>
 /*
 
-<%=aux_metadata.CopyrightTextLong%>
+<%=_aux_metadata.CopyrightTextLong%>
 
 */
 #endregion
@@ -51,9 +51,9 @@ using System.Data;
 
 using OGen.lib.datalayer;
 
-namespace <%=aux_metadata.Namespace%>.lib.datalayer {
+namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 	/// <summary>
-	/// utils DataObject which works as a repository of useful Properties and Methods for DataObjects at <%=aux_metadata.Namespace%>.lib.datalayer namespace.
+	/// utils DataObject which works as a repository of useful Properties and Methods for DataObjects at <%=_aux_metadata.Namespace%>.lib.datalayer namespace.
 	/// </summary>
 	public sealed class DO__utils : DO0__utils<%/*, IDisposable*/%> {
 		#region public DO__utils(...);

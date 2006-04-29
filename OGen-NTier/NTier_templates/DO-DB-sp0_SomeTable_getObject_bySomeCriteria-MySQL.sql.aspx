@@ -27,6 +27,7 @@ along with OGen; if not, write to the
 	http://www.fsf.org/licensing/licenses/gpl.txt
 
 */%><%@ Page language="c#" contenttype="text/html" %>
+<%@ import namespace="OGen.lib.datalayer" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
@@ -51,11 +52,11 @@ string _aux_field_name;
 for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
 	_aux_field = _aux_search.SearchParameters[f].Field;
 	_aux_field_name = _aux_search.SearchParameters[f].ParamName;%>
-	IN `<%=_aux_field_name%>_search_` <%=_aux_field.DBs[_aux_dbervertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbervertype].Size + ")" : ""%>, <%
+	IN `<%=_aux_field_name%>_search_` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbservertype].Size + ")" : ""%>, <%
 }
 for (int f = 0; f < _aux_table.Fields.Count; f++) {
 	_aux_field = _aux_table.Fields[f];%>
-	IN `<%=_aux_field.Name%>` <%=_aux_field.DBs[_aux_dbervertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbervertype].Size + ")" : ""%> OUT<%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
+	IN `<%=_aux_field.Name%>` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbservertype].Size + ")" : ""%> OUT<%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
 }%>
 )
 	NOT DETERMINISTIC

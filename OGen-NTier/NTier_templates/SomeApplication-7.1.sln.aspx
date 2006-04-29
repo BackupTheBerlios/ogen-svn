@@ -29,37 +29,37 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
 #endregion
 
 #region varaux...
-cDBMetadata aux_metadata = new cDBMetadata();
-aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
+cDBMetadata _aux_metadata = new cDBMetadata();
+_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
 
-//cDBMetadata_Table aux_table;
-//cDBMetadata_Table_Field aux_field;
-//int aux_table_hasidentitykey;
-//string[] aux_configmodes = aux_metadata.ConfigModes();
+//cDBMetadata_Table _aux_table;
+//cDBMetadata_Table_Field _aux_field;
+//int _aux_table_hasidentitykey;
+//string[] _aux_configmodes = _aux_metadata.ConfigModes();
 #endregion
 //-----------------------------------------------------------------------------------------
 %>Microsoft Visual Studio Solution File, Format Version 8.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=aux_metadata.ApplicationName%>_datalayer", "<%=aux_metadata.ApplicationName%>_datalayer\<%=aux_metadata.ApplicationName%>_datalayer-7.1.csproj", "{<%=aux_metadata.GUIDDatalayer%>}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=_aux_metadata.ApplicationName%>_datalayer", "<%=_aux_metadata.ApplicationName%>_datalayer\<%=_aux_metadata.ApplicationName%>_datalayer-7.1.csproj", "{<%=_aux_metadata.GUIDDatalayer%>}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=aux_metadata.ApplicationName%>_datalayer_UTs", "<%=aux_metadata.ApplicationName%>_datalayer_UTs\<%=aux_metadata.ApplicationName%>_datalayer_UTs-7.1.csproj", "{<%=aux_metadata.GUIDDatalayer_UTs%>}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=_aux_metadata.ApplicationName%>_datalayer_UTs", "<%=_aux_metadata.ApplicationName%>_datalayer_UTs\<%=_aux_metadata.ApplicationName%>_datalayer_UTs-7.1.csproj", "{<%=_aux_metadata.GUIDDatalayer_UTs%>}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=aux_metadata.ApplicationName%>_businesslayer", "<%=aux_metadata.ApplicationName%>_businesslayer\<%=aux_metadata.ApplicationName%>_businesslayer-7.1.csproj", "{<%=aux_metadata.GUIDBusinesslayer%>}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=_aux_metadata.ApplicationName%>_businesslayer", "<%=_aux_metadata.ApplicationName%>_businesslayer\<%=_aux_metadata.ApplicationName%>_businesslayer-7.1.csproj", "{<%=_aux_metadata.GUIDBusinesslayer%>}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=aux_metadata.ApplicationName%>_businesslayer_UTs", "<%=aux_metadata.ApplicationName%>_businesslayer_UTs\<%=aux_metadata.ApplicationName%>_businesslayer_UTs-7.1.csproj", "{<%=aux_metadata.GUIDBusinesslayer_UTs%>}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=_aux_metadata.ApplicationName%>_businesslayer_UTs", "<%=_aux_metadata.ApplicationName%>_businesslayer_UTs\<%=_aux_metadata.ApplicationName%>_businesslayer_UTs-7.1.csproj", "{<%=_aux_metadata.GUIDBusinesslayer_UTs%>}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=aux_metadata.ApplicationName%>_test", "<%=aux_metadata.ApplicationName%>_test\<%=aux_metadata.ApplicationName%>_test-7.1.csproj", "{<%=aux_metadata.GUIDTest%>}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=_aux_metadata.ApplicationName%>_test", "<%=_aux_metadata.ApplicationName%>_test\<%=_aux_metadata.ApplicationName%>_test-7.1.csproj", "{<%=_aux_metadata.GUIDTest%>}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
@@ -69,26 +69,26 @@ Global
 		Release = Release
 	EndGlobalSection
 	GlobalSection(ProjectConfiguration) = postSolution
-		{<%=aux_metadata.GUIDDatalayer%>}.Debug.ActiveCfg = Debug|.NET
-		{<%=aux_metadata.GUIDDatalayer%>}.Debug.Build.0 = Debug|.NET
-		{<%=aux_metadata.GUIDDatalayer%>}.Release.ActiveCfg = Release|.NET
-		{<%=aux_metadata.GUIDDatalayer%>}.Release.Build.0 = Release|.NET
-		{<%=aux_metadata.GUIDDatalayer_UTs%>}.Debug.ActiveCfg = Debug|.NET
-		{<%=aux_metadata.GUIDDatalayer_UTs%>}.Debug.Build.0 = Debug|.NET
-		{<%=aux_metadata.GUIDDatalayer_UTs%>}.Release.ActiveCfg = Release|.NET
-		{<%=aux_metadata.GUIDDatalayer_UTs%>}.Release.Build.0 = Release|.NET
-		{<%=aux_metadata.GUIDBusinesslayer%>}.Debug.ActiveCfg = Debug|.NET
-		{<%=aux_metadata.GUIDBusinesslayer%>}.Debug.Build.0 = Debug|.NET
-		{<%=aux_metadata.GUIDBusinesslayer%>}.Release.ActiveCfg = Release|.NET
-		{<%=aux_metadata.GUIDBusinesslayer%>}.Release.Build.0 = Release|.NET
-		{<%=aux_metadata.GUIDBusinesslayer_UTs%>}.Debug.ActiveCfg = Debug|.NET
-		{<%=aux_metadata.GUIDBusinesslayer_UTs%>}.Debug.Build.0 = Debug|.NET
-		{<%=aux_metadata.GUIDBusinesslayer_UTs%>}.Release.ActiveCfg = Release|.NET
-		{<%=aux_metadata.GUIDBusinesslayer_UTs%>}.Release.Build.0 = Release|.NET
-		{<%=aux_metadata.GUIDTest%>}.Debug.ActiveCfg = Debug|.NET
-		{<%=aux_metadata.GUIDTest%>}.Debug.Build.0 = Debug|.NET
-		{<%=aux_metadata.GUIDTest%>}.Release.ActiveCfg = Release|.NET
-		{<%=aux_metadata.GUIDTest%>}.Release.Build.0 = Release|.NET
+		{<%=_aux_metadata.GUIDDatalayer%>}.Debug.ActiveCfg = Debug|.NET
+		{<%=_aux_metadata.GUIDDatalayer%>}.Debug.Build.0 = Debug|.NET
+		{<%=_aux_metadata.GUIDDatalayer%>}.Release.ActiveCfg = Release|.NET
+		{<%=_aux_metadata.GUIDDatalayer%>}.Release.Build.0 = Release|.NET
+		{<%=_aux_metadata.GUIDDatalayer_UTs%>}.Debug.ActiveCfg = Debug|.NET
+		{<%=_aux_metadata.GUIDDatalayer_UTs%>}.Debug.Build.0 = Debug|.NET
+		{<%=_aux_metadata.GUIDDatalayer_UTs%>}.Release.ActiveCfg = Release|.NET
+		{<%=_aux_metadata.GUIDDatalayer_UTs%>}.Release.Build.0 = Release|.NET
+		{<%=_aux_metadata.GUIDBusinesslayer%>}.Debug.ActiveCfg = Debug|.NET
+		{<%=_aux_metadata.GUIDBusinesslayer%>}.Debug.Build.0 = Debug|.NET
+		{<%=_aux_metadata.GUIDBusinesslayer%>}.Release.ActiveCfg = Release|.NET
+		{<%=_aux_metadata.GUIDBusinesslayer%>}.Release.Build.0 = Release|.NET
+		{<%=_aux_metadata.GUIDBusinesslayer_UTs%>}.Debug.ActiveCfg = Debug|.NET
+		{<%=_aux_metadata.GUIDBusinesslayer_UTs%>}.Debug.Build.0 = Debug|.NET
+		{<%=_aux_metadata.GUIDBusinesslayer_UTs%>}.Release.ActiveCfg = Release|.NET
+		{<%=_aux_metadata.GUIDBusinesslayer_UTs%>}.Release.Build.0 = Release|.NET
+		{<%=_aux_metadata.GUIDTest%>}.Debug.ActiveCfg = Debug|.NET
+		{<%=_aux_metadata.GUIDTest%>}.Debug.Build.0 = Debug|.NET
+		{<%=_aux_metadata.GUIDTest%>}.Release.ActiveCfg = Release|.NET
+		{<%=_aux_metadata.GUIDTest%>}.Release.Build.0 = Release|.NET
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

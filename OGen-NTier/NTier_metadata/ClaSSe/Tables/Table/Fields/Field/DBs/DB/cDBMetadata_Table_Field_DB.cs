@@ -147,7 +147,9 @@ namespace OGen.NTier.lib.metadata {
 		#region public cDBType DBType_generic { get; }
 		public cDBType DBType_generic {
 			get {
-				cDBType DBType_generic_out = new cDBType(dbservertype_);
+				cDBType DBType_generic_out = new cDBType(
+//					dbservertype_
+				);
 				switch (dbservertype_) {
 					case eDBServerTypes.SQLServer:
 						DBType_generic_out.Value = OGen.lib.datalayer.utils.convert.SqlDbType2DbType((SqlDbType)DBType_inDB);
@@ -246,6 +248,11 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 
 		#region Methods...
+		#region public string DBType_generic_DBEmptyValue();
+		public string DBType_generic_DBEmptyValue() {
+			return OGen.lib.datalayer.utils.convert.DBType2DBEmptyValue(DBType_generic.Value, dbservertype_);
+		}
+		#endregion
 		#endregion
 	}
 }

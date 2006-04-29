@@ -34,18 +34,20 @@ using System.Data;
 
 namespace OGen.lib.datalayer {
 	public class cDBType {
-		#region public cDBType(...);
-		public cDBType(eDBServerTypes dbServerType_in) {
-			dbservertype_ = dbServerType_in;
+//		#region public cDBType(...);
+		public cDBType(
+//eDBServerTypes dbServerType_in
+		) {
+//			dbservertype_ = dbServerType_in;
 		}
-		#endregion
+//		#endregion
 
-		#region private Fields...
-		private eDBServerTypes dbservertype_;
-		#endregion
+//		#region private Fields...
+//		private eDBServerTypes dbservertype_;
+//		#endregion
 
-		#region public Properties...
-		#region public DbType Value;
+//		#region public Properties...
+//		#region public DbType Value;
 		private DbType value_;
 		public DbType Value {
 			get { return value_; }
@@ -54,10 +56,10 @@ namespace OGen.lib.datalayer {
 				fwtype_ = utils.convert.DbType2NSysType(value);
 				fwemptyvalue_ = utils.convert.DBType2NSysEmptyValue(value);
 				fwunittestvalue_ = utils.convert.DBType2NUnitTestValue(value);
-				dbemptyvalue_ = utils.convert.DBType2DBEmptyValue(value, dbservertype_);
+//				dbemptyvalue_ = utils.convert.DBType2DBEmptyValue(value, dbservertype_);
 			}
 		}
-		#endregion
+//		#endregion
 
 		#region public string FWType;
 		private string fwtype_;
@@ -77,12 +79,12 @@ namespace OGen.lib.datalayer {
 			get { return fwunittestvalue_; }
 		}
 		#endregion
-		#region public string DBEmptyValue;
-		private string dbemptyvalue_;
-		public string DBEmptyValue {
-			get { return dbemptyvalue_; }
-		}
-		#endregion
-		#endregion
+//		#region public string DBEmptyValue;
+//		private string dbemptyvalue_;
+//		public string DBEmptyValue {
+//			get { return dbemptyvalue_; }
+//		}
+//		#endregion
+//		#endregion
 	}
 }

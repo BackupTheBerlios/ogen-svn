@@ -158,6 +158,8 @@
     <Compile Include="ClaSSe\Tables\Table\Fields\Field\cDBMetadata_Table_Field.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ClaSSe\Tables\Table\Fields\Field\DBs\cDBMetadata_Table_Field_DBs.cs" />
+    <Compile Include="ClaSSe\Tables\Table\Fields\Field\DBs\DB\cDBMetadata_Table_Field_DB.cs" />
     <Compile Include="ClaSSe\Tables\Table\Fields\iDBMetadata_Table_Fields.cs">
       <SubType>Code</SubType>
     </Compile>

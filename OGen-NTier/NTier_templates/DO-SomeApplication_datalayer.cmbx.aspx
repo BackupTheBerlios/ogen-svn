@@ -29,32 +29,32 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
 #endregion
 
 #region varaux...
-cDBMetadata aux_metadata = new cDBMetadata();
-aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
+cDBMetadata _aux_metadata = new cDBMetadata();
+_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
 
-cDBMetadata_Table aux_table;
-cDBMetadata_Table_Field aux_field;
-int aux_table_hasidentitykey;
-//string[] aux_configmodes = aux_metadata.ConfigModes();
+cDBMetadata_Table _aux_table;
+cDBMetadata_Table_Field _aux_field;
+int _aux_table_hasidentitykey;
+//string[] _aux_configmodes = _aux_metadata.ConfigModes();
 #endregion
 //-----------------------------------------------------------------------------------------
-%><Combine fileversion="1.0" name="<%=aux_metadata.ApplicationName%>_datalayer" description="">
-  <StartMode startupentry="<%=aux_metadata.ApplicationName%>_datalayer" single="True">
-    <Execute entry="<%=aux_metadata.ApplicationName%>_datalayer" type="None" />
+%><Combine fileversion="1.0" name="<%=_aux_metadata.ApplicationName%>_datalayer" description="">
+  <StartMode startupentry="<%=_aux_metadata.ApplicationName%>_datalayer" single="True">
+    <Execute entry="<%=_aux_metadata.ApplicationName%>_datalayer" type="None" />
   </StartMode>
   <Entries>
-    <Entry filename=".\<%=aux_metadata.ApplicationName%>_datalayer.prjx" />
+    <Entry filename=".\<%=_aux_metadata.ApplicationName%>_datalayer.prjx" />
   </Entries>
   <Configurations active="Debug">
     <Configuration name="Release">
-      <Entry name="<%=aux_metadata.ApplicationName%>_datalayer" configurationname="Debug" build="False" />
+      <Entry name="<%=_aux_metadata.ApplicationName%>_datalayer" configurationname="Debug" build="False" />
     </Configuration>
     <Configuration name="Debug">
-      <Entry name="<%=aux_metadata.ApplicationName%>_datalayer" configurationname="Debug" build="False" />
+      <Entry name="<%=_aux_metadata.ApplicationName%>_datalayer" configurationname="Debug" build="False" />
     </Configuration>
   </Configurations>
 </Combine>

@@ -27,6 +27,7 @@ along with OGen; if not, write to the
 	http://www.fsf.org/licensing/licenses/gpl.txt
 
 */%><%@ Page language="c#" contenttype="text/html" %>
+<%@ import namespace="OGen.lib.datalayer" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);

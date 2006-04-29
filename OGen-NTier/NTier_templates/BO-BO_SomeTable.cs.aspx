@@ -29,39 +29,39 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
-string arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["TableName"]);
+string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["TableName"]);
 #endregion
 
 #region varaux...
-cDBMetadata aux_metadata = new cDBMetadata();
-aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
-cDBMetadata_Table aux_table = aux_metadata.Tables[arg_TableName];
+cDBMetadata _aux_metadata = new cDBMetadata();
+_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
+cDBMetadata_Table _aux_table = _aux_metadata.Tables[_arg_TableName];
 
-cDBMetadata_Table_Field aux_field;
+cDBMetadata_Table_Field _aux_field;
 #endregion
 //-----------------------------------------------------------------------------------------
-if ((aux_metadata.CopyrightText != string.Empty) && (aux_metadata.CopyrightTextLong != string.Empty)) {
-%>#region <%=aux_metadata.CopyrightText%>
+if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTextLong != string.Empty)) {
+%>#region <%=_aux_metadata.CopyrightText%>
 /*
 
-<%=aux_metadata.CopyrightTextLong%>
+<%=_aux_metadata.CopyrightTextLong%>
 
 */
 #endregion
 <%
 }%>using System;
 
-using <%=aux_metadata.Namespace%>.lib.datalayer;
+using <%=_aux_metadata.Namespace%>.lib.datalayer;
 
-namespace <%=aux_metadata.Namespace%>.lib.businesslayer {
+namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 	/// <summary>
-	/// <%=aux_table.Name%> BusinessObject which provides access to <see cref="<%=aux_metadata.Namespace%>.lib.datalayer.DO_<%=aux_table.Name%>">DO_<%=aux_table.Name%></see> for the Business Layer.
+	/// <%=_aux_table.Name%> BusinessObject which provides access to <see cref="<%=_aux_metadata.Namespace%>.lib.datalayer.DO_<%=_aux_table.Name%>">DO_<%=_aux_table.Name%></see> for the Business Layer.
 	/// </summary>
-	public sealed class BO_<%=aux_table.Name%> : BO0_<%=aux_table.Name%> {
-		#region public BO_<%=aux_table.Name%>(...);
+	public sealed class BO_<%=_aux_table.Name%> : BO0_<%=_aux_table.Name%> {
+		#region public BO_<%=_aux_table.Name%>(...);
 		///
-		public BO_<%=aux_table.Name%>() {
+		public BO_<%=_aux_table.Name%>() {
 		}
 		#endregion
 

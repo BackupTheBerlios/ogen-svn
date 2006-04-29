@@ -29,24 +29,24 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
-string arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["TableName"]);
+string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["TableName"]);
 #endregion
 
 #region varaux...
-cDBMetadata aux_metadata = new cDBMetadata();
-aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
-cDBMetadata_Table aux_table = aux_metadata.Tables[arg_TableName];
-bool isListItem = aux_table.isListItem();
+cDBMetadata _aux_metadata = new cDBMetadata();
+_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
+cDBMetadata_Table _aux_table = _aux_metadata.Tables[_arg_TableName];
+bool isListItem = _aux_table.isListItem();
 
-cDBMetadata_Table_Field aux_field;
+cDBMetadata_Table_Field _aux_field;
 #endregion
 //-----------------------------------------------------------------------------------------
-if ((aux_metadata.CopyrightText != string.Empty) && (aux_metadata.CopyrightTextLong != string.Empty)) {
-%>#region <%=aux_metadata.CopyrightText%>
+if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTextLong != string.Empty)) {
+%>#region <%=_aux_metadata.CopyrightText%>
 /*
 
-<%=aux_metadata.CopyrightTextLong%>
+<%=_aux_metadata.CopyrightTextLong%>
 
 */
 #endregion
@@ -56,21 +56,21 @@ if ((aux_metadata.CopyrightText != string.Empty) && (aux_metadata.CopyrightTextL
 using OGen.NTier.lib.datalayer;
 using OGen.NTier.lib.businesslayer;
 
-using <%=aux_metadata.Namespace%>.lib.datalayer;
+using <%=_aux_metadata.Namespace%>.lib.datalayer;
 
-namespace <%=aux_metadata.Namespace%>.lib.businesslayer {
+namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 	/// <summary>
-	/// <%=aux_table.Name%> BusinessObject which provides access to <see cref="<%=aux_metadata.Namespace%>.lib.datalayer.DO_<%=aux_table.Name%>">DO_<%=aux_table.Name%></see> for the Business Layer.
+	/// <%=_aux_table.Name%> BusinessObject which provides access to <see cref="<%=_aux_metadata.Namespace%>.lib.datalayer.DO_<%=_aux_table.Name%>">DO_<%=_aux_table.Name%></see> for the Business Layer.
 	/// <note type="implementnotes">
-	/// Access must be made via <see cref="BO_<%=aux_table.Name%>">BO_<%=aux_table.Name%></see>.
+	/// Access must be made via <see cref="BO_<%=_aux_table.Name%>">BO_<%=_aux_table.Name%></see>.
 	/// </note>
 	/// </summary>
-	public abstract class BO0_<%=aux_table.Name%> : BO__base<%=(isListItem) ? ", iListItem" : ""%> {
-		#region internal BO0_<%=aux_table.Name%>(...);
-		internal BO0_<%=aux_table.Name%>() {}
+	public abstract class BO0_<%=_aux_table.Name%> : BO__base<%=(isListItem) ? ", iListItem" : ""%> {
+		#region internal BO0_<%=_aux_table.Name%>(...);
+		internal BO0_<%=_aux_table.Name%>() {}
 
 		///
-		~BO0_<%=aux_table.Name%>() {
+		~BO0_<%=_aux_table.Name%>() {
 			if (mainaggregate != null) {
 				mainaggregate.Dispose(); mainaggregate = null;
 			}
@@ -78,16 +78,16 @@ namespace <%=aux_metadata.Namespace%>.lib.businesslayer {
 		#endregion
 
 		#region private Properties...
-		private DO_<%=aux_table.Name%> mainaggregate;
+		private DO_<%=_aux_table.Name%> mainaggregate;
 
 		///
-		protected DO_<%=aux_table.Name%> mainAggregate {
+		protected DO_<%=_aux_table.Name%> mainAggregate {
 			get {
 				if (mainaggregate == null) {
 					// instantiating for the first time and
 					// only because it became needed, otherwise
 					// never instantiated...
-					mainaggregate = new DO_<%=aux_table.Name%>();
+					mainaggregate = new DO_<%=_aux_table.Name%>();
 				}
 				return mainaggregate;
 			}
@@ -107,7 +107,7 @@ namespace <%=aux_metadata.Namespace%>.lib.businesslayer {
 		/// List Item Value.
 		/// </summary>
 		public virtual string ListItemValue {
-			get { return <%=aux_table.ListItemValue.Name%><%=(aux_table.ListItemValue.DBType_generic.FWType != "string") ? ".ToString()" : ""%>; }
+			get { return <%=_aux_table.ListItemValue.Name%><%=(_aux_table.ListItemValue.DBType_generic.FWType != "string") ? ".ToString()" : ""%>; }
 		}
 		#endregion
 		#region public virtual string ListItemText { get; }
@@ -115,19 +115,19 @@ namespace <%=aux_metadata.Namespace%>.lib.businesslayer {
 		/// List Item Text.
 		/// </summary>
 		public virtual string ListItemText {
-			get { return <%=aux_table.ListItemText.Name%><%=(aux_table.ListItemText.DBType_generic.FWType != "string") ? ".ToString()" : ""%>; }
+			get { return <%=_aux_table.ListItemText.Name%><%=(_aux_table.ListItemText.DBType_generic.FWType != "string") ? ".ToString()" : ""%>; }
 		}
 		#endregion<%
 		}
-		for (int f = 0; f < aux_table.Fields.Count; f++) {
-			aux_field = aux_table.Fields[f];%>
-		#region public virtual <%=aux_field.DBType_generic.FWType%> <%=aux_field.Name%> { get; set; }
+		for (int f = 0; f < _aux_table.Fields.Count; f++) {
+			_aux_field = _aux_table.Fields[f];%>
+		#region public virtual <%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%> { get; set; }
 		/// <summary>
-		/// <%=aux_table.Name%>'s <%=aux_field.Name%>.
+		/// <%=_aux_table.Name%>'s <%=_aux_field.Name%>.
 		/// </summary>
-		public virtual <%=aux_field.DBType_generic.FWType%> <%=aux_field.Name%> {
-			get { return mainAggregate.<%=aux_field.Name%>; }
-			set { mainAggregate.<%=aux_field.Name%> = value; }
+		public virtual <%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%> {
+			get { return mainAggregate.<%=_aux_field.Name%>; }
+			set { mainAggregate.<%=_aux_field.Name%> = value; }
 		}
 		#endregion<%
 		}%>

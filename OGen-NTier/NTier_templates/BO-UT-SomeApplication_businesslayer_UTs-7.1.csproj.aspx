@@ -29,17 +29,17 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
 #endregion
 
 #region varaux...
-cDBMetadata aux_metadata = new cDBMetadata();
-aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
+cDBMetadata _aux_metadata = new cDBMetadata();
+_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
 
-cDBMetadata_Table aux_table;
-cDBMetadata_Table_Field aux_field;
-int aux_table_hasidentitykey;
-//string[] aux_configmodes = aux_metadata.ConfigModes();
+cDBMetadata_Table _aux_table;
+cDBMetadata_Table_Field _aux_field;
+int _aux_table_hasidentitykey;
+//string[] _aux_configmodes = _aux_metadata.ConfigModes();
 #endregion
 //-----------------------------------------------------------------------------------------
 %><VisualStudioProject>
@@ -47,13 +47,13 @@ int aux_table_hasidentitykey;
         ProjectType = "Local"
         ProductVersion = "7.10.3077"
         SchemaVersion = "2.0"
-        ProjectGuid = "{<%=aux_metadata.GUIDBusinesslayer_UTs%>}"
+        ProjectGuid = "{<%=_aux_metadata.GUIDBusinesslayer_UTs%>}"
     >
         <Build>
             <Settings
                 ApplicationIcon = ""
                 AssemblyKeyContainerName = ""
-                AssemblyName = "<%=aux_metadata.Namespace%>.lib.businesslayer.UTs"
+                AssemblyName = "<%=_aux_metadata.Namespace%>.lib.businesslayer.UTs"
                 AssemblyOriginatorKeyFile = ""
                 DefaultClientScript = "JScript"
                 DefaultHTMLPageLayout = "Grid"
@@ -62,7 +62,7 @@ int aux_table_hasidentitykey;
                 OutputType = "Library"
                 PreBuildEvent = ""
                 PostBuildEvent = ""
-                RootNamespace = "<%=aux_metadata.Namespace%>.lib.businesslayer.UTs"
+                RootNamespace = "<%=_aux_metadata.Namespace%>.lib.businesslayer.UTs"
                 RunPostBuildEvent = "OnBuildSuccess"
                 StartupObject = ""
             >
@@ -140,13 +140,13 @@ int aux_table_hasidentitykey;
                     AssemblyFolderKey = "hklm\dn\ogen"
                 />
                 <Reference
-                    Name = "<%=aux_metadata.ApplicationName%>_datalayer"
-                    Project = "{<%=aux_metadata.GUIDDatalayer%>}"
+                    Name = "<%=_aux_metadata.ApplicationName%>_datalayer"
+                    Project = "{<%=_aux_metadata.GUIDDatalayer%>}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
                 <Reference
-                    Name = "<%=aux_metadata.ApplicationName%>_businesslayer"
-                    Project = "{<%=aux_metadata.GUIDBusinesslayer%>}"
+                    Name = "<%=_aux_metadata.ApplicationName%>_businesslayer"
+                    Project = "{<%=_aux_metadata.GUIDBusinesslayer%>}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
             </References>
@@ -162,15 +162,15 @@ int aux_table_hasidentitykey;
                     SubType = "Code"
                     BuildAction = "Compile"
                 /><%
-                for (int t = 0; t < aux_metadata.Tables.Count; t++) {
-					aux_table = aux_metadata.Tables[t];%>
+                for (int t = 0; t < _aux_metadata.Tables.Count; t++) {
+					_aux_table = _aux_metadata.Tables[t];%>
                 <File
-                    RelPath = "UT_<%=aux_table.Name%>.cs"
+                    RelPath = "UT_<%=_aux_table.Name%>.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base\UT0_<%=aux_table.Name%>.cs"
+                    RelPath = "_base\UT0_<%=_aux_table.Name%>.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 /><%

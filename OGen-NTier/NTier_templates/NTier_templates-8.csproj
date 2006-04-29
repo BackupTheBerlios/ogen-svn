@@ -149,7 +149,9 @@
     <Content Include="BO-UT-UT_SomeTable.cs.aspx" />
     <Content Include="DO-DB-fnc0_SomeTable_isObject-MySQL.sql.aspx" />
     <Content Include="DO-DB-fnc0_SomeTable_isObject-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-fnc0_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" />
     <Content Include="DO-DB-fnc0_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx" />
     <Content Include="DO-DB-fnc0_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx" />
@@ -187,7 +189,9 @@
     <Content Include="DO-DB-sp0_SomeTable_getObject_bySomeCriteria-PostgreSQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_getObject_bySomeCriteria-SQLServer.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_insObject-MySQL.sql.aspx" />
-    <Content Include="DO-DB-sp0_SomeTable_insObject-PostgreSQL.sql.aspx" />
+    <Content Include="DO-DB-sp0_SomeTable_insObject-PostgreSQL.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-PostgreSQL.sql.aspx" />
@@ -220,7 +224,9 @@
     <Content Include="DO-DO0_SomeTable.cs.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
-    <Content Include="DO-DO0__utils.cs.aspx" />
+    <Content Include="DO-DO0__utils.cs.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DO_SomeTable.cs.aspx" />
     <Content Include="DO-DO__utils.cs.aspx" />
     <Content Include="DO-RO0_SomeTable.cs.aspx">

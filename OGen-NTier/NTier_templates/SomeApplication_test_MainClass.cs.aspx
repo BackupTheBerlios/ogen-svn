@@ -29,24 +29,24 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
 #endregion
 
 #region varaux...
-cDBMetadata aux_metadata = new cDBMetadata();
-aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
+cDBMetadata _aux_metadata = new cDBMetadata();
+_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
 
-//cDBMetadata_Table aux_table;
-//cDBMetadata_Table_Field aux_field;
-//int aux_table_hasidentitykey;
-//string[] aux_configmodes = aux_metadata.ConfigModes();
+//cDBMetadata_Table _aux_table;
+//cDBMetadata_Table_Field _aux_field;
+//int _aux_table_hasidentitykey;
+//string[] _aux_configmodes = _aux_metadata.ConfigModes();
 #endregion
 //-----------------------------------------------------------------------------------------
-if ((aux_metadata.CopyrightText != string.Empty) && (aux_metadata.CopyrightTextLong != string.Empty)) {
-%>#region <%=aux_metadata.CopyrightText%>
+if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTextLong != string.Empty)) {
+%>#region <%=_aux_metadata.CopyrightText%>
 /*
 
-<%=aux_metadata.CopyrightTextLong%>
+<%=_aux_metadata.CopyrightTextLong%>
 
 */
 #endregion
@@ -61,10 +61,10 @@ using System.Text.RegularExpressions;
 
 using OGen.lib.datalayer;
 
-using <%=aux_metadata.Namespace%>.lib.datalayer;
-using <%=aux_metadata.Namespace%>.lib.businesslayer;
+using <%=_aux_metadata.Namespace%>.lib.datalayer;
+using <%=_aux_metadata.Namespace%>.lib.businesslayer;
 
-namespace <%=aux_metadata.Namespace%>.test {
+namespace <%=_aux_metadata.Namespace%>.test {
 	class MainClass {
 		[STAThread]
 		static void Main(string[] args) {

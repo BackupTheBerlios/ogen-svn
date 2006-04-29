@@ -29,17 +29,17 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
 #endregion
 
 #region varaux...
-cDBMetadata aux_metadata = new cDBMetadata();
-aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
+cDBMetadata _aux_metadata = new cDBMetadata();
+_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
 
-cDBMetadata_Table aux_table;
-cDBMetadata_Table_Field aux_field;
-int aux_table_hasidentitykey;
-//string[] aux_configmodes = aux_metadata.ConfigModes();
+cDBMetadata_Table _aux_table;
+cDBMetadata_Table_Field _aux_field;
+int _aux_table_hasidentitykey;
+//string[] _aux_configmodes = _aux_metadata.ConfigModes();
 #endregion
 //-----------------------------------------------------------------------------------------
 %><VisualStudioProject>
@@ -47,13 +47,13 @@ int aux_table_hasidentitykey;
         ProjectType = "Local"
         ProductVersion = "7.10.3077"
         SchemaVersion = "2.0"
-        ProjectGuid = "{<%=aux_metadata.GUIDDatalayer%>}"
+        ProjectGuid = "{<%=_aux_metadata.GUIDDatalayer%>}"
     >
         <Build>
             <Settings
                 ApplicationIcon = ""
                 AssemblyKeyContainerName = ""
-                AssemblyName = "<%=aux_metadata.Namespace%>.lib.datalayer"
+                AssemblyName = "<%=_aux_metadata.Namespace%>.lib.datalayer"
                 AssemblyOriginatorKeyFile = ""
                 DefaultClientScript = "JScript"
                 DefaultHTMLPageLayout = "Grid"
@@ -62,7 +62,7 @@ int aux_table_hasidentitykey;
                 OutputType = "Library"
                 PreBuildEvent = ""
                 PostBuildEvent = ""
-                RootNamespace = "<%=aux_metadata.Namespace%>.lib.datalayer"
+                RootNamespace = "<%=_aux_metadata.Namespace%>.lib.datalayer"
                 RunPostBuildEvent = "OnBuildSuccess"
                 StartupObject = ""
             >
@@ -73,7 +73,7 @@ int aux_table_hasidentitykey;
                     CheckForOverflowUnderflow = "false"
                     ConfigurationOverrideFile = ""
                     DefineConstants = "DEBUG;TRACE"
-                    DocumentationFile = "bin\Debug\<%=aux_metadata.Namespace%>.lib.datalayer.xml"
+                    DocumentationFile = "bin\Debug\<%=_aux_metadata.Namespace%>.lib.datalayer.xml"
                     DebugSymbols = "true"
                     FileAlignment = "4096"
                     IncrementalBuild = "false"
@@ -148,24 +148,24 @@ int aux_table_hasidentitykey;
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-<%=aux_metadata.DBs.Default.DBServerType.ToString()%>\DO0__utils.cs"
+                    RelPath = "_base-<%=_aux_metadata.Default_DBServerType.ToString()%>\DO0__utils.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 /><%
-                for (int t = 0; t < aux_metadata.Tables.Count; t++) {
-					aux_table = aux_metadata.Tables[t];%>
+                for (int t = 0; t < _aux_metadata.Tables.Count; t++) {
+					_aux_table = _aux_metadata.Tables[t];%>
                 <File
-                    RelPath = "DO_<%=aux_table.Name%>.cs"
+                    RelPath = "DO_<%=_aux_table.Name%>.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-<%=aux_metadata.DBs.Default.DBServerType.ToString()%>\DO0_<%=aux_table.Name%>.cs"
+                    RelPath = "_base-<%=_aux_metadata.Default_DBServerType.ToString()%>\DO0_<%=_aux_table.Name%>.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-<%=aux_metadata.DBs.Default.DBServerType.ToString()%>\RO0_<%=aux_table.Name%>.cs"
+                    RelPath = "_base-<%=_aux_metadata.Default_DBServerType.ToString()%>\RO0_<%=_aux_table.Name%>.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 /><%

@@ -29,17 +29,17 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
 #endregion
 
 #region varaux...
-cDBMetadata aux_metadata = new cDBMetadata();
-aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
+cDBMetadata _aux_metadata = new cDBMetadata();
+_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
 
-cDBMetadata_Table aux_table;
-cDBMetadata_Table_Field aux_field;
-int aux_table_hasidentitykey;
-//string[] aux_configmodes = aux_metadata.ConfigModes();
+cDBMetadata_Table _aux_table;
+cDBMetadata_Table_Field _aux_field;
+int _aux_table_hasidentitykey;
+//string[] _aux_configmodes = _aux_metadata.ConfigModes();
 #endregion
 //-----------------------------------------------------------------------------------------
 %><Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
@@ -47,14 +47,14 @@ int aux_table_hasidentitykey;
     <ProjectType>Local</ProjectType>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{<%=aux_metadata.GUIDDatalayer%>}</ProjectGuid>
+    <ProjectGuid>{<%=_aux_metadata.GUIDDatalayer%>}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ApplicationIcon>
     </ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
-    <AssemblyName><%=aux_metadata.Namespace%>.lib.datalayer</AssemblyName>
+    <AssemblyName><%=_aux_metadata.Namespace%>.lib.datalayer</AssemblyName>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
@@ -62,7 +62,7 @@ int aux_table_hasidentitykey;
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
     <OutputType>Library</OutputType>
-    <RootNamespace><%=aux_metadata.Namespace%>.lib.datalayer</RootNamespace>
+    <RootNamespace><%=_aux_metadata.Namespace%>.lib.datalayer</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <StartupObject>
     </StartupObject>
@@ -79,7 +79,7 @@ int aux_table_hasidentitykey;
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DocumentationFile>bin\Debug\<%=aux_metadata.Namespace%>.lib.datalayer.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\<%=_aux_metadata.Namespace%>.lib.datalayer.xml</DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
     <NoStdLib>false</NoStdLib>
@@ -139,21 +139,21 @@ int aux_table_hasidentitykey;
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="_base-<%=aux_metadata.DBs.Default.DBServerType.ToString()%>\DO0__utils.cs">
+    <Compile Include="_base-<%=_aux_metadata.Default_DBServerType.ToString()%>\DO0__utils.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DO__utils.cs">
       <SubType>Code</SubType>
     </Compile><%
-		for (int t = 0; t < aux_metadata.Tables.Count; t++) {
-			aux_table = aux_metadata.Tables[t];%>
-    <Compile Include="DO_<%=aux_table.Name%>.cs">
+		for (int t = 0; t < _aux_metadata.Tables.Count; t++) {
+			_aux_table = _aux_metadata.Tables[t];%>
+    <Compile Include="DO_<%=_aux_table.Name%>.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="_base-<%=aux_metadata.DBs.Default.DBServerType.ToString()%>\DO0_<%=aux_table.Name%>.cs">
+    <Compile Include="_base-<%=_aux_metadata.Default_DBServerType.ToString()%>\DO0_<%=_aux_table.Name%>.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="_base-<%=aux_metadata.DBs.Default.DBServerType.ToString()%>\RO0_<%=aux_table.Name%>.cs">
+    <Compile Include="_base-<%=_aux_metadata.Default_DBServerType.ToString()%>\RO0_<%=_aux_table.Name%>.cs">
       <SubType>Code</SubType>
     </Compile><%
 		}%>

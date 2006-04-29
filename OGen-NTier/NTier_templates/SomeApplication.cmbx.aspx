@@ -29,50 +29,50 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%//@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-//string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
-//string arg_OGenPath = System.Web.HttpUtility.UrlDecode(Request.QueryString["OGenPath"]);
-string arg_ApplicationName = System.Web.HttpUtility.UrlDecode(Request.QueryString["ApplicationName"]);
+//string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+//string _arg_OGenPath = System.Web.HttpUtility.UrlDecode(Request.QueryString["OGenPath"]);
+string _arg_ApplicationName = System.Web.HttpUtility.UrlDecode(Request.QueryString["ApplicationName"]);
 #endregion
 
 #region varaux...
-//cDBMetadata aux_metadata = new cDBMetadata();
-//aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
+//cDBMetadata _aux_metadata = new cDBMetadata();
+//_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
 
-//cDBMetadata_Table aux_table;
-//cDBMetadata_Table_Field aux_field;
-//int aux_table_hasidentitykey;
-//string[] aux_configmodes = aux_metadata.ConfigModes();
+//cDBMetadata_Table _aux_table;
+//cDBMetadata_Table_Field _aux_field;
+//int _aux_table_hasidentitykey;
+//string[] _aux_configmodes = _aux_metadata.ConfigModes();
 #endregion
 //-----------------------------------------------------------------------------------------
-%><Combine fileversion="1.0" name="<%=arg_ApplicationName%>" description="">
-  <StartMode startupentry="<%=arg_ApplicationName%>_test" single="True">
-    <Execute entry="<%=arg_ApplicationName%>_datalayer" type="None" />
-    <Execute entry="<%=arg_ApplicationName%>_businesslayer" type="None" />
-    <Execute entry="<%=arg_ApplicationName%>_datalayer_UTs" type="None" />
-    <Execute entry="<%=arg_ApplicationName%>_businesslayer_UTs" type="None" />
-    <Execute entry="<%=arg_ApplicationName%>_test" type="None" />
+%><Combine fileversion="1.0" name="<%=_arg_ApplicationName%>" description="">
+  <StartMode startupentry="<%=_arg_ApplicationName%>_test" single="True">
+    <Execute entry="<%=_arg_ApplicationName%>_datalayer" type="None" />
+    <Execute entry="<%=_arg_ApplicationName%>_businesslayer" type="None" />
+    <Execute entry="<%=_arg_ApplicationName%>_datalayer_UTs" type="None" />
+    <Execute entry="<%=_arg_ApplicationName%>_businesslayer_UTs" type="None" />
+    <Execute entry="<%=_arg_ApplicationName%>_test" type="None" />
   </StartMode>
   <Entries>
-    <Entry filename=".\<%=arg_ApplicationName%>_datalayer\<%=arg_ApplicationName%>_datalayer.prjx" />
-    <Entry filename=".\<%=arg_ApplicationName%>_businesslayer\<%=arg_ApplicationName%>_businesslayer.prjx" />
-    <Entry filename=".\<%=arg_ApplicationName%>_datalayer_UTs\<%=arg_ApplicationName%>_datalayer_UTs.prjx" />
-    <Entry filename=".\<%=arg_ApplicationName%>_businesslayer_UTs\<%=arg_ApplicationName%>_businesslayer_UTs.prjx" />
-    <Entry filename=".\<%=arg_ApplicationName%>_test\<%=arg_ApplicationName%>_test.prjx" />
+    <Entry filename=".\<%=_arg_ApplicationName%>_datalayer\<%=_arg_ApplicationName%>_datalayer.prjx" />
+    <Entry filename=".\<%=_arg_ApplicationName%>_businesslayer\<%=_arg_ApplicationName%>_businesslayer.prjx" />
+    <Entry filename=".\<%=_arg_ApplicationName%>_datalayer_UTs\<%=_arg_ApplicationName%>_datalayer_UTs.prjx" />
+    <Entry filename=".\<%=_arg_ApplicationName%>_businesslayer_UTs\<%=_arg_ApplicationName%>_businesslayer_UTs.prjx" />
+    <Entry filename=".\<%=_arg_ApplicationName%>_test\<%=_arg_ApplicationName%>_test.prjx" />
   </Entries>
   <Configurations active="Debug">
     <Configuration name="Release">
-      <Entry name="<%=arg_ApplicationName%>_datalayer" configurationname="Debug" build="False" />
-      <Entry name="<%=arg_ApplicationName%>_businesslayer" configurationname="Debug" build="False" />
-      <Entry name="<%=arg_ApplicationName%>_datalayer_UTs" configurationname="Debug" build="False" />
-      <Entry name="<%=arg_ApplicationName%>_businesslayer_UTs" configurationname="Debug" build="False" />
-      <Entry name="<%=arg_ApplicationName%>_test" configurationname="Debug" build="False" />
+      <Entry name="<%=_arg_ApplicationName%>_datalayer" configurationname="Debug" build="False" />
+      <Entry name="<%=_arg_ApplicationName%>_businesslayer" configurationname="Debug" build="False" />
+      <Entry name="<%=_arg_ApplicationName%>_datalayer_UTs" configurationname="Debug" build="False" />
+      <Entry name="<%=_arg_ApplicationName%>_businesslayer_UTs" configurationname="Debug" build="False" />
+      <Entry name="<%=_arg_ApplicationName%>_test" configurationname="Debug" build="False" />
     </Configuration>
     <Configuration name="Debug">
-      <Entry name="<%=arg_ApplicationName%>_datalayer" configurationname="Debug" build="False" />
-      <Entry name="<%=arg_ApplicationName%>_businesslayer" configurationname="Debug" build="False" />
-      <Entry name="<%=arg_ApplicationName%>_datalayer_UTs" configurationname="Debug" build="False" />
-      <Entry name="<%=arg_ApplicationName%>_businesslayer_UTs" configurationname="Debug" build="False" />
-      <Entry name="<%=arg_ApplicationName%>_test" configurationname="Debug" build="False" />
+      <Entry name="<%=_arg_ApplicationName%>_datalayer" configurationname="Debug" build="False" />
+      <Entry name="<%=_arg_ApplicationName%>_businesslayer" configurationname="Debug" build="False" />
+      <Entry name="<%=_arg_ApplicationName%>_datalayer_UTs" configurationname="Debug" build="False" />
+      <Entry name="<%=_arg_ApplicationName%>_businesslayer_UTs" configurationname="Debug" build="False" />
+      <Entry name="<%=_arg_ApplicationName%>_test" configurationname="Debug" build="False" />
     </Configuration>
   </Configurations>
 </Combine>

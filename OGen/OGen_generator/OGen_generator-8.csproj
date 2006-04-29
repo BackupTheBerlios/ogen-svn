@@ -122,6 +122,8 @@
     <Compile Include="cGenerator.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DBConnectionstring.cs" />
+    <Compile Include="DBConnectionstrings.cs" />
     <None Include="COPYING" />
     <Content Include="LICENSE.GPL.txt" />
     <Content Include="LICENSE.txt" />

@@ -46,10 +46,10 @@ namespace OGen.NTier.lib.metadata {
 			aggregateloopback_ref_in
 		) {
 			//#region ClaSSe...
-			GenerateSQL = generateSQL_in;
 			ConfigMode = configMode_in;
-			Connectionstring = string.Empty;
+			GenerateSQL = generateSQL_in;
 			isIndexed_andReadOnly = false;
+			Connectionstring = string.Empty;
 			//#endregion
 		}
 		#endregion
@@ -97,6 +97,15 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 
 		#region Properties - ClaSSe...
+		#region public string ConfigMode { get; set; }
+		private string configmode_;
+
+		[ClaSSPropertyAttribute("configMode", ClaSSPropertyAttribute.eType.standard, true)]
+		public string ConfigMode {
+			get { return configmode_; }
+			set { configmode_ = value; }
+		}
+		#endregion
 		#region public bool GenerateSQL { get; set; }
 		private bool generatesql_;
 		public bool GenerateSQL {
@@ -110,24 +119,6 @@ namespace OGen.NTier.lib.metadata {
 			set { generatesql_ = bool.Parse(value); }
 		}
 		#endregion
-		#region public string ConfigMode { get; set; }
-		private string configmode_;
-
-		[ClaSSPropertyAttribute("configMode", ClaSSPropertyAttribute.eType.standard, true)]
-		public string ConfigMode {
-			get { return configmode_; }
-			set { configmode_ = value; }
-		}
-		#endregion
-		#region public string Connectionstring { get; set; }
-		private string connectionstring_;
-
-		[ClaSSPropertyAttribute("connectionstring", ClaSSPropertyAttribute.eType.standard, true)]
-		public string Connectionstring {
-			get { return connectionstring_; }
-			set { connectionstring_ = value; }
-		}
-		#endregion
 		#region public bool isIndexed_andReadOnly { get; set; }
 		private bool isindexed_andreadonly_;
 		public bool isIndexed_andReadOnly {
@@ -139,6 +130,15 @@ namespace OGen.NTier.lib.metadata {
 		private string isindexed_andreadonly_reflection {
 			get { return isindexed_andreadonly_.ToString(); }
 			set { isindexed_andreadonly_ = bool.Parse(value); }
+		}
+		#endregion
+		#region public string Connectionstring { get; set; }
+		private string connectionstring_;
+
+		[ClaSSPropertyAttribute("connectionstring", ClaSSPropertyAttribute.eType.standard, true)]
+		public string Connectionstring {
+			get { return connectionstring_; }
+			set { connectionstring_ = value; }
 		}
 		#endregion
 		#endregion

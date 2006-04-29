@@ -27,6 +27,7 @@ along with OGen; if not, write to the
 	http://www.fsf.org/licensing/licenses/gpl.txt
 
 */%><%@ Page language="c#" contenttype="text/html" %>
+<%@ import namespace="OGen.lib.datalayer" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
@@ -47,7 +48,7 @@ cDBMetadata_Table_Field _aux_field;
 %>CREATE PROCEDURE `sp0_<%=_aux_table.Name%>_getObject`(<%
 	for (int f = 0; f < _aux_table.Fields.Count; f++) {
 		_aux_field = _aux_table.Fields[f];%>
-	OUT `<%=_aux_field.Name%>_` <%=_aux_field.DBs[_aux_dbervertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbervertype].Size + ")" : ""%><%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
+	OUT `<%=_aux_field.Name%>_` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbservertype].Size + ")" : ""%><%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
 	}%>
 )
 	NOT DETERMINISTIC

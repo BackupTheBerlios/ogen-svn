@@ -27,6 +27,7 @@ along with OGen; if not, write to the
 	http://www.fsf.org/licensing/licenses/gpl.txt
 
 */%><%@ Page language="c#" contenttype="text/html" %>
+<%@ import namespace="OGen.lib.datalayer" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
@@ -51,14 +52,14 @@ string _aux_field_name;
 	for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
 		_aux_field = _aux_search.SearchParameters[f].Field;
 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%>
-	@<%=_aux_field_name%>_search_ <%=_aux_field.DBs[_aux_dbervertype].DBType_inDB_name%><%=(_aux_field.isText) ? " (" + _aux_field.DBs[_aux_dbervertype].Size + ")" : ""%>, <%
+	@<%=_aux_field_name%>_search_ <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? " (" + _aux_field.DBs[_aux_dbservertype].Size + ")" : ""%>, <%
 	}%>
 
 	@Exists_ BIT OUT
 AS<%
 	for (int f = 0; f < _aux_table.Fields_onlyPK.Count; f++) {
 		_aux_field = _aux_table.Fields_onlyPK[f];%>
-	DECLARE @<%=_aux_field.Name%> <%=_aux_field.DBs[_aux_dbervertype].DBType_inDB_name%><%=(_aux_field.isText) ? " (" + _aux_field.DBs[_aux_dbervertype].Size + ")" : ""%><%
+	DECLARE @<%=_aux_field.Name%> <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? " (" + _aux_field.DBs[_aux_dbservertype].Size + ")" : ""%><%
 	}%>
 
 	SET @Exists_ = 0

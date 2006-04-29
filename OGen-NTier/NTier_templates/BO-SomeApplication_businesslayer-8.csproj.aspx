@@ -29,17 +29,17 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
 #endregion
 
 #region varaux...
-cDBMetadata aux_metadata = new cDBMetadata();
-aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
+cDBMetadata _aux_metadata = new cDBMetadata();
+_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
 
-cDBMetadata_Table aux_table;
-cDBMetadata_Table_Field aux_field;
-int aux_table_hasidentitykey;
-//string[] aux_configmodes = aux_metadata.ConfigModes();
+cDBMetadata_Table _aux_table;
+cDBMetadata_Table_Field _aux_field;
+int _aux_table_hasidentitykey;
+//string[] _aux_configmodes = _aux_metadata.ConfigModes();
 #endregion
 //-----------------------------------------------------------------------------------------
 %>
@@ -48,14 +48,14 @@ int aux_table_hasidentitykey;
     <ProjectType>Local</ProjectType>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{<%=aux_metadata.GUIDBusinesslayer%>}</ProjectGuid>
+    <ProjectGuid>{<%=_aux_metadata.GUIDBusinesslayer%>}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ApplicationIcon>
     </ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
-    <AssemblyName><%=aux_metadata.Namespace%>.lib.businesslayer</AssemblyName>
+    <AssemblyName><%=_aux_metadata.Namespace%>.lib.businesslayer</AssemblyName>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
@@ -63,7 +63,7 @@ int aux_table_hasidentitykey;
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
     <DelaySign>false</DelaySign>
     <OutputType>Library</OutputType>
-    <RootNamespace><%=aux_metadata.Namespace%>.lib.businesslayer</RootNamespace>
+    <RootNamespace><%=_aux_metadata.Namespace%>.lib.businesslayer</RootNamespace>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
     <StartupObject>
     </StartupObject>
@@ -80,7 +80,7 @@ int aux_table_hasidentitykey;
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DocumentationFile>bin\Debug\<%=aux_metadata.Namespace%>.lib.businesslayer.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\<%=_aux_metadata.Namespace%>.lib.businesslayer.xml</DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
     <NoStdLib>false</NoStdLib>
@@ -139,9 +139,9 @@ int aux_table_hasidentitykey;
     <Reference Include="System.XML">
       <Name>System.XML</Name>
     </Reference>
-    <ProjectReference Include="..\<%=aux_metadata.ApplicationName%>_datalayer\<%=aux_metadata.ApplicationName%>_datalayer-8.csproj">
-      <Name><%=aux_metadata.ApplicationName%>_datalayer</Name>
-      <Project>{<%=aux_metadata.GUIDDatalayer%>}</Project>
+    <ProjectReference Include="..\<%=_aux_metadata.ApplicationName%>_datalayer\<%=_aux_metadata.ApplicationName%>_datalayer-8.csproj">
+      <Name><%=_aux_metadata.ApplicationName%>_datalayer</Name>
+      <Project>{<%=_aux_metadata.GUIDDatalayer%>}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
   </ItemGroup>
@@ -149,12 +149,12 @@ int aux_table_hasidentitykey;
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile><%
-		for (int t = 0; t < aux_metadata.Tables.Count; t++) {
-			aux_table = aux_metadata.Tables[t];%>
-    <Compile Include="BO_<%=aux_table.Name%>.cs">
+		for (int t = 0; t < _aux_metadata.Tables.Count; t++) {
+			_aux_table = _aux_metadata.Tables[t];%>
+    <Compile Include="BO_<%=_aux_table.Name%>.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="_base\BO0_<%=aux_table.Name%>.cs">
+    <Compile Include="_base\BO0_<%=_aux_table.Name%>.cs">
       <SubType>Code</SubType>
     </Compile><%
 		}%>

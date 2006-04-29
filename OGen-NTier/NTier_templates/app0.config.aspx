@@ -29,21 +29,21 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
 #endregion
 
 #region varaux...
-cDBMetadata aux_metadata = new cDBMetadata();
-aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
+cDBMetadata _aux_metadata = new cDBMetadata();
+_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
 #endregion
 //-----------------------------------------------------------------------------------------
 %><configuration>
 	<appSettings>
-		<add key="DBServerType" value="<%=aux_metadata.Default_DBServerType.ToString()%>" />
+		<add key="DBServerType" value="<%=_aux_metadata.Default_DBServerType.ToString()%>" />
 <%
-		for (int d = 0; d < aux_metadata.DBs.Count; d++) {
-			for (int c = 0; c < aux_metadata.DBs[d].Connections.Count; c++) {%>
-		<add key="<%=aux_metadata.ApplicationName%>-<%=aux_metadata.DBs[d].DBServerType.ToString()%>-<%=aux_metadata.DBs[d].Connections[c].ConfigMode%>" value="<%=aux_metadata.DBs[d].Connections[c].Connectionstring%>"/><%
+		for (int d = 0; d < _aux_metadata.DBs.Count; d++) {
+			for (int c = 0; c < _aux_metadata.DBs[d].Connections.Count; c++) {%>
+		<add key="<%=_aux_metadata.ApplicationName%>-<%=_aux_metadata.DBs[d].DBServerType.ToString()%>-<%=_aux_metadata.DBs[d].Connections[c].ConfigMode%>" value="<%=_aux_metadata.DBs[d].Connections[c].Connectionstring%>"/><%
 			}
 		}%>
 	</appSettings>

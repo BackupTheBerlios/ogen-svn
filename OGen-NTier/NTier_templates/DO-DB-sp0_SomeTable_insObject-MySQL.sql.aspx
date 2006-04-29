@@ -27,6 +27,7 @@ along with OGen; if not, write to the
 	http://www.fsf.org/licensing/licenses/gpl.txt
 
 */%><%@ Page language="c#" contenttype="text/html" %>
+<%@ import namespace="OGen.lib.datalayer" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
@@ -48,7 +49,7 @@ cDBMetadata_Table_Field _aux_field;
 %>CREATE PROCEDURE `sp0_<%=_aux_table.Name%>_insObject`(<%
 	for (int f = 0; f < _aux_table.Fields.Count; f++) {
 		_aux_field = _aux_table.Fields[f];%><%=""%>
-	<%=(_aux_field.isIdentity) ? "OUT" : "IN"%> `<%=_aux_field.Name%>_` <%=_aux_field.DBs[_aux_dbervertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbervertype].Size + ")" : ""%>, <%
+	<%=(_aux_field.isIdentity) ? "OUT" : "IN"%> `<%=_aux_field.Name%>_` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbservertype].Size + ")" : ""%>, <%
 	}%>
 	IN `SelectIdentity_` BOOLEAN
 )
@@ -61,7 +62,7 @@ BEGIN<%
 	SET `ConstraintExist` = `fnc0_<%=_aux_table.Name%>__ConstraintExist`(<%
 		for (int f = 0; f < _aux_table.Fields.Count; f++) {
 			_aux_field = _aux_table.Fields[f];%><%=""%>
-		<%=(_aux_field.isPK) ? _aux_field.DBs[_aux_dbervertype].DBType_generic.DBEmptyValue : "`" + _aux_field.Name + "_`"%><%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
+		<%=(_aux_field.isPK) ? _aux_field.DBs[_aux_dbservertype].DBType_generic_DBEmptyValue() : "`" + _aux_field.Name + "_`"%><%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
 		}%>
 	);
 	IF (NOT `ConstraintExist`) THEN<%
@@ -84,11 +85,11 @@ BEGIN<%
 		IF (`SelectIdentity_`) THEN
 			SET `<%=_aux_table.Fields[_aux_table_hasidentitykey]%>_` = @@IDENTITY;
 		ELSE
-			SET `<%=_aux_table.Fields[_aux_table_hasidentitykey]%>_` = CAST(0 AS SIGNED INTEGER/*<%=_aux_table.Fields[_aux_table_hasidentitykey].DBType_inDB_name%>*/);
+			SET `<%=_aux_table.Fields[_aux_table_hasidentitykey]%>_` = CAST(0 AS SIGNED INTEGER/*<%=_aux_table.Fields[_aux_table_hasidentitykey].DBs[_aux_dbservertype].DBType_inDB_name%>*/);
 		END IF;<%
 	if (_aux_table_searches_hasexplicituniqueindex) {%>
 	ELSE
-		SET `<%=_aux_table.Fields[_aux_table_hasidentitykey]%>_` = CAST(-1 AS SIGNED INTEGER/*<%=_aux_table.Fields[_aux_table_hasidentitykey].DBType_inDB_name%>*/);
+		SET `<%=_aux_table.Fields[_aux_table_hasidentitykey]%>_` = CAST(-1 AS SIGNED INTEGER/*<%=_aux_table.Fields[_aux_table_hasidentitykey].DBs[_aux_dbservertype].DBType_inDB_name%>*/);
 	END IF;<%
 	}%>
 END;<%

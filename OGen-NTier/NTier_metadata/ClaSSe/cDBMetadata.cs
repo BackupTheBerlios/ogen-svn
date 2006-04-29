@@ -346,7 +346,8 @@ namespace OGen.NTier.lib.metadata {
 			dLoadState_fromDB	notifyBack_in, 
 			eDBServerTypes		DBServerType_in, 
 			string				Connectionstring_in, 
-			string				subAppName_in
+			string				subAppName_in, 
+			bool				clear_in
 		) {
 			#region for (...) Tables.Add();
 			cDBConnection _connection 
@@ -358,6 +359,7 @@ namespace OGen.NTier.lib.metadata {
 				subAppName_in
 			);
 
+if (clear_in)
 			tables_.Clear();
 			for (int t = 0; t < _tables_aux.Length; t++) {
 				int T = tables_.Add(_tables_aux[t].Name, true);
@@ -367,6 +369,7 @@ if (notifyBack_in != null) notifyBack_in(string.Format("#{0}/{1} - {2}", t + 1, 
 				tables_[T].isVirtualTable = _tables_aux[t].isVirtualTable;
 
 				cDBTableField[] _fields_aux = _connection.getTableFields(_tables_aux[t].Name);
+if (clear_in)
 				tables_[T].Fields.Clear();
 				for (int f = 0; f < _fields_aux.Length; f++) {
 					int F = tables_[T].Fields.Add(_fields_aux[f].Name, true);

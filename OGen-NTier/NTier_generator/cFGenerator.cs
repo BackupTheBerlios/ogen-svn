@@ -136,7 +136,7 @@ namespace OGen.NTier.lib.generator {
 			Open(_xmlfile, true, notifyBack_in);
 		}
 		#endregion
-		#region public void Open(...);
+//		#region public void Open(...);
 		public void Open(
 			string filename_in, 
 			bool force_doNOTsave_in, 
@@ -160,20 +160,42 @@ namespace OGen.NTier.lib.generator {
 				cDBMetadata.eMetadata.All
 			);
 			#endregion
-			#region metadata_.LoadState_fromDB(...);
+//			#region metadata_.LoadState_fromDB(...);
 			if (notifyBack_in != null) notifyBack_in("- reading metadata from db", true);
 			metadata_ = new cDBMetadata();
+
+// ToDos: here!
+metadata_.Tables.Clear();
+for (int d = 0; d < _metadata_temp.DBs.Count; d++) {
+	for (int c = 0; c < _metadata_temp.DBs[d].Connections.Count; c++) {
+		if (_metadata_temp.DBs[d].Connections[c].GenerateSQL) {
+			//_metadata_temp.DBs[d].Connections[c].Connectionstring
 			metadata_.LoadState_fromDB(
 				(notifyBack_in != null) 
 					? new cDBMetadata.dLoadState_fromDB(
 						notifyBack_in
 					) 
-					: null, 
-				_metadata_temp.Default_DBServerType, 
-				_metadata_temp.Default_Connectionstring(), 
-				_metadata_temp.SubAppName
+					: null,
+				_metadata_temp.DBs[d].DBServerType,
+				_metadata_temp.DBs[d].Connections[c].Connectionstring, 
+				_metadata_temp.SubAppName, 
+				false
 			);
-			#endregion
+
+		}
+	}
+}
+			//metadata_.LoadState_fromDB(
+			//    (notifyBack_in != null) 
+			//        ? new cDBMetadata.dLoadState_fromDB(
+			//            notifyBack_in
+			//        ) 
+			//        : null, 
+			//    _metadata_temp.Default_DBServerType, 
+			//    _metadata_temp.Default_Connectionstring(), 
+			//    _metadata_temp.SubAppName
+			//);
+//			#endregion
 			#region metadata_.LoadState_fromFile(filename_, All_butDatabaseER);
 			if (notifyBack_in != null) notifyBack_in("- updating metadata with xml file", true);
 			metadata_.LoadState_fromFile(
@@ -183,7 +205,7 @@ namespace OGen.NTier.lib.generator {
 			#endregion
 			if (notifyBack_in != null) notifyBack_in("... finished", true);
 		}
-		#endregion
+//		#endregion
 		#region public void Close(...);
 		public void Close(bool force_doNOTsave_in) {
 			if (

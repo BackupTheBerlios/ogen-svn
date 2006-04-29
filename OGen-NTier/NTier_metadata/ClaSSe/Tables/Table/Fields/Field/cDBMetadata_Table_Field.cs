@@ -316,9 +316,11 @@ namespace OGen.NTier.lib.metadata {
 		}
 		#endregion
 		//---
-//		#region public cDBType DBType_generic { get; }
-//		public cDBType DBType_generic {
-//			get {
+		#region public cDBType DBType_generic { get; }
+		public cDBType DBType_generic {
+			get {
+				return DBs[0].DBType_generic;
+				#region //oldstuff...
 //				cDBType dbtype_generic_out = new cDBType(parent_ref_.Parent_ref.Parent_ref.Parent_ref.default_dbservertype_);
 //				switch (parent_ref_.Parent_ref.Parent_ref.Parent_ref.default_dbservertype_) {
 //					case eDBServerTypes.SQLServer:
@@ -342,9 +344,10 @@ namespace OGen.NTier.lib.metadata {
 //				}
 //
 //				return dbtype_generic_out;
-//			}
-//		}
-//		#endregion
+				#endregion
+			}
+		}
+		#endregion
 //		#region public int DBType_inDB { get; set; }
 //		public int DBType_inDB {
 //			get {
@@ -460,6 +463,11 @@ parent_ref_.Parent_ref.Parent_ref,
 //		#endregion
 
 		#region Methods...
+		#region public string DBType_generic_DBEmptyValue(eDBServerTypes dbServerType_in);
+		public string DBType_generic_DBEmptyValue(eDBServerTypes dbServerType_in) {
+			return OGen.lib.datalayer.utils.convert.DBType2DBEmptyValue(DBs[0].DBType_generic.Value, dbServerType_in);
+		}
+		#endregion
 		#region public override string ToString();
 		public override string ToString() {
 			return Name;

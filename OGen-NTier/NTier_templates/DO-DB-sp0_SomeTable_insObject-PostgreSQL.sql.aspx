@@ -27,6 +27,7 @@ along with OGen; if not, write to the
 	http://www.fsf.org/licensing/licenses/gpl.txt
 
 */%><%@ Page language="c#" contenttype="text/html" %>
+<%@ import namespace="OGen.lib.datalayer" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
@@ -48,10 +49,10 @@ cDBMetadata_Table_Field _aux_field;
 %>CREATE OR REPLACE FUNCTION "sp0_<%=_aux_table.Name%>_insObject"(<%
 	for (int f = 0; f < _aux_table.Fields_noPK.Count; f++) {
 		_aux_field = _aux_table.Fields_noPK[f];
-		%>"<%=_aux_field.Name%>_" <%=_aux_field.DBs[_aux_dbervertype].DBType_inDB_name%>, <%
+		%>"<%=_aux_field.Name%>_" <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%>, <%
 	}
 %> "SelectIdentity_" boolean)
-RETURNS <%=_aux_table.Fields[_aux_table_hasidentitykey].DBType_inDB_name%>
+RETURNS <%=_aux_table.Fields[_aux_table_hasidentitykey].DBs[_aux_dbservertype].DBType_inDB_name%>
 AS '
 	/**********************************
 	 *  returns                       *
@@ -61,17 +62,17 @@ AS '
 	 **********************************/
 
 	DECLARE
-		IdentityKey <%=_aux_table.Fields[_aux_table_hasidentitykey].DBType_inDB_name%> = CAST(0 AS <%=_aux_table.Fields[_aux_table_hasidentitykey].DBType_inDB_name%>);
+		IdentityKey <%=_aux_table.Fields[_aux_table_hasidentitykey].DBs[_aux_dbservertype].DBType_inDB_name%> = CAST(0 AS <%=_aux_table.Fields[_aux_table_hasidentitykey].DBs[_aux_dbservertype].DBType_inDB_name%>);
 	BEGIN<%
 		if (_aux_table_searches_hasexplicituniqueindex) {%>
 		IF ("fnc0_<%=_aux_table.Name%>__ConstraintExist"(
-			CAST(0 AS <%=_aux_table.Fields[_aux_table_hasidentitykey].DBType_inDB_name%>), <%
+			CAST(0 AS <%=_aux_table.Fields[_aux_table_hasidentitykey].DBs[_aux_dbservertype].DBType_inDB_name%>), <%
 			for (int f = 0; f < _aux_table.Fields_noPK.Count; f++) {
 				_aux_field = _aux_table.Fields_noPK[f];%>
 			"<%=_aux_field.Name%>_"<%=(f != _aux_table.Fields_noPK.Count - 1) ? ", " : ""%><%
 			}%>
 		)) THEN
-			IdentityKey := CAST(-1 AS <%=_aux_table.Fields[_aux_table_hasidentitykey].DBType_inDB_name%>);
+			IdentityKey := CAST(-1 AS <%=_aux_table.Fields[_aux_table_hasidentitykey].DBs[_aux_dbservertype].DBType_inDB_name%>);
 		ELSE<%
 		}%>
 			INSERT INTO "<%=_aux_table.Name%>" (<%
@@ -93,7 +94,7 @@ AS '
 				FROM "<%=_aux_table.Name%>"
 				ORDER BY "<%=_aux_table.Fields[_aux_table_hasidentitykey].Name%>" DESC LIMIT 1;
 			ELSE
-				IdentityKey := CAST(0 AS <%=_aux_table.Fields[_aux_table_hasidentitykey].DBType_inDB_name%>);
+				IdentityKey := CAST(0 AS <%=_aux_table.Fields[_aux_table_hasidentitykey].DBs[_aux_dbservertype].DBType_inDB_name%>);
 			END IF;<%
 		if (_aux_table_searches_hasexplicituniqueindex) {%>
 		END IF;<%

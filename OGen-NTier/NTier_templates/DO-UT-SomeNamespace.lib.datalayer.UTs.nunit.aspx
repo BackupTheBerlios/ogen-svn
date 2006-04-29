@@ -29,24 +29,24 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%//@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-//string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
-string arg_ApplicationName = System.Web.HttpUtility.UrlDecode(Request.QueryString["ApplicationName"]);
-string arg_Namespace = System.Web.HttpUtility.UrlDecode(Request.QueryString["Namespace"]);
+//string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_ApplicationName = System.Web.HttpUtility.UrlDecode(Request.QueryString["ApplicationName"]);
+string _arg_Namespace = System.Web.HttpUtility.UrlDecode(Request.QueryString["Namespace"]);
 #endregion
 
 #region varaux...
-//cDBMetadata aux_metadata = new cDBMetadata();
-//aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
+//cDBMetadata _aux_metadata = new cDBMetadata();
+//_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
 
-//cDBMetadata_Table aux_table;
-//cDBMetadata_Table_Field aux_field;
-//int aux_table_hasidentitykey;
-////string[] aux_configmodes = aux_metadata.ConfigModes();
+//cDBMetadata_Table _aux_table;
+//cDBMetadata_Table_Field _aux_field;
+//int _aux_table_hasidentitykey;
+////string[] _aux_configmodes = _aux_metadata.ConfigModes();
 #endregion
 //-----------------------------------------------------------------------------------------
 %><NUnitProject>
   <Settings activeconfig="Default" />
   <Config name="Default" binpathtype="Auto">
-    <assembly path="<%=arg_ApplicationName%>_datalayer_UTs\bin\Debug\<%=arg_Namespace%>.lib.datalayer.UTs.dll" />
+    <assembly path="<%=_arg_ApplicationName%>_datalayer_UTs\bin\Debug\<%=_arg_Namespace%>.lib.datalayer.UTs.dll" />
   </Config>
 </NUnitProject>

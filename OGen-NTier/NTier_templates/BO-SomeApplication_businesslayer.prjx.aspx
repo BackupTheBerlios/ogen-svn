@@ -29,31 +29,31 @@ along with OGen; if not, write to the
 */%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
-string arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
 #endregion
 
 #region varaux...
-cDBMetadata aux_metadata = new cDBMetadata();
-aux_metadata.LoadState_fromFile(arg_MetadataFilepath);
+cDBMetadata _aux_metadata = new cDBMetadata();
+_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
 
-cDBMetadata_Table aux_table;
-cDBMetadata_Table_Field aux_field;
-int aux_table_hasidentitykey;
-//string[] aux_configmodes = aux_metadata.ConfigModes();
+cDBMetadata_Table _aux_table;
+cDBMetadata_Table_Field _aux_field;
+int _aux_table_hasidentitykey;
+//string[] _aux_configmodes = _aux_metadata.ConfigModes();
 #endregion
 //-----------------------------------------------------------------------------------------
-%><Project name="<%=aux_metadata.ApplicationName%>_businesslayer" standardNamespace="<%=aux_metadata.Namespace%>.lib.businesslayer" description="" newfilesearch="None" enableviewstate="True" version="1.1" projecttype="C#">
+%><Project name="<%=_aux_metadata.ApplicationName%>_businesslayer" standardNamespace="<%=_aux_metadata.Namespace%>.lib.businesslayer" description="" newfilesearch="None" enableviewstate="True" version="1.1" projecttype="C#">
   <Contents>
     <File name=".\AssemblyInfo.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
     <File name=".\_base" subtype="Directory" buildaction="Compile" dependson="" data="" /><%
-    for (int t = 0; t < aux_metadata.Tables.Count; t++) {
-		aux_table = aux_metadata.Tables[t];%>
-    <File name=".\_base\BO0_<%=aux_table.Name%>.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
-    <File name=".\BO_<%=aux_table.Name%>.cs" subtype="Code" buildaction="Compile" dependson="" data="" /><%
+    for (int t = 0; t < _aux_metadata.Tables.Count; t++) {
+		_aux_table = _aux_metadata.Tables[t];%>
+    <File name=".\_base\BO0_<%=_aux_table.Name%>.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\BO_<%=_aux_table.Name%>.cs" subtype="Code" buildaction="Compile" dependson="" data="" /><%
     }%>
   </Contents>
   <References>
-    <Reference type="Project" refto="<%=aux_metadata.ApplicationName%>_datalayer" localcopy="True" />
+    <Reference type="Project" refto="<%=_aux_metadata.ApplicationName%>_datalayer" localcopy="True" />
     <Reference type="Gac" refto="OGen.lib.datalayer, Culture=neutral, PublicKeyToken=3fdbdf93aae6f6cf" localcopy="True" />
     <Reference type="Gac" refto="OGen.NTier.lib.datalayer, Culture=neutral, PublicKeyToken=5809687291b9bca7" localcopy="True" />
     <Reference type="Gac" refto="OGen.NTier.lib.businesslayer, Culture=neutral, PublicKeyToken=f59bd33a9a7a2f84" localcopy="True" />
@@ -62,18 +62,18 @@ int aux_table_hasidentitykey;
   <Configuration runwithwarnings="True" name="Debug">
     <CodeGeneration runtime="MsNet" compiler="Csc" compilerversion="" warninglevel="4" nowarn="" includedebuginformation="True" optimize="False" unsafecodeallowed="False" generateoverflowchecks="True" mainclass="" target="Library" definesymbols="" generatexmldocumentation="True" win32Icon="" noconfig="False" nostdlib="False" />
     <Execution commandlineparameters="" consolepause="False" />
-    <Output directory=".\bin\Debug" assembly="<%=aux_metadata.Namespace%>.lib.businesslayer" executeScript="" executeBeforeBuild="" executeAfterBuild="" executeBeforeBuildArguments="" executeAfterBuildArguments="" />
+    <Output directory=".\bin\Debug" assembly="<%=_aux_metadata.Namespace%>.lib.businesslayer" executeScript="" executeBeforeBuild="" executeAfterBuild="" executeBeforeBuildArguments="" executeAfterBuildArguments="" />
   </Configuration>
   <Configurations active="Debug">
     <Configuration runwithwarnings="True" name="Debug">
       <CodeGeneration runtime="MsNet" compiler="Csc" compilerversion="" warninglevel="4" nowarn="" includedebuginformation="True" optimize="False" unsafecodeallowed="False" generateoverflowchecks="True" mainclass="" target="Library" definesymbols="" generatexmldocumentation="True" win32Icon="" noconfig="False" nostdlib="False" />
       <Execution commandlineparameters="" consolepause="False" />
-      <Output directory=".\bin\Debug" assembly="<%=aux_metadata.Namespace%>.lib.businesslayer" executeScript="" executeBeforeBuild="" executeAfterBuild="" executeBeforeBuildArguments="" executeAfterBuildArguments="" />
+      <Output directory=".\bin\Debug" assembly="<%=_aux_metadata.Namespace%>.lib.businesslayer" executeScript="" executeBeforeBuild="" executeAfterBuild="" executeBeforeBuildArguments="" executeAfterBuildArguments="" />
     </Configuration>
     <Configuration runwithwarnings="True" name="Release">
       <CodeGeneration runtime="MsNet" compiler="Csc" compilerversion="" warninglevel="4" nowarn="" includedebuginformation="False" optimize="True" unsafecodeallowed="False" generateoverflowchecks="False" mainclass="" target="Library" definesymbols="" generatexmldocumentation="False" win32Icon="" noconfig="False" nostdlib="False" />
       <Execution commandlineparameters="" consolepause="False" />
-      <Output directory=".\bin\Release" assembly="<%=aux_metadata.Namespace%>.lib.businesslayer" executeScript="" executeBeforeBuild="" executeAfterBuild="" executeBeforeBuildArguments="" executeAfterBuildArguments="" />
+      <Output directory=".\bin\Release" assembly="<%=_aux_metadata.Namespace%>.lib.businesslayer" executeScript="" executeBeforeBuild="" executeAfterBuild="" executeBeforeBuildArguments="" executeAfterBuildArguments="" />
     </Configuration>
   </Configurations>
 </Project>
