@@ -52,7 +52,7 @@ namespace OGen.NTier.lib.metadata {
 
 			//#region ClaSSe...
 			DBServerType = dbServerType_in;
-			Size = 0;
+//			Size = 0;
 			DBType_inDB_name = string.Empty;
 			//#endregion
 		}
@@ -114,19 +114,19 @@ namespace OGen.NTier.lib.metadata {
 			set { dbservertype_ = OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(value); }
 		}
 		#endregion
-		#region public int Size { get; set; }
-		private int size_;
-		public int Size {
-			get { return size_; }
-			set { size_ = value; }
-		}
+		//#region public int Size { get; set; }
+		//private int size_;
+		//public int Size {
+		//    get { return size_; }
+		//    set { size_ = value; }
+		//}
 
-		[ClaSSPropertyAttribute("size", ClaSSPropertyAttribute.eType.standard, true)]
-		private string size_reflection {
-			get { return size_.ToString(); }
-			set { size_ = int.Parse(value); }
-		}
-		#endregion
+		//[ClaSSPropertyAttribute("size", ClaSSPropertyAttribute.eType.standard, true)]
+		//private string size_reflection {
+		//    get { return size_.ToString(); }
+		//    set { size_ = int.Parse(value); }
+		//}
+		//#endregion
 		#region public string DBType_inDB_name { get; }
 		private string DBType_indb_name_;
 

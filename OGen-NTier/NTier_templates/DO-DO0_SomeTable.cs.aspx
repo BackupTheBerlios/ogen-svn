@@ -387,7 +387,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 								}
 								cDBConnection connection = new cDBConnection(
 									_aux_metadata.Default_DBServerType, 
-									_aux_metadata.Default_Connectionstring
+									_aux_metadata.Default_Connectionstring()
 								);
 								ConfigTable = connection.Execute_SQLQuery_returnDataTable(
 									string.Format(

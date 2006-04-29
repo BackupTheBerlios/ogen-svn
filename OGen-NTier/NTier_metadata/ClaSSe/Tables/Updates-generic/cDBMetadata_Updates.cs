@@ -146,6 +146,7 @@ namespace OGen.NTier.lib.metadata {
 		public void CopyFrom(cDBMetadata_Updates updates_in) {
 			int _table;
 			int _field;
+			int _updateparameter;
 
 			for (int u = 0; u < updates_in.Count; u++) {
 				int _update = this.Add(
@@ -163,11 +164,15 @@ namespace OGen.NTier.lib.metadata {
 					);
 					if (_field == -1) throw new Exception(); // ToDos: here!
 
-					this[_update].UpdateParameters.Add(
-						_table,
-						_field,
-						true
-					);
+					_updateparameter 
+						= this[_update].UpdateParameters.Add(
+							_table,
+							_field,
+							true
+						);
+
+					this[_update].UpdateParameters[_updateparameter].ParamName 
+						= updates_in[u].UpdateParameters[f].ParamName;
 				}
 			}
 		}

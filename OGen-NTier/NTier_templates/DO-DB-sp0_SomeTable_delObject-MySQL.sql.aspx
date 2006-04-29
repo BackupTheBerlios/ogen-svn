@@ -48,7 +48,7 @@ cDBMetadata_Table_Field _aux_field;
 %>CREATE PROCEDURE `sp0_<%=_aux_table.Name%>_delObject`(<%
 	for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 		_aux_field = _aux_table.Fields_onlyPK[k];%>
-	IN `<%=_aux_field.Name%>_` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbservertype].Size + ")" : ""%><%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
+	IN `<%=_aux_field.Name%>_` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.Size + ")" : ""%><%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
 	}%>
 )
 	NOT DETERMINISTIC

@@ -82,6 +82,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 			}
 
 
+
 			_group.Connection.Transaction.Rollback();
 			_group.Connection.Transaction.Terminate();
 			_group.Connection.Close();

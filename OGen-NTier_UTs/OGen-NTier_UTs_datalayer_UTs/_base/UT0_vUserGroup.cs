@@ -63,6 +63,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 			// setObject(); // ToDos: here!
 
 
+
 			_vusergroup.Connection.Transaction.Rollback();
 			_vusergroup.Connection.Transaction.Terminate();
 			_vusergroup.Connection.Close();

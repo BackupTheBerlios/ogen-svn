@@ -49,7 +49,7 @@ cDBMetadata_Table_Field _aux_field;
 %>CREATE PROCEDURE `sp0_<%=_aux_table.Name%>_insObject`(<%
 	for (int f = 0; f < _aux_table.Fields.Count; f++) {
 		_aux_field = _aux_table.Fields[f];%><%=""%>
-	<%=(_aux_field.isIdentity) ? "OUT" : "IN"%> `<%=_aux_field.Name%>_` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbservertype].Size + ")" : ""%>, <%
+	<%=(_aux_field.isIdentity) ? "OUT" : "IN"%> `<%=_aux_field.Name%>_` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.Size + ")" : ""%>, <%
 	}%>
 	IN `SelectIdentity_` BOOLEAN
 )

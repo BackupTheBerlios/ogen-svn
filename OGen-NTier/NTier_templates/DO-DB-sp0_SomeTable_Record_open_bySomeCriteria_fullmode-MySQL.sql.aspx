@@ -54,7 +54,7 @@ bool isFirst;
 		//_aux_field = er.Tables[_aux_search.SearchParameters[f].TableIndex].Fields[_aux_search.SearchParameters[f].FieldIndex];
 		_aux_field = _aux_search.SearchParameters[f].Field;
 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%>
-	IN `<%=_aux_field_name%>_search_` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbservertype].Size + ")" : ""%><%=(f != _aux_search.SearchParameters.Count - 1) ? ", " : ""%><%
+	IN `<%=_aux_field_name%>_search_` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.Size + ")" : ""%><%=(f != _aux_search.SearchParameters.Count - 1) ? ", " : ""%><%
 	}%>
 )
 	NOT DETERMINISTIC
@@ -64,7 +64,7 @@ BEGIN
 	CREATE TEMPORARY TABLE `#Table_temp` (<%
 	for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 		_aux_field = _aux_table.Fields_onlyPK[k];%>
-		`<%=_aux_field.Name%>` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbservertype].Size + ")" : ""%><%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
+		`<%=_aux_field.Name%>` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.Size + ")" : ""%><%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
 	}%>
 	);
 	

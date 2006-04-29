@@ -48,7 +48,7 @@ cDBMetadata_Table_Field _aux_field;
 %>CREATE FUNCTION `fnc0_<%=_aux_table.Name%>__ConstraintExist`(<%
 	for (int f = 0; f < _aux_table.Fields.Count; f++) {
 		_aux_field = _aux_table.Fields[f];%>
-	`<%=_aux_field.Name%>` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbservertype].Size + ")" : ""%><%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
+	`<%=_aux_field.Name%>` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.Size + ")" : ""%><%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
 	}%>
 )
 	RETURNS BOOLEAN

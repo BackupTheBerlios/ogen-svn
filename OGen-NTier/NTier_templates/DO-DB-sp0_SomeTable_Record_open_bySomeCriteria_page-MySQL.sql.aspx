@@ -54,7 +54,7 @@ bool isFirst;
 		//_aux_field = _aux_metadata.Tables[_aux_search.SearchParameters[f].TableIndex].Fields[_aux_search.SearchParameters[f].FieldIndex];
 		_aux_field = _aux_search.SearchParameters[f].Field;
 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%>
-	IN `<%=_aux_field_name%>_search` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbservertype].Size + ")" : ""%>, <%
+	IN `<%=_aux_field_name%>_search` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.Size + ")" : ""%>, <%
 	}%>
 	IN `page_` Int,
 	IN `page_numRecords_` Int
@@ -74,7 +74,7 @@ BEGIN
 		`ID_range` BigInt IDENTITY,<%
 		for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 			_aux_field = _aux_table.Fields_onlyPK[k];%>
-		`<%=_aux_field.Name%>` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbservertype].Size + ")" : ""%><%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
+		`<%=_aux_field.Name%>` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.Size + ")" : ""%><%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
 		}%>
 	);
 	

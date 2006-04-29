@@ -380,6 +380,7 @@ if (clear_in)
 					tables_[T].Fields[F].FK_TableName		= _fields_aux[f].FK_TableName;
 					tables_[T].Fields[F].FK_FieldName		= _fields_aux[f].FK_FieldName;
 					tables_[T].Fields[F].isNullable			= _fields_aux[f].isNullable;
+					tables_[T].Fields[F].Size				= _fields_aux[f].Size;
 					//---
 
 
@@ -387,7 +388,6 @@ if (clear_in)
 						_connection.DBServerType, 
 						true
 					);
-					tables_[T].Fields[F].DBs[D].Size = _fields_aux[f].Size;
 					tables_[T].Fields[F].DBs[D].DBType_inDB_name = _fields_aux[f].DBType_inDB_name;
 					#region //oldstuff...
 					//tables_[T].Fields[F].DBType_inDB_name	= _fields_aux[f].DBType_inDB_name;

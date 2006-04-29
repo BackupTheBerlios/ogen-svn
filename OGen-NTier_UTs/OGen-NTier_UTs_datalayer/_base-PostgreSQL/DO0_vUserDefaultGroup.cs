@@ -98,7 +98,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// vUserDefaultGroup's IDUser.
 		/// </summary>
-		[DOPropertyAttribute("IDUser", true, false, true, "", "", "", false, false, false, false, false, true, false, false)]
+		[DOPropertyAttribute("IDUser", true, false, false, "", "", "", false, false, false, false, false, true, false, false)]
 		public virtual long IDUser {
 			get {
 				return iduser_;
@@ -117,7 +117,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// vUserDefaultGroup's Login.
 		/// </summary>
-		[DOPropertyAttribute("Login", false, false, true, "", "", "", false, false, false, false, false, false, false, true)]
+		[DOPropertyAttribute("Login", false, false, false, "", "", "", false, false, false, false, false, false, false, true)]
 		public virtual string Login {
 			get {
 				return login_;
@@ -136,7 +136,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// vUserDefaultGroup's IDGroup.
 		/// </summary>
-		[DOPropertyAttribute("IDGroup", false, false, true, "", "", "", false, false, false, false, false, true, false, false)]
+		[DOPropertyAttribute("IDGroup", false, false, false, "", "", "", false, false, false, false, false, true, false, false)]
 		public virtual long IDGroup {
 			get {
 				return idgroup_;
@@ -155,7 +155,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// vUserDefaultGroup's Name.
 		/// </summary>
-		[DOPropertyAttribute("Name", false, false, true, "", "", "", false, false, false, false, false, false, false, true)]
+		[DOPropertyAttribute("Name", false, false, false, "", "", "", false, false, false, false, false, false, false, true)]
 		public virtual string Name {
 			get {
 				return name_;
@@ -174,7 +174,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// vUserDefaultGroup's Relationdate.
 		/// </summary>
-		[DOPropertyAttribute("Relationdate", false, false, true, "", "", "", false, false, false, false, true, false, false, false)]
+		[DOPropertyAttribute("Relationdate", false, false, false, "", "", "", false, false, false, false, true, false, false, false)]
 		public virtual DateTime Relationdate {
 			get {
 				return relationdate_;

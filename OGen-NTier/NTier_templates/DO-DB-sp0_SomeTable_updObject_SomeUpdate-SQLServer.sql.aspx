@@ -52,11 +52,11 @@ string aux_string;
 %>CREATE PROCEDURE [dbo].[sp0_<%=_aux_table.Name%>_updObject_<%=aux_update.Name%>]<%
 for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 	_aux_field = _aux_table.Fields_onlyPK[k];%>
-	@<%=_aux_field.Name%>_ <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? " (" + _aux_field.DBs[_aux_dbservertype].Size + ")" : ""%>, <%
+	@<%=_aux_field.Name%>_ <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? " (" + _aux_field.Size + ")" : ""%>, <%
 }
 for (int f = 0; f < aux_update.UpdateParameters.Count; f++) {
 	_aux_field = aux_update.UpdateParameters[f].Field;%>
-	@<%=_aux_field.Name%>_update_ <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? " (" + _aux_field.DBs[_aux_dbservertype].Size + ")" : ""%><%=(f != aux_update.UpdateParameters.Count - 1) ? ", " : ""%><%
+	@<%=_aux_field.Name%>_update_ <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? " (" + _aux_field.Size + ")" : ""%><%=(f != aux_update.UpdateParameters.Count - 1) ? ", " : ""%><%
 }
 if (_aux_table_searches_hasexplicituniqueindex) {%>, 
 	@ConstraintExist_ Bit OUT<%

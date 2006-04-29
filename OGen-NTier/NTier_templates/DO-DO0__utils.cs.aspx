@@ -150,7 +150,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 					}
 					cDBConnection connection = new cDBConnection(
 						_aux_metadata.Default_DBServerType, 
-						_aux_metadata.Default_Connectionstring
+						_aux_metadata.Default_Connectionstring()
 					);
 					ConfigTable = connection.Execute_SQLQuery_returnDataTable(
 						string.Format(
@@ -359,8 +359,8 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		public bool isDecimal { get { return <%=_aux_field.isDecimal.ToString().ToLower()%>; } }
 		public bool isText { get { return <%=_aux_field.isText.ToString().ToLower()%>; } }
 
-		public DbType DBType_generic { get { return DbType.<%=_aux_field.DBType_generic.Value%>; } }
-		public object DBType_inDB { get { return <%=_aux_field.DBType_inDB%>; } }
+		public DbType DBType_generic { get { return DbType.<%=_aux_field.DBType_generic.Value%>; } }<%
+		//public object DBType_inDB { get { return < %=_aux_field.DBType_inDB% >; } }%>
 
 		public iprTable FK_Table { get { return <%=(_aux_field.FK.TableName == "") ? "null" : "DO__utils.pReflection.Tables[\"" + _aux_field.FK.TableName + "\"]"%>; } }
 		public iprField FK_Field { get { return <%=(_aux_field.FK.TableName == "") ? "null" : "DO_" + _aux_field.FK.TableName + ".pReflection.Fields[\"" + _aux_field.FK.FieldName + "\"]"%>; } }

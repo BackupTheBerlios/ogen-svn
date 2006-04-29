@@ -51,7 +51,7 @@ cDBMetadata_Table_Field _aux_field;
 	for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
 		_aux_field = _aux_search.SearchParameters[f].Field;
 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%>
-	`<%=_aux_field_name%>_search_` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbservertype].Size + ")" : ""%><%=(f != _aux_search.SearchParameters.Count - 1) ? ", " : ""%><%
+	`<%=_aux_field_name%>_search_` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.Size + ")" : ""%><%=(f != _aux_search.SearchParameters.Count - 1) ? ", " : ""%><%
 	}%>
 )
 	RETURNS BIGINT

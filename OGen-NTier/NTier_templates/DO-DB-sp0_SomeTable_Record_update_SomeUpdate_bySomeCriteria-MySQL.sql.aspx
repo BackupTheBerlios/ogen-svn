@@ -55,11 +55,11 @@ bool isFirst;
 for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
 	_aux_field = _aux_search.SearchParameters[f].Field;
 	_aux_field_name = _aux_search.SearchParameters[f].ParamName;%>
-	IN `<%=_aux_field_name%>_search_` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbservertype].Size + ")" : ""%>, <%
+	IN `<%=_aux_field_name%>_search_` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.Size + ")" : ""%>, <%
 }
 for (int f = 0; f < update.UpdateParameters.Count; f++) {
 	_aux_field = update.UpdateParameters[f].Field;%>
-	IN `<%=_aux_field.Name%>_update_` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.DBs[_aux_dbservertype].Size + ")" : ""%><%=(f != update.UpdateParameters.Count - 1) ? ", " : ""%><%
+	IN `<%=_aux_field.Name%>_update_` <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? "(" + _aux_field.Size + ")" : ""%><%=(f != update.UpdateParameters.Count - 1) ? ", " : ""%><%
 }%>
 )
 	NOT DETERMINISTIC
