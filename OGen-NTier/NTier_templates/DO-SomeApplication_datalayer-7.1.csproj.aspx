@@ -148,7 +148,7 @@ int _aux_table_hasidentitykey;
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-<%=_aux_metadata.Default_DBServerType.ToString()%>\DO0__utils.cs"
+                    RelPath = "_base\DO0__utils.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 /><%
@@ -160,12 +160,12 @@ int _aux_table_hasidentitykey;
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-<%=_aux_metadata.Default_DBServerType.ToString()%>\DO0_<%=_aux_table.Name%>.cs"
+                    RelPath = "_base\DO0_<%=_aux_table.Name%>.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-<%=_aux_metadata.Default_DBServerType.ToString()%>\RO0_<%=_aux_table.Name%>.cs"
+                    RelPath = "_base\RO0_<%=_aux_table.Name%>.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 /><%

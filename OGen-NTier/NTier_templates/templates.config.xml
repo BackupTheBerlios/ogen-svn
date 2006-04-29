@@ -32,7 +32,7 @@ along with OGen; if not, write to the
 			parserType="xslt"
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions />
@@ -46,7 +46,7 @@ along with OGen; if not, write to the
 			parserType="aspx"
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions />
@@ -60,7 +60,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -94,7 +94,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -107,7 +107,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -120,7 +120,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -133,7 +133,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -160,7 +160,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -173,7 +173,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -186,7 +186,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -199,7 +199,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -212,7 +212,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -225,7 +225,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -238,7 +238,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -251,7 +251,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -264,7 +264,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -277,7 +277,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -290,7 +290,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -303,7 +303,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -316,7 +316,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -329,7 +329,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -342,7 +342,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -355,7 +355,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -368,7 +368,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions />
@@ -382,7 +382,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions />
@@ -396,7 +396,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -426,7 +426,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -439,7 +439,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -452,7 +452,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -465,7 +465,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -478,7 +478,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions />
@@ -492,7 +492,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions />
@@ -506,7 +506,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -536,11 +536,11 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/_base-${ROOT.default_DBServerType}/DO0__utils.cs" 
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/_base/DO0__utils.cs" 
 				type="File" replace="True" />
 		</outputs>
 		<dependencies />
@@ -549,7 +549,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -562,12 +562,12 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions />
 		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/_base-${ROOT.default_DBServerType}/RO0_${ROOT.tables.table[n].name}.cs" 
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/_base/RO0_${ROOT.tables.table[n].name}.cs" 
 				type="File" replace="True" />
 		</outputs>
 		<dependencies />
@@ -576,12 +576,12 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions />
 		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/_base-${ROOT.default_DBServerType}/DO0_${ROOT.tables.table[n].name}.cs" 
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/_base/DO0_${ROOT.tables.table[n].name}.cs" 
 				type="File" replace="True" />
 		</outputs>
 		<dependencies />
@@ -590,7 +590,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions />
@@ -604,7 +604,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions />
@@ -618,7 +618,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions />
@@ -632,7 +632,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions>
@@ -650,7 +650,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions>
@@ -668,7 +668,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions>
@@ -686,7 +686,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -705,7 +705,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -724,7 +724,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -743,7 +743,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions />
@@ -757,7 +757,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions />
@@ -771,7 +771,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions />
@@ -785,7 +785,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -804,7 +804,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -823,7 +823,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -842,7 +842,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -861,7 +861,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -880,7 +880,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -899,7 +899,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions>
@@ -918,7 +918,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions>
@@ -937,7 +937,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions>
@@ -956,7 +956,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions>
@@ -975,7 +975,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions>
@@ -994,7 +994,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions>
@@ -1013,7 +1013,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions>
@@ -1030,7 +1030,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions>
@@ -1047,7 +1047,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions>
@@ -1064,7 +1064,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions>
@@ -1081,7 +1081,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions>
@@ -1098,7 +1098,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions>
@@ -1115,7 +1115,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1135,7 +1135,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1155,7 +1155,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1175,7 +1175,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1195,7 +1195,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1216,7 +1216,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1236,7 +1236,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1253,7 +1253,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1270,7 +1270,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1287,7 +1287,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1304,7 +1304,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1323,7 +1323,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1340,7 +1340,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1359,7 +1359,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1379,7 +1379,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1398,7 +1398,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions />
@@ -1412,7 +1412,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions />
@@ -1426,7 +1426,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 		</arguments>
 		<conditions />
@@ -1440,7 +1440,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1459,7 +1459,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1478,7 +1478,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1497,7 +1497,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1516,7 +1516,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1535,7 +1535,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1554,7 +1554,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1573,7 +1573,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1593,7 +1593,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1612,7 +1612,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1631,7 +1631,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1650,7 +1650,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 		</arguments>
@@ -1669,7 +1669,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n].updates.update[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 			<argument name="UpdateName" value="${ROOT.tables.table[n].searches.search[n].updates.update[n].name}" />
@@ -1687,7 +1687,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n].updates.update[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 			<argument name="UpdateName" value="${ROOT.tables.table[n].searches.search[n].updates.update[n].name}" />
@@ -1705,7 +1705,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].searches.search[n].updates.update[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="SearchName" value="${ROOT.tables.table[n].searches.search[n].name}" />
 			<argument name="UpdateName" value="${ROOT.tables.table[n].searches.search[n].updates.update[n].name}" />
@@ -1723,7 +1723,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].updates.update[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="UpdateName" value="${ROOT.tables.table[n].updates.update[n].name}" />
 		</arguments>
@@ -1738,7 +1738,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].updates.update[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="UpdateName" value="${ROOT.tables.table[n].updates.update[n].name}" />
 		</arguments>
@@ -1753,7 +1753,7 @@ along with OGen; if not, write to the
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n].updates.update[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
 			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
 			<argument name="UpdateName" value="${ROOT.tables.table[n].updates.update[n].name}" />
 		</arguments>

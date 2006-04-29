@@ -45,13 +45,13 @@ int _aux_table_hasidentitykey;
 %><Project name="<%=_aux_metadata.ApplicationName%>_datalayer" standardNamespace="<%=_aux_metadata.Namespace%>.lib.datalayer" description="" newfilesearch="None" enableviewstate="True" version="1.1" projecttype="C#">
   <Contents>
     <File name=".\AssemblyInfo.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
-    <File name=".\_base-<%=_aux_metadata.Default_DBServerType.ToString()%>" subtype="Directory" buildaction="Compile" dependson="" data="" />
-    <File name=".\_base-<%=_aux_metadata.Default_DBServerType.ToString()%>\DO0__utils.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\_base" subtype="Directory" buildaction="Compile" dependson="" data="" />
+    <File name=".\_base\DO0__utils.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
     <File name=".\DO__utils.cs" subtype="Code" buildaction="Compile" dependson="" data="" /><%
     for (int t = 0; t < _aux_metadata.Tables.Count; t++) {
 		_aux_table = _aux_metadata.Tables[t];%>
-    <File name=".\_base-<%=_aux_metadata.Default_DBServerType.ToString()%>\RO0_<%=_aux_table.Name%>.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
-    <File name=".\_base-<%=_aux_metadata.Default_DBServerType.ToString()%>\DO0_<%=_aux_table.Name%>.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\_base\RO0_<%=_aux_table.Name%>.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\_base\DO0_<%=_aux_table.Name%>.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
     <File name=".\DO_<%=_aux_table.Name%>.cs" subtype="Code" buildaction="Compile" dependson="" data="" /><%
     }%>
   </Contents>

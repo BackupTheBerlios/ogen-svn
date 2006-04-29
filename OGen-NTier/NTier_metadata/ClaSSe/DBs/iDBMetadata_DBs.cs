@@ -42,6 +42,9 @@ namespace OGen.NTier.lib.metadata {
 		cDBMetadata_DB this[eDBServerTypes dbservertype_in] { get; }
 		int Count { get; }
 
+		eDBServerTypes FirstDefaultAvailable_DBServerType();
+		string FirstDefaultAvailable_Connectionstring();
+
 		int Add(eDBServerTypes dbservertype_in, bool verifyExistenz_in);
 		int Search(eDBServerTypes dbservertype_in);
 		void Clear();

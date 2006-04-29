@@ -50,8 +50,8 @@ string[] _aux_configmodes = _aux_metadata.ConfigModes();
 		    %><%=_aux_metadata.DBs[_db].DBServerType.ToString()%><%=(_db == _aux_metadata.DBs.Count - 1) ? "" : ":"%><%
 		}%>" />
 
-		<add key="OGen-NTier_UTs:DBServerType_default" value="<%=_aux_metadata.Default_DBServerType.ToString()%>" />
 <%
+		//<add key="OGen-NTier_UTs:DBServerType_default" value="< %=_aux_metadata.DBs.FirstDefaultAvailable_DBServerType().ToString()% >" />
 		for (int d = 0; d < _aux_metadata.DBs.Count; d++) {
 			for (int c = 0; c < _aux_metadata.DBs[d].Connections.Count; c++) {%>
 		<add key="<%=_aux_metadata.ApplicationName%>:DBConnection:<%=_aux_metadata.DBs[d].Connections[c].ConfigMode%>:<%=_aux_metadata.DBs[d].DBServerType.ToString()%>" value="<%=_aux_metadata.DBs[d].Connections[c].Connectionstring%>"/><%

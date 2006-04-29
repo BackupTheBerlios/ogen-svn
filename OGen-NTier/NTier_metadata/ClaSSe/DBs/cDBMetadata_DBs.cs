@@ -140,6 +140,37 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 
 		#region Methods...
+		#region public eDBServerTypes FirstDefaultAvailable_DBServerType();
+		public eDBServerTypes FirstDefaultAvailable_DBServerType() {
+			for (int _db = 0; _db < dbs_.Count; _db++) {
+				for (int _con = 0; _con < ((cDBMetadata_DB)dbs_[_db]).Connections.Count; _con++) {
+					if (
+						(((cDBMetadata_DB)dbs_[_db]).Connections[_con].isDefault)
+						&&
+						(((cDBMetadata_DB)dbs_[_db]).Connections[_con].GenerateSQL)
+					)
+						return ((cDBMetadata_DB)dbs_[_db]).DBServerType;
+				}
+			}
+			throw new Exception("no default connection available");
+		}
+		#endregion
+		#region public string FirstDefaultAvailable_Connectionstring();
+		public string FirstDefaultAvailable_Connectionstring() {
+			for (int _db = 0; _db < dbs_.Count; _db++) {
+				for (int _con = 0; _con < ((cDBMetadata_DB)dbs_[_db]).Connections.Count; _con++) {
+					if (
+						(((cDBMetadata_DB)dbs_[_db]).Connections[_con].isDefault)
+						&&
+						(((cDBMetadata_DB)dbs_[_db]).Connections[_con].GenerateSQL)
+					)
+						return ((cDBMetadata_DB)dbs_[_db]).Connections[_con].Connectionstring;
+				}
+			}
+			throw new Exception("no default connection available");
+		}
+		#endregion
+		//---
 		#region public void Clear(...);
 		public void Clear() {
 			dbs_.Clear();

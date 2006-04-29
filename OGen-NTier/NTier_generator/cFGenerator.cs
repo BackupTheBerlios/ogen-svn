@@ -102,12 +102,12 @@ namespace OGen.NTier.lib.generator {
 					dbs_in[d]
 				);
 
-				if (d == 0) {
-					// ToDos: here! document this behaviour and describe it throught unit testing
-					// first item in the array, represents default db connection
-					_metadata_temp.Default_DBServerType = _metadata_temp.DBs[_justadded].DBServerType;
-					_metadata_temp.Default_ConfigMode = _metadata_temp.DBs[_justadded].Connections[0].ConfigMode;
-				}
+				//if (d == 0) {
+				//    // ToDos: here! document this behaviour and describe it throught unit testing
+				//    // first item in the array, represents default db connection
+				//    _metadata_temp.Default_DBServerType = _metadata_temp.DBs[_justadded].DBServerType;
+				//    _metadata_temp.Default_ConfigMode = _metadata_temp.DBs[_justadded].Connections[0].ConfigMode;
+				//}
 			}
 			_metadata_temp.GUIDDatalayer = System.Guid.NewGuid().ToString("D").ToUpper();
 			_metadata_temp.GUIDDatalayer_UTs = System.Guid.NewGuid().ToString("D").ToUpper();
@@ -119,13 +119,14 @@ namespace OGen.NTier.lib.generator {
 			if (notifyBack_in != null) notifyBack_in("- generating xml file", true);
 			#region string _xmlfile = ...;
 			string _xmlfile = string.Format(
-				"{0}{1}OGen-metadatas{1}MD_{2}-{3}.OGen-metadata.xml", 
+				//"{0}{1}OGen-metadatas{1}MD_{2}-{3}.OGen-metadata.xml", 
+				"{0}{1}OGen-metadatas{1}MD_{2}.OGen-metadata.xml", 
 				/*0*/applicationPath_in, 
 				/*1*/System.IO.Path.DirectorySeparatorChar, 
-				/*2*/applicationName_in, 
+				/*2*/applicationName_in
 
 				// first item in the array, represents default db connection
-				/*3*/dbs_in[0].DBServerType.ToString()
+				///*3*/, dbs_in[0].DBServerType.ToString()
 			);
 			#endregion
 			_metadata_temp.SaveState_toFile(_xmlfile);
@@ -239,11 +240,12 @@ for (int d = 0; d < _metadata_temp.DBs.Count; d++) {
 			#endregion
 			#region string _metadataFilePath = ...;
 			string _metadata0 = string.Format(
-				"{0}{1}OGen-metadatas{1}MD0_{2}-{3}.OGen-metadata.xml", 
+//				"{0}{1}OGen-metadatas{1}MD0_{2}-{3}.OGen-metadata.xml",
+				"{0}{1}OGen-metadatas{1}MD0_{2}.OGen-metadata.xml", 
 				/*00*/ _outputDir, 
 				/*01*/ Path.DirectorySeparatorChar, 
-				/*02*/ metadata_.ApplicationName,
-				/*03*/ metadata_.Default_DBServerType.ToString()
+				/*02*/ metadata_.ApplicationName
+//				, /*03*/ metadata_.Default_DBServerType.ToString()
 			);
 			#endregion
 			if (notifyBase_in != null) notifyBase_in("generating...", true);

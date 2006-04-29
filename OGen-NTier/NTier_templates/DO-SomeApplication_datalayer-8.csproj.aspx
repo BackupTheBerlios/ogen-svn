@@ -139,7 +139,7 @@ int _aux_table_hasidentitykey;
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="_base-<%=_aux_metadata.Default_DBServerType.ToString()%>\DO0__utils.cs">
+    <Compile Include="_base\DO0__utils.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DO__utils.cs">
@@ -150,10 +150,10 @@ int _aux_table_hasidentitykey;
     <Compile Include="DO_<%=_aux_table.Name%>.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="_base-<%=_aux_metadata.Default_DBServerType.ToString()%>\DO0_<%=_aux_table.Name%>.cs">
+    <Compile Include="_base\DO0_<%=_aux_table.Name%>.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="_base-<%=_aux_metadata.Default_DBServerType.ToString()%>\RO0_<%=_aux_table.Name%>.cs">
+    <Compile Include="_base\RO0_<%=_aux_table.Name%>.cs">
       <SubType>Code</SubType>
     </Compile><%
 		}%>

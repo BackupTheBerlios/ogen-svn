@@ -39,7 +39,7 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
 	public class cDBMetadata : cClaSSe {
-		#region public cDBMetadata(...);
+//		#region public cDBMetadata(...);
 		public cDBMetadata(
 			string xmlFileName_in, 
 			string xmlObjectName_in
@@ -63,8 +63,8 @@ namespace OGen.NTier.lib.metadata {
 			//#region ClaSSe...
 			applicationname_ = string.Empty;
 			namespace_ = string.Empty;
-			default_dbservertype_ = eDBServerTypes.invalid;
-			default_configmode_ = string.Empty;
+			//default_dbservertype_ = eDBServerTypes.invalid;
+			//default_configmode_ = string.Empty;
 			subappname_ = string.Empty;
 			pseudoreflectionable_ = false;
 			sqlscriptoption_ = eSQLScriptOptions.RunImmediately;
@@ -73,7 +73,7 @@ namespace OGen.NTier.lib.metadata {
 			tables_ = new cDBMetadata_Tables(this, this);
 			//#endregion
 		}
-		#endregion
+//		#endregion
 
 		#region Implementing - iClaSSe...
 		#region public override object Property_new(string name_in);
@@ -137,7 +137,7 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 		#endregion
 
-		#region Properties - ClaSSe...
+//		#region Properties - ClaSSe...
 		#region public string ApplicationName { get; set; }
 		private string applicationname_;
 
@@ -156,32 +156,32 @@ namespace OGen.NTier.lib.metadata {
 			set { namespace_ = value; }
 		}
 		#endregion
-		#region internal eDBServerTypes default_dbservertype_ { get; set; }
-		internal eDBServerTypes default_dbservertype_;
-		public  eDBServerTypes Default_DBServerType {
-			get { return default_dbservertype_; }
-			set { default_dbservertype_ = value; }
-		}
+		//#region internal eDBServerTypes default_dbservertype_ { get; set; }
+		//internal eDBServerTypes default_dbservertype_;
+		//public  eDBServerTypes Default_DBServerType {
+		//    get { return default_dbservertype_; }
+		//    set { default_dbservertype_ = value; }
+		//}
 
-		[ClaSSPropertyAttribute("default_DBServerType", ClaSSPropertyAttribute.eType.standard, true)]
-		private string default_dbservertype_reflection {
-			get { return default_dbservertype_.ToString(); }
-			set { default_dbservertype_ = OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(value);}
-		}
-		#endregion
-		#region internal string default_configmode_ { get; set; }
-		internal string default_configmode_;
-		public  string Default_ConfigMode {
-			get { return default_configmode_; }
-			set { default_configmode_ = value; }
-		}
+		//[ClaSSPropertyAttribute("default_DBServerType", ClaSSPropertyAttribute.eType.standard, true)]
+		//private string default_dbservertype_reflection {
+		//    get { return default_dbservertype_.ToString(); }
+		//    set { default_dbservertype_ = OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(value);}
+		//}
+		//#endregion
+		//#region internal string default_configmode_ { get; set; }
+		//internal string default_configmode_;
+		//public  string Default_ConfigMode {
+		//    get { return default_configmode_; }
+		//    set { default_configmode_ = value; }
+		//}
 
-		[ClaSSPropertyAttribute("default_ConfigMode", ClaSSPropertyAttribute.eType.standard, true)]
-		private string default_configmode_reflection {
-			get { return default_configmode_; }
-			set { default_configmode_ = value; }
-		}
-		#endregion
+		//[ClaSSPropertyAttribute("default_ConfigMode", ClaSSPropertyAttribute.eType.standard, true)]
+		//private string default_configmode_reflection {
+		//    get { return default_configmode_; }
+		//    set { default_configmode_ = value; }
+		//}
+		//#endregion
 		#region public string SubAppName { get; set; }
 		private string subappname_;
 
@@ -315,14 +315,14 @@ namespace OGen.NTier.lib.metadata {
 			get { return tables_; }
 		}
 		#endregion
-		#endregion
+//		#endregion
 
 		//#region Methods...
-		#region public string Default_Connectionstring();
-		public string Default_Connectionstring() {
-			return DBs[Default_DBServerType].Connections[Default_ConfigMode].Connectionstring;
-		}
-		#endregion
+		//#region public string Default_Connectionstring();
+		//public string Default_Connectionstring() {
+		//    return DBs[Default_DBServerType].Connections[Default_ConfigMode].Connectionstring;
+		//}
+		//#endregion
 		#region public string[] ConfigModes();
 		public string[] ConfigModes() {
 			ArrayList _configmodes = new ArrayList();
@@ -416,7 +416,7 @@ if (clear_in)
 			string fileName_in, 
 			eMetadata metadata_in
 		) {
-			#region ...
+//			#region ...
 			cDBMetadata _xmlFile_metadata;
 			switch (metadata_in) {
 				case eMetadata.All:
@@ -424,8 +424,8 @@ if (clear_in)
 					break;
 				case eMetadata.All_butDatabaseER:
 					_xmlFile_metadata = new cDBMetadata();
-					_xmlFile_metadata.default_dbservertype_ = default_dbservertype_;
-					_xmlFile_metadata.default_configmode_ = default_configmode_;
+					//_xmlFile_metadata.default_dbservertype_ = default_dbservertype_;
+					//_xmlFile_metadata.default_configmode_ = default_configmode_;
 					break;
 				default:
 					throw new Exception("not implemented!");
@@ -439,13 +439,13 @@ if (clear_in)
 					#endregion
 					break;
 				case eMetadata.All_butDatabaseER:
-			#endregion
+//			#endregion
 
 					//---
 					ApplicationName			= _xmlFile_metadata.ApplicationName;
 					Namespace				= _xmlFile_metadata.Namespace;
-					default_dbservertype_	= _xmlFile_metadata.default_dbservertype_;
-					default_configmode_		= _xmlFile_metadata.default_configmode_;
+					//default_dbservertype_	= _xmlFile_metadata.default_dbservertype_;
+					//default_configmode_		= _xmlFile_metadata.default_configmode_;
 					PseudoReflectionable	= _xmlFile_metadata.PseudoReflectionable;
 					SubAppName				= _xmlFile_metadata.SubAppName;
 					SQLScriptOption			= _xmlFile_metadata.SQLScriptOption;

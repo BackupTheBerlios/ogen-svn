@@ -482,9 +482,9 @@ true, // ToDos: here!
 			lvwConnections.Items.Clear();
 		}
 		public void Bind_DBConnections(
-			OGen.NTier.lib.metadata.cDBMetadata_DB[] dbMetadata_DB_in,
-			OGen.lib.datalayer.eDBServerTypes default_DBServerType_in,
-			string default_Mode_in
+			OGen.NTier.lib.metadata.cDBMetadata_DB[] dbMetadata_DB_in
+			//, OGen.lib.datalayer.eDBServerTypes default_DBServerType_in,
+			//string default_Mode_in
 		) {
 			lvwConnections.Items.Clear();
 			for (int _db = 0; _db < dbMetadata_DB_in.Length; _db++) {
@@ -492,11 +492,12 @@ true, // ToDos: here!
 					lvwConnections.Items.Add(
 						new ListViewItem(
 							new string[] {
-								(
-									(default_DBServerType_in == dbMetadata_DB_in[_db].DBServerType)
-									&&
-									(default_Mode_in == dbMetadata_DB_in[_db].Connections[_con].ConfigMode)
-								) ? "*" : string.Empty, 
+								//(
+								//    (default_DBServerType_in == dbMetadata_DB_in[_db].DBServerType)
+								//    &&
+								//    (default_Mode_in == dbMetadata_DB_in[_db].Connections[_con].ConfigMode)
+								//) ? "*" : string.Empty, 
+								string.Empty, 
 								dbMetadata_DB_in[_db].DBServerType.ToString(), 
 								dbMetadata_DB_in[_db].Connections[_con].ConfigMode,
 								dbMetadata_DB_in[_db].Connections[_con].Connectionstring

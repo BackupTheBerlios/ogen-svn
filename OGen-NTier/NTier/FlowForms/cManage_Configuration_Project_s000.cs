@@ -172,12 +172,12 @@ namespace OGen.NTier.presentationlayer.winforms {
 							frm_Main.ntierproject.Metadata.DBs[_justadded].CopyFrom(
 								_dbs[d]
 							);
-							if (d == 0) {
-								// ToDos: here! document this behaviour and describe it throught unit testing
-								// first item in the array, represents default db connection
-								frm_Main.ntierproject.Metadata.Default_DBServerType = frm_Main.ntierproject.Metadata.DBs[_justadded].DBServerType;
-								frm_Main.ntierproject.Metadata.Default_ConfigMode = frm_Main.ntierproject.Metadata.DBs[_justadded].Connections[0].ConfigMode;
-							}
+							//if (d == 0) {
+							//    // ToDos: here! document this behaviour and describe it throught unit testing
+							//    // first item in the array, represents default db connection
+							//    frm_Main.ntierproject.Metadata.Default_DBServerType = frm_Main.ntierproject.Metadata.DBs[_justadded].DBServerType;
+							//    frm_Main.ntierproject.Metadata.Default_ConfigMode = frm_Main.ntierproject.Metadata.DBs[_justadded].Connections[0].ConfigMode;
+							//}
 						}
 
 						frm_Main.ntierproject.Metadata.ApplicationName 
@@ -252,9 +252,9 @@ namespace OGen.NTier.presentationlayer.winforms {
 				}
 				#endregion
 				MyForm.Bind_DBConnections(
-					_dbmetadata_dbs, 
-					frm_Main.ntierproject.Metadata.Default_DBServerType, 
-					frm_Main.ntierproject.Metadata.Default_ConfigMode
+					_dbmetadata_dbs
+					//, frm_Main.ntierproject.Metadata.Default_DBServerType, 
+					//frm_Main.ntierproject.Metadata.Default_ConfigMode
 				);
 			} else {
 				MyForm.ApplicationName = string.Empty;

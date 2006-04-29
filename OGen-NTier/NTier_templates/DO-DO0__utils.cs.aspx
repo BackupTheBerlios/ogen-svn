@@ -149,8 +149,8 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 						}
 					}
 					cDBConnection connection = new cDBConnection(
-						_aux_metadata.Default_DBServerType, 
-						_aux_metadata.Default_Connectionstring()
+						_aux_metadata.DBs.FirstDefaultAvailable_DBServerType(), 
+						_aux_metadata.DBs.FirstDefaultAvailable_Connectionstring()
 					);
 					ConfigTable = connection.Execute_SQLQuery_returnDataTable(
 						string.Format(
@@ -159,7 +159,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
                             /*01*/ ConfigField,
                             /*02*/ DatatypeField,
                             /*03*/ _aux_table.Name, 
-                            /*04*/ (_aux_metadata.Default_DBServerType == eDBServerTypes.MySQL) ? "`" :"\""
+                            /*04*/ (_aux_metadata.DBs.FirstDefaultAvailable_DBServerType() == eDBServerTypes.MySQL) ? "`" :"\""
 						)
 					);
 					for (int r = 0; r < ConfigTable.Rows.Count; r++) {

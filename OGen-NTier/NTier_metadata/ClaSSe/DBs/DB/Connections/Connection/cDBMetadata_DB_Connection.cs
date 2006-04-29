@@ -47,6 +47,7 @@ namespace OGen.NTier.lib.metadata {
 		) {
 			//#region ClaSSe...
 			ConfigMode = configMode_in;
+			isDefault = false;
 			GenerateSQL = generateSQL_in;
 			isIndexed_andReadOnly = false;
 			Connectionstring = string.Empty;
@@ -106,6 +107,19 @@ namespace OGen.NTier.lib.metadata {
 			set { configmode_ = value; }
 		}
 		#endregion
+		#region public bool isDefault { get; set; }
+		private bool isdefault_;
+		public bool isDefault {
+			get { return isdefault_; }
+			set { isdefault_ = value; }
+		}
+
+		[ClaSSPropertyAttribute("isDefault", ClaSSPropertyAttribute.eType.standard, true)]
+		private string isdefault_reflection {
+			get { return isdefault_.ToString(); }
+			set { isdefault_ = bool.Parse(value); }
+		}
+		#endregion
 		#region public bool GenerateSQL { get; set; }
 		private bool generatesql_;
 		public bool GenerateSQL {
@@ -148,6 +162,7 @@ namespace OGen.NTier.lib.metadata {
 		#region public Methods...
 		#region public void CopyFrom(cDBMetadata_DB_Connection dbMetadata_DB_Connection_in);
 		public void CopyFrom(cDBMetadata_DB_Connection dbMetadata_DB_Connection_in) {
+			isdefault_ = dbMetadata_DB_Connection_in.isdefault_;
 			generatesql_ = dbMetadata_DB_Connection_in.generatesql_;
 			configmode_ = dbMetadata_DB_Connection_in.configmode_;
 			connectionstring_ = dbMetadata_DB_Connection_in.connectionstring_;
