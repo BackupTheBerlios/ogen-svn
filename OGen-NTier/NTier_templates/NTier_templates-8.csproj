@@ -148,8 +148,12 @@
     <Content Include="BO-UT-SomeNamespace.lib.businesslayer.UTs.nunit.aspx" />
     <Content Include="BO-UT-UT0_SomeTable.cs.aspx" />
     <Content Include="BO-UT-UT_app.config.aspx">
+      <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="BO-UT-UT_SomeTable.cs.aspx" />
+    <Content Include="DO-UT-UT0__utils.cs.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-fnc0_SomeTable_isObject-MySQL.sql.aspx" />
     <Content Include="DO-DB-fnc0_SomeTable_isObject-PostgreSQL.sql.aspx" />
     <Content Include="DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx">
@@ -228,19 +232,32 @@
       <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="DO-DO0__utils.cs.aspx">
+      <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="DO-DO_SomeTable.cs.aspx" />
     <Content Include="DO-DO__utils.cs.aspx" />
     <Content Include="DO-RO0_SomeTable.cs.aspx">
     </Content>
-    <Content Include="DO-SomeApplication_datalayer-8.csproj.aspx" />
+    <Content Include="DO-SomeApplication_datalayer-8.csproj.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-SomeApplication_datalayer.cmbx.aspx" />
-    <Content Include="DO-SomeApplication_datalayer-7.1.csproj.aspx" />
-    <Content Include="DO-SomeApplication_datalayer.prjx.aspx" />
-    <Content Include="DO-UT-SomeApplication_datalayer_UTs-8.csproj.aspx" />
+    <Content Include="DO-SomeApplication_datalayer-7.1.csproj.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="DO-SomeApplication_datalayer.prjx.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="DO-UT-SomeApplication_datalayer_UTs-8.csproj.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-UT-SomeApplication_datalayer_UTs.cmbx.aspx" />
-    <Content Include="DO-UT-SomeApplication_datalayer_UTs-7.1.csproj.aspx" />
-    <Content Include="DO-UT-SomeApplication_datalayer_UTs.prjx.aspx" />
+    <Content Include="DO-UT-SomeApplication_datalayer_UTs-7.1.csproj.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="DO-UT-SomeApplication_datalayer_UTs.prjx.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-UT-SomeNamespace.lib.datalayer.UTs.nunit.aspx" />
     <Content Include="DO-UT-UT0_SomeTable.cs.aspx">
       <SubType>ASPXCodeBehind</SubType>

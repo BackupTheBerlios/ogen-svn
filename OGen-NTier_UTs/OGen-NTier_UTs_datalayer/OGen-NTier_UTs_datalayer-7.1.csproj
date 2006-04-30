@@ -104,7 +104,7 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-PostgreSQL\DO0__utils.cs"
+                    RelPath = "_base\DO0__utils.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -114,12 +114,12 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-PostgreSQL\DO0_Config.cs"
+                    RelPath = "_base\DO0_Config.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-PostgreSQL\RO0_Config.cs"
+                    RelPath = "_base\RO0_Config.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -129,12 +129,12 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-PostgreSQL\DO0_Group.cs"
+                    RelPath = "_base\DO0_Group.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-PostgreSQL\RO0_Group.cs"
+                    RelPath = "_base\RO0_Group.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -144,12 +144,12 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-PostgreSQL\DO0_User.cs"
+                    RelPath = "_base\DO0_User.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-PostgreSQL\RO0_User.cs"
+                    RelPath = "_base\RO0_User.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -159,12 +159,12 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-PostgreSQL\DO0_UserGroup.cs"
+                    RelPath = "_base\DO0_UserGroup.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-PostgreSQL\RO0_UserGroup.cs"
+                    RelPath = "_base\RO0_UserGroup.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -174,12 +174,12 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-PostgreSQL\DO0_vUserDefaultGroup.cs"
+                    RelPath = "_base\DO0_vUserDefaultGroup.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-PostgreSQL\RO0_vUserDefaultGroup.cs"
+                    RelPath = "_base\RO0_vUserDefaultGroup.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -189,12 +189,12 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-PostgreSQL\DO0_vUserGroup.cs"
+                    RelPath = "_base\DO0_vUserGroup.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base-PostgreSQL\RO0_vUserGroup.cs"
+                    RelPath = "_base\RO0_vUserGroup.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />

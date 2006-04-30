@@ -35,17 +35,27 @@ string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryStr
 #region varaux...
 cDBMetadata _aux_metadata = new cDBMetadata();
 _aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
-
-cDBMetadata_DB _aux_db;
+                                                     
+string[] _aux_configmodes = _aux_metadata.ConfigModes();
 #endregion
 //-----------------------------------------------------------------------------------------
 %><configuration>
-	<appSettings><%
-		_aux_db = _aux_metadata.DBs.Default;%>
-		<add key="DBServerType" value="<%=_aux_db.DBServerType.ToString()%>" />
-<%		for (int d = 0; d < _aux_metadata.DBs.Count; d++) {
-			_aux_db = _aux_metadata.DBs[d];%>
-		<add key="<%=_aux_metadata.ApplicationName%>-<%=_aux_db.DBServerType.ToString()%>-<%=_aux_db.ConfigMode%>" value="<%=_aux_db.Connectionstring%>"/><%
+	<appSettings>
+		<add key="<%=_aux_metadata.ApplicationName%>:ConfigModes" value="<%
+		for (int _cm = 0; _cm < _aux_configmodes.Length; _cm++) {
+		    %><%=_aux_configmodes[_cm]%><%=(_cm == _aux_configmodes.Length - 1) ? "" : ":"%><%
+		}%>" />
+		<add key="<%=_aux_metadata.ApplicationName%>:DBServerTypes" value="<%
+		for (int _db = 0; _db < _aux_metadata.DBs.Count; _db++) {
+		    %><%=_aux_metadata.DBs[_db].DBServerType.ToString()%><%=(_db == _aux_metadata.DBs.Count - 1) ? "" : ":"%><%
+		}%>" />
+
+		<!-- IsDefault::GeneratedSQL::IsIndexed_andReadOnly::Connectionstring --><%
+		//<add key="OGen-NTier_UTs:DBServerType_default" value="< %=_aux_metadata.DBs.FirstDefaultAvailable_DBServerType().ToString()% >" />
+		for (int d = 0; d < _aux_metadata.DBs.Count; d++) {
+			for (int c = 0; c < _aux_metadata.DBs[d].Connections.Count; c++) {%>
+		<add key="<%=_aux_metadata.ApplicationName%>:DBConnection:<%=_aux_metadata.DBs[d].Connections[c].ConfigMode%>:<%=_aux_metadata.DBs[d].DBServerType.ToString()%>" value="<%=_aux_metadata.DBs[d].Connections[c].isDefault%>::<%=_aux_metadata.DBs[d].Connections[c].GenerateSQL%>::<%=_aux_metadata.DBs[d].Connections[c].isIndexed_andReadOnly%>::<%=_aux_metadata.DBs[d].Connections[c].Connectionstring%>"/><%
+			}
 		}%>
 
 		<add key="Some_UT_config" value="tweak it here" />

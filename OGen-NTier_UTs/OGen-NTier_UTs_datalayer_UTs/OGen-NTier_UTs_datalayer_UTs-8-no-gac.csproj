@@ -131,6 +131,7 @@
     <Compile Include="_base\UT0_vUserGroup.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="_base\UT0__utils.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\OGen-NTier\NTier_datalayer\NTier_datalayer-8.csproj">

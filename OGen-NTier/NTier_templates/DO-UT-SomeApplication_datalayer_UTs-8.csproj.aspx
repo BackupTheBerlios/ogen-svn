@@ -150,6 +150,9 @@ int _aux_table_hasidentitykey;
     <None Include="app.config" />
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
+    </Compile>
+   	<Compile Include="_base\UT0__utils.cs">
+      <SubType>Code</SubType>
     </Compile><%
 		for (int t = 0; t < _aux_metadata.Tables.Count; t++) {
 			_aux_table = _aux_metadata.Tables[t];%>

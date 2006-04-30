@@ -156,6 +156,11 @@ int _aux_table_hasidentitykey;
                     RelPath = "AssemblyInfo.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\UT0__utils.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
                 /><%
                 for (int t = 0; t < _aux_metadata.Tables.Count; t++) {
 					_aux_table = _aux_metadata.Tables[t];%>

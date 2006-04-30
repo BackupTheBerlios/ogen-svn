@@ -108,6 +108,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="UT__utils.cs" />
+   	<Compile Include="_base\UT0__utils.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="UT_Config.cs">
       <SubType>Code</SubType>
     </Compile>

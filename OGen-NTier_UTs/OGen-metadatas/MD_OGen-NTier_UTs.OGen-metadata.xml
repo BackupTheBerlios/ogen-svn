@@ -35,18 +35,7 @@ along with OGen; if not, write to the
 
 							- or -
 
-	http://www.fsf.org/licensing/licenses/gpl.txt"
-
-
-
-
-
-
-
-
-	default_DBServerType="PostgreSQL" 
-	default_ConfigMode="DEBUG">
-
+	http://www.fsf.org/licensing/licenses/gpl.txt">
   <dbs>
     <db dbServerType="PostgreSQL">
       <connections>
@@ -61,14 +50,6 @@ along with OGen; if not, write to the
       </connections>
     </db>
   </dbs>
-
-
-
-
-
-
-
-
   <tables>
     <table name="Config" isVirtualTable="False" isConfig="True">
       <fields>

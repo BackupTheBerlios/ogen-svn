@@ -364,6 +364,19 @@ along with OGen; if not, write to the
 		</outputs>
 		<dependencies />
 	</template>
+	<template name="DO-UT-UT0__utils.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/_base/UT0__utils.cs" 
+				type="File" replace="True" />
+		</outputs>
+		<dependencies />
+	</template>
 	<template name="DO-UT-UT0_SomeTable.cs.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">

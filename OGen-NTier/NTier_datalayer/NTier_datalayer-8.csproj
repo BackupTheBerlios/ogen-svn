@@ -97,6 +97,8 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Config_DBConnectionstring.cs" />
+    <Compile Include="Config_DBConnectionstrings.cs" />
     <Compile Include="DOClassAttribute.cs">
       <SubType>Code</SubType>
     </Compile>

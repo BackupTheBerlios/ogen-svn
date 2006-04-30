@@ -79,6 +79,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		}
 		#endregion
 
+		#region public static Properties...
 		#region public static eDBServerTypes DBServerType { get; }
 		private static eDBServerTypes dbservertype__;
 		/// <summary>
@@ -87,9 +88,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		public static eDBServerTypes DBServerType {
 			get {
 				if (dbservertype__ == eDBServerTypes.invalid) {
-					dbservertype__ = OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(
-						System.Configuration.ConfigurationSettings.AppSettings["DBServerType"]
-					);
+					DBServerType_read(false);
 				}
 				return dbservertype__;
 			}
@@ -103,17 +102,56 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		public static string DBConnectionstring {
 			get {
 				if (dbconnectionstring__ == null) {
-					dbconnectionstring__ = OGen.lib.datalayer.utils.Connectionstring.Buildwith.AppSettings(<%
-						for (int cm = 0; cm < _aux_configmodes.Length; cm++) {%>
-#<%=(cm == 0) ? "" : "el"%>if <%=_aux_configmodes[cm]%>
-						string.Format("<%=_aux_metadata.ApplicationName%>-{0}-<%=_aux_configmodes[cm]%>", DBServerType.ToString())<%
-						}%>
-#endif
-					);
+					DBConnectionstring_read(false);
 				}
 				return dbconnectionstring__;
 			}
 		}
+		#endregion
+		#endregion
+
+		#region public static Methods...
+		#region public static void DBConnectionstring_reset();
+		public static void DBConnectionstring_reset() {
+			Config_DBConnectionstrings.Reset();
+		}
+		#endregion
+		#region private static void DBConnectionstring_read(bool andReset_in);
+		private static void DBConnectionstring_read(bool andReset_in) {
+			DBServerType_read(andReset_in);
+		}
+		#endregion
+		#region public static void DBServerType_reset();
+		public static void DBServerType_reset() {
+			Config_DBConnectionstrings.Reset();
+		}
+		#endregion
+		#region private static void DBServerType_read(bool andReset_in);
+		private static void DBServerType_read(bool andReset_in) {
+			if (andReset_in) {
+				DBServerType_reset();
+			}
+			dbservertype__ = eDBServerTypes.invalid;
+			dbconnectionstring__ = null;
+
+			Config_DBConnectionstring _con;
+			for (int _db = 0; _db < Config_DBConnectionstrings.DBServerTypes.Length; _db++) {
+				_con = Config_DBConnectionstrings.DBConnectionstrings[
+					Config_DBConnectionstrings.DBServerTypes[_db],<%
+					for (int cm = 0; cm < _aux_configmodes.Length; cm++) {%>
+#<%=(cm == 0) ? "" : "el"%>if <%=_aux_configmodes[cm]%>
+					"<%=_aux_configmodes[cm]%>"<%
+					}%>
+#endif
+				];
+				if (_con.isDefault) {
+					dbservertype__ = Config_DBConnectionstrings.DBServerTypes[_db];
+					dbconnectionstring__ = _con.Connectionstring;
+					return;
+				}
+			}
+		}
+		#endregion
 		#endregion<%
 		if (_aux_metadata.PseudoReflectionable) {%>
 
@@ -128,8 +166,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			for (int t = 0; t < _aux_metadata.Tables.Count; t++) {
 				_aux_table = _aux_metadata.Tables[t];
 				if (_aux_table.isConfig) {%>
-
-		#region static Methods - DB.<%=_aux_table.Name%>...<%
+		#region public static Methods - DB.<%=_aux_table.Name%>...<%
 					NameField = "";
 					ConfigField = "";
 					DatatypeField = "";
@@ -171,7 +208,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// <summary>
 		/// Forces <%=ConfigTable.Rows[r][NameField]%> config to be re-read from Database.
 		/// </summary>
-		public static void <%=ConfigTable.Rows[r][NameField]%>_REFRESH() { <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_beenRead = false; }
+		public static void <%=ConfigTable.Rows[r][NameField]%>_reset() { <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_beenRead = false; }
 		private static bool <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = true;
 		/// <summary>
 		/// <%=ConfigTable.Rows[r][NameField]%> config which provides access to table <%=_aux_table.Name%> at Database.
@@ -212,7 +249,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// <summary>
 		/// Forces <%=ConfigTable.Rows[r][NameField]%> config to be re-read from Database.
 		/// </summary>
-		public static void <%=ConfigTable.Rows[r][NameField]%>_REFRESH() { <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_beenRead = false; }
+		public static void <%=ConfigTable.Rows[r][NameField]%>_reset() { <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_beenRead = false; }
 		/// <summary>
 		/// <%=ConfigTable.Rows[r][NameField]%> config which provides access to table <%=_aux_table.Name%> at Database.
 		/// </summary>
@@ -251,7 +288,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// <summary>
 		/// Forces <%=ConfigTable.Rows[r][NameField]%> config to be re-read from Database.
 		/// </summary>
-		public static void <%=ConfigTable.Rows[r][NameField]%>_REFRESH() { <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = null; }
+		public static void <%=ConfigTable.Rows[r][NameField]%>_reset() { <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = null; }
 		/// <summary>
 		/// <%=ConfigTable.Rows[r][NameField]%> config which provides access to table <%=_aux_table.Name%> at Database.
 		/// </summary>
@@ -288,7 +325,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// <summary>
 		/// Forces <%=ConfigTable.Rows[r][NameField]%> config to be re-read from Database.
 		/// </summary>
-		public static void <%=ConfigTable.Rows[r][NameField]%>_REFRESH() { <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = null; }
+		public static void <%=ConfigTable.Rows[r][NameField]%>_reset() { <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = null; }
 		/// <summary>
 		/// <%=ConfigTable.Rows[r][NameField]%> config which provides access to table <%=_aux_table.Name%> at Database.
 		/// </summary>

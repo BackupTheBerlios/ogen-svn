@@ -41,38 +41,17 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 	public class UT_UserGroup : UT0_UserGroup {
 		public UT_UserGroup() {}
 
-		private cDBConnection[] dbconnections_;
 		private string testid_;
 
 		#region public void TestFixtureSetUp();
 		[TestFixtureSetUp]
 		public void TestFixtureSetUp() {
 			testid_ = DateTime.Now.Ticks.ToString();// Guid.NewGuid().ToString();
-			//---
-			eDBServerTypes _dbtype;
-			string[] _dbtypes = OGen.lib.datalayer.utils.DBServerTypes.Names_supportedForGeneration();
-			dbconnections_ = new cDBConnection[_dbtypes.Length];
-			for (int d = 0; d < _dbtypes.Length; d++) {
-				_dbtype 
-					= OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(_dbtypes[d]);
-
-				dbconnections_[d] = new cDBConnection(
-					_dbtype,
-					System.Configuration.ConfigurationSettings.AppSettings[
-						string.Format("DBConnectionstring-{0}", _dbtypes[d])
-					]
-				);
-			}
-
 		}
 		#endregion
 		#region public void TestFixtureTearDown();
 		[TestFixtureTearDown]
 		public void TestFixtureTearDown() {
-			for (int d = 0; d < dbconnections_.Length; d++) {
-				dbconnections_[d].Dispose();
-				dbconnections_[d] = null;
-			}
 		}
 		#endregion
 
@@ -83,25 +62,27 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 			long _iduser;
 			long _idgroup;
 
-			for (int c = 0; c < dbconnections_.Length; c++) {
-				dbconnections_[c].Open();
-				dbconnections_[c].Transaction.Begin();
+			for (int c = 0; c < UT0__utils.DBConnections.Length; c++) {
+//Console.WriteLine("UT_NullableFields: {0}", UT0__utils.DBConnections[c].DBServerType.ToString());
 
-				#region _iduser = new DO_User(dbconnections_[c]).insObject(true);
-				DO_User _user = new DO_User(dbconnections_[c]);
+				UT0__utils.DBConnections[c].Open();
+				UT0__utils.DBConnections[c].Transaction.Begin();
+
+				#region _iduser = new DO_User(UT0__utils.DBConnections[c]).insObject(true);
+				DO_User _user = new DO_User(UT0__utils.DBConnections[c]);
 				_user.Login = testid_;
 				_user.Password = testid_;
 				_iduser = _user.insObject(true, out _contraint);
 				_user.Dispose(); _user = null;
 				#endregion
-				#region _idgroup = new DO_Group(dbconnections_[c]).insObject(true);
-				DO_Group _group = new DO_Group(dbconnections_[c]);
+				#region _idgroup = new DO_Group(UT0__utils.DBConnections[c]).insObject(true);
+				DO_Group _group = new DO_Group(UT0__utils.DBConnections[c]);
 				_group.Name = testid_;
 				_idgroup = _group.insObject(true);
 				_group.Dispose(); _group = null;
 				#endregion
 
-				DO_UserGroup _usergroup = new DO_UserGroup(dbconnections_[c]);
+				DO_UserGroup _usergroup = new DO_UserGroup(UT0__utils.DBConnections[c]);
 				_usergroup.IDUser = _iduser;
 				_usergroup.IDGroup = _idgroup;
 				_usergroup.Relationdate_isNull = true;
@@ -172,9 +153,9 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 
 				_usergroup.Dispose(); _usergroup = null;
 
-				dbconnections_[c].Transaction.Rollback();
-				dbconnections_[c].Transaction.Terminate();
-				dbconnections_[c].Close();
+				UT0__utils.DBConnections[c].Transaction.Rollback();
+				UT0__utils.DBConnections[c].Transaction.Terminate();
+				UT0__utils.DBConnections[c].Close();
 			}
 		}
 		#endregion

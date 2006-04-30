@@ -44,38 +44,17 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 	public class UT_User : UT0_User {
 		public UT_User() {}
 
-		private cDBConnection[] dbconnections_;
 		private string testid_;
 
 		#region public void TestFixtureSetUp();
 		[TestFixtureSetUp]
 		public void TestFixtureSetUp() {
 			testid_ = DateTime.Now.Ticks.ToString();// Guid.NewGuid().ToString();
-			//---
-			eDBServerTypes _dbtype;
-			string[] _dbtypes = OGen.lib.datalayer.utils.DBServerTypes.Names_supportedForGeneration();
-			dbconnections_ = new cDBConnection[_dbtypes.Length];
-			for (int d = 0; d < _dbtypes.Length; d++) {
-				_dbtype 
-					= OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(_dbtypes[d]);
-
-				dbconnections_[d] = new cDBConnection(
-					_dbtype,
-					System.Configuration.ConfigurationSettings.AppSettings[
-						string.Format("DBConnectionstring-{0}", _dbtypes[d])
-					]
-				);
-			}
-
 		}
 		#endregion
 		#region public void TestFixtureTearDown();
 		[TestFixtureTearDown]
 		public void TestFixtureTearDown() {
-			for (int d = 0; d < dbconnections_.Length; d++) {
-				dbconnections_[d].Dispose();
-				dbconnections_[d] = null;
-			}
 		}
 		#endregion
 
@@ -84,10 +63,12 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 		public void UT_Constraints() {
 			string _testid = DateTime.Now.Ticks.ToString();
 			bool _constraint;
-			for (int c = 0; c < dbconnections_.Length; c++) {
-				dbconnections_[c].Open();
-				dbconnections_[c].Transaction.Begin();
-				DO_User _user = new DO_User(dbconnections_[c]);
+			for (int c = 0; c < UT0__utils.DBConnections.Length; c++) {
+//Console.WriteLine("UT_Constraints: {0}", UT0__utils.DBConnections[c].DBServerType.ToString());
+
+				UT0__utils.DBConnections[c].Open();
+				UT0__utils.DBConnections[c].Transaction.Begin();
+				DO_User _user = new DO_User(UT0__utils.DBConnections[c]);
 
 				_user.Login = _testid;
 				_user.Password = _testid;
@@ -101,9 +82,9 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 				Assert.IsTrue(_constraint, "constraint problems expected and not found");
 
 				_user.Dispose(); _user = null;
-				dbconnections_[c].Transaction.Rollback();
-				dbconnections_[c].Transaction.Terminate();
-				dbconnections_[c].Close();
+				UT0__utils.DBConnections[c].Transaction.Rollback();
+				UT0__utils.DBConnections[c].Transaction.Terminate();
+				UT0__utils.DBConnections[c].Close();
 			}
 		}
 		#endregion

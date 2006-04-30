@@ -54,6 +54,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		}
 		#endregion
 
+		#region public static Properties...
 		#region public static eDBServerTypes DBServerType { get; }
 		private static eDBServerTypes dbservertype__;
 		/// <summary>
@@ -62,9 +63,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		public static eDBServerTypes DBServerType {
 			get {
 				if (dbservertype__ == eDBServerTypes.invalid) {
-					dbservertype__ = OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(
-						System.Configuration.ConfigurationSettings.AppSettings["DBServerType"]
-					);
+					DBServerType_read(false);
 				}
 				return dbservertype__;
 			}
@@ -78,20 +77,59 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		public static string DBConnectionstring {
 			get {
 				if (dbconnectionstring__ == null) {
-					dbconnectionstring__ = OGen.lib.datalayer.utils.Connectionstring.Buildwith.AppSettings(
-#if DEBUG
-						string.Format("OGen-NTier_UTs-{0}-DEBUG", DBServerType.ToString())
-#elif !DEBUG
-						string.Format("OGen-NTier_UTs-{0}-!DEBUG", DBServerType.ToString())
-#endif
-					);
+					DBConnectionstring_read(false);
 				}
 				return dbconnectionstring__;
 			}
 		}
 		#endregion
+		#endregion
 
-		#region static Methods - DB.Config...
+		#region public static Methods...
+		#region public static void DBConnectionstring_reset();
+		public static void DBConnectionstring_reset() {
+			Config_DBConnectionstrings.Reset();
+		}
+		#endregion
+		#region private static void DBConnectionstring_read(bool andReset_in);
+		private static void DBConnectionstring_read(bool andReset_in) {
+			DBServerType_read(andReset_in);
+		}
+		#endregion
+		#region public static void DBServerType_reset();
+		public static void DBServerType_reset() {
+			Config_DBConnectionstrings.Reset();
+		}
+		#endregion
+		#region private static void DBServerType_read(bool andReset_in);
+		private static void DBServerType_read(bool andReset_in) {
+			if (andReset_in) {
+				DBServerType_reset();
+			}
+			dbservertype__ = eDBServerTypes.invalid;
+			dbconnectionstring__ = null;
+
+			Config_DBConnectionstring _con;
+			for (int _db = 0; _db < Config_DBConnectionstrings.DBServerTypes.Length; _db++) {
+				_con = Config_DBConnectionstrings.DBConnectionstrings[
+					Config_DBConnectionstrings.DBServerTypes[_db],
+#if DEBUG
+					"DEBUG"
+#elif !DEBUG
+					"!DEBUG"
+#endif
+				];
+				if (_con.isDefault) {
+					dbservertype__ = Config_DBConnectionstrings.DBServerTypes[_db];
+					dbconnectionstring__ = _con.Connectionstring;
+					return;
+				}
+			}
+		}
+		#endregion
+		#endregion
+
+		#region public static Methods - DB.Config...
 		#region public static bool SomeBoolConfig { get; }
 		private static bool someboolconfig_beenRead = false;
 		/// <summary>

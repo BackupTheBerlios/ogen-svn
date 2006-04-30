@@ -46,7 +46,8 @@ int _aux_table_hasidentitykey;
   <Contents>
     <File name=".\AssemblyInfo.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
     <File name=".\app.config" subtype="Code" buildaction="Nothing" dependson="" data="" />
-    <File name=".\_base" subtype="Directory" buildaction="Compile" dependson="" data="" /><%
+    <File name=".\_base" subtype="Directory" buildaction="Compile" dependson="" data="" />
+    <File name=".\_base\UT0__utils.cs" subtype="Code" buildaction="Compile" dependson="" data="" /><%
     for (int t = 0; t < _aux_metadata.Tables.Count; t++) {
 		_aux_table = _aux_metadata.Tables[t];%>
     <File name=".\_base\UT0_<%=_aux_table.Name%>.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
