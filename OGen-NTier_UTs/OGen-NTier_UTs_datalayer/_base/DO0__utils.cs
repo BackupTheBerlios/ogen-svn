@@ -128,14 +128,13 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		}
 		#endregion
 		#endregion
-
 		#region public static Methods - DB.Config...
 		#region public static bool SomeBoolConfig { get; }
 		private static bool someboolconfig_beenRead = false;
 		/// <summary>
 		/// Forces SomeBoolConfig config to be re-read from Database.
 		/// </summary>
-		public static void SomeBoolConfig_REFRESH() { someboolconfig_beenRead = false; }
+		public static void SomeBoolConfig_reset() { someboolconfig_beenRead = false; }
 		private static bool someboolconfig = true;
 		/// <summary>
 		/// SomeBoolConfig config which provides access to table Config at Database.
@@ -173,7 +172,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// Forces SomeIntConfig config to be re-read from Database.
 		/// </summary>
-		public static void SomeIntConfig_REFRESH() { someintconfig_beenRead = false; }
+		public static void SomeIntConfig_reset() { someintconfig_beenRead = false; }
 		/// <summary>
 		/// SomeIntConfig config which provides access to table Config at Database.
 		/// </summary>
@@ -209,7 +208,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// Forces SomeMultiLineStringConfig config to be re-read from Database.
 		/// </summary>
-		public static void SomeMultiLineStringConfig_REFRESH() { somemultilinestringconfig = null; }
+		public static void SomeMultiLineStringConfig_reset() { somemultilinestringconfig = null; }
 		/// <summary>
 		/// SomeMultiLineStringConfig config which provides access to table Config at Database.
 		/// </summary>
@@ -254,7 +253,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// Forces SomeStringConfig config to be re-read from Database.
 		/// </summary>
-		public static void SomeStringConfig_REFRESH() { somestringconfig = null; }
+		public static void SomeStringConfig_reset() { somestringconfig = null; }
 		/// <summary>
 		/// SomeStringConfig config which provides access to table Config at Database.
 		/// </summary>
