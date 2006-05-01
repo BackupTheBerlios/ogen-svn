@@ -52,6 +52,7 @@ namespace OGen.NTier.lib.metadata {
 			isVirtualTable = false;
 			isConfig = false;
 			//---
+			dbs_ = new cDBMetadata_Table_DBs(this, this);
 			fields_ = new cDBMetadata_Table_Fields(this, this);
 			searches_ = new cDBMetadata_Table_Searches(this, this);
 			updates_ = new cDBMetadata_Updates(this, this.Parent_ref);
@@ -143,6 +144,15 @@ namespace OGen.NTier.lib.metadata {
 		}
 		#endregion
 		//---
+		#region private cDBMetadata_Table_DBs dbs_ { get; set; }
+		private cDBMetadata_Table_DBs dbs_;
+
+		[ClaSSPropertyAttribute("dbs", ClaSSPropertyAttribute.eType.aggregate, true)]
+		private cDBMetadata_Table_DBs dbs_reflection {
+			get { return dbs_; }
+			//set { dbs_ = value; }
+		}
+		#endregion
 		#region private iDBMetadata_Table_Fields fields_ { get; set; }
 		private iDBMetadata_Table_Fields fields_;
 
@@ -185,6 +195,11 @@ namespace OGen.NTier.lib.metadata {
 		}
 		#endregion
 		//---
+		#region public cDBMetadata_Table_DBs DBs { get; }
+		public cDBMetadata_Table_DBs DBs {
+			get { return dbs_; }
+		}
+		#endregion
 		#region public iDBMetadata_Table_Fields Fields { get; }
 		public iDBMetadata_Table_Fields Fields {
 			get { return fields_; }

@@ -3,6 +3,21 @@
     <File name=".\AssemblyInfo.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
     <File name=".\app.config" subtype="Code" buildaction="Nothing" dependson="" data="" />
     <File name=".\MainClass.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\HowTos_andFAQ\OGen-NTier__Docs__Develop_HowTo_List_DataObjects.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\HowTos_andFAQ\OGen-NTier__Docs__Develop_HowTo_Read_and_Write_to_DataObject_Properties.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\HowTos_andFAQ\OGen-NTier__Docs__Develop_HowTo_Read_DataObject_Property_Attributes.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\HowTos_andFAQ\OGen-NTier__Docs__Develop_HowTo_UseTransactions_betweenDOs_operations.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\HowTos_andFAQ\OGen-NTier__Docs__Develop_HowTo_UseTransactions_inDOs.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\HowTos_andFAQ\OGen__Docs__Develop_HowTo_Execute_SQLFunction.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\HowTos_andFAQ\OGen__Docs__Develop_HowTo_Execute_SQLFunction_returnDataTable.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\HowTos_andFAQ\OGen__Docs__Develop_HowTo_Execute_SQLFunction_returnSomevalue.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\HowTos_andFAQ\OGen__Docs__Develop_HowTo_Execute_SQLQuery.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\HowTos_andFAQ\OGen__Docs__Develop_HowTo_Execute_SQLQuery_returnDataTable.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\HowTos_andFAQ\OGen__Docs__Develop_HowTo_List_DBs.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\HowTos_andFAQ\OGen__Docs__Develop_HowTo_List_DB_TableFields.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\HowTos_andFAQ\OGen__Docs__Develop_HowTo_List_DB_Tables.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\HowTos_andFAQ\OGen__Docs__Develop_HowTo_UseTransactions.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\HowTos_andFAQ\OGen__Docs__Contrib_Considerations-CSharpCodingStyle.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
   </Contents>
   <References>
     <Reference type="Project" refto="OGen-NTier_UTs_datalayer" localcopy="True" />

@@ -362,11 +362,27 @@ namespace OGen.NTier.lib.metadata {
 if (clear_in)
 			tables_.Clear();
 			for (int t = 0; t < _tables_aux.Length; t++) {
+
+
+// ToDos: here! virtual names
+//for (int ) {
+//}
+
+
 				int T = tables_.Add(_tables_aux[t].Name, true);
 
 if (notifyBack_in != null) notifyBack_in(string.Format("#{0}/{1} - {2}", t + 1, _tables_aux.Length, _tables_aux[t].Name), true);
 
 				tables_[T].isVirtualTable = _tables_aux[t].isVirtualTable;
+
+
+// ToDos: here! virtual names
+//int TD = tables_[T].DBs.Add(
+//    _connection.DBServerType,
+//    _tables_aux[t].Name,
+//    true
+//);
+
 
 				cDBTableField[] _fields_aux = _connection.getTableFields(_tables_aux[t].Name);
 if (clear_in)
@@ -384,11 +400,11 @@ if (clear_in)
 					//---
 
 
-					int D = tables_[T].Fields[F].DBs.Add(
+					int FD = tables_[T].Fields[F].DBs.Add(
 						_connection.DBServerType, 
 						true
 					);
-					tables_[T].Fields[F].DBs[D].DBType_inDB_name = _fields_aux[f].DBType_inDB_name;
+					tables_[T].Fields[F].DBs[FD].DBType_inDB_name = _fields_aux[f].DBType_inDB_name;
 					#region //oldstuff...
 					//tables_[T].Fields[F].DBType_inDB_name	= _fields_aux[f].DBType_inDB_name;
 					//tables_[T].Fields[F].Size				= _fields_aux[f].Size;

@@ -359,7 +359,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 
 					if (_aux_table.isConfig) { %>
 
-					#region DO0__utils...._REFRESH();<%
+					#region DO0__utils...._reset();<%
 						string NameField;
 						string ConfigField;
 						string DatatypeField;
@@ -402,7 +402,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 					switch (<%=NameField.ToLower()%>_) {<%
 								for (int r = 0; r < ConfigTable.Rows.Count; r++) {%>
 						case "<%=ConfigTable.Rows[r][NameField]%>": {
-							DO0__utils.<%=ConfigTable.Rows[r][NameField]%>_REFRESH();
+							DO0__utils.<%=ConfigTable.Rows[r][NameField]%>_reset();
 							break;
 						}<%
 								}%>
@@ -456,8 +456,13 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			<%_aux_field = _aux_table.Fields[_aux_table_hasidentitykey];
 			%><%=_aux_field.Name%> = (<%=_aux_field.DBType_generic.FWType%>)_dataparameters[<%=_aux_table_hasidentitykey%>].Value;<%
 			if (_aux_table_searches_hasexplicituniqueindex) {%>
-			constraintExist_out = (<%=_aux_field.Name%> == -1L);<%
-			}%>
+			constraintExist_out = (<%=_aux_field.Name%> == -1L);
+			if (!constraintExist_out) {
+				haschanges_ = false;
+			}<%
+			} else {%>
+			haschanges_ = false;
+			<%}%>
 
 			return <%=_aux_field.Name%>;
 		}

@@ -295,6 +295,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 
 			IDUser = (long)_dataparameters[0].Value;
 			constraintExist_out = (IDUser == -1L);
+			if (!constraintExist_out) {
+				haschanges_ = false;
+			}
 
 			return IDUser;
 		}

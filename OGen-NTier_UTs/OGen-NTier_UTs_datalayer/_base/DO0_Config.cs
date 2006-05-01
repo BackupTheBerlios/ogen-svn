@@ -294,22 +294,22 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				if (!ConstraintExist_out) {
 					haschanges_ = false;
 
-					#region DO0__utils...._REFRESH();
+					#region DO0__utils...._reset();
 					switch (name_) {
 						case "SomeBoolConfig": {
-							DO0__utils.SomeBoolConfig_REFRESH();
+							DO0__utils.SomeBoolConfig_reset();
 							break;
 						}
 						case "SomeIntConfig": {
-							DO0__utils.SomeIntConfig_REFRESH();
+							DO0__utils.SomeIntConfig_reset();
 							break;
 						}
 						case "SomeMultiLineStringConfig": {
-							DO0__utils.SomeMultiLineStringConfig_REFRESH();
+							DO0__utils.SomeMultiLineStringConfig_reset();
 							break;
 						}
 						case "SomeStringConfig": {
-							DO0__utils.SomeStringConfig_REFRESH();
+							DO0__utils.SomeStringConfig_reset();
 							break;
 						}
 					}

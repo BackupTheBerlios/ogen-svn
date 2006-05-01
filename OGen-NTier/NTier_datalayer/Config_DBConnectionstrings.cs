@@ -37,6 +37,9 @@ using OGen.lib.datalayer;
 namespace OGen.NTier.lib.datalayer {
 	public class Config_DBConnectionstrings {
 		#region public Config_DBConnectionstrings();
+		/// <summary>
+		/// Used to store config file connection strings.
+		/// </summary>
 		public Config_DBConnectionstrings() {
 			dbconnections_ = new System.Collections.Hashtable(
 				ConfigModes.Length * 
@@ -47,7 +50,7 @@ namespace OGen.NTier.lib.datalayer {
 					Add(
 						DBServerTypes[_db], 
 						ConfigModes[_cfg], 
-						Config_DBConnectionstring.NewDBConnection(
+						Config_DBConnectionstring.newConfig_DBConnectionstring(
 							System.Configuration.ConfigurationSettings.AppSettings[string.Format(
 								"OGen-NTier_UTs:DBConnection:{0}:{1}",
 								ConfigModes[_cfg],

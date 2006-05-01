@@ -34,6 +34,13 @@ using System;
 namespace OGen.NTier.lib.datalayer {
 	public struct Config_DBConnectionstring {
 		#region public Config_DBConnectionstring(...);
+		/// <summary>
+		/// Used to store a config file connection string.
+		/// </summary>
+		/// <param name="isDefault_in">Helps end user's datalayer figure out which connection(string) it's supposed to use.</param>
+		/// <param name="generatedSQL_in">Indicates if code was generated over this connection(string).</param>
+		/// <param name="isIndexed_andReadOnly_in">Indicates if connection's made over an indexed and read only database.</param>
+		/// <param name="connectionstring_in">The connection's connectionstring.</param>
 		public Config_DBConnectionstring(
 			bool isDefault_in,
 			bool generatedSQL_in, 
@@ -50,32 +57,55 @@ namespace OGen.NTier.lib.datalayer {
 		#region public Properties...
 		#region public bool isDefault { get; }
 		private bool isdefault_;
+		/// <summary>
+		/// Helps end user's datalayer figure out which connection(string) it's supposed to use.
+		/// </summary>
 		public bool isDefault {
 			get { return isdefault_; }
 		}
 		#endregion
 		#region public bool GeneratedSQL { get; }
 		private bool generatedsql_;
+		/// <summary>
+		/// Indicates if code was generated over this connection(string).
+		/// </summary>
 		public bool GeneratedSQL {
 			get { return generatedsql_; }
 		}
 		#endregion
 		#region public bool isIndexed_andReadOnly { get; }
 		private bool isindexed_andreadonly_;
+		/// <summary>
+		/// Indicates if connection's made over an indexed and read only database.
+		/// </summary>
 		public bool isIndexed_andReadOnly {
 			get { return isindexed_andreadonly_; }
 		}
 		#endregion
 		#region public string Connectionstring { get; }
 		private string connectionstring_;
+		/// <summary>
+		/// The connection's connectionstring.
+		/// </summary>
 		public string Connectionstring {
 			get { return connectionstring_; }
 		}
 		#endregion
 		#endregion
 		#region public Methods...
-		#region public static DBConnection NewDBConnection(string parameters_in);
-		public static Config_DBConnectionstring NewDBConnection(string parameters_in) {
+		#region public static DBConnection newConfig_DBConnectionstring(string parameters_in);
+		/// <summary>
+		/// Instantiates a new Config_DBConnectionstring.
+		/// </summary>
+		/// <param name="parameters_in">
+		/// It must respect "[True|False]::[True|False]::[True|False]::some connection string like;Server=127.0.0.1;Port=5432;User ID=postgres;Password=passpub;Database=OGen-NTier_UTs;". 
+		/// Where first parameter represents the isDefault property, 
+		/// second parameter represents GeneratedSQL property, 
+		/// third parameter represents isIndexed_andReadOnly
+		/// and forth last parameter represents the Connectionstring property
+		/// </param>
+		/// <returns>new Config_DBConnectionstring</returns>
+		public static Config_DBConnectionstring newConfig_DBConnectionstring(string parameters_in) {
 			string[] _parameters = parameters_in.Split(new string[] { "::" }, StringSplitOptions.None);
 			return new Config_DBConnectionstring(
 				bool.Parse(_parameters[0]), 

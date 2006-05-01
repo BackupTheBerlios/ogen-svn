@@ -51,6 +51,26 @@ along with OGen; if not, write to the
     </db>
   </dbs>
   <tables>
+
+
+    <table name="IHaveAStyle" isVirtualTable="False" isConfig="True">
+      <dbs>
+        <db dbServerType="PostgreSQL" tableName="IHaveAStyle" />
+        <db dbServerType="SQLServer" tableName="i_Have_MyOwn_style" />
+        <!-- db dbServerType="MySQL" tableName="i_have_a_lower_style" / -->
+      </dbs>
+      <fields>
+        <field name="IDIHaveAStyle" isPK="True" isIdentity="True" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0">
+          <dbs>
+            <db dbServerType="PostgreSQL" dbType="bigint" fieldName="IDIHaveAStyle" />
+            <db dbServerType="SQLServer" dbType="bigint" fieldName="ID_i_Have_MyOwn_style" />
+            <!-- db dbServerType="MySQL" dbType="bigint" fieldName="ID_i_have_a_lower_style" / -->
+          </dbs>
+        </field>
+      </fields>
+    </table>
+
+
     <table name="Config" isVirtualTable="False" isConfig="True">
       <fields>
         <field name="Name" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="True" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50">

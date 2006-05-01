@@ -265,6 +265,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			);
 
 			IDGroup = (long)_dataparameters[0].Value;
+			haschanges_ = false;
+			
 
 			return IDGroup;
 		}

@@ -152,5 +152,42 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 			Assert.IsTrue(_att.isIdentity);
 		}
 		#endregion
+		#region public void UT_hasChanges();
+		[Test]
+		public void UT_hasChanges() {
+			string _testid = DateTime.Now.Ticks.ToString();
+			bool _constraint;
+			long _iduser;
+
+			DO_User _user = new DO_User();
+			_user.Connection.Open();
+			_user.Connection.Transaction.Begin();
+
+			Assert.IsFalse(_user.hasChanges, "unexpected changes, object just instantiated and no changes have been made");
+			_user.Login = _testid;
+			_user.Password = _testid;
+			Assert.IsTrue(_user.hasChanges, "expected changes, changes have been made over object");
+			_iduser = _user.insObject(true, out _constraint);
+			Assert.IsFalse(_user.hasChanges, "unexpected changes, object state commited (insert) over data base");
+			_user.Login = _testid;
+			_user.Password = _testid;
+			Assert.IsFalse(_user.hasChanges, "unexpected changes, no real changes have been made");
+			_user.Password = string.Empty;
+			Assert.IsTrue(_user.hasChanges, "expected changes, real changes have been made");
+			_user.updObject(false, out _constraint);
+			Assert.IsFalse(_user.hasChanges, "unexpected changes, object state commited (update) over data base");
+			_user.clrObject();
+			Assert.IsTrue(_user.hasChanges, "expected changes, object state cleared");
+			_user.getObject_byLogin(_testid);
+			Assert.IsFalse(_user.hasChanges, "unexpected changes, object state sinchronized (select) with data base");
+			_user.delObject();
+			Assert.IsTrue(_user.hasChanges, "expected changes, object erased (delete on data base)");
+			
+			_user.Connection.Transaction.Rollback();
+			_user.Connection.Transaction.Terminate();
+			_user.Connection.Close();
+			_user.Dispose(); _user = null;
+		}
+		#endregion
 	}
 }

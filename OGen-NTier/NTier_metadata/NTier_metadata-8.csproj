@@ -146,6 +146,8 @@
     <Compile Include="ClaSSe\Tables\Table\cDBMetadata_Table.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ClaSSe\Tables\Table\DBs\cDBMetadata_Table_DBs.cs" />
+    <Compile Include="ClaSSe\Tables\Table\DBs\DB\cDBMetadata_Table_DB.cs" />
     <Compile Include="ClaSSe\Tables\Table\Fields-generic\cDBMetadata_Table_Fields_FK.cs">
       <SubType>Code</SubType>
     </Compile>
