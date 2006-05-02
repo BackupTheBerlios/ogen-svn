@@ -111,6 +111,16 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "Config_DBConnectionstring.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "Config_DBConnectionstrings.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "COPYING"
                     BuildAction = "None"
                 />

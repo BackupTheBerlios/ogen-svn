@@ -106,7 +106,7 @@ namespace OGen.NTier.lib.datalayer {
 		/// </param>
 		/// <returns>new Config_DBConnectionstring</returns>
 		public static Config_DBConnectionstring newConfig_DBConnectionstring(string parameters_in) {
-			string[] _parameters = parameters_in.Split(new string[] { "::" }, StringSplitOptions.None);
+			string [] _parameters = parameters_in.Replace("::", ((char)13).ToString()).Split((char)13);//new string[] { "::" }, StringSplitOptions.None);
 			return new Config_DBConnectionstring(
 				bool.Parse(_parameters[0]), 
 				bool.Parse(_parameters[1]), 
