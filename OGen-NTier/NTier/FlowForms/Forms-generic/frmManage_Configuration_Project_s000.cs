@@ -472,6 +472,12 @@ true, // ToDos: here!
 					= lvwConnections.Items[i].SubItems[
 						(int)eConnectionColumns.DBConnectionstring
 					].Text;
+
+				DBConnections_out[_dbindex].Connections[_justadded].isDefault = (
+					lvwConnections.Items[i].SubItems[(int)eConnectionColumns.Default].Text
+					!=
+					string.Empty
+				);
 			}
 
 			return DBConnections_out;

@@ -1,3 +1,14 @@
+-- View: ""v0_User__onlyKeys""
+
+-- DROP VIEW "v0_User__onlyKeys";
+
+CREATE OR REPLACE VIEW "v0_User__onlyKeys" AS 
+ SELECT "User"."IDUser"
+   FROM "User";
+
+ALTER TABLE "v0_User__onlyKeys" OWNER TO postgres;
+
+
 -- Function: "fnc_User_Record_open_byGroup"("IDGroup_search_" int8)
 
 -- DROP FUNCTION "fnc_User_Record_open_byGroup"("IDGroup_search_" int8);

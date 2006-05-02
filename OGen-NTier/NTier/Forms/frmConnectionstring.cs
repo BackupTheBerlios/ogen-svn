@@ -35,6 +35,8 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
+using OGen.lib.datalayer;
+
 namespace OGen.NTier.presentationlayer.winforms {
 	public class frmConnectionstring : System.Windows.Forms.Form {
 		#region Required designer variable.
