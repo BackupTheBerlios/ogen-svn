@@ -92,8 +92,8 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 				#region test1...
 				_usergroup.clrObject();
 				_usergroup.getObject(_iduser, _idgroup);
-				Assert.IsTrue(_usergroup.Relationdate_isNull, "expected true");
-				Assert.IsTrue(_usergroup.Defaultrelation_isNull, "expected true");
+				Assert.IsTrue(_usergroup.Relationdate_isNull, "DO_UserGroup.Relationdate expected to be nullable");
+				Assert.IsTrue(_usergroup.Defaultrelation_isNull, "DO_UserGroup.Defaultrelation expected to be nullable");
 				#endregion
 				#region test2...
 				for (int i = 0; i < 2; i++) { // test both fullmode and not
@@ -103,8 +103,8 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 						(i == 0) // test both fullmode and not
 					);
 					while (_usergroup.Record.Read()) {
-						Assert.IsTrue(_usergroup.Relationdate_isNull, "expected true");
-						Assert.IsTrue(_usergroup.Defaultrelation_isNull, "expected true");
+						Assert.IsTrue(_usergroup.Relationdate_isNull, "DO_UserGroup.Relationdate expected to be nullable");
+						Assert.IsTrue(_usergroup.Defaultrelation_isNull, "DO_UserGroup.Defaultrelation expected to be nullable");
 					}
 					_usergroup.Record.Close();
 				}
@@ -116,14 +116,16 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 						_idgroup,
 						_iduser,
 						null
-					)
+					), 
+					"test error: 1"
 				);
 				Assert.AreEqual(
 					1L,
 					_usergroup.Record.Count_byUser_Defaultrelation(
 						_iduser,
 						null
-					)
+					), 
+					"test error: 2"
 				);
 				#endregion
 				#region test4...
@@ -140,14 +142,16 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 						_idgroup,
 						_iduser,
 						_now
-					)
+					), 
+					"test error: 3"
 				);
 				Assert.AreEqual(
 					1L,
 					_usergroup.Record.Count_byUser_Defaultrelation(
 						_iduser,
 						_now
-					)
+					), 
+					"test error: 4"
 				);
 				#endregion
 
