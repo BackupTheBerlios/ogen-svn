@@ -203,12 +203,12 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "ClaSSe\Tables\Table\DBs.no-svn\cDBMetadata_Table_DBs.cs"
+                    RelPath = "ClaSSe\Tables\Table\DBs\cDBMetadata_Table_DBs.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "ClaSSe\Tables\Table\DBs.no-svn\DB\cDBMetadata_Table_DB.cs"
+                    RelPath = "ClaSSe\Tables\Table\DBs\DB\cDBMetadata_Table_DB.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
