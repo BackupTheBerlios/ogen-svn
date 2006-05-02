@@ -1,3 +1,16 @@
+-- Sequence: "User_IDUser_seq"
+
+-- DROP SEQUENCE "User_IDUser_seq";
+
+CREATE SEQUENCE "User_IDUser_seq"
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
+ALTER TABLE "User_IDUser_seq" OWNER TO postgres;
+
+
 -- Table: "User"
 
 -- DROP TABLE "User";

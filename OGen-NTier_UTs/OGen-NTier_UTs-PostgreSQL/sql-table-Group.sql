@@ -1,3 +1,16 @@
+-- Sequence: "Group_IDGroup_seq"
+
+-- DROP SEQUENCE "Group_IDGroup_seq";
+
+CREATE SEQUENCE "Group_IDGroup_seq"
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
+ALTER TABLE "Group_IDGroup_seq" OWNER TO postgres;
+
+
 -- Table: "Group"
 
 -- DROP TABLE "Group";
