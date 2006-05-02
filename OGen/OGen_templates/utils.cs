@@ -35,6 +35,22 @@ using System.IO;
 namespace OGen.lib.templates {
 	public class utils { private utils() {}
 
+		public class OutputMode { private OutputMode() {}
+			public static cOutput.eMode Parse_NEW(string outputMode_in) {
+				for (int i = 0;; i++) {
+					if (((cOutput.eMode)i).ToString() == outputMode_in) {
+						return (cOutput.eMode)i;
+					} else if (
+						(((cOutput.eMode)i) == cOutput.eMode.invalid)
+						||
+						(((cOutput.eMode)i).ToString() == string.Empty)
+					) {
+						return cOutput.eMode.invalid;
+					}
+				}
+			}
+		}
+
 		public class OutputType { private OutputType() {}
 			//public class convert { private convert() {}
 			//}

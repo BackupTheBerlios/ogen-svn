@@ -38,7 +38,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/__XSLT-TEST-${ROOT.tables.table[n].name}.txt" 
-				type="File" replace="True" />
+				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template-->
@@ -52,7 +52,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="v0_${ROOT.tables.table[n].name}__onlyKeys"
-				type="PostgreSQL_View" replace="True" />
+				type="PostgreSQL_View" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -65,9 +65,9 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_test/app.config"
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 			<output to="${CONFIG.outputPath}/app0.config"
-				type="File" replace="True" />
+				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -78,15 +78,15 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/AssemblyInfo.cs" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/AssemblyInfo.cs" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer/AssemblyInfo.cs" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/AssemblyInfo.cs" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_test/AssemblyInfo.cs" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -99,7 +99,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_test/MainClass.cs" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -112,7 +112,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}.ndoc" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -125,7 +125,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-7.1.sln" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -138,7 +138,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-8.sln" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -152,7 +152,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}.cmbx" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -165,7 +165,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/${ROOT.applicationName}_datalayer-7.1.csproj" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -178,7 +178,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/${ROOT.applicationName}_datalayer-8.csproj" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -191,7 +191,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/${ROOT.applicationName}_datalayer.prjx" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -204,7 +204,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/${ROOT.applicationName}_datalayer.cmbx" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -217,7 +217,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/${ROOT.applicationName}_datalayer_UTs-7.1.csproj" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -230,7 +230,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/${ROOT.applicationName}_datalayer_UTs-8.csproj" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -243,7 +243,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/${ROOT.applicationName}_datalayer_UTs.prjx" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -256,7 +256,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/${ROOT.applicationName}_datalayer_UTs.cmbx" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -269,7 +269,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer/${ROOT.applicationName}_businesslayer-7.1.csproj" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -282,7 +282,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer/${ROOT.applicationName}_businesslayer-8.csproj" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -295,7 +295,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer/${ROOT.applicationName}_businesslayer.prjx" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -308,7 +308,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer/${ROOT.applicationName}_businesslayer.cmbx" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -321,7 +321,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_test/${ROOT.applicationName}_test-7.1.csproj" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -334,7 +334,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_test/${ROOT.applicationName}_test-8.csproj" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -347,7 +347,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_test/${ROOT.applicationName}_test.prjx" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -360,7 +360,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_test/${ROOT.applicationName}_test.cmbx" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -373,7 +373,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/_base/UT0__utils.cs" 
-				type="File" replace="True" />
+				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -387,7 +387,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/_base/UT0_${ROOT.tables.table[n].name}.cs" 
-				type="File" replace="True" />
+				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -401,7 +401,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/UT_${ROOT.tables.table[n].name}.cs" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -414,9 +414,9 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/app.config" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.datalayer.UTs.config" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -431,7 +431,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.datalayer.UTs.nunit" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -444,7 +444,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/${ROOT.applicationName}_businesslayer_UTs-7.1.csproj" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -457,7 +457,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/${ROOT.applicationName}_businesslayer_UTs-8.csproj" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -470,7 +470,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/${ROOT.applicationName}_businesslayer_UTs.prjx" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -483,7 +483,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/${ROOT.applicationName}_businesslayer_UTs.cmbx" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -497,7 +497,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/_base/UT0_${ROOT.tables.table[n].name}.cs" 
-				type="File" replace="True" />
+				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -511,7 +511,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/UT_${ROOT.tables.table[n].name}.cs" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -524,9 +524,9 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/app.config" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.businesslayer.UTs.config" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -541,7 +541,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.businesslayer.UTs.nunit" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -554,7 +554,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/_base/DO0__utils.cs" 
-				type="File" replace="True" />
+				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -567,7 +567,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/DO__utils.cs" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -581,7 +581,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/_base/RO0_${ROOT.tables.table[n].name}.cs" 
-				type="File" replace="True" />
+				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -595,7 +595,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/_base/DO0_${ROOT.tables.table[n].name}.cs" 
-				type="File" replace="True" />
+				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -609,7 +609,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/DO_${ROOT.tables.table[n].name}.cs" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -623,7 +623,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer/_base/BO0_${ROOT.tables.table[n].name}.cs" 
-				type="File" replace="True" />
+				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -637,7 +637,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer/BO_${ROOT.tables.table[n].name}.cs" 
-				type="File" replace="False" />
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -653,7 +653,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}__ConstraintExist" 
-				type="MySQL_Function" replace="True" />
+				type="MySQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" />
@@ -671,7 +671,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}__ConstraintExist" 
-				type="PostgreSQL_Function" replace="True" />
+				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx" />
@@ -689,7 +689,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}__ConstraintExist"
-				type="SQLServer_Function" replace="True" />
+				type="SQLServer_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx" />
@@ -708,7 +708,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}_isObject_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="MySQL_Function" replace="True" />
+				type="MySQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" />
@@ -727,7 +727,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}_isObject_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="PostgreSQL_Function" replace="True" />
+				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx" />
@@ -746,7 +746,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}_isObject_${ROOT.tables.table[n].searches.search[n].name}"
-				type="SQLServer_Function" replace="True" />
+				type="SQLServer_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx" />
@@ -762,7 +762,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}_isObject"
-				type="MySQL_Function" replace="True" />
+				type="MySQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -776,7 +776,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}_isObject" 
-				type="PostgreSQL_Function" replace="True" />
+				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -790,7 +790,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}_isObject"
-				type="SQLServer_Function" replace="True" />
+				type="SQLServer_Function" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -807,7 +807,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}_Record_count_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="MySQL_Function" replace="True" />
+				type="MySQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" />
@@ -826,7 +826,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}_Record_count_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="PostgreSQL_Function" replace="True" />
+				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
@@ -845,7 +845,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}_Record_count_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="SQLServer_Function" replace="True" />
+				type="SQLServer_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
@@ -864,7 +864,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}_Record_hasObject_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="MySQL_Function" replace="True" />
+				type="MySQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" />
@@ -883,7 +883,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}_Record_hasObject_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="PostgreSQL_Function" replace="True" />
+				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
@@ -902,7 +902,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}_Record_hasObject_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="SQLServer_Function" replace="True" />
+				type="SQLServer_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
@@ -921,7 +921,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_insObject" 
-				type="MySQL_StoredProcedure" replace="True" />
+				type="MySQL_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-MySQL.sql.aspx" />
@@ -940,7 +940,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_insObject" 
-				type="PostgreSQL_Function" replace="True" />
+				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-PostgreSQL.sql.aspx" />
@@ -959,7 +959,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_insObject" 
-				type="SQLServer_StoredProcedure" replace="True" />
+				type="SQLServer_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-SQLServer.sql.aspx" />
@@ -978,7 +978,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_updObject" 
-				type="MySQL_StoredProcedure" replace="True" />
+				type="MySQL_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-MySQL.sql.aspx" />
@@ -997,7 +997,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_updObject" 
-				type="PostgreSQL_Function" replace="True" />
+				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-PostgreSQL.sql.aspx" />
@@ -1016,7 +1016,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_updObject" 
-				type="SQLServer_StoredProcedure" replace="True" />
+				type="SQLServer_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-SQLServer.sql.aspx" />
@@ -1035,7 +1035,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_setObject" 
-				type="MySQL_StoredProcedure" replace="True" />
+				type="MySQL_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -1052,7 +1052,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_setObject" 
-				type="PostgreSQL_Function" replace="True" />
+				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -1069,7 +1069,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_setObject" 
-				type="SQLServer_StoredProcedure" replace="True" />
+				type="SQLServer_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -1086,7 +1086,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_delObject" 
-				type="MySQL_StoredProcedure" replace="True" />
+				type="MySQL_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -1103,7 +1103,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_delObject" 
-				type="PostgreSQL_Function" replace="True" />
+				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -1120,7 +1120,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_delObject" 
-				type="SQLServer_StoredProcedure" replace="True" />
+				type="SQLServer_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -1138,7 +1138,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_delObject_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="MySQL_StoredProcedure" replace="True" />
+				type="MySQL_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" />
@@ -1158,7 +1158,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_delObject_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="PostgreSQL_Function" replace="True" />
+				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" />
@@ -1178,7 +1178,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_delObject_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="SQLServer_StoredProcedure" replace="True" />
+				type="SQLServer_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" />
@@ -1198,7 +1198,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_delete_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="MySQL_StoredProcedure" replace="True" />
+				type="MySQL_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" />
@@ -1218,7 +1218,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_delete_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="PostgreSQL_Function" replace="True" />
+				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-v0_SomeTable__onlyKeys-PostgreSQL.sql.aspx" />
@@ -1239,7 +1239,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_delete_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="SQLServer_StoredProcedure" replace="True" />
+				type="SQLServer_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
@@ -1258,7 +1258,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="fnc_${ROOT.tables.table[n].name}_isObject_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="MySQL_Function" replace="False" />
+				type="MySQL_Function" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -1275,7 +1275,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="fnc_${ROOT.tables.table[n].name}_isObject_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="PostgreSQL_Function" replace="False" />
+				type="PostgreSQL_Function" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -1292,7 +1292,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="fnc_${ROOT.tables.table[n].name}_isObject_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="SQLServer_Function" replace="False" />
+				type="SQLServer_Function" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -1309,7 +1309,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="fnc_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="MySQL_Function" replace="False" />
+				type="MySQL_Function" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -1326,7 +1326,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="fnc_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="PostgreSQL_Function" replace="False" />
+				type="PostgreSQL_Function" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-v0_SomeTable__onlyKeys-PostgreSQL.sql.aspx" />
@@ -1345,7 +1345,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="fnc_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="SQLServer_Function" replace="False" />
+				type="SQLServer_Function" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -1362,7 +1362,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="MySQL_StoredProcedure" replace="False" />
+				type="MySQL_StoredProcedure" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" />
@@ -1381,7 +1381,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="PostgreSQL_Function" replace="False" />
+				type="PostgreSQL_Function" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-v0_SomeTable__onlyKeys-PostgreSQL.sql.aspx" />
@@ -1401,7 +1401,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="SQLServer_StoredProcedure" replace="False" />
+				type="SQLServer_StoredProcedure" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
@@ -1417,7 +1417,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_getObject" 
-				type="MySQL_StoredProcedure" replace="True" />
+				type="MySQL_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -1431,7 +1431,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_getObject" 
-				type="PostgreSQL_Function" replace="True" />
+				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -1445,7 +1445,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_getObject" 
-				type="SQLServer_StoredProcedure" replace="True" />
+				type="SQLServer_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -1462,7 +1462,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_getObject_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="MySQL_StoredProcedure" replace="True" />
+				type="MySQL_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" />
@@ -1481,7 +1481,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_getObject_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="PostgreSQL_Function" replace="True" />
+				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx" />
@@ -1500,7 +1500,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_getObject_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="SQLServer_StoredProcedure" replace="True" />
+				type="SQLServer_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx" />
@@ -1519,7 +1519,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_fullmode" 
-				type="MySQL_StoredProcedure" replace="True" />
+				type="MySQL_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" />
@@ -1538,7 +1538,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_fullmode" 
-				type="PostgreSQL_Function" replace="True" />
+				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
@@ -1557,7 +1557,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_fullmode" 
-				type="SQLServer_StoredProcedure" replace="True" />
+				type="SQLServer_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
@@ -1576,7 +1576,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_page" 
-				type="MySQL_StoredProcedure" replace="True" />
+				type="MySQL_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" />
@@ -1595,7 +1595,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_page" 
-				type="PostgreSQL_Function" replace="True" />
+				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-v0_SomeTable__onlyKeys-PostgreSQL.sql.aspx" />
@@ -1615,7 +1615,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_page" 
-				type="SQLServer_StoredProcedure" replace="True" />
+				type="SQLServer_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
@@ -1634,7 +1634,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_page_fullmode" 
-				type="MySQL_StoredProcedure" replace="True" />
+				type="MySQL_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" />
@@ -1653,7 +1653,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_page_fullmode" 
-				type="PostgreSQL_Function" replace="True" />
+				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
@@ -1672,7 +1672,7 @@ along with OGen; if not, write to the
 		</conditions>
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_page_fullmode" 
-				type="SQLServer_StoredProcedure" replace="True" />
+				type="SQLServer_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
@@ -1690,7 +1690,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_update_${ROOT.tables.table[n].searches.search[n].updates.update[n].name}_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="MySQL_StoredProcedure" replace="True" />
+				type="MySQL_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" />
@@ -1708,7 +1708,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_update_${ROOT.tables.table[n].searches.search[n].updates.update[n].name}_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="PostgreSQL_Function" replace="True" />
+				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
@@ -1726,7 +1726,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_update_${ROOT.tables.table[n].searches.search[n].updates.update[n].name}_${ROOT.tables.table[n].searches.search[n].name}" 
-				type="SQLServer_StoredProcedure" replace="True" />
+				type="SQLServer_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
@@ -1743,7 +1743,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_updObject_${ROOT.tables.table[n].updates.update[n].name}" 
-				type="MySQL_StoredProcedure" replace="True" />
+				type="MySQL_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -1758,7 +1758,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_updObject_${ROOT.tables.table[n].updates.update[n].name}" 
-				type="PostgreSQL_Function" replace="True" />
+				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -1773,7 +1773,7 @@ along with OGen; if not, write to the
 		<conditions />
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_updObject_${ROOT.tables.table[n].updates.update[n].name}" 
-				type="SQLServer_StoredProcedure" replace="True" />
+				type="SQLServer_StoredProcedure" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>

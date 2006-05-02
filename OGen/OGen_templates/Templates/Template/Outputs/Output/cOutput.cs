@@ -42,7 +42,7 @@ namespace OGen.lib.templates {
 			//#region ClaSS_noR...
 			To = to_in;
 			Type = eType.invalid;
-			Replace = false;
+			Mode = eMode.Create_doNotReplace;
 			//#endregion
 		}
 		#endregion
@@ -78,9 +78,18 @@ namespace OGen.lib.templates {
 			invalid = 10
 		}
 		#endregion
+		#region public enum eMode;
+		public enum eMode {
+			Create_doNotReplace = 0,
+			Replace = 1, 
+			Append = 2, 
+
+			invalid = 3
+		}
+		#endregion
 		#endregion
 
-//		#region Properties - ClaSS_noR...
+		#region Properties - ClaSS_noR...
 		#region public string To { get; set; }
 		public string To {
 			get { return base.Property_standard["to"]; }
@@ -88,20 +97,19 @@ namespace OGen.lib.templates {
 		}
 		#endregion
 
-//		#region public eType Type { get; set; }
+		#region public eType Type { get; set; }
 		public eType Type {
 			get { return OGen.lib.templates.utils.OutputType.Parse_NEW(base.Property_standard["type"]); }
 			set { base.Property_standard["type"] = value.ToString(); }
 		}
-//		#endregion
-		#region public bool Replace { get; set; }
-		public bool Replace {
-			get { return bool.Parse(base.Property_standard["replace"]); }
-			set { base.Property_standard["replace"] = value.ToString(); }
+		#endregion
+		#region public eMode Mode { get; set; }
+		public eMode Mode {
+			get { return OGen.lib.templates.utils.OutputMode.Parse_NEW(base.Property_standard["mode"]); }
+			set { base.Property_standard["mode"] = value.ToString(); }
 		}
 		#endregion
-
-//		#endregion
+		#endregion
 		#region Properties...
 		private cOutputs parent_ref_;
 		#endregion

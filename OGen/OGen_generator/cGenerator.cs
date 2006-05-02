@@ -329,7 +329,14 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 						}
 					}
 //					#endregion
-					if (!_exists_aux || templates_[template_].Outputs[o].Replace) {
+
+					if (
+						!_exists_aux 
+						|| 
+						(templates_[template_].Outputs[o].Mode == cOutput.eMode.Replace)
+						||
+						(templates_[template_].Outputs[o].Mode == cOutput.eMode.Append)
+					) {
 						#region string _parsedOutput = ...;
 						string _parsedOutput;
 						if (templates_[template_].ParserType == cTemplate.eParserType.xslt) {
@@ -403,7 +410,10 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 									&&
 									(xmltemplatesfileuri_.IsFile)
 								) {
-									#region File.Copy(...);
+//									#region File.Copy(...);
+// ToDos: here!
+if (templates_[template_].Outputs[o].Mode == cOutput.eMode.Append)
+	throw new Exception("not implemented");
 									File.Copy(
 										Path.Combine(
 											xmltemplatesdir_, 
@@ -412,12 +422,12 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 										_ouputTo, 
 										true // (!_exists || templates_[template_].Outputs[o].Replace)
 									);
-									#endregion
+//									#endregion
 								} else {
 									#region new StreamWriter(_ouputTo).Write(_parsedOutput);
 									StreamWriter _writer = new StreamWriter(
-										_ouputTo, 
-										false
+										_ouputTo,
+										(templates_[template_].Outputs[o].Mode == cOutput.eMode.Append)
 									);
 									_writer.Write(_parsedOutput);
 									_writer.Close();
@@ -434,6 +444,9 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 							case cOutput.eType.SQLServer_Function: 
 							case cOutput.eType.SQLServer_StoredProcedure: 
 							case cOutput.eType.SQLServer_View: {
+								if (templates_[template_].Outputs[o].Mode == cOutput.eMode.Append)
+									throw new Exception("can't handle append over a db function");
+
 //								#region if (_exists_aux) connection_.Function_delete(_ouputTo);
 								if (_exists_aux) {
 									switch (templates_[template_].Outputs[o].Type) {
