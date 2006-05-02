@@ -52,7 +52,8 @@ namespace OGen.NTier.lib.datalayer {
 						ConfigModes[_cfg], 
 						Config_DBConnectionstring.newConfig_DBConnectionstring(
 							System.Configuration.ConfigurationSettings.AppSettings[string.Format(
-								"OGen-NTier_UTs:DBConnection:{0}:{1}",
+								"{0}:DBConnection:{1}:{2}",
+								ApplicationName, 
 								ConfigModes[_cfg],
 								DBServerTypes[_db].ToString()
 							)]
@@ -64,6 +65,7 @@ namespace OGen.NTier.lib.datalayer {
 		#endregion
 		#region static Config_DBConnectionstrings();
 		static Config_DBConnectionstrings() {
+			applicationname__ = null;
 			configmodes__ = null;
 			dbservertypes__ = null;
 			dbconnectionstrings__ = null;
@@ -93,6 +95,18 @@ namespace OGen.NTier.lib.datalayer {
 		#endregion
 		#endregion
 		#region public static Properties...
+		#region public static string ApplicationName { get; }
+		private static string applicationname__;
+
+		public static string ApplicationName {
+			get {
+				if (applicationname__ == null) {
+					applicationname__ = System.Configuration.ConfigurationSettings.AppSettings["applicationName"];
+				}
+				return applicationname__;
+			}
+		}
+		#endregion
 		#region public static string[] ConfigModes { get; }
 		private static string[] configmodes__;
 		/// <summary>
@@ -101,7 +115,7 @@ namespace OGen.NTier.lib.datalayer {
 		public static string[] ConfigModes {
 			get {
 				if (configmodes__ == null) {
-					configmodes__ = System.Configuration.ConfigurationSettings.AppSettings["OGen-NTier_UTs:ConfigModes"].Split(':');
+					configmodes__ = System.Configuration.ConfigurationSettings.AppSettings[string.Format("{0}:ConfigModes", ApplicationName)].Split(':');
 				}
 				return configmodes__;
 			}
@@ -116,7 +130,7 @@ namespace OGen.NTier.lib.datalayer {
 			get {
 				if (dbservertypes__ == null) {
 					string[] _dbservertypes 
-						= System.Configuration.ConfigurationSettings.AppSettings["OGen-NTier_UTs:DBServerTypes"].Split(':');
+						= System.Configuration.ConfigurationSettings.AppSettings[string.Format("{0}:DBServerTypes", ApplicationName)].Split(':');
 
 					dbservertypes__ = new eDBServerTypes[_dbservertypes.Length];
 					for (int i = 0; i < _dbservertypes.Length; i++) {
@@ -164,6 +178,7 @@ namespace OGen.NTier.lib.datalayer {
 		#region public static Methods...
 		#region public static void Reset();
 		public static void Reset() {
+			applicationname__ = null;
 			configmodes__ = null;
 			dbservertypes__ = null;
 			dbconnectionstrings__ = null;

@@ -41,6 +41,8 @@ string[] _aux_configmodes = _aux_metadata.ConfigModes();
 //-----------------------------------------------------------------------------------------
 %><configuration>
 	<appSettings>
+		<add key="applicationName" value="<%=_aux_metadata.ApplicationName%>" />
+
 		<add key="<%=_aux_metadata.ApplicationName%>:ConfigModes" value="<%
 		for (int _cm = 0; _cm < _aux_configmodes.Length; _cm++) {
 		    %><%=_aux_configmodes[_cm]%><%=(_cm == _aux_configmodes.Length - 1) ? "" : ":"%><%
