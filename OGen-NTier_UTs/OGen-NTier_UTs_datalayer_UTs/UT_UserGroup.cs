@@ -117,7 +117,8 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 						_iduser,
 						null
 					), 
-					"test error: 1"
+					"test error: 1 ({0})", 
+					UT0__utils.DBConnections[c].DBServerType
 				);
 				Assert.AreEqual(
 					1L,
@@ -125,7 +126,8 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 						_iduser,
 						null
 					), 
-					"test error: 2"
+					"test error: 2 ({0})", 
+					UT0__utils.DBConnections[c].DBServerType
 				);
 				#endregion
 				#region test4...
@@ -143,7 +145,8 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 						_iduser,
 						_now
 					), 
-					"test error: 3"
+					"test error: 3 ({0})", 
+					UT0__utils.DBConnections[c].DBServerType
 				);
 				Assert.AreEqual(
 					1L,
@@ -151,7 +154,8 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 						_iduser,
 						_now
 					), 
-					"test error: 4"
+					"test error: 4 ({0})", 
+					UT0__utils.DBConnections[c].DBServerType
 				);
 				#endregion
 
