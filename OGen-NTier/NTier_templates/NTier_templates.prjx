@@ -89,7 +89,7 @@
     <Reference type="Project" refto="NTier_metadata" localcopy="True" />
     <Reference type="Project" refto="NTier_datalayer" localcopy="True" />
     <Reference type="Project" refto="NTier_businesslayer" localcopy="True" />
-    <Reference type="Gac" refto="Npgsql, Version=0.7.1.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7" localcopy="True" />
+    <Reference type="Gac" refto="Npgsql, Version=0.99.1.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7" localcopy="True" />
   </References>
   <DeploymentInformation target="" script="" strategy="File" />
   <Configuration runwithwarnings="True" name="Release">

@@ -40,12 +40,25 @@
     <File name=".\ClaSSe\Tables\Updates-generic\cDBMetadata_Updates.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
     <File name=".\ClaSSe\Tables\Updates-generic\Update" subtype="Directory" buildaction="Compile" dependson="" data="" />
     <File name=".\ClaSSe\Tables\Updates-generic\Update\cDBMetadata_Update.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\ClaSSe\Tables\Table\DBs" subtype="Directory" buildaction="Compile" dependson="" data="" />
+    <File name=".\ClaSSe\Tables\Table\DBs\DB" subtype="Directory" buildaction="Compile" dependson="" data="" />
+    <File name=".\ClaSSe\Tables\Table\DBs\cDBMetadata_Table_DBs.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\ClaSSe\Tables\Table\DBs\DB\cDBMetadata_Table_DB.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\ClaSSe\DBs\DB\Connections" subtype="Directory" buildaction="Compile" dependson="" data="" />
+    <File name=".\ClaSSe\DBs\DB\Connections\cDBMetadata_DB_Connections.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\ClaSSe\DBs\DB\Connections\Connection" subtype="Directory" buildaction="Compile" dependson="" data="" />
+    <File name=".\ClaSSe\DBs\DB\Connections\Connection\cDBMetadata_DB_Connection.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\ClaSSe\Tables\Table\Fields\Field\DBs" subtype="Directory" buildaction="Compile" dependson="" data="" />
+    <File name=".\ClaSSe\Tables\Table\Fields\Field\DBs\cDBMetadata_Table_Field_DBs.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
+    <File name=".\ClaSSe\Tables\Table\Fields\Field\DBs\DB" subtype="Directory" buildaction="Compile" dependson="" data="" />
+    <File name=".\ClaSSe\Tables\Table\Fields\Field\DBs\DB\cDBMetadata_Table_Field_DB.cs" subtype="Code" buildaction="Compile" dependson="" data="" />
   </Contents>
   <References>
     <Reference type="Project" refto="OGen_config" localcopy="True" />
     <Reference type="Project" refto="OGen_datalayer" localcopy="True" />
     <Reference type="Project" refto="OGen_collections" localcopy="True" />
-    <Reference type="Gac" refto="Npgsql, Version=0.7.1.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7" localcopy="True" />
+    <Reference type="Gac" refto="Npgsql, Version=0.99.1.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7" localcopy="True" />
+    <Reference type="Gac" refto="MySql.Data, Version=1.0.7.30072, Culture=neutral, PublicKeyToken=c5687fc88969c44d" localcopy="True" />
   </References>
   <DeploymentInformation target="" script="" strategy="File" />
   <Configuration runwithwarnings="True" name="Release">

@@ -14,7 +14,8 @@
   </Contents>
   <References>
     <Reference type="Project" refto="OGen_config" localcopy="True" />
-    <Reference type="Gac" refto="Npgsql, Version=0.7.1.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7" localcopy="True" />
+    <Reference type="Gac" refto="Npgsql, Version=0.99.1.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7" localcopy="True" />
+    <Reference type="Gac" refto="MySql.Data, Version=1.0.7.30072, Culture=neutral, PublicKeyToken=c5687fc88969c44d" localcopy="True" />
   </References>
   <DeploymentInformation target="" script="" strategy="File">
     <Exclude file=".\COPYING.LIB" />
