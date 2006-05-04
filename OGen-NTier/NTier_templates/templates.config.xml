@@ -64,8 +64,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="v0_${ROOT.tables.table[n].name}__onlyKeys"
 				type="PostgreSQL_View" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="emptyfile.txt" />
@@ -687,8 +687,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}__ConstraintExist" 
 				type="PostgreSQL_Function" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx" />
@@ -746,8 +746,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}_isObject_${ROOT.tables.table[n].searches.search[n].name}" 
 				type="PostgreSQL_Function" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx" />
@@ -798,8 +798,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}_isObject" 
 				type="PostgreSQL_Function" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="emptyfile.txt" />
@@ -852,8 +852,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}_Record_count_${ROOT.tables.table[n].searches.search[n].name}" 
 				type="PostgreSQL_Function" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
@@ -912,8 +912,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="fnc0_${ROOT.tables.table[n].name}_Record_hasObject_${ROOT.tables.table[n].searches.search[n].name}" 
 				type="PostgreSQL_Function" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
@@ -972,8 +972,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_insObject" 
 				type="PostgreSQL_Function" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-PostgreSQL.sql.aspx" />
@@ -1032,8 +1032,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_updObject" 
 				type="PostgreSQL_Function" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-PostgreSQL.sql.aspx" />
@@ -1090,8 +1090,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_setObject" 
 				type="PostgreSQL_Function" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="emptyfile.txt" />
@@ -1145,8 +1145,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_delObject" 
 				type="PostgreSQL_Function" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="emptyfile.txt" />
@@ -1204,8 +1204,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_delObject_${ROOT.tables.table[n].searches.search[n].name}" 
 				type="PostgreSQL_Function" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" />
@@ -1267,8 +1267,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_delete_${ROOT.tables.table[n].searches.search[n].name}" 
 				type="PostgreSQL_Function" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-v0_SomeTable__onlyKeys-PostgreSQL.sql.aspx" />
@@ -1327,8 +1327,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="fnc_${ROOT.tables.table[n].name}_isObject_${ROOT.tables.table[n].searches.search[n].name}" 
 				type="PostgreSQL_Function" mode="Create_doNotReplace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="emptyfile.txt" />
@@ -1382,8 +1382,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="fnc_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}" 
 				type="PostgreSQL_Function" mode="Create_doNotReplace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-v0_SomeTable__onlyKeys-PostgreSQL.sql.aspx" />
@@ -1440,8 +1440,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="sp_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}" 
 				type="PostgreSQL_Function" mode="Create_doNotReplace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-v0_SomeTable__onlyKeys-PostgreSQL.sql.aspx" />
@@ -1493,8 +1493,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_getObject" 
 				type="PostgreSQL_Function" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="emptyfile.txt" />
@@ -1547,8 +1547,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_getObject_${ROOT.tables.table[n].searches.search[n].name}" 
 				type="PostgreSQL_Function" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx" />
@@ -1607,8 +1607,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_fullmode" 
 				type="PostgreSQL_Function" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
@@ -1667,8 +1667,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_page" 
 				type="PostgreSQL_Function" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-v0_SomeTable__onlyKeys-PostgreSQL.sql.aspx" />
@@ -1728,8 +1728,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_open_${ROOT.tables.table[n].searches.search[n].name}_page_fullmode" 
 				type="PostgreSQL_Function" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
@@ -1786,8 +1786,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_Record_update_${ROOT.tables.table[n].searches.search[n].updates.update[n].name}_${ROOT.tables.table[n].searches.search[n].name}" 
 				type="PostgreSQL_Function" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
@@ -1839,8 +1839,8 @@ along with OGen; if not, write to the
 		<outputs>
 			<output to="sp0_${ROOT.tables.table[n].name}_updObject_${ROOT.tables.table[n].updates.update[n].name}" 
 				type="PostgreSQL_Function" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" /-->
 		</outputs>
 		<dependencies>
 			<dependency name="emptyfile.txt" />
