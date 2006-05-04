@@ -132,7 +132,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			set { if (value) <%=_aux_field.Name.ToLower()%>_ = null; }
 		}
         #endregion<%
-        }%>
+	        }%>
 		#region public virtual <%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%> { get; set; }
 		internal <%=(_aux_field.isNullable && !_aux_table.isVirtualTable) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field.Name.ToLower()%>_;// = <%=(_aux_field.DefaultValue == "") ? _aux_field.DBType_generic.FWEmptyValue : _aux_field.DefaultValue%>;
 		
@@ -443,7 +443,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {<%
 				for (int f = 0; f < _aux_table.Fields.Count; f++) {
 					_aux_field = _aux_table.Fields[f];%>
-				base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.<%=(_aux_field.isIdentity) ? "Out" : "In"%>put, <%=(_aux_field.isIdentity) ? "null" : _aux_field.Name%>, <%=_aux_field.Size%>), <%
+				base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.<%=(_aux_field.isIdentity) ? "Out" : "In"%>put, <%=(_aux_field.isIdentity) ? "null" : _aux_field.Name.ToLower() + "_"%>, <%=_aux_field.Size%>), <%
 				}%>
 
 				base.Connection.newDBDataParameter("SelectIdentity_", DbType.Boolean, ParameterDirection.Input, selectIdentity_in, 1)
@@ -478,8 +478,9 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		public virtual void updObject(bool forceUpdate_in<%=(_aux_table_searches_hasexplicituniqueindex) ? ", out bool constraintExist_out" : ""%>) {
 			if (forceUpdate_in || haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {<%
-					for (int f = 0; f < _aux_table.Fields.Count; f++) { _aux_field = _aux_table.Fields[f];%>
-					base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field.Name%>, <%=_aux_field.Size%>)<%=((f != _aux_table.Fields.Count - 1) || (_aux_table_searches_hasexplicituniqueindex)) ? ", " : ""%><%
+					for (int f = 0; f < _aux_table.Fields.Count; f++) {
+						_aux_field = _aux_table.Fields[f];%>
+					base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field.Name.ToLower()%>_, <%=_aux_field.Size%>)<%=((f != _aux_table.Fields.Count - 1) || (_aux_table_searches_hasexplicituniqueindex)) ? ", " : ""%><%
 					}%><%
 					if (_aux_table_searches_hasexplicituniqueindex) {%>
 
