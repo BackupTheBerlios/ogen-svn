@@ -69,6 +69,8 @@ BEGIN<%if (_aux_metadata.CopyrightTextLong != string.Empty) {
 			_aux_field = _aux_table.Fields_onlyPK[k];%>
 		(`<%=_aux_field.Name%>` = `<%=_aux_field.Name%>_`)<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? " AND" : ""%><%
 		}%>;
-END<%
+END
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

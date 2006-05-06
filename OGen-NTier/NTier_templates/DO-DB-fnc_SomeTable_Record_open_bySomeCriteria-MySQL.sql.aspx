@@ -94,6 +94,8 @@ RETURN<%if (_aux_metadata.CopyrightTextLong != string.Empty) {
         } else {%>
         (`<%=_aux_field.Name%>` <%=(_aux_field.isText) ? "LIKE '%' +" : "="%> `<%=_aux_field_name%>_search_`<%=(_aux_field.isText) ? " + '%' COLLATE latin1_german2_ci" : ""%>)<%=(f != _aux_search.SearchParameters.Count - 1) ? " AND" : ""%><%
         }
-	}%><%=((makeItAComment) || (_aux_search.SearchParameters.Count == 0)) ? "*/" : ""%><%
+	}%><%=((makeItAComment) || (_aux_search.SearchParameters.Count == 0)) ? "*/" : ""%>
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

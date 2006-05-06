@@ -91,6 +91,8 @@ BEGIN<%if (_aux_metadata.CopyrightTextLong != string.Empty) {
 	}%><%=(makeItAComment) ? "*/" : ""%>;
 
 	RETURN;
-END<%
+END
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

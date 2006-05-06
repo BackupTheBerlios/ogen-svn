@@ -73,6 +73,8 @@ RETURNS int8 AS
 	
 		RETURN _Output;
 	END;
-' LANGUAGE 'plpgsql' STABLE;<%
+' LANGUAGE 'plpgsql' STABLE;
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

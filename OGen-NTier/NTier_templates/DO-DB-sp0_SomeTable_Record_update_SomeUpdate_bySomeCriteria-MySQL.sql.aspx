@@ -84,6 +84,8 @@ BEGIN
 		_aux_field = _aux_table.Fields_onlyPK[k];%>
 		(t1.`<%=_aux_field.Name%>` = `<%=_aux_table.Name%>`.`<%=_aux_field.Name%>`)<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? " AND" : ""%><%
 	}%>;
-END<%
+END
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

@@ -283,8 +283,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
 				base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Output, null, 0), 
-				base.Connection.newDBDataParameter("Login_", DbType.String, ParameterDirection.Input, Login, 50), 
-				base.Connection.newDBDataParameter("Password_", DbType.String, ParameterDirection.Input, Password, 50), 
+				base.Connection.newDBDataParameter("Login_", DbType.String, ParameterDirection.Input, login_, 50), 
+				base.Connection.newDBDataParameter("Password_", DbType.String, ParameterDirection.Input, password_, 50), 
 
 				base.Connection.newDBDataParameter("SelectIdentity_", DbType.Boolean, ParameterDirection.Input, selectIdentity_in, 1)
 			};
@@ -311,9 +311,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		public virtual void updObject(bool forceUpdate_in, out bool constraintExist_out) {
 			if (forceUpdate_in || haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser, 0), 
-					base.Connection.newDBDataParameter("Login_", DbType.String, ParameterDirection.Input, Login, 50), 
-					base.Connection.newDBDataParameter("Password_", DbType.String, ParameterDirection.Input, Password, 50), 
+					base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, iduser_, 0), 
+					base.Connection.newDBDataParameter("Login_", DbType.String, ParameterDirection.Input, login_, 50), 
+					base.Connection.newDBDataParameter("Password_", DbType.String, ParameterDirection.Input, password_, 50), 
 
 					base.Connection.newDBDataParameter("ConstraintExist_", DbType.Boolean, ParameterDirection.Output, null, 1)
 				};

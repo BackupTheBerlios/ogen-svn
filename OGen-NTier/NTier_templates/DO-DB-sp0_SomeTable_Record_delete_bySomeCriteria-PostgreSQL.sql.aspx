@@ -106,6 +106,8 @@ RETURNS VOID AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;<%
+' LANGUAGE 'plpgsql' VOLATILE;
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

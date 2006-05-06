@@ -91,6 +91,8 @@ BEGIN<%if (_aux_metadata.CopyrightTextLong != string.Empty) {
 
 	-- CHANGE order by HERE:
 	-- ORDER BY t1.`SomeField`
-END<%
+END
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

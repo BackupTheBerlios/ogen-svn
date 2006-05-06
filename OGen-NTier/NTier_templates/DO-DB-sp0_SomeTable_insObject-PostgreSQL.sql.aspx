@@ -102,6 +102,8 @@ AS '
 
 		RETURN IdentityKey AS "<%=_aux_table.Fields[_aux_table_hasidentitykey].Name%>_";
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;<%
+' LANGUAGE 'plpgsql' VOLATILE;
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

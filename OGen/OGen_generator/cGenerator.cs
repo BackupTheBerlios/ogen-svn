@@ -413,7 +413,7 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 //									#region File.Copy(...);
 // ToDos: here!
 if (templates_[template_].Outputs[o].Mode == cOutput.eMode.Append)
-	throw new Exception("not implemented");
+	throw new Exception(string.Format("not implemented (at template: {0})", templates_[template_].Name));
 									File.Copy(
 										Path.Combine(
 											xmltemplatesdir_, 

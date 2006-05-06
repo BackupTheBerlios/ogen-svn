@@ -79,6 +79,8 @@ AS
 	-- NOT HERE!
 
 	-- CHANGE ORDER BY HERE:
-	-- ORDER BY t1.[SomeField]<%
+	-- ORDER BY t1.[SomeField]
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

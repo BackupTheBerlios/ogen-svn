@@ -98,7 +98,7 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 		#endregion
 
-		#region Properties - ClaSSe...
+//		#region Properties - ClaSSe...
 		#region private ArrayList dbs_ { get; set; }
 		private ArrayList dbs_;
 
@@ -108,7 +108,25 @@ namespace OGen.NTier.lib.metadata {
 			set { dbs_ = value; }
 		}
 		#endregion
-		#endregion
+//		#region private string supports_postgresql__ { get; }
+		[ClaSSPropertyAttribute("supports_PostgreSQL", ClaSSPropertyAttribute.eType.standard, false)]
+		private string supports_postgresql__ {
+			get { return (Search(eDBServerTypes.PostgreSQL) != -1).ToString(); }
+		}
+//		#endregion
+//		#region private string supports_sqlserver__ { get; }
+		[ClaSSPropertyAttribute("supports_SQLServer", ClaSSPropertyAttribute.eType.standard, false)]
+		private string supports_sqlserver__ {
+			get { return (Search(eDBServerTypes.SQLServer) != -1).ToString(); }
+		}
+//		#endregion
+//		#region private string supports_mysql__ { get; }
+		[ClaSSPropertyAttribute("supports_MySQL", ClaSSPropertyAttribute.eType.standard, false)]
+		private string supports_mysql__ {
+			get { return (Search(eDBServerTypes.MySQL) != -1).ToString(); }
+		}
+//		#endregion
+//		#endregion
 		#region Properties...
 		#region public cDBMetadata Root_ref;
 		private cDBMetadata root_ref_;

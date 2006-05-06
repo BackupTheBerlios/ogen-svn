@@ -255,7 +255,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
 				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Output, null, 0), 
-				base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Name, 50), 
+				base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, name_, 50), 
 
 				base.Connection.newDBDataParameter("SelectIdentity_", DbType.Boolean, ParameterDirection.Input, selectIdentity_in, 1)
 			};
@@ -279,8 +279,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		public virtual void updObject(bool forceUpdate_in) {
 			if (forceUpdate_in || haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup, 0), 
-					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Name, 50)
+					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, idgroup_, 0), 
+					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, name_, 50)
 				};
 				base.Connection.Execute_SQLFunction(
 					"sp0_Group_updObject", 

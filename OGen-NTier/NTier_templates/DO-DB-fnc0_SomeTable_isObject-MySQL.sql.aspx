@@ -74,6 +74,8 @@ BEGIN<%if (_aux_metadata.CopyrightTextLong != string.Empty) {
 		}%>;
 
 	RETURN `isObject`;
-END<%
+END
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

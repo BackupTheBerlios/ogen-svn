@@ -91,6 +91,8 @@ BEGIN<%if (_aux_metadata.CopyrightTextLong != string.Empty) {
 	}%>;
 
 	RETURN `Record_hasObject_out`;
-END<%
+END
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

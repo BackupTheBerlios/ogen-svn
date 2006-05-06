@@ -69,6 +69,8 @@ RETURNS bool AS '
 			)
 		);
 	END;
-' LANGUAGE 'plpgsql' STABLE;<%
+' LANGUAGE 'plpgsql' STABLE;
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

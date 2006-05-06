@@ -83,6 +83,8 @@ BEGIN<%if (_aux_metadata.CopyrightTextLong != string.Empty) {
 		SET `<%=_aux_field.Name%>_` = NULL;<%
 		}%>
 	END IF;
-END<%
+END
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

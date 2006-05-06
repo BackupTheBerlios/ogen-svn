@@ -95,6 +95,8 @@ RETURNS bool AS '
 
 		RETURN false AS "Exists_";
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;<%
+' LANGUAGE 'plpgsql' VOLATILE;
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

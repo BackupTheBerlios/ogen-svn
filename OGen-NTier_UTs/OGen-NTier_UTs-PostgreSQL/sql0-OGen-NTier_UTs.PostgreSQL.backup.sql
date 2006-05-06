@@ -4,18 +4,24 @@ AS
 		"Name"
 	FROM "Config"
 ;
+
+
 CREATE OR REPLACE VIEW "v0_Group__onlyKeys"
 AS
 	SELECT
 		"IDGroup"
 	FROM "Group"
 ;
+
+
 CREATE OR REPLACE VIEW "v0_User__onlyKeys"
 AS
 	SELECT
 		"IDUser"
 	FROM "User"
 ;
+
+
 CREATE OR REPLACE VIEW "v0_UserGroup__onlyKeys"
 AS
 	SELECT
@@ -23,12 +29,16 @@ AS
 		"IDGroup"
 	FROM "UserGroup"
 ;
+
+
 CREATE OR REPLACE VIEW "v0_vUserDefaultGroup__onlyKeys"
 AS
 	SELECT
 		"IDUser"
 	FROM "vUserDefaultGroup"
 ;
+
+
 CREATE OR REPLACE VIEW "v0_vUserGroup__onlyKeys"
 AS
 	SELECT
@@ -36,6 +46,8 @@ AS
 		"IDGroup"
 	FROM "vUserGroup"
 ;
+
+
 CREATE OR REPLACE FUNCTION "fnc0_Config_isObject"("Name_" character varying)
 RETURNS boolean
 AS '
@@ -48,7 +60,9 @@ AS '
 				("Name" = "Name_")
 		);
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc0_Group_isObject"("IDGroup_" bigint)
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_Group_isObject"("IDGroup_" bigint)
 RETURNS boolean
 AS '
 	BEGIN
@@ -60,7 +74,9 @@ AS '
 				("IDGroup" = "IDGroup_")
 		);
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc0_User_isObject"("IDUser_" bigint)
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_User_isObject"("IDUser_" bigint)
 RETURNS boolean
 AS '
 	BEGIN
@@ -72,7 +88,9 @@ AS '
 				("IDUser" = "IDUser_")
 		);
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc0_UserGroup_isObject"("IDUser_" bigint, "IDGroup_" bigint)
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_UserGroup_isObject"("IDUser_" bigint, "IDGroup_" bigint)
 RETURNS boolean
 AS '
 	BEGIN
@@ -85,7 +103,9 @@ AS '
 				("IDGroup" = "IDGroup_")
 		);
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc0_vUserDefaultGroup_isObject"("IDUser_" bigint)
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_vUserDefaultGroup_isObject"("IDUser_" bigint)
 RETURNS boolean
 AS '
 	BEGIN
@@ -97,7 +117,9 @@ AS '
 				("IDUser" = "IDUser_")
 		);
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc0_vUserGroup_isObject"("IDUser_" bigint, "IDGroup_" bigint)
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_vUserGroup_isObject"("IDUser_" bigint, "IDGroup_" bigint)
 RETURNS boolean
 AS '
 	BEGIN
@@ -110,7 +132,9 @@ AS '
 				("IDGroup" = "IDGroup_")
 		);
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_Config_setObject"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_Config_setObject"(
 	"Name_" character varying, 
 	"Config_" character varying, 
 	"Type_" integer
@@ -170,7 +194,9 @@ RETURNS int4 AS
 		RETURN _Output AS "Output_";
 	END;
 '
-LANGUAGE 'plpgsql' VOLATILE;CREATE OR REPLACE FUNCTION "sp0_UserGroup_setObject"(
+LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_UserGroup_setObject"(
 	"IDUser_" bigint, 
 	"IDGroup_" bigint, 
 	"Relationdate_" timestamp without time zone, 
@@ -235,7 +261,9 @@ RETURNS int4 AS
 		RETURN _Output AS "Output_";
 	END;
 '
-LANGUAGE 'plpgsql' VOLATILE;CREATE OR REPLACE FUNCTION "sp0_Config_delObject"("Name_" character varying)
+LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_Config_delObject"("Name_" character varying)
 RETURNS void
 AS '
 	BEGIN
@@ -246,7 +274,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;CREATE OR REPLACE FUNCTION "sp0_Group_delObject"("IDGroup_" bigint)
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_Group_delObject"("IDGroup_" bigint)
 RETURNS void
 AS '
 	BEGIN
@@ -257,7 +287,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;CREATE OR REPLACE FUNCTION "sp0_User_delObject"("IDUser_" bigint)
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_User_delObject"("IDUser_" bigint)
 RETURNS void
 AS '
 	BEGIN
@@ -268,7 +300,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;CREATE OR REPLACE FUNCTION "sp0_UserGroup_delObject"("IDUser_" bigint, "IDGroup_" bigint)
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_UserGroup_delObject"("IDUser_" bigint, "IDGroup_" bigint)
 RETURNS void
 AS '
 	BEGIN
@@ -280,7 +314,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;CREATE OR REPLACE FUNCTION "fnc_User_isObject_byLogin"(
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "fnc_User_isObject_byLogin"(
 	"Login_search_" character varying
 )
 RETURNS SETOF "v0_User__onlyKeys" AS
@@ -300,7 +336,9 @@ RETURNS SETOF "v0_User__onlyKeys" AS
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc_Config_Record_open_all"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc_Config_Record_open_all"(
 )
 RETURNS SETOF "v0_Config__onlyKeys"
 AS '
@@ -318,7 +356,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc_User_Record_open_all"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc_User_Record_open_all"(
 )
 RETURNS SETOF "v0_User__onlyKeys"
 AS '
@@ -336,7 +376,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc_User_Record_open_byGroup"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc_User_Record_open_byGroup"(
 	"IDGroup_search_" bigint
 )
 RETURNS SETOF "v0_User__onlyKeys"
@@ -356,7 +398,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc_UserGroup_Record_open_byUser_Defaultrelation"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc_UserGroup_Record_open_byUser_Defaultrelation"(
 	"IDUser_search_" bigint, 
 	"Relationdate_search_" timestamp without time zone
 )
@@ -387,7 +431,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc_vUserDefaultGroup_Record_open_all"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc_vUserDefaultGroup_Record_open_all"(
 )
 RETURNS SETOF "v0_vUserDefaultGroup__onlyKeys"
 AS '
@@ -405,7 +451,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp_Config_Record_open_all"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp_Config_Record_open_all"(
 )
 RETURNS SETOF "v0_Config__onlyKeys"
 AS '
@@ -433,7 +481,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp_User_Record_open_all"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp_User_Record_open_all"(
 )
 RETURNS SETOF "v0_User__onlyKeys"
 AS '
@@ -461,7 +511,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp_User_Record_open_byGroup"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp_User_Record_open_byGroup"(
 	"IDGroup_search_" bigint
 )
 RETURNS SETOF "v0_User__onlyKeys"
@@ -491,7 +543,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp_UserGroup_Record_open_byUser_Defaultrelation"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp_UserGroup_Record_open_byUser_Defaultrelation"(
 	"IDUser_search_" bigint, 
 	"Relationdate_search_" timestamp without time zone
 )
@@ -525,7 +579,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp_vUserDefaultGroup_Record_open_all"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp_vUserDefaultGroup_Record_open_all"(
 )
 RETURNS SETOF "v0_vUserDefaultGroup__onlyKeys"
 AS '
@@ -553,7 +609,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_Config_getObject"("Name_" character varying)
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_Config_getObject"("Name_" character varying)
 RETURNS "Config"
 AS '
 	DECLARE
@@ -584,7 +642,9 @@ AS '
 		RETURN _Output;
 	END;
 '
-LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_Group_getObject"("IDGroup_" bigint)
+LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_Group_getObject"("IDGroup_" bigint)
 RETURNS "Group"
 AS '
 	DECLARE
@@ -612,7 +672,9 @@ AS '
 		RETURN _Output;
 	END;
 '
-LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_User_getObject"("IDUser_" bigint)
+LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_User_getObject"("IDUser_" bigint)
 RETURNS "User"
 AS '
 	DECLARE
@@ -643,7 +705,9 @@ AS '
 		RETURN _Output;
 	END;
 '
-LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_UserGroup_getObject"("IDUser_" bigint, "IDGroup_" bigint)
+LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_UserGroup_getObject"("IDUser_" bigint, "IDGroup_" bigint)
 RETURNS "UserGroup"
 AS '
 	DECLARE
@@ -678,7 +742,9 @@ AS '
 		RETURN _Output;
 	END;
 '
-LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_vUserDefaultGroup_getObject"("IDUser_" bigint)
+LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_vUserDefaultGroup_getObject"("IDUser_" bigint)
 RETURNS "vUserDefaultGroup"
 AS '
 	DECLARE
@@ -715,7 +781,9 @@ AS '
 		RETURN _Output;
 	END;
 '
-LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_vUserGroup_getObject"("IDUser_" bigint, "IDGroup_" bigint)
+LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_vUserGroup_getObject"("IDUser_" bigint, "IDGroup_" bigint)
 RETURNS "vUserGroup"
 AS '
 	DECLARE
@@ -753,7 +821,9 @@ AS '
 		RETURN _Output;
 	END;
 '
-LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_User_getObject_byLogin"(
+LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_User_getObject_byLogin"(
 	"Login_search_" character varying
 )
 RETURNS "User" AS '
@@ -787,7 +857,9 @@ RETURNS "User" AS '
 
 		RETURN _Output;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_Config_Record_open_all_fullmode"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_Config_Record_open_all_fullmode"(
 )
 RETURNS SETOF "Config"
 AS '
@@ -817,7 +889,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_User_Record_open_all_fullmode"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_User_Record_open_all_fullmode"(
 )
 RETURNS SETOF "User"
 AS '
@@ -847,7 +921,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_User_Record_open_byGroup_fullmode"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_User_Record_open_byGroup_fullmode"(
 	"IDGroup_search_" bigint
 )
 RETURNS SETOF "User"
@@ -879,7 +955,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_UserGroup_Record_open_byUser_Defaultrelation_fullmode"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_UserGroup_Record_open_byUser_Defaultrelation_fullmode"(
 	"IDUser_search_" bigint, 
 	"Relationdate_search_" timestamp without time zone
 )
@@ -915,7 +993,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_vUserDefaultGroup_Record_open_all_fullmode"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_vUserDefaultGroup_Record_open_all_fullmode"(
 )
 RETURNS SETOF "vUserDefaultGroup"
 AS '
@@ -947,7 +1027,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_Config_Record_open_all_page"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_Config_Record_open_all_page"(
 	"page_" Int,
 	"page_numRecords_" Int
 )
@@ -978,7 +1060,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_User_Record_open_all_page"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_User_Record_open_all_page"(
 	"page_" Int,
 	"page_numRecords_" Int
 )
@@ -1009,7 +1093,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_User_Record_open_byGroup_page"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_User_Record_open_byGroup_page"(
 	"IDGroup_search_" bigint, 
 	"page_" Int,
 	"page_numRecords_" Int
@@ -1042,7 +1128,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_UserGroup_Record_open_byUser_Defaultrelation_page"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_UserGroup_Record_open_byUser_Defaultrelation_page"(
 	"IDUser_search_" bigint, 
 	"Relationdate_search_" timestamp without time zone, 
 	"page_" Int,
@@ -1079,7 +1167,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_vUserDefaultGroup_Record_open_all_page"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_vUserDefaultGroup_Record_open_all_page"(
 	"page_" Int,
 	"page_numRecords_" Int
 )
@@ -1110,7 +1200,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_Config_Record_open_all_page_fullmode"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_Config_Record_open_all_page_fullmode"(
 	"page_" Int,
 	"page_numRecords_" Int
 )
@@ -1143,7 +1235,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_User_Record_open_all_page_fullmode"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_User_Record_open_all_page_fullmode"(
 	"page_" Int,
 	"page_numRecords_" Int
 )
@@ -1176,7 +1270,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_User_Record_open_byGroup_page_fullmode"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_User_Record_open_byGroup_page_fullmode"(
 	"IDGroup_search_" bigint, 
 	"page_" Int,
 	"page_numRecords_" Int
@@ -1211,7 +1307,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_UserGroup_Record_open_byUser_Defaultrelation_page_fullmode"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_UserGroup_Record_open_byUser_Defaultrelation_page_fullmode"(
 	"IDUser_search_" bigint, 
 	"Relationdate_search_" timestamp without time zone, 
 	"page_" Int,
@@ -1250,7 +1348,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_vUserDefaultGroup_Record_open_all_page_fullmode"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_vUserDefaultGroup_Record_open_all_page_fullmode"(
 	"page_" Int,
 	"page_numRecords_" Int
 )
@@ -1285,7 +1385,9 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_User_Record_update_SomeUpdateTest_byGroup"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_User_Record_update_SomeUpdateTest_byGroup"(
 	"IDGroup_search_" bigint, 
 	"Password_update_" character varying
 )
@@ -1303,7 +1405,9 @@ RETURNS VOID AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;CREATE OR REPLACE FUNCTION "sp0_UserGroup_Record_update_SomeUpdateTest_byUser_Defaultrelation"(
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_UserGroup_Record_update_SomeUpdateTest_byUser_Defaultrelation"(
 	"IDUser_search_" bigint, 
 	"Relationdate_search_" timestamp without time zone, 
 	"Relationdate_update_" timestamp without time zone
@@ -1324,12 +1428,16 @@ RETURNS VOID AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;CREATE OR REPLACE FUNCTION "sp0__APAGAR"(
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0__APAGAR"(
 )
 returns boolean
 as '
 	SELECT false;
 ' LANGUAGE 'SQL';
+
+
 CREATE OR REPLACE FUNCTION "fnc0_User__ConstraintExist"("IDUser_" bigint, "Login_" character varying, "Password_" character varying)
 RETURNS boolean
 AS '
@@ -1352,7 +1460,9 @@ AS '
 		RETURN false;
 	END;
 '
-LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc0_User_isObject_byLogin"(
+LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_User_isObject_byLogin"(
 	"Login_search_" character varying
 )
 RETURNS bool AS '
@@ -1365,7 +1475,9 @@ RETURNS bool AS '
 			)
 		);
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc0_Config_Record_count_all"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_Config_Record_count_all"(
 )
 RETURNS int8 AS
 '
@@ -1381,7 +1493,9 @@ RETURNS int8 AS
 	
 		RETURN _Output;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc0_User_Record_count_all"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_User_Record_count_all"(
 )
 RETURNS int8 AS
 '
@@ -1397,7 +1511,9 @@ RETURNS int8 AS
 	
 		RETURN _Output;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc0_User_Record_count_byGroup"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_User_Record_count_byGroup"(
 	"IDGroup_search_" bigint
 )
 RETURNS int8 AS
@@ -1415,7 +1531,9 @@ RETURNS int8 AS
 	
 		RETURN _Output;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc0_UserGroup_Record_count_byUser_Defaultrelation"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_UserGroup_Record_count_byUser_Defaultrelation"(
 	"IDUser_search_" bigint, 
 	"Relationdate_search_" timestamp without time zone
 )
@@ -1435,7 +1553,9 @@ RETURNS int8 AS
 	
 		RETURN _Output;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc0_vUserDefaultGroup_Record_count_all"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_vUserDefaultGroup_Record_count_all"(
 )
 RETURNS int8 AS
 '
@@ -1451,7 +1571,9 @@ RETURNS int8 AS
 	
 		RETURN _Output;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc0_Config_Record_hasObject_all"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_Config_Record_hasObject_all"(
 	"Name_" character varying
 )
 RETURNS bool AS '
@@ -1470,7 +1592,9 @@ RETURNS bool AS '
 	
 		RETURN false;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc0_User_Record_hasObject_all"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_User_Record_hasObject_all"(
 	"IDUser_" bigint
 )
 RETURNS bool AS '
@@ -1489,7 +1613,9 @@ RETURNS bool AS '
 	
 		RETURN false;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc0_User_Record_hasObject_byGroup"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_User_Record_hasObject_byGroup"(
 	"IDUser_" bigint, 
 	"IDGroup_search_" bigint
 )
@@ -1510,7 +1636,9 @@ RETURNS bool AS '
 	
 		RETURN false;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc0_UserGroup_Record_hasObject_byUser_Defaultrelation"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_UserGroup_Record_hasObject_byUser_Defaultrelation"(
 	"IDUser_" bigint, 
 	"IDGroup_" bigint, 
 	"IDUser_search_" bigint, 
@@ -1535,7 +1663,9 @@ RETURNS bool AS '
 	
 		RETURN false;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "fnc0_vUserDefaultGroup_Record_hasObject_all"(
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_vUserDefaultGroup_Record_hasObject_all"(
 	"IDUser_" bigint
 )
 RETURNS bool AS '
@@ -1554,7 +1684,9 @@ RETURNS bool AS '
 	
 		RETURN false;
 	END;
-' LANGUAGE 'plpgsql' STABLE;CREATE OR REPLACE FUNCTION "sp0_Group_insObject"("Name_" character varying,  "SelectIdentity_" boolean)
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_Group_insObject"("Name_" character varying,  "SelectIdentity_" boolean)
 RETURNS bigint
 AS '
 	/**********************************
@@ -1585,7 +1717,9 @@ AS '
 
 		RETURN IdentityKey AS "IDGroup_";
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;CREATE OR REPLACE FUNCTION "sp0_User_insObject"("Login_" character varying, "Password_" character varying,  "SelectIdentity_" boolean)
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_User_insObject"("Login_" character varying, "Password_" character varying,  "SelectIdentity_" boolean)
 RETURNS bigint
 AS '
 	/**********************************
@@ -1626,7 +1760,9 @@ AS '
 
 		RETURN IdentityKey AS "IDUser_";
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;CREATE OR REPLACE FUNCTION "sp0_Group_updObject"("IDGroup_" bigint, "Name_" character varying)
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_Group_updObject"("IDGroup_" bigint, "Name_" character varying)
 RETURNS bool
 AS '
 	/***********************************************
@@ -1645,7 +1781,9 @@ AS '
 
 			RETURN false AS "ConstraintExist_";
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;CREATE OR REPLACE FUNCTION "sp0_User_updObject"("IDUser_" bigint, "Login_" character varying, "Password_" character varying)
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_User_updObject"("IDUser_" bigint, "Login_" character varying, "Password_" character varying)
 RETURNS bool
 AS '
 	/***********************************************
@@ -1673,7 +1811,9 @@ AS '
 			RETURN false AS "ConstraintExist_";
 		END IF;
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;CREATE OR REPLACE FUNCTION "sp0_User_delObject_byLogin"(
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_User_delObject_byLogin"(
 	"Login_search_" character varying
 )
 RETURNS bool AS '
@@ -1703,7 +1843,9 @@ RETURNS bool AS '
 
 		RETURN false AS "Exists_";
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;CREATE OR REPLACE FUNCTION "sp0_Config_Record_delete_all"(
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_Config_Record_delete_all"(
 )
 RETURNS VOID AS '
 	DECLARE
@@ -1736,7 +1878,9 @@ RETURNS VOID AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;CREATE OR REPLACE FUNCTION "sp0_User_Record_delete_all"(
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_User_Record_delete_all"(
 )
 RETURNS VOID AS '
 	DECLARE
@@ -1769,7 +1913,9 @@ RETURNS VOID AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;CREATE OR REPLACE FUNCTION "sp0_User_Record_delete_byGroup"(
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_User_Record_delete_byGroup"(
 	"IDGroup_search_" bigint
 )
 RETURNS VOID AS '
@@ -1805,7 +1951,9 @@ RETURNS VOID AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;CREATE OR REPLACE FUNCTION "sp0_UserGroup_Record_delete_byUser_Defaultrelation"(
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_UserGroup_Record_delete_byUser_Defaultrelation"(
 	"IDUser_search_" bigint, 
 	"Relationdate_search_" timestamp without time zone
 )
@@ -1849,3 +1997,4 @@ RETURNS VOID AS '
 		RETURN;
 	END;
 ' LANGUAGE 'plpgsql' VOLATILE;
+

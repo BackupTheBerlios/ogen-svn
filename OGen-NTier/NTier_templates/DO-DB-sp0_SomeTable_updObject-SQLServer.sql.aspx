@@ -84,6 +84,8 @@ AS<%
 			[<%=_aux_table.Fields[_aux_table_hasidentitykey].Name%>] = @<%=_aux_table.Fields[_aux_table_hasidentitykey].Name%>_<%
 	if (_aux_table_searches_hasexplicituniqueindex) {%>
 	END<%
-	}
+	}%>
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

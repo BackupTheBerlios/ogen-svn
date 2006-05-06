@@ -86,6 +86,8 @@ AS<%
 				_aux_field = _aux_table.Fields_onlyPK[f];%>
 			([<%=_aux_field.Name%>] = @<%=_aux_field.Name%>)<%=(f != _aux_table.Fields_onlyPK.Count - 1) ? " AND" : ""%><%
 			}%>
-	END<%
+	END
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

@@ -83,6 +83,8 @@ RETURNS SETOF "v0_<%=_aux_table.Name%>__onlyKeys" AS
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;<%
+' LANGUAGE 'plpgsql' STABLE;
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

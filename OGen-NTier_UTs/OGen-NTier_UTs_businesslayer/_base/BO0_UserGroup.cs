@@ -97,6 +97,12 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			set { mainAggregate.IDGroup = value; }
 		}
 		#endregion
+        #region public virtual bool Relationdate_isNull { get; set; }
+		public virtual bool Relationdate_isNull {
+			get { return mainAggregate.Relationdate_isNull; }
+			set { mainAggregate.Relationdate_isNull = value; }
+		}
+        #endregion
 		#region public virtual DateTime Relationdate { get; set; }
 		/// <summary>
 		/// UserGroup's Relationdate.
@@ -106,6 +112,12 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			set { mainAggregate.Relationdate = value; }
 		}
 		#endregion
+        #region public virtual bool Defaultrelation_isNull { get; set; }
+		public virtual bool Defaultrelation_isNull {
+			get { return mainAggregate.Defaultrelation_isNull; }
+			set { mainAggregate.Defaultrelation_isNull = value; }
+		}
+        #endregion
 		#region public virtual bool Defaultrelation { get; set; }
 		/// <summary>
 		/// UserGroup's Defaultrelation.

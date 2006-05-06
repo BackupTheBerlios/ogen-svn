@@ -81,6 +81,8 @@ AS '
 		RETURN false;
 	END;
 '
-LANGUAGE 'plpgsql' STABLE;<%
+LANGUAGE 'plpgsql' STABLE;
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

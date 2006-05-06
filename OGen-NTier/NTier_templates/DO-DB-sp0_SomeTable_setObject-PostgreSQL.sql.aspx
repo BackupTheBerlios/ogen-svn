@@ -144,6 +144,8 @@ RETURNS int4 AS
 		RETURN _Output AS "Output_";
 	END;
 '
-LANGUAGE 'plpgsql' VOLATILE;<%
+LANGUAGE 'plpgsql' VOLATILE;
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

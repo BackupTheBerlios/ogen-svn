@@ -57,6 +57,8 @@ AS
 		for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 			_aux_field = _aux_table.Fields_onlyPK[k];%>
 		([<%=_aux_field.Name%>] = @<%=_aux_field.Name%>_)<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? " AND" : ""%><%
-		}
+		}%>
+
+<%
 //-----------------------------------------------------------------------------------------
 %>

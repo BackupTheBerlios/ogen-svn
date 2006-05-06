@@ -78,6 +78,8 @@ BEGIN<%if (_aux_metadata.CopyrightTextLong != string.Empty) {
 	);
 
 	RETURN `Record_count_out`;
-END<%
+END
+
+<%
 //-----------------------------------------------------------------------------------------
 %>
