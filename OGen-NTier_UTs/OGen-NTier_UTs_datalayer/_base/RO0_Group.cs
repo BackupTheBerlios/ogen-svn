@@ -73,14 +73,14 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			if (base.read()) {
 				if (base.Fullmode) {
 					if (base.Record.Rows[Current]["IDGroup"] == System.DBNull.Value) {
-					    parent_ref_.idgroup_ = 0L;
+						parent_ref_.idgroup_ = 0L;
 					} else {
-					    parent_ref_.idgroup_ = (long)base.Record.Rows[Current]["IDGroup"];
+						parent_ref_.idgroup_ = (long)base.Record.Rows[Current]["IDGroup"];
 					}
 					if (base.Record.Rows[Current]["Name"] == System.DBNull.Value) {
-					    parent_ref_.name_ = string.Empty;
+						parent_ref_.name_ = string.Empty;
 					} else {
-					    parent_ref_.name_ = (string)base.Record.Rows[Current]["Name"];
+						parent_ref_.name_ = (string)base.Record.Rows[Current]["Name"];
 					}
 
 					parent_ref_.haschanges_ = false;

@@ -130,12 +130,12 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
-        #region public virtual bool Relationdate_isNull { get; set; }
+		#region public virtual bool Relationdate_isNull { get; set; }
 		public virtual bool Relationdate_isNull {
 			get { return (relationdate_ == null); }
 			set { if (value) relationdate_ = null; }
 		}
-        #endregion
+		#endregion
 		#region public virtual DateTime Relationdate { get; set; }
 		internal object relationdate_;// = new DateTime(1900, 1, 1);
 		
@@ -145,7 +145,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		[DOPropertyAttribute("Relationdate", false, false, true, "", "", "", false, false, false, false, true, false, false, false)]
 		public virtual DateTime Relationdate {
 			get {
-                return (relationdate_ == null) ? new DateTime(1900, 1, 1) : (DateTime)relationdate_;
+				return (relationdate_ == null) ? new DateTime(1900, 1, 1) : (DateTime)relationdate_;
 			}
 			set {
 				if (!value.Equals(relationdate_)) {
@@ -155,12 +155,12 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
-        #region public virtual bool Defaultrelation_isNull { get; set; }
+		#region public virtual bool Defaultrelation_isNull { get; set; }
 		public virtual bool Defaultrelation_isNull {
 			get { return (defaultrelation_ == null); }
 			set { if (value) defaultrelation_ = null; }
 		}
-        #endregion
+		#endregion
 		#region public virtual bool Defaultrelation { get; set; }
 		internal object defaultrelation_;// = false;
 		
@@ -170,7 +170,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		[DOPropertyAttribute("Defaultrelation", false, false, true, "", "", "", false, false, false, true, false, false, false, false)]
 		public virtual bool Defaultrelation {
 			get {
-                return (defaultrelation_ == null) ? false : (bool)defaultrelation_;
+				return (defaultrelation_ == null) ? false : (bool)defaultrelation_;
 			}
 			set {
 				if (!value.Equals(defaultrelation_)) {
@@ -188,8 +188,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Clears all DO0_UserGroup properties, assigning them with their appropriate default property value.
 		/// </summary>
 		public virtual void clrObject() {
-            IDUser = 0L;
-            IDGroup = 0L;
+			IDUser = 0L;
+			IDGroup = 0L;
 			Relationdate_isNull = true;
 			Defaultrelation_isNull = true;
 		}
@@ -225,24 +225,24 @@ namespace OGen.NTier.UTs.lib.datalayer {
 
 				if (_dataparameters[0].Value != DBNull.Value) {
 					if (_dataparameters[0].Value == System.DBNull.Value) {
-					    iduser_ = 0L;
-                    } else {
-					    iduser_ = (long)_dataparameters[0].Value;
+						iduser_ = 0L;
+					} else {
+						iduser_ = (long)_dataparameters[0].Value;
 					}
 					if (_dataparameters[1].Value == System.DBNull.Value) {
-					    idgroup_ = 0L;
-                    } else {
-					    idgroup_ = (long)_dataparameters[1].Value;
+						idgroup_ = 0L;
+					} else {
+						idgroup_ = (long)_dataparameters[1].Value;
 					}
 					if (_dataparameters[2].Value == System.DBNull.Value) {
-					    Relationdate_isNull = true;
-                    } else {
-					    relationdate_ = (DateTime)_dataparameters[2].Value;
+						Relationdate_isNull = true;
+					} else {
+						relationdate_ = (DateTime)_dataparameters[2].Value;
 					}
 					if (_dataparameters[3].Value == System.DBNull.Value) {
-					    Defaultrelation_isNull = true;
-                    } else {
-					    defaultrelation_ = (bool)_dataparameters[3].Value;
+						Defaultrelation_isNull = true;
+					} else {
+						defaultrelation_ = (bool)_dataparameters[3].Value;
 					}
 
 					haschanges_ = false;

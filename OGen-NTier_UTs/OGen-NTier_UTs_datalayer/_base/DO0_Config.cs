@@ -157,9 +157,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Clears all DO0_Config properties, assigning them with their appropriate default property value.
 		/// </summary>
 		public virtual void clrObject() {
-            Name = string.Empty;
-            Config = string.Empty;
-            Type = 0;
+			Name = string.Empty;
+			Config = string.Empty;
+			Type = 0;
 		}
 		#endregion
 		#region public virtual bool getObject(...);
@@ -189,19 +189,19 @@ namespace OGen.NTier.UTs.lib.datalayer {
 
 				if (_dataparameters[0].Value != DBNull.Value) {
 					if (_dataparameters[0].Value == System.DBNull.Value) {
-					    name_ = string.Empty;
-                    } else {
-					    name_ = (string)_dataparameters[0].Value;
+						name_ = string.Empty;
+					} else {
+						name_ = (string)_dataparameters[0].Value;
 					}
 					if (_dataparameters[1].Value == System.DBNull.Value) {
-					    config_ = string.Empty;
-                    } else {
-					    config_ = (string)_dataparameters[1].Value;
+						config_ = string.Empty;
+					} else {
+						config_ = (string)_dataparameters[1].Value;
 					}
 					if (_dataparameters[2].Value == System.DBNull.Value) {
-					    type_ = 0;
-                    } else {
-					    type_ = (int)_dataparameters[2].Value;
+						type_ = 0;
+					} else {
+						type_ = (int)_dataparameters[2].Value;
 					}
 
 					haschanges_ = false;

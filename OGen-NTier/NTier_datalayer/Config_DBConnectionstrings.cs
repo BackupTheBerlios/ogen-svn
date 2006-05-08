@@ -36,41 +36,44 @@ using OGen.lib.datalayer;
 
 namespace OGen.NTier.lib.datalayer {
 	public class Config_DBConnectionstrings {
-		#region public Config_DBConnectionstrings();
+//		#region public Config_DBConnectionstrings();
 		/// <summary>
 		/// Used to store config file connection strings.
 		/// </summary>
-		public Config_DBConnectionstrings() {
+		public Config_DBConnectionstrings(string application_in) {
 			dbconnections_ = new System.Collections.Hashtable(
-				ConfigModes.Length * 
-				DBServerTypes.Length
+				ConfigModes(application_in).Length * 
+				DBServerTypes(application_in).Length
 			);
-			for (int _cfg = 0; _cfg < ConfigModes.Length; _cfg++) {
-				for (int _db = 0; _db < DBServerTypes.Length; _db++) {
+			for (int _cfg = 0; _cfg < ConfigModes(application_in).Length; _cfg++) {
+				for (int _db = 0; _db < DBServerTypes(application_in).Length; _db++) {
 					Add(
-						DBServerTypes[_db], 
-						ConfigModes[_cfg], 
+						DBServerTypes(application_in)[_db], 
+						ConfigModes(application_in)[_cfg], 
 						Config_DBConnectionstring.newConfig_DBConnectionstring(
 							System.Configuration.ConfigurationSettings.AppSettings[string.Format(
 								"{0}:DBConnection:{1}:{2}",
-								ApplicationName, 
-								ConfigModes[_cfg],
-								DBServerTypes[_db].ToString()
+//								ApplicationName, 
+								application_in, 
+								ConfigModes(application_in)[_cfg],
+								DBServerTypes(application_in)[_db].ToString()
 							)]
 						)
 					);
 				}
 			}
 		}
-		#endregion
-		#region static Config_DBConnectionstrings();
+//		#endregion
+//		#region static Config_DBConnectionstrings();
 		static Config_DBConnectionstrings() {
-			applicationname__ = null;
-			configmodes__ = null;
-			dbservertypes__ = null;
-			dbconnectionstrings__ = null;
+////			applicationname__ = null;
+//			applications__ = null;
+//			configmodes__ = null;
+//			dbservertypes__ = null;
+//			dbconnectionstrings__ = null;
+			Reset();
 		}
-		#endregion
+//		#endregion
 
 		#region private Properties...
 		private System.Collections.Hashtable dbconnections_;
@@ -94,68 +97,101 @@ namespace OGen.NTier.lib.datalayer {
 		}
 		#endregion
 		#endregion
-		#region public static Properties...
-		#region public static string ApplicationName { get; }
-		private static string applicationname__;
-
-		public static string ApplicationName {
+//		#region public static Properties...
+		private static string[] applications__;
+		public static string[] Applications {
 			get {
-				if (applicationname__ == null) {
-					applicationname__ = System.Configuration.ConfigurationSettings.AppSettings["applicationName"];
+				if (applications__ == null) {
+					applications__ = System.Configuration.ConfigurationSettings.AppSettings["applications"].Split(':');
 				}
-				return applicationname__;
+				return applications__;
 			}
 		}
-		#endregion
-		#region public static string[] ConfigModes { get; }
-		private static string[] configmodes__;
+//		#region public static string ApplicationName { get; }
+//		private static string applicationname__;
+//
+//		public static string ApplicationName {
+//			get {
+//				if (applicationname__ == null) {
+//					applicationname__ = System.Configuration.ConfigurationSettings.AppSettings["applicationName"];
+//				}
+//				return applicationname__;
+//			}
+//		}
+//		#endregion
+		#region public static string[] ConfigModes(string application_in);
+		private static Hashtable configmodes__;
 		/// <summary>
-		/// Supported Config Modes (i.e. DEBUG, !DEBUG, etc.).
+		/// Supported Config Modes (i.e. DEBUG, !DEBUG, etc.) for a specific application.
 		/// </summary>
-		public static string[] ConfigModes {
-			get {
-				if (configmodes__ == null) {
-					configmodes__ = System.Configuration.ConfigurationSettings.AppSettings[string.Format("{0}:ConfigModes", ApplicationName)].Split(':');
-				}
-				return configmodes__;
+		/// <param name="application_in">name of the application</param>
+		/// <returns></returns>
+		public static string[] ConfigModes(string application_in) {
+			if (configmodes__ == null) configmodes__ = new Hashtable();
+			if (!configmodes__.Contains(application_in)) {
+				configmodes__.Add(
+					application_in, 
+					System.Configuration.ConfigurationSettings.AppSettings[
+						string.Format(
+							"{0}:ConfigModes", 
+//							ApplicationName
+							application_in
+						)
+					].Split(':')
+				);
 			}
+			return (string[])configmodes__[application_in];
 		}
 		#endregion
-		#region public static eDBServerTypes[] DBServerTypes { get; }
-		private static eDBServerTypes[] dbservertypes__;
+		#region public static eDBServerTypes[] DBServerTypes(string application_in);
+		private static Hashtable dbservertypes__;
 		/// <summary>
 		/// Supported DB Server Types.
 		/// </summary>
-		public static eDBServerTypes[] DBServerTypes {
-			get {
-				if (dbservertypes__ == null) {
-					string[] _dbservertypes 
-						= System.Configuration.ConfigurationSettings.AppSettings[string.Format("{0}:DBServerTypes", ApplicationName)].Split(':');
+		public static eDBServerTypes[] DBServerTypes(string application_in) {
+			if (dbservertypes__ == null) dbservertypes__ = new Hashtable();
+			if (!dbservertypes__.Contains(application_in)) {
+				string[] _supporteddbservertypes 
+					= System.Configuration.ConfigurationSettings.AppSettings[
+						string.Format(
+							"{0}:DBServerTypes", 
+//							ApplicationName
+							application_in
+						)
+					].Split(':');
 
-					dbservertypes__ = new eDBServerTypes[_dbservertypes.Length];
-					for (int i = 0; i < _dbservertypes.Length; i++) {
-						dbservertypes__[i] 
-							= OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(
-								_dbservertypes[i]
-							);
-					}
+				eDBServerTypes[] _dbservertypes = new eDBServerTypes[_supporteddbservertypes.Length];
+				for (int i = 0; i < _supporteddbservertypes.Length; i++) {
+					_dbservertypes[i] 
+						= OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(
+							_supporteddbservertypes[i]
+						);
 				}
-				return dbservertypes__;
+
+				dbservertypes__.Add(
+					application_in, 
+					_dbservertypes
+				);
 			}
+
+			return (eDBServerTypes[])dbservertypes__[application_in];
 		}
 		#endregion
 		#region public static Config_DBConnectionstrings DBConnectionstrings { get; }
-		private static Config_DBConnectionstrings dbconnectionstrings__;
-		public static Config_DBConnectionstrings DBConnectionstrings {
-			get {
-				if (dbconnectionstrings__ == null) {
-					dbconnectionstrings__ = new Config_DBConnectionstrings();
-				}
-				return dbconnectionstrings__;
+		private static Hashtable dbconnectionstrings__;
+		public static Config_DBConnectionstrings DBConnectionstrings(string application_in) {
+			if (dbconnectionstrings__ == null) dbconnectionstrings__ = new Hashtable();
+			if (!dbconnectionstrings__.Contains(application_in)) {
+				dbconnectionstrings__.Add(
+					application_in, 
+					new Config_DBConnectionstrings(application_in)
+				);
 			}
+
+			return (Config_DBConnectionstrings)dbconnectionstrings__[application_in];
 		}
 		#endregion
-		#endregion
+//		#endregion
 
 		#region private Methods...
 		#region private void Add(...);
@@ -178,7 +214,8 @@ namespace OGen.NTier.lib.datalayer {
 		#region public static Methods...
 		#region public static void Reset();
 		public static void Reset() {
-			applicationname__ = null;
+//			applicationname__ = null;
+			applications__ = null;
 			configmodes__ = null;
 			dbservertypes__ = null;
 			dbconnectionstrings__ = null;

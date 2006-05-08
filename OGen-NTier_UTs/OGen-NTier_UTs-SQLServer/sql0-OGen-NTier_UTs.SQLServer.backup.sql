@@ -283,7 +283,7 @@ RETURN
 		[IDUser]
 	FROM [User]/*
 	WHERE
-        ([IDGroup] = @IDGroup_search_)*/
+		([IDGroup] = @IDGroup_search_)*/
 
 CREATE FUNCTION [dbo].[fnc_UserGroup_Record_open_byUser_Defaultrelation](
 	@IDUser_search_ bigint, 
@@ -297,7 +297,7 @@ RETURN
 		[IDGroup]
 	FROM [UserGroup]
 	WHERE
-        ([IDUser] = @IDUser_search_) AND
+		([IDUser] = @IDUser_search_) AND
 		((
 			(@Relationdate_search_ IS NULL)
 			AND

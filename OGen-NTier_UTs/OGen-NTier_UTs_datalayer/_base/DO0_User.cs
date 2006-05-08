@@ -157,9 +157,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Clears all DO0_User properties, assigning them with their appropriate default property value.
 		/// </summary>
 		public virtual void clrObject() {
-            IDUser = 0L;
-            Login = string.Empty;
-            Password = string.Empty;
+			IDUser = 0L;
+			Login = string.Empty;
+			Password = string.Empty;
 		}
 		#endregion
 		#region public virtual bool getObject(...);
@@ -190,19 +190,19 @@ namespace OGen.NTier.UTs.lib.datalayer {
 
 				if (_dataparameters[0].Value != DBNull.Value) {
 					if (_dataparameters[0].Value == System.DBNull.Value) {
-					    iduser_ = 0L;
-                    } else {
-					    iduser_ = (long)_dataparameters[0].Value;
+						iduser_ = 0L;
+					} else {
+						iduser_ = (long)_dataparameters[0].Value;
 					}
 					if (_dataparameters[1].Value == System.DBNull.Value) {
-					    login_ = string.Empty;
-                    } else {
-					    login_ = (string)_dataparameters[1].Value;
+						login_ = string.Empty;
+					} else {
+						login_ = (string)_dataparameters[1].Value;
 					}
 					if (_dataparameters[2].Value == System.DBNull.Value) {
-					    password_ = string.Empty;
-                    } else {
-					    password_ = (string)_dataparameters[2].Value;
+						password_ = string.Empty;
+					} else {
+						password_ = (string)_dataparameters[2].Value;
 					}
 
 					haschanges_ = false;
@@ -356,19 +356,19 @@ namespace OGen.NTier.UTs.lib.datalayer {
 
 			if (_dataparameters[1].Value != DBNull.Value) {
 				if (_dataparameters[1].Value == System.DBNull.Value) {
-				    iduser_ = 0L;
-                } else {
-				    iduser_ = (long)_dataparameters[1].Value;
+					iduser_ = 0L;
+				} else {
+					iduser_ = (long)_dataparameters[1].Value;
 				}
 				if (_dataparameters[2].Value == System.DBNull.Value) {
-				    login_ = string.Empty;
-                } else {
-				    login_ = (string)_dataparameters[2].Value;
+					login_ = string.Empty;
+				} else {
+					login_ = (string)_dataparameters[2].Value;
 				}
 				if (_dataparameters[3].Value == System.DBNull.Value) {
-				    password_ = string.Empty;
-                } else {
-				    password_ = (string)_dataparameters[3].Value;
+					password_ = string.Empty;
+				} else {
+					password_ = (string)_dataparameters[3].Value;
 				}
 
 				haschanges_ = false;

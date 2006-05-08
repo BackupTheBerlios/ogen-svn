@@ -73,24 +73,24 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			if (base.read()) {
 				if (base.Fullmode) {
 					if (base.Record.Rows[Current]["IDUser"] == System.DBNull.Value) {
-					    parent_ref_.iduser_ = 0L;
+						parent_ref_.iduser_ = 0L;
 					} else {
-					    parent_ref_.iduser_ = (long)base.Record.Rows[Current]["IDUser"];
+						parent_ref_.iduser_ = (long)base.Record.Rows[Current]["IDUser"];
 					}
 					if (base.Record.Rows[Current]["IDGroup"] == System.DBNull.Value) {
-					    parent_ref_.idgroup_ = 0L;
+						parent_ref_.idgroup_ = 0L;
 					} else {
-					    parent_ref_.idgroup_ = (long)base.Record.Rows[Current]["IDGroup"];
+						parent_ref_.idgroup_ = (long)base.Record.Rows[Current]["IDGroup"];
 					}
 					if (base.Record.Rows[Current]["Relationdate"] == System.DBNull.Value) {
-					    parent_ref_.Relationdate_isNull = true;
+						parent_ref_.Relationdate_isNull = true;
 					} else {
-					    parent_ref_.relationdate_ = (DateTime)base.Record.Rows[Current]["Relationdate"];
+						parent_ref_.relationdate_ = (DateTime)base.Record.Rows[Current]["Relationdate"];
 					}
 					if (base.Record.Rows[Current]["Defaultrelation"] == System.DBNull.Value) {
-					    parent_ref_.Defaultrelation_isNull = true;
+						parent_ref_.Defaultrelation_isNull = true;
 					} else {
-					    parent_ref_.defaultrelation_ = (bool)base.Record.Rows[Current]["Defaultrelation"];
+						parent_ref_.defaultrelation_ = (bool)base.Record.Rows[Current]["Defaultrelation"];
 					}
 
 					parent_ref_.haschanges_ = false;

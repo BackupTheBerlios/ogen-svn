@@ -54,9 +54,9 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 					Config_DBConnectionstring _dbcon;
 
 					int _count = 0;
-					for (int _db = 0; _db < Config_DBConnectionstrings.DBServerTypes.Length; _db++) {
-						_dbcon = Config_DBConnectionstrings.DBConnectionstrings[
-							Config_DBConnectionstrings.DBServerTypes[_db], 
+					for (int _db = 0; _db < Config_DBConnectionstrings.DBServerTypes(DO__utils.ApplicationName).Length; _db++) {
+						_dbcon = Config_DBConnectionstrings.DBConnectionstrings(DO__utils.ApplicationName)[
+							Config_DBConnectionstrings.DBServerTypes(DO__utils.ApplicationName)[_db], 
 							"DEBUG"
 						];
 						if (_dbcon.GeneratedSQL) {
@@ -66,14 +66,14 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 
 					dbconnections__ = new cDBConnection[_count];
 					_count = 0;
-					for (int _db = 0; _db < Config_DBConnectionstrings.DBServerTypes.Length; _db++) {
-						_dbcon = Config_DBConnectionstrings.DBConnectionstrings[
-							Config_DBConnectionstrings.DBServerTypes[_db],
+					for (int _db = 0; _db < Config_DBConnectionstrings.DBServerTypes(DO__utils.ApplicationName).Length; _db++) {
+						_dbcon = Config_DBConnectionstrings.DBConnectionstrings(DO__utils.ApplicationName)[
+							Config_DBConnectionstrings.DBServerTypes(DO__utils.ApplicationName)[_db],
 							"DEBUG"
 						];
 						if (_dbcon.GeneratedSQL) {
 							dbconnections__[_count++] = new cDBConnection(
-								Config_DBConnectionstrings.DBServerTypes[_db], 
+								Config_DBConnectionstrings.DBServerTypes(DO__utils.ApplicationName)[_db], 
 								_dbcon.Connectionstring
 							);
 						}

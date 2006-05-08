@@ -54,6 +54,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		}
 		#endregion
 
+		public const string ApplicationName = "OGen-NTier_UTs";
+
 		#region public static Properties...
 		#region public static eDBServerTypes DBServerType { get; }
 		private static eDBServerTypes dbservertype__;
@@ -110,9 +112,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			dbconnectionstring__ = null;
 
 			Config_DBConnectionstring _con;
-			for (int _db = 0; _db < Config_DBConnectionstrings.DBServerTypes.Length; _db++) {
-				_con = Config_DBConnectionstrings.DBConnectionstrings[
-					Config_DBConnectionstrings.DBServerTypes[_db],
+			for (int _db = 0; _db < Config_DBConnectionstrings.DBServerTypes(ApplicationName).Length; _db++) {
+				_con = Config_DBConnectionstrings.DBConnectionstrings(ApplicationName)[
+					Config_DBConnectionstrings.DBServerTypes(ApplicationName)[_db],
 #if DEBUG
 					"DEBUG"
 #elif !DEBUG
@@ -120,7 +122,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #endif
 				];
 				if (_con.isDefault) {
-					dbservertype__ = Config_DBConnectionstrings.DBServerTypes[_db];
+					dbservertype__ = Config_DBConnectionstrings.DBServerTypes(ApplicationName)[_db];
 					dbconnectionstring__ = _con.Connectionstring;
 					return;
 				}

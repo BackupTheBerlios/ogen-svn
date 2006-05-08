@@ -138,8 +138,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Clears all DO0_Group properties, assigning them with their appropriate default property value.
 		/// </summary>
 		public virtual void clrObject() {
-            IDGroup = 0L;
-            Name = string.Empty;
+			IDGroup = 0L;
+			Name = string.Empty;
 		}
 		#endregion
 		#region public virtual bool getObject(...);
@@ -169,14 +169,14 @@ namespace OGen.NTier.UTs.lib.datalayer {
 
 				if (_dataparameters[0].Value != DBNull.Value) {
 					if (_dataparameters[0].Value == System.DBNull.Value) {
-					    idgroup_ = 0L;
-                    } else {
-					    idgroup_ = (long)_dataparameters[0].Value;
+						idgroup_ = 0L;
+					} else {
+						idgroup_ = (long)_dataparameters[0].Value;
 					}
 					if (_dataparameters[1].Value == System.DBNull.Value) {
-					    name_ = string.Empty;
-                    } else {
-					    name_ = (string)_dataparameters[1].Value;
+						name_ = string.Empty;
+					} else {
+						name_ = (string)_dataparameters[1].Value;
 					}
 
 					haschanges_ = false;

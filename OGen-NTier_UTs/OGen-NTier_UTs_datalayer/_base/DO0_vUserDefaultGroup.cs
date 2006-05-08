@@ -195,11 +195,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Clears all DO0_vUserDefaultGroup properties, assigning them with their appropriate default property value.
 		/// </summary>
 		public virtual void clrObject() {
-            IDUser = 0L;
-            Login = string.Empty;
-            IDGroup = 0L;
-            Name = string.Empty;
-            Relationdate = new DateTime(1900, 1, 1);
+			IDUser = 0L;
+			Login = string.Empty;
+			IDGroup = 0L;
+			Name = string.Empty;
+			Relationdate = new DateTime(1900, 1, 1);
 		}
 		#endregion
 		#region public virtual bool getObject(...);
@@ -231,29 +231,29 @@ namespace OGen.NTier.UTs.lib.datalayer {
 
 				if (_dataparameters[0].Value != DBNull.Value) {
 					if (_dataparameters[0].Value == System.DBNull.Value) {
-					    iduser_ = 0L;
-                    } else {
-					    iduser_ = (long)_dataparameters[0].Value;
+						iduser_ = 0L;
+					} else {
+						iduser_ = (long)_dataparameters[0].Value;
 					}
 					if (_dataparameters[1].Value == System.DBNull.Value) {
-					    login_ = string.Empty;
-                    } else {
-					    login_ = (string)_dataparameters[1].Value;
+						login_ = string.Empty;
+					} else {
+						login_ = (string)_dataparameters[1].Value;
 					}
 					if (_dataparameters[2].Value == System.DBNull.Value) {
-					    idgroup_ = 0L;
-                    } else {
-					    idgroup_ = (long)_dataparameters[2].Value;
+						idgroup_ = 0L;
+					} else {
+						idgroup_ = (long)_dataparameters[2].Value;
 					}
 					if (_dataparameters[3].Value == System.DBNull.Value) {
-					    name_ = string.Empty;
-                    } else {
-					    name_ = (string)_dataparameters[3].Value;
+						name_ = string.Empty;
+					} else {
+						name_ = (string)_dataparameters[3].Value;
 					}
 					if (_dataparameters[4].Value == System.DBNull.Value) {
-					    relationdate_ = new DateTime(1900, 1, 1);
-                    } else {
-					    relationdate_ = (DateTime)_dataparameters[4].Value;
+						relationdate_ = new DateTime(1900, 1, 1);
+					} else {
+						relationdate_ = (DateTime)_dataparameters[4].Value;
 					}
 
 					haschanges_ = false;

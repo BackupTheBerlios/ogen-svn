@@ -530,6 +530,10 @@
                     BuildAction = "Content"
                 />
                 <File
+                    RelPath = "DO-UT-UT0__utils.cs.aspx"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "DO-UT-UT0_SomeTable.cs.aspx"
                     BuildAction = "Content"
                 />

@@ -73,29 +73,29 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			if (base.read()) {
 				if (base.Fullmode) {
 					if (base.Record.Rows[Current]["IDUser"] == System.DBNull.Value) {
-					    parent_ref_.iduser_ = 0L;
+						parent_ref_.iduser_ = 0L;
 					} else {
-					    parent_ref_.iduser_ = (long)base.Record.Rows[Current]["IDUser"];
+						parent_ref_.iduser_ = (long)base.Record.Rows[Current]["IDUser"];
 					}
 					if (base.Record.Rows[Current]["Login"] == System.DBNull.Value) {
-					    parent_ref_.login_ = string.Empty;
+						parent_ref_.login_ = string.Empty;
 					} else {
-					    parent_ref_.login_ = (string)base.Record.Rows[Current]["Login"];
+						parent_ref_.login_ = (string)base.Record.Rows[Current]["Login"];
 					}
 					if (base.Record.Rows[Current]["IDGroup"] == System.DBNull.Value) {
-					    parent_ref_.idgroup_ = 0L;
+						parent_ref_.idgroup_ = 0L;
 					} else {
-					    parent_ref_.idgroup_ = (long)base.Record.Rows[Current]["IDGroup"];
+						parent_ref_.idgroup_ = (long)base.Record.Rows[Current]["IDGroup"];
 					}
 					if (base.Record.Rows[Current]["Name"] == System.DBNull.Value) {
-					    parent_ref_.name_ = string.Empty;
+						parent_ref_.name_ = string.Empty;
 					} else {
-					    parent_ref_.name_ = (string)base.Record.Rows[Current]["Name"];
+						parent_ref_.name_ = (string)base.Record.Rows[Current]["Name"];
 					}
 					if (base.Record.Rows[Current]["Relationdate"] == System.DBNull.Value) {
-					    parent_ref_.relationdate_ = new DateTime(1900, 1, 1);
+						parent_ref_.relationdate_ = new DateTime(1900, 1, 1);
 					} else {
-					    parent_ref_.relationdate_ = (DateTime)base.Record.Rows[Current]["Relationdate"];
+						parent_ref_.relationdate_ = (DateTime)base.Record.Rows[Current]["Relationdate"];
 					}
 
 					parent_ref_.haschanges_ = false;

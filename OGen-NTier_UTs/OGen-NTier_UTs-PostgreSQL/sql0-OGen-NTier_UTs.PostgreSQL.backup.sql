@@ -391,7 +391,7 @@ AS '
 				"IDUser"
 			FROM "User"/*
 			WHERE
-                ("IDGroup" = "IDGroup_search_")*/
+				("IDGroup" = "IDGroup_search_")*/
 		LOOP
 			RETURN NEXT _Output;
 		END LOOP;
@@ -415,7 +415,7 @@ AS '
 				"IDGroup"
 			FROM "UserGroup"
 			WHERE
-                ("IDUser" = "IDUser_search_") AND
+				("IDUser" = "IDUser_search_") AND
 				((
 					("Relationdate_search_" IS NULL)
 					AND

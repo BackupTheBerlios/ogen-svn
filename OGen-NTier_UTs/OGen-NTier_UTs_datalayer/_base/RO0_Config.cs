@@ -73,19 +73,19 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			if (base.read()) {
 				if (base.Fullmode) {
 					if (base.Record.Rows[Current]["Name"] == System.DBNull.Value) {
-					    parent_ref_.name_ = string.Empty;
+						parent_ref_.name_ = string.Empty;
 					} else {
-					    parent_ref_.name_ = (string)base.Record.Rows[Current]["Name"];
+						parent_ref_.name_ = (string)base.Record.Rows[Current]["Name"];
 					}
 					if (base.Record.Rows[Current]["Config"] == System.DBNull.Value) {
-					    parent_ref_.config_ = string.Empty;
+						parent_ref_.config_ = string.Empty;
 					} else {
-					    parent_ref_.config_ = (string)base.Record.Rows[Current]["Config"];
+						parent_ref_.config_ = (string)base.Record.Rows[Current]["Config"];
 					}
 					if (base.Record.Rows[Current]["Type"] == System.DBNull.Value) {
-					    parent_ref_.type_ = 0;
+						parent_ref_.type_ = 0;
 					} else {
-					    parent_ref_.type_ = (int)base.Record.Rows[Current]["Type"];
+						parent_ref_.type_ = (int)base.Record.Rows[Current]["Type"];
 					}
 
 					parent_ref_.haschanges_ = false;
