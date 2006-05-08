@@ -78,10 +78,10 @@ RETURN<%if (_aux_metadata.CopyrightTextLong != string.Empty) {
 		}%>
 	FROM `<%=_aux_table.Name%>`<%=((makeItAComment) || (_aux_search.SearchParameters.Count == 0)) ? "/*" : ""%>
 	WHERE<%
-	for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
-		_aux_field = _aux_search.SearchParameters[f].Field;
-		_aux_field_name = _aux_search.SearchParameters[f].ParamName;
-        if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%>
+for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
+	_aux_field = _aux_search.SearchParameters[f].Field;
+	_aux_field_name = _aux_search.SearchParameters[f].ParamName;
+	if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%>
 		((
 			(`<%=_aux_field.Name%>_search_` IS NULL)
 			AND
@@ -91,10 +91,10 @@ RETURN<%if (_aux_metadata.CopyrightTextLong != string.Empty) {
 			AND
 			(`<%=_aux_field.Name%>` <%=(_aux_field.isText) ? "LIKE '%' +" : "="%> `<%=_aux_field_name%>_search_`<%=(_aux_field.isText) ? " + '%' COLLATE latin1_german2_ci" : ""%>)
 		))<%=(f != _aux_search.SearchParameters.Count - 1) ? " AND" : ""%><%
-        } else {%>
-        (`<%=_aux_field.Name%>` <%=(_aux_field.isText) ? "LIKE '%' +" : "="%> `<%=_aux_field_name%>_search_`<%=(_aux_field.isText) ? " + '%' COLLATE latin1_german2_ci" : ""%>)<%=(f != _aux_search.SearchParameters.Count - 1) ? " AND" : ""%><%
-        }
-	}%><%=((makeItAComment) || (_aux_search.SearchParameters.Count == 0)) ? "*/" : ""%>
+	} else {%>
+		(`<%=_aux_field.Name%>` <%=(_aux_field.isText) ? "LIKE '%' +" : "="%> `<%=_aux_field_name%>_search_`<%=(_aux_field.isText) ? " + '%' COLLATE latin1_german2_ci" : ""%>)<%=(f != _aux_search.SearchParameters.Count - 1) ? " AND" : ""%><%
+	}
+}%><%=((makeItAComment) || (_aux_search.SearchParameters.Count == 0)) ? "*/" : ""%>
 
 <%
 //-----------------------------------------------------------------------------------------

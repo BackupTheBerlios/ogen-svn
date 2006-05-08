@@ -35,7 +35,7 @@ string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryStr
 #region varaux...
 cDBMetadata _aux_metadata = new cDBMetadata();
 _aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
-                                                     
+
 string[] _aux_configmodes = _aux_metadata.ConfigModes();
 #endregion
 //-----------------------------------------------------------------------------------------
@@ -45,11 +45,11 @@ string[] _aux_configmodes = _aux_metadata.ConfigModes();
 
 		<add key="<%=_aux_metadata.ApplicationName%>:ConfigModes" value="<%
 		for (int _cm = 0; _cm < _aux_configmodes.Length; _cm++) {
-		    %><%=_aux_configmodes[_cm]%><%=(_cm == _aux_configmodes.Length - 1) ? "" : ":"%><%
+			%><%=_aux_configmodes[_cm]%><%=(_cm == _aux_configmodes.Length - 1) ? "" : ":"%><%
 		}%>" />
 		<add key="<%=_aux_metadata.ApplicationName%>:DBServerTypes" value="<%
 		for (int _db = 0; _db < _aux_metadata.DBs.Count; _db++) {
-		    %><%=_aux_metadata.DBs[_db].DBServerType.ToString()%><%=(_db == _aux_metadata.DBs.Count - 1) ? "" : ":"%><%
+			%><%=_aux_metadata.DBs[_db].DBServerType.ToString()%><%=(_db == _aux_metadata.DBs.Count - 1) ? "" : ":"%><%
 		}%>" />
 
 		<!-- IsDefault::GeneratedSQL::IsIndexed_andReadOnly::Connectionstring --><%

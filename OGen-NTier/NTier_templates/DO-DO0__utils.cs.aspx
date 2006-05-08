@@ -193,10 +193,10 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 						string.Format(
 							"SELECT {4}{0}{4}, {4}{1}{4}, {4}{2}{4} FROM {4}{3}{4} ORDER BY {4}{0}{4}",
 							/*00*/ NameField,
-                            /*01*/ ConfigField,
-                            /*02*/ DatatypeField,
-                            /*03*/ _aux_table.Name, 
-                            /*04*/ (_aux_metadata.DBs.FirstDefaultAvailable_DBServerType() == eDBServerTypes.MySQL) ? "`" :"\""
+							/*01*/ ConfigField,
+							/*02*/ DatatypeField,
+							/*03*/ _aux_table.Name, 
+							/*04*/ (_aux_metadata.DBs.FirstDefaultAvailable_DBServerType() == eDBServerTypes.MySQL) ? "`" :"\""
 						)
 					);
 					for (int r = 0; r < ConfigTable.Rows.Count; r++) {

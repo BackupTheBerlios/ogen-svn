@@ -125,14 +125,14 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		for (int f = 0; f < _aux_table.Fields.Count; f++) {
 			_aux_field = _aux_table.Fields[f];
 
-            if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%>
-        #region public virtual bool <%=_aux_field.Name%>_isNull { get; set; }
+			if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%>
+		#region public virtual bool <%=_aux_field.Name%>_isNull { get; set; }
 		public virtual bool <%=_aux_field.Name%>_isNull {
 			get { return (<%=_aux_field.Name.ToLower()%>_ == null); }
 			set { if (value) <%=_aux_field.Name.ToLower()%>_ = null; }
 		}
-        #endregion<%
-	        }%>
+		#endregion<%
+			}%>
 		#region public virtual <%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%> { get; set; }
 		internal <%=(_aux_field.isNullable && !_aux_table.isVirtualTable) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field.Name.ToLower()%>_;// = <%=(_aux_field.DefaultValue == "") ? _aux_field.DBType_generic.FWEmptyValue : _aux_field.DefaultValue%>;
 		
@@ -142,11 +142,11 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		[DOPropertyAttribute("<%=_aux_field.Name%>", <%=_aux_field.isPK.ToString().ToLower()%>, <%=_aux_field.isIdentity.ToString().ToLower()%>, <%=_aux_field.isNullable.ToString().ToLower()%>, <%=(_aux_field.DefaultValue == string.Empty) ? "\"\"" : _aux_field.DefaultValue%>, "<%=_aux_field.FK_TableName%>", "<%=_aux_field.FK_FieldName%>", <%=_aux_field.isConfig_Name.ToString().ToLower()%>, <%=_aux_field.isConfig_Config.ToString().ToLower()%>, <%=_aux_field.isConfig_Datatype.ToString().ToLower()%>, <%=_aux_field.isBool.ToString().ToLower()%>, <%=_aux_field.isDateTime.ToString().ToLower()%>, <%=_aux_field.isInt.ToString().ToLower()%>, <%=_aux_field.isDecimal.ToString().ToLower()%>, <%=_aux_field.isText.ToString().ToLower()%>)]
 		public virtual <%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%> {
 			get {<%
-            if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%>
-                return (<%=_aux_field.Name.ToLower()%>_ == null) ? <%=(_aux_field.DefaultValue == "") ? _aux_field.DBType_generic.FWEmptyValue : _aux_field.DefaultValue%> : (<%=_aux_field.DBType_generic.FWType%>)<%=_aux_field.Name.ToLower()%>_;<%
-            } else {%>
+			if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%>
+				return (<%=_aux_field.Name.ToLower()%>_ == null) ? <%=(_aux_field.DefaultValue == "") ? _aux_field.DBType_generic.FWEmptyValue : _aux_field.DefaultValue%> : (<%=_aux_field.DBType_generic.FWType%>)<%=_aux_field.Name.ToLower()%>_;<%
+			} else {%>
 				return <%=_aux_field.Name.ToLower()%>_;<%
-            }%>
+			}%>
 			}
 			set {
 				if (!value.Equals(<%=_aux_field.Name.ToLower()%>_)) {
@@ -167,11 +167,11 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		public virtual void clrObject() {<%
 			for (int f = 0; f < _aux_table.Fields.Count; f++) {
 				_aux_field = _aux_table.Fields[f];
-                if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%><%=""%>
+				if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%><%=""%>
 			<%=_aux_field.Name%>_isNull = true;<%
-                } else {%><%=""%>
-            <%=_aux_field.Name%> = <%=(_aux_field.DefaultValue == "") ? _aux_field.DBType_generic.FWEmptyValue : _aux_field.DefaultValue%>;<%
-                }
+				} else {%><%=""%>
+			<%=_aux_field.Name%> = <%=(_aux_field.DefaultValue == "") ? _aux_field.DBType_generic.FWEmptyValue : _aux_field.DefaultValue%>;<%
+				}
 			}%>
 		}
 		#endregion
@@ -215,18 +215,18 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				base.Connection.Execute_SQLFunction("sp0_<%=_aux_table.Name%>_getObject", _dataparameters);
 
 				if (_dataparameters[<%=firstKey%>].Value != DBNull.Value) {<%
-	                for (int f = 0; f < _aux_table.Fields.Count; f++) {
+					for (int f = 0; f < _aux_table.Fields.Count; f++) {
 						_aux_field = _aux_table.Fields[f];%>
 					if (_dataparameters[<%=f%>].Value == System.DBNull.Value) {<%
-					    if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%><%=""%>
-					    <%=_aux_field.Name%>_isNull = true;<%
-                        } else {%><%=""%>
-					    <%=_aux_field.Name.ToLower()%>_ = <%=_aux_field.DBType_generic.FWEmptyValue%>;<%
-                        }%>
-                    } else {
-					    <%=_aux_field.Name.ToLower()%>_ = (<%=_aux_field.DBType_generic.FWType%>)_dataparameters[<%=f%>].Value;
+						if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%><%=""%>
+						<%=_aux_field.Name%>_isNull = true;<%
+						} else {%><%=""%>
+						<%=_aux_field.Name.ToLower()%>_ = <%=_aux_field.DBType_generic.FWEmptyValue%>;<%
+						}%>
+					} else {
+						<%=_aux_field.Name.ToLower()%>_ = (<%=_aux_field.DBType_generic.FWType%>)_dataparameters[<%=f%>].Value;
 					}<%
-                    }%>
+					}%>
 
 					haschanges_ = false;
 					return true;
@@ -391,12 +391,12 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 								);
 								ConfigTable = connection.Execute_SQLQuery_returnDataTable(
 									string.Format(
-							            "SELECT {4}{0}{4}, {4}{1}{4}, {4}{2}{4} FROM {4}{3}{4} ORDER BY {4}{0}{4}",
-							            /*00*/ NameField,
-                                        /*01*/ ConfigField,
-                                        /*02*/ DatatypeField,
-                                        /*03*/ _aux_table.Name, 
-                                        /*04*/ (_aux_metadata.DBs.FirstDefaultAvailable_DBServerType() == eDBServerTypes.MySQL) ? "`" :"\""
+										"SELECT {4}{0}{4}, {4}{1}{4}, {4}{2}{4} FROM {4}{3}{4} ORDER BY {4}{0}{4}",
+										/*00*/ NameField,
+										/*01*/ ConfigField,
+										/*02*/ DatatypeField,
+										/*03*/ _aux_table.Name, 
+										/*04*/ (_aux_metadata.DBs.FirstDefaultAvailable_DBServerType() == eDBServerTypes.MySQL) ? "`" :"\""
 									)
 								);%>
 					switch (<%=NameField.ToLower()%>_) {<%
@@ -556,18 +556,18 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			);
 
 			if (_dataparameters[<%=_aux_table.Searches[s].SearchParameters.Count + firstKey%>].Value != DBNull.Value) {<%
-                for (int f = 0; f < _aux_table.Fields.Count; f++) {
+				for (int f = 0; f < _aux_table.Fields.Count; f++) {
 					_aux_field = _aux_table.Fields[f];%>
 				if (_dataparameters[<%=_aux_table.Searches[s].SearchParameters.Count + f%>].Value == System.DBNull.Value) {<%
-				    if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%><%=""%>
-				    <%=_aux_field.Name%>_isNull = true;<%
-                    } else {%><%=""%>
-				    <%=_aux_field.Name.ToLower()%>_ = <%=_aux_field.DBType_generic.FWEmptyValue%>;<%
-                    }%>
-                } else {
-				    <%=_aux_field.Name.ToLower()%>_ = (<%=_aux_field.DBType_generic.FWType%>)_dataparameters[<%=_aux_table.Searches[s].SearchParameters.Count + f%>].Value;
+					if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%><%=""%>
+					<%=_aux_field.Name%>_isNull = true;<%
+					} else {%><%=""%>
+					<%=_aux_field.Name.ToLower()%>_ = <%=_aux_field.DBType_generic.FWEmptyValue%>;<%
+					}%>
+				} else {
+					<%=_aux_field.Name.ToLower()%>_ = (<%=_aux_field.DBType_generic.FWType%>)_dataparameters[<%=_aux_table.Searches[s].SearchParameters.Count + f%>].Value;
 				}<%
-                }%>
+				}%>
 
 				haschanges_ = false;
 				return true;

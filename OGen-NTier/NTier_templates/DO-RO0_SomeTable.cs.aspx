@@ -101,14 +101,14 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 					for (int f = 0; f < _aux_table.Fields.Count; f++) {
 						_aux_field = _aux_table.Fields[f];%><%=""%>
 					if (base.Record.Rows[Current]["<%=_aux_field.Name%>"] == System.DBNull.Value) {<%
-					    if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%><%=""%><%
-					    // parent_ref_.< %=_aux_field.Name.ToLower()% >_ = null;%>
-					    parent_ref_.<%=_aux_field.Name%>_isNull = true;<%
-                        } else {%><%=""%>
-					    parent_ref_.<%=_aux_field.Name.ToLower()%>_ = <%=_aux_field.DBType_generic.FWEmptyValue%>;<%
-                        }%>
+						if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%><%=""%><%
+						// parent_ref_.< %=_aux_field.Name.ToLower()% >_ = null;%>
+						parent_ref_.<%=_aux_field.Name%>_isNull = true;<%
+						} else {%><%=""%>
+						parent_ref_.<%=_aux_field.Name.ToLower()%>_ = <%=_aux_field.DBType_generic.FWEmptyValue%>;<%
+						}%>
 					} else {
-					    parent_ref_.<%=_aux_field.Name.ToLower()%>_ = (<%=_aux_field.DBType_generic.FWType%>)base.Record.Rows[Current]["<%=_aux_field.Name%>"];
+						parent_ref_.<%=_aux_field.Name.ToLower()%>_ = (<%=_aux_field.DBType_generic.FWType%>)base.Record.Rows[Current]["<%=_aux_field.Name%>"];
 					}<%
 					//parent_ref_.< %=_aux_field.Name.ToLower()% >_ = (< %=_aux_field.DBType_generic.FWType% >)base.Record.Rows[Current]["< %=_aux_field.Name% >"];
 					//parent_ref_.< %=_aux_field.Name.ToLower()% >_ = (base.Record.Rows[Current]["< %=_aux_field.Name% >"] == System.DBNull.Value) ? < %=_aux_field.DBType_generic.FWEmptyValue% > : (< %=_aux_field.DBType_generic.FWType% >)base.Record.Rows[Current]["< %=_aux_field.Name% >"];
