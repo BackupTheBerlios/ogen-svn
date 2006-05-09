@@ -98,11 +98,12 @@ namespace OGen.NTier.lib.datalayer {
 		/// Instantiates a new Config_DBConnectionstring.
 		/// </summary>
 		/// <param name="parameters_in">
-		/// It must respect "[True|False]::[True|False]::[True|False]::some connection string like;Server=127.0.0.1;Port=5432;User ID=postgres;Password=passpub;Database=OGen-NTier_UTs;". 
-		/// Where first parameter represents the isDefault property, 
-		/// second parameter represents GeneratedSQL property, 
-		/// third parameter represents isIndexed_andReadOnly
-		/// and forth last parameter represents the Connectionstring property
+		/// It must respect "[True|False]::[True|False]::[True|False]::some connection string like;Server=127.0.0.1;Port=5432;User ID=postgres;Password=passpub;Database=OGen-NTier_UTs;".<br/>
+		/// Where:<br/>
+		/// - 1st parameter represents the isDefault property<br/>
+		/// - 2nd parameter represents GeneratedSQL property<br/>
+		/// - 3rd parameter represents isIndexed_andReadOnly<br/>
+		/// - 4th last parameter represents the Connectionstring property<br/>
 		/// </param>
 		/// <returns>new Config_DBConnectionstring</returns>
 		public static Config_DBConnectionstring newConfig_DBConnectionstring(string parameters_in) {

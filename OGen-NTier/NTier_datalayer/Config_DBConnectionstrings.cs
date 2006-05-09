@@ -36,7 +36,7 @@ using OGen.lib.datalayer;
 
 namespace OGen.NTier.lib.datalayer {
 	public class Config_DBConnectionstrings {
-//		#region public Config_DBConnectionstrings();
+		#region public Config_DBConnectionstrings();
 		/// <summary>
 		/// Used to store config file connection strings.
 		/// </summary>
@@ -53,7 +53,6 @@ namespace OGen.NTier.lib.datalayer {
 						Config_DBConnectionstring.newConfig_DBConnectionstring(
 							System.Configuration.ConfigurationSettings.AppSettings[string.Format(
 								"{0}:DBConnection:{1}:{2}",
-//								ApplicationName, 
 								application_in, 
 								ConfigModes(application_in)[_cfg],
 								DBServerTypes(application_in)[_db].ToString()
@@ -63,17 +62,12 @@ namespace OGen.NTier.lib.datalayer {
 				}
 			}
 		}
-//		#endregion
-//		#region static Config_DBConnectionstrings();
+		#endregion
+		#region static Config_DBConnectionstrings();
 		static Config_DBConnectionstrings() {
-////			applicationname__ = null;
-//			applications__ = null;
-//			configmodes__ = null;
-//			dbservertypes__ = null;
-//			dbconnectionstrings__ = null;
 			Reset();
 		}
-//		#endregion
+		#endregion
 
 		#region private Properties...
 		private System.Collections.Hashtable dbconnections_;
@@ -97,28 +91,51 @@ namespace OGen.NTier.lib.datalayer {
 		}
 		#endregion
 		#endregion
-//		#region public static Properties...
+		#region public static Properties...
+		#region public static string[] Applications { get; }
 		private static string[] applications__;
 		public static string[] Applications {
 			get {
 				if (applications__ == null) {
-					applications__ = System.Configuration.ConfigurationSettings.AppSettings["applications"].Split(':');
+					applications__ 
+						= System.Configuration.ConfigurationSettings.AppSettings[
+							"applications"
+						].Split(':');
 				}
 				return applications__;
 			}
 		}
-//		#region public static string ApplicationName { get; }
-//		private static string applicationname__;
-//
-//		public static string ApplicationName {
-//			get {
-//				if (applicationname__ == null) {
-//					applicationname__ = System.Configuration.ConfigurationSettings.AppSettings["applicationName"];
-//				}
-//				return applicationname__;
-//			}
-//		}
-//		#endregion
+		#endregion
+		#endregion
+
+		#region private Methods...
+		#region private void Add(...);
+		private void Add(
+			eDBServerTypes dbServerType_in, 
+			string configMode_in, 
+			Config_DBConnectionstring dbConnection_in
+		) {
+			dbconnections_.Add(
+				string.Format(
+					"{0}:{1}",
+					configMode_in,
+					dbServerType_in
+				), 
+				dbConnection_in
+			);
+		}
+		#endregion
+		#endregion
+		#region public static Methods...
+		#region public static void Reset();
+		public static void Reset() {
+//			applicationname__ = null;
+			applications__ = null;
+			configmodes__ = null;
+			dbservertypes__ = null;
+			dbconnectionstrings__ = null;
+		}
+		#endregion
 		#region public static string[] ConfigModes(string application_in);
 		private static Hashtable configmodes__;
 		/// <summary>
@@ -177,7 +194,7 @@ namespace OGen.NTier.lib.datalayer {
 			return (eDBServerTypes[])dbservertypes__[application_in];
 		}
 		#endregion
-		#region public static Config_DBConnectionstrings DBConnectionstrings { get; }
+		#region public static Config_DBConnectionstrings DBConnectionstrings(string application_in);
 		private static Hashtable dbconnectionstrings__;
 		public static Config_DBConnectionstrings DBConnectionstrings(string application_in) {
 			if (dbconnectionstrings__ == null) dbconnectionstrings__ = new Hashtable();
@@ -189,36 +206,6 @@ namespace OGen.NTier.lib.datalayer {
 			}
 
 			return (Config_DBConnectionstrings)dbconnectionstrings__[application_in];
-		}
-		#endregion
-//		#endregion
-
-		#region private Methods...
-		#region private void Add(...);
-		private void Add(
-			eDBServerTypes dbServerType_in, 
-			string configMode_in, 
-			Config_DBConnectionstring dbConnection_in
-		) {
-			dbconnections_.Add(
-				string.Format(
-					"{0}:{1}",
-					configMode_in,
-					dbServerType_in
-				), 
-				dbConnection_in
-			);
-		}
-		#endregion
-		#endregion
-		#region public static Methods...
-		#region public static void Reset();
-		public static void Reset() {
-//			applicationname__ = null;
-			applications__ = null;
-			configmodes__ = null;
-			dbservertypes__ = null;
-			dbconnectionstrings__ = null;
 		}
 		#endregion
 		#endregion
