@@ -635,7 +635,8 @@ namespace OGen.lib.datalayer {
 					case DbType.DateTime:
 					case DbType.Date:
 					case DbType.Time: {
-						return "new DateTime(1234, 12, 12)";
+						// sql server friendly
+						return "new DateTime(2341, 12, 12)";
 					}
 					case DbType.Int64:
 					case DbType.UInt64: {

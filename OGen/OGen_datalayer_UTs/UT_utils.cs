@@ -30,6 +30,7 @@ along with OGen; if not, write to the
 */
 #endregion
 using System;
+using System.Data;
 using System.Collections;
 using NUnit.Framework;
 
@@ -136,6 +137,23 @@ namespace OGen.lib.datalayer.UTs {
 					"Database=somedatabase;",
 					eDBServerTypes.PostgreSQL,
 					utils.Connectionstring.eParameter.Database
+				)
+			);
+		}
+		#endregion
+
+		#region public void UT_DBType2NUnitTestValue();
+		[Test]
+		public void UT_DBType2NUnitTestValue() {
+
+			// ToDos: here!
+			// SQLServer
+			// between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM
+
+			Assert.AreEqual(
+				"new DateTime(2341, 12, 12)", 
+					OGen.lib.datalayer.utils.convert.DBType2NUnitTestValue(
+					DbType.DateTime
 				)
 			);
 		}
