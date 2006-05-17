@@ -143,7 +143,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		public virtual <%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%> {
 			get {<%
 			if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%>
-				return (<%=_aux_field.Name.ToLower()%>_ == null) ? <%=(_aux_field.DefaultValue == "") ? _aux_field.DBType_generic.FWEmptyValue : _aux_field.DefaultValue%> : (<%=_aux_field.DBType_generic.FWType%>)<%=_aux_field.Name.ToLower()%>_;<%
+				return (<%=_aux_field.DBType_generic.FWType%>)((<%=_aux_field.Name.ToLower()%>_ == null) ? <%=(_aux_field.DefaultValue == "") ? _aux_field.DBType_generic.FWEmptyValue : _aux_field.DefaultValue%> : <%=_aux_field.Name.ToLower()%>_);<%
 			} else {%>
 				return <%=_aux_field.Name.ToLower()%>_;<%
 			}%>
