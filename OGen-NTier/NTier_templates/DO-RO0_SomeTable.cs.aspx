@@ -101,7 +101,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 					for (int f = 0; f < _aux_table.Fields.Count; f++) {
 						_aux_field = _aux_table.Fields[f];%><%=""%>
 					if (base.Record.Rows[Current]["<%=_aux_field.Name%>"] == System.DBNull.Value) {<%
-						if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%><%=""%><%
+						if (_aux_field.isNullable && !_aux_field.isPK) {%><%=""%><%
 						// parent_ref_.< %=_aux_field.Name.ToLower()% >_ = null;%>
 						parent_ref_.<%=_aux_field.Name%>_isNull = true;<%
 						} else {%><%=""%>
@@ -153,7 +153,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			for (int f = 0; f < _aux_table.Searches[s].SearchParameters.Count; f++) {
 				_aux_field = _aux_table.Searches[s].SearchParameters[f].Field;
 				_aux_field_name = _aux_table.Searches[s].SearchParameters[f].ParamName;%><%=""%>
-			<%=(_aux_field.isNullable && !_aux_table.isVirtualTable) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field_name%>_search_in<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
+			<%=(_aux_field.isNullable && !_aux_field.isPK) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field_name%>_search_in<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
 			}%>
 		) {
 			Open_<%=_aux_table.Searches[s].Name%>(<%
@@ -180,7 +180,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			for (int f = 0; f < _aux_table.Searches[s].SearchParameters.Count; f++) {
 				_aux_field = _aux_table.Searches[s].SearchParameters[f].Field;
 				_aux_field_name = _aux_table.Searches[s].SearchParameters[f].ParamName;%><%=""%>
-			<%=(_aux_field.isNullable && !_aux_table.isVirtualTable) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field_name%>_search_in<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
+			<%=(_aux_field.isNullable && !_aux_field.isPK) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field_name%>_search_in<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
 			}%><%=(_aux_table.Searches[s].SearchParameters.Count != 0) ? ", " : ""%>
 			bool fullmode_in
 		) {
@@ -216,7 +216,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			for (int f = 0; f < _aux_table.Searches[s].SearchParameters.Count; f++) {
 				_aux_field = _aux_table.Searches[s].SearchParameters[f].Field;
 				_aux_field_name = _aux_table.Searches[s].SearchParameters[f].ParamName;%><%=""%>
-			<%=(_aux_field.isNullable && !_aux_table.isVirtualTable) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field_name%>_search_in<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
+			<%=(_aux_field.isNullable && !_aux_field.isPK) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field_name%>_search_in<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
 			}
 			%><%=(_aux_table.Searches[s].SearchParameters.Count != 0) ? ", " : ""%>
 			int page_in, 
@@ -250,7 +250,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			for (int f = 0; f < _aux_table.Searches[s].SearchParameters.Count; f++) {
 				_aux_field = _aux_table.Searches[s].SearchParameters[f].Field;
 				_aux_field_name = _aux_table.Searches[s].SearchParameters[f].ParamName;%><%=""%>
-			<%=(_aux_field.isNullable && !_aux_table.isVirtualTable) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field_name%>_search_in<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
+			<%=(_aux_field.isNullable && !_aux_field.isPK) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field_name%>_search_in<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
 			}
 			%><%=(_aux_table.Searches[s].SearchParameters.Count != 0) ? ", " : ""%>
 			bool fullmode_in, 
@@ -296,11 +296,11 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			for (int f = 0; f < _aux_table.Searches[s].SearchParameters.Count; f++) {
 				_aux_field = _aux_table.Searches[s].SearchParameters[f].Field;
 				_aux_field_name = _aux_table.Searches[s].SearchParameters[f].ParamName;%><%=""%>
-			<%=(_aux_field.isNullable && !_aux_table.isVirtualTable) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field_name%>_search_in, <%
+			<%=(_aux_field.isNullable && !_aux_field.isPK) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field_name%>_search_in, <%
 			}
 			for (int f = 0; f < _aux_table.Searches[s].Updates[u].UpdateParameters.Count; f++) {
 				_aux_field = _aux_table.Searches[s].Updates[u].UpdateParameters[f].Field;%><%=""%>
-			<%=(_aux_field.isNullable && !_aux_table.isVirtualTable) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field.Name%>_update_in<%=(f != _aux_table.Searches[s].Updates[u].UpdateParameters.Count - 1) ? ", " : ""%><%
+			<%=(_aux_field.isNullable && !_aux_field.isPK) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field.Name%>_update_in<%=(f != _aux_table.Searches[s].Updates[u].UpdateParameters.Count - 1) ? ", " : ""%><%
 			}%>
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {<%
@@ -340,13 +340,13 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		public bool hasObject_<%=_aux_table.Searches[s].Name%>(<%
 			for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 				_aux_field = _aux_table.Fields_onlyPK[k];%><%=""%>
-			<%=(_aux_field.isNullable && !_aux_table.isVirtualTable) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field.Name%>_in<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
+			<%=(_aux_field.isNullable && !_aux_field.isPK) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field.Name%>_in<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
 			}
 			for (int f = 0; f < _aux_table.Searches[s].SearchParameters.Count; f++) {
 				_aux_field = _aux_table.Searches[s].SearchParameters[f].Field;
 				_aux_field_name = _aux_table.Searches[s].SearchParameters[f].ParamName;
 			%>, 
-			<%=(_aux_field.isNullable && !_aux_table.isVirtualTable) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field_name%>_search_in<%
+			<%=(_aux_field.isNullable && !_aux_field.isPK) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field_name%>_search_in<%
 			}%>
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {<%
@@ -383,7 +383,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			for (int f = 0; f < _aux_table.Searches[s].SearchParameters.Count; f++) {
 				_aux_field = _aux_table.Searches[s].SearchParameters[f].Field;
 				_aux_field_name = _aux_table.Searches[s].SearchParameters[f].ParamName;%><%=""%>
-			<%=(_aux_field.isNullable && !_aux_table.isVirtualTable) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field_name%>_search_in<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
+			<%=(_aux_field.isNullable && !_aux_field.isPK) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field_name%>_search_in<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
 			}%>
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {<%
@@ -416,7 +416,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			for (int f = 0; f < _aux_table.Searches[s].SearchParameters.Count; f++) {
 				_aux_field = _aux_table.Searches[s].SearchParameters[f].Field;
 				_aux_field_name = _aux_table.Searches[s].SearchParameters[f].ParamName;%><%=""%>
-			<%=(_aux_field.isNullable && !_aux_table.isVirtualTable) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field_name%>_search_in<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
+			<%=(_aux_field.isNullable && !_aux_field.isPK) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field_name%>_search_in<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
 			}%>
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {<%

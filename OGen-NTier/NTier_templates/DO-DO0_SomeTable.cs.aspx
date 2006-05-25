@@ -125,7 +125,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		for (int f = 0; f < _aux_table.Fields.Count; f++) {
 			_aux_field = _aux_table.Fields[f];
 
-			if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%>
+			if (_aux_field.isNullable && !_aux_field.isPK) {%>
 		#region public virtual bool <%=_aux_field.Name%>_isNull { get; set; }
 		public virtual bool <%=_aux_field.Name%>_isNull {
 			get { return (<%=_aux_field.Name.ToLower()%>_ == null); }
@@ -134,7 +134,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		#endregion<%
 			}%>
 		#region public virtual <%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%> { get; set; }
-		internal <%=(_aux_field.isNullable && !_aux_table.isVirtualTable) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field.Name.ToLower()%>_;// = <%=(_aux_field.DefaultValue == "") ? _aux_field.DBType_generic.FWEmptyValue : _aux_field.DefaultValue%>;
+		internal <%=(_aux_field.isNullable && !_aux_field.isPK) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field.Name.ToLower()%>_;// = <%=(_aux_field.DefaultValue == "") ? _aux_field.DBType_generic.FWEmptyValue : _aux_field.DefaultValue%>;
 		
 		/// <summary>
 		/// <%=_aux_table.Name%>'s <%=_aux_field.Name%>.
@@ -142,7 +142,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		[DOPropertyAttribute("<%=_aux_field.Name%>", <%=_aux_field.isPK.ToString().ToLower()%>, <%=_aux_field.isIdentity.ToString().ToLower()%>, <%=_aux_field.isNullable.ToString().ToLower()%>, <%=(_aux_field.DefaultValue == string.Empty) ? "\"\"" : _aux_field.DefaultValue%>, "<%=_aux_field.FK_TableName%>", "<%=_aux_field.FK_FieldName%>", <%=_aux_field.isConfig_Name.ToString().ToLower()%>, <%=_aux_field.isConfig_Config.ToString().ToLower()%>, <%=_aux_field.isConfig_Datatype.ToString().ToLower()%>, <%=_aux_field.isBool.ToString().ToLower()%>, <%=_aux_field.isDateTime.ToString().ToLower()%>, <%=_aux_field.isInt.ToString().ToLower()%>, <%=_aux_field.isDecimal.ToString().ToLower()%>, <%=_aux_field.isText.ToString().ToLower()%>)]
 		public virtual <%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%> {
 			get {<%
-			if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%>
+			if (_aux_field.isNullable && !_aux_field.isPK) {%>
 				return (<%=_aux_field.DBType_generic.FWType%>)((<%=_aux_field.Name.ToLower()%>_ == null) ? <%=(_aux_field.DefaultValue == "") ? _aux_field.DBType_generic.FWEmptyValue : _aux_field.DefaultValue%> : <%=_aux_field.Name.ToLower()%>_);<%
 			} else {%>
 				return <%=_aux_field.Name.ToLower()%>_;<%
@@ -167,7 +167,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		public virtual void clrObject() {<%
 			for (int f = 0; f < _aux_table.Fields.Count; f++) {
 				_aux_field = _aux_table.Fields[f];
-				if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%><%=""%>
+				if (_aux_field.isNullable && !_aux_field.isPK) {%><%=""%>
 			<%=_aux_field.Name%>_isNull = true;<%
 				} else {%><%=""%>
 			<%=_aux_field.Name%> = <%=(_aux_field.DefaultValue == "") ? _aux_field.DBType_generic.FWEmptyValue : _aux_field.DefaultValue%>;<%
@@ -218,7 +218,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 					for (int f = 0; f < _aux_table.Fields.Count; f++) {
 						_aux_field = _aux_table.Fields[f];%>
 					if (_dataparameters[<%=f%>].Value == System.DBNull.Value) {<%
-						if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%><%=""%>
+						if (_aux_field.isNullable && !_aux_field.isPK) {%><%=""%>
 						<%=_aux_field.Name%>_isNull = true;<%
 						} else {%><%=""%>
 						<%=_aux_field.Name.ToLower()%>_ = <%=_aux_field.DBType_generic.FWEmptyValue%>;<%
@@ -559,7 +559,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				for (int f = 0; f < _aux_table.Fields.Count; f++) {
 					_aux_field = _aux_table.Fields[f];%>
 				if (_dataparameters[<%=_aux_table.Searches[s].SearchParameters.Count + f%>].Value == System.DBNull.Value) {<%
-					if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%><%=""%>
+					if (_aux_field.isNullable && !_aux_field.isPK) {%><%=""%>
 					<%=_aux_field.Name%>_isNull = true;<%
 					} else {%><%=""%>
 					<%=_aux_field.Name.ToLower()%>_ = <%=_aux_field.DBType_generic.FWEmptyValue%>;<%

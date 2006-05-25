@@ -122,7 +122,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 		for (int f = 0; f < _aux_table.Fields.Count; f++) {
 			_aux_field = _aux_table.Fields[f];
 
-			if (_aux_field.isNullable && !_aux_table.isVirtualTable) {%>
+			if (_aux_field.isNullable && !_aux_field.isPK) {%>
 		#region public virtual bool <%=_aux_field.Name%>_isNull { get; set; }
 		public virtual bool <%=_aux_field.Name%>_isNull {
 			get { return mainAggregate.<%=_aux_field.Name%>_isNull; }
