@@ -33,8 +33,14 @@ string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryStr
 #endregion
 
 #region varaux...
-cDBMetadata _aux_metadata = new cDBMetadata();
-_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
+cDBMetadata _aux_metadata;
+if (cDBMetadata.Metacache.Contains(_arg_MetadataFilepath)) {
+	_aux_metadata = (cDBMetadata)cDBMetadata.Metacache[_arg_MetadataFilepath];
+} else {
+	_aux_metadata = new cDBMetadata();
+	_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
+	cDBMetadata.Metacache.Add(_arg_MetadataFilepath, _aux_metadata);
+}
 
 //cDBMetadata_Table _aux_table;
 //cDBMetadata_Table_Field _aux_field;

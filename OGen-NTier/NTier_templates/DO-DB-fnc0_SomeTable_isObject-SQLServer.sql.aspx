@@ -37,8 +37,14 @@ string _arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["Ta
 #region varaux...
 eDBServerTypes _aux_dbservertype = eDBServerTypes.SQLServer;
 
-cDBMetadata _aux_metadata = new cDBMetadata();
-_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
+cDBMetadata _aux_metadata;
+if (cDBMetadata.Metacache.Contains(_arg_MetadataFilepath)) {
+	_aux_metadata = (cDBMetadata)cDBMetadata.Metacache[_arg_MetadataFilepath];
+} else {
+	_aux_metadata = new cDBMetadata();
+	_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
+	cDBMetadata.Metacache.Add(_arg_MetadataFilepath, _aux_metadata);
+}
 cDBMetadata_Table _aux_table = _aux_metadata.Tables[_arg_TableName];
 int _aux_table_hasidentitykey = _aux_table.hasIdentityKey();
 

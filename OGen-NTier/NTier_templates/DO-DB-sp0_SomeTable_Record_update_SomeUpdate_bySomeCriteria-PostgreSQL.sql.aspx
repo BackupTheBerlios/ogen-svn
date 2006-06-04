@@ -39,8 +39,14 @@ string _arg_UpdateName = System.Web.HttpUtility.UrlDecode(Request.QueryString["U
 #region varaux...
 eDBServerTypes _aux_dbservertype = eDBServerTypes.PostgreSQL;
 
-cDBMetadata _aux_metadata = new cDBMetadata();
-_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
+cDBMetadata _aux_metadata;
+if (cDBMetadata.Metacache.Contains(_arg_MetadataFilepath)) {
+	_aux_metadata = (cDBMetadata)cDBMetadata.Metacache[_arg_MetadataFilepath];
+} else {
+	_aux_metadata = new cDBMetadata();
+	_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
+	cDBMetadata.Metacache.Add(_arg_MetadataFilepath, _aux_metadata);
+}
 cDBMetadata_Table _aux_table = _aux_metadata.Tables[_arg_TableName];
 cDBMetadata_Table_Search _aux_search = _aux_table.Searches[_arg_SearchName];
 cDBMetadata_Update update = _aux_search.Updates[_arg_UpdateName];

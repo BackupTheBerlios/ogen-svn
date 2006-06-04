@@ -76,6 +76,11 @@ namespace OGen.NTier.lib.datalayer {
 		bool Read(bool doNOTgetObject_in);
 
 		/// <summary>
+		/// Points current iteration to the Beginning of the Record.
+		/// </summary>
+		void Reset();
+
+		/// <summary>
 		/// Indicates if current iteration is at the End Of Record.
 		/// </summary>
 		/// <returns>True if iteration has reached the End Of Record, False if not.</returns>

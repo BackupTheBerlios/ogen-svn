@@ -137,6 +137,20 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 		#endregion
 
+
+//		#region public static Hashtable Metacache { get; }
+		private static Hashtable metacache__;
+		public static Hashtable Metacache {
+			get {
+				if (metacache__ == null) {
+					metacache__ = new Hashtable();
+				}
+				return metacache__;
+			}
+		}
+//		#endregion
+
+
 //		#region Properties - ClaSSe...
 		#region public string ApplicationName { get; set; }
 		private string applicationname_;
