@@ -85,7 +85,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 
 					parent_ref_.haschanges_ = false;
 				} else {
-					parent_ref_.idgroup_ = (base.Record.Rows[Current]["IDGroup"] == System.DBNull.Value) ? 0L : (long)base.Record.Rows[Current]["IDGroup"];
+					parent_ref_.idgroup_ = (long)((base.Record.Rows[Current]["IDGroup"] == System.DBNull.Value) ? 0L : base.Record.Rows[Current]["IDGroup"]);
 
 					if (!doNOTgetObject_in) {
 						parent_ref_.getObject();

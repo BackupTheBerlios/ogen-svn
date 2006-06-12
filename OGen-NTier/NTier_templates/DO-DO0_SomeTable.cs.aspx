@@ -134,8 +134,10 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			if (_aux_field.isNullable && !_aux_field.isPK) {%>
 		#region public virtual bool <%=_aux_field.Name%>_isNull { get; set; }
 		public virtual bool <%=_aux_field.Name%>_isNull {
-			get { return (<%=_aux_field.Name.ToLower()%>_ == null); }
-			set { if (value) <%=_aux_field.Name.ToLower()%>_ = null; }
+			get { return (<%=_aux_field.Name.ToLower()%>_ == null); }<%
+			if (!_aux_table.isVirtualTable) {%>
+			set { if (value) <%=_aux_field.Name.ToLower()%>_ = null; }<%
+			}%>
 		}
 		#endregion<%
 			}%>

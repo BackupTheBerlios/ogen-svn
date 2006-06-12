@@ -100,8 +100,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 
 					parent_ref_.haschanges_ = false;
 				} else {
-					parent_ref_.iduser_ = (base.Record.Rows[Current]["IDUser"] == System.DBNull.Value) ? 0L : (long)base.Record.Rows[Current]["IDUser"];
-					parent_ref_.login_ = (base.Record.Rows[Current]["Login"] == System.DBNull.Value) ? string.Empty : (string)base.Record.Rows[Current]["Login"];
+					parent_ref_.iduser_ = (long)((base.Record.Rows[Current]["IDUser"] == System.DBNull.Value) ? 0L : base.Record.Rows[Current]["IDUser"]);
+					parent_ref_.login_ = (string)((base.Record.Rows[Current]["Login"] == System.DBNull.Value) ? string.Empty : base.Record.Rows[Current]["Login"]);
 
 					if (!doNOTgetObject_in) {
 						parent_ref_.getObject();

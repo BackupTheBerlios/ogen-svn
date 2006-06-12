@@ -90,7 +90,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 
 					parent_ref_.haschanges_ = false;
 				} else {
-					parent_ref_.name_ = (base.Record.Rows[Current]["Name"] == System.DBNull.Value) ? string.Empty : (string)base.Record.Rows[Current]["Name"];
+					parent_ref_.name_ = (string)((base.Record.Rows[Current]["Name"] == System.DBNull.Value) ? string.Empty : base.Record.Rows[Current]["Name"]);
 
 					if (!doNOTgetObject_in) {
 						parent_ref_.getObject();

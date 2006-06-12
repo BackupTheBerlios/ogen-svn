@@ -59,7 +59,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 			_vuserdefaultgroup.Login = "123";
 			_vuserdefaultgroup.IDGroup = 123L;
 			_vuserdefaultgroup.Name = "123";
-			_vuserdefaultgroup.Relationdate = new DateTime(1234, 12, 12);
+			_vuserdefaultgroup.Relationdate = new DateTime(2341, 12, 12);
 			// setObject(); // ToDos: here!
 
 

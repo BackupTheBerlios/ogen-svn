@@ -145,7 +145,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		[DOPropertyAttribute("Relationdate", false, false, true, "", "", "", false, false, false, false, true, false, false, false)]
 		public virtual DateTime Relationdate {
 			get {
-				return (relationdate_ == null) ? new DateTime(1900, 1, 1) : (DateTime)relationdate_;
+				return (DateTime)((relationdate_ == null) ? new DateTime(1900, 1, 1) : relationdate_);
 			}
 			set {
 				if (!value.Equals(relationdate_)) {
@@ -170,7 +170,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		[DOPropertyAttribute("Defaultrelation", false, false, true, "", "", "", false, false, false, true, false, false, false, false)]
 		public virtual bool Defaultrelation {
 			get {
-				return (defaultrelation_ == null) ? false : (bool)defaultrelation_;
+				return (bool)((defaultrelation_ == null) ? false : defaultrelation_);
 			}
 			set {
 				if (!value.Equals(defaultrelation_)) {
