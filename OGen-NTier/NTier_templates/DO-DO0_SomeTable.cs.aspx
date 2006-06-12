@@ -135,7 +135,8 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		#region public virtual bool <%=_aux_field.Name%>_isNull { get; set; }
 		public virtual bool <%=_aux_field.Name%>_isNull {
 			get { return (<%=_aux_field.Name.ToLower()%>_ == null); }<%
-			if (!_aux_table.isVirtualTable) {%>
+			// ToDos: here! fmonteiro
+			if (true || !_aux_table.isVirtualTable) {%>
 			set { if (value) <%=_aux_field.Name.ToLower()%>_ = null; }<%
 			}%>
 		}
