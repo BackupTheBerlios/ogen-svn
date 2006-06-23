@@ -137,7 +137,10 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			get { return (<%=_aux_field.Name.ToLower()%>_ == null); }<%
 			// ToDos: here! fmonteiro
 			if (true || !_aux_table.isVirtualTable) {%>
-			set { if (value) <%=_aux_field.Name.ToLower()%>_ = null; }<%
+			set {
+				if ((value) && (<%=_aux_field.Name.ToLower()%>_ == null)) haschanges_ = true;
+				if (value) <%=_aux_field.Name.ToLower()%>_ = null;
+			}<%
 			}%>
 		}
 		#endregion<%
