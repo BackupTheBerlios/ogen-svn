@@ -30,6 +30,7 @@ along with OGen; if not, write to the
 */
 #endregion
 using System;
+using System.Text;
 using System.Data;
 using System.Data.Odbc;
 using System.Data.OleDb;
@@ -108,17 +109,35 @@ namespace OGen.lib.datalayer {
 	/// </example>
 	#endregion
 	public sealed class cDBConnection : IDisposable {
-		#region public cDBConnection(...);
+//		#region public cDBConnection(...);
 		/// <param name="dbServerType_in">DataBase Server Type</param>
 		/// <param name="connectionstring_in">Connection String</param>
 		public cDBConnection(
 			eDBServerTypes dbServerType_in, 
 			string connectionstring_in
 		) {
+Log_enabled = false;
+Log = null;
 			dbservertype_		= dbServerType_in;
 			isopen_				= false;
 			connectionstring_	= connectionstring_in;
 		}
+
+		/// <param name="dbServerType_in">DataBase Server Type</param>
+		/// <param name="connectionstring_in">Connection String</param>
+		/// <param name="Log_out">Output Log</param>
+		public cDBConnection(
+			eDBServerTypes dbServerType_in, 
+			string connectionstring_in, 
+ref StringBuilder Log_out
+		) : this (
+			dbServerType_in, 
+			connectionstring_in
+		) {
+Log_enabled = true;
+Log = Log_out;
+		}
+
 		///
 		~cDBConnection() {
 			cleanUp();
@@ -137,7 +156,7 @@ namespace OGen.lib.datalayer {
 				transaction__.Dispose(); transaction__ = null;
 			}
 		}
-		#endregion
+//		#endregion
 
 		#region Exceptions...
 		#region public static readonly Exception InvalidConnectionstringException_empty;
@@ -156,6 +175,8 @@ namespace OGen.lib.datalayer {
 		#endregion
 		#endregion
 
+private bool Log_enabled;
+private StringBuilder Log;
 		#region public Properties...
 		#region public eDBServerTypes DBServerType { get; }
 		private eDBServerTypes dbservertype_;
@@ -346,7 +367,7 @@ namespace OGen.lib.datalayer {
 		}
 		#endregion
 		#endregion
-		#region public Methods...
+//		#region public Methods...
 		#region public string Connectionstring_database();
 		/// <summary>
 		/// Parses the ConnectionString to look for DataBase name.
@@ -541,9 +562,13 @@ namespace OGen.lib.datalayer {
 		}
 		#endregion
 		//---
-		#region public void Execute_SQLQuery(...);
-		#region private void Execute_SQLQuery(...);
+//		#region public void Execute_SQLQuery(...);
+//		#region private void Execute_SQLQuery(...);
 		private void Execute_SQLQuery(string query_in, IDbCommand command_in) {
+
+if (Log != null)
+	Log.Append(string.Format("sql query: {0}", query_in));
+
 			command_in.CommandType = CommandType.Text;
 			try {
 				command_in.ExecuteNonQuery();
@@ -558,7 +583,7 @@ namespace OGen.lib.datalayer {
 				);
 			}
 		}
-		#endregion
+//		#endregion
 		#region public void Execute_SQLQuery(string query_in);
 		/// <summary>
 		/// Executes an SQL Query on DataBase.
@@ -605,14 +630,18 @@ namespace OGen.lib.datalayer {
 			}
 		}
 		#endregion
-		#endregion
-		#region public DataSet Execute_SQLQuery_returnDataSet(...);
-		#region private DataSet Execute_SQLQuery_returnDataSet(...);
+//		#endregion
+//		#region public DataSet Execute_SQLQuery_returnDataSet(...);
+//		#region private DataSet Execute_SQLQuery_returnDataSet(...);
 		private DataSet Execute_SQLQuery_returnDataSet(string query_in, IDbConnection connection_in) {
 			DataSet Execute_SQLQuery_returnDataSet_out;
 
 			IDbDataAdapter _dataadapter = newDBDataAdapter(query_in, connection_in, true);
 			try {
+
+if (Log != null)
+	Log.Append(string.Format("sql query: {0}", query_in));
+
 				Execute_SQLQuery_returnDataSet_out = new DataSet();
 				_dataadapter.Fill(Execute_SQLQuery_returnDataSet_out);
 			} catch (Exception e) {
@@ -630,7 +659,7 @@ namespace OGen.lib.datalayer {
 
 			return Execute_SQLQuery_returnDataSet_out;
 		}
-		#endregion
+//		#endregion
 		#region public DataSet Execute_SQLQuery_returnDataSet(string query_in);
 		/// <summary>
 		/// Executes an SQL Query on DataBase.
@@ -670,7 +699,7 @@ namespace OGen.lib.datalayer {
 			return Execute_SQLQuery_returnDataSet_out;
 		}
 		#endregion
-		#endregion
+//		#endregion
 		#region public DataTable Execute_SQLQuery_returnDataTable(string query_);
 		/// <summary>
 		/// Executes an SQL Query on DataBase.
@@ -689,8 +718,8 @@ namespace OGen.lib.datalayer {
 			return Execute_SQLQuery_returnDataTable_out;
 		}
 		#endregion
-		#region public object Execute_SQLFunction(...);
-		#region private object Execute_SQLFunction(...);
+//		#region public object Execute_SQLFunction(...);
+//		#region private object Execute_SQLFunction(...);
 		private object Execute_SQLFunction(
 			string function_in, 
 			IDbDataParameter[] dataParameters_in, 
@@ -698,6 +727,10 @@ namespace OGen.lib.datalayer {
 			DbType returnValue_DbType_in, 
 			int returnValue_Size_in
 		) {
+
+if (Log != null)
+	Log.Append(string.Format("sql function: {0}", function_in));
+
 			object Execute_SQLFunction_out = null;
 			#region command_.Parameters = dataParameters_in;
 			for (int i = 0; i < dataParameters_in.Length; i++) {
@@ -802,7 +835,7 @@ namespace OGen.lib.datalayer {
 
 			return Execute_SQLFunction_out;
 		}
-		#endregion
+//		#endregion
 		#region public object Execute_SQLFunction(string function_in);
 		/// <summary>
 		/// Executes an SQL Function on DataBase.
@@ -904,10 +937,14 @@ namespace OGen.lib.datalayer {
 			return Execute_SQLFunction_out;
 		}
 		#endregion
-		#endregion
-		#region public DataSet Execute_SQLFunction_returnDataSet(...);
-		#region private DataSet Execute_SQLFunction_returnDataSet(...);
+//		#endregion
+//		#region public DataSet Execute_SQLFunction_returnDataSet(...);
+//		#region private DataSet Execute_SQLFunction_returnDataSet(...);
 		private DataSet Execute_SQLFunction_returnDataSet(string function_in, IDbDataParameter[] dataParameters_in, IDbConnection connection_in) {
+
+if (Log != null)
+	Log.Append(string.Format("sql function: {0}", function_in));
+
 			DataSet Execute_SQLFunction_returnDataSet_out;
 
 			IDbDataAdapter _dataadapter = newDBDataAdapter(
@@ -940,7 +977,7 @@ namespace OGen.lib.datalayer {
 
 			return Execute_SQLFunction_returnDataSet_out;
 		}
-		#endregion
+//		#endregion
 		#region public DataSet Execute_SQLFunction_returnDataSet(string function_in);
 		/// <summary>
 		/// Executes an SQL Function on DataBase.
@@ -997,7 +1034,7 @@ namespace OGen.lib.datalayer {
 			return Execute_SQLFunction_returnDataSet_out;
 		}
 		#endregion
-		#endregion
+//		#endregion
 		#region public DataTable Execute_SQLFunction_returnDataTable(...);
 		#region public DataTable Execute_SQLFunction_returnDataTable(string function_in);
 		/// <summary>
@@ -1909,6 +1946,6 @@ ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 			return getTableFields_out;
 		}
 		#endregion
-		#endregion
+//		#endregion
 	}
 }

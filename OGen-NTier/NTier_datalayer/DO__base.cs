@@ -30,6 +30,7 @@ along with OGen; if not, write to the
 */
 #endregion
 using System;
+using System.Text;
 using System.Data;
 
 using OGen.lib.datalayer;
@@ -39,7 +40,7 @@ namespace OGen.NTier.lib.datalayer {
 	/// base implementation class for DataObject classes.
 	/// </summary>
 	public abstract class DO__base : IDisposable {
-		#region public DO__base(...);
+//		#region public DO__base(...);
 		/// <param name="connection_in">DB Connection</param>
 		public DO__base(
 			cDBConnection	connection_in
@@ -59,7 +60,21 @@ namespace OGen.NTier.lib.datalayer {
 			dbServerType_in, 
 			connectionstring_in, 
 			true // connection_insideInstance_in
-		) {}
+		) {
+Log_enabled_ = false;
+Log_ = null;
+		}
+		public DO__base(
+			eDBServerTypes		dbServerType_in, 
+			string				connectionstring_in, 
+ref StringBuilder	log_out
+		) : this (
+			dbServerType_in, 
+			connectionstring_in
+		) {
+Log_enabled_ = true;
+Log_ = log_out;
+		}
 		private DO__base(
 			cDBConnection	connection_in, 
 			eDBServerTypes	dbServerType_in, 
@@ -89,10 +104,12 @@ namespace OGen.NTier.lib.datalayer {
 				}
 			}
 		}
-		#endregion
+//		#endregion
 
+private bool Log_enabled_;
+private StringBuilder Log_;
 		//#region Properties...
-		#region public cDBConnection Connection { get; }
+//		#region public cDBConnection Connection { get; }
 		private bool			connection_insideinstance_;
 		private eDBServerTypes	connection_dbservertype_;
 		private string			connection_connectionstring_;
@@ -110,15 +127,24 @@ namespace OGen.NTier.lib.datalayer {
 					// instantiating for the first time and
 					// only because it became needed, otherwise
 					// never instantiated...
-					connection_ = new cDBConnection(
-						connection_dbservertype_, 
-						connection_connectionstring_
-					);
+
+					if (Log_enabled_) {
+						connection_ = new cDBConnection(
+							connection_dbservertype_, 
+							connection_connectionstring_, 
+							ref Log_
+						);
+					} else {
+						connection_ = new cDBConnection(
+							connection_dbservertype_, 
+							connection_connectionstring_
+						);
+					}
 				}
 				return connection_;
 			}
 		}
-		#endregion
+//		#endregion
 		//#endregion
 	}
 }
