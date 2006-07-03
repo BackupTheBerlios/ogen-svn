@@ -30,11 +30,11 @@ along with OGen; if not, write to the
 */
 #endregion
 using System;
-using System.Text;
 using System.Data;
 using System.Data.Odbc;
 using System.Data.OleDb;
 using System.Data.SqlClient;
+using System.IO;
 using Npgsql;
 using MySql.Data.MySqlClient;
 
@@ -116,26 +116,32 @@ namespace OGen.lib.datalayer {
 			eDBServerTypes dbServerType_in, 
 			string connectionstring_in
 		) {
-Log_enabled = false;
-Log = null;
-			dbservertype_		= dbServerType_in;
-			isopen_				= false;
-			connectionstring_	= connectionstring_in;
+			Logenabled = false;
+			Logfile = null;
+
+			dbservertype_ = dbServerType_in;
+			isopen_ = false;
+			connectionstring_ = connectionstring_in;
 		}
 
 		/// <param name="dbServerType_in">DataBase Server Type</param>
 		/// <param name="connectionstring_in">Connection String</param>
-		/// <param name="Log_out">Output Log</param>
+		/// <param name="Logfile_in">Log File</param>
 		public cDBConnection(
 			eDBServerTypes dbServerType_in, 
 			string connectionstring_in, 
-ref StringBuilder Log_out
+			string Logfile_in
 		) : this (
 			dbServerType_in, 
 			connectionstring_in
 		) {
-Log_enabled = true;
-Log = Log_out;
+			if (Logfile_in == null) {
+				Logenabled = false;
+				Logfile = null;
+			} else {
+				Logenabled = true;
+				Logfile = Logfile_in;
+			}
 		}
 
 		///
@@ -175,8 +181,10 @@ Log = Log_out;
 		#endregion
 		#endregion
 
-private bool Log_enabled;
-private StringBuilder Log;
+		#region private Properties...
+		private bool Logenabled;
+		private string Logfile;
+		#endregion
 		#region public Properties...
 		#region public eDBServerTypes DBServerType { get; }
 		private eDBServerTypes dbservertype_;
@@ -245,6 +253,19 @@ private StringBuilder Log;
 		#endregion
 
 		#region private Methods...
+		#region private void Log(string value_in);
+		private void Log(string type_in, string value_in) {
+			StreamWriter _writer = new StreamWriter(Logfile, true);
+			_writer.WriteLine(string.Format(
+				"{0} - {1}: {2}", 
+				DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), 
+				type_in, 
+				value_in
+			));
+			_writer.Close();
+			_writer.Dispose();
+		}
+		#endregion
 		#region private IDbConnection newDBConnection();
 		private IDbConnection newDBConnection() {
 			switch (dbservertype_) {
@@ -566,8 +587,9 @@ private StringBuilder Log;
 //		#region private void Execute_SQLQuery(...);
 		private void Execute_SQLQuery(string query_in, IDbCommand command_in) {
 
-if (Log != null)
-	Log.Append(string.Format("sql query: {0}", query_in));
+if (Logenabled) {
+	Log("sql query", query_in);
+}
 
 			command_in.CommandType = CommandType.Text;
 			try {
@@ -639,8 +661,9 @@ if (Log != null)
 			IDbDataAdapter _dataadapter = newDBDataAdapter(query_in, connection_in, true);
 			try {
 
-if (Log != null)
-	Log.Append(string.Format("sql query: {0}", query_in));
+if (Logenabled) {
+	Log("sql query", query_in);
+}
 
 				Execute_SQLQuery_returnDataSet_out = new DataSet();
 				_dataadapter.Fill(Execute_SQLQuery_returnDataSet_out);
@@ -728,8 +751,9 @@ if (Log != null)
 			int returnValue_Size_in
 		) {
 
-if (Log != null)
-	Log.Append(string.Format("sql function: {0}", function_in));
+if (Logenabled) {
+	Log("sql function", function_in);
+}
 
 			object Execute_SQLFunction_out = null;
 			#region command_.Parameters = dataParameters_in;
@@ -942,8 +966,9 @@ if (Log != null)
 //		#region private DataSet Execute_SQLFunction_returnDataSet(...);
 		private DataSet Execute_SQLFunction_returnDataSet(string function_in, IDbDataParameter[] dataParameters_in, IDbConnection connection_in) {
 
-if (Log != null)
-	Log.Append(string.Format("sql function: {0}", function_in));
+if (Logenabled) {
+	Log("sql function", function_in);
+}
 
 			DataSet Execute_SQLFunction_returnDataSet_out;
 

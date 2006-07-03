@@ -48,7 +48,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		internal DO0_UserGroup(
 		) : base(
 			DO0__utils.DBServerType, 
-			DO0__utils.DBConnectionstring
+			DO0__utils.DBConnectionstring, 
+			DO0__utils.DBLogfile
 		) {
 			clrObject();
 			haschanges_ = false;
@@ -133,7 +134,14 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		#region public virtual bool Relationdate_isNull { get; set; }
 		public virtual bool Relationdate_isNull {
 			get { return (relationdate_ == null); }
-			set { if (value) relationdate_ = null; }
+			set {
+				//if (value) relationdate_ = null;
+
+				if ((value) && (relationdate_ != null)) {
+					relationdate_ = null;
+					haschanges_ = true;
+				}
+			}
 		}
 		#endregion
 		#region public virtual DateTime Relationdate { get; set; }
@@ -158,7 +166,14 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		#region public virtual bool Defaultrelation_isNull { get; set; }
 		public virtual bool Defaultrelation_isNull {
 			get { return (defaultrelation_ == null); }
-			set { if (value) defaultrelation_ = null; }
+			set {
+				//if (value) defaultrelation_ = null;
+
+				if ((value) && (defaultrelation_ != null)) {
+					defaultrelation_ = null;
+					haschanges_ = true;
+				}
+			}
 		}
 		#endregion
 		#region public virtual bool Defaultrelation { get; set; }

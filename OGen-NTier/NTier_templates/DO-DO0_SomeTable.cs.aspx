@@ -81,7 +81,8 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		internal DO0_<%=_aux_table.Name%>(
 		) : base(
 			DO0__utils.DBServerType, 
-			DO0__utils.DBConnectionstring
+			DO0__utils.DBConnectionstring, 
+			DO0__utils.DBLogfile
 		) {
 			clrObject();
 			haschanges_ = false;

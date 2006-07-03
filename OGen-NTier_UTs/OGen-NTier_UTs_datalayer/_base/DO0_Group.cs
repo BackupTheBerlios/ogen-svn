@@ -48,7 +48,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		internal DO0_Group(
 		) : base(
 			DO0__utils.DBServerType, 
-			DO0__utils.DBConnectionstring
+			DO0__utils.DBConnectionstring, 
+			DO0__utils.DBLogfile
 		) {
 			clrObject();
 			haschanges_ = false;

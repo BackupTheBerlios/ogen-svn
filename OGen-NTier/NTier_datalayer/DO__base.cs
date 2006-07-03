@@ -30,7 +30,6 @@ along with OGen; if not, write to the
 */
 #endregion
 using System;
-using System.Text;
 using System.Data;
 
 using OGen.lib.datalayer;
@@ -48,7 +47,8 @@ namespace OGen.NTier.lib.datalayer {
 			connection_in, 
 			eDBServerTypes.invalid, 
 			string.Empty, 
-			false // connection_insideInstance_in
+			false, // connection_insideInstance_in
+			null
 		) {}
 		/// <param name="dbServerType_in">DB Server Type</param>
 		/// <param name="connectionstring_in">Connection String</param>
@@ -59,32 +59,39 @@ namespace OGen.NTier.lib.datalayer {
 			null, 
 			dbServerType_in, 
 			connectionstring_in, 
-			true // connection_insideInstance_in
-		) {
-Log_enabled_ = false;
-Log_ = null;
-		}
+			true, // connection_insideInstance_in
+			null
+		) {}
 		public DO__base(
 			eDBServerTypes		dbServerType_in, 
 			string				connectionstring_in, 
-ref StringBuilder	log_out
+			string				logfile_in
 		) : this (
+			null, 
 			dbServerType_in, 
-			connectionstring_in
-		) {
-Log_enabled_ = true;
-Log_ = log_out;
-		}
+			connectionstring_in, 
+			true, // connection_insideInstance_in
+			logfile_in
+		) {}
 		private DO__base(
-			cDBConnection	connection_in, 
-			eDBServerTypes	dbServerType_in, 
-			string			connectionstring_in, 
-			bool			connection_insideInstance_in
+			cDBConnection		connection_in, 
+			eDBServerTypes		dbServerType_in, 
+			string				connectionstring_in, 
+			bool				connection_insideInstance_in,
+			string				logfile_in
 		) {
-			connection_						= connection_in;
-			connection_dbservertype_		= dbServerType_in;
-			connection_connectionstring_	= connectionstring_in;
-			connection_insideinstance_		= connection_insideInstance_in;
+			connection_ = connection_in;
+			connection_dbservertype_ = dbServerType_in;
+			connection_connectionstring_ = connectionstring_in;
+			connection_insideinstance_ = connection_insideInstance_in;
+
+			if (logfile_in == null) {
+				logenabled_ = false;
+				logfile_ = null;
+			} else {
+				logenabled_ = true;
+				logfile_ = logfile_in;
+			}
 		}
 		///
 		~DO__base() {
@@ -106,14 +113,14 @@ Log_ = log_out;
 		}
 //		#endregion
 
-private bool Log_enabled_;
-private StringBuilder Log_;
 		//#region Properties...
 //		#region public cDBConnection Connection { get; }
 		private bool			connection_insideinstance_;
 		private eDBServerTypes	connection_dbservertype_;
 		private string			connection_connectionstring_;
 		private cDBConnection	connection_;
+		private bool			logenabled_;
+		private string			logfile_;
 		/// <summary>
 		/// DB Connection.
 		/// </summary>
@@ -128,15 +135,15 @@ private StringBuilder Log_;
 					// only because it became needed, otherwise
 					// never instantiated...
 
-					if (Log_enabled_) {
+					if (logenabled_) {
 						connection_ = new cDBConnection(
-							connection_dbservertype_, 
-							connection_connectionstring_, 
-							ref Log_
+							connection_dbservertype_,
+							connection_connectionstring_,
+							logfile_
 						);
 					} else {
 						connection_ = new cDBConnection(
-							connection_dbservertype_, 
+							connection_dbservertype_,
 							connection_connectionstring_
 						);
 					}

@@ -51,6 +51,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		static DO0__utils() {
 			dbservertype__ = eDBServerTypes.invalid;
 			dbconnectionstring__ = null;
+			dblogfile__ = string.Empty;
 		}
 		#endregion
 
@@ -82,6 +83,23 @@ namespace OGen.NTier.UTs.lib.datalayer {
 					DBConnectionstring_read(false);
 				}
 				return dbconnectionstring__;
+			}
+		}
+		#endregion
+		#region public static string DBLogfile { get; }
+		private static string dblogfile__;
+
+		public static string DBLogfile {
+			get {
+				if (dblogfile__ == string.Empty) {
+					if (System.Configuration.ConfigurationSettings.AppSettings["DBLogfile"] == null) {
+						dblogfile__ = null;
+					} else {
+						dblogfile__ = System.Configuration.ConfigurationSettings.AppSettings["DBLogfile"];
+					}
+					
+				}
+				return dblogfile__;
 			}
 		}
 		#endregion
