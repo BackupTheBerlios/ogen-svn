@@ -253,17 +253,47 @@ namespace OGen.lib.datalayer {
 		#endregion
 
 		#region private Methods...
-		#region private void Log(string value_in);
-		private void Log(string type_in, string value_in) {
+		#region private void Log(...);
+		private void Log(
+			string type_in, 
+			string value_in
+		) {
+			Log(type_in, value_in, null);
+		}
+		private void Log(
+			string type_in, 
+			string value_in, 
+			IDbDataParameter[] dataParameters_in
+		) {
+			string _parameters = string.Empty;
+			if (dataParameters_in == null) {
+			} else {
+				_parameters = "(";
+				for (int i = 0; i < dataParameters_in.Length; i++) {
+					_parameters += 
+						string.Format(
+							"{0}:{1}{2}", 
+							dataParameters_in[i].ParameterName, 
+							(dataParameters_in[i].Value == null) ? 
+								"null" : 
+								dataParameters_in[i].Value.ToString(), 
+							(i != (dataParameters_in.Length -1)) ? 
+								", " : 
+								string.Empty
+						);
+				}
+				_parameters += ")";
+			}
+
 			StreamWriter _writer = new StreamWriter(Logfile, true);
 			_writer.WriteLine(string.Format(
-				"{0} - {1}: {2}", 
+				"{0} - {1}: {2}{3}", 
 				DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), 
 				type_in, 
-				value_in
+				value_in, 
+				_parameters
 			));
-			_writer.Close();
-			_writer.Dispose();
+			_writer.Close(); //_writer.Dispose();
 		}
 		#endregion
 		#region private IDbConnection newDBConnection();
@@ -752,7 +782,7 @@ if (Logenabled) {
 		) {
 
 if (Logenabled) {
-	Log("sql function", function_in);
+	Log("sql function", function_in, dataParameters_in);
 }
 
 			object Execute_SQLFunction_out = null;
@@ -967,7 +997,7 @@ if (Logenabled) {
 		private DataSet Execute_SQLFunction_returnDataSet(string function_in, IDbDataParameter[] dataParameters_in, IDbConnection connection_in) {
 
 if (Logenabled) {
-	Log("sql function", function_in);
+	Log("sql function", function_in, dataParameters_in);
 }
 
 			DataSet Execute_SQLFunction_returnDataSet_out;
