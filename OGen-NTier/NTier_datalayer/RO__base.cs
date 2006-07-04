@@ -159,6 +159,9 @@ namespace OGen.NTier.lib.datalayer {
 				#endregion
 
 				record__ = value;
+				current__ = -1;
+				fullmode__ = true; // ToDos: here!
+				isopened_ = true;
 			}
 		}
 		#endregion
