@@ -152,6 +152,14 @@ namespace OGen.NTier.lib.datalayer {
 
 				return record__;
 			}
+			set {
+				#region Checking...
+				if (isopened_)
+					throw InvalidRecordStateException_alreadyOpened;
+				#endregion
+
+				record__ = value;
+			}
 		}
 		#endregion
 		#endregion
