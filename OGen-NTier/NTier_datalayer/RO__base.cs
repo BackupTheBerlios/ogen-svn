@@ -152,17 +152,18 @@ namespace OGen.NTier.lib.datalayer {
 
 				return record__;
 			}
-			set {
-				#region Checking...
-				if (isopened_)
-					throw InvalidRecordStateException_alreadyOpened;
-				#endregion
-
-				record__ = value;
-				current__ = -1;
-				fullmode__ = true; // ToDos: here!
-				isopened_ = true;
-			}
+//--- use: RO__base.Open(bool fullmode_in, DataTable dataTable_in) instead
+//			set {
+//				#region Checking...
+//				if (isopened_)
+//					throw InvalidRecordStateException_alreadyOpened;
+//				#endregion
+//
+//				record__ = value;
+//				current__ = -1;
+//				fullmode__ = true; // ToDos: here!
+//				isopened_ = true;
+//			}
 		}
 		#endregion
 		#endregion
