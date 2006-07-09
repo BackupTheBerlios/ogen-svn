@@ -14,6 +14,8 @@ BEGIN
 
 	RETURN @isObject
 END
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc0_Group_isObject](
 	@IDGroup_ bigint
@@ -31,6 +33,8 @@ BEGIN
 
 	RETURN @isObject
 END
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc0_User_isObject](
 	@IDUser_ bigint
@@ -48,6 +52,8 @@ BEGIN
 
 	RETURN @isObject
 END
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc0_UserGroup_isObject](
 	@IDUser_ bigint, 
@@ -67,6 +73,8 @@ BEGIN
 
 	RETURN @isObject
 END
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc0_vUserDefaultGroup_isObject](
 	@IDUser_ bigint
@@ -84,6 +92,8 @@ BEGIN
 
 	RETURN @isObject
 END
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc0_vUserGroup_isObject](
 	@IDUser_ bigint, 
@@ -103,6 +113,8 @@ BEGIN
 
 	RETURN @isObject
 END
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_Config_setObject]
 	@Name_ varchar (50), 
@@ -153,6 +165,8 @@ AS
 	IF (@ConstraintExist = 1) BEGIN
 		SET @Output_ = @Output_ + 2
 	END
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_UserGroup_setObject]
 	@IDUser_ bigint, 
@@ -208,6 +222,8 @@ AS
 	IF (@ConstraintExist = 1) BEGIN
 		SET @Output_ = @Output_ + 2
 	END
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_Config_delObject]
 	@Name_ varchar (50)
@@ -215,19 +231,31 @@ AS
 	DELETE
 	FROM [Config]
 	WHERE
-		([Name] = @Name_)CREATE PROCEDURE [dbo].[sp0_Group_delObject]
+		([Name] = @Name_)
+--GO
+
+
+CREATE PROCEDURE [dbo].[sp0_Group_delObject]
 	@IDGroup_ bigint
 AS
 	DELETE
 	FROM [Group]
 	WHERE
-		([IDGroup] = @IDGroup_)CREATE PROCEDURE [dbo].[sp0_User_delObject]
+		([IDGroup] = @IDGroup_)
+--GO
+
+
+CREATE PROCEDURE [dbo].[sp0_User_delObject]
 	@IDUser_ bigint
 AS
 	DELETE
 	FROM [User]
 	WHERE
-		([IDUser] = @IDUser_)CREATE PROCEDURE [dbo].[sp0_UserGroup_delObject]
+		([IDUser] = @IDUser_)
+--GO
+
+
+CREATE PROCEDURE [dbo].[sp0_UserGroup_delObject]
 	@IDUser_ bigint, 
 	@IDGroup_ bigint
 AS
@@ -235,7 +263,11 @@ AS
 	FROM [UserGroup]
 	WHERE
 		([IDUser] = @IDUser_) AND
-		([IDGroup] = @IDGroup_)CREATE FUNCTION [dbo].[fnc_User_isObject_byLogin](
+		([IDGroup] = @IDGroup_)
+--GO
+
+
+CREATE FUNCTION [dbo].[fnc_User_isObject_byLogin](
 	@Login_search_ varchar (50)
 )
 RETURNS @finalresult TABLE (
@@ -252,6 +284,8 @@ BEGIN
 
 	RETURN
 END
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc_Config_Record_open_all](
 )
@@ -262,6 +296,8 @@ RETURN
 		[Name]
 	FROM [Config]/*
 	WHERE*/
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc_User_Record_open_all](
 )
@@ -272,6 +308,8 @@ RETURN
 		[IDUser]
 	FROM [User]/*
 	WHERE*/
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc_User_Record_open_byGroup](
 	@IDGroup_search_ bigint
@@ -284,6 +322,8 @@ RETURN
 	FROM [User]/*
 	WHERE
 		([IDGroup] = @IDGroup_search_)*/
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc_UserGroup_Record_open_byUser_Defaultrelation](
 	@IDUser_search_ bigint, 
@@ -307,6 +347,8 @@ RETURN
 			AND
 			([Relationdate] = @Relationdate_search_)
 		))
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc_vUserDefaultGroup_Record_open_all](
 )
@@ -317,6 +359,8 @@ RETURN
 		[IDUser]
 	FROM [vUserDefaultGroup]/*
 	WHERE*/
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp_Config_Record_open_all]
 AS
@@ -333,6 +377,8 @@ AS
 
 	-- CHANGE ORDER BY HERE:
 	-- ORDER BY t1.[SomeField]
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp_User_Record_open_all]
 AS
@@ -349,6 +395,8 @@ AS
 
 	-- CHANGE ORDER BY HERE:
 	-- ORDER BY t1.[SomeField]
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp_User_Record_open_byGroup]
 	@IDGroup_search_ bigint
@@ -367,6 +415,8 @@ AS
 
 	-- CHANGE ORDER BY HERE:
 	-- ORDER BY t1.[SomeField]
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp_UserGroup_Record_open_byUser_Defaultrelation]
 	@IDUser_search_ bigint, 
@@ -389,6 +439,8 @@ AS
 
 	-- CHANGE ORDER BY HERE:
 	-- ORDER BY t1.[SomeField]
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp_vUserDefaultGroup_Record_open_all]
 AS
@@ -405,6 +457,8 @@ AS
 
 	-- CHANGE ORDER BY HERE:
 	-- ORDER BY t1.[SomeField]
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_Config_getObject]
 	@Name_ varchar (50) OUT, 
@@ -426,6 +480,8 @@ AS
 	IF (@exists = 0) BEGIN
 		SET @Name_ = NULL
 	END
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_Group_getObject]
 	@IDGroup_ bigint OUT, 
@@ -445,6 +501,8 @@ AS
 	IF (@exists = 0) BEGIN
 		SET @IDGroup_ = NULL
 	END
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_User_getObject]
 	@IDUser_ bigint OUT, 
@@ -466,6 +524,8 @@ AS
 	IF (@exists = 0) BEGIN
 		SET @IDUser_ = NULL
 	END
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_UserGroup_getObject]
 	@IDUser_ bigint OUT, 
@@ -491,6 +551,8 @@ AS
 		SET @IDUser_ = NULL
 		SET @IDGroup_ = NULL
 	END
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_vUserDefaultGroup_getObject]
 	@IDUser_ bigint OUT, 
@@ -516,6 +578,8 @@ AS
 	IF (@exists = 0) BEGIN
 		SET @IDUser_ = NULL
 	END
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_vUserGroup_getObject]
 	@IDUser_ bigint OUT, 
@@ -543,6 +607,8 @@ AS
 		SET @IDUser_ = NULL
 		SET @IDGroup_ = NULL
 	END
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_User_getObject_byLogin]
 	@Login_search_ varchar (50), 
@@ -570,6 +636,8 @@ AS
 		SET @Login = NULL
 		SET @Password = NULL
 	END
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_Config_Record_open_all_fullmode]
 AS
@@ -598,6 +666,8 @@ AS
 	-- NOT HERE!
 
 	DROP TABLE [#Table_temp]
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_User_Record_open_all_fullmode]
 AS
@@ -626,6 +696,8 @@ AS
 	-- NOT HERE!
 
 	DROP TABLE [#Table_temp]
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_User_Record_open_byGroup_fullmode]
 	@IDGroup_search_ bigint
@@ -655,6 +727,8 @@ AS
 	-- NOT HERE!
 
 	DROP TABLE [#Table_temp]
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_UserGroup_Record_open_byUser_Defaultrelation_fullmode]
 	@IDUser_search_ bigint, 
@@ -689,6 +763,8 @@ AS
 	-- NOT HERE!
 
 	DROP TABLE [#Table_temp]
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_vUserDefaultGroup_Record_open_all_fullmode]
 AS
@@ -719,6 +795,8 @@ AS
 	-- NOT HERE!
 
 	DROP TABLE [#Table_temp]
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_Config_Record_open_all_page]
 	@page_ Int,
@@ -758,6 +836,8 @@ AS
 	DROP TABLE [#Table_temp]
 
 	SET NOCOUNT OFF
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_User_Record_open_all_page]
 	@page_ Int,
@@ -797,6 +877,8 @@ AS
 	DROP TABLE [#Table_temp]
 
 	SET NOCOUNT OFF
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_User_Record_open_byGroup_page]
 	@IDGroup_search_ bigint, 
@@ -837,6 +919,8 @@ AS
 	DROP TABLE [#Table_temp]
 
 	SET NOCOUNT OFF
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_UserGroup_Record_open_byUser_Defaultrelation_page]
 	@IDUser_search_ bigint, 
@@ -882,6 +966,8 @@ AS
 	DROP TABLE [#Table_temp]
 
 	SET NOCOUNT OFF
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_vUserDefaultGroup_Record_open_all_page]
 	@page_ Int,
@@ -921,6 +1007,8 @@ AS
 	DROP TABLE [#Table_temp]
 
 	SET NOCOUNT OFF
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_Config_Record_open_all_page_fullmode]
 	@page_ Int,
@@ -962,6 +1050,8 @@ AS
 	DROP TABLE [#Table_temp]
 
 	SET NOCOUNT OFF
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_User_Record_open_all_page_fullmode]
 	@page_ Int,
@@ -1003,6 +1093,8 @@ AS
 	DROP TABLE [#Table_temp]
 
 	SET NOCOUNT OFF
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_User_Record_open_byGroup_page_fullmode]
 	@IDGroup_search_ bigint, 
@@ -1045,6 +1137,8 @@ AS
 	DROP TABLE [#Table_temp]
 
 	SET NOCOUNT OFF
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_UserGroup_Record_open_byUser_Defaultrelation_page_fullmode]
 	@IDUser_search_ bigint, 
@@ -1092,6 +1186,8 @@ AS
 	DROP TABLE [#Table_temp]
 
 	SET NOCOUNT OFF
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_vUserDefaultGroup_Record_open_all_page_fullmode]
 	@page_ Int,
@@ -1135,6 +1231,8 @@ AS
 	DROP TABLE [#Table_temp]
 
 	SET NOCOUNT OFF
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_User_Record_update_SomeUpdateTest_byGroup]
 	@IDGroup_search_ bigint, 
@@ -1147,7 +1245,11 @@ AS
 		@IDGroup_search_
 	) t1
 	WHERE
-		(t1.[IDUser] = [User].[IDUser])CREATE PROCEDURE [dbo].[sp0_UserGroup_Record_update_SomeUpdateTest_byUser_Defaultrelation]
+		(t1.[IDUser] = [User].[IDUser])
+--GO
+
+
+CREATE PROCEDURE [dbo].[sp0_UserGroup_Record_update_SomeUpdateTest_byUser_Defaultrelation]
 	@IDUser_search_ bigint, 
 	@Relationdate_search_ datetime, 
 	@Relationdate_update_ datetime
@@ -1161,7 +1263,11 @@ AS
 	) t1
 	WHERE
 		(t1.[IDUser] = [UserGroup].[IDUser]) AND
-		(t1.[IDGroup] = [UserGroup].[IDGroup])CREATE PROCEDURE [dbo].[sp0_User_updObject_SomeUpdateTest]
+		(t1.[IDGroup] = [UserGroup].[IDGroup])
+--GO
+
+
+CREATE PROCEDURE [dbo].[sp0_User_updObject_SomeUpdateTest]
 	@IDUser_ bigint, 
 	@Password_update_ varchar (50), 
 	@ConstraintExist_ Bit OUT
@@ -1178,7 +1284,11 @@ AS
 			[Password] = @Password_update_
 		WHERE
 			([IDUser] = @IDUser_)
-	ENDCREATE FUNCTION [dbo].[fnc0_User__ConstraintExist](
+	END
+--GO
+
+
+CREATE FUNCTION [dbo].[fnc0_User__ConstraintExist](
 	@IDUser bigint, 
 	@Login varchar (50), 
 	@Password varchar (50)
@@ -1203,6 +1313,8 @@ BEGIN
 		
 	RETURN @ConstraintExist
 END
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc0_User_isObject_byLogin](
 	@Login_search_ varchar (50)
@@ -1221,6 +1333,8 @@ BEGIN
 
 	RETURN @isObject
 END
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc0_Config_Record_count_all](
 )
@@ -1235,6 +1349,8 @@ BEGIN
 
 	RETURN @Record_count_out
 END
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc0_User_Record_count_all](
 )
@@ -1249,6 +1365,8 @@ BEGIN
 
 	RETURN @Record_count_out
 END
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc0_User_Record_count_byGroup](
 	@IDGroup_search_ bigint
@@ -1265,6 +1383,8 @@ BEGIN
 
 	RETURN @Record_count_out
 END
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc0_UserGroup_Record_count_byUser_Defaultrelation](
 	@IDUser_search_ bigint, 
@@ -1283,6 +1403,8 @@ BEGIN
 
 	RETURN @Record_count_out
 END
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc0_vUserDefaultGroup_Record_count_all](
 )
@@ -1297,6 +1419,8 @@ BEGIN
 
 	RETURN @Record_count_out
 END
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc0_Config_Record_hasObject_all](
 	@Name_ varchar (50)
@@ -1314,6 +1438,8 @@ BEGIN
 
 	RETURN @Record_hasObject_out
 END
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc0_User_Record_hasObject_all](
 	@IDUser_ bigint
@@ -1331,6 +1457,8 @@ BEGIN
 
 	RETURN @Record_hasObject_out
 END
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc0_User_Record_hasObject_byGroup](
 	@IDUser_ bigint, 
@@ -1350,6 +1478,8 @@ BEGIN
 
 	RETURN @Record_hasObject_out
 END
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc0_UserGroup_Record_hasObject_byUser_Defaultrelation](
 	@IDUser_ bigint, 
@@ -1373,6 +1503,8 @@ BEGIN
 
 	RETURN @Record_hasObject_out
 END
+--GO
+
 
 CREATE FUNCTION [dbo].[fnc0_vUserDefaultGroup_Record_hasObject_all](
 	@IDUser_ bigint
@@ -1390,6 +1522,8 @@ BEGIN
 
 	RETURN @Record_hasObject_out
 END
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_Group_insObject]
 	@IDGroup_ bigint OUT, 
@@ -1405,7 +1539,11 @@ AS
 			SET @IDGroup_ = @@IDENTITY
 		END ELSE BEGIN
 			SET @IDGroup_ = CAST(0 AS bigint)
-		ENDCREATE PROCEDURE [dbo].[sp0_User_insObject]
+		END
+--GO
+
+
+CREATE PROCEDURE [dbo].[sp0_User_insObject]
 	@IDUser_ bigint OUT, 
 	@Login_ varchar (50), 
 	@Password_ varchar (50), 
@@ -1432,7 +1570,11 @@ AS
 		END
 	END ELSE BEGIN
 		SET @IDUser_ = CAST(-1 AS bigint)
-	ENDCREATE PROCEDURE [dbo].[sp0_Group_updObject]
+	END
+--GO
+
+
+CREATE PROCEDURE [dbo].[sp0_Group_updObject]
 	@IDGroup_ bigint, 
 	@Name_ varchar (50)
 AS
@@ -1440,7 +1582,11 @@ AS
 		SET
 			[Name] = @Name_
 		WHERE
-			[IDGroup] = @IDGroup_CREATE PROCEDURE [dbo].[sp0_User_updObject]
+			[IDGroup] = @IDGroup_
+--GO
+
+
+CREATE PROCEDURE [dbo].[sp0_User_updObject]
 	@IDUser_ bigint, 
 	@Login_ varchar (50), 
 	@Password_ varchar (50), 
@@ -1459,7 +1605,11 @@ AS
 			[Password] = @Password_
 		WHERE
 			[IDUser] = @IDUser_
-	ENDCREATE PROCEDURE [dbo].[sp0_User_delObject_byLogin]
+	END
+--GO
+
+
+CREATE PROCEDURE [dbo].[sp0_User_delObject_byLogin]
 	@Login_search_ varchar (50), 
 
 	@Exists_ BIT OUT
@@ -1481,6 +1631,8 @@ AS
 		WHERE
 			([IDUser] = @IDUser)
 	END
+--GO
+
 
 CREATE PROCEDURE [dbo].[sp0_Config_Record_delete_all]
 AS
@@ -1488,13 +1640,21 @@ AS
 	FROM [Config] t1
 	INNER JOIN [dbo].[fnc_Config_Record_open_all](
 	) t2 ON
-		(t2.[Name] = t1.[Name])CREATE PROCEDURE [dbo].[sp0_User_Record_delete_all]
+		(t2.[Name] = t1.[Name])
+--GO
+
+
+CREATE PROCEDURE [dbo].[sp0_User_Record_delete_all]
 AS
 	DELETE [User]
 	FROM [User] t1
 	INNER JOIN [dbo].[fnc_User_Record_open_all](
 	) t2 ON
-		(t2.[IDUser] = t1.[IDUser])CREATE PROCEDURE [dbo].[sp0_User_Record_delete_byGroup]
+		(t2.[IDUser] = t1.[IDUser])
+--GO
+
+
+CREATE PROCEDURE [dbo].[sp0_User_Record_delete_byGroup]
 	@IDGroup_search_ bigint
 AS
 	DELETE [User]
@@ -1502,7 +1662,11 @@ AS
 	INNER JOIN [dbo].[fnc_User_Record_open_byGroup](
 		@IDGroup_search_
 	) t2 ON
-		(t2.[IDUser] = t1.[IDUser])CREATE PROCEDURE [dbo].[sp0_UserGroup_Record_delete_byUser_Defaultrelation]
+		(t2.[IDUser] = t1.[IDUser])
+--GO
+
+
+CREATE PROCEDURE [dbo].[sp0_UserGroup_Record_delete_byUser_Defaultrelation]
 	@IDUser_search_ bigint, 
 	@Relationdate_search_ datetime
 AS
@@ -1514,3 +1678,6 @@ AS
 	) t2 ON
 		(t2.[IDUser] = t1.[IDUser]) AND
 		(t2.[IDGroup] = t1.[IDGroup])
+--GO
+
+

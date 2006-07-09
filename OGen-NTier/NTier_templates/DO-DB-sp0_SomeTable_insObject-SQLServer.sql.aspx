@@ -94,6 +94,8 @@ AS<%
 		SET @<%=_aux_table.Fields[_aux_table_hasidentitykey]%>_ = CAST(-1 AS <%=_aux_table.Fields[_aux_table_hasidentitykey].DBs[_aux_dbservertype].DBType_inDB_name%>)
 	END<%
 	}%>
+--GO
+
 
 <%
 //-----------------------------------------------------------------------------------------

@@ -103,6 +103,8 @@ if (_aux_table_searches_hasexplicituniqueindex) {%>
 if (_aux_table_searches_hasexplicituniqueindex) {%>
 	END<%
 }%>
+--GO
+
 
 <%
 //-----------------------------------------------------------------------------------------
