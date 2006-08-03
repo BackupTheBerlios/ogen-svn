@@ -65,7 +65,7 @@ AS
 	SELECT<%
 	for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 		_aux_field = _aux_table.Fields_onlyPK[k];%>
-	t1.[<%=_aux_field.Name%>]<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
+		t1.[<%=_aux_field.Name%>]<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
 	}%>
 	FROM [<%=_aux_table.Name%>] t1
 	INNER JOIN [dbo].[fnc_<%=_aux_table.Name%>_Record_open_<%=_aux_search.Name%>](<%
