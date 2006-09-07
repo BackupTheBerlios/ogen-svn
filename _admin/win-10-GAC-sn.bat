@@ -33,8 +33,16 @@ IF '%8' == 't' GOTO eof
 IF NOT '%1' == '' GOTO copysharedkey
 
 
-IF EXIST "C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" CALL "C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" x86
-IF NOT EXIST "C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" CALL "c:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat"
+SET SetEnvironmentPath=
+IF EXIST "C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat" SET SetEnvironmentPath="c:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat"
+IF EXIST "C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" SET SetEnvironmentPath="C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" x86
+IF '%SetEnvironmentPath%' == '' GOTO error1
+CALL %SetEnvironmentPath%
+
+
+IF NOT EXIST "OGen-solutions.txt" GOTO error2
+IF NOT EXIST "OGen-projects.txt" GOTO error3
+
 
 :makekey
 	IF EXIST OGen.no-svn.snk GOTO eof_makekey
@@ -60,6 +68,26 @@ PAUSE
 GOTO eof
 
 
+:error1
+	ECHO.
+	ECHO.
+	ECHO Can't set environment for Microsoft Visual Studio .NET tools
+	PAUSE
+GOTO eof
+:error2
+	ECHO.
+	ECHO.
+	ECHO Can't find file 'OGen-solutions.txt'
+	PAUSE
+GOTO eof
+:error3
+	ECHO.
+	ECHO.
+	ECHO Can't find file 'OGen-projects.txt'
+	PAUSE
+GOTO eof
+
+
 :copysharedkey
 	IF NOT EXIST ..\%1\OGen-shared.snk GOTO copysharedkey_copy
 		ATTRIB -r -h -s ..\%1\OGen-shared.snk
@@ -71,3 +99,4 @@ GOTO eof
 
 
 :eof
+SET SetEnvironmentPath=

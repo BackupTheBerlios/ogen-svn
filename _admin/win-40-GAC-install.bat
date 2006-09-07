@@ -31,10 +31,23 @@ IF '%9' == 'f' GOTO eof
 IF NOT '%1' == '' GOTO install
 
 
-IF EXIST "C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" CALL "C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" x86
-IF NOT EXIST "C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" CALL "c:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat"
+SET SetEnvironmentPath=
+IF EXIST "C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat" SET SetEnvironmentPath="c:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat"
+IF EXIST "C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" SET SetEnvironmentPath="C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" x86
+IF '%SetEnvironmentPath%' == '' GOTO error1
+CALL %SetEnvironmentPath%
+
+
 FOR /F "tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (OGen-projects.txt) DO CALL %0 %%a %%b %%c %%d %%e %%f %%g %%h %%i
 PAUSE
+GOTO eof
+
+
+:error1
+	ECHO.
+	ECHO.
+	ECHO Can't set environment for Microsoft Visual Studio .NET tools
+	PAUSE
 GOTO eof
 
 
@@ -62,3 +75,4 @@ GOTO eof
 
 :eof
 SET binDir=
+SET SetEnvironmentPath=
