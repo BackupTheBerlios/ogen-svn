@@ -29,6 +29,10 @@
 IF NOT '%1' == '' GOTO install_step1
 
 
+IF NOT EXIST "OGen-solutions.txt" GOTO error2
+IF NOT EXIST "OGen-projects.txt" GOTO error3
+
+
 SET license_gpl=f
 FOR /F "tokens=1,2,3,4,5,6,7 delims=, " %%a IN (OGen-projects.txt) DO IF '%%g' == 'GNU_GPL' SET license_gpl=t
 SET license_lgpl=f
@@ -65,6 +69,20 @@ FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\COP
 FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\LICENSE.FDL.txt DEL /q /f ..\%%a\LICENSE.FDL.txt
 FOR /F "tokens=1,2,3,4,5,6,7,8 delims=, " %%a IN (OGen-projects.txt) DO CALL %0 %%a %%b %%c %%d %%e %%f %%g %%h
 PAUSE
+GOTO eof
+
+
+:error2
+	ECHO.
+	ECHO.
+	ECHO Can't find file 'OGen-solutions.txt'
+	PAUSE
+GOTO eof
+:error3
+	ECHO.
+	ECHO.
+	ECHO Can't find file 'OGen-projects.txt'
+	PAUSE
 GOTO eof
 
 

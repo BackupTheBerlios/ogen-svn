@@ -29,6 +29,10 @@
 IF NOT '%1' == '' GOTO test
 
 
+IF NOT EXIST "OGen-solutions.txt" GOTO error2
+IF NOT EXIST "OGen-projects.txt" GOTO error3
+
+
 ECHO about to delete binaries and objects for present solution
 ECHO are you sure?
 PAUSE
@@ -50,6 +54,20 @@ FOR /F "tokens=1,2,3,4,5,6,7,8 delims=, " %%a IN (OGen-projects.txt) DO CALL %0 
 ::---/ ToDos: here!
 
 PAUSE
+GOTO eof
+
+
+:error2
+	ECHO.
+	ECHO.
+	ECHO Can't find file 'OGen-solutions.txt'
+	PAUSE
+GOTO eof
+:error3
+	ECHO.
+	ECHO.
+	ECHO Can't find file 'OGen-projects.txt'
+	PAUSE
 GOTO eof
 
 

@@ -32,10 +32,14 @@ IF NOT '%1' == '' GOTO install
 
 
 SET SetEnvironmentPath=
-IF EXIST "C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat" SET SetEnvironmentPath="c:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat"
-IF EXIST "C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" SET SetEnvironmentPath="C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" x86
+IF '%SetEnvironmentPath%' == '' IF EXIST "C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat" SET SetEnvironmentPath="c:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat"
+IF '%SetEnvironmentPath%' == '' IF EXIST "C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" SET SetEnvironmentPath="C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" x86
 IF '%SetEnvironmentPath%' == '' GOTO error1
 CALL %SetEnvironmentPath%
+
+
+IF NOT EXIST "OGen-solutions.txt" GOTO error2
+IF NOT EXIST "OGen-projects.txt" GOTO error3
 
 
 FOR /F "tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (OGen-projects.txt) DO CALL %0 %%a %%b %%c %%d %%e %%f %%g %%h %%i
@@ -47,6 +51,18 @@ GOTO eof
 	ECHO.
 	ECHO.
 	ECHO Can't set environment for Microsoft Visual Studio .NET tools
+	PAUSE
+GOTO eof
+:error2
+	ECHO.
+	ECHO.
+	ECHO Can't find file 'OGen-solutions.txt'
+	PAUSE
+GOTO eof
+:error3
+	ECHO.
+	ECHO.
+	ECHO Can't find file 'OGen-projects.txt'
 	PAUSE
 GOTO eof
 
