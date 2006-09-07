@@ -43,6 +43,8 @@ Subject _subject_next = _subject.NextSubject();
 Subject[] _howtogethere_fromroot = _subject.HowToGetHere_fromRoot();
 
 bool _isFirst;
+string _topic;
+bool _topic_found;
 #endregion
 //-----------------------------------------------------------------------------------------
 %>
@@ -71,10 +73,20 @@ bool _isFirst;
 								&gt;
 								<a href="index.html">
 									Documentation</a><%
+
+								_topic = string.Empty;
+								_topic_found = false;
 								for (int i = 0; i < _howtogethere_fromroot.Length; i++) {
 									_subject_parent = _howtogethere_fromroot[i];
 									bool _same = (i > _howtogethere_fromroot.Length - 2);
-									
+
+									if (!_topic_found) {
+										_topic += "/" + _subject_parent.Name;
+										if (_same) {
+											_topic_found = true;
+										}
+									}
+
 									Response.Write(" &gt; ");
 									if (!_same) {
 										Response.Write(string.Format(
@@ -84,7 +96,7 @@ bool _isFirst;
 									} else {
 										Response.Write("<b>");
 									}
-									
+
 									Response.Write(_subject_parent.Name);
 									if (!_same) {
 										Response.Write("</a>");
@@ -181,7 +193,7 @@ bool _isFirst;
 					<table cellpadding="5" cellspacing="5" width="100%" border="0">
 						<tr>
 							<td align="left" valign="top">
-								<a href="mailto:<%=_aux_doc.FeedbackEmailAddress%>?subject=<%=_aux_doc.DocumentationName%>/Help-<%=_arg_IDSubject%>.html">Send comments on this topic.</a>
+								<a href="mailto:<%=_aux_doc.FeedbackEmailAddress%>?subject=<%=_topic%><%--= string.Format("{0}/Help{1}.html", _aux_doc.DocumentationName, _arg_IDSubject)--%>">Send comments on this topic.</a>
 								<br>
 								<a href="LICENSE.FDL.txt"><%=_aux_doc.CopyrightText%></a>
 							</td>
