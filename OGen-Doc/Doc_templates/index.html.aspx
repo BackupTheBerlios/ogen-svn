@@ -100,7 +100,7 @@ _aux_doc.LoadState_fromFile(_arg_MetadataFilepath);
 
 					<span class="text">
 						&gt; <a target="_new" href="NDoc/index.html">SDK Documentation</a><br>
-						system development kit on <%=_aux_doc.DocumentationName%><br>
+						software development kit on <%=_aux_doc.DocumentationName%><br>
 					</span>
 
 					<br>
