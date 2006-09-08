@@ -35,6 +35,7 @@ using System.Data.Odbc;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.IO;
+using System.Text;
 using Npgsql;
 using MySql.Data.MySqlClient;
 
@@ -265,12 +266,12 @@ namespace OGen.lib.datalayer {
 			string value_in, 
 			IDbDataParameter[] dataParameters_in
 		) {
-			string _parameters = string.Empty;
+			StringBuilder _parameters = new StringBuilder(string.Empty);
 			if (dataParameters_in == null) {
 			} else {
-				_parameters = "(";
+				_parameters.Append("(");
 				for (int i = 0; i < dataParameters_in.Length; i++) {
-					_parameters += 
+					_parameters.Append(
 						string.Format(
 							"{0}:{1}{2}", 
 							dataParameters_in[i].ParameterName, 
@@ -280,9 +281,10 @@ namespace OGen.lib.datalayer {
 							(i != (dataParameters_in.Length -1)) ? 
 								", " : 
 								string.Empty
-						);
+						)
+					);
 				}
-				_parameters += ")";
+				_parameters.Append(")");
 			}
 
 			StreamWriter _writer = new StreamWriter(Logfile, true);
@@ -291,7 +293,7 @@ namespace OGen.lib.datalayer {
 				DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), 
 				type_in, 
 				value_in, 
-				_parameters
+				_parameters.ToString()
 			));
 			_writer.Close(); //_writer.Dispose();
 		}
@@ -1466,34 +1468,38 @@ WHERE
 		public string[] getBDs() {
 			string[] getBDs_out;
 
-			string _query = "";
+			string _query;
 			switch (dbservertype_) {
 				case eDBServerTypes.SQLServer:
 				case eDBServerTypes.PostgreSQL: {
-					_query += "SELECT CATALOG_NAME ";
-					_query += "FROM INFORMATION_SCHEMA.SCHEMATA ";
-					_query += "WHERE ";
-					_query += "	(CATALOG_NAME != 'master') ";
-					_query += "	AND ";
-					_query += "	(CATALOG_NAME != 'tempdb') ";
-					_query += "	AND ";
-					_query += "	(CATALOG_NAME != 'model') ";
-					_query += "	AND ";
-					_query += "	(CATALOG_NAME != 'msdb') ";
-					_query += "	AND ";
-					_query += "	(CATALOG_NAME != 'pubs') ";
-					_query += "GROUP BY CATALOG_NAME ";
-					_query += "ORDER BY CATALOG_NAME ";
+					_query = @"
+SELECT CATALOG_NAME 
+FROM INFORMATION_SCHEMA.SCHEMATA 
+WHERE
+	(CATALOG_NAME != 'master') 
+	AND
+	(CATALOG_NAME != 'tempdb') 
+	AND 
+	(CATALOG_NAME != 'model') 
+	AND 
+	(CATALOG_NAME != 'msdb') 
+	AND 
+	(CATALOG_NAME != 'pubs') 
+GROUP BY CATALOG_NAME 
+ORDER BY CATALOG_NAME"
+					;
 					break;
 				}
 				case eDBServerTypes.MySQL: {
-					_query += "SELECT SCHEMA_NAME ";
-					_query += "FROM INFORMATION_SCHEMA.SCHEMATA ";
-					_query += "WHERE ";
-					_query += "	(SCHEMA_NAME != 'information_schema') ";
-					_query += "	AND ";
-					_query += "	(SCHEMA_NAME != 'mysql') ";
-					_query += "ORDER BY SCHEMA_NAME ";
+					_query = @"
+SELECT SCHEMA_NAME 
+FROM INFORMATION_SCHEMA.SCHEMATA 
+WHERE 
+	(SCHEMA_NAME != 'information_schema') 
+	AND 
+	(SCHEMA_NAME != 'mysql') 
+ORDER BY SCHEMA_NAME"
+					;
 					break;
 				}
 				default: {
@@ -1537,12 +1543,12 @@ WHERE
 		) {
 			cDBTable[] getTables_out;
 
-			string _query = "";
+			StringBuilder _query = new StringBuilder(string.Empty);
 			switch (dbservertype_) {
 				case eDBServerTypes.SQLServer:
 				case eDBServerTypes.PostgreSQL: {
-					#region query += "SELECT ...";
-					_query += @"
+					#region query.Append("SELECT ...");
+					_query.Append(@"
 SELECT
 	TABLE_NAME AS ""Name"",
 	CASE
@@ -1580,19 +1586,18 @@ WHERE
 	(TABLE_NAME NOT LIKE '%__base')
 	AND
 	(TABLE_SCHEMA NOT LIKE 'information_schema')
-";
+");
 					if (subAppName_in != "" ) {
-						_query += "	AND ";
-						_query += "	(TABLE_NAME LIKE '" + subAppName_in + "%') ";
+						_query.Append(string.Format("AND (TABLE_NAME LIKE '{0}%') ", subAppName_in));
 					}
-					_query += @"ORDER BY ""Name"" ";
+					_query.Append(@"ORDER BY ""Name"" ");
 					#endregion
 					break;
 				}
 				case eDBServerTypes.MySQL: {
 					string _database = Connectionstring_database();
-					#region query += "SELECT ...";
-					_query += string.Format(@"
+					#region _query.Append("SELECT ...");
+					_query.Append(string.Format(@"
 SELECT
 	TABLE_NAME AS ""Name"",
 	CASE
@@ -1612,12 +1617,11 @@ WHERE
 	(TABLE_SCHEMA = '{0}')
 ", 
 						_database
-					);
+					));
 					if (subAppName_in != "" ) {
-						_query += "	AND ";
-						_query += "	(TABLE_NAME LIKE '" + subAppName_in + "%') ";
+						_query.Append(string.Format("AND (TABLE_NAME LIKE '{0}%') ", subAppName_in));
 					}
-					_query += @"ORDER BY ""Name"" ";
+					_query.Append(@"ORDER BY ""Name"" ");
 					#endregion
 					break;
 				}
@@ -1625,8 +1629,8 @@ WHERE
 					throw new Exception("not implemented");
 				}
 			}
-			#region getTables_out = base.Execute_SQLQuery_returnDataTable(_query);
-			DataTable _dtemp = Execute_SQLQuery_returnDataTable(_query);
+			#region getTables_out = base.Execute_SQLQuery_returnDataTable(_query.ToString());
+			DataTable _dtemp = Execute_SQLQuery_returnDataTable(_query.ToString());
 			getTables_out = new cDBTable[_dtemp.Rows.Count];
 			for (int r = 0; r < _dtemp.Rows.Count; r++)
 				getTables_out[r] = new cDBTable(
@@ -1650,11 +1654,11 @@ WHERE
 		) {
 			cDBTableField[] getTableFields_out;
 
-			string _query = "";
+			string _query;
 			switch (dbservertype_) {
 				case eDBServerTypes.SQLServer: {
-					#region _query += "SELECT ...";
-					_query += @"
+					#region _query = "SELECT ...";
+					_query = string.Format(@"
 SELECT
 	t1.COLUMN_NAME AS ""Name"", 
 	CASE
@@ -1799,15 +1803,17 @@ FROM INFORMATION_SCHEMA.COLUMNS AS t1
 		(t6.TABLE_NAME = t1.TABLE_NAME)
 --WHERE (t1.TABLE_NAME LIKE 'vUserGroup%') --OR (t1.TABLE_NAME = 'UserGroup') OR (t1.TABLE_NAME = 'User') OR (t1.TABLE_NAME = 'Group')
 --WHERE (t1.TABLE_NAME != 'dtproperties') AND (t1.TABLE_NAME NOT LIKE 'sql_%') AND (t1.TABLE_NAME NOT LIKE 'pg_%') AND (t1.TABLE_NAME NOT LIKE 'sys%')
-WHERE (t1.TABLE_NAME = '" + tableName_in + @"') 
+WHERE (t1.TABLE_NAME = '{0}') 
 ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
-";
+", 
+						tableName_in
+					);
 					#endregion
 					break;
 				}
 				case eDBServerTypes.PostgreSQL: {
-					#region _query += "SELECT ...";
-					_query += @"
+					#region _query = "SELECT ...";
+					_query = string.Format(@"
 SELECT
 	t1.COLUMN_NAME AS ""Name"", 
 	CASE
@@ -1889,16 +1895,18 @@ FROM INFORMATION_SCHEMA.COLUMNS AS t1
 	--	(t5.COLUMN_NAME = t1.COLUMN_NAME)
 	LEFT JOIN INFORMATION_SCHEMA.TABLES t6 ON
 		(t6.TABLE_NAME = t1.TABLE_NAME)
-WHERE (t1.TABLE_NAME = '" + tableName_in + @"') 
+WHERE (t1.TABLE_NAME = '{0}') 
 ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
-";
+", 
+						tableName_in
+					);
 					#endregion
 					break;
 				}
 				case eDBServerTypes.MySQL: {
 					string _database = Connectionstring_database();
-					#region _query += "SELECT ...";
-					_query += @"
+					#region _query = "SELECT ...";
+					_query = string.Format(@"
 SELECT
 	t1.COLUMN_NAME AS ""Name"", 
 --	CASE
@@ -1927,11 +1935,14 @@ SELECT
 FROM INFORMATION_SCHEMA.COLUMNS AS t1
 	LEFT JOIN INFORMATION_SCHEMA.TABLES t6 ON ((t6.TABLE_SCHEMA = t1.TABLE_SCHEMA) AND (t6.TABLE_NAME = t1.TABLE_NAME))
 WHERE 
-	(t1.TABLE_NAME = '" + tableName_in + @"') 
+	(t1.TABLE_NAME = '{0}') 
 	AND
-	(t1.TABLE_SCHEMA = '" + _database + @"')
+	(t1.TABLE_SCHEMA = '{1}')
 ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
-";
+", 
+						tableName_in, 
+						_database
+					);
 					#endregion
 					break;
 				}
