@@ -85,7 +85,7 @@ _aux_doc.LoadState_fromFile(_arg_MetadataFilepath);
 						<%=_aux_doc.Subjects["0"].Description%><br>
 					</span>
 					<br>
-
+<!--
 					<span class="text">
 						&gt; <a href="Articles.html">Articles</a><br>
 						articles on <%=_aux_doc.DocumentationName%><br>
@@ -97,7 +97,7 @@ _aux_doc.LoadState_fromFile(_arg_MetadataFilepath);
 						<%=_aux_doc.FAQSubjects["0"].Description%><br>
 					</span>
 					<br>
-
+-->
 					<span class="text">
 						&gt; <a target="_new" href="NDoc/index.html">SDK Documentation</a><br>
 						software development kit on <%=_aux_doc.DocumentationName%><br>
