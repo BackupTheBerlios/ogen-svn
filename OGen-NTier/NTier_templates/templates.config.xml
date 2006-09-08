@@ -115,6 +115,20 @@ along with OGen; if not, write to the
 		</outputs>
 		<dependencies />
 	</template>
+	<template name="SomeApplication.OGen-NTier.bat.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
+			<argument name="OGenPath" value="${CONFIG.ogenPath}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}.OGen-NTier__TEMP.bat" 
+				type="File" mode="Create_doNotReplace" />
+		</outputs>
+		<dependencies />
+	</template>
 	<template name="SomeApplication_test_MainClass.cs.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT">
