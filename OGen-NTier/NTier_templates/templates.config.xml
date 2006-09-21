@@ -124,7 +124,7 @@ along with OGen; if not, write to the
 		</arguments>
 		<conditions />
 		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}.OGen-NTier__TEMP.bat" 
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}.OGen-NTier.bat" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />

@@ -50,17 +50,12 @@ int _aux_table_hasidentitykey;
 #endregion
 //-----------------------------------------------------------------------------------------
 %>@ECHO OFF
-
-
-SET OGenPath=<%=_arg_OGenPath%>
-IF "%OGenPath%" == "" GOTO error1
-
-IF NOT EXIST "%OGenPath%\OGen.NTier.presentationlayer.console.exe" GOTO error2
-
+IF "<%=_arg_OGenPath%>" == "" GOTO error1
+IF NOT EXIST "<%=_arg_OGenPath%>\OGen.NTier.presentationlayer.console.exe" GOTO error2
 IF NOT EXIST "%~d0%~p0OGen-metadatas\MD_<%=_aux_metadata.ApplicationName%>.OGen-metadata.xml" GOTO error3
 
 
-"%OGenPath%\OGen.NTier.presentationlayer.console.exe" "%~d0%~p0OGen-metadatas\MD_<%=_aux_metadata.ApplicationName%>.OGen-metadata.xml"
+"<%=_arg_OGenPath%>\OGen.NTier.presentationlayer.console.exe" "%~d0%~p0OGen-metadatas\MD_<%=_aux_metadata.ApplicationName%>.OGen-metadata.xml"
 PAUSE
 GOTO eof
 
@@ -70,7 +65,7 @@ GOTO eof
 	PAUSE
 GOTO eof
 :error2
-	ECHO can't find: "%OGenPath%\OGen.NTier.presentationlayer.console.exe", 
+	ECHO can't find: "<%=_arg_OGenPath%>\OGen.NTier.presentationlayer.console.exe", 
 	ECHO %~n0%~x0 needs some tweaking
 	PAUSE
 GOTO eof
@@ -82,4 +77,3 @@ GOTO eof
 
 
 :eof
-SET OGenPath=
