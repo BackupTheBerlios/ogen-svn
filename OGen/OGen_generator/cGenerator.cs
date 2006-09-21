@@ -167,12 +167,7 @@ namespace OGen.lib.generator {
 
 			switch (this_in) {
 				case "CONFIG.ogenPath": {
-// ToDos: here!
-//throw new Exception("not implemented!");
-translate_out = Environment.CurrentDirectory;
-//System.IO.Path.GetDirectoryName(
-//	Environment.CommandLine.Replace("\"", "")
-//);
+					translate_out = System.Configuration.ConfigurationSettings.AppSettings["ogenPath"];
 					break;
 				}
 				case "CONFIG.outputPath": {
