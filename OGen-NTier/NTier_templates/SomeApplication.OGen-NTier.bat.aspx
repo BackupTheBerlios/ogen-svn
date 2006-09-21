@@ -57,6 +57,8 @@ IF "%OGenPath%" == "" GOTO error1
 
 IF NOT EXIST "%OGenPath%\OGen.NTier.presentationlayer.console.exe" GOTO error2
 
+IF NOT EXIST "%~d0%~p0OGen-metadatas\MD_<%=_aux_metadata.ApplicationName%>.OGen-metadata.xml" GOTO error3
+
 
 "%OGenPath%\OGen.NTier.presentationlayer.console.exe" "%~d0%~p0OGen-metadatas\MD_<%=_aux_metadata.ApplicationName%>.OGen-metadata.xml"
 PAUSE
@@ -69,6 +71,11 @@ GOTO eof
 GOTO eof
 :error2
 	ECHO can't find: "%OGenPath%\OGen.NTier.presentationlayer.console.exe", 
+	ECHO %~n0%~x0 needs some tweaking
+	PAUSE
+GOTO eof
+:error3
+	ECHO can't find: "%~d0%~p0OGen-metadatas\MD_<%=_aux_metadata.ApplicationName%>.OGen-metadata.xml"
 	ECHO %~n0%~x0 needs some tweaking
 	PAUSE
 GOTO eof

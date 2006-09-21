@@ -538,6 +538,10 @@
                     BuildAction = "Content"
                 />
                 <File
+                    RelPath = "emptyfile.txt"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "Global.asax"
                     BuildAction = "Content"
                 />
@@ -566,6 +570,10 @@
                 />
                 <File
                     RelPath = "SomeApplication.ndoc.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "SomeApplication.OGen-NTier.bat.aspx"
                     BuildAction = "Content"
                 />
                 <File
