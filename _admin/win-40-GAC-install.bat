@@ -79,7 +79,7 @@ GOTO eof
 	::IF EXIST ..\%1\%2\%binDir%\%3.xml COPY ..\%1\%2\%binDir%\%3.xml ..\_release.no-svn
 
 	IF '%6' == 't' IF EXIST ..\%1\%2\%binDir%\%3.exe COPY ..\%1\%2\%binDir%\%3.exe ..\_release.no-svn
-	IF '%6' == 't' IF EXIST ..\%1\%2\%binDir%\%3.exe.config COPY ..\%1\%2\%binDir%\%3.exe.config ..\_release.no-svn
+	IF '%6' == 't' IF EXIST ..\%1\%2\%binDir%\%3.exe.config IF NOT EXIST ..\_release.no-svn\%3.exe.config COPY ..\%1\%2\%binDir%\%3.exe.config ..\_release.no-svn
 
 
 :tryinstall
