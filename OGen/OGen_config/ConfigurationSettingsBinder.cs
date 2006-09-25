@@ -74,6 +74,9 @@ namespace OGen.lib.config {
 		private static Hashtable configurationsettingsbind_;
 		#endregion
 		#region public Properties...
+		#endregion
+
+//		#region public Methods...
 		#region public static string Read(string name_in);
 		/// <summary>
 		/// Reads Configuration.
@@ -111,9 +114,7 @@ namespace OGen.lib.config {
 			}
 		}
 		#endregion
-		#endregion
 
-//		#region public Methods...
 //		#region public static void Save();
 		private static bool saveneeded_;
 

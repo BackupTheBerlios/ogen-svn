@@ -6,7 +6,6 @@
 
 		<assembly name="OGen.lib.datalayer">
 			<assemblies>
-				<assembly name="OGen.lib.config" />
 				<assembly name="Npgsql" />
 			</assemblies>
 		</assembly>
@@ -37,7 +36,6 @@
 				<assembly name="OGen.lib.collections" />
 				<assembly name="OGen.lib.datalayer">
 					<assemblies>
-						<assembly name="OGen.lib.config" />
 						<assembly name="Npgsql" />
 					</assemblies>
 				</assembly>

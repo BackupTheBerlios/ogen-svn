@@ -33,7 +33,7 @@ using System;
 using System.Data;
 using NpgsqlTypes;
 using MySql.Data.MySqlClient;
-using OGen.lib.config;
+//using OGen.lib.config;
 
 namespace OGen.lib.datalayer {
 	/// <summary>
@@ -220,8 +220,8 @@ namespace OGen.lib.datalayer {
 				/// <param name="appSettings_in">appSettings key name</param>
 				/// <returns>ConnectionString</returns>
 				public static string AppSettings(string appSettings_in) {
-					//return System.Configuration.ConfigurationSettings.AppSettings[appSettings_in];
-					return ConfigurationSettingsBinder.Read(appSettings_in);
+					//return ConfigurationSettingsBinder.Read(appSettings_in);
+					return System.Configuration.ConfigurationSettings.AppSettings[appSettings_in];
 				}
 				#endregion
 				//---

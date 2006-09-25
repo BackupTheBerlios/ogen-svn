@@ -26,29 +26,17 @@
 :: 	http://www.fsf.org/licensing/licenses/gpl.txt
 :: 
 @ECHO OFF
+IF '%1' == '/test' GOTO test
+IF NOT '%1' == '' GOTO error1
+
+
 IF NOT EXIST "OGen-solutions.txt" GOTO error2
 IF NOT EXIST "OGen-projects.txt" GOTO error3
 
 
 SET errorFound=
 FOR /F "tokens=1,2,3,4,5,6,7,8 delims=, " %%a IN (OGen-projects.txt) DO (
-	SET paramError=
-	IF '%%a' == '' SET paramError=%%a#%paramError%
-	IF '%%b' == '' SET paramError=%%b#%paramError%
-	IF '%%c' == '' SET paramError=%%c#%paramError%
-	IF NOT '%%d' == 't' IF NOT '%%d' == 'f' SET paramError=%%d#%paramError%
-	IF NOT '%%e' == 't' IF NOT '%%e' == 'f' SET paramError=%%e#%paramError%
-	IF NOT '%%f' == 't' IF NOT '%%f' == 'f' SET paramError=%%f#%paramError%
-	IF NOT '%%g' == 'GNU_GPL' IF NOT '%%g' == 'GNU_LGPL' IF NOT '%%g' == 'GNU_FDL' SET paramError=%%g#%paramError%
-	IF NOT '%%h' == 't' IF NOT '%%h' == 'f' SET paramError=%%h#%paramError%
-	IF NOT EXIST "..\%%a" SET paramError="solution does not exist"#%paramError%
-	IF NOT EXIST "..\%%a\%%b" SET paramError="project does not exist"#%paramError%
-
-	IF NOT '%paramError%' == '' ECHO %%a, %%b, %%c, %%d, %%e, %%f, %%g, %%h
-	IF NOT '%paramError%' == '' ECHO %paramError%
-	IF NOT '%paramError%' == '' SET errorFound=1
-
-	SET error=
+	CALL %0 /test %%a %%b %%c %%d %%e %%f %%g %%h %%i
 )
 IF '%errorFound%' == '' ECHO no errors!
 SET errorFound=
@@ -56,6 +44,36 @@ PAUSE
 GOTO eof
 
 
+:test
+	SHIFT
+
+	SET paramError=
+
+	IF '%1' == '' SET paramError=%1#%paramError%
+	IF '%2' == '' SET paramError=%2#%paramError%
+	IF '%3' == '' SET paramError=%3#%paramError%
+	IF NOT '%4' == 't' IF NOT '%4' == 'f' SET paramError=%4#%paramError%
+	IF NOT '%5' == 't' IF NOT '%5' == 'f' SET paramError=%5#%paramError%
+	IF NOT '%6' == 't' IF NOT '%6' == 'f' SET paramError=%6#%paramError%
+	IF NOT '%7' == 'GNU_GPL' IF NOT '%7' == 'GNU_LGPL' IF NOT '%7' == 'GNU_FDL' SET paramError=%7#%paramError%
+	IF NOT '%8' == 't' IF NOT '%8' == 'f' SET paramError=%8#%paramError%
+	IF NOT EXIST "..\%1" SET paramError="solution does not exist"#%paramError%
+	IF NOT EXIST "..\%1\%2" SET paramError="project does not exist"#%paramError%
+
+	IF NOT '%paramError%' == '' ECHO %1, %2, %3, %4, %5, %6, %7, %8
+	IF NOT '%paramError%' == '' ECHO %paramError%
+	IF NOT '%paramError%' == '' SET errorFound=1
+
+	SET error=
+GOTO eof
+
+
+:error1
+	ECHO.
+	ECHO.
+	ECHO invalid arguments: %1
+	PAUSE
+GOTO eof
 :error2
 	ECHO.
 	ECHO.

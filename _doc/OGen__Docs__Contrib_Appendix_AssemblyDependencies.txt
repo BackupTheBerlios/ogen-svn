@@ -4,7 +4,6 @@ OGen.lib.collections
 
 OGen.lib.datalayer
 	- Npgsql
-	- OGen.lib.config
 
 OGen.lib.webforms
 

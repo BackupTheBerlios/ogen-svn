@@ -49,8 +49,7 @@ int _aux_table_hasidentitykey;
 //string[] _aux_configmodes = _aux_metadata.ConfigModes();
 #endregion
 //-----------------------------------------------------------------------------------------
-%>
-<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+%><Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>8.0.50727</ProductVersion>

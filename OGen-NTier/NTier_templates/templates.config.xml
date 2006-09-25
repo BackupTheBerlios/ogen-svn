@@ -2002,7 +2002,9 @@ along with OGen; if not, write to the
 			<output to="sp0_${ROOT.tables.table[n].name}_updObject_${ROOT.tables.table[n].updates.update[n].name}" 
 				type="MySQL_StoredProcedure" mode="Replace" />
 		</outputs>
-		<dependencies />
+		<dependencies>
+			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-MySQL.sql.aspx" />
+		</dependencies>
 	</template>
 	<template name="DO-DB-sp0_SomeTable_updObject_SomeUpdate-PostgreSQL.sql.aspx" 
 			parserType="aspx" 
@@ -2023,6 +2025,7 @@ along with OGen; if not, write to the
 		</outputs>
 		<dependencies>
 			<dependency name="emptyfile.txt" />
+			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-PostgreSQL.sql.aspx" />
 		</dependencies>
 	</template>
 	<template name="DO-DB-sp0_SomeTable_updObject_SomeUpdate-SQLServer.sql.aspx" 
@@ -2042,6 +2045,8 @@ along with OGen; if not, write to the
 			<output to="sp0_${ROOT.tables.table[n].name}_updObject_${ROOT.tables.table[n].updates.update[n].name}" 
 				type="SQLServer_StoredProcedure" mode="Replace" />
 		</outputs>
-		<dependencies />
+		<dependencies>
+			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-SQLServer.sql.aspx" />
+		</dependencies>
 	</template>
 </templates>

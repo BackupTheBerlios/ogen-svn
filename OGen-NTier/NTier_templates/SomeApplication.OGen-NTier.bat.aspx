@@ -61,16 +61,16 @@ GOTO eof
 
 
 :error1
-	ECHO Can't finf OGen
+	ECHO Can't find OGen (badly generated config file)
 	PAUSE
 GOTO eof
 :error2
-	ECHO can't find: "<%=_arg_OGenPath%>\OGen.NTier.presentationlayer.console.exe", 
+	ECHO Can't find: "<%=_arg_OGenPath%>\OGen.NTier.presentationlayer.console.exe", 
 	ECHO %~n0%~x0 needs some tweaking
 	PAUSE
 GOTO eof
 :error3
-	ECHO can't find: "%~d0%~p0OGen-metadatas\MD_<%=_aux_metadata.ApplicationName%>.OGen-metadata.xml"
+	ECHO Can't find: "%~d0%~p0OGen-metadatas\MD_<%=_aux_metadata.ApplicationName%>.OGen-metadata.xml"
 	ECHO %~n0%~x0 needs some tweaking
 	PAUSE
 GOTO eof
