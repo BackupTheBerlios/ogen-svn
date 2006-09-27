@@ -1587,8 +1587,17 @@ WHERE
 	AND
 	(TABLE_SCHEMA NOT LIKE 'information_schema')
 ");
-					if (subAppName_in != "" ) {
-						_query.Append(string.Format("AND (TABLE_NAME LIKE '{0}%') ", subAppName_in));
+					if (subAppName_in != "") {
+						_query.Append("AND (");
+						string[] _subAppNames = subAppName_in.Split('|');
+						for (int i = 0; i < _subAppNames.Length; i++) {
+							_query.Append(string.Format(
+								"(TABLE_NAME LIKE '{0}'){1}",
+								_subAppNames[i],
+								(i == _subAppNames.Length - 1) ? "" : " OR "
+							));
+						}
+						_query.Append(") ");
 					}
 					_query.Append(@"ORDER BY ""Name"" ");
 					#endregion
@@ -1619,7 +1628,16 @@ WHERE
 						_database
 					));
 					if (subAppName_in != "" ) {
-						_query.Append(string.Format("AND (TABLE_NAME LIKE '{0}%') ", subAppName_in));
+						_query.Append("AND (");
+						string[] _subAppNames = subAppName_in.Split('|');
+						for (int i = 0; i < _subAppNames.Length; i++) {
+							_query.Append(string.Format(
+								"(TABLE_NAME LIKE '{0}'){1}",
+								_subAppNames[i],
+								(i == _subAppNames.Length - 1) ? "" : " OR "
+							));
+						}
+						_query.Append(") ");
 					}
 					_query.Append(@"ORDER BY ""Name"" ");
 					#endregion
