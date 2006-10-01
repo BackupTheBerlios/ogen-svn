@@ -53,7 +53,7 @@ along with OGen; if not, write to the
   <tables>
 
 
-    <table name="IHaveAStyle" isVirtualTable="False" isConfig="True">
+    <table name="IHaveAStyle" isVirtualTable="False" isConfig="False">
       <dbs>
         <db dbServerType="PostgreSQL" tableName="IHaveAStyle" />
         <db dbServerType="SQLServer" tableName="i_Have_MyOwn_style" />

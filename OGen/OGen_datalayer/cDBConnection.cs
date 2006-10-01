@@ -136,7 +136,13 @@ namespace OGen.lib.datalayer {
 			dbServerType_in, 
 			connectionstring_in
 		) {
-			if (Logfile_in == null) {
+			if (
+				(Logfile_in == null) 
+				||
+				(Logfile_in == string.Empty) 
+				||
+				(!File.Exists(Logfile_in))
+			) {
 				Logenabled = false;
 				Logfile = null;
 			} else {
@@ -329,7 +335,7 @@ namespace OGen.lib.datalayer {
 				case eDBServerTypes.SQLServer: {
 					SqlCommand _sqlcommand;
 
-					if (Transaction.inTransaction) {
+					if ((transaction__ != null) && (transaction__.inTransaction)) {
 						_sqlcommand = new SqlCommand(
 							command_in,
 							(SqlConnection)connection_in, 
@@ -383,7 +389,7 @@ namespace OGen.lib.datalayer {
 						query_in,
 						(SqlConnection)connection_in
 					);
-					if (Transaction.inTransaction) {
+					if ((transaction__ != null) && (transaction__.inTransaction)) {
 						_sqldataadapter.SelectCommand.Transaction = (SqlTransaction)Transaction.exposeTransaction;
 					}
 					return _sqldataadapter;
@@ -487,57 +493,57 @@ namespace OGen.lib.datalayer {
 		/// <param name="size_in">Parameter's Size (the actual DataBase Parameter Size representation, if such exists for the Parameter)</param>
 		/// <returns>new IDbDataParameter</returns>
 		public IDbDataParameter newDBDataParameter(string name_in, DbType dbType_in, ParameterDirection parameterDirection_in, object value_in, int size_in) {
-			IDbDataParameter newDBDataParameter_out;
+			IDbDataParameter _newdbdataparameter_out;
 
 			switch (DBServerType) {
 				case eDBServerTypes.SQLServer: {
-					newDBDataParameter_out = new SqlParameter();
-					newDBDataParameter_out.ParameterName = 
+					_newdbdataparameter_out = new SqlParameter();
+					_newdbdataparameter_out.ParameterName = 
 						(name_in.Substring(0, 1) == "@") ?
 					name_in : 
 						string.Format("@{0}", name_in);
 					break;
 				}
 				case eDBServerTypes.PostgreSQL: {
-					newDBDataParameter_out = new NpgsqlParameter();
-					newDBDataParameter_out.ParameterName = ":\"" + name_in + "\"";
+					_newdbdataparameter_out = new NpgsqlParameter();
+					_newdbdataparameter_out.ParameterName = ":\"" + name_in + "\"";
 					break;
 				}
 				case eDBServerTypes.MySQL: {
-					newDBDataParameter_out = new MySql.Data.MySqlClient.MySqlParameter();
-					newDBDataParameter_out.ParameterName = "?" + name_in;
+					_newdbdataparameter_out = new MySql.Data.MySqlClient.MySqlParameter();
+					_newdbdataparameter_out.ParameterName = "?" + name_in;
 					break;
 				}
 				case eDBServerTypes.Excel:
 				case eDBServerTypes.Access: {
-					newDBDataParameter_out = new OleDbParameter();
-					newDBDataParameter_out.ParameterName = name_in;
+					_newdbdataparameter_out = new OleDbParameter();
+					_newdbdataparameter_out.ParameterName = name_in;
 					break;
 				}
 				case eDBServerTypes.ODBC: {
-					newDBDataParameter_out = new OdbcParameter();
-					newDBDataParameter_out.ParameterName = name_in;
+					_newdbdataparameter_out = new OdbcParameter();
+					_newdbdataparameter_out.ParameterName = name_in;
 					break;
 				}
 				default: {
 					throw new Exception("invalid DBServerType");
 				}
 			}
-			newDBDataParameter_out.DbType = dbType_in;
-			newDBDataParameter_out.Direction = parameterDirection_in;
+			_newdbdataparameter_out.DbType = dbType_in;
+			_newdbdataparameter_out.Direction = parameterDirection_in;
 			if ((value_in == null) || (value_in == DBNull.Value)) {
 				if (DBServerType == eDBServerTypes.SQLServer) {
-					((SqlParameter)newDBDataParameter_out).IsNullable = true;
+					((SqlParameter)_newdbdataparameter_out).IsNullable = true;
 				}
-				newDBDataParameter_out.Value = DBNull.Value;
+				_newdbdataparameter_out.Value = DBNull.Value;
 			} else {
-				newDBDataParameter_out.Value = value_in;
+				_newdbdataparameter_out.Value = value_in;
 			}
 			if (size_in != 0) {
-				newDBDataParameter_out.Size = size_in;
+				_newdbdataparameter_out.Size = size_in;
 			}
 
-			return newDBDataParameter_out;
+			return _newdbdataparameter_out;
 		}
 		#endregion
 		//---
@@ -1592,7 +1598,8 @@ WHERE
 						string[] _subAppNames = subAppName_in.Split('|');
 						for (int i = 0; i < _subAppNames.Length; i++) {
 							_query.Append(string.Format(
-								"(TABLE_NAME LIKE '{0}'){1}",
+								"(TABLE_NAME {0} '{1}'){2}",
+								(_subAppNames[i].IndexOf('%') >= 0) ? "LIKE" : "=", 
 								_subAppNames[i],
 								(i == _subAppNames.Length - 1) ? "" : " OR "
 							));
@@ -1632,7 +1639,8 @@ WHERE
 						string[] _subAppNames = subAppName_in.Split('|');
 						for (int i = 0; i < _subAppNames.Length; i++) {
 							_query.Append(string.Format(
-								"(TABLE_NAME LIKE '{0}'){1}",
+								"(TABLE_NAME {0} '{1}'){2}",
+								(_subAppNames[i].IndexOf('%') >= 0) ? "LIKE" : "=",
 								_subAppNames[i],
 								(i == _subAppNames.Length - 1) ? "" : " OR "
 							));
