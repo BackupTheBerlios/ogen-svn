@@ -198,6 +198,7 @@ namespace OGen.lib.datalayer.newStuff {
 			}
 		}
 		#endregion
+		public abstract DBUtils utils { get; }
 		#endregion
 
 		#region public static Methods...
@@ -229,6 +230,21 @@ namespace OGen.lib.datalayer.newStuff {
 				}
 			}
 		}
+		#endregion
+		#region //public static DBUtils Utils(eDBServerTypes dbServerType_in);
+		//public static DBUtils Utils(eDBServerTypes dbServerType_in) {
+		//    switch (dbServerType_in) {
+		//        case eDBServerTypes.PostgreSQL: {
+		//            return cDBConnection_PostgreSQL.Utils;
+		//        }
+		//        case eDBServerTypes.SQLServer: {
+		//            return cDBConnection_SQLServer.Utils;
+		//        }
+		//        default: {
+		//            throw new Exception("not implemented!");
+		//        }
+		//    }
+		//}
 		#endregion
 		#endregion
 		#region private Methods...
@@ -871,513 +887,106 @@ namespace OGen.lib.datalayer.newStuff {
 			return _getdbs_out;
 		}
 		#endregion
-//        #region public cDBTable[] getTables(...);
-//        /// <summary>
-//        /// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
-//        /// </summary>
-//        /// <returns>String array, representing a list of Table names</returns>
-//        public cDBTable[] getTables() {
-//            return getTables("");
-//        }
+        #region public cDBTable[] getTables(...);
+		protected abstract string gettables(string subAppName_in);
 
-//        /// <summary>
-//        /// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
-//        /// </summary>
-//        /// <param name="subAppName_in">Table Filter. If your Application is to be hosted at some ASP, which provides you with one DataBase only, and you're using that DataBase for more than one Application. I assume you're using some convention for Table naming like: AP1_Table1, AP1_Table2, AP2_Table1, ... . Or even if you have several modules sharing same data base. If so, you can use this parameter to filter Table names for some specific Application, like: AP1 or AP2</param>
-//        /// <returns>String array, representing a list of Table names</returns>
-//        public cDBTable[] getTables(
-//            string subAppName_in
-//        ) {
-//            cDBTable[] getTables_out;
+        /// <summary>
+        /// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
+        /// </summary>
+        /// <returns>String array, representing a list of Table names</returns>
+        public cDBTable[] getTables() {
+            return getTables(string.Empty);
+        }
 
-//            StringBuilder _query = new StringBuilder(string.Empty);
-//            switch (dbservertype_) {
-//                case eDBServerTypes.SQLServer:
-//                case eDBServerTypes.PostgreSQL: {
-//                    #region query.Append("SELECT ...");
-//                    _query.Append(@"
-//SELECT
-//	TABLE_NAME AS ""Name"",
-//	CASE
-//		WHEN (TABLE_TYPE = 'VIEW') THEN
-//			CAST(1 AS Int)
-//		ELSE
-//			CAST(0 AS Int)
-//	END AS ""isVT""
-//FROM INFORMATION_SCHEMA.TABLES
-//WHERE
-//	(
-//		(TABLE_TYPE = 'BASE TABLE')
-//		OR
-//		(TABLE_TYPE = 'VIEW')
-//	)
-//	AND
-//	(
-//		(TABLE_TYPE != 'VIEW')
-//		OR
-//		(
-//			(TABLE_TYPE = 'VIEW')
-//			AND
-//			(TABLE_NAME NOT LIKE 'v0_%')
-//		)
-//	)
-//	AND
-//	(TABLE_NAME != 'dtproperties')
-//	AND
-//	(TABLE_NAME NOT LIKE 'sql_%')
-//	AND
-//	(TABLE_NAME NOT LIKE 'pg_%')
-//	AND
-//	(TABLE_NAME NOT LIKE 'sys%')
-//	AND
-//	(TABLE_NAME NOT LIKE '%__base')
-//	AND
-//	(TABLE_SCHEMA NOT LIKE 'information_schema')
-//");
-//                    if (subAppName_in != "") {
-//                        _query.Append("AND (");
-//                        string[] _subAppNames = subAppName_in.Split('|');
-//                        for (int i = 0; i < _subAppNames.Length; i++) {
-//                            _query.Append(string.Format(
-//                                "(TABLE_NAME {0} '{1}'){2}",
-//                                (_subAppNames[i].IndexOf('%') >= 0) ? "LIKE" : "=", 
-//                                _subAppNames[i],
-//                                (i == _subAppNames.Length - 1) ? "" : " OR "
-//                            ));
-//                        }
-//                        _query.Append(") ");
-//                    }
-//                    _query.Append(@"ORDER BY ""Name"" ");
-//                    #endregion
-//                    break;
-//                }
-//                case eDBServerTypes.MySQL: {
-//                    string _database = Connectionstring_database();
-//                    #region _query.Append("SELECT ...");
-//                    _query.Append(string.Format(@"
-//SELECT
-//	TABLE_NAME AS ""Name"",
-//	CASE
-//		WHEN (TABLE_TYPE = 'VIEW') THEN
-//			CAST(1 AS Signed Int)
-//		ELSE
-//			CAST(0 AS Signed Int)
-//	END AS ""isVT""
-//FROM INFORMATION_SCHEMA.TABLES
-//WHERE
-//	(
-//		(TABLE_TYPE = 'BASE TABLE')
-//		OR
-//		(TABLE_TYPE = 'VIEW')
-//	)
-//	AND
-//	(TABLE_SCHEMA = '{0}')
-//", 
-//                        _database
-//                    ));
-//                    if (subAppName_in != "" ) {
-//                        _query.Append("AND (");
-//                        string[] _subAppNames = subAppName_in.Split('|');
-//                        for (int i = 0; i < _subAppNames.Length; i++) {
-//                            _query.Append(string.Format(
-//                                "(TABLE_NAME {0} '{1}'){2}",
-//                                (_subAppNames[i].IndexOf('%') >= 0) ? "LIKE" : "=",
-//                                _subAppNames[i],
-//                                (i == _subAppNames.Length - 1) ? "" : " OR "
-//                            ));
-//                        }
-//                        _query.Append(") ");
-//                    }
-//                    _query.Append(@"ORDER BY ""Name"" ");
-//                    #endregion
-//                    break;
-//                }
-//                default: {
-//                    throw new Exception("not implemented");
-//                }
-//            }
-//            #region getTables_out = base.Execute_SQLQuery_returnDataTable(_query.ToString());
-//            DataTable _dtemp = Execute_SQLQuery_returnDataTable(_query.ToString());
-//            getTables_out = new cDBTable[_dtemp.Rows.Count];
-//            for (int r = 0; r < _dtemp.Rows.Count; r++)
-//                getTables_out[r] = new cDBTable(
-//                    (string)_dtemp.Rows[r]["Name"],
-//                    (dbservertype_ == eDBServerTypes.MySQL) ? ((long)_dtemp.Rows[r]["isVT"] == 1L) : ((int)_dtemp.Rows[r]["isVT"] == 1)
-//                );
-//            _dtemp.Dispose(); _dtemp = null;
+        /// <summary>
+        /// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
+        /// </summary>
+        /// <param name="subAppName_in">Table Filter. If your Application is to be hosted at some ASP, which provides you with one DataBase only, and you're using that DataBase for more than one Application. I assume you're using some convention for Table naming like: AP1_Table1, AP1_Table2, AP2_Table1, ... . Or even if you have several modules sharing same data base. If so, you can use this parameter to filter Table names for some specific Application, like: AP1 or AP2</param>
+        /// <returns>String array, representing a list of Table names</returns>
+        public cDBTable[] getTables(
+            string subAppName_in
+        ) {
+            cDBTable[] getTables_out;
+
+//			#region getTables_out = base.Execute_SQLQuery_returnDataTable(gettables(subAppName_in));
+			DataTable _dtemp = Execute_SQLQuery_returnDataTable(gettables(subAppName_in));
+            getTables_out = new cDBTable[_dtemp.Rows.Count];
+            for (int r = 0; r < _dtemp.Rows.Count; r++)
+                getTables_out[r] = new cDBTable(
+                    (string)_dtemp.Rows[r]["Name"],
+                    //(dbservertype_ == eDBServerTypes.MySQL) ? 
+					//	((long)_dtemp.Rows[r]["isVT"] == 1L) : 
+						((int)_dtemp.Rows[r]["isVT"] == 1)
+                );
+            _dtemp.Dispose(); _dtemp = null;
 //            #endregion
 
-//            return getTables_out;
-//        }
-//        #endregion
-//        #region public cDBTableField[] getTableFields(...);
-//        /// <summary>
-//        /// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Field names for some specific Table.
-//        /// </summary>
-//        /// <param name="tableName_in">Table name for which Field names are to be retrieved</param>
-//        /// <returns>String array, representing a list of Field names</returns>
-//        public cDBTableField[] getTableFields(
-//            string tableName_in
-//        ) {
-//            cDBTableField[] getTableFields_out;
+            return getTables_out;
+        }
+        #endregion
+		#region public cDBTableField[] getTableFields(...);
+		protected abstract string gettablefields(
+			string tableName_in
+		);
 
-//            string _query;
-//            switch (dbservertype_) {
-//                case eDBServerTypes.SQLServer: {
-//                    #region _query = "SELECT ...";
-//                    _query = string.Format(@"
-//SELECT
-//	t1.COLUMN_NAME AS ""Name"", 
-//	CASE
-//		WHEN t1.IS_NULLABLE = 'No' THEN
-//			CAST(0 AS Int)
-//		ELSE
-//			CAST(1 AS Int)
-//	END AS ""isNullable"", 
-//	t1.DATA_TYPE AS ""Type"", 
-//	t1.CHARACTER_MAXIMUM_LENGTH AS ""Size"", 
-//	CASE
-//		WHEN (t6.TABLE_TYPE = 'VIEW') THEN
-//			CASE
-//				WHEN (
-//					(SUBSTRING(t1.COLUMN_NAME, 3, 1) = ',') AND 
-//					(SUBSTRING(t1.COLUMN_NAME, 2, 1) = 'K')
-//				) THEN
-//					CAST(1 AS Int)
-//				ELSE
-//					CAST(0 AS Int)
-//			END
-//		WHEN t2.CONSTRAINT_NAME IS NULL THEN
-//			CAST(0 AS Int)
-//		ELSE
-//			CAST(1 AS Int)
-//	END AS ""isPK"", 
-//	CASE
-//		WHEN (t6.TABLE_TYPE != 'VIEW') THEN
-//			CAST(COLUMNPROPERTY(OBJECT_ID(t1.TABLE_NAME), t1.COLUMN_NAME, 'IsIdentity') AS Int)
-//		ELSE
-//			CASE
-//				WHEN (
-//					(SUBSTRING(t1.COLUMN_NAME, 3, 1) = ',') AND 
-//					(SUBSTRING(t1.COLUMN_NAME, 1, 1) = 'I')
-//				) THEN
-//					CAST(1 AS Int)
-//				ELSE
-//					CAST(0 AS Int)
-//			END
-//			--COLUMNPROPERTY(OBJECT_ID(t5.TABLE_NAME), t5.COLUMN_NAME, 'IsIdentity')
-//	END AS ""isIdentity"", 
-//	CASE
-//		WHEN (t6.TABLE_TYPE != 'VIEW') THEN
-//			CASE
-//				WHEN t4.CONSTRAINT_NAME IS NULL THEN
-//					NULL
-//				ELSE
-//					SUBSTRING(t4.CONSTRAINT_NAME, 5 + LEN(t1.TABLE_NAME), LEN(t4.CONSTRAINT_NAME))
-//			END
-//		ELSE
-//			/*
-//			CASE
-//				WHEN (SUBSTRING(t1.COLUMN_NAME, 3, 1) = ',') THEN
-//					SUBSTRING(
-//						t1.COLUMN_NAME,
-//						dbo.fnc__FIND(
-//							',', 
-//							t1.COLUMN_NAME, 
-//							1
-//						) + 1,
-//						dbo.fnc__FIND(
-//							',', 
-//							t1.COLUMN_NAME, 
-//							dbo.fnc__FIND(
-//								',', 
-//								t1.COLUMN_NAME, 
-//								1
-//							) + 1
-//						)
-//						- dbo.fnc__FIND(
-//							',', 
-//							t1.COLUMN_NAME, 
-//							1
-//						)
-//						- 1
-//					)
-//				ELSE
-//					NULL
-//			END
-//			*/
-//			NULL
-//			--t5.TABLE_NAME
-//	END AS ""FK_TableName"", 
-//	CASE
-//		WHEN (t6.TABLE_TYPE != 'VIEW') THEN
-//			CASE
-//				WHEN t4.CONSTRAINT_NAME IS NULL THEN
-//					NULL
-//				ELSE
-//					t1.COLUMN_NAME
-//			END
-//		ELSE
-//			/*
-//			CASE
-//				WHEN (SUBSTRING(t1.COLUMN_NAME, 3, 1) = ',') THEN
-//					SUBSTRING(
-//						t1.COLUMN_NAME,
-//						dbo.fnc__FIND(
-//							',', 
-//							t1.COLUMN_NAME, 
-//							dbo.fnc__FIND(
-//								',', 
-//								t1.COLUMN_NAME, 
-//								1
-//							) + 1
-//						) + 1,
-//						LEN(t1.COLUMN_NAME)
-//					)
-//				ELSE
-//					NULL
-//			END
-//			*/
-//			NULL
-//			--t5.COLUMN_NAME
-//	END AS ""FK_FieldName""
-//FROM INFORMATION_SCHEMA.COLUMNS AS t1
-//	LEFT JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE t2 ON
-//		(t2.COLUMN_NAME = t1.COLUMN_NAME)
-//		AND
-//		(t2.TABLE_NAME = t1.TABLE_NAME)
-//		AND
-//		(
-//			--(t2.CONSTRAINT_NAME LIKE 'PK%')
-//
-//			(t2.CONSTRAINT_NAME = 'PK_' + t2.TABLE_NAME) -- the microsoft sql server way
-//			OR
-//			(t2.CONSTRAINT_NAME = t2.TABLE_NAME + '_PK') -- the microsoft visio way
-//		)
-//	--LEFT JOIN INFORMATION_SCHEMA.Referential_Constraints t3 ON
-//	--	(t3.UNIQUE_CONSTRAINT_NAME = t2.CONSTRAINT_NAME)
-//	LEFT JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE t4 ON
-//		(t4.COLUMN_NAME = t1.COLUMN_NAME)
-//		AND
-//		(t4.TABLE_NAME = t1.TABLE_NAME)
-//		AND
-//		(t4.CONSTRAINT_NAME LIKE 'FK%')
-//	--LEFT JOIN INFORMATION_SCHEMA.View_Column_Usage t5 ON
-//	--	(t5.VIEW_NAME = t1.TABLE_NAME)
-//	--	AND
-//	--	(t5.COLUMN_NAME = t1.COLUMN_NAME)
-//	LEFT JOIN INFORMATION_SCHEMA.TABLES t6 ON
-//		(t6.TABLE_NAME = t1.TABLE_NAME)
-//--WHERE (t1.TABLE_NAME LIKE 'vUserGroup%') --OR (t1.TABLE_NAME = 'UserGroup') OR (t1.TABLE_NAME = 'User') OR (t1.TABLE_NAME = 'Group')
-//--WHERE (t1.TABLE_NAME != 'dtproperties') AND (t1.TABLE_NAME NOT LIKE 'sql_%') AND (t1.TABLE_NAME NOT LIKE 'pg_%') AND (t1.TABLE_NAME NOT LIKE 'sys%')
-//WHERE (t1.TABLE_NAME = '{0}') 
-//ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
-//", 
-//                        tableName_in
-//                    );
-//                    #endregion
-//                    break;
-//                }
-//                case eDBServerTypes.PostgreSQL: {
-//                    #region _query = "SELECT ...";
-//                    _query = string.Format(@"
-//SELECT
-//	t1.COLUMN_NAME AS ""Name"", 
-//	CASE
-//		WHEN t1.IS_NULLABLE = 'NO' THEN
-//			CAST(0 AS Int)
-//		ELSE
-//			CAST(1 AS Int)
-//	END
-//	AS ""isNullable"", 
-//	t1.DATA_TYPE AS ""Type"", 
-//	t1.CHARACTER_MAXIMUM_LENGTH AS ""Size"", 
-//	CASE
-//		WHEN (t6.TABLE_TYPE = 'VIEW') THEN
-//			CAST(0 AS Int)
-//		WHEN t7.column_name IS NULL THEN
-//			CASE
-//				WHEN (t6.TABLE_TYPE != 'VIEW') THEN
-//					CASE
-//						WHEN (column_default LIKE 'nextval(''%') THEN
-//							CAST(1 AS Int)
-//						ELSE
-//							CAST(0 AS Int)
-//					END
-//				ELSE
-//					CAST(0 AS Int)
-//			END
-//		ELSE
-//			CAST(1 AS Int)
-//	END AS ""isPK"", 
-//	CASE
-//		WHEN (t6.TABLE_TYPE != 'VIEW') THEN
-//			CASE
-//				WHEN (column_default LIKE 'nextval(''%') THEN
-//					CAST(1 AS Int)
-//				ELSE
-//					CAST(0 AS Int)
-//			END
-//		ELSE
-//			CAST(0 AS Int)
-//	END AS ""isIdentity"", 
-//--	CASE
-//--		WHEN (t6.TABLE_TYPE != 'VIEW') THEN
-//----			CASE
-//----				WHEN t4.CONSTRAINT_NAME IS NULL THEN
-//--					NULL
-//----				ELSE
-//----					t4.table_name
-//----			END
-//--		ELSE
-//			NULL
-//--	END
-//	AS ""FK_TableName"", 
-//--	CASE
-//--		WHEN (t6.TABLE_TYPE != 'VIEW') THEN
-//----			CASE
-//----				WHEN t4.CONSTRAINT_NAME IS NULL THEN
-//--					NULL
-//----				ELSE
-//----					t4.column_name
-//----			END
-//--		ELSE
-//			NULL
-//--	END
-//	AS ""FK_FieldName""
-//FROM INFORMATION_SCHEMA.COLUMNS AS t1
-//	LEFT JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE t7 ON (
-//		(t7.column_name = t1.COLUMN_NAME)
-//		AND
-//		(t7.constraint_name = t1.table_name || '_pkey')
-//	)
-//--	LEFT JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE t4 ON (
-//--		(t4.CONSTRAINT_NAME = t1.TABLE_NAME || '_' || t1.COLUMN_NAME || '_fkey')
-//--		OR
-//--		(t4.CONSTRAINT_NAME = t1.TABLE_NAME || '__base_' || t1.COLUMN_NAME || '_fkey')
-//--	)
-//	--LEFT JOIN INFORMATION_SCHEMA.View_Column_Usage t5 ON
-//	--	(t5.VIEW_NAME = t1.TABLE_NAME)
-//	--	AND
-//	--	(t5.COLUMN_NAME = t1.COLUMN_NAME)
-//	LEFT JOIN INFORMATION_SCHEMA.TABLES t6 ON
-//		(t6.TABLE_NAME = t1.TABLE_NAME)
-//WHERE (t1.TABLE_NAME = '{0}') 
-//ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
-//", 
-//                        tableName_in
-//                    );
-//                    #endregion
-//                    break;
-//                }
-//                case eDBServerTypes.MySQL: {
-//                    string _database = Connectionstring_database();
-//                    #region _query = "SELECT ...";
-//                    _query = string.Format(@"
-//SELECT
-//	t1.COLUMN_NAME AS ""Name"", 
-//--	CASE
-//--		WHEN t1.IS_NULLABLE = 'NO' THEN
-//			CAST(0 AS Signed Int)
-//--		ELSE
-//--			CAST(1 AS Signed Int)
-//--	END
-//	AS ""isNullable"", 
-//	t1.DATA_TYPE AS ""Type"", 
-//	t1.CHARACTER_MAXIMUM_LENGTH AS ""Size"", 
-//	CASE
-//		WHEN ((t6.TABLE_TYPE != 'VIEW') AND (t1.COLUMN_KEY = 'PRI')) THEN
-//			CAST(1 AS Signed Int)
-//		ELSE
-//			CAST(0 AS Signed Int)
-//	END AS ""isPK"", 
-//	CASE
-//		WHEN ((t6.TABLE_TYPE != 'VIEW') AND (t1.EXTRA = 'auto_increment')) THEN
-//			CAST(1 AS Signed Int)
-//		ELSE
-//			CAST(0 AS Signed Int)
-//	END AS ""isIdentity"", 
-//	NULL AS ""FK_TableName"", 
-//	NULL AS ""FK_FieldName""
-//FROM INFORMATION_SCHEMA.COLUMNS AS t1
-//	LEFT JOIN INFORMATION_SCHEMA.TABLES t6 ON ((t6.TABLE_SCHEMA = t1.TABLE_SCHEMA) AND (t6.TABLE_NAME = t1.TABLE_NAME))
-//WHERE 
-//	(t1.TABLE_NAME = '{0}') 
-//	AND
-//	(t1.TABLE_SCHEMA = '{1}')
-//ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
-//", 
-//                        tableName_in, 
-//                        _database
-//                    );
-//                    #endregion
-//                    break;
-//                }
-//                default: {
-//                    throw new Exception(string.Format(
-//                        "{0}.{1}.getTableFields: - not implemented", 
-//                        this.GetType().Namespace, 
-//                        this.GetType().Name
-//                    ));
-//                }
-//            }
-//            DataTable _dtemp = Execute_SQLQuery_returnDataTable(_query);
-//            getTableFields_out = new cDBTableField[_dtemp.Rows.Count];
-//            for (int r = 0; r < _dtemp.Rows.Count; r++) {
-//                getTableFields_out[r] = new cDBTableField();
+		/// <summary>
+		/// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Field names for some specific Table.
+		/// </summary>
+		/// <param name="tableName_in">Table name for which Field names are to be retrieved</param>
+		/// <returns>String array, representing a list of Field names</returns>
+		public cDBTableField[] getTableFields(
+			string tableName_in
+		) {
+			cDBTableField[] getTableFields_out;
 
-//                getTableFields_out[r].Name				= (string)_dtemp.Rows[r]["Name"];
-//                switch (dbservertype_) {
-//                    case eDBServerTypes.MySQL: {
-//                        getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Size"];
-//                        getTableFields_out[r].isNullable = ((long)_dtemp.Rows[r]["isNullable"] == 1L);
-//                        //---						
-//                        getTableFields_out[r].FK_TableName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_TableName"];
-//                        getTableFields_out[r].FK_FieldName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_FieldName"];
-//                        //---
-//                        getTableFields_out[r].isIdentity = ((long)_dtemp.Rows[r]["isIdentity"] == 1L);
-//                        getTableFields_out[r].isPK = ((long)_dtemp.Rows[r]["isPK"] == 1L);
-//                        break;
-//                    }
-//                    case eDBServerTypes.PostgreSQL:
-//                    case eDBServerTypes.SQLServer: {
-//                        getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Size"];
-//                        getTableFields_out[r].isNullable = ((int)_dtemp.Rows[r]["isNullable"] == 1);
-//                        //---						
-//                        getTableFields_out[r].FK_TableName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_TableName"];
-//                        getTableFields_out[r].FK_FieldName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_FieldName"];
-//                        //---
-//                        getTableFields_out[r].isIdentity = ((int)_dtemp.Rows[r]["isIdentity"] == 1);
-//                        getTableFields_out[r].isPK = ((int)_dtemp.Rows[r]["isPK"] == 1);
-//                        break;
-//                    }
-//                    default: {
-//                        throw new Exception(
-//                            string.Format(
-//                                "{0}.{1}.getTables: - not implemented", 
-//                                this.GetType().Namespace, 
-//                                this.GetType().Name
-//                            )
-//                        );
-//                    }
-//                }
-//                //---
-//                #region //getTableFields_out[r].DBType_inDB_name = ...;
-//                //switch (dbservertype_) {
-//                //	case eDBServerTypes.SQLServer:
-//                //		getTableFields_out[r].DBType_inDB = (int)sConvert.SqlDbType_Parse((string)_dtemp.Rows[r]["Type"], false);
-//                //		break;
-//                //	case eDBServerTypes.PostgreSQL:
-//                //		getTableFields_out[r].DBType_inDB = (int)sConvert.PgsqlDbType_Parse((string)_dtemp.Rows[r]["Type"]);
-//                //		break;
-//                //}
-//                #endregion
-//                getTableFields_out[r].DBType_inDB_name = (string)_dtemp.Rows[r]["Type"];
-//            }
-//            _dtemp.Dispose(); _dtemp = null;
+			DataTable _dtemp = Execute_SQLQuery_returnDataTable(gettablefields(tableName_in));
+			getTableFields_out = new cDBTableField[_dtemp.Rows.Count];
+			for (int r = 0; r < _dtemp.Rows.Count; r++) {
+				getTableFields_out[r] = new cDBTableField();
 
-//            return getTableFields_out;
-//        }
-//        #endregion
+				getTableFields_out[r].Name = (string)_dtemp.Rows[r]["Name"];
+				//switch (dbservertype_) {
+				//    case eDBServerTypes.MySQL: {
+				//            getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Size"];
+				//            getTableFields_out[r].isNullable = ((long)_dtemp.Rows[r]["isNullable"] == 1L);
+				//            //---						
+				//            getTableFields_out[r].FK_TableName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_TableName"];
+				//            getTableFields_out[r].FK_FieldName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_FieldName"];
+				//            //---
+				//            getTableFields_out[r].isIdentity = ((long)_dtemp.Rows[r]["isIdentity"] == 1L);
+				//            getTableFields_out[r].isPK = ((long)_dtemp.Rows[r]["isPK"] == 1L);
+				//            break;
+				//        }
+				//    case eDBServerTypes.PostgreSQL:
+				//    case eDBServerTypes.SQLServer: {
+							getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Size"];
+							getTableFields_out[r].isNullable = ((int)_dtemp.Rows[r]["isNullable"] == 1);
+							//---						
+							getTableFields_out[r].FK_TableName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_TableName"];
+							getTableFields_out[r].FK_FieldName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_FieldName"];
+							//---
+							getTableFields_out[r].isIdentity = ((int)_dtemp.Rows[r]["isIdentity"] == 1);
+							getTableFields_out[r].isPK = ((int)_dtemp.Rows[r]["isPK"] == 1);
+							break;
+				//        }
+				//    default: {
+				//            throw new Exception(
+				//                string.Format(
+				//                    "{0}.{1}.getTables: - not implemented",
+				//                    this.GetType().Namespace,
+				//                    this.GetType().Name
+				//                )
+				//            );
+				//        }
+				//}
+				//---
+				getTableFields_out[r].DBType_inDB_name = (string)_dtemp.Rows[r]["Type"];
+			}
+			_dtemp.Dispose(); _dtemp = null;
+
+			return getTableFields_out;
+		}
+		#endregion
+		//#endregion
 	}
 }

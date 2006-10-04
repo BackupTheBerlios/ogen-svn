@@ -32,6 +32,7 @@ along with OGen; if not, write to the
 using System;
 using System.Data;
 using Npgsql;
+using System.Text;
 
 namespace OGen.lib.datalayer.newStuff {
 	public sealed class cDBConnection_PostgreSQL : cDBConnection {
@@ -55,7 +56,28 @@ namespace OGen.lib.datalayer.newStuff {
 		}
 		//#endregion
 
+		//#region public static properties...
+		#region public static DBUtils Utils { get; }
+		private static DBUtils utils__ = null;
+
+		public static DBUtils Utils {
+			get {
+				if (utils__ == null) {
+					utils__ = new cDBUtils_PostgreSQL();
+				}
+				return utils__;
+			}
+		}
+		#endregion
+		//#endregion
 		//#region public properties...
+		#region public override DBUtils utils { get; }
+		public override DBUtils utils {
+			get {
+				return Utils;
+			}
+		}
+		#endregion
 		#region public override IDbConnection exposeConnection { get; }
 		public override IDbConnection exposeConnection {
 			get {
@@ -306,7 +328,7 @@ WHERE
 		}
 		#endregion
 		//---
-		#region protected override string getdbs();
+		#region protected override string getdbs(...);
 		protected override string getdbs() {
 			return
 @"
@@ -318,6 +340,164 @@ GROUP BY CATALOG_NAME
 ORDER BY CATALOG_NAME
 "
 			;
+		}
+		#endregion
+		#region protected override string gettables(...);
+		protected override string gettables(string subAppName_in) {
+            StringBuilder _query = new StringBuilder(string.Empty);
+			#region _query.Append(@"SELECT ...");
+			_query.Append(@"
+SELECT
+	TABLE_NAME AS ""Name"",
+	CASE
+		WHEN (TABLE_TYPE = 'VIEW') THEN
+			CAST(1 AS Int)
+		ELSE
+			CAST(0 AS Int)
+	END AS ""isVT""
+FROM INFORMATION_SCHEMA.TABLES
+WHERE
+	(
+		(TABLE_TYPE = 'BASE TABLE')
+		OR
+		(TABLE_TYPE = 'VIEW')
+	)
+	AND
+	(
+		(TABLE_TYPE != 'VIEW')
+		OR
+		(
+			(TABLE_TYPE = 'VIEW')
+			AND
+			(TABLE_NAME NOT LIKE 'v0_%')
+		)
+	)
+	AND
+	(TABLE_NAME != 'dtproperties')
+	AND
+	(TABLE_NAME NOT LIKE 'sql_%')
+	AND
+	(TABLE_NAME NOT LIKE 'pg_%')
+	AND
+	(TABLE_NAME NOT LIKE 'sys%')
+	AND
+	(TABLE_NAME NOT LIKE '%__base')
+	AND
+	(TABLE_SCHEMA NOT LIKE 'information_schema')
+"
+			);
+			#endregion
+			if (subAppName_in != "") {
+                _query.Append("AND (");
+                string[] _subAppNames = subAppName_in.Split('|');
+                for (int i = 0; i < _subAppNames.Length; i++) {
+                    _query.Append(string.Format(
+                        "(TABLE_NAME {0} '{1}'){2}",
+                        (_subAppNames[i].IndexOf('%') >= 0) ? "LIKE" : "=", 
+                        _subAppNames[i],
+                        (i == _subAppNames.Length - 1) ? "" : " OR "
+                    ));
+                }
+                _query.Append(") ");
+            }
+            _query.Append(@"ORDER BY ""Name"" ");
+
+			return _query.ToString();
+		}
+		#endregion
+		#region protected override string gettablefields(...);
+		protected override string gettablefields(
+			string tableName_in
+		) {
+			#region return "SELECT ...";
+			return string.Format(@"
+SELECT
+	t1.COLUMN_NAME AS ""Name"", 
+	CASE
+		WHEN t1.IS_NULLABLE = 'NO' THEN
+			CAST(0 AS Int)
+		ELSE
+			CAST(1 AS Int)
+	END
+	AS ""isNullable"", 
+	t1.DATA_TYPE AS ""Type"", 
+	t1.CHARACTER_MAXIMUM_LENGTH AS ""Size"", 
+	CASE
+		WHEN (t6.TABLE_TYPE = 'VIEW') THEN
+			CAST(0 AS Int)
+		WHEN t7.column_name IS NULL THEN
+			CASE
+				WHEN (t6.TABLE_TYPE != 'VIEW') THEN
+					CASE
+						WHEN (column_default LIKE 'nextval(''%') THEN
+							CAST(1 AS Int)
+						ELSE
+							CAST(0 AS Int)
+					END
+				ELSE
+					CAST(0 AS Int)
+			END
+		ELSE
+			CAST(1 AS Int)
+	END AS ""isPK"", 
+	CASE
+		WHEN (t6.TABLE_TYPE != 'VIEW') THEN
+			CASE
+				WHEN (column_default LIKE 'nextval(''%') THEN
+					CAST(1 AS Int)
+				ELSE
+					CAST(0 AS Int)
+			END
+		ELSE
+			CAST(0 AS Int)
+	END AS ""isIdentity"", 
+--	CASE
+--		WHEN (t6.TABLE_TYPE != 'VIEW') THEN
+----			CASE
+----				WHEN t4.CONSTRAINT_NAME IS NULL THEN
+--					NULL
+----				ELSE
+----					t4.table_name
+----			END
+--		ELSE
+			NULL
+--	END
+	AS ""FK_TableName"", 
+--	CASE
+--		WHEN (t6.TABLE_TYPE != 'VIEW') THEN
+----			CASE
+----				WHEN t4.CONSTRAINT_NAME IS NULL THEN
+--					NULL
+----				ELSE
+----					t4.column_name
+----			END
+--		ELSE
+			NULL
+--	END
+	AS ""FK_FieldName""
+FROM INFORMATION_SCHEMA.COLUMNS AS t1
+	LEFT JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE t7 ON (
+		(t7.column_name = t1.COLUMN_NAME)
+		AND
+		(t7.constraint_name = t1.table_name || '_pkey')
+	)
+--	LEFT JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE t4 ON (
+--		(t4.CONSTRAINT_NAME = t1.TABLE_NAME || '_' || t1.COLUMN_NAME || '_fkey')
+--		OR
+--		(t4.CONSTRAINT_NAME = t1.TABLE_NAME || '__base_' || t1.COLUMN_NAME || '_fkey')
+--	)
+	--LEFT JOIN INFORMATION_SCHEMA.View_Column_Usage t5 ON
+	--	(t5.VIEW_NAME = t1.TABLE_NAME)
+	--	AND
+	--	(t5.COLUMN_NAME = t1.COLUMN_NAME)
+	LEFT JOIN INFORMATION_SCHEMA.TABLES t6 ON
+		(t6.TABLE_NAME = t1.TABLE_NAME)
+WHERE (t1.TABLE_NAME = '{0}') 
+ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
+",
+				tableName_in
+			);
+			#endregion
 		}
 		#endregion
 	}

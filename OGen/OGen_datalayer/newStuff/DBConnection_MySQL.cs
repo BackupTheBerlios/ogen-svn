@@ -32,6 +32,7 @@ along with OGen; if not, write to the
 using System;
 using System.Data;
 using MySql.Data.MySqlClient;
+using System.Text;
 
 namespace OGen.lib.datalayer.newStuff {
 	public sealed class cDBConnection_MySQL : cDBConnection {
@@ -55,7 +56,28 @@ namespace OGen.lib.datalayer.newStuff {
 		}
 		//#endregion
 
+		//#region public static properties...
+		#region public static DBUtils Utils { get; }
+		private static DBUtils utils__ = null;
+
+		public static DBUtils Utils {
+			get {
+				if (utils__ == null) {
+					utils__ = new cDBUtils_MySQL();
+				}
+				return utils__;
+			}
+		}
+		#endregion
+		//#endregion
 		//#region public properties...
+		#region public override DBUtils utils { get; }
+		public override DBUtils utils {
+			get {
+				return Utils;
+			}
+		}
+		#endregion
 		#region public override IDbConnection exposeConnection { get; }
 		public override IDbConnection exposeConnection {
 			get {
@@ -346,5 +368,108 @@ ORDER BY SCHEMA_NAME
 			;
 		}
 		#endregion
+//		#region protected override string gettables(string subAppName_in);
+		protected override string gettables(string subAppName_in) {
+
+// ToDos: here! 1 - Connectionstring_database() not supported!
+// ToDos: here! 2 - CAST(1 AS Signed Int) carefull on how provider converts server var to .net var, 
+//					check DBConnection.getTables(...);
+throw new Exception("not implemented!");
+
+//            StringBuilder _query = new StringBuilder(string.Empty);
+//            string _database = Connectionstring_database();
+//            #region _query.Append("SELECT ...");
+//            _query.Append(string.Format(@"
+//SELECT
+//	TABLE_NAME AS ""Name"",
+//	CASE
+//		WHEN (TABLE_TYPE = 'VIEW') THEN
+//			CAST(1 AS Signed Int)
+//		ELSE
+//			CAST(0 AS Signed Int)
+//	END AS ""isVT""
+//FROM INFORMATION_SCHEMA.TABLES
+//WHERE
+//	(
+//		(TABLE_TYPE = 'BASE TABLE')
+//		OR
+//		(TABLE_TYPE = 'VIEW')
+//	)
+//	AND
+//	(TABLE_SCHEMA = '{0}')
+//", 
+//                _database
+//            ));
+//            #endregion
+//            if (subAppName_in != "" ) {
+//                _query.Append("AND (");
+//                string[] _subAppNames = subAppName_in.Split('|');
+//                for (int i = 0; i < _subAppNames.Length; i++) {
+//                    _query.Append(string.Format(
+//                        "(TABLE_NAME {0} '{1}'){2}",
+//                        (_subAppNames[i].IndexOf('%') >= 0) ? "LIKE" : "=",
+//                        _subAppNames[i],
+//                        (i == _subAppNames.Length - 1) ? "" : " OR "
+//                    ));
+//                }
+//                _query.Append(") ");
+//            }
+//            _query.Append(@"ORDER BY ""Name"" ");
+
+//            return _query.ToString();
+		}
+//		#endregion
+//		#region protected override string gettablefields(...);
+		protected override string gettablefields(
+			string tableName_in
+		) {
+
+// ToDos: here! 1 - Connectionstring_database() not supported!
+// ToDos: here! 2 - CAST(1 AS Signed Int) carefull on how provider converts server var to .net var, 
+//					check DBConnection.getTableFields(...);
+throw new Exception("not implemented!");
+
+//            string _database = Connectionstring_database();
+//            #region return "SELECT ...";
+//            return string.Format(@"
+//SELECT
+//	t1.COLUMN_NAME AS ""Name"", 
+//--	CASE
+//--		WHEN t1.IS_NULLABLE = 'NO' THEN
+//			CAST(0 AS Signed Int)
+//--		ELSE
+//--			CAST(1 AS Signed Int)
+//--	END
+//	AS ""isNullable"", 
+//	t1.DATA_TYPE AS ""Type"", 
+//	t1.CHARACTER_MAXIMUM_LENGTH AS ""Size"", 
+//	CASE
+//		WHEN ((t6.TABLE_TYPE != 'VIEW') AND (t1.COLUMN_KEY = 'PRI')) THEN
+//			CAST(1 AS Signed Int)
+//		ELSE
+//			CAST(0 AS Signed Int)
+//	END AS ""isPK"", 
+//	CASE
+//		WHEN ((t6.TABLE_TYPE != 'VIEW') AND (t1.EXTRA = 'auto_increment')) THEN
+//			CAST(1 AS Signed Int)
+//		ELSE
+//			CAST(0 AS Signed Int)
+//	END AS ""isIdentity"", 
+//	NULL AS ""FK_TableName"", 
+//	NULL AS ""FK_FieldName""
+//FROM INFORMATION_SCHEMA.COLUMNS AS t1
+//	LEFT JOIN INFORMATION_SCHEMA.TABLES t6 ON ((t6.TABLE_SCHEMA = t1.TABLE_SCHEMA) AND (t6.TABLE_NAME = t1.TABLE_NAME))
+//WHERE 
+//	(t1.TABLE_NAME = '{0}') 
+//	AND
+//	(t1.TABLE_SCHEMA = '{1}')
+//ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
+//",
+//                tableName_in,
+//                _database
+//            );
+//            #endregion
+		}
+//		#endregion
 	}
 }
