@@ -177,26 +177,26 @@ namespace OGen.lib.datalayer.newStuff {
 			}
 			#endregion
 			#region command_in.CommandText = function_in;
-			switch (dbservertype_) {
-				case eDBServerTypes.PostgreSQL: {
-						command_in.CommandText =
-							string.Format("\"{0}\"", function_in);
-						break;
-					}
-				case eDBServerTypes.SQLServer:
-				case eDBServerTypes.MySQL:
-				default: {
+			//switch (dbservertype_) {
+			//    case eDBServerTypes.PostgreSQL: {
+			//            command_in.CommandText =
+			//                string.Format("\"{0}\"", function_in);
+			//            break;
+			//        }
+			//    case eDBServerTypes.SQLServer:
+			//    case eDBServerTypes.MySQL:
+			//    default: {
 						command_in.CommandText = function_in;
-						break;
-					}
-			}
+			//            break;
+			//        }
+			//}
 			#endregion
 			command_in.CommandType = CommandType.StoredProcedure;
 			try {
 				if (returnValue_Size_in >= 0) {
-					switch (dbservertype_) {
-						case eDBServerTypes.SQLServer:
-						case eDBServerTypes.MySQL: {
+					//switch (dbservertype_) {
+					//    case eDBServerTypes.SQLServer:
+					//    case eDBServerTypes.MySQL: {
 								command_in.Parameters.Add(
 									newDBDataParameter(
 										"SomeOutput",
@@ -212,15 +212,15 @@ namespace OGen.lib.datalayer.newStuff {
 										command_in.Parameters.Count - 1
 									]).Value;
 								break;
-							}
-						case eDBServerTypes.PostgreSQL: {
-								Execute_SQLFunction_out =
-									command_in.ExecuteScalar();
-								break;
-							}
-						default:
-							throw new Exception("invalid DBServerType");
-					}
+					//        }
+					//    case eDBServerTypes.PostgreSQL: {
+					//            Execute_SQLFunction_out =
+					//                command_in.ExecuteScalar();
+					//            break;
+					//        }
+					//    default:
+					//        throw new Exception("invalid DBServerType");
+					//}
 				} else {
 					command_in.ExecuteNonQuery();
 					//Execute_SQLFunction_out = null;

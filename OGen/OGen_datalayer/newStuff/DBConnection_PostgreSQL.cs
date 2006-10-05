@@ -173,50 +173,50 @@ namespace OGen.lib.datalayer.newStuff {
 			}
 			#endregion
 			#region command_in.CommandText = function_in;
-			switch (dbservertype_) {
-				case eDBServerTypes.PostgreSQL: {
+			//switch (dbservertype_) {
+			//    case eDBServerTypes.PostgreSQL: {
 						command_in.CommandText =
 							string.Format("\"{0}\"", function_in);
-						break;
-					}
-				case eDBServerTypes.SQLServer:
-				case eDBServerTypes.MySQL:
-				default: {
-						command_in.CommandText = function_in;
-						break;
-					}
-			}
+			//			break;
+			//		}
+			//    case eDBServerTypes.SQLServer:
+			//    case eDBServerTypes.MySQL:
+			//    default: {
+			//            command_in.CommandText = function_in;
+			//            break;
+			//        }
+			//}
 			#endregion
 			command_in.CommandType = CommandType.StoredProcedure;
 			try {
 				if (returnValue_Size_in >= 0) {
-					switch (dbservertype_) {
-						case eDBServerTypes.SQLServer:
-						case eDBServerTypes.MySQL: {
-								command_in.Parameters.Add(
-									newDBDataParameter(
-										"SomeOutput",
-										(DbType)returnValue_DbType_in,
-										ParameterDirection.ReturnValue,
-										null,
-										returnValue_Size_in
-									)
-								);
-								command_in.ExecuteNonQuery();
-								Execute_SQLFunction_out
-									= ((IDbDataParameter)command_in.Parameters[
-										command_in.Parameters.Count - 1
-									]).Value;
-								break;
-							}
-						case eDBServerTypes.PostgreSQL: {
+					//switch (dbservertype_) {
+					//    case eDBServerTypes.SQLServer:
+					//    case eDBServerTypes.MySQL: {
+					//            command_in.Parameters.Add(
+					//                newDBDataParameter(
+					//                    "SomeOutput",
+					//                    (DbType)returnValue_DbType_in,
+					//                    ParameterDirection.ReturnValue,
+					//                    null,
+					//                    returnValue_Size_in
+					//                )
+					//            );
+					//            command_in.ExecuteNonQuery();
+					//            Execute_SQLFunction_out
+					//                = ((IDbDataParameter)command_in.Parameters[
+					//                    command_in.Parameters.Count - 1
+					//                ]).Value;
+					//            break;
+					//        }
+					//    case eDBServerTypes.PostgreSQL: {
 								Execute_SQLFunction_out =
 									command_in.ExecuteScalar();
-								break;
-							}
-						default:
-							throw new Exception("invalid DBServerType");
-					}
+					//            break;
+					//        }
+					//    default:
+					//        throw new Exception("invalid DBServerType");
+					//}
 				} else {
 					command_in.ExecuteNonQuery();
 					//Execute_SQLFunction_out = null;
