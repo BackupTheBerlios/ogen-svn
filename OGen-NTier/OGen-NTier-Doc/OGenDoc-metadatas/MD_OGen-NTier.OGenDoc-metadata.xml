@@ -104,7 +104,7 @@ ToDos: here!&lt;br&gt;
 			<documents>
 				<document idDocument="1" 
 					name="dependencies and pre-requisites" 
-					description="xxxxxxxxxxx ToDos: here!" 
+					description="" 
 					document="
 &lt;br&gt;
 If you don't plan to build from source or contribute to OGen you'll only need:
@@ -114,6 +114,7 @@ If you don't plan to build from source or contribute to OGen you'll only need:
 	&lt;/li&gt;
 	&lt;li type=&quot;circle&quot;&gt;
 		&lt;a href=&quot;http://dev.mysql.com/downloads/connector/net/&quot;&gt;MySQL Connector/Net&lt;/a&gt;
+		(support is on the way)
 	&lt;/li&gt;
 &lt;/ul&gt;
 &lt;br&gt;
@@ -121,10 +122,12 @@ If you don't plan to build from source or contribute to OGen you'll only need:
 If you're building from source, or plan to contribute you'll &lt;u&gt;also&lt;/u&gt; need:
 &lt;ul&gt;
 	&lt;li type=&quot;circle&quot;&gt;
-		an IDE like 
-		&lt;a href=&quot;http://www.icsharpcode.net/OpenSource/SD/&quot;&gt;SharpDevelop&lt;/a&gt;, 
-		&lt;a href=&quot;http://www.monodevelop.org/&quot;&gt;MonoDevelop&lt;/a&gt; or 
-		visual studio .net
+		build source files using
+		&lt;a href=&quot;http://www.icsharpcode.net/OpenSource/SD/&quot;&gt;SharpDevelop&lt;/a&gt;
+		or 
+		&lt;a href=&quot;http://msdn.microsoft.com/vstudio/express/visualcsharp/&quot;&gt;Visual C# 2005 Express Edition&lt;/a&gt;
+		(&lt;a href=&quot;http://nant.sourceforge.net/&quot;&gt;NAnt&lt;/a&gt; and 
+		&lt;a href=&quot;http://www.monodevelop.org/&quot;&gt;MonoDevelop&lt;/a&gt; not supported yet)
 	&lt;/li&gt;
 	&lt;li type=&quot;circle&quot;&gt;
 		a subversion client like
@@ -145,7 +148,7 @@ If you're building from source, or plan to contribute you'll &lt;u&gt;also&lt;/u
 " />
 				<document idDocument="2" 
 					name="installing OGen" 
-					description="ToDos: here!" 
+					description="" 
 					document="
 &lt;br&gt;
 OGen at BerliOS:
@@ -195,7 +198,7 @@ OGen at BerliOS:
 						&lt;br&gt;
 					&lt;/li&gt;
 					&lt;li&gt;
-						if you're using visual studio, you'll need to define where to find dependant asseblies:
+						if you're using visual studio, you'll need to define where to find dependant asseblies (even if they're in the GAC):
 						&lt;br&gt;
 						win-20-GAC-registry.reg
 						&lt;br&gt;
@@ -206,9 +209,9 @@ OGen at BerliOS:
 						&lt;br&gt;
 						OGen-buildAssembies.cmbx (&lt;a href=&quot;http://www.icsharpcode.net/OpenSource/SD/&quot;&gt;SharpDevelop&lt;/a&gt;)
 						&lt;br&gt;
-						OGen-buildAssembies-7.1.sln (visual studio 2003)
+						OGen-buildAssembies-7.1.sln (Visual Studio 2003)
 						&lt;br&gt;
-						OGen-buildAssembies-8.sln (visual studio 2005)
+						OGen-buildAssembies-8.sln (&lt;a href=&quot;http://msdn.microsoft.com/vstudio/express/visualcsharp/&quot;&gt;Visual C# 2005 Express Edition&lt;/a&gt; or Visual Studio 2005)
 						&lt;br&gt;
 						OGen-buildAssembies.build (&lt;a href=&quot;http://nant.sourceforge.net/&quot;&gt;NAnt&lt;/a&gt;, not supported yet)
 						&lt;br&gt;
@@ -216,7 +219,7 @@ OGen at BerliOS:
 					&lt;/li&gt;
 
 					&lt;li&gt;
-						install assemblies in the GAC:
+						makes copies of release assemblies into a common directory and installs them in the GAC:
 						&lt;br&gt;
 						win-40-GAC-install.bat
 						&lt;br&gt;
@@ -254,6 +257,41 @@ ToDos: here!&lt;br&gt;
 &lt;/ol&gt;
 
 " />
+			</documents>
+		</subject>
+		<subject idSubject="37" idSubject_parent="2" 
+			name="configurations"
+			description="ToDos: here!">
+			<documents />
+		</subject>
+		<subject idSubject="38" idSubject_parent="37" 
+			name="configs"
+			description="ToDos: here!">
+			<documents>
+				<document idDocument="1" 
+					name="defining a config table" 
+					description="ToDos: here!" 
+					document="ToDos: here!&lt;br&gt;
+ToDos: here!&lt;br&gt;
+..." />
+				<document idDocument="2" 
+					name="using configs" 
+					description="ToDos: here!" 
+					document="ToDos: here!&lt;br&gt;
+ToDos: here!&lt;br&gt;
+..." />
+			</documents>
+		</subject>
+		<subject idSubject="39" idSubject_parent="37" 
+			name="other configurations"
+			description="ToDos: here!">
+			<documents>
+				<document idDocument="1" 
+					name="db connection string" 
+					description="ToDos: here!" 
+					document="ToDos: here!&lt;br&gt;
+ToDos: here!&lt;br&gt;
+..." />
 			</documents>
 		</subject>
 		<subject idSubject="19" idSubject_parent="2" 
@@ -1132,44 +1170,80 @@ ToDos: here!&lt;br&gt;
 					document="ToDos: here!&lt;br&gt;
 ToDos: here!&lt;br&gt;
 ..." />
-			</documents>
-		</subject>
-		<subject idSubject="37" idSubject_parent="20" 
-			name="configurations"
-			description="ToDos: here!">
-			<documents />
-		</subject>
-		<subject idSubject="38" idSubject_parent="37" 
-			name="configs"
-			description="ToDos: here!">
-			<documents>
-				<document idDocument="1" 
-					name="defining a config table" 
-					description="ToDos: here!" 
-					document="ToDos: here!&lt;br&gt;
-ToDos: here!&lt;br&gt;
-..." />
-				<document idDocument="2" 
-					name="using configs" 
-					description="ToDos: here!" 
-					document="ToDos: here!&lt;br&gt;
-ToDos: here!&lt;br&gt;
-..." />
-			</documents>
-		</subject>
-		<subject idSubject="39" idSubject_parent="37" 
-			name="other configurations"
-			description="ToDos: here!">
-			<documents>
-				<document idDocument="1" 
-					name="db connection string" 
-					description="ToDos: here!" 
-					document="ToDos: here!&lt;br&gt;
-ToDos: here!&lt;br&gt;
-..." />
-			</documents>
-		</subject>
 
+				<document idDocument="4" 
+					name="other examples *.cs" 
+					description="" 
+					document="
+
+&lt;ol type=&quot;circle&quot;&gt;
+	&lt;li&gt;
+		&lt;a href=&quot;http://svn.berlios.de/svnroot/repos/ogen/OGen-NTier_UTs/OGen-NTier_UTs_test/HowTos_andFAQ/OGen-NTier__Docs__Develop_HowTo_List_DataObjects.cs&quot;&gt;
+			using reflection to list dataobjects&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a href=&quot;http://svn.berlios.de/svnroot/repos/ogen/OGen-NTier_UTs/OGen-NTier_UTs_test/HowTos_andFAQ/OGen-NTier__Docs__Develop_HowTo_Read_DataObject_Property_Attributes.cs&quot;&gt;
+			using reflection to read from dataobject property attributes&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a href=&quot;http://svn.berlios.de/svnroot/repos/ogen/OGen-NTier_UTs/OGen-NTier_UTs_test/HowTos_andFAQ/OGen-NTier__Docs__Develop_HowTo_Read_and_Write_to_DataObject_Properties.cs&quot;&gt;
+			using reflection to read from and write to dataobject properties&lt;/a&gt;
+	&lt;/li&gt;
+
+	&lt;li&gt;
+		&lt;a href=&quot;http://svn.berlios.de/svnroot/repos/ogen/OGen-NTier_UTs/OGen-NTier_UTs_test/HowTos_andFAQ/OGen__Docs__Develop_HowTo_Execute_SQLQuery.cs&quot;&gt;
+			executing sql query&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a href=&quot;http://svn.berlios.de/svnroot/repos/ogen/OGen-NTier_UTs/OGen-NTier_UTs_test/HowTos_andFAQ/OGen__Docs__Develop_HowTo_Execute_SQLQuery_returnDataTable.cs&quot;&gt;
+			executing sql query and return datatable&lt;/a&gt;
+	&lt;/li&gt;
+
+	&lt;li&gt;
+		&lt;a href=&quot;http://svn.berlios.de/svnroot/repos/ogen/OGen-NTier_UTs/OGen-NTier_UTs_test/HowTos_andFAQ/OGen__Docs__Develop_HowTo_Execute_SQLFunction.cs&quot;&gt;
+			executing sql function&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a href=&quot;http://svn.berlios.de/svnroot/repos/ogen/OGen-NTier_UTs/OGen-NTier_UTs_test/HowTos_andFAQ/OGen__Docs__Develop_HowTo_Execute_SQLFunction_returnDataTable.cs&quot;&gt;
+			executing sql function and return datatable&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a href=&quot;http://svn.berlios.de/svnroot/repos/ogen/OGen-NTier_UTs/OGen-NTier_UTs_test/HowTos_andFAQ/OGen__Docs__Develop_HowTo_Execute_SQLFunction_returnSomevalue.cs&quot;&gt;
+			executing sql function and return some value&lt;/a&gt;
+	&lt;/li&gt;
+
+
+	&lt;li&gt;
+		&lt;a href=&quot;http://svn.berlios.de/svnroot/repos/ogen/OGen-NTier_UTs/OGen-NTier_UTs_test/HowTos_andFAQ/OGen__Docs__Develop_HowTo_UseTransactions.cs&quot;&gt;
+			using transactions&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a href=&quot;http://svn.berlios.de/svnroot/repos/ogen/OGen-NTier_UTs/OGen-NTier_UTs_test/HowTos_andFAQ/OGen-NTier__Docs__Develop_HowTo_UseTransactions_inDOs.cs&quot;&gt;
+			using transactions in DOs&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a href=&quot;http://svn.berlios.de/svnroot/repos/ogen/OGen-NTier_UTs/OGen-NTier_UTs_test/HowTos_andFAQ/OGen-NTier__Docs__Develop_HowTo_UseTransactions_betweenDOs_operations.cs&quot;&gt;
+			using transactions between DOs operations&lt;/a&gt;
+	&lt;/li&gt;
+
+	&lt;li&gt;
+		&lt;a href=&quot;http://svn.berlios.de/svnroot/repos/ogen/OGen-NTier_UTs/OGen-NTier_UTs_test/HowTos_andFAQ/OGen__Docs__Develop_HowTo_List_DBs.cs&quot;&gt;
+			list dbs (information schema)&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a href=&quot;http://svn.berlios.de/svnroot/repos/ogen/OGen-NTier_UTs/OGen-NTier_UTs_test/HowTos_andFAQ/OGen__Docs__Develop_HowTo_List_DB_Tables.cs&quot;&gt;
+			list db tables (information schema)&lt;/a&gt;
+	&lt;/li&gt;
+	&lt;li&gt;
+		&lt;a href=&quot;http://svn.berlios.de/svnroot/repos/ogen/OGen-NTier_UTs/OGen-NTier_UTs_test/HowTos_andFAQ/OGen__Docs__Develop_HowTo_List_DB_TableFields.cs&quot;&gt;
+			list db table fields (information schema)&lt;/a&gt;
+	&lt;/li&gt;
+&lt;/ol&gt;
+
+" />
+
+			</documents>
+		</subject>
 
 
 
