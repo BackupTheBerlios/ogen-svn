@@ -74,7 +74,12 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 	public sealed class RO0_<%=_aux_table.Name%> : RO__base {
 		#region internal RO0_<%=_aux_table.Name%>();
 		internal RO0_<%=_aux_table.Name%>(
-			DO0_<%=_aux_table.Name%> parent_ref_in
+#if NET20
+			DO_<%=_aux_table.Name%> 
+#else
+			DO0_<%=_aux_table.Name%> 
+#endif
+			parent_ref_in
 		) : base(
 			parent_ref_in
 		) {
@@ -83,7 +88,13 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		#endregion
 
 		#region private Properties...
-		private DO0_<%=_aux_table.Name%> parent_ref_;
+		private 
+#if NET20
+			DO_<%=_aux_table.Name%> 
+#else
+			DO0_<%=_aux_table.Name%> 
+#endif
+			parent_ref_;
 		#endregion
 
 		#region public Methods...
