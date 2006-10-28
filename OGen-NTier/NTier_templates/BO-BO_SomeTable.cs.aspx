@@ -1,4 +1,4 @@
-<%/*
+<%--
 
 OGen
 Copyright (C) 2002 Francisco Monteiro
@@ -26,7 +26,7 @@ along with OGen; if not, write to the
 
 	http://www.fsf.org/licensing/licenses/gpl.txt
 
-*/%><%@ Page language="c#" contenttype="text/html" %>
+--%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
@@ -65,12 +65,22 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 	/// <summary>
 	/// <%=_aux_table.Name%> BusinessObject which provides access to <see cref="<%=_aux_metadata.Namespace%>.lib.datalayer.DO_<%=_aux_table.Name%>">DO_<%=_aux_table.Name%></see> for the Business Layer.
 	/// </summary>
-	public sealed class BO_<%=_aux_table.Name%> : BO0_<%=_aux_table.Name%> {
+	public sealed 
+#if NET20
+		partial 
+#endif
+		class BO_<%=_aux_table.Name%> 
+#if !NET20
+			: BO0_<%=_aux_table.Name%> 
+#endif
+	{
+#if !NET20
 		#region public BO_<%=_aux_table.Name%>(...);
 		///
 		public BO_<%=_aux_table.Name%>() {
 		}
 		#endregion
+#endif
 
 		#region private Properties...
 		#endregion

@@ -1,4 +1,4 @@
-<%/*
+<%--
 
 OGen
 Copyright (C) 2002 Francisco Monteiro
@@ -26,7 +26,7 @@ along with OGen; if not, write to the
 
 	http://www.fsf.org/licensing/licenses/gpl.txt
 
-*/%><%@ Page language="c#" contenttype="text/html" %>
+--%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.lib.datalayer" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
@@ -71,9 +71,11 @@ using OGen.NTier.lib.datalayer;
 namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 	/// <summary>
 	/// <%=_aux_table.Name%> DataObject which provides access to <%=_aux_table.Name%> <%=(_aux_table.isVirtualTable) ? "view" : "table"%> at Database.
+#if !NET20
 	/// <note type="implementnotes">
 	/// Access must be made via <see cref="DO_<%=_aux_table.Name%>">DO_<%=_aux_table.Name%></see>.
 	/// </note>
+#endif
 	/// </summary>
 	[DOClassAttribute("<%=_aux_table.Name%>", <%=_aux_table.isVirtualTable.ToString().ToLower()%>, <%=_aux_table.isConfig.ToString().ToLower()%>)]
 	public 
@@ -89,16 +91,32 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		DO0_<%=_aux_table.Name%> 
 #endif
 		: DO__base {
-		#region internal DO0_<%=_aux_table.Name%>();
+		#region public DO_<%=_aux_table.Name%>();
 #if NET20
-			public DO_<%=_aux_table.Name%>
+		///
+		public DO_<%=_aux_table.Name%>
 #else
-			internal DO0_<%=_aux_table.Name%>
+		internal DO0_<%=_aux_table.Name%>
 #endif
 		() : base(
-			DO0__utils.DBServerType, 
-			DO0__utils.DBConnectionstring, 
-			DO0__utils.DBLogfile
+#if NET20
+			DO__utils
+#else
+			DO0__utils
+#endif
+			.DBServerType, 
+#if NET20
+			DO__utils
+#else
+			DO0__utils
+#endif
+			.DBConnectionstring,
+#if NET20
+			DO__utils
+#else
+			DO0__utils
+#endif
+			.DBLogfile
 		) {
 			clrObject();
 			haschanges_ = false;

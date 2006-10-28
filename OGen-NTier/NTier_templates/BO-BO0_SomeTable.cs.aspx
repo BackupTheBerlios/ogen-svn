@@ -1,4 +1,4 @@
-<%/*
+<%--
 
 OGen
 Copyright (C) 2002 Francisco Monteiro
@@ -26,7 +26,7 @@ along with OGen; if not, write to the
 
 	http://www.fsf.org/licensing/licenses/gpl.txt
 
-*/%><%@ Page language="c#" contenttype="text/html" %>
+--%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
@@ -68,16 +68,40 @@ using <%=_aux_metadata.Namespace%>.lib.datalayer;
 namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 	/// <summary>
 	/// <%=_aux_table.Name%> BusinessObject which provides access to <see cref="<%=_aux_metadata.Namespace%>.lib.datalayer.DO_<%=_aux_table.Name%>">DO_<%=_aux_table.Name%></see> for the Business Layer.
+#if !NET20
 	/// <note type="implementnotes">
 	/// Access must be made via <see cref="BO_<%=_aux_table.Name%>">BO_<%=_aux_table.Name%></see>.
 	/// </note>
+#endif
 	/// </summary>
-	public abstract class BO0_<%=_aux_table.Name%> : BO__base<%=(isListItem) ? ", iListItem" : ""%> {
-		#region internal BO0_<%=_aux_table.Name%>(...);
-		internal BO0_<%=_aux_table.Name%>() {}
+	public 
+#if NET20
+		partial 
+#else
+		abstract 
+#endif
+		class 
+#if NET20
+		BO_<%=_aux_table.Name%> 
+#else
+		BO0_<%=_aux_table.Name%> 
+#endif
+		: BO__base<%=(isListItem) ? ", iListItem" : ""%> {
+		#region public BO_<%=_aux_table.Name%>(...);
+#if NET20
+		public BO_<%=_aux_table.Name%>
+#else
+		internal BO0_<%=_aux_table.Name%>
+#endif
+		() {}
 
 		///
-		~BO0_<%=_aux_table.Name%>() {
+#if NET20
+		~BO_<%=_aux_table.Name%>
+#else
+		~BO0_<%=_aux_table.Name%>
+#endif
+		() {
 			if (mainaggregate != null) {
 				mainaggregate.Dispose(); mainaggregate = null;
 			}
@@ -109,19 +133,27 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 		#endregion
 		#region public Properties...<%
 		if (isListItem) { %>
-		#region public virtual string ListItemValue { get; set; }
+		#region public string ListItemValue { get; set; }
 		/// <summary>
 		/// List Item Value.
 		/// </summary>
-		public virtual string ListItemValue {
+		public 
+#if !NET20
+			virtual 
+#endif
+			string ListItemValue {
 			get { return <%=_aux_table.ListItemValue.Name%><%=(_aux_table.ListItemValue.DBType_generic.FWType != "string") ? ".ToString()" : ""%>; }
 		}
 		#endregion
-		#region public virtual string ListItemText { get; }
+		#region public string ListItemText { get; }
 		/// <summary>
 		/// List Item Text.
 		/// </summary>
-		public virtual string ListItemText {
+		public 
+#if !NET20
+			virtual 
+#endif
+			string ListItemText {
 			get { return <%=_aux_table.ListItemText.Name%><%=(_aux_table.ListItemText.DBType_generic.FWType != "string") ? ".ToString()" : ""%>; }
 		}
 		#endregion<%
@@ -130,18 +162,26 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 			_aux_field = _aux_table.Fields[f];
 
 			if (_aux_field.isNullable && !_aux_field.isPK) {%>
-		#region public virtual bool <%=_aux_field.Name%>_isNull { get; set; }
-		public virtual bool <%=_aux_field.Name%>_isNull {
+		#region public bool <%=_aux_field.Name%>_isNull { get; set; }
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool <%=_aux_field.Name%>_isNull {
 			get { return mainAggregate.<%=_aux_field.Name%>_isNull; }
 			set { mainAggregate.<%=_aux_field.Name%>_isNull = value; }
 		}
 		#endregion<%
 			}%>
-		#region public virtual <%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%> { get; set; }
+		#region public <%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%> { get; set; }
 		/// <summary>
 		/// <%=_aux_table.Name%>'s <%=_aux_field.Name%>.
 		/// </summary>
-		public virtual <%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%> {
+		public 
+#if !NET20
+			virtual 
+#endif
+			<%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%> {
 			get { return mainAggregate.<%=_aux_field.Name%>; }
 			set { mainAggregate.<%=_aux_field.Name%> = value; }
 		}

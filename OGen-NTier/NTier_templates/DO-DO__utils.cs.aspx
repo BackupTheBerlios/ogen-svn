@@ -1,4 +1,4 @@
-<%/*
+<%--
 
 OGen
 Copyright (C) 2002 Francisco Monteiro
@@ -26,7 +26,7 @@ along with OGen; if not, write to the
 
 	http://www.fsf.org/licensing/licenses/gpl.txt
 
-*/%><%@ Page language="c#" contenttype="text/html" %>
+--%><%@ Page language="c#" contenttype="text/html" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
@@ -61,7 +61,16 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 	/// <summary>
 	/// utils DataObject which works as a repository of useful Properties and Methods for DataObjects at <%=_aux_metadata.Namespace%>.lib.datalayer namespace.
 	/// </summary>
-	public sealed class DO__utils : DO0__utils<%/*, IDisposable*/%> {
+	public sealed 
+#if NET20
+		partial 
+#endif
+		class DO__utils 
+#if !NET20
+		: DO0__utils<%/*, IDisposable*/%>
+#endif
+	{
+#if !NET20
 		#region public DO__utils(...);
 		///
 		public DO__utils() : base() {
@@ -79,6 +88,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 //			base.Dispose();
 //		}%>
 		#endregion
+#endif
 
 		// add your code here!
 	}
