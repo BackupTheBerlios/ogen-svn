@@ -693,11 +693,13 @@ AS '
 			"IDUser", 
 			"Login", 
 			"Password", 
+			"SomeNullValue", 
 			true
 		INTO
 			_Output."IDUser", 
 			_Output."Login", 
 			_Output."Password", 
+			_Output."SomeNullValue", 
 			_Exists
 		FROM "User"
 		WHERE
@@ -707,6 +709,7 @@ AS '
 			_Output."IDUser" := NULL;
 			_Output."Login" := NULL;
 			_Output."Password" := NULL;
+			_Output."SomeNullValue" := NULL;
 		END IF;
 
 		RETURN _Output;
@@ -843,11 +846,13 @@ RETURNS "User" AS '
 			t1."IDUser", 
 			t1."Login", 
 			t1."Password", 
+			t1."SomeNullValue", 
 			true
 		INTO
 			_Output."IDUser", 
 			_Output."Login", 
 			_Output."Password", 
+			_Output."SomeNullValue", 
 			_Exists
 		FROM "User" t1
 		INNER JOIN "fnc_User_isObject_byLogin"(
@@ -860,6 +865,7 @@ RETURNS "User" AS '
 			_Output."IDUser" := NULL;
 			_Output."Login" := NULL;
 			_Output."Password" := NULL;
+			_Output."SomeNullValue" := NULL;
 		END IF;
 
 		RETURN _Output;
@@ -910,7 +916,8 @@ AS '
 			SELECT
 				t1."IDUser", 
 				t1."Login", 
-				t1."Password"
+				t1."Password", 
+				t1."SomeNullValue"
 			FROM "User" t1
 			INNER JOIN "sp_User_Record_open_all"(
 			) t2 ON (
@@ -943,7 +950,8 @@ AS '
 			SELECT
 				t1."IDUser", 
 				t1."Login", 
-				t1."Password"
+				t1."Password", 
+				t1."SomeNullValue"
 			FROM "User" t1
 			INNER JOIN "sp_User_Record_open_byGroup"(
 				"IDGroup_search_"
@@ -1259,7 +1267,8 @@ AS '
 			SELECT
 				t1."IDUser", 
 				t1."Login", 
-				t1."Password"
+				t1."Password", 
+				t1."SomeNullValue"
 			FROM "User" t1
 			INNER JOIN "sp_User_Record_open_all"(
 			) t2 ON (
@@ -1295,7 +1304,8 @@ AS '
 			SELECT
 				t1."IDUser", 
 				t1."Login", 
-				t1."Password"
+				t1."Password", 
+				t1."SomeNullValue"
 			FROM "User" t1
 			INNER JOIN "sp_User_Record_open_byGroup"(
 				"IDGroup_search_"
@@ -1439,7 +1449,7 @@ RETURNS VOID AS '
 	END;
 ' LANGUAGE 'plpgsql' VOLATILE;
 
-CREATE OR REPLACE FUNCTION "fnc0_User__ConstraintExist"("IDUser_" bigint, "Login_" character varying, "Password_" character varying)
+CREATE OR REPLACE FUNCTION "fnc0_User__ConstraintExist"("IDUser_" bigint, "Login_" character varying, "Password_" character varying, "SomeNullValue_" integer)
 RETURNS boolean
 AS '
 	DECLARE
@@ -1720,7 +1730,7 @@ AS '
 	END;
 ' LANGUAGE 'plpgsql' VOLATILE;
 
-CREATE OR REPLACE FUNCTION "sp0_User_insObject"("Login_" character varying, "Password_" character varying,  "SelectIdentity_" boolean)
+CREATE OR REPLACE FUNCTION "sp0_User_insObject"("Login_" character varying, "Password_" character varying, "SomeNullValue_" integer,  "SelectIdentity_" boolean)
 RETURNS bigint
 AS '
 	/**********************************
@@ -1736,16 +1746,19 @@ AS '
 		IF ("fnc0_User__ConstraintExist"(
 			CAST(0 AS bigint), 
 			"Login_", 
-			"Password_"
+			"Password_", 
+			"SomeNullValue_"
 		)) THEN
 			IdentityKey := CAST(-1 AS bigint);
 		ELSE
 			INSERT INTO "User" (
 				"Login", 
-				"Password"
+				"Password", 
+				"SomeNullValue"
 			) VALUES (
 				"Login_", 
-				"Password_"
+				"Password_", 
+				"SomeNullValue_"
 			);
 			IF ("SelectIdentity_") THEN
 				SELECT
@@ -1784,7 +1797,7 @@ AS '
 	END;
 ' LANGUAGE 'plpgsql' VOLATILE;
 
-CREATE OR REPLACE FUNCTION "sp0_User_updObject"("IDUser_" bigint, "Login_" character varying, "Password_" character varying)
+CREATE OR REPLACE FUNCTION "sp0_User_updObject"("IDUser_" bigint, "Login_" character varying, "Password_" character varying, "SomeNullValue_" integer)
 RETURNS bool
 AS '
 	/***********************************************
@@ -1797,14 +1810,16 @@ AS '
 		IF ("fnc0_User__ConstraintExist"(
 			"IDUser_", 
 			"Login_", 
-			"Password_"
+			"Password_", 
+			"SomeNullValue_"
 		)) THEN
 			RETURN true AS "ConstraintExist";
 		ELSE
 			UPDATE "User"
 			SET
 				"Login" = "Login_", 
-				"Password" = "Password_"
+				"Password" = "Password_", 
+				"SomeNullValue" = "SomeNullValue_"
 			WHERE
 				("IDUser" = "IDUser_")
 			;

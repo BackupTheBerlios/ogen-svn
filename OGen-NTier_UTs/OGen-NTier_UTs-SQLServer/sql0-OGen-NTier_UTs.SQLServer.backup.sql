@@ -513,7 +513,8 @@ AS
 CREATE PROCEDURE [dbo].[sp0_User_getObject]
 	@IDUser_ bigint OUT, 
 	@Login_ nvarchar (50) OUT, 
-	@Password_ nvarchar (50) OUT
+	@Password_ nvarchar (50) OUT, 
+	@SomeNullValue_ int OUT
 AS
 	DECLARE @Exists Bit
 	SET @Exists = 0
@@ -522,6 +523,7 @@ AS
 		@IDUser_ = [IDUser], 
 		@Login_ = [Login], 
 		@Password_ = [Password], 
+		@SomeNullValue_ = [SomeNullValue], 
 		@Exists = 1
 	FROM [User]
 	WHERE
@@ -620,7 +622,8 @@ CREATE PROCEDURE [dbo].[sp0_User_getObject_byLogin]
 	@Login_search_ nvarchar (50), 
 	@IDUser bigint OUT, 
 	@Login nvarchar (50) OUT, 
-	@Password nvarchar (50) OUT
+	@Password nvarchar (50) OUT, 
+	@SomeNullValue int OUT
 AS
 	DECLARE @Exists Bit
 	SET @Exists = 0
@@ -629,6 +632,7 @@ AS
 		@IDUser = t1.[IDUser], 
 		@Login = t1.[Login], 
 		@Password = t1.[Password], 
+		@SomeNullValue = t1.[SomeNullValue], 
 		@Exists = 1
 	FROM [User] t1
 	INNER JOIN [dbo].[fnc_User_isObject_byLogin](
@@ -641,6 +645,7 @@ AS
 		SET @IDUser = NULL
 		SET @Login = NULL
 		SET @Password = NULL
+		SET @SomeNullValue = NULL
 	END
 --GO
 
@@ -690,7 +695,8 @@ AS
 	SELECT
 		t1.[IDUser], 
 		t1.[Login], 
-		t1.[Password]
+		t1.[Password], 
+		t1.[SomeNullValue]
 	FROM [User] t1
 		INNER JOIN [#Table_temp] t2 ON (
 			(t2.[IDUser] = t1.[IDUser])
@@ -721,7 +727,8 @@ AS
 	SELECT
 		t1.[IDUser], 
 		t1.[Login], 
-		t1.[Password]
+		t1.[Password], 
+		t1.[SomeNullValue]
 	FROM [User] t1
 		INNER JOIN [#Table_temp] t2 ON (
 			(t2.[IDUser] = t1.[IDUser])
@@ -1086,7 +1093,8 @@ AS
 	SELECT
 		t1.[IDUser], 
 		t1.[Login], 
-		t1.[Password]
+		t1.[Password], 
+		t1.[SomeNullValue]
 	FROM [User] t1
 		INNER JOIN [#Table_temp] t2 ON
 			(t2.[IDUser] = t1.[IDUser])
@@ -1130,7 +1138,8 @@ AS
 	SELECT
 		t1.[IDUser], 
 		t1.[Login], 
-		t1.[Password]
+		t1.[Password], 
+		t1.[SomeNullValue]
 	FROM [User] t1
 		INNER JOIN [#Table_temp] t2 ON
 			(t2.[IDUser] = t1.[IDUser])
@@ -1278,7 +1287,8 @@ AS
 CREATE FUNCTION [dbo].[fnc0_User__ConstraintExist](
 	@IDUser bigint, 
 	@Login nvarchar (50), 
-	@Password nvarchar (50)
+	@Password nvarchar (50), 
+	@SomeNullValue int
 )
 RETURNS Bit
 AS
@@ -1534,21 +1544,25 @@ CREATE PROCEDURE [dbo].[sp0_User_insObject]
 	@IDUser_ bigint OUT, 
 	@Login_ nvarchar (50), 
 	@Password_ nvarchar (50), 
+	@SomeNullValue_ int, 
 	@SelectIdentity_ Bit
 AS
 	DECLARE @ConstraintExist Bit
 	SET @ConstraintExist = [dbo].[fnc0_User__ConstraintExist](
 		0, 
 		@Login_, 
-		@Password_
+		@Password_, 
+		@SomeNullValue_
 	)
 	IF (@ConstraintExist = 0) BEGIN
 		INSERT INTO [User] (
 			[Login], 
-			[Password]
+			[Password], 
+			[SomeNullValue]
 		) VALUES (
 			@Login_, 
-			@Password_
+			@Password_, 
+			@SomeNullValue_
 		)
 		IF (@SelectIdentity_ = 1) BEGIN
 			SET @IDUser_ = @@IDENTITY
@@ -1577,19 +1591,22 @@ CREATE PROCEDURE [dbo].[sp0_User_updObject]
 	@IDUser_ bigint, 
 	@Login_ nvarchar (50), 
 	@Password_ nvarchar (50), 
+	@SomeNullValue_ int, 
 	@ConstraintExist_ Bit OUT
 AS
 	SET @ConstraintExist_ = [dbo].[fnc0_User__ConstraintExist](
 		@IDUser_, 
 		@Login_, 
-		@Password_
+		@Password_, 
+		@SomeNullValue_
 	)
 
 	IF (@ConstraintExist_ = 0) BEGIN
 		UPDATE [User]
 		SET
 			[Login] = @Login_, 
-			[Password] = @Password_
+			[Password] = @Password_, 
+			[SomeNullValue] = @SomeNullValue_
 		WHERE
 			[IDUser] = @IDUser_
 	END
@@ -1676,7 +1693,8 @@ AS
 	SET @ConstraintExist_ = [dbo].[fnc0_User__ConstraintExist](
 		@IDUser_, 
 		NULL, 
-		@Password_update_
+		@Password_update_, 
+		NULL
 	)
 
 	IF (@ConstraintExist_ = 0) BEGIN

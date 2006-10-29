@@ -219,6 +219,48 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
+		#region public bool SomeNullValue_isNull { get; set; }
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool SomeNullValue_isNull {
+			get { return (somenullvalue_ == null); }
+			set {
+				//if (value) somenullvalue_ = null;
+
+				if ((value) && (somenullvalue_ != null)) {
+					somenullvalue_ = null;
+					haschanges_ = true;
+				}
+			}
+		}
+		#endregion
+		#region public int SomeNullValue { get; set; }
+		internal object somenullvalue_;// = 0;
+		
+		/// <summary>
+		/// User's SomeNullValue.
+		/// </summary>
+		[DOPropertyAttribute("SomeNullValue", false, false, true, "", "", "", false, false, false, false, false, true, false, false)]
+		public 
+#if !NET20
+			virtual 
+#endif
+			int SomeNullValue {
+			get {
+				return (int)((somenullvalue_ == null) ? 0 : somenullvalue_);
+			}
+			set {
+				if (
+					(!value.Equals(somenullvalue_))
+				) {
+					somenullvalue_ = value;
+					haschanges_ = true;
+				}
+			}
+		}
+		#endregion
 		#endregion
 
 		#region Methods...
@@ -234,6 +276,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			IDUser = 0L;
 			Login = string.Empty;
 			Password = string.Empty;
+			SomeNullValue_isNull = true;
 		}
 		#endregion
 		#region public bool getObject(...);
@@ -266,7 +309,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
 					base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.InputOutput, IDUser_in, 0), 
 					base.Connection.newDBDataParameter("Login_", DbType.String, ParameterDirection.Output, null, 50), 
-					base.Connection.newDBDataParameter("Password_", DbType.String, ParameterDirection.Output, null, 50)
+					base.Connection.newDBDataParameter("Password_", DbType.String, ParameterDirection.Output, null, 50), 
+					base.Connection.newDBDataParameter("SomeNullValue_", DbType.Int32, ParameterDirection.Output, null, 0)
 				};
 				base.Connection.Execute_SQLFunction("sp0_User_getObject", _dataparameters);
 
@@ -285,6 +329,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 						password_ = string.Empty;
 					} else {
 						password_ = (string)_dataparameters[2].Value;
+					}
+					if (_dataparameters[3].Value == System.DBNull.Value) {
+						SomeNullValue_isNull = true;
+					} else {
+						somenullvalue_ = (int)_dataparameters[3].Value;
 					}
 
 					haschanges_ = false;
@@ -387,6 +436,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Output, null, 0), 
 				base.Connection.newDBDataParameter("Login_", DbType.String, ParameterDirection.Input, login_, 50), 
 				base.Connection.newDBDataParameter("Password_", DbType.String, ParameterDirection.Input, password_, 50), 
+				base.Connection.newDBDataParameter("SomeNullValue_", DbType.Int32, ParameterDirection.Input, somenullvalue_, 0), 
 
 				base.Connection.newDBDataParameter("SelectIdentity_", DbType.Boolean, ParameterDirection.Input, selectIdentity_in, 1)
 			};
@@ -420,6 +470,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 					base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, iduser_, 0), 
 					base.Connection.newDBDataParameter("Login_", DbType.String, ParameterDirection.Input, login_, 50), 
 					base.Connection.newDBDataParameter("Password_", DbType.String, ParameterDirection.Input, password_, 50), 
+					base.Connection.newDBDataParameter("SomeNullValue_", DbType.Int32, ParameterDirection.Input, somenullvalue_, 0), 
 
 					base.Connection.newDBDataParameter("ConstraintExist_", DbType.Boolean, ParameterDirection.Output, null, 1)
 				};
@@ -428,7 +479,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 					_dataparameters
 				);
 				
-				constraintExist_out = (bool)_dataparameters[3].Value;
+				constraintExist_out = (bool)_dataparameters[4].Value;
 				if (!constraintExist_out) {
 					haschanges_ = false;
 				}
@@ -453,7 +504,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				base.Connection.newDBDataParameter("Login_search_", DbType.String, ParameterDirection.Input, Login_search_in, 50), 
 				base.Connection.newDBDataParameter("IDUser", DbType.Int64, ParameterDirection.Output, null, 0), 
 				base.Connection.newDBDataParameter("Login", DbType.String, ParameterDirection.Output, null, 50), 
-				base.Connection.newDBDataParameter("Password", DbType.String, ParameterDirection.Output, null, 50)
+				base.Connection.newDBDataParameter("Password", DbType.String, ParameterDirection.Output, null, 50), 
+				base.Connection.newDBDataParameter("SomeNullValue", DbType.Int32, ParameterDirection.Output, null, 0)
 			};
 			base.Connection.Execute_SQLFunction(
 				"sp0_User_getObject_byLogin", 
@@ -475,6 +527,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 					password_ = string.Empty;
 				} else {
 					password_ = (string)_dataparameters[3].Value;
+				}
+				if (_dataparameters[4].Value == System.DBNull.Value) {
+					SomeNullValue_isNull = true;
+				} else {
+					somenullvalue_ = (int)_dataparameters[4].Value;
 				}
 
 				haschanges_ = false;
@@ -552,7 +609,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 					_dataparameters
 				);
 				
-				constraintExist_out = (bool)_dataparameters[3].Value;
+				constraintExist_out = (bool)_dataparameters[4].Value;
 				if (!constraintExist_out) {
 					haschanges_ = false;
 				}

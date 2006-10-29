@@ -142,6 +142,29 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			set { mainAggregate.Password = value; }
 		}
 		#endregion
+		#region public bool SomeNullValue_isNull { get; set; }
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool SomeNullValue_isNull {
+			get { return mainAggregate.SomeNullValue_isNull; }
+			set { mainAggregate.SomeNullValue_isNull = value; }
+		}
+		#endregion
+		#region public int SomeNullValue { get; set; }
+		/// <summary>
+		/// User's SomeNullValue.
+		/// </summary>
+		public 
+#if !NET20
+			virtual 
+#endif
+			int SomeNullValue {
+			get { return mainAggregate.SomeNullValue; }
+			set { mainAggregate.SomeNullValue = value; }
+		}
+		#endregion
 		#endregion
 	}
 }

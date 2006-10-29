@@ -98,6 +98,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 					} else {
 						parent_ref_.password_ = (string)base.Record.Rows[Current]["Password"];
 					}
+					if (base.Record.Rows[Current]["SomeNullValue"] == System.DBNull.Value) {
+						parent_ref_.SomeNullValue_isNull = true;
+					} else {
+						parent_ref_.somenullvalue_ = (int)base.Record.Rows[Current]["SomeNullValue"];
+					}
 
 					parent_ref_.haschanges_ = false;
 				} else {
