@@ -80,16 +80,16 @@
                     HintPath = "..\..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
-                    Name = "Npgsql"
-                    AssemblyName = "Npgsql"
-                    HintPath = "C:\Program Files\Npgsql_0_7_1\Npgsql.dll"
-                    AssemblyFolderKey = "hklm\dn\npgsql"
-                />
-                <Reference
                     Name = "MySql.Data"
                     AssemblyName = "MySql.Data"
                     HintPath = "..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 1.0.7\bin\.NET 1.1\MySql.Data.dll"
                     AssemblyFolderKey = "hklm\mysql connector net 1.0.7"
+                />
+                <Reference
+                    Name = "Npgsql"
+                    AssemblyName = "Npgsql"
+                    HintPath = "..\..\..\..\..\..\Program Files\Npgsql1.0\Npgsql\bin\ms1.1\Npgsql.dll"
+                    AssemblyFolderKey = "hklm\dn\npgsql1.1"
                 />
             </References>
         </Build>

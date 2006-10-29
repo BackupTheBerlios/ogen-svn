@@ -156,7 +156,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return iduser_;
 			}
 			set {
-				if (!value.Equals(iduser_)) {
+				if (
+					(!value.Equals(iduser_))
+				) {
 					iduser_ = value;
 					haschanges_ = true;
 				}
@@ -179,7 +181,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return login_;
 			}
 			set {
-				if (!value.Equals(login_)) {
+				if (
+					(value != null)
+					&&
+					(!value.Equals(login_))
+				) {
 					login_ = value;
 					haschanges_ = true;
 				}
@@ -202,7 +208,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return idgroup_;
 			}
 			set {
-				if (!value.Equals(idgroup_)) {
+				if (
+					(!value.Equals(idgroup_))
+				) {
 					idgroup_ = value;
 					haschanges_ = true;
 				}
@@ -225,7 +233,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return name_;
 			}
 			set {
-				if (!value.Equals(name_)) {
+				if (
+					(value != null)
+					&&
+					(!value.Equals(name_))
+				) {
 					name_ = value;
 					haschanges_ = true;
 				}
@@ -248,7 +260,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return relationdate_;
 			}
 			set {
-				if (!value.Equals(relationdate_)) {
+				if (
+					(!value.Equals(relationdate_))
+				) {
 					relationdate_ = value;
 					haschanges_ = true;
 				}

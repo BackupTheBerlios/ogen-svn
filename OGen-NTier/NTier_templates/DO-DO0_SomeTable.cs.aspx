@@ -221,7 +221,13 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			}%>
 			}
 			set {
-				if (!value.Equals(<%=_aux_field.Name.ToLower()%>_)) {
+				if (<%
+					if (_aux_field.DBType_generic.FWType.ToLower() == "string") {%>
+					(value != null)
+					&&<%
+					}%>
+					(!value.Equals(<%=_aux_field.Name.ToLower()%>_))
+				) {
 					<%=_aux_field.Name.ToLower()%>_ = value;
 					haschanges_ = true;
 				}

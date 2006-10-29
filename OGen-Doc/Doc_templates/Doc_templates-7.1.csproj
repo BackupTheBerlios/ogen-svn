@@ -90,11 +90,6 @@
                     HintPath = "..\..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
-                    Name = "Npgsql"
-                    AssemblyName = "Npgsql"
-                    HintPath = "..\..\Npgsql\bin\ms1.1\Npgsql.dll"
-                />
-                <Reference
                     Name = "MySql.Data"
                     AssemblyName = "MySql.Data"
                     HintPath = "..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 1.0.7\bin\.NET 1.1\MySql.Data.dll"
@@ -119,6 +114,12 @@
                     Name = "Doc_metadata"
                     Project = "{9DF6791A-1771-4EB6-8FEB-7F54AC2D9078}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "Npgsql"
+                    AssemblyName = "Npgsql"
+                    HintPath = "..\..\..\..\..\..\Program Files\Npgsql1.0\Npgsql\bin\ms1.1\Npgsql.dll"
+                    AssemblyFolderKey = "hklm\dn\npgsql1.1"
                 />
             </References>
         </Build>

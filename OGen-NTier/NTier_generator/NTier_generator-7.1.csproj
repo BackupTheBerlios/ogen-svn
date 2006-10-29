@@ -115,12 +115,6 @@
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
                 <Reference
-                    Name = "Npgsql"
-                    AssemblyName = "Npgsql"
-                    HintPath = "C:\Program Files\Npgsql_0_7\OGen-Release\Npgsql.dll"
-                    AssemblyFolderKey = "hklm\dn\ogen"
-                />
-                <Reference
                     Name = "MySql.Data"
                     AssemblyName = "MySql.Data"
                     HintPath = "..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 1.0.7\bin\.NET 1.1\MySql.Data.dll"
@@ -135,6 +129,12 @@
                     Name = "NTier_templates"
                     Project = "{D5FDB433-994F-404C-B535-FB90B005B6B8}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "Npgsql"
+                    AssemblyName = "Npgsql"
+                    HintPath = "..\..\..\..\..\..\Program Files\Npgsql1.0\Npgsql\bin\ms1.1\Npgsql.dll"
+                    AssemblyFolderKey = "hklm\dn\npgsql1.1"
                 />
             </References>
         </Build>

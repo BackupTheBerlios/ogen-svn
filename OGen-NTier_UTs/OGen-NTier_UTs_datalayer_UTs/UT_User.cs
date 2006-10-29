@@ -189,5 +189,21 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 			_user.Dispose(); _user = null;
 		}
 		#endregion
+		#region public void UT_PropertyNullAssignement();
+		[Test]
+		public void UT_PropertyNullAssignement() {
+			//string _testid = DateTime.Now.Ticks.ToString();
+			//bool _constraint;
+			//long _iduser;
+
+			DO_User _user = new DO_User();
+			try {
+				_user.Login = null;
+			} catch {
+				Assert.Fail("unexpected null assignement error!");
+			}
+			_user.Dispose(); _user = null;
+		}
+		#endregion
 	}
 }

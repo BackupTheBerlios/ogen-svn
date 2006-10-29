@@ -85,12 +85,6 @@
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
                 <Reference
-                    Name = "nunit.framework"
-                    AssemblyName = "nunit.framework"
-                    HintPath = "C:\Program Files\NUnit 2.2\bin\nunit.framework.dll"
-                    AssemblyFolderKey = "hklm\dn\nunit.framework"
-                />
-                <Reference
                     Name = "System.Web"
                     AssemblyName = "System.Web"
                     HintPath = "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Web.dll"
@@ -104,6 +98,12 @@
                     Name = "OGen_webforms"
                     Project = "{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "nunit.framework"
+                    AssemblyName = "nunit.framework"
+                    HintPath = "..\..\..\..\..\..\Program Files\NUnit-Net-1.1 2.2.8\bin\nunit.framework.dll"
+                    AssemblyFolderKey = "hklm\dn\nunit.framework1.1"
                 />
             </References>
         </Build>

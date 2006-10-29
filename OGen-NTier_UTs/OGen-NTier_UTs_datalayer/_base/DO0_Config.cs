@@ -156,7 +156,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return name_;
 			}
 			set {
-				if (!value.Equals(name_)) {
+				if (
+					(value != null)
+					&&
+					(!value.Equals(name_))
+				) {
 					name_ = value;
 					haschanges_ = true;
 				}
@@ -179,7 +183,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return config_;
 			}
 			set {
-				if (!value.Equals(config_)) {
+				if (
+					(value != null)
+					&&
+					(!value.Equals(config_))
+				) {
 					config_ = value;
 					haschanges_ = true;
 				}
@@ -202,7 +210,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return type_;
 			}
 			set {
-				if (!value.Equals(type_)) {
+				if (
+					(!value.Equals(type_))
+				) {
 					type_ = value;
 					haschanges_ = true;
 				}
@@ -242,7 +252,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return (string)((description_ == null) ? string.Empty : description_);
 			}
 			set {
-				if (!value.Equals(description_)) {
+				if (
+					(value != null)
+					&&
+					(!value.Equals(description_))
+				) {
 					description_ = value;
 					haschanges_ = true;
 				}

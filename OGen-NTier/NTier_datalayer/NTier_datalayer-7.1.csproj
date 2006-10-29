@@ -80,26 +80,26 @@
                     HintPath = "..\..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
-                    Name = "OGen_config"
+                    Name = "MySql.Data"
+                    AssemblyName = "MySql.Data"
+                    HintPath = "..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 1.0.7\bin\.NET 1.1\MySql.Data.dll"
+                    AssemblyFolderKey = "hklm\mysql connector net 1.0.7"
+                />
+                <Reference
+                    Name = "OGen_config-7.1"
                     Project = "{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
                 <Reference
-                    Name = "OGen_datalayer"
+                    Name = "OGen_datalayer-7.1"
                     Project = "{4AE20414-478E-4859-849E-929741A5936C}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
                 <Reference
                     Name = "Npgsql"
                     AssemblyName = "Npgsql"
-                    HintPath = "C:\Program Files\Npgsql_0_7\OGen-Release\Npgsql.dll"
-                    AssemblyFolderKey = "hklm\dn\ogen"
-                />
-                <Reference
-                    Name = "MySql.Data"
-                    AssemblyName = "MySql.Data"
-                    HintPath = "..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 1.0.7\bin\.NET 1.1\MySql.Data.dll"
-                    AssemblyFolderKey = "hklm\mysql connector net 1.0.7"
+                    HintPath = "..\..\..\..\..\..\Program Files\Npgsql1.0\Npgsql\bin\ms1.1\Npgsql.dll"
+                    AssemblyFolderKey = "hklm\dn\npgsql1.1"
                 />
             </References>
         </Build>

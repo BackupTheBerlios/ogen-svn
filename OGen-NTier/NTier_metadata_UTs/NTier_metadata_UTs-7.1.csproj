@@ -80,21 +80,9 @@
                     HintPath = "..\..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
-                    Name = "nunit.framework"
-                    AssemblyName = "nunit.framework"
-                    HintPath = "..\..\..\..\..\..\..\Program Files\NUnit 2.2\bin\nunit.framework.dll"
-                    AssemblyFolderKey = "hklm\dn\nunit.framework"
-                />
-                <Reference
                     Name = "NTier_metadata"
                     Project = "{0E77A4DB-AF8B-4290-BB33-F9EC97655433}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
-                    Name = "Npgsql"
-                    AssemblyName = "Npgsql"
-                    HintPath = "..\..\OGen-Release\Npgsql.dll"
-                    AssemblyFolderKey = "hklm\dn\ogen"
                 />
                 <Reference
                     Name = "MySql.Data"
@@ -116,6 +104,18 @@
                     Name = "OGen_datalayer"
                     Project = "{4AE20414-478E-4859-849E-929741A5936C}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "nunit.framework"
+                    AssemblyName = "nunit.framework"
+                    HintPath = "..\..\..\..\..\..\Program Files\NUnit-Net-1.1 2.2.8\bin\nunit.framework.dll"
+                    AssemblyFolderKey = "hklm\dn\nunit.framework1.1"
+                />
+                <Reference
+                    Name = "Npgsql"
+                    AssemblyName = "Npgsql"
+                    HintPath = "..\..\..\..\..\..\Program Files\Npgsql1.0\Npgsql\bin\ms1.1\Npgsql.dll"
+                    AssemblyFolderKey = "hklm\dn\npgsql1.1"
                 />
             </References>
         </Build>

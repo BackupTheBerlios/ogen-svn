@@ -76,7 +76,7 @@
                 />
                 <Reference
                     Name = "System.XML"
-                    AssemblyName = "System.XML"
+                    AssemblyName = "System.Xml"
                     HintPath = "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
@@ -85,15 +85,15 @@
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
                 <Reference
-                    Name = "nunit.framework"
-                    AssemblyName = "nunit.framework"
-                    HintPath = "C:\Program Files\NUnit 2.2\bin\nunit.framework.dll"
-                    AssemblyFolderKey = "hklm\dn\nunit.framework"
-                />
-                <Reference
                     Name = "System.Web"
                     AssemblyName = "System.Web"
                     HintPath = "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Web.dll"
+                />
+                <Reference
+                    Name = "nunit.framework"
+                    AssemblyName = "nunit.framework"
+                    HintPath = "..\..\..\..\..\..\Program Files\NUnit-Net-1.1 2.2.8\bin\nunit.framework.dll"
+                    AssemblyFolderKey = "hklm\dn\nunit.framework1.1"
                 />
             </References>
         </Build>

@@ -156,7 +156,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return iduser_;
 			}
 			set {
-				if (!value.Equals(iduser_)) {
+				if (
+					(!value.Equals(iduser_))
+				) {
 					iduser_ = value;
 					haschanges_ = true;
 				}
@@ -179,7 +181,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return login_;
 			}
 			set {
-				if (!value.Equals(login_)) {
+				if (
+					(value != null)
+					&&
+					(!value.Equals(login_))
+				) {
 					login_ = value;
 					haschanges_ = true;
 				}
@@ -202,7 +208,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return password_;
 			}
 			set {
-				if (!value.Equals(password_)) {
+				if (
+					(value != null)
+					&&
+					(!value.Equals(password_))
+				) {
 					password_ = value;
 					haschanges_ = true;
 				}

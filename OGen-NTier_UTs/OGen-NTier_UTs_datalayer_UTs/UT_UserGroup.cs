@@ -167,5 +167,58 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 			}
 		}
 		#endregion
+		#region public void UT_bugPostgreSQL_noFunctionMatchesTheGivenNameAndArgumentTypes();
+		/// <summary>
+		/// exception: Npgsql.NpgsqlException: function sp0_UserGroup_setObject(bigint, bigint, timestamp with time zone, boolean) does not exist
+		/// Severity: ERROR 
+		/// Code: 42883
+		/// </summary>
+		[Test]
+		public void UT_bugPostgreSQL_noFunctionMatchesTheGivenNameAndArgumentTypes() {
+			bool _contraint;
+			long _iduser;
+			long _idgroup;
+
+			for (int c = 0; c < UT0__utils.DBConnections.Length; c++) {
+//Console.WriteLine("UT_NullableFields: {0}", UT0__utils.DBConnections[c].DBServerType.ToString());
+
+				UT0__utils.DBConnections[c].Open();
+				UT0__utils.DBConnections[c].Transaction.Begin();
+
+				#region _iduser = new DO_User(UT0__utils.DBConnections[c]).insObject(true);
+				DO_User _user = new DO_User(UT0__utils.DBConnections[c]);
+				_user.Login = testid_;
+				_user.Password = testid_;
+				_iduser = _user.insObject(true, out _contraint);
+				_user.Dispose(); _user = null;
+				#endregion
+				#region _idgroup = new DO_Group(UT0__utils.DBConnections[c]).insObject(true);
+				DO_Group _group = new DO_Group(UT0__utils.DBConnections[c]);
+				_group.Name = testid_;
+				_idgroup = _group.insObject(true);
+				_group.Dispose(); _group = null;
+				#endregion
+
+				DO_UserGroup _usergroup = new DO_UserGroup(UT0__utils.DBConnections[c]);
+				_usergroup.IDUser = _iduser;
+				_usergroup.IDGroup = _idgroup;
+				_usergroup.Relationdate_isNull = true;
+				_usergroup.Defaultrelation_isNull = true;
+				try {
+					_usergroup.setObject(true);
+				} catch {
+					Assert.Fail(
+						"test error: 1 ({0})",
+						UT0__utils.DBConnections[c].DBServerType
+					);
+				}
+				_usergroup.Dispose(); _usergroup = null;
+
+				UT0__utils.DBConnections[c].Transaction.Rollback();
+				UT0__utils.DBConnections[c].Transaction.Terminate();
+				UT0__utils.DBConnections[c].Close();
+			}
+		}
+		#endregion
 	}
 }

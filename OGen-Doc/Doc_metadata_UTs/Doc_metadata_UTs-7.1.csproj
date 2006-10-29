@@ -80,12 +80,6 @@
                     HintPath = "..\..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
-                    Name = "nunit.framework"
-                    AssemblyName = "nunit.framework"
-                    HintPath = "..\..\..\..\..\..\..\Program Files\NUnit 2.2\bin\nunit.framework.dll"
-                    AssemblyFolderKey = "hklm\dn\nunit.framework"
-                />
-                <Reference
                     Name = "Doc_metadata"
                     Project = "{9DF6791A-1771-4EB6-8FEB-7F54AC2D9078}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
@@ -94,6 +88,12 @@
                     Name = "OGen_collections"
                     Project = "{A6E837F8-780F-4D05-B3ED-2FF1906B5766}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "nunit.framework"
+                    AssemblyName = "nunit.framework"
+                    HintPath = "..\..\..\..\..\..\Program Files\NUnit-Net-1.1 2.2.8\bin\nunit.framework.dll"
+                    AssemblyFolderKey = "hklm\dn\nunit.framework1.1"
                 />
             </References>
         </Build>

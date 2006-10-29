@@ -156,7 +156,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return idgroup_;
 			}
 			set {
-				if (!value.Equals(idgroup_)) {
+				if (
+					(!value.Equals(idgroup_))
+				) {
 					idgroup_ = value;
 					haschanges_ = true;
 				}
@@ -179,7 +181,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				return name_;
 			}
 			set {
-				if (!value.Equals(name_)) {
+				if (
+					(value != null)
+					&&
+					(!value.Equals(name_))
+				) {
 					name_ = value;
 					haschanges_ = true;
 				}
