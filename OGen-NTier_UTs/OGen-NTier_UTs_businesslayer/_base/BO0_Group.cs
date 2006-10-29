@@ -39,16 +39,40 @@ using OGen.NTier.UTs.lib.datalayer;
 namespace OGen.NTier.UTs.lib.businesslayer {
 	/// <summary>
 	/// Group BusinessObject which provides access to <see cref="OGen.NTier.UTs.lib.datalayer.DO_Group">DO_Group</see> for the Business Layer.
+#if !NET20
 	/// <note type="implementnotes">
 	/// Access must be made via <see cref="BO_Group">BO_Group</see>.
 	/// </note>
+#endif
 	/// </summary>
-	public abstract class BO0_Group : BO__base {
-		#region internal BO0_Group(...);
-		internal BO0_Group() {}
+	public 
+#if NET20
+		partial 
+#else
+		abstract 
+#endif
+		class 
+#if NET20
+		BO_Group 
+#else
+		BO0_Group 
+#endif
+		: BO__base {
+		#region public BO_Group(...);
+#if NET20
+		public BO_Group
+#else
+		internal BO0_Group
+#endif
+		() {}
 
 		///
-		~BO0_Group() {
+#if NET20
+		~BO_Group
+#else
+		~BO0_Group
+#endif
+		() {
 			if (mainaggregate != null) {
 				mainaggregate.Dispose(); mainaggregate = null;
 			}
@@ -79,20 +103,28 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 		}
 		#endregion
 		#region public Properties...
-		#region public virtual long IDGroup { get; set; }
+		#region public long IDGroup { get; set; }
 		/// <summary>
 		/// Group's IDGroup.
 		/// </summary>
-		public virtual long IDGroup {
+		public 
+#if !NET20
+			virtual 
+#endif
+			long IDGroup {
 			get { return mainAggregate.IDGroup; }
 			set { mainAggregate.IDGroup = value; }
 		}
 		#endregion
-		#region public virtual string Name { get; set; }
+		#region public string Name { get; set; }
 		/// <summary>
 		/// Group's Name.
 		/// </summary>
-		public virtual string Name {
+		public 
+#if !NET20
+			virtual 
+#endif
+			string Name {
 			get { return mainAggregate.Name; }
 			set { mainAggregate.Name = value; }
 		}

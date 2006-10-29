@@ -39,7 +39,16 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	/// <summary>
 	/// Config DataObject which provides access to Config table at Database.
 	/// </summary>
-	public sealed class DO_Config : DO0_Config, IDisposable {
+	public sealed 
+#if NET20
+		partial
+#endif
+		class DO_Config : 
+#if !NET20
+		DO0_Config, 
+#endif
+		IDisposable {
+#if !NET20
 		#region public DO_Config();
 		///
 		public DO_Config() : base() {
@@ -51,6 +60,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		public DO_Config(cDBConnection connection_in) : base(connection_in) {
 		}
 		#endregion
+#endif
 
 		#region public Properties...
 		#endregion

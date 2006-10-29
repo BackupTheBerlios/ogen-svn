@@ -37,12 +37,22 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 	/// <summary>
 	/// UserGroup BusinessObject which provides access to <see cref="OGen.NTier.UTs.lib.datalayer.DO_UserGroup">DO_UserGroup</see> for the Business Layer.
 	/// </summary>
-	public sealed class BO_UserGroup : BO0_UserGroup {
+	public sealed 
+#if NET20
+		partial 
+#endif
+		class BO_UserGroup 
+#if !NET20
+			: BO0_UserGroup 
+#endif
+	{
+#if !NET20
 		#region public BO_UserGroup(...);
 		///
 		public BO_UserGroup() {
 		}
 		#endregion
+#endif
 
 		#region private Properties...
 		#endregion

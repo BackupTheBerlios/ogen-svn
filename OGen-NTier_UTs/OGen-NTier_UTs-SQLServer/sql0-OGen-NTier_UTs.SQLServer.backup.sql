@@ -1,5 +1,5 @@
 CREATE FUNCTION [dbo].[fnc0_Config_isObject](
-	@Name_ varchar (50)
+	@Name_ nvarchar (50)
 )
 RETURNS Bit
 AS
@@ -117,9 +117,10 @@ END
 
 
 CREATE PROCEDURE [dbo].[sp0_Config_setObject]
-	@Name_ varchar (50), 
-	@Config_ varchar (50), 
+	@Name_ nvarchar (50), 
+	@Config_ nvarchar (50), 
 	@Type_ int, 
+	@Description_ nvarchar (50), 
 
 	@Output_ Int OUT
 AS
@@ -138,11 +139,13 @@ AS
 			INSERT INTO [Config] (
 				[Name], 
 				[Config], 
-				[Type]
+				[Type], 
+				[Description]
 			) VALUES (
 				@Name_, 
 				@Config_, 
-				@Type_
+				@Type_, 
+				@Description_
 			)
 		END
 	END ELSE BEGIN
@@ -152,7 +155,8 @@ AS
 			UPDATE [Config]
 			SET
 				[Config] = @Config_, 
-				[Type] = @Type_
+				[Type] = @Type_, 
+				[Description] = @Description_
 			WHERE
 				([Name] = @Name_)
 		END
@@ -226,7 +230,7 @@ AS
 
 
 CREATE PROCEDURE [dbo].[sp0_Config_delObject]
-	@Name_ varchar (50)
+	@Name_ nvarchar (50)
 AS
 	DELETE
 	FROM [Config]
@@ -268,7 +272,7 @@ AS
 
 
 CREATE FUNCTION [dbo].[fnc_User_isObject_byLogin](
-	@Login_search_ varchar (50)
+	@Login_search_ nvarchar (50)
 )
 RETURNS @finalresult TABLE (
 	[IDUser] bigint
@@ -365,7 +369,7 @@ RETURN
 CREATE PROCEDURE [dbo].[sp_Config_Record_open_all]
 AS
 	SELECT
-	t1.[Name]
+		t1.[Name]
 	FROM [Config] t1
 	INNER JOIN [dbo].[fnc_Config_Record_open_all](
 	) t2 ON (
@@ -383,7 +387,7 @@ AS
 CREATE PROCEDURE [dbo].[sp_User_Record_open_all]
 AS
 	SELECT
-	t1.[IDUser]
+		t1.[IDUser]
 	FROM [User] t1
 	INNER JOIN [dbo].[fnc_User_Record_open_all](
 	) t2 ON (
@@ -402,7 +406,7 @@ CREATE PROCEDURE [dbo].[sp_User_Record_open_byGroup]
 	@IDGroup_search_ bigint
 AS
 	SELECT
-	t1.[IDUser]
+		t1.[IDUser]
 	FROM [User] t1
 	INNER JOIN [dbo].[fnc_User_Record_open_byGroup](
 		@IDGroup_search_
@@ -423,8 +427,8 @@ CREATE PROCEDURE [dbo].[sp_UserGroup_Record_open_byUser_Defaultrelation]
 	@Relationdate_search_ datetime
 AS
 	SELECT
-	t1.[IDUser], 
-	t1.[IDGroup]
+		t1.[IDUser], 
+		t1.[IDGroup]
 	FROM [UserGroup] t1
 	INNER JOIN [dbo].[fnc_UserGroup_Record_open_byUser_Defaultrelation](
 		@IDUser_search_, 
@@ -445,7 +449,7 @@ AS
 CREATE PROCEDURE [dbo].[sp_vUserDefaultGroup_Record_open_all]
 AS
 	SELECT
-	t1.[IDUser]
+		t1.[IDUser]
 	FROM [vUserDefaultGroup] t1
 	INNER JOIN [dbo].[fnc_vUserDefaultGroup_Record_open_all](
 	) t2 ON (
@@ -461,9 +465,10 @@ AS
 
 
 CREATE PROCEDURE [dbo].[sp0_Config_getObject]
-	@Name_ varchar (50) OUT, 
-	@Config_ varchar (50) OUT, 
-	@Type_ int OUT
+	@Name_ nvarchar (50) OUT, 
+	@Config_ nvarchar (50) OUT, 
+	@Type_ int OUT, 
+	@Description_ nvarchar (50) OUT
 AS
 	DECLARE @Exists Bit
 	SET @Exists = 0
@@ -472,6 +477,7 @@ AS
 		@Name_ = [Name], 
 		@Config_ = [Config], 
 		@Type_ = [Type], 
+		@Description_ = [Description], 
 		@Exists = 1
 	FROM [Config]
 	WHERE
@@ -485,7 +491,7 @@ AS
 
 CREATE PROCEDURE [dbo].[sp0_Group_getObject]
 	@IDGroup_ bigint OUT, 
-	@Name_ varchar (50) OUT
+	@Name_ nvarchar (50) OUT
 AS
 	DECLARE @Exists Bit
 	SET @Exists = 0
@@ -506,8 +512,8 @@ AS
 
 CREATE PROCEDURE [dbo].[sp0_User_getObject]
 	@IDUser_ bigint OUT, 
-	@Login_ varchar (50) OUT, 
-	@Password_ varchar (50) OUT
+	@Login_ nvarchar (50) OUT, 
+	@Password_ nvarchar (50) OUT
 AS
 	DECLARE @Exists Bit
 	SET @Exists = 0
@@ -556,9 +562,9 @@ AS
 
 CREATE PROCEDURE [dbo].[sp0_vUserDefaultGroup_getObject]
 	@IDUser_ bigint OUT, 
-	@Login_ varchar (50) OUT, 
+	@Login_ nvarchar (50) OUT, 
 	@IDGroup_ bigint OUT, 
-	@Name_ varchar (50) OUT, 
+	@Name_ nvarchar (50) OUT, 
 	@Relationdate_ datetime OUT
 AS
 	DECLARE @Exists Bit
@@ -583,9 +589,9 @@ AS
 
 CREATE PROCEDURE [dbo].[sp0_vUserGroup_getObject]
 	@IDUser_ bigint OUT, 
-	@Login_ varchar (50) OUT, 
+	@Login_ nvarchar (50) OUT, 
 	@IDGroup_ bigint OUT, 
-	@Name_ varchar (50) OUT, 
+	@Name_ nvarchar (50) OUT, 
 	@Relationdate_ datetime OUT
 AS
 	DECLARE @Exists Bit
@@ -611,10 +617,10 @@ AS
 
 
 CREATE PROCEDURE [dbo].[sp0_User_getObject_byLogin]
-	@Login_search_ varchar (50), 
+	@Login_search_ nvarchar (50), 
 	@IDUser bigint OUT, 
-	@Login varchar (50) OUT, 
-	@Password varchar (50) OUT
+	@Login nvarchar (50) OUT, 
+	@Password nvarchar (50) OUT
 AS
 	DECLARE @Exists Bit
 	SET @Exists = 0
@@ -642,7 +648,7 @@ AS
 CREATE PROCEDURE [dbo].[sp0_Config_Record_open_all_fullmode]
 AS
 	CREATE TABLE [#Table_temp] (
-		[Name] varchar (50)
+		[Name] nvarchar (50)
 	)
 	
 	INSERT INTO [#Table_temp] (
@@ -653,7 +659,8 @@ AS
 	SELECT
 		t1.[Name], 
 		t1.[Config], 
-		t1.[Type]
+		t1.[Type], 
+		t1.[Description]
 	FROM [Config] t1
 		INNER JOIN [#Table_temp] t2 ON (
 			(t2.[Name] = t1.[Name])
@@ -811,7 +818,7 @@ AS
 
 	CREATE TABLE [#Table_temp] (
 		[ID_range] BigInt IDENTITY,
-		[Name] varchar (50)
+		[Name] nvarchar (50)
 	)
 	
 	SET ROWCOUNT @ID_range_end
@@ -1023,7 +1030,7 @@ AS
 
 	CREATE TABLE [#Table_temp] (
 		[ID_range] BigInt IDENTITY,
-		[Name] varchar (50)
+		[Name] nvarchar (50)
 	)
 	
 	SET ROWCOUNT @ID_range_end
@@ -1035,7 +1042,8 @@ AS
 	SELECT
 		t1.[Name], 
 		t1.[Config], 
-		t1.[Type]
+		t1.[Type], 
+		t1.[Description]
 	FROM [Config] t1
 		INNER JOIN [#Table_temp] t2 ON
 			(t2.[Name] = t1.[Name])
@@ -1236,7 +1244,7 @@ AS
 
 CREATE PROCEDURE [dbo].[sp0_User_Record_update_SomeUpdateTest_byGroup]
 	@IDGroup_search_ bigint, 
-	@Password_update_ varchar (50)
+	@Password_update_ nvarchar (50)
 AS
 	UPDATE [User]
 	SET
@@ -1267,31 +1275,10 @@ AS
 --GO
 
 
-CREATE PROCEDURE [dbo].[sp0_User_updObject_SomeUpdateTest]
-	@IDUser_ bigint, 
-	@Password_update_ varchar (50), 
-	@ConstraintExist_ Bit OUT
-AS
-	SET @ConstraintExist_ = [dbo].[fnc0_User__ConstraintExist](
-		@IDUser_, 
-		NULL, 
-		@Password_update_
-	)
-
-	IF (@ConstraintExist_ = 0) BEGIN
-		UPDATE [User]
-		SET
-			[Password] = @Password_update_
-		WHERE
-			([IDUser] = @IDUser_)
-	END
---GO
-
-
 CREATE FUNCTION [dbo].[fnc0_User__ConstraintExist](
 	@IDUser bigint, 
-	@Login varchar (50), 
-	@Password varchar (50)
+	@Login nvarchar (50), 
+	@Password nvarchar (50)
 )
 RETURNS Bit
 AS
@@ -1317,7 +1304,7 @@ END
 
 
 CREATE FUNCTION [dbo].[fnc0_User_isObject_byLogin](
-	@Login_search_ varchar (50)
+	@Login_search_ nvarchar (50)
 )
 RETURNS Bit
 AS
@@ -1423,7 +1410,7 @@ END
 
 
 CREATE FUNCTION [dbo].[fnc0_Config_Record_hasObject_all](
-	@Name_ varchar (50)
+	@Name_ nvarchar (50)
 )
 RETURNS BIT
 BEGIN
@@ -1527,7 +1514,7 @@ END
 
 CREATE PROCEDURE [dbo].[sp0_Group_insObject]
 	@IDGroup_ bigint OUT, 
-	@Name_ varchar (50), 
+	@Name_ nvarchar (50), 
 	@SelectIdentity_ Bit
 AS
 		INSERT INTO [Group] (
@@ -1545,8 +1532,8 @@ AS
 
 CREATE PROCEDURE [dbo].[sp0_User_insObject]
 	@IDUser_ bigint OUT, 
-	@Login_ varchar (50), 
-	@Password_ varchar (50), 
+	@Login_ nvarchar (50), 
+	@Password_ nvarchar (50), 
 	@SelectIdentity_ Bit
 AS
 	DECLARE @ConstraintExist Bit
@@ -1576,7 +1563,7 @@ AS
 
 CREATE PROCEDURE [dbo].[sp0_Group_updObject]
 	@IDGroup_ bigint, 
-	@Name_ varchar (50)
+	@Name_ nvarchar (50)
 AS
 		UPDATE [Group]
 		SET
@@ -1588,8 +1575,8 @@ AS
 
 CREATE PROCEDURE [dbo].[sp0_User_updObject]
 	@IDUser_ bigint, 
-	@Login_ varchar (50), 
-	@Password_ varchar (50), 
+	@Login_ nvarchar (50), 
+	@Password_ nvarchar (50), 
 	@ConstraintExist_ Bit OUT
 AS
 	SET @ConstraintExist_ = [dbo].[fnc0_User__ConstraintExist](
@@ -1610,7 +1597,7 @@ AS
 
 
 CREATE PROCEDURE [dbo].[sp0_User_delObject_byLogin]
-	@Login_search_ varchar (50), 
+	@Login_search_ nvarchar (50), 
 
 	@Exists_ BIT OUT
 AS
@@ -1678,6 +1665,27 @@ AS
 	) t2 ON
 		(t2.[IDUser] = t1.[IDUser]) AND
 		(t2.[IDGroup] = t1.[IDGroup])
+--GO
+
+
+CREATE PROCEDURE [dbo].[sp0_User_updObject_SomeUpdateTest]
+	@IDUser_ bigint, 
+	@Password_update_ nvarchar (50), 
+	@ConstraintExist_ Bit OUT
+AS
+	SET @ConstraintExist_ = [dbo].[fnc0_User__ConstraintExist](
+		@IDUser_, 
+		NULL, 
+		@Password_update_
+	)
+
+	IF (@ConstraintExist_ = 0) BEGIN
+		UPDATE [User]
+		SET
+			[Password] = @Password_update_
+		WHERE
+			([IDUser] = @IDUser_)
+	END
 --GO
 
 

@@ -39,16 +39,40 @@ using OGen.NTier.UTs.lib.datalayer;
 namespace OGen.NTier.UTs.lib.businesslayer {
 	/// <summary>
 	/// vUserDefaultGroup BusinessObject which provides access to <see cref="OGen.NTier.UTs.lib.datalayer.DO_vUserDefaultGroup">DO_vUserDefaultGroup</see> for the Business Layer.
+#if !NET20
 	/// <note type="implementnotes">
 	/// Access must be made via <see cref="BO_vUserDefaultGroup">BO_vUserDefaultGroup</see>.
 	/// </note>
+#endif
 	/// </summary>
-	public abstract class BO0_vUserDefaultGroup : BO__base {
-		#region internal BO0_vUserDefaultGroup(...);
-		internal BO0_vUserDefaultGroup() {}
+	public 
+#if NET20
+		partial 
+#else
+		abstract 
+#endif
+		class 
+#if NET20
+		BO_vUserDefaultGroup 
+#else
+		BO0_vUserDefaultGroup 
+#endif
+		: BO__base {
+		#region public BO_vUserDefaultGroup(...);
+#if NET20
+		public BO_vUserDefaultGroup
+#else
+		internal BO0_vUserDefaultGroup
+#endif
+		() {}
 
 		///
-		~BO0_vUserDefaultGroup() {
+#if NET20
+		~BO_vUserDefaultGroup
+#else
+		~BO0_vUserDefaultGroup
+#endif
+		() {
 			if (mainaggregate != null) {
 				mainaggregate.Dispose(); mainaggregate = null;
 			}
@@ -79,47 +103,67 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 		}
 		#endregion
 		#region public Properties...
-		#region public virtual long IDUser { get; set; }
+		#region public long IDUser { get; set; }
 		/// <summary>
 		/// vUserDefaultGroup's IDUser.
 		/// </summary>
-		public virtual long IDUser {
+		public 
+#if !NET20
+			virtual 
+#endif
+			long IDUser {
 			get { return mainAggregate.IDUser; }
 			set { mainAggregate.IDUser = value; }
 		}
 		#endregion
-		#region public virtual string Login { get; set; }
+		#region public string Login { get; set; }
 		/// <summary>
 		/// vUserDefaultGroup's Login.
 		/// </summary>
-		public virtual string Login {
+		public 
+#if !NET20
+			virtual 
+#endif
+			string Login {
 			get { return mainAggregate.Login; }
 			set { mainAggregate.Login = value; }
 		}
 		#endregion
-		#region public virtual long IDGroup { get; set; }
+		#region public long IDGroup { get; set; }
 		/// <summary>
 		/// vUserDefaultGroup's IDGroup.
 		/// </summary>
-		public virtual long IDGroup {
+		public 
+#if !NET20
+			virtual 
+#endif
+			long IDGroup {
 			get { return mainAggregate.IDGroup; }
 			set { mainAggregate.IDGroup = value; }
 		}
 		#endregion
-		#region public virtual string Name { get; set; }
+		#region public string Name { get; set; }
 		/// <summary>
 		/// vUserDefaultGroup's Name.
 		/// </summary>
-		public virtual string Name {
+		public 
+#if !NET20
+			virtual 
+#endif
+			string Name {
 			get { return mainAggregate.Name; }
 			set { mainAggregate.Name = value; }
 		}
 		#endregion
-		#region public virtual DateTime Relationdate { get; set; }
+		#region public DateTime Relationdate { get; set; }
 		/// <summary>
 		/// vUserDefaultGroup's Relationdate.
 		/// </summary>
-		public virtual DateTime Relationdate {
+		public 
+#if !NET20
+			virtual 
+#endif
+			DateTime Relationdate {
 			get { return mainAggregate.Relationdate; }
 			set { mainAggregate.Relationdate = value; }
 		}

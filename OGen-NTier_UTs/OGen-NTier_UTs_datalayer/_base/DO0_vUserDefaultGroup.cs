@@ -38,23 +38,66 @@ using OGen.NTier.lib.datalayer;
 namespace OGen.NTier.UTs.lib.datalayer {
 	/// <summary>
 	/// vUserDefaultGroup DataObject which provides access to vUserDefaultGroup view at Database.
+#if !NET20
 	/// <note type="implementnotes">
 	/// Access must be made via <see cref="DO_vUserDefaultGroup">DO_vUserDefaultGroup</see>.
 	/// </note>
+#endif
 	/// </summary>
 	[DOClassAttribute("vUserDefaultGroup", true, false)]
-	public abstract class DO0_vUserDefaultGroup : DO__base {
-		#region internal DO0_vUserDefaultGroup();
-		internal DO0_vUserDefaultGroup(
-		) : base(
-			DO0__utils.DBServerType, 
-			DO0__utils.DBConnectionstring, 
-			DO0__utils.DBLogfile
+	public 
+#if NET20
+		partial 
+#else
+		abstract 
+#endif
+		class 
+#if NET20
+		DO_vUserDefaultGroup 
+#else
+		DO0_vUserDefaultGroup 
+#endif
+		: DO__base {
+		#region public DO_vUserDefaultGroup();
+#if NET20
+		///
+		public DO_vUserDefaultGroup
+#else
+		internal DO0_vUserDefaultGroup
+#endif
+		() : base(
+#if NET20
+			DO__utils
+#else
+			DO0__utils
+#endif
+			.DBServerType, 
+#if NET20
+			DO__utils
+#else
+			DO0__utils
+#endif
+			.DBConnectionstring,
+#if NET20
+			DO__utils
+#else
+			DO0__utils
+#endif
+			.DBLogfile
 		) {
 			clrObject();
 			haschanges_ = false;
 		}
-		internal DO0_vUserDefaultGroup(
+#if NET20
+			/// <summary>
+			/// Making the use of Database Transactions possible on a sequence of operations across multiple DataObjects.
+			/// </summary>
+			/// <param name="connection_in">opened Database connection with an initiated Transaction</param>
+			public DO_vUserDefaultGroup
+#else
+			internal DO0_vUserDefaultGroup
+#endif
+		(
 			cDBConnection connection_in
 		) : base(
 			connection_in
@@ -88,19 +131,27 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// Indicates if changes have been made to DO0_vUserDefaultGroup properties since last time getObject method was run.
 		/// </summary>
-		public virtual bool hasChanges {
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool hasChanges {
 			get { return haschanges_; }
 		}
 		#endregion
 		//---
-		#region public virtual long IDUser { get; set; }
+		#region public long IDUser { get; set; }
 		internal long iduser_;// = 0L;
 		
 		/// <summary>
 		/// vUserDefaultGroup's IDUser.
 		/// </summary>
 		[DOPropertyAttribute("IDUser", true, false, false, "", "", "", false, false, false, false, false, true, false, false)]
-		public virtual long IDUser {
+		public 
+#if !NET20
+			virtual 
+#endif
+			long IDUser {
 			get {
 				return iduser_;
 			}
@@ -112,14 +163,18 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
-		#region public virtual string Login { get; set; }
+		#region public string Login { get; set; }
 		internal string login_;// = string.Empty;
 		
 		/// <summary>
 		/// vUserDefaultGroup's Login.
 		/// </summary>
 		[DOPropertyAttribute("Login", false, false, false, "", "", "", false, false, false, false, false, false, false, true)]
-		public virtual string Login {
+		public 
+#if !NET20
+			virtual 
+#endif
+			string Login {
 			get {
 				return login_;
 			}
@@ -131,14 +186,18 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
-		#region public virtual long IDGroup { get; set; }
+		#region public long IDGroup { get; set; }
 		internal long idgroup_;// = 0L;
 		
 		/// <summary>
 		/// vUserDefaultGroup's IDGroup.
 		/// </summary>
 		[DOPropertyAttribute("IDGroup", false, false, false, "", "", "", false, false, false, false, false, true, false, false)]
-		public virtual long IDGroup {
+		public 
+#if !NET20
+			virtual 
+#endif
+			long IDGroup {
 			get {
 				return idgroup_;
 			}
@@ -150,14 +209,18 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
-		#region public virtual string Name { get; set; }
+		#region public string Name { get; set; }
 		internal string name_;// = string.Empty;
 		
 		/// <summary>
 		/// vUserDefaultGroup's Name.
 		/// </summary>
 		[DOPropertyAttribute("Name", false, false, false, "", "", "", false, false, false, false, false, false, false, true)]
-		public virtual string Name {
+		public 
+#if !NET20
+			virtual 
+#endif
+			string Name {
 			get {
 				return name_;
 			}
@@ -169,14 +232,18 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
-		#region public virtual DateTime Relationdate { get; set; }
+		#region public DateTime Relationdate { get; set; }
 		internal DateTime relationdate_;// = new DateTime(1900, 1, 1);
 		
 		/// <summary>
 		/// vUserDefaultGroup's Relationdate.
 		/// </summary>
 		[DOPropertyAttribute("Relationdate", false, false, false, "", "", "", false, false, false, false, true, false, false, false)]
-		public virtual DateTime Relationdate {
+		public 
+#if !NET20
+			virtual 
+#endif
+			DateTime Relationdate {
 			get {
 				return relationdate_;
 			}
@@ -191,11 +258,15 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		#endregion
 
 		#region Methods...
-		#region public virtual void clrObject();
+		#region public void clrObject();
 		/// <summary>
 		/// Clears all DO0_vUserDefaultGroup properties, assigning them with their appropriate default property value.
 		/// </summary>
-		public virtual void clrObject() {
+		public 
+#if !NET20
+			virtual 
+#endif
+			void clrObject() {
 			IDUser = 0L;
 			Login = string.Empty;
 			IDGroup = 0L;
@@ -203,12 +274,16 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			Relationdate = new DateTime(1900, 1, 1);
 		}
 		#endregion
-		#region public virtual bool getObject(...);
+		#region public bool getObject(...);
 		/// <summary>
 		/// Selects vUserDefaultGroup values from Database and assigns them to the appropriate DO0_vUserDefaultGroup property.
 		/// </summary>
 		/// <returns>True if vUserDefaultGroup exists at Database, False if not</returns>
-		public virtual bool getObject() {
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool getObject() {
 			return getObject(
 				iduser_
 			);
@@ -218,7 +293,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		/// <param name="IDUser_in">IDUser</param>
 		/// <returns>True if vUserDefaultGroup exists at Database, False if not</returns>
-		public virtual bool getObject(
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool getObject(
 			long IDUser_in
 		) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
@@ -267,12 +346,16 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			return false;
 		}
 		#endregion
-		#region public virtual bool isObject(...);
+		#region public bool isObject(...);
 		/// <summary>
 		/// Checks to see if vUserDefaultGroup exists at Database
 		/// </summary>
 		/// <returns>True if vUserDefaultGroup exists at Database, False if not</returns>
-		public virtual bool isObject() {
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool isObject() {
 			return isObject(
 				iduser_
 			);
@@ -282,7 +365,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		/// <param name="IDUser_in">IDUser</param>
 		/// <returns>True if vUserDefaultGroup exists at Database, False if not</returns>
-		public virtual bool isObject(
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool isObject(
 			long IDUser_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {

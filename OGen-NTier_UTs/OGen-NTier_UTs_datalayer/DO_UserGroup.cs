@@ -39,7 +39,16 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	/// <summary>
 	/// UserGroup DataObject which provides access to UserGroup table at Database.
 	/// </summary>
-	public sealed class DO_UserGroup : DO0_UserGroup, IDisposable {
+	public sealed 
+#if NET20
+		partial
+#endif
+		class DO_UserGroup : 
+#if !NET20
+		DO0_UserGroup, 
+#endif
+		IDisposable {
+#if !NET20
 		#region public DO_UserGroup();
 		///
 		public DO_UserGroup() : base() {
@@ -51,6 +60,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		public DO_UserGroup(cDBConnection connection_in) : base(connection_in) {
 		}
 		#endregion
+#endif
 
 		#region public Properties...
 		#endregion

@@ -58,6 +58,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 			_config.Name = "123";
 			_config.Config = "123";
 			_config.Type = 123;
+			_config.Description = "123";
 			// setObject(); // ToDos: here!
 
 

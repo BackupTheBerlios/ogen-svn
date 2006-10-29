@@ -39,7 +39,16 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	/// <summary>
 	/// User DataObject which provides access to User table at Database.
 	/// </summary>
-	public sealed class DO_User : DO0_User, IDisposable {
+	public sealed 
+#if NET20
+		partial
+#endif
+		class DO_User : 
+#if !NET20
+		DO0_User, 
+#endif
+		IDisposable {
+#if !NET20
 		#region public DO_User();
 		///
 		public DO_User() : base() {
@@ -51,6 +60,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		public DO_User(cDBConnection connection_in) : base(connection_in) {
 		}
 		#endregion
+#endif
 
 		#region public Properties...
 		#endregion

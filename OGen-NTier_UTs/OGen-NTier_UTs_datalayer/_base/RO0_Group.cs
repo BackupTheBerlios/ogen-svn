@@ -42,7 +42,12 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	public sealed class RO0_Group : RO__base {
 		#region internal RO0_Group();
 		internal RO0_Group(
-			DO0_Group parent_ref_in
+#if NET20
+			DO_Group 
+#else
+			DO0_Group 
+#endif
+			parent_ref_in
 		) : base(
 			parent_ref_in
 		) {
@@ -51,7 +56,13 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		#endregion
 
 		#region private Properties...
-		private DO0_Group parent_ref_;
+		private 
+#if NET20
+			DO_Group 
+#else
+			DO0_Group 
+#endif
+			parent_ref_;
 		#endregion
 
 		#region public Methods...

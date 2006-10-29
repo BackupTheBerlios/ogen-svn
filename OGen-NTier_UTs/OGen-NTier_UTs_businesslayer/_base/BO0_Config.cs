@@ -39,16 +39,40 @@ using OGen.NTier.UTs.lib.datalayer;
 namespace OGen.NTier.UTs.lib.businesslayer {
 	/// <summary>
 	/// Config BusinessObject which provides access to <see cref="OGen.NTier.UTs.lib.datalayer.DO_Config">DO_Config</see> for the Business Layer.
+#if !NET20
 	/// <note type="implementnotes">
 	/// Access must be made via <see cref="BO_Config">BO_Config</see>.
 	/// </note>
+#endif
 	/// </summary>
-	public abstract class BO0_Config : BO__base {
-		#region internal BO0_Config(...);
-		internal BO0_Config() {}
+	public 
+#if NET20
+		partial 
+#else
+		abstract 
+#endif
+		class 
+#if NET20
+		BO_Config 
+#else
+		BO0_Config 
+#endif
+		: BO__base {
+		#region public BO_Config(...);
+#if NET20
+		public BO_Config
+#else
+		internal BO0_Config
+#endif
+		() {}
 
 		///
-		~BO0_Config() {
+#if NET20
+		~BO_Config
+#else
+		~BO0_Config
+#endif
+		() {
 			if (mainaggregate != null) {
 				mainaggregate.Dispose(); mainaggregate = null;
 			}
@@ -79,31 +103,66 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 		}
 		#endregion
 		#region public Properties...
-		#region public virtual string Name { get; set; }
+		#region public string Name { get; set; }
 		/// <summary>
 		/// Config's Name.
 		/// </summary>
-		public virtual string Name {
+		public 
+#if !NET20
+			virtual 
+#endif
+			string Name {
 			get { return mainAggregate.Name; }
 			set { mainAggregate.Name = value; }
 		}
 		#endregion
-		#region public virtual string Config { get; set; }
+		#region public string Config { get; set; }
 		/// <summary>
 		/// Config's Config.
 		/// </summary>
-		public virtual string Config {
+		public 
+#if !NET20
+			virtual 
+#endif
+			string Config {
 			get { return mainAggregate.Config; }
 			set { mainAggregate.Config = value; }
 		}
 		#endregion
-		#region public virtual int Type { get; set; }
+		#region public int Type { get; set; }
 		/// <summary>
 		/// Config's Type.
 		/// </summary>
-		public virtual int Type {
+		public 
+#if !NET20
+			virtual 
+#endif
+			int Type {
 			get { return mainAggregate.Type; }
 			set { mainAggregate.Type = value; }
+		}
+		#endregion
+		#region public bool Description_isNull { get; set; }
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool Description_isNull {
+			get { return mainAggregate.Description_isNull; }
+			set { mainAggregate.Description_isNull = value; }
+		}
+		#endregion
+		#region public string Description { get; set; }
+		/// <summary>
+		/// Config's Description.
+		/// </summary>
+		public 
+#if !NET20
+			virtual 
+#endif
+			string Description {
+			get { return mainAggregate.Description; }
+			set { mainAggregate.Description = value; }
 		}
 		#endregion
 		#endregion

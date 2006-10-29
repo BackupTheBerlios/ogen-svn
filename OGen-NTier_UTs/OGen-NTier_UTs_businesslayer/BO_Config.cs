@@ -37,12 +37,22 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 	/// <summary>
 	/// Config BusinessObject which provides access to <see cref="OGen.NTier.UTs.lib.datalayer.DO_Config">DO_Config</see> for the Business Layer.
 	/// </summary>
-	public sealed class BO_Config : BO0_Config {
+	public sealed 
+#if NET20
+		partial 
+#endif
+		class BO_Config 
+#if !NET20
+			: BO0_Config 
+#endif
+	{
+#if !NET20
 		#region public BO_Config(...);
 		///
 		public BO_Config() {
 		}
 		#endregion
+#endif
 
 		#region private Properties...
 		#endregion

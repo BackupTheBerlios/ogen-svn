@@ -38,23 +38,66 @@ using OGen.NTier.lib.datalayer;
 namespace OGen.NTier.UTs.lib.datalayer {
 	/// <summary>
 	/// User DataObject which provides access to User table at Database.
+#if !NET20
 	/// <note type="implementnotes">
 	/// Access must be made via <see cref="DO_User">DO_User</see>.
 	/// </note>
+#endif
 	/// </summary>
 	[DOClassAttribute("User", false, false)]
-	public abstract class DO0_User : DO__base {
-		#region internal DO0_User();
-		internal DO0_User(
-		) : base(
-			DO0__utils.DBServerType, 
-			DO0__utils.DBConnectionstring, 
-			DO0__utils.DBLogfile
+	public 
+#if NET20
+		partial 
+#else
+		abstract 
+#endif
+		class 
+#if NET20
+		DO_User 
+#else
+		DO0_User 
+#endif
+		: DO__base {
+		#region public DO_User();
+#if NET20
+		///
+		public DO_User
+#else
+		internal DO0_User
+#endif
+		() : base(
+#if NET20
+			DO__utils
+#else
+			DO0__utils
+#endif
+			.DBServerType, 
+#if NET20
+			DO__utils
+#else
+			DO0__utils
+#endif
+			.DBConnectionstring,
+#if NET20
+			DO__utils
+#else
+			DO0__utils
+#endif
+			.DBLogfile
 		) {
 			clrObject();
 			haschanges_ = false;
 		}
-		internal DO0_User(
+#if NET20
+			/// <summary>
+			/// Making the use of Database Transactions possible on a sequence of operations across multiple DataObjects.
+			/// </summary>
+			/// <param name="connection_in">opened Database connection with an initiated Transaction</param>
+			public DO_User
+#else
+			internal DO0_User
+#endif
+		(
 			cDBConnection connection_in
 		) : base(
 			connection_in
@@ -88,19 +131,27 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// Indicates if changes have been made to DO0_User properties since last time getObject method was run.
 		/// </summary>
-		public virtual bool hasChanges {
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool hasChanges {
 			get { return haschanges_; }
 		}
 		#endregion
 		//---
-		#region public virtual long IDUser { get; set; }
+		#region public long IDUser { get; set; }
 		internal long iduser_;// = 0L;
 		
 		/// <summary>
 		/// User's IDUser.
 		/// </summary>
 		[DOPropertyAttribute("IDUser", true, true, false, "", "", "", false, false, false, false, false, true, false, false)]
-		public virtual long IDUser {
+		public 
+#if !NET20
+			virtual 
+#endif
+			long IDUser {
 			get {
 				return iduser_;
 			}
@@ -112,14 +163,18 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
-		#region public virtual string Login { get; set; }
+		#region public string Login { get; set; }
 		internal string login_;// = string.Empty;
 		
 		/// <summary>
 		/// User's Login.
 		/// </summary>
 		[DOPropertyAttribute("Login", false, false, false, "", "", "", false, false, false, false, false, false, false, true)]
-		public virtual string Login {
+		public 
+#if !NET20
+			virtual 
+#endif
+			string Login {
 			get {
 				return login_;
 			}
@@ -131,14 +186,18 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
-		#region public virtual string Password { get; set; }
+		#region public string Password { get; set; }
 		internal string password_;// = string.Empty;
 		
 		/// <summary>
 		/// User's Password.
 		/// </summary>
 		[DOPropertyAttribute("Password", false, false, false, "", "", "", false, false, false, false, false, false, false, true)]
-		public virtual string Password {
+		public 
+#if !NET20
+			virtual 
+#endif
+			string Password {
 			get {
 				return password_;
 			}
@@ -153,22 +212,30 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		#endregion
 
 		#region Methods...
-		#region public virtual void clrObject();
+		#region public void clrObject();
 		/// <summary>
 		/// Clears all DO0_User properties, assigning them with their appropriate default property value.
 		/// </summary>
-		public virtual void clrObject() {
+		public 
+#if !NET20
+			virtual 
+#endif
+			void clrObject() {
 			IDUser = 0L;
 			Login = string.Empty;
 			Password = string.Empty;
 		}
 		#endregion
-		#region public virtual bool getObject(...);
+		#region public bool getObject(...);
 		/// <summary>
 		/// Selects User values from Database and assigns them to the appropriate DO0_User property.
 		/// </summary>
 		/// <returns>True if User exists at Database, False if not</returns>
-		public virtual bool getObject() {
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool getObject() {
 			return getObject(
 				iduser_
 			);
@@ -178,7 +245,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		/// <param name="IDUser_in">IDUser</param>
 		/// <returns>True if User exists at Database, False if not</returns>
-		public virtual bool getObject(
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool getObject(
 			long IDUser_in
 		) {
 			if (IDUser_in != 0L) {
@@ -217,11 +288,15 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			return false;
 		}
 		#endregion
-		#region public virtual void delObject(...);
+		#region public void delObject(...);
 		/// <summary>
 		/// Deletes User from Database.
 		/// </summary>
-		public virtual void delObject() {
+		public 
+#if !NET20
+			virtual 
+#endif
+			void delObject() {
 			delObject(
 				iduser_
 			);
@@ -230,7 +305,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Deletes User from Database.
 		/// </summary>
 		/// <param name="IDUser_in">IDUser</param>
-		public virtual void delObject(
+		public 
+#if !NET20
+			virtual 
+#endif
+			void delObject(
 			long IDUser_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
@@ -241,12 +320,16 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			clrObject();
 		}
 		#endregion
-		#region public virtual bool isObject(...);
+		#region public bool isObject(...);
 		/// <summary>
 		/// Checks to see if User exists at Database
 		/// </summary>
 		/// <returns>True if User exists at Database, False if not</returns>
-		public virtual bool isObject() {
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool isObject() {
 			return isObject(
 				iduser_
 			);
@@ -256,7 +339,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		/// <param name="IDUser_in">IDUser</param>
 		/// <returns>True if User exists at Database, False if not</returns>
-		public virtual bool isObject(
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool isObject(
 			long IDUser_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
@@ -271,14 +358,18 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			);
 		}
 		#endregion
-		#region public virtual long insObject(...);
+		#region public long insObject(...);
 		/// <summary>
 		/// Inserts User values into Database.
 		/// </summary>
 		/// <param name="selectIdentity_in">assign with True if you wish to retrieve insertion sequence/identity seed and with False if not</param>
 		/// <param name="constraintExist_out">returns True if constraint exists and insertion failed, and False if no constraint and insertion was successful</param>
 		/// <returns>insertion sequence/identity seed</returns>
-		public virtual long insObject(
+		public 
+#if !NET20
+			virtual 
+#endif
+			long insObject(
 			bool selectIdentity_in, 
 			out bool constraintExist_out
 		) {
@@ -303,13 +394,17 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			return IDUser;
 		}
 		#endregion
-		#region public virtual void updObject(...);
+		#region public void updObject(...);
 		/// <summary>
 		/// Updates User values on Database.
 		/// </summary>
 		/// <param name="forceUpdate_in">assign with True if you wish to force an Update (even if no changes have been made since last time getObject method was run) and False if not</param>
 		/// <param name="constraintExist_out">returns True if constraint exists and Update failed, and False if no constraint and Update was successful</param>
-		public virtual void updObject(bool forceUpdate_in, out bool constraintExist_out) {
+		public 
+#if !NET20
+			virtual 
+#endif
+			void updObject(bool forceUpdate_in, out bool constraintExist_out) {
 			if (forceUpdate_in || haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
 					base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, iduser_, 0), 
@@ -424,13 +519,17 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		#endregion
 		#endregion
 		#region Methods - Updates...
-		#region public virtual void updObject_SomeUpdateTest(...);
+		#region public void updObject_SomeUpdateTest(...);
 		/// <summary>
 		/// Updates User specific(only) values on Database.
 		/// </summary>
 		/// <param name="forceUpdate_in">assign with True if you wish to force an Update (even if no changes have been made since last time getObject method was run) and False if not</param>
 		/// <param name="constraintExist_out">returns True if constraint exists and Update failed, and False if no constraint and Update was successful</param>
-		public virtual void updObject_SomeUpdateTest(bool forceUpdate_in, out bool constraintExist_out) {
+		public 
+#if !NET20
+			virtual 
+#endif
+			void updObject_SomeUpdateTest(bool forceUpdate_in, out bool constraintExist_out) {
 			if (forceUpdate_in || haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
 					base.Connection.newDBDataParameter("IDUser", DbType.Int64, ParameterDirection.Input, iduser_, 0), 

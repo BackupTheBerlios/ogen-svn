@@ -137,7 +137,8 @@ AS '
 CREATE OR REPLACE FUNCTION "sp0_Config_setObject"(
 	"Name_" character varying, 
 	"Config_" character varying, 
-	"Type_" integer
+	"Type_" integer, 
+	"Description_" character varying
 )
 RETURNS int4 AS
 '
@@ -169,7 +170,8 @@ RETURNS int4 AS
 				UPDATE "Config"
 				SET
 					"Config" = "Config_", 
-					"Type" = "Type_"
+					"Type" = "Type_", 
+					"Description" = "Description_"
 				WHERE
 					("Name" = "Name_");
 			END IF;
@@ -179,11 +181,13 @@ RETURNS int4 AS
 				INSERT INTO "Config" (
 					"Name", 
 					"Config", 
-					"Type"
+					"Type", 
+					"Description"
 				) VALUES (
 					"Name_", 
 					"Config_", 
-					"Type_"
+					"Type_", 
+					"Description_"
 				);
 			END IF;
 		END IF;
@@ -623,11 +627,13 @@ AS '
 			"Name", 
 			"Config", 
 			"Type", 
+			"Description", 
 			true
 		INTO
 			_Output."Name", 
 			_Output."Config", 
 			_Output."Type", 
+			_Output."Description", 
 			_Exists
 		FROM "Config"
 		WHERE
@@ -637,6 +643,7 @@ AS '
 			_Output."Name" := NULL;
 			_Output."Config" := NULL;
 			_Output."Type" := NULL;
+			_Output."Description" := NULL;
 		END IF;
 
 		RETURN _Output;
@@ -870,7 +877,8 @@ AS '
 			SELECT
 				t1."Name", 
 				t1."Config", 
-				t1."Type"
+				t1."Type", 
+				t1."Description"
 			FROM "Config" t1
 			INNER JOIN "sp_Config_Record_open_all"(
 			) t2 ON (
@@ -1215,7 +1223,8 @@ AS '
 			SELECT
 				t1."Name", 
 				t1."Config", 
-				t1."Type"
+				t1."Type", 
+				t1."Description"
 			FROM "Config" t1
 			INNER JOIN "sp_Config_Record_open_all"(
 			) t2 ON (
@@ -1429,14 +1438,6 @@ RETURNS VOID AS '
 		RETURN;
 	END;
 ' LANGUAGE 'plpgsql' VOLATILE;
-
-CREATE OR REPLACE FUNCTION "sp0__APAGAR"(
-)
-returns boolean
-as '
-	SELECT false;
-' LANGUAGE 'SQL';
-
 
 CREATE OR REPLACE FUNCTION "fnc0_User__ConstraintExist"("IDUser_" bigint, "Login_" character varying, "Password_" character varying)
 RETURNS boolean
@@ -1997,4 +1998,12 @@ RETURNS VOID AS '
 		RETURN;
 	END;
 ' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0__APAGAR"(
+)
+returns boolean
+as '
+	SELECT false;
+' LANGUAGE 'SQL';
+
 

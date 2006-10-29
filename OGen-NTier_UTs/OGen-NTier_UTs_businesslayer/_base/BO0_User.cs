@@ -39,16 +39,40 @@ using OGen.NTier.UTs.lib.datalayer;
 namespace OGen.NTier.UTs.lib.businesslayer {
 	/// <summary>
 	/// User BusinessObject which provides access to <see cref="OGen.NTier.UTs.lib.datalayer.DO_User">DO_User</see> for the Business Layer.
+#if !NET20
 	/// <note type="implementnotes">
 	/// Access must be made via <see cref="BO_User">BO_User</see>.
 	/// </note>
+#endif
 	/// </summary>
-	public abstract class BO0_User : BO__base {
-		#region internal BO0_User(...);
-		internal BO0_User() {}
+	public 
+#if NET20
+		partial 
+#else
+		abstract 
+#endif
+		class 
+#if NET20
+		BO_User 
+#else
+		BO0_User 
+#endif
+		: BO__base {
+		#region public BO_User(...);
+#if NET20
+		public BO_User
+#else
+		internal BO0_User
+#endif
+		() {}
 
 		///
-		~BO0_User() {
+#if NET20
+		~BO_User
+#else
+		~BO0_User
+#endif
+		() {
 			if (mainaggregate != null) {
 				mainaggregate.Dispose(); mainaggregate = null;
 			}
@@ -79,29 +103,41 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 		}
 		#endregion
 		#region public Properties...
-		#region public virtual long IDUser { get; set; }
+		#region public long IDUser { get; set; }
 		/// <summary>
 		/// User's IDUser.
 		/// </summary>
-		public virtual long IDUser {
+		public 
+#if !NET20
+			virtual 
+#endif
+			long IDUser {
 			get { return mainAggregate.IDUser; }
 			set { mainAggregate.IDUser = value; }
 		}
 		#endregion
-		#region public virtual string Login { get; set; }
+		#region public string Login { get; set; }
 		/// <summary>
 		/// User's Login.
 		/// </summary>
-		public virtual string Login {
+		public 
+#if !NET20
+			virtual 
+#endif
+			string Login {
 			get { return mainAggregate.Login; }
 			set { mainAggregate.Login = value; }
 		}
 		#endregion
-		#region public virtual string Password { get; set; }
+		#region public string Password { get; set; }
 		/// <summary>
 		/// User's Password.
 		/// </summary>
-		public virtual string Password {
+		public 
+#if !NET20
+			virtual 
+#endif
+			string Password {
 			get { return mainAggregate.Password; }
 			set { mainAggregate.Password = value; }
 		}

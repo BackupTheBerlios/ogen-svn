@@ -39,16 +39,40 @@ using OGen.NTier.UTs.lib.datalayer;
 namespace OGen.NTier.UTs.lib.businesslayer {
 	/// <summary>
 	/// UserGroup BusinessObject which provides access to <see cref="OGen.NTier.UTs.lib.datalayer.DO_UserGroup">DO_UserGroup</see> for the Business Layer.
+#if !NET20
 	/// <note type="implementnotes">
 	/// Access must be made via <see cref="BO_UserGroup">BO_UserGroup</see>.
 	/// </note>
+#endif
 	/// </summary>
-	public abstract class BO0_UserGroup : BO__base {
-		#region internal BO0_UserGroup(...);
-		internal BO0_UserGroup() {}
+	public 
+#if NET20
+		partial 
+#else
+		abstract 
+#endif
+		class 
+#if NET20
+		BO_UserGroup 
+#else
+		BO0_UserGroup 
+#endif
+		: BO__base {
+		#region public BO_UserGroup(...);
+#if NET20
+		public BO_UserGroup
+#else
+		internal BO0_UserGroup
+#endif
+		() {}
 
 		///
-		~BO0_UserGroup() {
+#if NET20
+		~BO_UserGroup
+#else
+		~BO0_UserGroup
+#endif
+		() {
 			if (mainaggregate != null) {
 				mainaggregate.Dispose(); mainaggregate = null;
 			}
@@ -79,50 +103,74 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 		}
 		#endregion
 		#region public Properties...
-		#region public virtual long IDUser { get; set; }
+		#region public long IDUser { get; set; }
 		/// <summary>
 		/// UserGroup's IDUser.
 		/// </summary>
-		public virtual long IDUser {
+		public 
+#if !NET20
+			virtual 
+#endif
+			long IDUser {
 			get { return mainAggregate.IDUser; }
 			set { mainAggregate.IDUser = value; }
 		}
 		#endregion
-		#region public virtual long IDGroup { get; set; }
+		#region public long IDGroup { get; set; }
 		/// <summary>
 		/// UserGroup's IDGroup.
 		/// </summary>
-		public virtual long IDGroup {
+		public 
+#if !NET20
+			virtual 
+#endif
+			long IDGroup {
 			get { return mainAggregate.IDGroup; }
 			set { mainAggregate.IDGroup = value; }
 		}
 		#endregion
-		#region public virtual bool Relationdate_isNull { get; set; }
-		public virtual bool Relationdate_isNull {
+		#region public bool Relationdate_isNull { get; set; }
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool Relationdate_isNull {
 			get { return mainAggregate.Relationdate_isNull; }
 			set { mainAggregate.Relationdate_isNull = value; }
 		}
 		#endregion
-		#region public virtual DateTime Relationdate { get; set; }
+		#region public DateTime Relationdate { get; set; }
 		/// <summary>
 		/// UserGroup's Relationdate.
 		/// </summary>
-		public virtual DateTime Relationdate {
+		public 
+#if !NET20
+			virtual 
+#endif
+			DateTime Relationdate {
 			get { return mainAggregate.Relationdate; }
 			set { mainAggregate.Relationdate = value; }
 		}
 		#endregion
-		#region public virtual bool Defaultrelation_isNull { get; set; }
-		public virtual bool Defaultrelation_isNull {
+		#region public bool Defaultrelation_isNull { get; set; }
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool Defaultrelation_isNull {
 			get { return mainAggregate.Defaultrelation_isNull; }
 			set { mainAggregate.Defaultrelation_isNull = value; }
 		}
 		#endregion
-		#region public virtual bool Defaultrelation { get; set; }
+		#region public bool Defaultrelation { get; set; }
 		/// <summary>
 		/// UserGroup's Defaultrelation.
 		/// </summary>
-		public virtual bool Defaultrelation {
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool Defaultrelation {
 			get { return mainAggregate.Defaultrelation; }
 			set { mainAggregate.Defaultrelation = value; }
 		}

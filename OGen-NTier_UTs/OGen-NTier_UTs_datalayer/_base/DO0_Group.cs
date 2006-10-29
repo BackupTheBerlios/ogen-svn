@@ -38,23 +38,66 @@ using OGen.NTier.lib.datalayer;
 namespace OGen.NTier.UTs.lib.datalayer {
 	/// <summary>
 	/// Group DataObject which provides access to Group table at Database.
+#if !NET20
 	/// <note type="implementnotes">
 	/// Access must be made via <see cref="DO_Group">DO_Group</see>.
 	/// </note>
+#endif
 	/// </summary>
 	[DOClassAttribute("Group", false, false)]
-	public abstract class DO0_Group : DO__base {
-		#region internal DO0_Group();
-		internal DO0_Group(
-		) : base(
-			DO0__utils.DBServerType, 
-			DO0__utils.DBConnectionstring, 
-			DO0__utils.DBLogfile
+	public 
+#if NET20
+		partial 
+#else
+		abstract 
+#endif
+		class 
+#if NET20
+		DO_Group 
+#else
+		DO0_Group 
+#endif
+		: DO__base {
+		#region public DO_Group();
+#if NET20
+		///
+		public DO_Group
+#else
+		internal DO0_Group
+#endif
+		() : base(
+#if NET20
+			DO__utils
+#else
+			DO0__utils
+#endif
+			.DBServerType, 
+#if NET20
+			DO__utils
+#else
+			DO0__utils
+#endif
+			.DBConnectionstring,
+#if NET20
+			DO__utils
+#else
+			DO0__utils
+#endif
+			.DBLogfile
 		) {
 			clrObject();
 			haschanges_ = false;
 		}
-		internal DO0_Group(
+#if NET20
+			/// <summary>
+			/// Making the use of Database Transactions possible on a sequence of operations across multiple DataObjects.
+			/// </summary>
+			/// <param name="connection_in">opened Database connection with an initiated Transaction</param>
+			public DO_Group
+#else
+			internal DO0_Group
+#endif
+		(
 			cDBConnection connection_in
 		) : base(
 			connection_in
@@ -88,19 +131,27 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// Indicates if changes have been made to DO0_Group properties since last time getObject method was run.
 		/// </summary>
-		public virtual bool hasChanges {
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool hasChanges {
 			get { return haschanges_; }
 		}
 		#endregion
 		//---
-		#region public virtual long IDGroup { get; set; }
+		#region public long IDGroup { get; set; }
 		internal long idgroup_;// = 0L;
 		
 		/// <summary>
 		/// Group's IDGroup.
 		/// </summary>
 		[DOPropertyAttribute("IDGroup", true, true, false, "", "", "", false, false, false, false, false, true, false, false)]
-		public virtual long IDGroup {
+		public 
+#if !NET20
+			virtual 
+#endif
+			long IDGroup {
 			get {
 				return idgroup_;
 			}
@@ -112,14 +163,18 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
-		#region public virtual string Name { get; set; }
+		#region public string Name { get; set; }
 		internal string name_;// = string.Empty;
 		
 		/// <summary>
 		/// Group's Name.
 		/// </summary>
 		[DOPropertyAttribute("Name", false, false, false, "", "", "", false, false, false, false, false, false, false, true)]
-		public virtual string Name {
+		public 
+#if !NET20
+			virtual 
+#endif
+			string Name {
 			get {
 				return name_;
 			}
@@ -134,21 +189,29 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		#endregion
 
 		#region Methods...
-		#region public virtual void clrObject();
+		#region public void clrObject();
 		/// <summary>
 		/// Clears all DO0_Group properties, assigning them with their appropriate default property value.
 		/// </summary>
-		public virtual void clrObject() {
+		public 
+#if !NET20
+			virtual 
+#endif
+			void clrObject() {
 			IDGroup = 0L;
 			Name = string.Empty;
 		}
 		#endregion
-		#region public virtual bool getObject(...);
+		#region public bool getObject(...);
 		/// <summary>
 		/// Selects Group values from Database and assigns them to the appropriate DO0_Group property.
 		/// </summary>
 		/// <returns>True if Group exists at Database, False if not</returns>
-		public virtual bool getObject() {
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool getObject() {
 			return getObject(
 				idgroup_
 			);
@@ -158,7 +221,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		/// <param name="IDGroup_in">IDGroup</param>
 		/// <returns>True if Group exists at Database, False if not</returns>
-		public virtual bool getObject(
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool getObject(
 			long IDGroup_in
 		) {
 			if (IDGroup_in != 0L) {
@@ -191,11 +258,15 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			return false;
 		}
 		#endregion
-		#region public virtual void delObject(...);
+		#region public void delObject(...);
 		/// <summary>
 		/// Deletes Group from Database.
 		/// </summary>
-		public virtual void delObject() {
+		public 
+#if !NET20
+			virtual 
+#endif
+			void delObject() {
 			delObject(
 				idgroup_
 			);
@@ -204,7 +275,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Deletes Group from Database.
 		/// </summary>
 		/// <param name="IDGroup_in">IDGroup</param>
-		public virtual void delObject(
+		public 
+#if !NET20
+			virtual 
+#endif
+			void delObject(
 			long IDGroup_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
@@ -215,12 +290,16 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			clrObject();
 		}
 		#endregion
-		#region public virtual bool isObject(...);
+		#region public bool isObject(...);
 		/// <summary>
 		/// Checks to see if Group exists at Database
 		/// </summary>
 		/// <returns>True if Group exists at Database, False if not</returns>
-		public virtual bool isObject() {
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool isObject() {
 			return isObject(
 				idgroup_
 			);
@@ -230,7 +309,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		/// <param name="IDGroup_in">IDGroup</param>
 		/// <returns>True if Group exists at Database, False if not</returns>
-		public virtual bool isObject(
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool isObject(
 			long IDGroup_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
@@ -245,13 +328,17 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			);
 		}
 		#endregion
-		#region public virtual long insObject(...);
+		#region public long insObject(...);
 		/// <summary>
 		/// Inserts Group values into Database.
 		/// </summary>
 		/// <param name="selectIdentity_in">assign with True if you wish to retrieve insertion sequence/identity seed and with False if not</param>
 		/// <returns>insertion sequence/identity seed</returns>
-		public virtual long insObject(
+		public 
+#if !NET20
+			virtual 
+#endif
+			long insObject(
 			bool selectIdentity_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
@@ -272,12 +359,16 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			return IDGroup;
 		}
 		#endregion
-		#region public virtual void updObject(...);
+		#region public void updObject(...);
 		/// <summary>
 		/// Updates Group values on Database.
 		/// </summary>
 		/// <param name="forceUpdate_in">assign with True if you wish to force an Update (even if no changes have been made since last time getObject method was run) and False if not</param>
-		public virtual void updObject(bool forceUpdate_in) {
+		public 
+#if !NET20
+			virtual 
+#endif
+			void updObject(bool forceUpdate_in) {
 			if (forceUpdate_in || haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
 					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, idgroup_, 0), 

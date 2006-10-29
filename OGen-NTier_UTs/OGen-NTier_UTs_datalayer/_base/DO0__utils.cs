@@ -38,17 +38,37 @@ using OGen.NTier.lib.datalayer;
 namespace OGen.NTier.UTs.lib.datalayer {
 	/// <summary>
 	/// utils DataObject which works as a repository of useful Properties and Methods for DataObjects at OGen.NTier.UTs.lib.datalayer namespace.
+#if !NET20
 	/// <note type="implementnotes">
 	/// Access must be made via <see cref="DO__utils">DO__utils</see>.
 	/// </note>
+#endif
 	/// </summary>
-	public abstract class DO0__utils {
-		#region internal DO0__utils(...);
-		internal DO0__utils() {
+	public 
+#if NET20
+		partial class DO__utils 
+#else
+		abstract class DO0__utils 
+#endif
+	{
+		#region public DO__utils(...);
+#if NET20
+		///
+		public DO__utils
+#else
+		internal DO0__utils
+#endif
+		() {
 		}
 		#endregion
-		#region static DO0__utils();
-		static DO0__utils() {
+		#region static DO__utils();
+		static 
+#if NET20
+			DO__utils
+#else
+			DO0__utils
+#endif
+		() {
 			dbservertype__ = eDBServerTypes.invalid;
 			dbconnectionstring__ = null;
 			dblogfile__ = string.Empty;

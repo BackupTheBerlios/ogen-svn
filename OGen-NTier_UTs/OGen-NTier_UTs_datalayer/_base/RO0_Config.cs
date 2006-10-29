@@ -42,7 +42,12 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	public sealed class RO0_Config : RO__base {
 		#region internal RO0_Config();
 		internal RO0_Config(
-			DO0_Config parent_ref_in
+#if NET20
+			DO_Config 
+#else
+			DO0_Config 
+#endif
+			parent_ref_in
 		) : base(
 			parent_ref_in
 		) {
@@ -51,7 +56,13 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		#endregion
 
 		#region private Properties...
-		private DO0_Config parent_ref_;
+		private 
+#if NET20
+			DO_Config 
+#else
+			DO0_Config 
+#endif
+			parent_ref_;
 		#endregion
 
 		#region public Methods...
@@ -86,6 +97,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 						parent_ref_.type_ = 0;
 					} else {
 						parent_ref_.type_ = (int)base.Record.Rows[Current]["Type"];
+					}
+					if (base.Record.Rows[Current]["Description"] == System.DBNull.Value) {
+						parent_ref_.Description_isNull = true;
+					} else {
+						parent_ref_.description_ = (string)base.Record.Rows[Current]["Description"];
 					}
 
 					parent_ref_.haschanges_ = false;
