@@ -463,7 +463,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 
 					if (_aux_table.isConfig) { %>
 
-					#region DO0__utils...._reset();<%
+					#region DO__utils...._reset();<%
 						string NameField;
 						string ConfigField;
 						string DatatypeField;
@@ -506,7 +506,12 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 					switch (<%=NameField.ToLower()%>_) {<%
 								for (int r = 0; r < ConfigTable.Rows.Count; r++) {%>
 						case "<%=ConfigTable.Rows[r][NameField]%>": {
-							DO0__utils.<%=ConfigTable.Rows[r][NameField]%>_reset();
+#if NET20
+							DO__utils
+#else
+							DO0__utils
+#endif
+							.<%=ConfigTable.Rows[r][NameField]%>_reset();
 							break;
 						}<%
 								}%>
