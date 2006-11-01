@@ -146,7 +146,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// UserGroup's IDUser.
 		/// </summary>
-		[DOPropertyAttribute("IDUser", true, false, false, "", "User", "IDUser", false, false, false, false, false, true, false, false)]
+		[DOPropertyAttribute("IDUser", true, false, false, "", "", "", false, false, false, false, false, true, false, false)]
 		public 
 #if !NET20
 			virtual 
@@ -171,7 +171,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// UserGroup's IDGroup.
 		/// </summary>
-		[DOPropertyAttribute("IDGroup", true, false, false, "", "Group", "IDGroup", false, false, false, false, false, true, false, false)]
+		[DOPropertyAttribute("IDGroup", true, false, false, "", "", "", false, false, false, false, false, true, false, false)]
 		public 
 #if !NET20
 			virtual 

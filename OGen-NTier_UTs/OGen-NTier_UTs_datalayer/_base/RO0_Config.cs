@@ -99,7 +99,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 						parent_ref_.type_ = (int)base.Record.Rows[Current]["Type"];
 					}
 					if (base.Record.Rows[Current]["Description"] == System.DBNull.Value) {
-						parent_ref_.Description_isNull = true;
+						parent_ref_.description_ = string.Empty;
 					} else {
 						parent_ref_.description_ = (string)base.Record.Rows[Current]["Description"];
 					}

@@ -47,6 +47,50 @@ namespace OGen.NTier.UTs.test {
 	class MainClass {
 		[STAThread]
 		static void Main(string[] args) {
+
+
+			//DO_UserGroup _usergroup_test = new DO_UserGroup(
+			//    //new cDBConnection(
+			//    //    eDBServerTypes.SQLServer,
+			//    //    "server=127.0.0.1;uid=sa;pwd=passpub;database=OGen-NTier_UTs;"
+			//    //)
+			//);
+			//_usergroup_test.IDGroup = 1;
+			//_usergroup_test.IDUser = 1;
+			//_usergroup_test.Relationdate_isNull = true;
+			//_usergroup_test.Defaultrelation_isNull = true;
+			//_usergroup_test.setObject(true);
+
+
+			OGen.NTier.UTs.lib.datalayer.UTs.UT_UserGroup
+			    _ut_usergroup = new OGen.NTier.UTs.lib.datalayer.UTs.UT_UserGroup();
+			_ut_usergroup.TestFixtureSetUp();
+			_ut_usergroup.UT_bugPostgreSQL_noFunctionMatchesTheGivenNameAndArgumentTypes();
+			return;
+
+
+			DO_Config _config_test = new DO_Config();
+			_config_test.Connection.Open();
+			_config_test.Connection.Transaction.Begin();
+			_config_test.Name = "test";
+			_config_test.Description = "test";
+			_config_test.Config = "test";
+			_config_test.Type = 1;
+			try {
+				_config_test.setObject(true);
+				Console.WriteLine("ok");
+			} catch {
+				Console.WriteLine("ko");
+			}
+			_config_test.Connection.Transaction.Rollback();
+			_config_test.Connection.Transaction.Terminate();
+			_config_test.Connection.Close();
+			_config_test.Dispose();
+			return;
+			
+
+
+
 			const int _cycles = 50;
 			cDBConnection[] _cons = new cDBConnection[] {
 				#region new cDBConnection(eDBServerTypes.SQLServer, ...), 

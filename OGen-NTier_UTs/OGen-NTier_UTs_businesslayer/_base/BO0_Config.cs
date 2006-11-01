@@ -142,16 +142,6 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			set { mainAggregate.Type = value; }
 		}
 		#endregion
-		#region public bool Description_isNull { get; set; }
-		public 
-#if !NET20
-			virtual 
-#endif
-			bool Description_isNull {
-			get { return mainAggregate.Description_isNull; }
-			set { mainAggregate.Description_isNull = value; }
-		}
-		#endregion
 		#region public string Description { get; set; }
 		/// <summary>
 		/// Config's Description.

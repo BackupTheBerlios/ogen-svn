@@ -89,7 +89,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 						parent_ref_.iduser_ = (long)base.Record.Rows[Current]["IDUser"];
 					}
 					if (base.Record.Rows[Current]["Login"] == System.DBNull.Value) {
-						parent_ref_.login_ = string.Empty;
+						parent_ref_.Login_isNull = true;
 					} else {
 						parent_ref_.login_ = (string)base.Record.Rows[Current]["Login"];
 					}
@@ -99,12 +99,12 @@ namespace OGen.NTier.UTs.lib.datalayer {
 						parent_ref_.idgroup_ = (long)base.Record.Rows[Current]["IDGroup"];
 					}
 					if (base.Record.Rows[Current]["Name"] == System.DBNull.Value) {
-						parent_ref_.name_ = string.Empty;
+						parent_ref_.Name_isNull = true;
 					} else {
 						parent_ref_.name_ = (string)base.Record.Rows[Current]["Name"];
 					}
 					if (base.Record.Rows[Current]["Relationdate"] == System.DBNull.Value) {
-						parent_ref_.relationdate_ = new DateTime(1900, 1, 1);
+						parent_ref_.Relationdate_isNull = true;
 					} else {
 						parent_ref_.relationdate_ = (DateTime)base.Record.Rows[Current]["Relationdate"];
 					}

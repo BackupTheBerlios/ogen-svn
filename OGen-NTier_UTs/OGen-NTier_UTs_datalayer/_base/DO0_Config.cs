@@ -219,37 +219,20 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
-		#region public bool Description_isNull { get; set; }
-		public 
-#if !NET20
-			virtual 
-#endif
-			bool Description_isNull {
-			get { return (description_ == null); }
-			set {
-				//if (value) description_ = null;
-
-				if ((value) && (description_ != null)) {
-					description_ = null;
-					haschanges_ = true;
-				}
-			}
-		}
-		#endregion
 		#region public string Description { get; set; }
-		internal object description_;// = string.Empty;
+		internal string description_;// = string.Empty;
 		
 		/// <summary>
 		/// Config's Description.
 		/// </summary>
-		[DOPropertyAttribute("Description", false, false, true, "", "", "", false, false, false, false, false, false, false, true)]
+		[DOPropertyAttribute("Description", false, false, false, "", "", "", false, false, false, false, false, false, false, true)]
 		public 
 #if !NET20
 			virtual 
 #endif
 			string Description {
 			get {
-				return (string)((description_ == null) ? string.Empty : description_);
+				return description_;
 			}
 			set {
 				if (
@@ -278,7 +261,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			Name = string.Empty;
 			Config = string.Empty;
 			Type = 0;
-			Description_isNull = true;
+			Description = string.Empty;
 		}
 		#endregion
 		#region public bool getObject(...);
@@ -332,7 +315,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 						type_ = (int)_dataparameters[2].Value;
 					}
 					if (_dataparameters[3].Value == System.DBNull.Value) {
-						Description_isNull = true;
+						description_ = string.Empty;
 					} else {
 						description_ = (string)_dataparameters[3].Value;
 					}

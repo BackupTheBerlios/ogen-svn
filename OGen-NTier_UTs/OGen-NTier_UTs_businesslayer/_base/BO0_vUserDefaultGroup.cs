@@ -116,6 +116,16 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			set { mainAggregate.IDUser = value; }
 		}
 		#endregion
+		#region public bool Login_isNull { get; set; }
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool Login_isNull {
+			get { return mainAggregate.Login_isNull; }
+			set { mainAggregate.Login_isNull = value; }
+		}
+		#endregion
 		#region public string Login { get; set; }
 		/// <summary>
 		/// vUserDefaultGroup's Login.
@@ -127,6 +137,16 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			string Login {
 			get { return mainAggregate.Login; }
 			set { mainAggregate.Login = value; }
+		}
+		#endregion
+		#region public bool IDGroup_isNull { get; set; }
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool IDGroup_isNull {
+			get { return mainAggregate.IDGroup_isNull; }
+			set { mainAggregate.IDGroup_isNull = value; }
 		}
 		#endregion
 		#region public long IDGroup { get; set; }
@@ -142,6 +162,16 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			set { mainAggregate.IDGroup = value; }
 		}
 		#endregion
+		#region public bool Name_isNull { get; set; }
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool Name_isNull {
+			get { return mainAggregate.Name_isNull; }
+			set { mainAggregate.Name_isNull = value; }
+		}
+		#endregion
 		#region public string Name { get; set; }
 		/// <summary>
 		/// vUserDefaultGroup's Name.
@@ -153,6 +183,16 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			string Name {
 			get { return mainAggregate.Name; }
 			set { mainAggregate.Name = value; }
+		}
+		#endregion
+		#region public bool Relationdate_isNull { get; set; }
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool Relationdate_isNull {
+			get { return mainAggregate.Relationdate_isNull; }
+			set { mainAggregate.Relationdate_isNull = value; }
 		}
 		#endregion
 		#region public DateTime Relationdate { get; set; }

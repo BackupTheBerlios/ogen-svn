@@ -146,7 +146,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// vUserGroup's IDUser.
 		/// </summary>
-		[DOPropertyAttribute("IDUser", true, false, false, "", "", "", false, false, false, false, false, true, false, false)]
+		[DOPropertyAttribute("IDUser", true, false, true, "", "", "", false, false, false, false, false, true, false, false)]
 		public 
 #if !NET20
 			virtual 
@@ -165,20 +165,37 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
+		#region public bool Login_isNull { get; set; }
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool Login_isNull {
+			get { return (login_ == null); }
+			set {
+				//if (value) login_ = null;
+
+				if ((value) && (login_ != null)) {
+					login_ = null;
+					haschanges_ = true;
+				}
+			}
+		}
+		#endregion
 		#region public string Login { get; set; }
-		internal string login_;// = string.Empty;
+		internal object login_;// = string.Empty;
 		
 		/// <summary>
 		/// vUserGroup's Login.
 		/// </summary>
-		[DOPropertyAttribute("Login", false, false, false, "", "", "", false, false, false, false, false, false, false, true)]
+		[DOPropertyAttribute("Login", false, false, true, "", "", "", false, false, false, false, false, false, false, true)]
 		public 
 #if !NET20
 			virtual 
 #endif
 			string Login {
 			get {
-				return login_;
+				return (string)((login_ == null) ? string.Empty : login_);
 			}
 			set {
 				if (
@@ -198,7 +215,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <summary>
 		/// vUserGroup's IDGroup.
 		/// </summary>
-		[DOPropertyAttribute("IDGroup", true, false, false, "", "", "", false, false, false, false, false, true, false, false)]
+		[DOPropertyAttribute("IDGroup", true, false, true, "", "", "", false, false, false, false, false, true, false, false)]
 		public 
 #if !NET20
 			virtual 
@@ -217,20 +234,37 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
+		#region public bool Name_isNull { get; set; }
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool Name_isNull {
+			get { return (name_ == null); }
+			set {
+				//if (value) name_ = null;
+
+				if ((value) && (name_ != null)) {
+					name_ = null;
+					haschanges_ = true;
+				}
+			}
+		}
+		#endregion
 		#region public string Name { get; set; }
-		internal string name_;// = string.Empty;
+		internal object name_;// = string.Empty;
 		
 		/// <summary>
 		/// vUserGroup's Name.
 		/// </summary>
-		[DOPropertyAttribute("Name", false, false, false, "", "", "", false, false, false, false, false, false, false, true)]
+		[DOPropertyAttribute("Name", false, false, true, "", "", "", false, false, false, false, false, false, false, true)]
 		public 
 #if !NET20
 			virtual 
 #endif
 			string Name {
 			get {
-				return name_;
+				return (string)((name_ == null) ? string.Empty : name_);
 			}
 			set {
 				if (
@@ -244,20 +278,37 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
+		#region public bool Relationdate_isNull { get; set; }
+		public 
+#if !NET20
+			virtual 
+#endif
+			bool Relationdate_isNull {
+			get { return (relationdate_ == null); }
+			set {
+				//if (value) relationdate_ = null;
+
+				if ((value) && (relationdate_ != null)) {
+					relationdate_ = null;
+					haschanges_ = true;
+				}
+			}
+		}
+		#endregion
 		#region public DateTime Relationdate { get; set; }
-		internal DateTime relationdate_;// = new DateTime(1900, 1, 1);
+		internal object relationdate_;// = new DateTime(1900, 1, 1);
 		
 		/// <summary>
 		/// vUserGroup's Relationdate.
 		/// </summary>
-		[DOPropertyAttribute("Relationdate", false, false, false, "", "", "", false, false, false, false, true, false, false, false)]
+		[DOPropertyAttribute("Relationdate", false, false, true, "", "", "", false, false, false, false, true, false, false, false)]
 		public 
 #if !NET20
 			virtual 
 #endif
 			DateTime Relationdate {
 			get {
-				return relationdate_;
+				return (DateTime)((relationdate_ == null) ? new DateTime(1900, 1, 1) : relationdate_);
 			}
 			set {
 				if (
@@ -282,10 +333,10 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #endif
 			void clrObject() {
 			IDUser = 0L;
-			Login = string.Empty;
+			Login_isNull = true;
 			IDGroup = 0L;
-			Name = string.Empty;
-			Relationdate = new DateTime(1900, 1, 1);
+			Name_isNull = true;
+			Relationdate_isNull = true;
 		}
 		#endregion
 		#region public bool getObject(...);
@@ -333,7 +384,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 						iduser_ = (long)_dataparameters[0].Value;
 					}
 					if (_dataparameters[1].Value == System.DBNull.Value) {
-						login_ = string.Empty;
+						Login_isNull = true;
 					} else {
 						login_ = (string)_dataparameters[1].Value;
 					}
@@ -343,12 +394,12 @@ namespace OGen.NTier.UTs.lib.datalayer {
 						idgroup_ = (long)_dataparameters[2].Value;
 					}
 					if (_dataparameters[3].Value == System.DBNull.Value) {
-						name_ = string.Empty;
+						Name_isNull = true;
 					} else {
 						name_ = (string)_dataparameters[3].Value;
 					}
 					if (_dataparameters[4].Value == System.DBNull.Value) {
-						relationdate_ = new DateTime(1900, 1, 1);
+						Relationdate_isNull = true;
 					} else {
 						relationdate_ = (DateTime)_dataparameters[4].Value;
 					}
