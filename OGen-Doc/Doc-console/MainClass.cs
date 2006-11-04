@@ -73,7 +73,8 @@ namespace OGen.Doc.presentationlayer.console {
 #if DEBUG
 				//DoIt(@"C:\mnt\OGen\NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen-NTier.OGenDoc-metadata.xml");
 				//DoIt(@"file://///127.0.0.1/OGen_source$/OGen-NTier/OGen-NTier-Doc/OGenDoc-metadatas/MD_OGen-NTier.OGenDoc-metadata.xml");
-				DoIt(@"\\127.0.0.1\OGen_source$\OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen-NTier.OGenDoc-metadata.xml");
+				//DoIt(@"\\127.0.0.1\OGen_source$\OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen-NTier.OGenDoc-metadata.xml");
+				DoIt(@"o:\OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen-NTier.OGenDoc-metadata.xml");
 #else
 				Console.WriteLine("must provide xml file");
 #endif
