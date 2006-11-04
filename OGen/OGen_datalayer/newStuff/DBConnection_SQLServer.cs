@@ -211,7 +211,7 @@ namespace OGen.lib.datalayer.newStuff {
 									= ((IDbDataParameter)command_in.Parameters[
 										command_in.Parameters.Count - 1
 									]).Value;
-								break;
+					//			break;
 					//        }
 					//    case eDBServerTypes.PostgreSQL: {
 					//            Execute_SQLFunction_out =
