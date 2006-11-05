@@ -26,8 +26,8 @@ along with OGen; if not, write to the
 	documentationName="OGen"
 
 
-projectURL            ="http://developer.berlios.de/projects/ogen/"
-projectURL_TODOS_HERE ="http://ogen.berlios.de/"
+projectURL_TODOS_HERE ="http://developer.berlios.de/projects/ogen/"
+projectURL            ="http://ogen.berlios.de/"
 
 
 	copyrightText="Copyright (C) 2002 Francisco Monteiro"
@@ -50,7 +50,7 @@ ToDos: here!
 --&gt;
 &lt;br&gt;
 &lt;br&gt;
-&gt; &lt;a href=&quot;http://developer.berlios.de/projects/ogen/&quot;&gt;BerliOS project page&lt;/a&gt;
+&amp;gt; &lt;a href=&quot;http://developer.berlios.de/projects/ogen/&quot;&gt;BerliOS project page&lt;/a&gt;
 
 
 " />
