@@ -520,6 +520,8 @@ if (clear_in)
 									//---
 									tables_[_T].Fields[_F].DefaultValue = _xmlFile_metadata.Tables[t].Fields[f].DefaultValue;
 									//---
+									tables_[_T].Fields[_F].isPseudoIdentity = _xmlFile_metadata.Tables[t].Fields[f].isPseudoIdentity;
+									//---
 									if (tables_[_T].isVirtualTable) {
 										tables_[_T].Fields[_F].isIdentity = _xmlFile_metadata.Tables[t].Fields[f].isIdentity;
 										tables_[_T].Fields[_F].isPK = _xmlFile_metadata.Tables[t].Fields[f].isPK;

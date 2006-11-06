@@ -257,6 +257,15 @@ namespace OGen.NTier.lib.metadata {
 			return -1;
 		}
 		#endregion
+//		#region public int hasPseudoIdentityKey();
+		public int hasPseudoIdentityKey() {
+			for (int f = 0; f < fields_.Count; f++)
+				if (fields_[f].isPseudoIdentity)
+					return f;
+
+			return -1;
+		}
+//		#endregion
 		#region public bool canBeConfig();
 		public bool canBeConfig() {
 			bool canBeConfig_out = (

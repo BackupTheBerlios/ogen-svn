@@ -754,6 +754,7 @@ namespace OGen.lib.datalayer {
 			public static SqlDbType SqlDbType_Parse(string value_in, bool caseSensitive_in) {
 				string _value = (caseSensitive_in) ? value_in : value_in.ToLower();
 				for (int i = 0; ((SqlDbType)i).ToString() != i.ToString(); i++) {
+//SqlDbType.
 					if (
 						(
 							caseSensitive_in
