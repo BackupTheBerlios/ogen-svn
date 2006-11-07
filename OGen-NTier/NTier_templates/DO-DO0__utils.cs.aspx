@@ -68,12 +68,12 @@ using OGen.NTier.lib.datalayer;
 
 namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 	/// <summary>
-	/// utils DataObject which works as a repository of useful Properties and Methods for DataObjects at <%=_aux_metadata.Namespace%>.lib.datalayer namespace.
+	/// utils DataObject which works as a repository of useful Properties and Methods for DataObjects at <%=_aux_metadata.Namespace%>.lib.datalayer namespace.<%--
 #if !NET20
 	/// <note type="implementnotes">
 	/// Access must be made via <see cref="DO__utils">DO__utils</see>.
 	/// </note>
-#endif
+#endif--%>
 	/// </summary>
 	public 
 #if NET20
@@ -106,6 +106,9 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		}
 		#endregion
 
+		/// <summary>
+		/// Application's Name
+		/// </summary>
 		public const string ApplicationName = "<%=_aux_metadata.ApplicationName%>";
 
 		#region public static Properties...
@@ -140,6 +143,9 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		#region public static string DBLogfile { get; }
 		private static string dblogfile__;
 
+		/// <summary>
+		/// DataBase Operation's Log File
+		/// </summary>
 		public static string DBLogfile {
 			get {
 				if (dblogfile__ == string.Empty) {
@@ -158,6 +164,9 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 
 		#region public static Methods...
 		#region public static void DBConnectionstring_reset();
+		/// <summary>
+		/// Forces DataBase's ConnectionString to be re-read from config file.
+		/// </summary>
 		public static void DBConnectionstring_reset() {
 			Config_DBConnectionstrings.Reset();
 		}
@@ -168,6 +177,9 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		}
 		#endregion
 		#region public static void DBServerType_reset();
+		/// <summary>
+		/// Forces DataBase's Server Type to be re-read from config file.
+		/// </summary>
 		public static void DBServerType_reset() {
 			Config_DBConnectionstrings.Reset();
 		}

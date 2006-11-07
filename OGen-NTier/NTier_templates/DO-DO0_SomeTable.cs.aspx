@@ -70,12 +70,12 @@ using OGen.NTier.lib.datalayer;
 
 namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 	/// <summary>
-	/// <%=_aux_table.Name%> DataObject which provides access to <%=_aux_table.Name%> <%=(_aux_table.isVirtualTable) ? "view" : "table"%> at Database.
+	/// <%=_aux_table.Name%> DataObject which provides access to <%=_aux_table.Name%> <%=(_aux_table.isVirtualTable) ? "view" : "table"%> at Database.<%--
 #if !NET20
 	/// <note type="implementnotes">
 	/// Access must be made via <see cref="DO_<%=_aux_table.Name%>">DO_<%=_aux_table.Name%></see>.
 	/// </note>
-#endif
+#endif--%>
 	/// </summary>
 	[DOClassAttribute("<%=_aux_table.Name%>", <%=_aux_table.isVirtualTable.ToString().ToLower()%>, <%=_aux_table.isConfig.ToString().ToLower()%>)]
 	public 
@@ -181,6 +181,9 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 
 			if (_aux_field.isNullable && !_aux_field.isPK) {%>
 		#region public bool <%=_aux_field.Name%>_isNull { get; set; }
+		/// <summary>
+		/// Allows assignement of null and check if null at <%=_aux_table.Name%>'s <%=_aux_field.Name%>.
+		/// </summary>
 		public 
 #if !NET20
 			virtual 
