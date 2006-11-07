@@ -153,7 +153,6 @@
       <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="BO-UT-UT_SomeTable.cs.aspx" />
-    <Content Include="DO-DB-sp0_SomeTable_insObject-SQLServer__PseudoIdentity.sql.aspx" />
     <Content Include="DO-UT-UT0__utils.cs.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>

@@ -1046,7 +1046,7 @@ along with OGen; if not, write to the
 			<dependency name="emptyfile.txt" />
 		</dependencies>
 	</template>
-	<template name="DO-DB-sp0_SomeTable_insObject-SQLServer__PseudoIdentity.sql.aspx" 
+	<template name="DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
 		<arguments>
