@@ -74,6 +74,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 	/// </note>
 #endif
 	/// </summary>
+	[DOClassAttribute("<%=_aux_table.Name%>", <%=_aux_table.isVirtualTable.ToString().ToLower()%>, <%=_aux_table.isConfig.ToString().ToLower()%>)]
 	public 
 #if NET20
 		partial 
@@ -102,25 +103,25 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 		~BO0_<%=_aux_table.Name%>
 #endif
 		() {
-			if (mainaggregate != null) {
-				mainaggregate.Dispose(); mainaggregate = null;
+			if (mainaggregate__ != null) {
+				mainaggregate__.Dispose(); mainaggregate__ = null;
 			}
 		}
 		#endregion
 
 		#region private Properties...
-		private DO_<%=_aux_table.Name%> mainaggregate;
+		private DO_<%=_aux_table.Name%> mainaggregate__;
 
 		///
 		protected DO_<%=_aux_table.Name%> mainAggregate {
 			get {
-				if (mainaggregate == null) {
+				if (mainaggregate__ == null) {
 					// instantiating for the first time and
 					// only because it became needed, otherwise
 					// never instantiated...
-					mainaggregate = new DO_<%=_aux_table.Name%>();
+					mainaggregate__ = new DO_<%=_aux_table.Name%>();
 				}
-				return mainaggregate;
+				return mainaggregate__;
 			}
 		}
 
@@ -163,6 +164,9 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 
 			if (_aux_field.isNullable && !_aux_field.isPK) {%>
 		#region public bool <%=_aux_field.Name%>_isNull { get; set; }
+		/// <summary>
+		/// Allows assignement of null and check if null at <%=_aux_table.Name%>'s <%=_aux_field.Name%>.
+		/// </summary>
 		public 
 #if !NET20
 			virtual 
@@ -177,6 +181,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 		/// <summary>
 		/// <%=_aux_table.Name%>'s <%=_aux_field.Name%>.
 		/// </summary>
+		[DOPropertyAttribute("<%=_aux_field.Name%>", <%=_aux_field.isPK.ToString().ToLower()%>, <%=_aux_field.isIdentity.ToString().ToLower()%>, <%=_aux_field.isPseudoIdentity.ToString().ToLower()%>, <%=_aux_field.isNullable.ToString().ToLower()%>, <%=(_aux_field.DefaultValue == string.Empty) ? "\"\"" : _aux_field.DefaultValue%>, "<%=_aux_field.FK_TableName%>", "<%=_aux_field.FK_FieldName%>", <%=_aux_field.isConfig_Name.ToString().ToLower()%>, <%=_aux_field.isConfig_Config.ToString().ToLower()%>, <%=_aux_field.isConfig_Datatype.ToString().ToLower()%>, <%=_aux_field.isBool.ToString().ToLower()%>, <%=_aux_field.isDateTime.ToString().ToLower()%>, <%=_aux_field.isInt.ToString().ToLower()%>, <%=_aux_field.isDecimal.ToString().ToLower()%>, <%=_aux_field.isText.ToString().ToLower()%>)]
 		public 
 #if !NET20
 			virtual 
