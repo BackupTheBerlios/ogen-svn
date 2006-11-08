@@ -67,12 +67,12 @@ using <%=_aux_metadata.Namespace%>.lib.datalayer;
 
 namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 	/// <summary>
-	/// <%=_aux_table.Name%> BusinessObject which provides access to <see cref="<%=_aux_metadata.Namespace%>.lib.datalayer.DO_<%=_aux_table.Name%>">DO_<%=_aux_table.Name%></see> for the Business Layer.
+	/// <%=_aux_table.Name%> BusinessObject which provides access to <see cref="<%=_aux_metadata.Namespace%>.lib.datalayer.DO_<%=_aux_table.Name%>">DO_<%=_aux_table.Name%></see> for the Business Layer.<%--
 #if !NET20
 	/// <note type="implementnotes">
 	/// Access must be made via <see cref="BO_<%=_aux_table.Name%>">BO_<%=_aux_table.Name%></see>.
 	/// </note>
-#endif
+#endif--%>
 	/// </summary>
 	[DOClassAttribute("<%=_aux_table.Name%>", <%=_aux_table.isVirtualTable.ToString().ToLower()%>, <%=_aux_table.isConfig.ToString().ToLower()%>)]
 	public 
@@ -90,6 +90,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 		: BO__base<%=(isListItem) ? ", iListItem" : ""%> {
 		#region public BO_<%=_aux_table.Name%>(...);
 #if NET20
+		///
 		public BO_<%=_aux_table.Name%>
 #else
 		internal BO0_<%=_aux_table.Name%>
@@ -113,7 +114,12 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 		private DO_<%=_aux_table.Name%> mainaggregate__;
 
 		///
-		protected DO_<%=_aux_table.Name%> mainAggregate {
+#if NET20
+		private 
+#else
+		protected 
+#endif
+			DO_<%=_aux_table.Name%> mainAggregate {
 			get {
 				if (mainaggregate__ == null) {
 					// instantiating for the first time and
