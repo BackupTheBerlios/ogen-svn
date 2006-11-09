@@ -93,7 +93,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer.UTs {
 			for (int f = 0; f < _aux_table.Fields.Count; f++) {
 				if (f == _aux_table_hasidentitykey) continue;
 				_aux_field = _aux_table.Fields[f];%><%=""%>
-			_<%=_aux_table.Name.ToLower()%>.<%=_aux_field.Name%> = <%=_aux_field.DBType_generic.FWUnitTestValue%>;<%
+			_<%=_aux_table.Name.ToLower()%>.Fields.<%=_aux_field.Name%> = <%=_aux_field.DBType_generic.FWUnitTestValue%>;<%
 			}
 
 
@@ -121,7 +121,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer.UTs {
 					for (int f = 0; f < _aux_table.Fields.Count; f++) {
 						if (f == _aux_table_hasidentitykey) continue;
 						_aux_field = _aux_table.Fields[f];%><%=""%>
-			Assert.AreEqual(<%=_aux_field.DBType_generic.FWUnitTestValue%>, _<%=_aux_table.Name.ToLower()%>.<%=_aux_field.Name%>, "inserted values difer those just read (insObject/getObject)");<%
+			Assert.AreEqual(<%=_aux_field.DBType_generic.FWUnitTestValue%>, _<%=_aux_table.Name.ToLower()%>.Fields.<%=_aux_field.Name%>, "inserted values difer those just read (insObject/getObject)");<%
 					}
 					_aux_field = _aux_table.Fields[_aux_table_hasidentitykey];%>
 			try {

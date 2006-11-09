@@ -27,6 +27,7 @@ along with OGen; if not, write to the
 	http://www.fsf.org/licensing/licenses/gpl.txt
 
 --%><%@ Page language="c#" contenttype="text/html" %>
+<%@ import namespace="OGen.lib.datalayer" %>
 <%@ import namespace="OGen.NTier.lib.metadata" %><%
 #region arguments...
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
@@ -42,11 +43,14 @@ if (cDBMetadata.Metacache.Contains(_arg_MetadataFilepath)) {
 	_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
 	cDBMetadata.Metacache.Add(_arg_MetadataFilepath, _aux_metadata);
 }
-
 cDBMetadata_Table _aux_table = _aux_metadata.Tables[_arg_TableName];
-bool isListItem = _aux_table.isListItem();
+int _aux_table_hasidentitykey = _aux_table.hasIdentityKey();
+bool _aux_table_searches_hasexplicituniqueindex = _aux_table.Searches.hasExplicitUniqueIndex();
 
 cDBMetadata_Table_Field _aux_field;
+string _aux_field_name;
+cDBMetadata_Update _aux_update;
+int firstKey = _aux_table.firstKey();
 #endregion
 //-----------------------------------------------------------------------------------------
 if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTextLong != string.Empty)) {
@@ -62,114 +66,52 @@ if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTex
 using System.Xml.Serialization;
 
 using OGen.NTier.lib.datalayer;
-using OGen.NTier.lib.businesslayer;
 
-using <%=_aux_metadata.Namespace%>.lib.datalayer;
-
-namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
+namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 	/// <summary>
-	/// <%=_aux_table.Name%> BusinessObject which provides access to <see cref="<%=_aux_metadata.Namespace%>.lib.datalayer.DO_<%=_aux_table.Name%>">DO_<%=_aux_table.Name%></see> for the Business Layer.<%--
-#if !NET20
-	/// <note type="implementnotes">
-	/// Access must be made via <see cref="BO_<%=_aux_table.Name%>">BO_<%=_aux_table.Name%></see>.
-	/// </note>
-#endif--%>
+	/// <%=_aux_table.Name%> SerializableObject which provides fields access at <%=_aux_table.Name%> <%=(_aux_table.isVirtualTable) ? "view" : "table"%> at Database.
 	/// </summary>
-	[DOClassAttribute("<%=_aux_table.Name%>", <%=_aux_table.isVirtualTable.ToString().ToLower()%>, <%=_aux_table.isConfig.ToString().ToLower()%>)]
-	public 
-#if NET20
-		partial 
-#else
-		abstract 
-#endif
-		class 
-#if NET20
-		BO_<%=_aux_table.Name%> 
-#else
-		BO0_<%=_aux_table.Name%> 
-#endif
-		: BO__base<%=(isListItem) ? ", iListItem" : ""%> {
-		#region public BO_<%=_aux_table.Name%>(...);
-#if NET20
-		///
-		public BO_<%=_aux_table.Name%>
-#else
-		internal BO0_<%=_aux_table.Name%>
-#endif
-		() {}
-
-		///
-#if NET20
-		~BO_<%=_aux_table.Name%>
-#else
-		~BO0_<%=_aux_table.Name%>
-#endif
-		() {
-			if (mainaggregate__ != null) {
-				mainaggregate__.Dispose(); mainaggregate__ = null;
-			}
+	public class SO0_<%=_aux_table.Name%> {
+		#region public SO0_<%=_aux_table.Name%>();
+		public SO0_<%=_aux_table.Name%>(
+		) : this (<%
+		for (int f = 0; f < _aux_table.Fields.Count; f++) {
+			_aux_field = _aux_table.Fields[f];%><%=""%>
+			<%=(_aux_field.DefaultValue == "") ? _aux_field.DBType_generic.FWEmptyValue : _aux_field.DefaultValue%><%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
+		}%>
+		) {
+		}
+		public SO0_<%=_aux_table.Name%>(<%
+		for (int f = 0; f < _aux_table.Fields.Count; f++) {
+			_aux_field = _aux_table.Fields[f];%><%=""%>
+			<%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%>_in<%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
+		}%>
+		) {
+			haschanges_ = false;
+			//---<%
+			for (int f = 0; f < _aux_table.Fields.Count; f++) {
+				_aux_field = _aux_table.Fields[f];%><%=""%>
+			<%=_aux_field.Name.ToLower()%>_ = <%=_aux_field.Name%>_in;<%
+			}%>
 		}
 		#endregion
 
-		#region private Properties...
-		private DO_<%=_aux_table.Name%> mainaggregate__;
-
-		///
-#if NET20
-		private 
-#else
-		protected 
-#endif
-		DO_<%=_aux_table.Name%> mainAggregate {
-			get {
-				if (mainaggregate__ == null) {
-					// instantiating for the first time and
-					// only because it became needed, otherwise
-					// never instantiated...
-					mainaggregate__ = new DO_<%=_aux_table.Name%>();
-				}
-				return mainaggregate__;
-			}
-		}
+		#region Properties...
+		#region public bool hasChanges { get; }
+		internal bool haschanges_;
 
 		/// <summary>
-		/// Exposes RecordObject.
-		/// </summary>
-		public override iRecordObject Record {
-			get { return mainAggregate.Record; }
-		}
-
-		public SO0_<%=_aux_table.Name%> Fields {
-			get { return mainAggregate.Fields; }
-		}
-		#endregion
-		#region public Properties...<%
-		if (isListItem) { %>
-		#region public string ListItemValue { get; set; }
-		/// <summary>
-		/// List Item Value.
+		/// Indicates if changes have been made to FO0_<%=_aux_table.Name%> properties since last time getObject method was run.
 		/// </summary>
 		public 
 #if !NET20
 			virtual 
 #endif
-			string ListItemValue {
-			get { return <%=_aux_table.ListItemValue.Name%><%=(_aux_table.ListItemValue.DBType_generic.FWType != "string") ? ".ToString()" : ""%>; }
+		bool hasChanges {
+			get { return haschanges_; }
 		}
 		#endregion
-		#region public string ListItemText { get; }
-		/// <summary>
-		/// List Item Text.
-		/// </summary>
-		public 
-#if !NET20
-			virtual 
-#endif
-			string ListItemText {
-			get { return <%=_aux_table.ListItemText.Name%><%=(_aux_table.ListItemText.DBType_generic.FWType != "string") ? ".ToString()" : ""%>; }
-		}
-		#endregion<%
-		}
+		//---<%
 		for (int f = 0; f < _aux_table.Fields.Count; f++) {
 			_aux_field = _aux_table.Fields[f];
 
@@ -178,39 +120,62 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 		/// <summary>
 		/// Allows assignement of null and check if null at <%=_aux_table.Name%>'s <%=_aux_field.Name%>.
 		/// </summary>
+		[XmlIgnore]
 		public 
 #if !NET20
 			virtual 
 #endif
 		bool <%=_aux_field.Name%>_isNull {
-			get { return mainAggregate.Fields.<%=_aux_field.Name%>_isNull; }
-			set { mainAggregate.Fields.<%=_aux_field.Name%>_isNull = value; }
+			get { return (<%=_aux_field.Name.ToLower()%>_ == null); }<%
+			// ToDos: here! fmonteiro
+			if (true || !_aux_table.isVirtualTable) {%>
+			set {
+				//if (value) <%=_aux_field.Name.ToLower()%>_ = null;
+
+				if ((value) && (<%=_aux_field.Name.ToLower()%>_ != null)) {
+					<%=_aux_field.Name.ToLower()%>_ = null;
+					haschanges_ = true;
+				}
+			}<%
+			}%>
 		}
 		#endregion<%
 			}%>
 		#region public <%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%> { get; set; }
+		internal <%=(_aux_field.isNullable && !_aux_field.isPK) ? "object" : _aux_field.DBType_generic.FWType%> <%=_aux_field.Name.ToLower()%>_;// = <%=(_aux_field.DefaultValue == "") ? _aux_field.DBType_generic.FWEmptyValue : _aux_field.DefaultValue%>;
+		
 		/// <summary>
 		/// <%=_aux_table.Name%>'s <%=_aux_field.Name%>.
 		/// </summary>
+		[XmlElement("<%=_aux_field.Name%>")]
 		[DOPropertyAttribute("<%=_aux_field.Name%>", <%=_aux_field.isPK.ToString().ToLower()%>, <%=_aux_field.isIdentity.ToString().ToLower()%>, <%=_aux_field.isPseudoIdentity.ToString().ToLower()%>, <%=_aux_field.isNullable.ToString().ToLower()%>, <%=(_aux_field.DefaultValue == string.Empty) ? "\"\"" : _aux_field.DefaultValue%>, "<%=_aux_field.FK_TableName%>", "<%=_aux_field.FK_FieldName%>", <%=_aux_field.isConfig_Name.ToString().ToLower()%>, <%=_aux_field.isConfig_Config.ToString().ToLower()%>, <%=_aux_field.isConfig_Datatype.ToString().ToLower()%>, <%=_aux_field.isBool.ToString().ToLower()%>, <%=_aux_field.isDateTime.ToString().ToLower()%>, <%=_aux_field.isInt.ToString().ToLower()%>, <%=_aux_field.isDecimal.ToString().ToLower()%>, <%=_aux_field.isText.ToString().ToLower()%>)]
 		public 
 #if !NET20
 			virtual 
 #endif
 		<%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%> {
-			get { return mainAggregate.Fields.<%=_aux_field.Name%>; }
-			set { mainAggregate.Fields.<%=_aux_field.Name%> = value; }
+			get {<%
+			if (_aux_field.isNullable && !_aux_field.isPK) {%>
+				return (<%=_aux_field.DBType_generic.FWType%>)((<%=_aux_field.Name.ToLower()%>_ == null) ? <%=(_aux_field.DefaultValue == "") ? _aux_field.DBType_generic.FWEmptyValue : _aux_field.DefaultValue%> : <%=_aux_field.Name.ToLower()%>_);<%
+			} else {%>
+				return <%=_aux_field.Name.ToLower()%>_;<%
+			}%>
+			}
+			set {
+				if (<%
+					if (_aux_field.DBType_generic.FWType.ToLower() == "string") {%>
+					(value != null)
+					&&<%
+					}%>
+					(!value.Equals(<%=_aux_field.Name.ToLower()%>_))
+				) {
+					<%=_aux_field.Name.ToLower()%>_ = value;
+					haschanges_ = true;
+				}
+			}
 		}
 		#endregion<%
 		}%>
-		#endregion
-
-		#region public Methods...
-		#region public SC0_<%=_aux_table.Name%> Serialize();
-		public SO0_<%=_aux_table.Name%> Serialize() {
-			return mainAggregate.Serialize();
-		}
-		#endregion
 		#endregion
 	}
 }<%

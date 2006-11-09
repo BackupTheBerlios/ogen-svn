@@ -98,6 +98,11 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		#endregion
 
 		#region public Methods...
+		#region //public SC0_<%=_aux_table.Name%> Serialize();
+		//public SC0_<%=_aux_table.Name%> Serialize() {
+		//	return new SC0_<%=_aux_table.Name%>(Record);
+		//}
+		#endregion
 		#region public override bool Read();
 		/// <summary>
 		/// Reads values from Record, assigns them to the appropriate <%=_aux_table.Name%> DataObject property, finally it steps current iteration at the Record forward and returns a bool value indicating if End Of Record has been reached.
@@ -120,24 +125,24 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 					if (base.Record.Rows[Current]["<%=_aux_field.Name%>"] == System.DBNull.Value) {<%
 						if (_aux_field.isNullable && !_aux_field.isPK) {%><%=""%><%
 						// parent_ref_.< %=_aux_field.Name.ToLower()% >_ = null;%>
-						parent_ref_.<%=_aux_field.Name%>_isNull = true;<%
+						parent_ref_.Fields.<%=_aux_field.Name%>_isNull = true;<%
 						} else {%><%=""%>
-						parent_ref_.<%=_aux_field.Name.ToLower()%>_ = <%=_aux_field.DBType_generic.FWEmptyValue%>;<%
+						parent_ref_.Fields.<%=_aux_field.Name.ToLower()%>_ = <%=_aux_field.DBType_generic.FWEmptyValue%>;<%
 						}%>
 					} else {
-						parent_ref_.<%=_aux_field.Name.ToLower()%>_ = (<%=_aux_field.DBType_generic.FWType%>)base.Record.Rows[Current]["<%=_aux_field.Name%>"];
+						parent_ref_.Fields.<%=_aux_field.Name.ToLower()%>_ = (<%=_aux_field.DBType_generic.FWType%>)base.Record.Rows[Current]["<%=_aux_field.Name%>"];
 					}<%
-					//parent_ref_.< %=_aux_field.Name.ToLower()% >_ = (< %=_aux_field.DBType_generic.FWType% >)base.Record.Rows[Current]["< %=_aux_field.Name% >"];
-					//parent_ref_.< %=_aux_field.Name.ToLower()% >_ = (base.Record.Rows[Current]["< %=_aux_field.Name% >"] == System.DBNull.Value) ? < %=_aux_field.DBType_generic.FWEmptyValue% > : (< %=_aux_field.DBType_generic.FWType% >)base.Record.Rows[Current]["< %=_aux_field.Name% >"];
+					//parent_ref_.Fields.< %=_aux_field.Name% > = (< %=_aux_field.DBType_generic.FWType% >)base.Record.Rows[Current]["< %=_aux_field.Name% >"];
+					//parent_ref_.Fields.< %=_aux_field.Name% > = (base.Record.Rows[Current]["< %=_aux_field.Name% >"] == System.DBNull.Value) ? < %=_aux_field.DBType_generic.FWEmptyValue% > : (< %=_aux_field.DBType_generic.FWType% >)base.Record.Rows[Current]["< %=_aux_field.Name% >"];
 					}%>
 
-					parent_ref_.haschanges_ = false;
+					parent_ref_.Fields.haschanges_ = false;
 				} else {<%
 					for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 						_aux_field = _aux_table.Fields[k];
 					//parent_ref_.< %=_aux_field.Name.ToLower()% >_ = (< %=_aux_field.DBType_generic.FWType% >)base.Record.Rows[Current]["< %=_aux_field.Name% >"];
 					%>
-					parent_ref_.<%=_aux_field.Name.ToLower()%>_ = (<%=_aux_field.DBType_generic.FWType%>)((base.Record.Rows[Current]["<%=_aux_field.Name%>"] == System.DBNull.Value) ? <%=_aux_field.DBType_generic.FWEmptyValue%> : base.Record.Rows[Current]["<%=_aux_field.Name%>"]);<%
+					parent_ref_.Fields.<%=_aux_field.Name%> = (<%=_aux_field.DBType_generic.FWType%>)((base.Record.Rows[Current]["<%=_aux_field.Name%>"] == System.DBNull.Value) ? <%=_aux_field.DBType_generic.FWEmptyValue%> : base.Record.Rows[Current]["<%=_aux_field.Name%>"]);<%
 					}%>
 
 					if (!doNOTgetObject_in) {

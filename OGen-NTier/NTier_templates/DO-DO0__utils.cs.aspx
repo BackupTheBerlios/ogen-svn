@@ -277,7 +277,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 					#region <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = DO_<%=_aux_table.Name%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
 					DO_<%=_aux_table.Name%> <%=_aux_table.Name.ToLower()%> = new DO_<%=_aux_table.Name%>();
 					<%=_aux_table.Name.ToLower()%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
-					<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = bool.Parse(<%=_aux_table.Name.ToLower()%>.<%=ConfigField%>);
+					<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = bool.Parse(<%=_aux_table.Name.ToLower()%>.Fields.<%=ConfigField%>);
 					<%=_aux_table.Name.ToLower()%>.Dispose(); <%=_aux_table.Name.ToLower()%> = null;
 					#endregion
 					<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_beenRead = true;
@@ -288,7 +288,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				#region <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = DO_<%=_aux_table.Name%>.<%=ConfigField%> = value;
 				DO_<%=_aux_table.Name%> <%=_aux_table.Name.ToLower()%> = new DO_<%=_aux_table.Name%>();
 				<%=_aux_table.Name.ToLower()%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
-				<%=_aux_table.Name.ToLower()%>.<%=ConfigField%> = value.ToString();
+				<%=_aux_table.Name.ToLower()%>.Fields.<%=ConfigField%> = value.ToString();
 				<%=_aux_table.Name.ToLower()%>.setObject(false);
 				<%=_aux_table.Name.ToLower()%>.Dispose(); <%=_aux_table.Name.ToLower()%> = null;
 
@@ -317,7 +317,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 					#region <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = DO_<%=_aux_table.Name%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
 					DO_<%=_aux_table.Name%> <%=_aux_table.Name.ToLower()%> = new DO_<%=_aux_table.Name%>();
 					<%=_aux_table.Name.ToLower()%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
-					<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = int.Parse(<%=_aux_table.Name.ToLower()%>.<%=ConfigField%>);
+					<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = int.Parse(<%=_aux_table.Name.ToLower()%>.Fields.<%=ConfigField%>);
 					<%=_aux_table.Name.ToLower()%>.Dispose(); <%=_aux_table.Name.ToLower()%> = null;
 					#endregion
 					<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_beenRead = true;
@@ -328,7 +328,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				#region <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = DO_<%=_aux_table.Name%>.<%=ConfigField%> = value;
 				DO_<%=_aux_table.Name%> <%=_aux_table.Name.ToLower()%> = new DO_<%=_aux_table.Name%>();
 				<%=_aux_table.Name.ToLower()%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
-				<%=_aux_table.Name.ToLower()%>.<%=ConfigField%> = value.ToString();
+				<%=_aux_table.Name.ToLower()%>.Fields.<%=ConfigField%> = value.ToString();
 				<%=_aux_table.Name.ToLower()%>.setObject(false);
 				<%=_aux_table.Name.ToLower()%>.Dispose(); <%=_aux_table.Name.ToLower()%> = null;
 
@@ -356,7 +356,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 					#region <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = DO_<%=_aux_table.Name%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
 					DO_<%=_aux_table.Name%> <%=_aux_table.Name.ToLower()%> = new DO_<%=_aux_table.Name%>();
 					<%=_aux_table.Name.ToLower()%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
-					<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = <%=_aux_table.Name.ToLower()%>.<%=ConfigField%>;
+					<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = <%=_aux_table.Name.ToLower()%>.Fields.<%=ConfigField%>;
 					<%=_aux_table.Name.ToLower()%>.Dispose(); <%=_aux_table.Name.ToLower()%> = null;
 					#endregion
 				}
@@ -366,7 +366,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				#region <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = DO_<%=_aux_table.Name%>.<%=ConfigField%> = value;
 				DO_<%=_aux_table.Name%> <%=_aux_table.Name.ToLower()%> = new DO_<%=_aux_table.Name%>();
 				<%=_aux_table.Name.ToLower()%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
-				<%=_aux_table.Name.ToLower()%>.<%=ConfigField%> = value;
+				<%=_aux_table.Name.ToLower()%>.Fields.<%=ConfigField%> = value;
 				<%=_aux_table.Name.ToLower()%>.setObject(false);
 				<%=_aux_table.Name.ToLower()%>.Dispose(); <%=_aux_table.Name.ToLower()%> = null;
 
@@ -393,7 +393,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 					#region <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = DO_<%=_aux_table.Name%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
 					DO_<%=_aux_table.Name%> <%=_aux_table.Name.ToLower()%> = new DO_<%=_aux_table.Name%>();
 					<%=_aux_table.Name.ToLower()%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
-					<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = <%=_aux_table.Name.ToLower()%>.<%=ConfigField%>.Split((char)10);
+					<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = <%=_aux_table.Name.ToLower()%>.Fields.<%=ConfigField%>.Split((char)10);
 					<%=_aux_table.Name.ToLower()%>.Dispose(); <%=_aux_table.Name.ToLower()%> = null;
 					#endregion
 				}
@@ -405,9 +405,9 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				<%=_aux_table.Name.ToLower()%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
 
 
-				<%=_aux_table.Name.ToLower()%>.<%=ConfigField%> = string.Empty;
+				<%=_aux_table.Name.ToLower()%>.Fields.<%=ConfigField%> = string.Empty;
 				for (int i = 0; i < value.Length; i++) {
-					<%=_aux_table.Name.ToLower()%>.<%=ConfigField%> += string.Format(
+					<%=_aux_table.Name.ToLower()%>.Fields.<%=ConfigField%> += string.Format(
 						"{0}{1}",
 						(i != 0) ? ((char)10).ToString() : string.Empty, 
 						value[i]

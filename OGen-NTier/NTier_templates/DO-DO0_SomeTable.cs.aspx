@@ -120,7 +120,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			.DBLogfile
 		) {
 			clrObject();
-			haschanges_ = false;
+			Fields.haschanges_ = false;
 		}
 #if NET20
 			/// <summary>
@@ -137,7 +137,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			connection_in
 		) {
 			clrObject();
-			haschanges_ = false;
+			Fields.haschanges_ = false;
 		}
 		#endregion
 
@@ -145,6 +145,14 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		if (_aux_metadata.PseudoReflectionable) {%>
 		public static pr<%=_aux_metadata.ApplicationName%>_<%=_aux_table.Name%> pReflection;<%
 		}%>
+		#region public FO0_<%=_aux_table.Name%> Fields { get; set; }
+		internal SO0_<%=_aux_table.Name%> fields_;
+
+		public SO0_<%=_aux_table.Name%> Fields {
+			get { return fields_; }
+			set { fields_ = value; }
+		}
+		#endregion
 		#region public RO0_<%=_aux_table.Name%> Record { get; }
 		private RO0_<%=_aux_table.Name%> record__;
 
@@ -162,7 +170,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				return record__;
 			}
 		}
-		#endregion
+		#endregion<%--
 		#region public bool hasChanges { get; }
 		internal bool haschanges_;
 		/// <summary>
@@ -239,10 +247,15 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			}
 		}
 		#endregion<%
-		}%>
+		}%>--%>
 		#endregion
 
 		#region Methods...
+		#region public SC0_<%=_aux_table.Name%> Serialize();
+		public SO0_<%=_aux_table.Name%> Serialize() {
+			return Fields;
+		}
+		#endregion
 		#region public void clrObject();
 		/// <summary>
 		/// Clears all DO0_<%=_aux_table.Name%> properties, assigning them with their appropriate default property value.
@@ -251,7 +264,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			void clrObject() {<%
+		void clrObject() {<%--
 			for (int f = 0; f < _aux_table.Fields.Count; f++) {
 				_aux_field = _aux_table.Fields[f];
 				if (_aux_field.isNullable && !_aux_field.isPK) {%><%=""%>
@@ -259,7 +272,8 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				} else {%><%=""%>
 			<%=_aux_field.Name%> = <%=(_aux_field.DefaultValue == "") ? _aux_field.DBType_generic.FWEmptyValue : _aux_field.DefaultValue%>;<%
 				}
-			}%>
+			}--%>
+			Fields = new SO0_<%=_aux_table.Name%>();
 		}
 		#endregion
 		#region public bool getObject(...);
@@ -271,11 +285,11 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			bool getObject() {
+		bool getObject() {
 			return getObject(<%
 				for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 					_aux_field = _aux_table.Fields_onlyPK[k];%><%=""%>
-				<%=_aux_field.Name.ToLower()%>_<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
+				Fields.<%=_aux_field.Name%><%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
 				}%>
 			);
 		}
@@ -314,16 +328,16 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 						_aux_field = _aux_table.Fields[f];%>
 					if (_dataparameters[<%=f%>].Value == System.DBNull.Value) {<%
 						if (_aux_field.isNullable && !_aux_field.isPK) {%><%=""%>
-						<%=_aux_field.Name%>_isNull = true;<%
+						Fields.<%=_aux_field.Name%>_isNull = true;<%
 						} else {%><%=""%>
-						<%=_aux_field.Name.ToLower()%>_ = <%=_aux_field.DBType_generic.FWEmptyValue%>;<%
+						Fields.<%=_aux_field.Name%> = <%=_aux_field.DBType_generic.FWEmptyValue%>;<%
 						}%>
 					} else {
-						<%=_aux_field.Name.ToLower()%>_ = (<%=_aux_field.DBType_generic.FWType%>)_dataparameters[<%=f%>].Value;
+						Fields.<%=_aux_field.Name%> = (<%=_aux_field.DBType_generic.FWType%>)_dataparameters[<%=f%>].Value;
 					}<%
 					}%>
 
-					haschanges_ = false;
+					Fields.haschanges_ = false;
 					return true;
 				}<%
 			if (_aux_table_hasidentitykey != -1) {%>
@@ -345,11 +359,11 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			void delObject() {
+		void delObject() {
 			delObject(<%
 				for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 					_aux_field = _aux_table.Fields_onlyPK[k];%><%=""%>
-				<%=_aux_field.Name.ToLower()%>_<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
+				Fields.<%=_aux_field.Name%><%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
 				}%>
 			);
 		}
@@ -364,7 +378,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			void delObject(<%
+		void delObject(<%
 			for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 				_aux_field = _aux_table.Fields_onlyPK[k];%><%=""%>
 			<%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%>_in<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
@@ -391,11 +405,11 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			bool isObject() {
+		bool isObject() {
 			return isObject(<%
 				for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 					_aux_field = _aux_table.Fields_onlyPK[k];%><%=""%>
-				<%=_aux_field.Name.ToLower()%>_<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
+				Fields.<%=_aux_field.Name%><%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
 				}%>
 			);
 		}
@@ -411,7 +425,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			bool isObject(<%
+		bool isObject(<%
 			for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 				_aux_field = _aux_table.Fields_onlyPK[k];%><%=""%>
 			<%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%>_in<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
@@ -448,11 +462,11 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			<%if (!_aux_table_searches_hasexplicituniqueindex) {
 				%>bool ConstraintExist_out;
 			<%}
-			%>if (forceUpdate_in || haschanges_) {
+			%>if (forceUpdate_in || Fields.haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {<%
 					for (int f = 0; f < _aux_table.Fields.Count; f++) {
 						_aux_field = _aux_table.Fields[f];%>
-					base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.<%=(_aux_field.isIdentity) ? "Out" : "In"%>put, <%=(_aux_field.isIdentity) ? "null" : _aux_field.Name.ToLower() + "_"%>, <%=_aux_field.Size%>), <%
+					base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.<%=(_aux_field.isIdentity) ? "Out" : "In"%>put, <%=(_aux_field.isIdentity) ? "null" : "Fields." + _aux_field.Name%>, <%=_aux_field.Size%>), <%
 					}%>
 
 					//base.Connection.newDBDataParameter("Exists", DbType.Boolean, ParameterDirection.Output, 0, 1)<%
@@ -468,7 +482,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 
 				ConstraintExist_out = (((int)_dataparameters[<%=_aux_table.Fields.Count%>].Value & 2) == 1);
 				if (!ConstraintExist_out) {
-					haschanges_ = false;<%
+					Fields.haschanges_ = false;<%
 
 
 
@@ -514,7 +528,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 										/*04*/ (_aux_metadata.DBs.FirstDefaultAvailable_DBServerType() == eDBServerTypes.MySQL) ? "`" :"\""
 									)
 								);%>
-					switch (<%=NameField.ToLower()%>_) {<%
+					switch (Fields.<%=NameField%>) {<%
 								for (int r = 0; r < ConfigTable.Rows.Count; r++) {%>
 						case "<%=ConfigTable.Rows[r][NameField]%>": {
 #if NET20
@@ -558,7 +572,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			<%=_aux_table.Fields[_aux_table_hasidentitykey].DBType_generic.FWType%> insObject(
+		<%=_aux_table.Fields[_aux_table_hasidentitykey].DBType_generic.FWType%> insObject(
 			bool selectIdentity_in<%
 			if (_aux_table_searches_hasexplicituniqueindex) { %>, 
 			out bool constraintExist_out<%
@@ -567,7 +581,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {<%
 				for (int f = 0; f < _aux_table.Fields.Count; f++) {
 					_aux_field = _aux_table.Fields[f];%>
-				base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.<%=(_aux_field.isIdentity) ? "Out" : "In"%>put, <%=(_aux_field.isIdentity) ? "null" : _aux_field.Name.ToLower() + "_"%>, <%=_aux_field.Size%>), <%
+				base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.<%=(_aux_field.isIdentity) ? "Out" : "In"%>put, <%=(_aux_field.isIdentity) ? "null" : "Fields." + _aux_field.Name%>, <%=_aux_field.Size%>), <%
 				}%>
 
 				base.Connection.newDBDataParameter("SelectIdentity_", DbType.Boolean, ParameterDirection.Input, selectIdentity_in, 1)
@@ -578,17 +592,17 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			);
 
 			<%_aux_field = _aux_table.Fields[_aux_table_hasidentitykey];
-			%><%=_aux_field.Name%> = (<%=_aux_field.DBType_generic.FWType%>)_dataparameters[<%=_aux_table_hasidentitykey%>].Value;<%
+			%>Fields.<%=_aux_field.Name%> = (<%=_aux_field.DBType_generic.FWType%>)_dataparameters[<%=_aux_table_hasidentitykey%>].Value;<%
 			if (_aux_table_searches_hasexplicituniqueindex) {%>
 			constraintExist_out = (<%=_aux_field.Name%> == -1L);
 			if (!constraintExist_out) {
-				haschanges_ = false;
+				Fields.haschanges_ = false;
 			}<%
 			} else {%>
-			haschanges_ = false;
+			Fields.haschanges_ = false;
 			<%}%>
 
-			return <%=_aux_field.Name%>;
+			return Fields.<%=_aux_field.Name%>;
 		}
 		#endregion
 		#region public void updObject(...);
@@ -603,12 +617,12 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			void updObject(bool forceUpdate_in<%=(_aux_table_searches_hasexplicituniqueindex) ? ", out bool constraintExist_out" : ""%>) {
-			if (forceUpdate_in || haschanges_) {
+		void updObject(bool forceUpdate_in<%=(_aux_table_searches_hasexplicituniqueindex) ? ", out bool constraintExist_out" : ""%>) {
+			if (forceUpdate_in || Fields.haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {<%
 					for (int f = 0; f < _aux_table.Fields.Count; f++) {
 						_aux_field = _aux_table.Fields[f];%>
-					base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field.Name.ToLower()%>_, <%=_aux_field.Size%>)<%=((f != _aux_table.Fields.Count - 1) || (_aux_table_searches_hasexplicituniqueindex)) ? ", " : ""%><%
+					base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%="Fields." + _aux_field.Name%>, <%=_aux_field.Size%>)<%=((f != _aux_table.Fields.Count - 1) || (_aux_table_searches_hasexplicituniqueindex)) ? ", " : ""%><%
 					}%><%
 					if (_aux_table_searches_hasexplicituniqueindex) {%>
 
@@ -622,10 +636,10 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				<%if (_aux_table_searches_hasexplicituniqueindex) {%>
 				constraintExist_out = <%=(_aux_table_searches_hasexplicituniqueindex) ? "(bool)_dataparameters[" + (_aux_table.Fields.Count) + "].Value" : "false"%>;
 				if (!constraintExist_out) {
-					haschanges_ = false;
+					Fields.haschanges_ = false;
 				}<%
 				} else {
-				%>haschanges_ = false;<%
+				%>Fields.haschanges_ = false;<%
 				}%>
 			<%if (_aux_table_searches_hasexplicituniqueindex) {%>
 			} else {
@@ -688,21 +702,21 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 					_aux_field = _aux_table.Fields[f];%>
 				if (_dataparameters[<%=_aux_table.Searches[s].SearchParameters.Count + f%>].Value == System.DBNull.Value) {<%
 					if (_aux_field.isNullable && !_aux_field.isPK) {%><%=""%>
-					<%=_aux_field.Name%>_isNull = true;<%
+					Fields.<%=_aux_field.Name%>_isNull = true;<%
 					} else {%><%=""%>
-					<%=_aux_field.Name.ToLower()%>_ = <%=_aux_field.DBType_generic.FWEmptyValue%>;<%
+					Fields.<%=_aux_field.Name%> = <%=_aux_field.DBType_generic.FWEmptyValue%>;<%
 					}%>
 				} else {
-					<%=_aux_field.Name.ToLower()%>_ = (<%=_aux_field.DBType_generic.FWType%>)_dataparameters[<%=_aux_table.Searches[s].SearchParameters.Count + f%>].Value;
+					Fields.<%=_aux_field.Name%> = (<%=_aux_field.DBType_generic.FWType%>)_dataparameters[<%=_aux_table.Searches[s].SearchParameters.Count + f%>].Value;
 				}<%
 				}%>
 
-				haschanges_ = false;
+				Fields.haschanges_ = false;
 				return true;
 			}
 
 			//clrObject();
-			//haschanges_ = false;
+			//Fields.haschanges_ = false;
 
 			return false;
 		}
@@ -801,14 +815,14 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			void updObject_<%=_aux_update.Name%>(bool forceUpdate_in<%=(_aux_table_searches_hasexplicituniqueindex) ? ", out bool constraintExist_out" : ""%>) {
-			if (forceUpdate_in || haschanges_) {
+		void updObject_<%=_aux_update.Name%>(bool forceUpdate_in<%=(_aux_table_searches_hasexplicituniqueindex) ? ", out bool constraintExist_out" : ""%>) {
+			if (forceUpdate_in || Fields.haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {<%
 					for (int f = 0; f < _aux_table.Fields_onlyPK.Count; f++) { _aux_field = _aux_table.Fields_onlyPK[f];%>
-					base.Connection.newDBDataParameter("<%=_aux_field.Name%>", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field.Name.ToLower()%>_, <%=_aux_field.Size%>), <%
+					base.Connection.newDBDataParameter("<%=_aux_field.Name%>", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%="Fields." + _aux_field.Name%>, <%=_aux_field.Size%>), <%
 					}
 					for (int f = 0; f < _aux_update.UpdateParameters.Count; f++) { _aux_field = _aux_update.UpdateParameters[f].Field;%>
-					base.Connection.newDBDataParameter("<%=_aux_field.Name%>_update", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field.Name.ToLower()%>_, <%=_aux_field.Size%>)<%=((f != _aux_update.UpdateParameters.Count - 1) || (_aux_table_searches_hasexplicituniqueindex)) ? ", " : ""%><%
+					base.Connection.newDBDataParameter("<%=_aux_field.Name%>_update", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%="Fields." + _aux_field.Name%>, <%=_aux_field.Size%>)<%=((f != _aux_update.UpdateParameters.Count - 1) || (_aux_table_searches_hasexplicituniqueindex)) ? ", " : ""%><%
 					}
 					if (_aux_table_searches_hasexplicituniqueindex) {%>
 
@@ -822,10 +836,10 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				<%if (_aux_table_searches_hasexplicituniqueindex) {%>
 				constraintExist_out = <%=(_aux_table_searches_hasexplicituniqueindex) ? "(bool)_dataparameters[" + (_aux_table.Fields.Count) + "].Value" : "false"%>;
 				if (!constraintExist_out) {
-					haschanges_ = false;
+					Fields.haschanges_ = false;
 				}<%
 				} else {
-				%>haschanges_ = false;<%
+				%>Fields.haschanges_ = false;<%
 				}%>
 			<%if (_aux_table_searches_hasexplicituniqueindex) {%>
 			} else {
