@@ -103,6 +103,59 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		//	return new SC0_<%=_aux_table.Name%>(Record);
 		//}
 		#endregion
+		#region public SC0_<%=_aux_table.Name%> Serialize();
+		public SC0_<%=_aux_table.Name%> Serialize() {
+			SO0_<%=_aux_table.Name%>[] _serialisableobject;
+
+			lock (record__) {
+				int _current = Current;
+
+				_serialisableobject = new SO0_<%=_aux_table.Name%>[Count];
+
+				Reset();
+				while (Read()) {
+					_serialisableobject[Current] 
+						= new SO0_<%=_aux_table.Name%>(<%
+							for (int f = 0; f < _aux_table.Fields.Count; f++) {
+								_aux_field = _aux_table.Fields[f];%><%=""%>
+							parent_ref_.Fields.<%=_aux_field.Name%><%=(f != _aux_table.Fields.Count - 1) ? "," : ""%><%
+							}%>
+						);
+				}
+
+				Current = _current;
+			}
+
+			SC0_<%=_aux_table.Name%> _serialize_out = new SC0_<%=_aux_table.Name%>();
+			_serialize_out.SO0_<%=_aux_table.Name%> = _serialisableobject;
+			return _serialize_out;
+		}
+		#endregion
+		#region public void Open(SC0_<%=_aux_table.Name%> serialisablecollection_in);
+		public void Open(SC0_<%=_aux_table.Name%> serialisablecollection_in) {
+			Open(serialisablecollection_in.SO0_<%=_aux_table.Name%>);
+		}
+		#endregion
+		#region public void Open(SO0_<%=_aux_table.Name%>[] serialisableobject_in);
+		public void Open(SO0_<%=_aux_table.Name%>[] serialisableobject_in) {
+			DataTable _datatable = new DataTable();
+			_datatable.Columns.Add(new DataColumn("codProfissao", typeof(int)));
+			_datatable.Columns.Add(new DataColumn("descProfissao", typeof(string)));
+
+			DataRow _datarow;
+			for (int i = 0; i < serialisableobject_in.Length; i++) {
+			    _datarow = _datatable.NewRow();<%
+				for (int f = 0; f < _aux_table.Fields.Count; f++) {
+					_aux_field = _aux_table.Fields[f];%><%=""%>
+				_datarow["<%=_aux_field.Name%>"] = serialisableobject_in[i].<%=_aux_field.Name%>;<%
+				}%>
+
+			    _datatable.Rows.Add(_datarow);
+			}
+
+			Open(true, _datatable);
+		}
+		#endregion
 		#region public override bool Read();
 		/// <summary>
 		/// Reads values from Record, assigns them to the appropriate <%=_aux_table.Name%> DataObject property, finally it steps current iteration at the Record forward and returns a bool value indicating if End Of Record has been reached.

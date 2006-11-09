@@ -155,6 +155,9 @@
       <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="BO-UT-UT_SomeTable.cs.aspx" />
+    <Content Include="DO-SC0_SomeTable.cs.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-SO0_SomeTable.cs.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
@@ -246,6 +249,7 @@
     <Content Include="DO-DO_SomeTable.cs.aspx" />
     <Content Include="DO-DO__utils.cs.aspx" />
     <Content Include="DO-RO0_SomeTable.cs.aspx">
+      <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="DO-SomeApplication_datalayer-8.csproj.aspx">
       <SubType>ASPXCodeBehind</SubType>

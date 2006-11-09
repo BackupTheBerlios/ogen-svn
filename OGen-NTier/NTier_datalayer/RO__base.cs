@@ -135,7 +135,7 @@ namespace OGen.NTier.lib.datalayer {
 		}
 		#endregion
 		#region public virtual DataTable Record { get; }
-		private DataTable record__;
+		protected DataTable record__;
 
 		/// <summary>
 		/// Exposes Record DataTable.

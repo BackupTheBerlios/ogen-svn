@@ -342,6 +342,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Main.resx">
       <DependentUpon>frm_Main.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucPick_DBType.resx">
       <DependentUpon>ucPick_DBType.cs</DependentUpon>

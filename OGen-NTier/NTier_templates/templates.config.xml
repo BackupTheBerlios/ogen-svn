@@ -652,6 +652,20 @@ along with OGen; if not, write to the
 		</outputs>
 		<dependencies />
 	</template>
+	<template name="DO-SC0_SomeTable.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.tables.table[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
+			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/_base/SC0_${ROOT.tables.table[n].name}.cs" 
+				type="File" mode="Replace" />
+		</outputs>
+		<dependencies />
+	</template>
 	<template name="DO-DO_SomeTable.cs.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT.tables.table[n]">
