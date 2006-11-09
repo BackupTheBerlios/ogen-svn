@@ -59,6 +59,7 @@ if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTex
 #endregion
 <%
 }%>using System;
+using System.Xml.Serialization;
 
 using OGen.NTier.lib.datalayer;
 using OGen.NTier.lib.businesslayer;
@@ -187,6 +188,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 		/// <summary>
 		/// <%=_aux_table.Name%>'s <%=_aux_field.Name%>.
 		/// </summary>
+		[XmlElement("<%=_aux_field.Name%>")]
 		[DOPropertyAttribute("<%=_aux_field.Name%>", <%=_aux_field.isPK.ToString().ToLower()%>, <%=_aux_field.isIdentity.ToString().ToLower()%>, <%=_aux_field.isPseudoIdentity.ToString().ToLower()%>, <%=_aux_field.isNullable.ToString().ToLower()%>, <%=(_aux_field.DefaultValue == string.Empty) ? "\"\"" : _aux_field.DefaultValue%>, "<%=_aux_field.FK_TableName%>", "<%=_aux_field.FK_FieldName%>", <%=_aux_field.isConfig_Name.ToString().ToLower()%>, <%=_aux_field.isConfig_Config.ToString().ToLower()%>, <%=_aux_field.isConfig_Datatype.ToString().ToLower()%>, <%=_aux_field.isBool.ToString().ToLower()%>, <%=_aux_field.isDateTime.ToString().ToLower()%>, <%=_aux_field.isInt.ToString().ToLower()%>, <%=_aux_field.isDecimal.ToString().ToLower()%>, <%=_aux_field.isText.ToString().ToLower()%>)]
 		public 
 #if !NET20
