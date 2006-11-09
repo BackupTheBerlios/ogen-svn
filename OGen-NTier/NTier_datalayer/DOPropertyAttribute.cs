@@ -38,10 +38,10 @@ namespace OGen.NTier.lib.datalayer {
 	[AttributeUsage(AttributeTargets.Property)]
 	public class DOPropertyAttribute : System.Attribute {
 		#region public DOPropertyAttribute(...);
+//		/// <param name="isPseudoIdentity_in">True if it has a Specific Seed, False if not</param>
 		/// <param name="name_in">Name</param>
 		/// <param name="isPK_in">True if it is a Primary Key, False if not</param>
 		/// <param name="isIdentity_in">True if it is a Sequence/Identity Seed, False if not</param>
-		/// <param name="isPseudoIdentity_in">True if it has a Specific Seed, False if not</param>
 		/// <param name="isNullable_in">True if it allows null Values, False if not</param>
 		/// <param name="defaultValue_in">Default Value</param>
 		/// <param name="fk_TableName_in">Foreign Key Table Name</param>
@@ -58,7 +58,7 @@ namespace OGen.NTier.lib.datalayer {
 			string			name_in, 
 			bool			isPK_in, 
 			bool			isIdentity_in,
-			bool			isPseudoIdentity_in, 
+			//bool			isPseudoIdentity_in, 
 			bool			isNullable_in, 
 			string			defaultValue_in,
 			string			fk_TableName_in, 
@@ -75,7 +75,7 @@ namespace OGen.NTier.lib.datalayer {
 			name_				= name_in;
 			ispk_				= isPK_in;
 			isidentity_			= isIdentity_in;
-			ispseudoidentity_	= isPseudoIdentity_in;
+			//ispseudoidentity_	= isPseudoIdentity_in;
 			isnullable_			= isNullable_in;
 			defaultvalue_		= defaultValue_in;
 			fk_tablename_		= fk_TableName_in;
@@ -121,15 +121,15 @@ namespace OGen.NTier.lib.datalayer {
 			get { return isidentity_; }
 		}
 		#endregion
-		#region public bool isPseudoIdentity { get; }
-		private bool ispseudoidentity_;
+		#region //public bool isPseudoIdentity { get; }
+		//private bool ispseudoidentity_;
 
-		/// <summary>
-		/// Indicates if it has a Specific Seed. True if it has a Specific Seed, False if not.
-		/// </summary>
-		public bool isPseudoIdentity {
-			get { return ispseudoidentity_; }
-		}
+		///// <summary>
+		///// Indicates if it has a Specific Seed. True if it has a Specific Seed, False if not.
+		///// </summary>
+		//public bool isPseudoIdentity {
+		//    get { return ispseudoidentity_; }
+		//}
 		#endregion
 		#region public bool isNullable { get; }
 		private bool isnullable_;
