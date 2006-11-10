@@ -41,7 +41,6 @@ if (cDBMetadata.Metacache.Contains(_arg_MetadataFilepath)) {
 	_aux_metadata = new cDBMetadata();
 	_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
 	cDBMetadata.Metacache.Add(_arg_MetadataFilepath, _aux_metadata);
-	cDBMetadata.Metacache.Add(_arg_MetadataFilepath, _aux_metadata);
 }
 cDBMetadata_Table _aux_table = _aux_metadata.Tables[_arg_TableName];
 
