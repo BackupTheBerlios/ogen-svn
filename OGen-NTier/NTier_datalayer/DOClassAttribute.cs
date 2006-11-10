@@ -39,16 +39,25 @@ namespace OGen.NTier.lib.datalayer {
 	public class DOClassAttribute : System.Attribute {
 		#region public DOClassAttribute(...);
 		/// <param name="name_in">Name</param>
+		/// <param name="friendlyName_in">Friendly name</param>
+		/// <param name="dbDescription_in">Description at DataBase</param>
+		/// <param name="extendedDescription_in">Extended description</param>
 		/// <param name="isVirtualTable_in">True if it is a View, False if it is a Table</param>
 		/// <param name="isConfig_in">True if it is a Config Table, False if not</param>
 		public DOClassAttribute(
 			string			name_in, 
+			string			friendlyName_in, 
+			string			dbDescription_in, 
+			string			extendedDescription_in, 
 			bool			isVirtualTable_in, 
 			bool			isConfig_in
 		) {
-			name_			= name_in;
-			isvirtualtable_	= isVirtualTable_in;
-			isconfig_		= isConfig_in;
+			name_					= name_in;
+			friendlyname_			= friendlyName_in;
+			dbdescription_			= dbDescription_in;
+			extendeddescription_	= extendedDescription_in;
+			isvirtualtable_			= isVirtualTable_in;
+			isconfig_				= isConfig_in;
 		}
 		#endregion
 
@@ -60,6 +69,36 @@ namespace OGen.NTier.lib.datalayer {
 		/// </summary>
 		public string Name {
 			get { return name_; }
+		}
+		#endregion
+		#region public string FriendlyName { get; }
+		private string friendlyname_;
+
+		/// <summary>
+		/// Friendly name
+		/// </summary>
+		public string FriendlyName {
+			get { return friendlyname_; }
+		}
+		#endregion
+		#region public string DBDescription { get; }
+		private string dbdescription_;
+
+		/// <summary>
+		/// Description at DataBase
+		/// </summary>
+		public string DBDescription {
+			get { return dbdescription_; }
+		}
+		#endregion
+		#region public string ExtendedDescription { get; }
+		private string extendeddescription_;
+
+		/// <summary>
+		/// Extended description
+		/// </summary>
+		public string ExtendedDescription {
+			get { return extendeddescription_; }
 		}
 		#endregion
 		#region public bool isVirtualTable { get; }

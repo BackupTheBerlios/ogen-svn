@@ -49,6 +49,9 @@ namespace OGen.NTier.lib.metadata {
 
 			//#region ClaSSe...
 			Name = name_in;
+			FriendlyName = string.Empty;
+			DBDescription = string.Empty;
+			ExtendedDescription = string.Empty;
 			isVirtualTable = false;
 			isConfig = false;
 			//---
@@ -115,6 +118,33 @@ namespace OGen.NTier.lib.metadata {
 		public string Name {
 			get { return name_; }
 			set { name_ = value; }
+		}
+		#endregion
+		#region public string FriendlyName { get; set; }
+		private string friendlyname_;
+
+		[ClaSSPropertyAttribute("friendlyName", ClaSSPropertyAttribute.eType.standard, true)]
+		public string FriendlyName {
+			get { return friendlyname_; }
+			set { friendlyname_ = value; }
+		}
+		#endregion
+		#region public string DBDescription { get; set; }
+		private string dbdescription_;
+
+		[ClaSSPropertyAttribute("dbDescription", ClaSSPropertyAttribute.eType.standard, true)]
+		public string DBDescription {
+			get { return dbdescription_; }
+			set { dbdescription_ = value; }
+		}
+		#endregion
+		#region public string ExtendedDescription { get; set; }
+		private string extendeddescription_;
+
+		[ClaSSPropertyAttribute("extendedDescription", ClaSSPropertyAttribute.eType.standard, true)]
+		public string ExtendedDescription {
+			get { return extendeddescription_; }
+			set { extendeddescription_ = value; }
 		}
 		#endregion
 		#region public bool isVirtualTable { get; set; }

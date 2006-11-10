@@ -498,6 +498,10 @@ if (clear_in)
 						int _T = tables_.Search(_xmlFile_metadata.Tables[t].Name);
 						if (_T != -1) {
 							//---
+							tables_[_T].FriendlyName = _xmlFile_metadata.Tables[t].FriendlyName;
+							tables_[_T].DBDescription = _xmlFile_metadata.Tables[t].DBDescription;
+							tables_[_T].ExtendedDescription = _xmlFile_metadata.Tables[t].ExtendedDescription;
+							//---
 							tables_[_T].Searches.CopyFrom(
 								_xmlFile_metadata.Tables[t].Searches
 							);
@@ -514,6 +518,10 @@ if (clear_in)
 							for (int f = 0; f < _xmlFile_metadata.Tables[t].Fields.Count; f++) {
 								int _F = tables_[_T].Fields.Search(_xmlFile_metadata.Tables[t].Fields[f].Name);
 								if (_F != -1) {
+									//---
+									tables_[_T].Fields[_F].FriendlyName = _xmlFile_metadata.Tables[t].Fields[f].FriendlyName;
+									tables_[_T].Fields[_F].DBDescription = _xmlFile_metadata.Tables[t].Fields[f].DBDescription;
+									tables_[_T].Fields[_F].ExtendedDescription = _xmlFile_metadata.Tables[t].Fields[f].ExtendedDescription;
 									//---
 									tables_[_T].Fields[_F].isListItemText = _xmlFile_metadata.Tables[t].Fields[f].isListItemText;
 									tables_[_T].Fields[_F].isListItemValue = _xmlFile_metadata.Tables[t].Fields[f].isListItemValue;

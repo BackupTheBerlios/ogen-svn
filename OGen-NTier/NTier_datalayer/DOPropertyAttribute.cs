@@ -40,6 +40,9 @@ namespace OGen.NTier.lib.datalayer {
 		#region public DOPropertyAttribute(...);
 //		/// <param name="isPseudoIdentity_in">True if it has a Specific Seed, False if not</param>
 		/// <param name="name_in">Name</param>
+		/// <param name="friendlyName_in">Friendly name</param>
+		/// <param name="dbDescription_in">Description at DataBase</param>
+		/// <param name="extendedDescription_in">Extended description</param>
 		/// <param name="isPK_in">True if it is a Primary Key, False if not</param>
 		/// <param name="isIdentity_in">True if it is a Sequence/Identity Seed, False if not</param>
 		/// <param name="isNullable_in">True if it allows null Values, False if not</param>
@@ -56,6 +59,9 @@ namespace OGen.NTier.lib.datalayer {
 		/// <param name="isText_in">True if it is a Text Value, False if not</param>
 		public DOPropertyAttribute(
 			string			name_in, 
+			string			friendlyName_in, 
+			string			dbDescription_in, 
+			string			extendedDescription_in, 
 			bool			isPK_in, 
 			bool			isIdentity_in,
 			//bool			isPseudoIdentity_in, 
@@ -72,22 +78,25 @@ namespace OGen.NTier.lib.datalayer {
 			bool			isDecimal_in, 
 			bool			isText_in
 		) {
-			name_				= name_in;
-			ispk_				= isPK_in;
-			isidentity_			= isIdentity_in;
-			//ispseudoidentity_	= isPseudoIdentity_in;
-			isnullable_			= isNullable_in;
-			defaultvalue_		= defaultValue_in;
-			fk_tablename_		= fk_TableName_in;
-			fk_fieldname_		= fk_FieldName_in;
-			isconfig_name_		= isConfig_Name_in;
-			isconfig_config_	= isConfig_Config_in;
-			isconfig_datatype_	= isConfig_Datatype_in;
-			isbool_				= isBool_in;
-			isdatetime_			= isDateTime_in;
-			isint_				= isInt_in;
-			isdecimal_			= isDecimal_in;
-			istext_				= isText_in;
+			name_					= name_in;
+			friendlyname_			= friendlyName_in;
+			dbdescription_			= dbDescription_in;
+			extendeddescription_	= extendedDescription_in;
+			ispk_					= isPK_in;
+			isidentity_				= isIdentity_in;
+			//ispseudoidentity_		= isPseudoIdentity_in;
+			isnullable_				= isNullable_in;
+			defaultvalue_			= defaultValue_in;
+			fk_tablename_			= fk_TableName_in;
+			fk_fieldname_			= fk_FieldName_in;
+			isconfig_name_			= isConfig_Name_in;
+			isconfig_config_		= isConfig_Config_in;
+			isconfig_datatype_		= isConfig_Datatype_in;
+			isbool_					= isBool_in;
+			isdatetime_				= isDateTime_in;
+			isint_					= isInt_in;
+			isdecimal_				= isDecimal_in;
+			istext_					= isText_in;
 		}
 		#endregion
 
@@ -99,6 +108,36 @@ namespace OGen.NTier.lib.datalayer {
 		/// </summary>
 		public string Name {
 			get { return name_; }
+		}
+		#endregion
+		#region public string FriendlyName { get; }
+		private string friendlyname_;
+
+		/// <summary>
+		/// Friendly name
+		/// </summary>
+		public string FriendlyName {
+			get { return friendlyname_; }
+		}
+		#endregion
+		#region public string DBDescription { get; }
+		private string dbdescription_;
+
+		/// <summary>
+		/// Description at DataBase
+		/// </summary>
+		public string DBDescription {
+			get { return dbdescription_; }
+		}
+		#endregion
+		#region public string ExtendedDescription { get; }
+		private string extendeddescription_;
+
+		/// <summary>
+		/// Extended description
+		/// </summary>
+		public string ExtendedDescription {
+			get { return extendeddescription_; }
 		}
 		#endregion
 		#region public bool isPK { get; }

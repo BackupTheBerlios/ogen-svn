@@ -78,7 +78,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 	/// </note>
 #endif--%>
 	/// </summary>
-	[DOClassAttribute("<%=_aux_table.Name%>", <%=_aux_table.isVirtualTable.ToString().ToLower()%>, <%=_aux_table.isConfig.ToString().ToLower()%>)]
+	[DOClassAttribute("<%=_aux_table.Name%>", "<%=_aux_table.FriendlyName%>", "<%=_aux_table.DBDescription%>", "<%=_aux_table.ExtendedDescription%>", <%=_aux_table.isVirtualTable.ToString().ToLower()%>, <%=_aux_table.isConfig.ToString().ToLower()%>)]
 	public 
 #if NET20
 		partial 
