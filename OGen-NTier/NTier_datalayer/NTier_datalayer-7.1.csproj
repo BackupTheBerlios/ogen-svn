@@ -135,6 +135,11 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "DOProperty_andAttribute.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "DOPropertyAttribute.cs"
                     SubType = "Code"
                     BuildAction = "Compile"

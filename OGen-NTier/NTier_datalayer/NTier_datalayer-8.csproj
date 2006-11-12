@@ -105,6 +105,7 @@
     <Compile Include="DOPropertyAttribute.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DOProperty_andAttribute.cs" />
     <Compile Include="DO__base.cs">
       <SubType>Code</SubType>
     </Compile>
