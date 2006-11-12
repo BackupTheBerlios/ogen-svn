@@ -104,7 +104,7 @@ AS
 		INNER JOIN [#Table_temp] t2 ON<%
 		for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 			_aux_field = _aux_table.Fields_onlyPK[k];%>
-			(t2.[<%=_aux_field.Name%>] = t1.[<%=_aux_field.Name%>])<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? "AND " : ""%><%
+			(t2.[<%=_aux_field.Name%>] = t1.[<%=_aux_field.Name%>]<%=(_aux_field.isText) ? " COLLATE SQL_Latin1_General_CP1_CI_AI" : ""%>)<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? "AND " : ""%><%
 		}%>
 
 	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_<%=_aux_table.Name%>_Record_open_<%=_aux_search.Name%>]
