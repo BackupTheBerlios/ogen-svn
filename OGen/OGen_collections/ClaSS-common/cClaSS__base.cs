@@ -54,12 +54,16 @@ namespace OGen.lib.collections {
 				SaveState_toFile(_xmlDoc, objectName_in)
 			);
 			#region _xmlDoc.Save(new FileStream(fileName_in));
-			FileStream _xmlFile = new FileStream(
+			XmlTextWriter _xmlFile = new XmlTextWriter(
 				fileName_in,
-				FileMode.Create,
-				FileAccess.Write,
-				FileShare.ReadWrite
+				System.Text.Encoding.UTF8
 			);
+			//FileStream _xmlFile = new FileStream(
+			//    fileName_in,
+			//    FileMode.Create,
+			//    FileAccess.Write,
+			//    FileShare.ReadWrite
+			//);
 			_xmlDoc.Save(_xmlFile);
 			_xmlFile.Close(); _xmlFile = null;
 			#endregion
