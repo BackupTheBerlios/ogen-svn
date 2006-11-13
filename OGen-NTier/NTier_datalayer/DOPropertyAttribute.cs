@@ -76,7 +76,9 @@ namespace OGen.NTier.lib.datalayer {
 			bool			isDateTime_in, 
 			bool			isInt_in, 
 			bool			isDecimal_in, 
-			bool			isText_in
+			bool			isText_in,
+			bool			isListItemValue_in,
+			bool			isListItemText_in
 		) {
 			name_					= name_in;
 			friendlyname_			= friendlyName_in;
@@ -97,6 +99,8 @@ namespace OGen.NTier.lib.datalayer {
 			isint_					= isInt_in;
 			isdecimal_				= isDecimal_in;
 			istext_					= isText_in;
+			islistitemvalue_		= isListItemValue_in;
+			islistitemtext_			= isListItemText_in;
 		}
 		#endregion
 
@@ -288,6 +292,26 @@ namespace OGen.NTier.lib.datalayer {
 		/// </summary>
 		public bool isText {
 			get { return istext_; }
+		}
+		#endregion
+		#region public bool isListItemValue { get; }
+		private bool islistitemvalue_;
+
+		///// <summary>
+		///// Indicates if it is a Text Value. True if it is a Text Value, False if not.
+		///// </summary>
+		public bool isListItemValue {
+			get { return islistitemvalue_; }
+		}
+		#endregion
+		#region public bool isListItemText { get; }
+		private bool islistitemtext_;
+
+		///// <summary>
+		///// Indicates if it is a Text Value. True if it is a Text Value, False if not.
+		///// </summary>
+		public bool isListItemText {
+			get { return islistitemtext_; }
 		}
 		#endregion
 	}
