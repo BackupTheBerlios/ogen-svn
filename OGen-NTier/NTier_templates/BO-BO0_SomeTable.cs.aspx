@@ -211,6 +211,16 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 			return mainAggregate.Serialize();
 		}
 		#endregion
+		#region public void Deserialize(SO0_<%=_aux_table.Name%> <%=_aux_table.Name%>_in);
+		public void Deserialize(SO0_<%=_aux_table.Name%> <%=_aux_table.Name%>_in) {
+			mainAggregate.Fields = <%=_aux_table.Name%>_in;
+		}
+		#endregion
+		#region public SC0_<%=_aux_table.Name%> Record_Serialize();
+		public SC0_<%=_aux_table.Name%> Record_Serialize() {
+			return mainAggregate.Record.Serialize();
+		}
+		#endregion
 		#endregion
 	}
 }<%
