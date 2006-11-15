@@ -594,7 +594,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			<%_aux_field = _aux_table.Fields[_aux_table_hasidentitykey];
 			%>Fields.<%=_aux_field.Name%> = (<%=_aux_field.DBType_generic.FWType%>)_dataparameters[<%=_aux_table_hasidentitykey%>].Value;<%
 			if (_aux_table_searches_hasexplicituniqueindex) {%>
-			constraintExist_out = (<%=_aux_field.Name%> == -1L);
+			constraintExist_out = (Fields.<%=_aux_field.Name%> == -1L);
 			if (!constraintExist_out) {
 				Fields.haschanges_ = false;
 			}<%
