@@ -181,9 +181,15 @@
     <Content Include="DO-DB-fnc0_SomeTable__ConstraintExist-MySQL.sql.aspx" />
     <Content Include="DO-DB-fnc0_SomeTable__ConstraintExist-PostgreSQL.sql.aspx" />
     <Content Include="DO-DB-fnc0_SomeTable__ConstraintExist-SQLServer.sql.aspx" />
-    <Content Include="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" />
-    <Content Include="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>

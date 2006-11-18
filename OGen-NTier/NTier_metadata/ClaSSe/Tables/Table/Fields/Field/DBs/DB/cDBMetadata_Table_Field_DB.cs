@@ -54,6 +54,9 @@ namespace OGen.NTier.lib.metadata {
 			DBServerType = dbServerType_in;
 //			Size = 0;
 			DBType_inDB_name = string.Empty;
+			DBDescription = string.Empty;
+			DBDefaultValue = string.Empty;
+			DBCollationName = string.Empty;
 			//#endregion
 		}
 		#endregion
@@ -134,6 +137,33 @@ namespace OGen.NTier.lib.metadata {
 		public string DBType_inDB_name {
 			set { DBType_indb_name_ = value; }
 			get { return DBType_indb_name_; }
+		}
+		#endregion
+		#region public string DBDescription { get; set; }
+		private string dbdescription_;
+
+		[ClaSSPropertyAttribute("dbDescription", ClaSSPropertyAttribute.eType.standard, true)]
+		public string DBDescription {
+			get { return dbdescription_; }
+			set { dbdescription_ = value; }
+		}
+		#endregion
+		#region public string DBDefaultValue { get; set; }
+		private string dbdefaultvalue_;
+
+		[ClaSSPropertyAttribute("dbDefaultValue", ClaSSPropertyAttribute.eType.standard, true)]
+		public string DBDefaultValue {
+			get { return dbdefaultvalue_; }
+			set { dbdefaultvalue_ = value; }
+		}
+		#endregion
+		#region public string DBCollationName { get; set; }
+		private string dbcollationname_;
+
+		[ClaSSPropertyAttribute("dbCollationName", ClaSSPropertyAttribute.eType.standard, true)]
+		public string DBCollationName {
+			get { return dbcollationname_; }
+			set { dbcollationname_ = value; }
 		}
 		#endregion
 		#endregion

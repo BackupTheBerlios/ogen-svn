@@ -84,7 +84,7 @@ BEGIN
 	for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
 		_aux_field = _aux_search.SearchParameters[f].Field;
 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%>
-		([<%=_aux_field.Name%>] <%=(_aux_field.isText) ? "LIKE '%' +" : "="%> @<%=_aux_field_name%>_search_<%=(_aux_field.isText) ? " + '%' COLLATE SQL_Latin1_General_CP1_CI_AI" : ""%>)<%=(f != _aux_search.SearchParameters.Count - 1) ? " AND" : ""%><%
+		([<%=_aux_field.Name%>] <%=(_aux_field.isText) ? "LIKE '%' +" : "="%> @<%=_aux_field_name%>_search_<%=(_aux_field.isText) ? " + '%' COLLATE " + _aux_field.DBCollationName : ""%>)<%=(f != _aux_search.SearchParameters.Count - 1) ? " AND" : ""%><%
 	}%><%=(makeItAComment) ? "*/" : ""%>
 
 	RETURN

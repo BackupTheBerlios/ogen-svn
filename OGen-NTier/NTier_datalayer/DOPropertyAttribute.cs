@@ -37,11 +37,10 @@ namespace OGen.NTier.lib.datalayer {
 	/// </summary>
 	[AttributeUsage(AttributeTargets.Property)]
 	public class DOPropertyAttribute : System.Attribute {
-		#region public DOPropertyAttribute(...);
-//		/// <param name="isPseudoIdentity_in">True if it has a Specific Seed, False if not</param>
+//		#region public DOPropertyAttribute(...);
 		/// <param name="name_in">Name</param>
 		/// <param name="friendlyName_in">Friendly name</param>
-		/// <param name="dbDescription_in">Description at DataBase</param>
+//		/// <param name="dbDescription_in">Description at DataBase</param>
 		/// <param name="extendedDescription_in">Extended description</param>
 		/// <param name="isPK_in">True if it is a Primary Key, False if not</param>
 		/// <param name="isIdentity_in">True if it is a Sequence/Identity Seed, False if not</param>
@@ -60,11 +59,10 @@ namespace OGen.NTier.lib.datalayer {
 		public DOPropertyAttribute(
 			string			name_in, 
 			string			friendlyName_in, 
-			string			dbDescription_in, 
 			string			extendedDescription_in, 
+//			string			dbDescription_in, 
 			bool			isPK_in, 
 			bool			isIdentity_in,
-			//bool			isPseudoIdentity_in, 
 			bool			isNullable_in, 
 			string			defaultValue_in,
 			string			fk_TableName_in, 
@@ -78,15 +76,16 @@ namespace OGen.NTier.lib.datalayer {
 			bool			isDecimal_in, 
 			bool			isText_in,
 			bool			isListItemValue_in,
-			bool			isListItemText_in
+			bool			isListItemText_in, 
+			int				size_in, 
+			string			aditionalInfo_in
 		) {
 			name_					= name_in;
 			friendlyname_			= friendlyName_in;
-			dbdescription_			= dbDescription_in;
+//			dbdescription_			= dbDescription_in;
 			extendeddescription_	= extendedDescription_in;
 			ispk_					= isPK_in;
 			isidentity_				= isIdentity_in;
-			//ispseudoidentity_		= isPseudoIdentity_in;
 			isnullable_				= isNullable_in;
 			defaultvalue_			= defaultValue_in;
 			fk_tablename_			= fk_TableName_in;
@@ -101,8 +100,10 @@ namespace OGen.NTier.lib.datalayer {
 			istext_					= isText_in;
 			islistitemvalue_		= isListItemValue_in;
 			islistitemtext_			= isListItemText_in;
+			size_					= size_in;
+			aditionalinfo_			= aditionalInfo_in;
 		}
-		#endregion
+//		#endregion
 
 		#region public string Name { get; }
 		private string name_;
@@ -124,16 +125,16 @@ namespace OGen.NTier.lib.datalayer {
 			get { return friendlyname_; }
 		}
 		#endregion
-		#region public string DBDescription { get; }
-		private string dbdescription_;
-
-		/// <summary>
-		/// Description at DataBase
-		/// </summary>
-		public string DBDescription {
-			get { return dbdescription_; }
-		}
-		#endregion
+//        #region public string DBDescription { get; }
+//        private string dbdescription_;
+//
+//        /// <summary>
+//        /// Description at DataBase
+//        /// </summary>
+//        public string DBDescription {
+//            get { return dbdescription_; }
+//        }
+//        #endregion
 		#region public string ExtendedDescription { get; }
 		private string extendeddescription_;
 
@@ -163,16 +164,6 @@ namespace OGen.NTier.lib.datalayer {
 		public bool isIdentity {
 			get { return isidentity_; }
 		}
-		#endregion
-		#region //public bool isPseudoIdentity { get; }
-		//private bool ispseudoidentity_;
-
-		///// <summary>
-		///// Indicates if it has a Specific Seed. True if it has a Specific Seed, False if not.
-		///// </summary>
-		//public bool isPseudoIdentity {
-		//    get { return ispseudoidentity_; }
-		//}
 		#endregion
 		#region public bool isNullable { get; }
 		private bool isnullable_;
@@ -294,25 +285,33 @@ namespace OGen.NTier.lib.datalayer {
 			get { return istext_; }
 		}
 		#endregion
-		#region public bool isListItemValue { get; }
+//		#region public bool isListItemValue { get; }
 		private bool islistitemvalue_;
 
-		///// <summary>
-		///// Indicates if it is a Text Value. True if it is a Text Value, False if not.
-		///// </summary>
 		public bool isListItemValue {
 			get { return islistitemvalue_; }
 		}
-		#endregion
-		#region public bool isListItemText { get; }
+//		#endregion
+//		#region public bool isListItemText { get; }
 		private bool islistitemtext_;
 
-		///// <summary>
-		///// Indicates if it is a Text Value. True if it is a Text Value, False if not.
-		///// </summary>
 		public bool isListItemText {
 			get { return islistitemtext_; }
 		}
-		#endregion
+//		#endregion
+//		#region public int Size { get; }
+		private int size_;
+
+		public int Size {
+			get { return size_; }
+		}
+//		#endregion
+//		#region public string AditionalInfo { get; }
+		private string aditionalinfo_;
+
+		public string AditionalInfo {
+			get { return aditionalinfo_; }
+		}
+//		#endregion
 	}
 }

@@ -76,6 +76,21 @@ namespace OGen.lib.datalayer {
 		/// </summary>
 		public string FK_FieldName;
 
+		/// <summary>
+		/// Description.
+		/// </summary>
+		public string DBDescription;
+
+		/// <summary>
+		/// Default Value.
+		/// </summary>
+		public string DBDefaultValue;
+
+		/// <summary>
+		/// Collation Name.
+		/// </summary>
+		public string DBCollationName;
+
 		public override string ToString() {
 			return Name;
 		}

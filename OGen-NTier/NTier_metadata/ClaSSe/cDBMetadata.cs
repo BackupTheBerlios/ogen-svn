@@ -354,7 +354,7 @@ namespace OGen.NTier.lib.metadata {
 			return (string[])_configmodes.ToArray(typeof(string));
 		}
 		#endregion
-		#region public void LoadState_fromDB(...);
+//		#region public void LoadState_fromDB(...);
 		public delegate void dLoadState_fromDB(string message_in, bool onANewLine_in);
 		public void LoadState_fromDB(
 			dLoadState_fromDB	notifyBack_in, 
@@ -363,7 +363,7 @@ namespace OGen.NTier.lib.metadata {
 			string				subAppName_in, 
 			bool				clear_in
 		) {
-			#region for (...) Tables.Add();
+//			#region for (...) Tables.Add();
 			cDBConnection _connection 
 				= new cDBConnection(
 					DBServerType_in, 
@@ -388,6 +388,7 @@ if (clear_in)
 if (notifyBack_in != null) notifyBack_in(string.Format("#{0}/{1} - {2}", t + 1, _tables_aux.Length, _tables_aux[t].Name), true);
 
 				tables_[T].isVirtualTable = _tables_aux[t].isVirtualTable;
+				tables_[T].DBDescription = _tables_aux[t].DBDescription;
 
 
 // ToDos: here! virtual names
@@ -411,6 +412,9 @@ if (clear_in)
 					tables_[T].Fields[F].FK_FieldName		= _fields_aux[f].FK_FieldName;
 					tables_[T].Fields[F].isNullable			= _fields_aux[f].isNullable;
 					tables_[T].Fields[F].Size				= _fields_aux[f].Size;
+					//tables_[T].Fields[F].DBDescription		= _fields_aux[f].DBDescription;
+					//tables_[T].Fields[F].DBDefaultValue		= _fields_aux[f].DBDefaultValue;
+					//tables_[T].Fields[F].DBCollationName	= _fields_aux[f].DBCollationName;
 					//---
 
 
@@ -418,7 +422,10 @@ if (clear_in)
 						_connection.DBServerType, 
 						true
 					);
-					tables_[T].Fields[F].DBs[FD].DBType_inDB_name = _fields_aux[f].DBType_inDB_name;
+					tables_[T].Fields[F].DBs[FD].DBType_inDB_name	= _fields_aux[f].DBType_inDB_name;
+					tables_[T].Fields[F].DBs[FD].DBDescription		= _fields_aux[f].DBDescription;
+					tables_[T].Fields[F].DBs[FD].DBDefaultValue		= _fields_aux[f].DBDefaultValue;
+					tables_[T].Fields[F].DBs[FD].DBCollationName	= _fields_aux[f].DBCollationName;
 					#region //oldstuff...
 					//tables_[T].Fields[F].DBType_inDB_name	= _fields_aux[f].DBType_inDB_name;
 					//tables_[T].Fields[F].Size				= _fields_aux[f].Size;
@@ -429,9 +436,9 @@ if (clear_in)
 				_fields_aux = null;
 			}
 			_tables_aux = null;
-			#endregion
+//			#endregion
 		}
-		#endregion
+//		#endregion
 		#region public void SaveState_toFile(...);
 		public void SaveState_toFile(string fileName_in) {
 			base.SaveState_toFile(fileName_in, root4xml);
@@ -499,7 +506,7 @@ if (clear_in)
 						if (_T != -1) {
 							//---
 							tables_[_T].FriendlyName = _xmlFile_metadata.Tables[t].FriendlyName;
-							tables_[_T].DBDescription = _xmlFile_metadata.Tables[t].DBDescription;
+//							tables_[_T].DBDescription = _xmlFile_metadata.Tables[t].DBDescription;
 							tables_[_T].ExtendedDescription = _xmlFile_metadata.Tables[t].ExtendedDescription;
 							//---
 							tables_[_T].Searches.CopyFrom(
@@ -520,8 +527,10 @@ if (clear_in)
 								if (_F != -1) {
 									//---
 									tables_[_T].Fields[_F].FriendlyName = _xmlFile_metadata.Tables[t].Fields[f].FriendlyName;
-									tables_[_T].Fields[_F].DBDescription = _xmlFile_metadata.Tables[t].Fields[f].DBDescription;
+//									tables_[_T].Fields[_F].DBDescription = _xmlFile_metadata.Tables[t].Fields[f].DBDescription;
+//									tables_[_T].Fields[_F].DBDefaultValue = _xmlFile_metadata.Tables[t].Fields[f].DBDefaultValue;
 									tables_[_T].Fields[_F].ExtendedDescription = _xmlFile_metadata.Tables[t].Fields[f].ExtendedDescription;
+									tables_[_T].Fields[_F].AditionalInfo = _xmlFile_metadata.Tables[t].Fields[f].AditionalInfo;
 									//---
 									tables_[_T].Fields[_F].isListItemText = _xmlFile_metadata.Tables[t].Fields[f].isListItemText;
 									tables_[_T].Fields[_F].isListItemValue = _xmlFile_metadata.Tables[t].Fields[f].isListItemValue;

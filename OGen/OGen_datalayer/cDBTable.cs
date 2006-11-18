@@ -38,18 +38,26 @@ namespace OGen.lib.datalayer {
 	public class cDBTable {
 		/// <param name="name_in">Table Name</param>
 		/// <param name="isVirtualTable_in">Indicates if it represents a View or Table. True if it represents a View, False if it represents a Table</param>
+		/// <param name="dbDescription_in">Description</param>
 		public cDBTable(
 			string name_in, 
-			bool isVirtualTable_in
+			bool isVirtualTable_in, 
+			string dbDescription_in
 		) {
 			Name = name_in;
 			isVirtualTable = isVirtualTable_in;
+			DBDescription = dbDescription_in;
 		}
 
 		/// <summary>
 		/// Table Name.
 		/// </summary>
 		public string Name;
+
+		/// <summary>
+		/// Description.
+		/// </summary>
+		public string DBDescription;
 
 		/// <summary>
 		/// Indicates if it represents a View or Table. True if it represents a View, False if it represents a Table.

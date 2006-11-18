@@ -56,8 +56,8 @@ namespace OGen.NTier.lib.metadata {
 			isIdentity = false;
 			isPseudoIdentity = false;
 			FriendlyName = string.Empty;
-			DBDescription = string.Empty;
 			ExtendedDescription = string.Empty;
+			AditionalInfo = string.Empty;
 			DefaultValue = string.Empty;
 			isListItemValue = false;
 			isListItemText = false;
@@ -188,15 +188,6 @@ namespace OGen.NTier.lib.metadata {
 		public string FriendlyName {
 			get { return friendlyname_; }
 			set { friendlyname_ = value; }
-		}
-		#endregion
-		#region public string DBDescription { get; set; }
-		private string dbdescription_;
-
-		[ClaSSPropertyAttribute("dbDescription", ClaSSPropertyAttribute.eType.standard, true)]
-		public string DBDescription {
-			get { return dbdescription_; }
-			set { dbdescription_ = value; }
 		}
 		#endregion
 		#region public string ExtendedDescription { get; set; }
@@ -330,6 +321,15 @@ namespace OGen.NTier.lib.metadata {
 		private string size_reflection {
 			get { return size_.ToString(); }
 			set { size_ = int.Parse(value); }
+		}
+		#endregion
+		#region public string AditionalInfo { get; set; }
+		private string aditionalinfo_;
+
+		[ClaSSPropertyAttribute("aditionalInfo", ClaSSPropertyAttribute.eType.standard, true)]
+		public string AditionalInfo {
+			get { return aditionalinfo_; }
+			set { aditionalinfo_ = value; }
 		}
 		#endregion
 //		#region public string DBType_inDB_name { get; }

@@ -1661,7 +1661,9 @@ WHERE
 			for (int r = 0; r < _dtemp.Rows.Count; r++)
 				getTables_out[r] = new cDBTable(
 					(string)_dtemp.Rows[r]["Name"],
-					(dbservertype_ == eDBServerTypes.MySQL) ? ((long)_dtemp.Rows[r]["isVT"] == 1L) : ((int)_dtemp.Rows[r]["isVT"] == 1)
+					(dbservertype_ == eDBServerTypes.MySQL) ? ((long)_dtemp.Rows[r]["isVT"] == 1L) : ((int)_dtemp.Rows[r]["isVT"] == 1), 
+// ToDos: here!
+string.Empty
 				);
 			_dtemp.Dispose(); _dtemp = null;
 			#endregion
@@ -1789,7 +1791,9 @@ SELECT
 			*/
 			NULL
 			--t5.COLUMN_NAME
-	END AS ""FK_FieldName""
+	END AS ""FK_FieldName"", 
+	t1.COLUMN_DEFAULT, 
+	t1.COLLATION_NAME
 FROM INFORMATION_SCHEMA.COLUMNS AS t1
 	LEFT JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE t2 ON
 		(t2.COLUMN_NAME = t1.COLUMN_NAME)
@@ -1896,7 +1900,9 @@ SELECT
 --		ELSE
 			NULL
 --	END
-	AS ""FK_FieldName""
+	AS ""FK_FieldName"", 
+	t1.COLUMN_DEFAULT, 
+	t1.COLLATION_NAME
 FROM INFORMATION_SCHEMA.COLUMNS AS t1
 	LEFT JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE t7 ON (
 		(t7.column_name = t1.COLUMN_NAME)
@@ -1950,7 +1956,9 @@ SELECT
 			CAST(0 AS Signed Int)
 	END AS ""isIdentity"", 
 	NULL AS ""FK_TableName"", 
-	NULL AS ""FK_FieldName""
+	NULL AS ""FK_FieldName"", 
+	t1.COLUMN_DEFAULT, 
+	t1.COLLATION_NAME
 FROM INFORMATION_SCHEMA.COLUMNS AS t1
 	LEFT JOIN INFORMATION_SCHEMA.TABLES t6 ON ((t6.TABLE_SCHEMA = t1.TABLE_SCHEMA) AND (t6.TABLE_NAME = t1.TABLE_NAME))
 WHERE 
@@ -2025,6 +2033,10 @@ ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 				//}
 				#endregion
 				getTableFields_out[r].DBType_inDB_name = (string)_dtemp.Rows[r]["Type"];
+				getTableFields_out[r].DBDefaultValue = (_dtemp.Rows[r]["COLUMN_DEFAULT"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["COLUMN_DEFAULT"];
+				getTableFields_out[r].DBCollationName = (_dtemp.Rows[r]["COLLATION_NAME"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["COLLATION_NAME"];
+// ToDos: here!
+getTableFields_out[r].DBDescription = string.Empty;
 			}
 			_dtemp.Dispose(); _dtemp = null;
 
