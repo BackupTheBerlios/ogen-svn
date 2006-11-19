@@ -2077,4 +2077,57 @@ along with OGen; if not, write to the
 			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-SQLServer.sql.aspx" />
 		</dependencies>
 	</template>
+	<template name="DO-DB-OGen_fnc0__Split-SQLServer.sql" 
+			parserType="none" 
+			iterationType="ROOT">
+		<arguments />
+		<conditions>
+			<condition eval="ROOT.dbs.supports_SQLServer" to="True" />
+		</conditions>
+		<outputs>
+<!--
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-SQLServer/sql0-${ROOT.applicationName}.SQLServer.backup.sql"
+				type="File" mode="Append" />
+-->
+			<output to="OGen_fnc0__Split" 
+				type="SQLServer_Function" mode="Replace" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-DB-OGen_sp0__getTables-SQLServer.sql" 
+			parserType="none" 
+			iterationType="ROOT">
+		<arguments />
+		<conditions>
+			<condition eval="ROOT.dbs.supports_SQLServer" to="True" />
+		</conditions>
+		<outputs>
+<!--
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-SQLServer/sql0-${ROOT.applicationName}.SQLServer.backup.sql"
+				type="File" mode="Append" />
+-->
+			<output to="OGen_sp0__getTables" 
+				type="SQLServer_StoredProcedure" mode="Replace" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-OGen_fnc0__Split-SQLServer.sql" />
+		</dependencies>
+	</template>
+	<template name="DO-DB-OGen_sp0__getTableFields-SQLServer.sql" 
+			parserType="none" 
+			iterationType="ROOT">
+		<arguments />
+		<conditions>
+			<condition eval="ROOT.dbs.supports_SQLServer" to="True" />
+		</conditions>
+		<outputs>
+<!--
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-SQLServer/sql0-${ROOT.applicationName}.SQLServer.backup.sql"
+				type="File" mode="Append" />
+-->
+			<output to="OGen_sp0__getTableFields" 
+				type="SQLServer_StoredProcedure" mode="Replace" />
+		</outputs>
+		<dependencies />
+	</template>
 </templates>

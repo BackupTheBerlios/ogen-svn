@@ -155,6 +155,9 @@
       <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="BO-UT-UT_SomeTable.cs.aspx" />
+    <Content Include="DO-DB-OGen_sp0__getTableFields-SQLServer.sql" />
+    <Content Include="DO-DB-OGen_sp0__getTables-SQLServer.sql" />
+    <Content Include="DO-DB-OGen_fnc0__Split-SQLServer.sql" />
     <Content Include="DO-SC0_SomeTable.cs.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
@@ -177,7 +180,9 @@
     <Content Include="DO-DB-fnc0_SomeTable_Record_count_bySomeCriteria-SQLServer.sql.aspx" />
     <Content Include="DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-MySQL.sql.aspx" />
     <Content Include="DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-fnc0_SomeTable__ConstraintExist-MySQL.sql.aspx" />
     <Content Include="DO-DB-fnc0_SomeTable__ConstraintExist-PostgreSQL.sql.aspx" />
     <Content Include="DO-DB-fnc0_SomeTable__ConstraintExist-SQLServer.sql.aspx" />
@@ -296,7 +301,9 @@
     <Content Include="SomeApplication_test-8.csproj.aspx" />
     <Content Include="SomeApplication_test.cmbx.aspx" />
     <Content Include="SomeApplication_test-7.1.csproj.aspx" />
-    <Content Include="SomeApplication_test.prjx.aspx" />
+    <Content Include="SomeApplication_test.prjx.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="SomeApplication_test_MainClass.cs.aspx" />
     <Content Include="templates.config.xml" />
     <Content Include="Web.config" />

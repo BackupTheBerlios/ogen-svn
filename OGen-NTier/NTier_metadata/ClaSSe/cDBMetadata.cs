@@ -363,14 +363,24 @@ namespace OGen.NTier.lib.metadata {
 			string				subAppName_in, 
 			bool				clear_in
 		) {
+			const string OGEN_SP0__GETTABLEFIELDS = "OGen_sp0__getTableFields";
+			const string OGEN_SP0__GETTABLES = "OGen_sp0__getTables";
+			bool _exits_getTables = false;
+			bool _exits_getTableFields = false;
+
 //			#region for (...) Tables.Add();
 			cDBConnection _connection 
 				= new cDBConnection(
 					DBServerType_in, 
 					Connectionstring_in
 				);
+			_exits_getTables = _connection.SQLStoredProcedure_exists(OGEN_SP0__GETTABLES);
+			_exits_getTableFields = _connection.SQLStoredProcedure_exists(OGEN_SP0__GETTABLEFIELDS);
 			cDBTable[] _tables_aux = _connection.getTables(
-				subAppName_in
+				subAppName_in,
+				_exits_getTables 
+					? OGEN_SP0__GETTABLES
+					: string.Empty
 			);
 
 if (clear_in)
@@ -399,7 +409,12 @@ if (notifyBack_in != null) notifyBack_in(string.Format("#{0}/{1} - {2}", t + 1, 
 //);
 
 
-				cDBTableField[] _fields_aux = _connection.getTableFields(_tables_aux[t].Name);
+				cDBTableField[] _fields_aux = _connection.getTableFields(
+					_tables_aux[t].Name,
+					_exits_getTables 
+						? OGEN_SP0__GETTABLEFIELDS
+						: string.Empty
+				);
 if (clear_in)
 				tables_[T].Fields.Clear();
 				for (int f = 0; f < _fields_aux.Length; f++) {

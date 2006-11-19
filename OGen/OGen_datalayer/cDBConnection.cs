@@ -657,7 +657,11 @@ if (Logenabled) {
 		/// </exception>
 		public void Execute_SQLQuery(string query_in) {
 			#region Checking...
-			if (query_in.Trim() == string.Empty)
+			if (
+				(query_in == null)
+				||
+				(query_in.Trim() == string.Empty)
+			)
 				throw InvalidSQLQueryException_empty;
 			#endregion
 
@@ -1002,7 +1006,11 @@ if (Logenabled) {
 //		#endregion
 //		#region public DataSet Execute_SQLFunction_returnDataSet(...);
 //		#region private DataSet Execute_SQLFunction_returnDataSet(...);
-		private DataSet Execute_SQLFunction_returnDataSet(string function_in, IDbDataParameter[] dataParameters_in, IDbConnection connection_in) {
+		private DataSet Execute_SQLFunction_returnDataSet(
+			string function_in, 
+			IDbDataParameter[] dataParameters_in, 
+			IDbConnection connection_in
+		) {
 
 if (Logenabled) {
 	Log("sql function", function_in, dataParameters_in);
@@ -1535,8 +1543,13 @@ ORDER BY SCHEMA_NAME"
 		/// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
 		/// </summary>
 		/// <returns>String array, representing a list of Table names</returns>
-		public cDBTable[] getTables() {
-			return getTables("");
+		public cDBTable[] getTables(
+			string sqlFunction_in
+		) {
+			return getTables(
+				string.Empty,
+				sqlFunction_in
+			);
 		}
 
 		/// <summary>
@@ -1545,16 +1558,24 @@ ORDER BY SCHEMA_NAME"
 		/// <param name="subAppName_in">Table Filter. If your Application is to be hosted at some ASP, which provides you with one DataBase only, and you're using that DataBase for more than one Application. I assume you're using some convention for Table naming like: AP1_Table1, AP1_Table2, AP2_Table1, ... . Or even if you have several modules sharing same data base. If so, you can use this parameter to filter Table names for some specific Application, like: AP1 or AP2</param>
 		/// <returns>String array, representing a list of Table names</returns>
 		public cDBTable[] getTables(
-			string subAppName_in
+			string subAppName_in, 
+			string sqlFuncion_in
 		) {
 			cDBTable[] getTables_out;
 
-			StringBuilder _query = new StringBuilder(string.Empty);
-			switch (dbservertype_) {
-				case eDBServerTypes.SQLServer:
-				case eDBServerTypes.PostgreSQL: {
-					#region query.Append("SELECT ...");
-					_query.Append(@"
+			#region DataTable _dtemp = ...;
+			DataTable _dtemp;
+			if (
+				(sqlFuncion_in == null)
+				||
+				(sqlFuncion_in == string.Empty)
+			) {
+				StringBuilder _query = new StringBuilder(string.Empty);
+				switch (dbservertype_) {
+					case eDBServerTypes.SQLServer:
+					case eDBServerTypes.PostgreSQL:
+						#region query.Append("SELECT ...");
+						_query.Append(@"
 SELECT
 	TABLE_NAME AS ""Name"",
 	CASE
@@ -1593,27 +1614,26 @@ WHERE
 	AND
 	(TABLE_SCHEMA NOT LIKE 'information_schema')
 ");
-					if (subAppName_in != "") {
-						_query.Append("AND (");
-						string[] _subAppNames = subAppName_in.Split('|');
-						for (int i = 0; i < _subAppNames.Length; i++) {
-							_query.Append(string.Format(
-								"(TABLE_NAME {0} '{1}'){2}",
-								(_subAppNames[i].IndexOf('%') >= 0) ? "LIKE" : "=", 
-								_subAppNames[i],
-								(i == _subAppNames.Length - 1) ? "" : " OR "
-							));
+						if (subAppName_in != "") {
+							_query.Append("AND (");
+							string[] _subAppNames = subAppName_in.Split('|');
+							for (int i = 0; i < _subAppNames.Length; i++) {
+								_query.Append(string.Format(
+									"(TABLE_NAME {0} '{1}'){2}",
+									(_subAppNames[i].IndexOf('%') >= 0) ? "LIKE" : "=", 
+									_subAppNames[i],
+									(i == _subAppNames.Length - 1) ? "" : " OR "
+								));
+							}
+							_query.Append(") ");
 						}
-						_query.Append(") ");
-					}
-					_query.Append(@"ORDER BY ""Name"" ");
-					#endregion
-					break;
-				}
-				case eDBServerTypes.MySQL: {
-					string _database = Connectionstring_database();
-					#region _query.Append("SELECT ...");
-					_query.Append(string.Format(@"
+						_query.Append(@"ORDER BY ""Name"" ");
+						#endregion
+						break;
+					case eDBServerTypes.MySQL:
+						string _database = Connectionstring_database();
+						#region _query.Append("SELECT ...");
+						_query.Append(string.Format(@"
 SELECT
 	TABLE_NAME AS ""Name"",
 	CASE
@@ -1632,31 +1652,37 @@ WHERE
 	AND
 	(TABLE_SCHEMA = '{0}')
 ", 
-						_database
-					));
-					if (subAppName_in != "" ) {
-						_query.Append("AND (");
-						string[] _subAppNames = subAppName_in.Split('|');
-						for (int i = 0; i < _subAppNames.Length; i++) {
-							_query.Append(string.Format(
-								"(TABLE_NAME {0} '{1}'){2}",
-								(_subAppNames[i].IndexOf('%') >= 0) ? "LIKE" : "=",
-								_subAppNames[i],
-								(i == _subAppNames.Length - 1) ? "" : " OR "
-							));
+							_database
+						));
+						if (subAppName_in != "" ) {
+							_query.Append("AND (");
+							string[] _subAppNames = subAppName_in.Split('|');
+							for (int i = 0; i < _subAppNames.Length; i++) {
+								_query.Append(string.Format(
+									"(TABLE_NAME {0} '{1}'){2}",
+									(_subAppNames[i].IndexOf('%') >= 0) ? "LIKE" : "=",
+									_subAppNames[i],
+									(i == _subAppNames.Length - 1) ? "" : " OR "
+								));
+							}
+							_query.Append(") ");
 						}
-						_query.Append(") ");
+						_query.Append(@"ORDER BY ""Name"" ");
+						#endregion
+						break;
+					default:
+						throw new Exception("not implemented");
+				}
+				_dtemp = Execute_SQLQuery_returnDataTable(_query.ToString());
+			} else {
+				_dtemp = Execute_SQLFunction_returnDataTable(
+					sqlFuncion_in,
+					new IDbDataParameter[] {
+						newDBDataParameter("subApp_", DbType.String, ParameterDirection.Input, subAppName_in, subAppName_in.Length)
 					}
-					_query.Append(@"ORDER BY ""Name"" ");
-					#endregion
-					break;
-				}
-				default: {
-					throw new Exception("not implemented");
-				}
+				);
 			}
-			#region getTables_out = base.Execute_SQLQuery_returnDataTable(_query.ToString());
-			DataTable _dtemp = Execute_SQLQuery_returnDataTable(_query.ToString());
+			#endregion
 			getTables_out = new cDBTable[_dtemp.Rows.Count];
 			for (int r = 0; r < _dtemp.Rows.Count; r++)
 				getTables_out[r] = new cDBTable(
@@ -1666,7 +1692,6 @@ WHERE
 string.Empty
 				);
 			_dtemp.Dispose(); _dtemp = null;
-			#endregion
 
 			return getTables_out;
 		}
@@ -1678,15 +1703,23 @@ string.Empty
 		/// <param name="tableName_in">Table name for which Field names are to be retrieved</param>
 		/// <returns>String array, representing a list of Field names</returns>
 		public cDBTableField[] getTableFields(
-			string tableName_in
+			string tableName_in,
+			string sqlFuncion_in
 		) {
 			cDBTableField[] getTableFields_out;
 
-			string _query;
-			switch (dbservertype_) {
-				case eDBServerTypes.SQLServer: {
-					#region _query = "SELECT ...";
-					_query = string.Format(@"
+			#region DataTable _dtemp = ...;
+			DataTable _dtemp;
+			if (
+				(sqlFuncion_in == null)
+				||
+				(sqlFuncion_in == string.Empty)
+			) {
+				string _query;
+				switch (dbservertype_) {
+					case eDBServerTypes.SQLServer:
+						#region _query = "SELECT ...";
+						_query = string.Format(@"
 SELECT
 	t1.COLUMN_NAME AS ""Name"", 
 	CASE
@@ -1829,14 +1862,13 @@ FROM INFORMATION_SCHEMA.COLUMNS AS t1
 --WHERE (t1.TABLE_NAME != 'dtproperties') AND (t1.TABLE_NAME NOT LIKE 'sql_%') AND (t1.TABLE_NAME NOT LIKE 'pg_%') AND (t1.TABLE_NAME NOT LIKE 'sys%')
 WHERE (t1.TABLE_NAME = '{0}') 
 ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION", 
-						tableName_in
-					);
-					#endregion
-					break;
-				}
-				case eDBServerTypes.PostgreSQL: {
-					#region _query = "SELECT ...";
-					_query = string.Format(@"
+							tableName_in
+						);
+						#endregion
+						break;
+					case eDBServerTypes.PostgreSQL:
+						#region _query = "SELECT ...";
+						_query = string.Format(@"
 SELECT
 	t1.COLUMN_NAME AS ""Name"", 
 	CASE
@@ -1923,15 +1955,14 @@ FROM INFORMATION_SCHEMA.COLUMNS AS t1
 WHERE (t1.TABLE_NAME = '{0}') 
 ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 ", 
-						tableName_in
-					);
-					#endregion
-					break;
-				}
-				case eDBServerTypes.MySQL: {
-					string _database = Connectionstring_database();
-					#region _query = "SELECT ...";
-					_query = string.Format(@"
+							tableName_in
+						);
+						#endregion
+						break;
+					case eDBServerTypes.MySQL:
+						string _database = Connectionstring_database();
+						#region _query = "SELECT ...";
+						_query = string.Format(@"
 SELECT
 	t1.COLUMN_NAME AS ""Name"", 
 --	CASE
@@ -1967,21 +1998,28 @@ WHERE
 	(t1.TABLE_SCHEMA = '{1}')
 ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 ", 
-						tableName_in, 
-						_database
-					);
-					#endregion
-					break;
+							tableName_in, 
+							_database
+						);
+						#endregion
+						break;
+					default:
+						throw new Exception(string.Format(
+							"{0}.{1}.getTableFields: - not implemented", 
+							this.GetType().Namespace, 
+							this.GetType().Name
+						));
 				}
-				default: {
-					throw new Exception(string.Format(
-						"{0}.{1}.getTableFields: - not implemented", 
-						this.GetType().Namespace, 
-						this.GetType().Name
-					));
-				}
+				_dtemp = Execute_SQLQuery_returnDataTable(_query);
+			} else {
+				_dtemp = Execute_SQLFunction_returnDataTable(
+					sqlFuncion_in,
+					new IDbDataParameter[] {
+						newDBDataParameter("tableName_", DbType.String, ParameterDirection.Input, tableName_in, tableName_in.Length)
+					}
+				);
 			}
-			DataTable _dtemp = Execute_SQLQuery_returnDataTable(_query);
+			#endregion
 			getTableFields_out = new cDBTableField[_dtemp.Rows.Count];
 			for (int r = 0; r < _dtemp.Rows.Count; r++) {
 				getTableFields_out[r] = new cDBTableField();
