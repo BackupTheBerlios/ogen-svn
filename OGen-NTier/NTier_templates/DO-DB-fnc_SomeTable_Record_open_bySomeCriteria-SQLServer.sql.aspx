@@ -86,10 +86,10 @@ for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
 		) OR (
 			NOT (@<%=_aux_field.Name%>_search_ IS NULL)
 			AND
-			([<%=_aux_field.Name%>] <%=(_aux_field.isText) ? "LIKE '%' +" : "="%> @<%=_aux_field_name%>_search_<%=(_aux_field.isText) ? " + '%' COLLATE " + _aux_field.DBCollationName : ""%>)
+			([<%=_aux_field.Name%>] <%=(_aux_field.isText) ? "LIKE '%' +" : "="%> @<%=_aux_field_name%>_search_<%=(_aux_field.isText) ? " + '%' COLLATE " + _aux_field.DBs[_aux_dbservertype].DBCollationName : ""%>)
 		))<%=(f != _aux_search.SearchParameters.Count - 1) ? " AND" : ""%><%
 	} else {%>
-		([<%=_aux_field.Name%>] <%=(_aux_field.isText) ? "LIKE '%' +" : "="%> @<%=_aux_field_name%>_search_<%=(_aux_field.isText) ? " + '%' COLLATE " + _aux_field.DBCollationName : ""%>)<%=(f != _aux_search.SearchParameters.Count - 1) ? " AND" : ""%><%
+		([<%=_aux_field.Name%>] <%=(_aux_field.isText) ? "LIKE '%' +" : "="%> @<%=_aux_field_name%>_search_<%=(_aux_field.isText) ? " + '%' COLLATE " + _aux_field.DBs[_aux_dbservertype].DBCollationName : ""%>)<%=(f != _aux_search.SearchParameters.Count - 1) ? " AND" : ""%><%
 	}
 }%><%=((makeItAComment) || (_aux_search.SearchParameters.Count == 0)) ? "*/" : ""%>
 --GO
