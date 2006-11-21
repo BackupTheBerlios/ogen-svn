@@ -280,7 +280,8 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 					<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = bool.Parse(<%=_aux_table.Name.ToLower()%>.Fields.<%=ConfigField%>);
 					<%=_aux_table.Name.ToLower()%>.Dispose(); <%=_aux_table.Name.ToLower()%> = null;
 					#endregion
-					<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_beenRead = true;
+					// ToDos: here! if second assembly instance, one cache could override data from the other
+					//<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_beenRead = true;
 				}
 				return <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>;
 			}
@@ -320,7 +321,8 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 					<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = int.Parse(<%=_aux_table.Name.ToLower()%>.Fields.<%=ConfigField%>);
 					<%=_aux_table.Name.ToLower()%>.Dispose(); <%=_aux_table.Name.ToLower()%> = null;
 					#endregion
-					<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_beenRead = true;
+					// ToDos: here! if second assembly instance, one cache could override data from the other
+					//<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_beenRead = true;
 				}
 				return <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>;
 			}
@@ -352,7 +354,12 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// </summary>
 		public static string <%=ConfigTable.Rows[r][NameField]%> {
 			get {
-				if (<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> == null) {
+				if (
+					// ToDos: here! if second assembly instance, one cache could override data from the other
+					true
+					||
+					(<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> == null)
+				) {
 					#region <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = DO_<%=_aux_table.Name%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
 					DO_<%=_aux_table.Name%> <%=_aux_table.Name.ToLower()%> = new DO_<%=_aux_table.Name%>();
 					<%=_aux_table.Name.ToLower()%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
@@ -389,7 +396,12 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// </summary>
 		public static string[] <%=ConfigTable.Rows[r][NameField]%> {
 			get {
-				if (<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> == null) {
+				if (
+					// ToDos: here! if second assembly instance, one cache could override data from the other
+					true
+					||
+					(<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> == null)
+				) {
 					#region <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = DO_<%=_aux_table.Name%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
 					DO_<%=_aux_table.Name%> <%=_aux_table.Name.ToLower()%> = new DO_<%=_aux_table.Name%>();
 					<%=_aux_table.Name.ToLower()%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
