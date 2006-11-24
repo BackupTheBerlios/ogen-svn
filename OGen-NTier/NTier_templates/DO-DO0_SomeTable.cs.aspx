@@ -466,7 +466,13 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {<%
 					for (int f = 0; f < _aux_table.Fields.Count; f++) {
 						_aux_field = _aux_table.Fields[f];%>
-					base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.<%=(_aux_field.isIdentity) ? "Out" : "In"%>put, <%=(_aux_field.isIdentity) ? "null" : "Fields." + _aux_field.Name%>, <%=_aux_field.Size%>), <%
+					base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.<%=(_aux_field.isIdentity) ? "Out" : "In"%>put, <%=
+(_aux_field.isIdentity) 
+	?  "null" 
+	: ((_aux_field.isNullable) 
+		? "Fields." + _aux_field.Name + "_isNull ? null : (object)Fields." + _aux_field.Name 
+		: "Fields." + _aux_field.Name
+	)%>, <%=_aux_field.Size%>), <%
 					}%>
 
 					//base.Connection.newDBDataParameter("Exists", DbType.Boolean, ParameterDirection.Output, 0, 1)<%
@@ -581,7 +587,13 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {<%
 				for (int f = 0; f < _aux_table.Fields.Count; f++) {
 					_aux_field = _aux_table.Fields[f];%>
-				base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.<%=(_aux_field.isIdentity) ? "Out" : "In"%>put, <%=(_aux_field.isIdentity) ? "null" : "Fields." + _aux_field.Name%>, <%=_aux_field.Size%>), <%
+				base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.<%=(_aux_field.isIdentity) ? "Out" : "In"%>put, <%=
+(_aux_field.isIdentity) 
+	? "null" 
+	: ((_aux_field.isNullable) 
+		? "Fields." + _aux_field.Name + "_isNull ? null : (object)Fields." + _aux_field.Name 
+		: "Fields." + _aux_field.Name
+	)%>, <%=_aux_field.Size%>), <%
 				}%>
 
 				base.Connection.newDBDataParameter("SelectIdentity_", DbType.Boolean, ParameterDirection.Input, selectIdentity_in, 1)
@@ -622,7 +634,11 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {<%
 					for (int f = 0; f < _aux_table.Fields.Count; f++) {
 						_aux_field = _aux_table.Fields[f];%>
-					base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%="Fields." + _aux_field.Name%>, <%=_aux_field.Size%>)<%=((f != _aux_table.Fields.Count - 1) || (_aux_table_searches_hasexplicituniqueindex)) ? ", " : ""%><%
+					base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=
+((_aux_field.isNullable) 
+	? "Fields." + _aux_field.Name + "_isNull ? null : (object)Fields." + _aux_field.Name 
+	: "Fields." + _aux_field.Name
+)%>, <%=_aux_field.Size%>)<%=((f != _aux_table.Fields.Count - 1) || (_aux_table_searches_hasexplicituniqueindex)) ? ", " : ""%><%
 					}%><%
 					if (_aux_table_searches_hasexplicituniqueindex) {%>
 
