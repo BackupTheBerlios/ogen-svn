@@ -155,7 +155,9 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			<%=_aux_field.isPK.ToString().ToLower()%>, 
 			<%=_aux_field.isIdentity.ToString().ToLower()%>, 
 			<%=_aux_field.isNullable.ToString().ToLower()%>, 
-			<%=(_aux_field.DefaultValue == string.Empty) ? "\"\"" : _aux_field.DefaultValue%>, 
+			"<%=_aux_field.DefaultValue%>", <%--
+			<%=(_aux_field.DefaultValue == string.Empty) ? "null" : _aux_field.DefaultValue%>,
+			<%=(_aux_field.DefaultValue == string.Empty) ? "\"\"" : _aux_field.DefaultValue%>, --%>
 			"<%=_aux_field.FK_TableName%>", 
 			"<%=_aux_field.FK_FieldName%>", 
 			<%=_aux_field.isConfig_Name.ToString().ToLower()%>, 
