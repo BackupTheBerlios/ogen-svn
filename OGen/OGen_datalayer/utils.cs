@@ -585,37 +585,33 @@ namespace OGen.lib.datalayer {
 				switch (dbType_in) {
 					case DbType.DateTime:
 					case DbType.Date:
-					case DbType.Time: {
+					case DbType.Time:
 						// .net fw minimum value for datetime is undetermined
 						// in db, hence a specific one:
 						return "new DateTime(1900, 1, 1)"; // "DateTime.MinValue";
-					}
+
 					case DbType.Int16: 
 					case DbType.Int32: 
 					case DbType.UInt16: 
 					case DbType.UInt32: 
 					case DbType.Byte: 
-					case DbType.Single: 
-					case DbType.Double: 
-					case DbType.Decimal: {
+					case DbType.Single:
 						return "0";
-					}
+					case DbType.Double:
+						return "0D";
+					case DbType.Decimal:
+						return "0M";
 					case DbType.Int64:
-					case DbType.UInt64: {
+					case DbType.UInt64:
 						return "0L";
-					}
-					case DbType.Boolean: {
+					case DbType.Boolean:
 						return "false";
-					}
-					case DbType.String: {
+					case DbType.String:
 						return "string.Empty";
-					}
-					case DbType.Guid: {
+					case DbType.Guid:
 						return "Guid.Empty";
-					}
-					case DbType.Binary: {
+					case DbType.Binary:
 						return "null";
-					}
 
 					// ToDos: here!
 				}
