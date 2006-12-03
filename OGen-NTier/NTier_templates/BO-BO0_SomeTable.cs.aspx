@@ -90,13 +90,9 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 #endif
 		: BO__base<%=(isListItem) ? ", iListItem" : ""%> {
 		#region public BO_<%=_aux_table.Name%>(...);
-#if NET20
-		///
-		public BO_<%=_aux_table.Name%>
-#else
-		internal BO0_<%=_aux_table.Name%>
+#if !NET20
+		internal BO0_<%=_aux_table.Name%>() {}
 #endif
-		() {}
 
 		///
 #if NET20

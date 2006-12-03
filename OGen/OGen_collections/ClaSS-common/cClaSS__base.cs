@@ -74,7 +74,9 @@ namespace OGen.lib.collections {
 
 		#region private void LoadState_from(string objectName_in, XmlDocument xmlDoc_in);
 		private void LoadState_from(string objectName_in, XmlDocument xmlDoc_in) {
-			XmlNodeList _list = xmlDoc_in.GetElementsByTagName(objectName_in);
+			XmlNodeList _list = xmlDoc_in.GetElementsByTagName(
+				objectName_in
+			);
 			for (int l = 0; l < _list.Count; l++) {
 				LoadState_fromFile(_list[l]);
 			}
@@ -102,6 +104,9 @@ namespace OGen.lib.collections {
 			#region _xmlDoc.Load(fileName_in);
 			XmlDocument _xmlDoc = new XmlDocument();
 
+			//XmlTextReader _xmlFile = new XmlTextReader(
+			//	fileName_in
+			//);
 			FileStream _xmlFile = new FileStream(
 				fileName_in,
 				FileMode.Open,

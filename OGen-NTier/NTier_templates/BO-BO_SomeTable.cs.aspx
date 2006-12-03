@@ -73,13 +73,11 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 			: BO0_<%=_aux_table.Name%> 
 #endif
 	{
-#if !NET20
 		#region public BO_<%=_aux_table.Name%>(...);
 		///
 		public BO_<%=_aux_table.Name%>() {
 		}
 		#endregion
-#endif
 
 		#region private Properties...
 		#endregion
