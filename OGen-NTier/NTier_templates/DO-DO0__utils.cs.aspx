@@ -267,23 +267,23 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// Forces <%=ConfigTable.Rows[r][NameField]%> config to be re-read from Database.
 		/// </summary>
 		public static void <%=ConfigTable.Rows[r][NameField]%>_reset() { <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_beenRead = false; }
-		private static bool <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = true;
+		private static bool <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_ = true;
 		/// <summary>
 		/// <%=ConfigTable.Rows[r][NameField]%> config which provides access to table <%=_aux_table.Name%> at Database.
 		/// </summary>
 		public static bool <%=ConfigTable.Rows[r][NameField]%> {
 			get {
 				if (!<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_beenRead) {
-					#region <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = DO_<%=_aux_table.Name%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
+					#region <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_ = DO_<%=_aux_table.Name%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
 					DO_<%=_aux_table.Name%> <%=_aux_table.Name.ToLower()%> = new DO_<%=_aux_table.Name%>();
 					<%=_aux_table.Name.ToLower()%>.getObject("<%=ConfigTable.Rows[r][NameField]%>");
-					<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = bool.Parse(<%=_aux_table.Name.ToLower()%>.Fields.<%=ConfigField%>);
+					<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_ = bool.Parse(<%=_aux_table.Name.ToLower()%>.Fields.<%=ConfigField%>);
 					<%=_aux_table.Name.ToLower()%>.Dispose(); <%=_aux_table.Name.ToLower()%> = null;
 					#endregion
 					// ToDos: here! if second assembly instance, one cache could override data from the other
 					//<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_beenRead = true;
 				}
-				return <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>;
+				return <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_;
 			}
 			set {
 				#region <%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = DO_<%=_aux_table.Name%>.<%=ConfigField%> = value;
@@ -293,7 +293,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				<%=_aux_table.Name.ToLower()%>.setObject(false);
 				<%=_aux_table.Name.ToLower()%>.Dispose(); <%=_aux_table.Name.ToLower()%> = null;
 
-				<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%> = value;
+				<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_ = value;
 				<%=((string)ConfigTable.Rows[r][NameField]).ToLower()%>_beenRead = true;
 				#endregion
 			}
