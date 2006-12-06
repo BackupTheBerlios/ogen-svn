@@ -91,6 +91,16 @@ namespace OGen.lib.datalayer {
 		/// </summary>
 		public string DBCollationName;
 
+		/// <summary>
+		/// Numeric Precision.
+		/// </summary>
+		public int Numeric_Precision;
+
+		/// <summary>
+		/// Numeric Scale.
+		/// </summary>
+		public int Numeric_Scale;
+
 		public override string ToString() {
 			return Name;
 		}

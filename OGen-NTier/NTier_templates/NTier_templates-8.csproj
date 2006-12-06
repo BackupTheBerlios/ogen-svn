@@ -174,10 +174,14 @@
     </Content>
     <Content Include="DO-DB-fnc0_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx" />
     <Content Include="DO-DB-fnc0_SomeTable_isObject_bySomeCriteria-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-fnc0_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-fnc0_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-fnc0_SomeTable_Record_count_bySomeCriteria-MySQL.sql.aspx" />
     <Content Include="DO-DB-fnc0_SomeTable_Record_count_bySomeCriteria-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-fnc0_SomeTable_Record_count_bySomeCriteria-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-fnc0_SomeTable_Record_count_bySomeCriteria-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-MySQL.sql.aspx" />
     <Content Include="DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-PostgreSQL.sql.aspx" />
     <Content Include="DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx">
@@ -185,7 +189,9 @@
     </Content>
     <Content Include="DO-DB-fnc0_SomeTable__ConstraintExist-MySQL.sql.aspx" />
     <Content Include="DO-DB-fnc0_SomeTable__ConstraintExist-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-fnc0_SomeTable__ConstraintExist-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-fnc0_SomeTable__ConstraintExist-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-fnc_SomeTable_isObject_bySomeCriteria-MySQL.sql.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
@@ -206,16 +212,24 @@
     </Content>
     <Content Include="DO-DB-sp0_SomeTable_delObject-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_delObject-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-sp0_SomeTable_delObject_bySomeCriteria-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_delObject_bySomeCriteria-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-sp0_SomeTable_delObject_bySomeCriteria-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-sp0_SomeTable_delObject_bySomeCriteria-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-sp0_SomeTable_getObject-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_getObject-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-sp0_SomeTable_getObject_bySomeCriteria-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_getObject_bySomeCriteria-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-sp0_SomeTable_getObject_bySomeCriteria-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-sp0_SomeTable_getObject_bySomeCriteria-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-sp0_SomeTable_insObject-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_insObject-PostgreSQL.sql.aspx">
       <SubType>ASPXCodeBehind</SubType>
@@ -225,31 +239,49 @@
     </Content>
     <Content Include="DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-sp0_SomeTable_Record_update_SomeUpdate_bySomeCriteria-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_Record_update_SomeUpdate_bySomeCriteria-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-sp0_SomeTable_Record_update_SomeUpdate_bySomeCriteria-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-sp0_SomeTable_Record_update_SomeUpdate_bySomeCriteria-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-sp0_SomeTable_setObject-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_setObject-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-sp0_SomeTable_setObject-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-sp0_SomeTable_setObject-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-sp0_SomeTable_updObject-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_updObject-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-sp0_SomeTable_updObject_SomeUpdate-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp0_SomeTable_updObject_SomeUpdate-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-sp0_SomeTable_updObject_SomeUpdate-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-sp0_SomeTable_updObject_SomeUpdate-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-MySQL.sql.aspx" />
     <Content Include="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-PostgreSQL.sql.aspx" />
-    <Content Include="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx" />
+    <Content Include="DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="DO-DB-v0_SomeTable__onlyKeys-PostgreSQL.sql.aspx" />
     <Content Include="DO-DO0_SomeTable.cs.aspx">
       <SubType>ASPXCodeBehind</SubType>

@@ -474,13 +474,20 @@ namespace OGen.lib.datalayer {
 		/// <param name="parameterDirection_in">Parameter's Direction</param>
 		/// <param name="value_in">Parameter's Value</param>
 		/// <returns>new IDbDataParameter</returns>
-		public IDbDataParameter newDBDataParameter(string name_in, DbType dbType_in, ParameterDirection parameterDirection_in, object value_in) {
+		public IDbDataParameter newDBDataParameter(
+			string name_in, 
+			DbType dbType_in, 
+			ParameterDirection parameterDirection_in, 
+			object value_in
+		) {
 			return newDBDataParameter(
 				name_in, 
 				dbType_in,
 				parameterDirection_in, 
 				value_in,
-				0
+				0, 
+				(byte)0, 
+				(byte)0
 			);
 		}
 		/// <summary>
@@ -492,7 +499,41 @@ namespace OGen.lib.datalayer {
 		/// <param name="value_in">Parameter's Value</param>
 		/// <param name="size_in">Parameter's Size (the actual DataBase Parameter Size representation, if such exists for the Parameter)</param>
 		/// <returns>new IDbDataParameter</returns>
-		public IDbDataParameter newDBDataParameter(string name_in, DbType dbType_in, ParameterDirection parameterDirection_in, object value_in, int size_in) {
+		public IDbDataParameter newDBDataParameter(
+			string name_in, 
+			DbType dbType_in, 
+			ParameterDirection parameterDirection_in, 
+			object value_in, 
+			int size_in
+		) {
+			return newDBDataParameter(
+				name_in,
+				dbType_in,
+				parameterDirection_in,
+				value_in,
+				size_in,
+				(byte)0,
+				(byte)0
+			);
+		}
+		/// <summary>
+		/// Instantiates a new IDbDataParameter for the Connection's taking in consideration the appropriate DataBase Server Type.
+		/// </summary>
+		/// <param name="name_in">Parameter's Name</param>
+		/// <param name="dbType_in">Parameter's DbType</param>
+		/// <param name="parameterDirection_in">Parameter's Direction</param>
+		/// <param name="value_in">Parameter's Value</param>
+		/// <param name="size_in">Parameter's Size (the actual DataBase Parameter Size representation, if such exists for the Parameter)</param>
+		/// <returns>new IDbDataParameter</returns>
+		public IDbDataParameter newDBDataParameter(
+			string name_in, 
+			DbType dbType_in, 
+			ParameterDirection parameterDirection_in, 
+			object value_in, 
+			int size_in, 
+			byte precision_in, 
+			byte scale_in
+		) {
 			IDbDataParameter _newdbdataparameter_out;
 
 			switch (DBServerType) {
@@ -541,6 +582,12 @@ namespace OGen.lib.datalayer {
 			}
 			if (size_in != 0) {
 				_newdbdataparameter_out.Size = size_in;
+			}
+			if (precision_in != 0) {
+				_newdbdataparameter_out.Precision = precision_in;
+			}
+			if (scale_in != 0) {
+				_newdbdataparameter_out.Scale = scale_in;
 			}
 
 			return _newdbdataparameter_out;
@@ -1826,7 +1873,9 @@ SELECT
 			--t5.COLUMN_NAME
 	END AS ""FK_FieldName"", 
 	t1.COLUMN_DEFAULT, 
-	t1.COLLATION_NAME
+	t1.COLLATION_NAME, 
+	t1.NUMERIC_PRECISION, 
+	t1.NUMERIC_SCALE
 FROM INFORMATION_SCHEMA.COLUMNS AS t1
 	LEFT JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE t2 ON
 		(t2.COLUMN_NAME = t1.COLUMN_NAME)
@@ -1934,7 +1983,9 @@ SELECT
 --	END
 	AS ""FK_FieldName"", 
 	t1.COLUMN_DEFAULT, 
-	t1.COLLATION_NAME
+	t1.COLLATION_NAME, 
+	CAST(0 AS Int) as ""NUMERIC_PRECISION"", 
+	CAST(0 AS Int) as ""NUMERIC_SCALE""
 FROM INFORMATION_SCHEMA.COLUMNS AS t1
 	LEFT JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE t7 ON (
 		(t7.column_name = t1.COLUMN_NAME)
@@ -1989,7 +2040,9 @@ SELECT
 	NULL AS ""FK_TableName"", 
 	NULL AS ""FK_FieldName"", 
 	t1.COLUMN_DEFAULT, 
-	t1.COLLATION_NAME
+	t1.COLLATION_NAME, 
+	CAST(0 AS unsigned) as ""NUMERIC_PRECISION"", 
+	CAST(0 AS unsigned) as ""NUMERIC_SCALE""
 FROM INFORMATION_SCHEMA.COLUMNS AS t1
 	LEFT JOIN INFORMATION_SCHEMA.TABLES t6 ON ((t6.TABLE_SCHEMA = t1.TABLE_SCHEMA) AND (t6.TABLE_NAME = t1.TABLE_NAME))
 WHERE 
@@ -2035,6 +2088,9 @@ ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 						//---
 						getTableFields_out[r].isIdentity = ((long)_dtemp.Rows[r]["isIdentity"] == 1L);
 						getTableFields_out[r].isPK = ((long)_dtemp.Rows[r]["isPK"] == 1L);
+						//---
+						getTableFields_out[r].Numeric_Precision = (_dtemp.Rows[r]["Numeric_Precision"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Numeric_Precision"];
+						getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r]["Numeric_Scale"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Numeric_Scale"];
 						break;
 					}
 					case eDBServerTypes.PostgreSQL:
@@ -2047,6 +2103,9 @@ ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 						//---
 						getTableFields_out[r].isIdentity = ((int)_dtemp.Rows[r]["isIdentity"] == 1);
 						getTableFields_out[r].isPK = ((int)_dtemp.Rows[r]["isPK"] == 1);
+						//---
+						getTableFields_out[r].Numeric_Precision = (_dtemp.Rows[r]["Numeric_Precision"] == DBNull.Value) ? 0 : (int)(byte)_dtemp.Rows[r]["Numeric_Precision"];
+						getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r]["Numeric_Scale"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Numeric_Scale"];
 						break;
 					}
 					default: {

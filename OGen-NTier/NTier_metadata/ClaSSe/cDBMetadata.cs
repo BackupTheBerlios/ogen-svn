@@ -427,6 +427,8 @@ if (clear_in)
 					tables_[T].Fields[F].FK_FieldName		= _fields_aux[f].FK_FieldName;
 					tables_[T].Fields[F].isNullable			= _fields_aux[f].isNullable;
 					tables_[T].Fields[F].Size				= _fields_aux[f].Size;
+					tables_[T].Fields[F].Numeric_Precision	= _fields_aux[f].Numeric_Precision;
+					tables_[T].Fields[F].Numeric_Scale		= _fields_aux[f].Numeric_Scale;
 					//tables_[T].Fields[F].DBDescription		= _fields_aux[f].DBDescription;
 					//tables_[T].Fields[F].DBDefaultValue		= _fields_aux[f].DBDefaultValue;
 					//tables_[T].Fields[F].DBCollationName	= _fields_aux[f].DBCollationName;

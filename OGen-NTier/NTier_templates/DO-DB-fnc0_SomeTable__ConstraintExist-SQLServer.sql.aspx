@@ -54,7 +54,7 @@ cDBMetadata_Table_Field _aux_field;
 %>CREATE FUNCTION [dbo].[fnc0_<%=_aux_table.Name%>__ConstraintExist](<%
 	for (int f = 0; f < _aux_table.Fields.Count; f++) {
 		_aux_field = _aux_table.Fields[f];%>
-	@<%=_aux_field.Name%> <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? " (" + _aux_field.Size + ")" : ""%><%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
+	@<%=_aux_field.Name%> <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? " (" + _aux_field.Size + ")" : ""%><%=((_aux_field.Numeric_Precision > 0) && (_aux_field.Numeric_Scale > 0)) ? " (" + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale + ")" : ""%><%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
 	}%>
 )
 RETURNS Bit

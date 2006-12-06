@@ -68,6 +68,8 @@ namespace OGen.NTier.lib.metadata {
 			FK_FieldName = string.Empty;
 			isNullable = false;
 			Size = 0;
+			Numeric_Precision = 0;
+			Numeric_Scale = 0;
 //			DBType_inDB_name = string.Empty;
 			//---
 			dbs_ = new cDBMetadata_Table_Field_DBs(this, this);
@@ -330,6 +332,32 @@ namespace OGen.NTier.lib.metadata {
 		public string AditionalInfo {
 			get { return aditionalinfo_; }
 			set { aditionalinfo_ = value; }
+		}
+		#endregion
+		#region public int Numeric_Precision { get; set; }
+		private int numeric_precision_;
+		public int Numeric_Precision {
+			get { return numeric_precision_; }
+			set { numeric_precision_ = value; }
+		}
+
+		[ClaSSPropertyAttribute("numericPrecision", ClaSSPropertyAttribute.eType.standard, true)]
+		private string numeric_precision_reflection {
+			get { return numeric_precision_.ToString(); }
+			set { numeric_precision_ = int.Parse(value); }
+		}
+		#endregion
+		#region public int Numeric_Scale { get; set; }
+		private int numeric_scale_;
+		public int Numeric_Scale {
+			get { return numeric_scale_; }
+			set { numeric_scale_ = value; }
+		}
+
+		[ClaSSPropertyAttribute("numericScale", ClaSSPropertyAttribute.eType.standard, true)]
+		private string numeric_scale_reflection {
+			get { return numeric_scale_.ToString(); }
+			set { numeric_scale_ = int.Parse(value); }
 		}
 		#endregion
 //		#region public string DBType_inDB_name { get; }
