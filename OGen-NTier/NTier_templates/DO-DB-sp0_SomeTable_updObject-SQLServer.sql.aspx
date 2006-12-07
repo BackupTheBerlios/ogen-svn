@@ -56,7 +56,7 @@ bool isFirst;
 %>CREATE PROCEDURE [dbo].[sp0_<%=_aux_table.Name%>_updObject]<%
 	for (int f = 0; f < _aux_table.Fields.Count; f++) {
 		_aux_field = _aux_table.Fields[f];%>
-	@<%=_aux_field.Name%>_ <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? " (" + _aux_field.Size + ")" : ""%><%=((_aux_field.Numeric_Precision > 0) && (_aux_field.Numeric_Scale > 0)) ? " (" + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale + ")" : ""%><%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
+	@<%=_aux_field.Name%>_ <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? " (" + _aux_field.Size + ")" : ""%><%=(_aux_field.Numeric_Scale > 0) ? " (" + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale + ")" : ""%><%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
 	}%><%
 	if (_aux_table_searches_hasexplicituniqueindex) {%>, 
 	@ConstraintExist_ Bit OUT<%

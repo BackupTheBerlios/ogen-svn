@@ -54,7 +54,7 @@ cDBMetadata_Table_Field _aux_field;
 %>CREATE FUNCTION [dbo].[fnc0_<%=_aux_table.Name%>_isObject](<%
 	for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 		_aux_field = _aux_table.Fields_onlyPK[k];%>
-	@<%=_aux_field.Name%>_ <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? " (" + _aux_field.Size + ")" : ""%><%=((_aux_field.Numeric_Precision > 0) && (_aux_field.Numeric_Scale > 0)) ? " (" + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale + ")" : ""%><%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
+	@<%=_aux_field.Name%>_ <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? " (" + _aux_field.Size + ")" : ""%><%=(_aux_field.Numeric_Scale > 0) ? " (" + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale + ")" : ""%><%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
 	}%>
 )
 RETURNS Bit
