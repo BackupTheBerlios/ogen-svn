@@ -2079,7 +2079,7 @@ ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 
 				getTableFields_out[r].Name				= (string)_dtemp.Rows[r]["Name"];
 				switch (dbservertype_) {
-					case eDBServerTypes.MySQL: {
+					case eDBServerTypes.MySQL:
 						getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Size"];
 						getTableFields_out[r].isNullable = ((long)_dtemp.Rows[r]["isNullable"] == 1L);
 						//---						
@@ -2092,8 +2092,19 @@ ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 						getTableFields_out[r].Numeric_Precision = (_dtemp.Rows[r]["Numeric_Precision"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Numeric_Precision"];
 						getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r]["Numeric_Scale"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Numeric_Scale"];
 						break;
-					}
 					case eDBServerTypes.PostgreSQL:
+						getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Size"];
+						getTableFields_out[r].isNullable = ((int)_dtemp.Rows[r]["isNullable"] == 1);
+						//---						
+						getTableFields_out[r].FK_TableName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_TableName"];
+						getTableFields_out[r].FK_FieldName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_FieldName"];
+						//---
+						getTableFields_out[r].isIdentity = ((int)_dtemp.Rows[r]["isIdentity"] == 1);
+						getTableFields_out[r].isPK = ((int)_dtemp.Rows[r]["isPK"] == 1);
+						//---
+						getTableFields_out[r].Numeric_Precision = (_dtemp.Rows[r]["Numeric_Precision"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Numeric_Precision"];
+						getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r]["Numeric_Scale"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Numeric_Scale"];
+						break;
 					case eDBServerTypes.SQLServer: {
 						getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Size"];
 						getTableFields_out[r].isNullable = ((int)_dtemp.Rows[r]["isNullable"] == 1);
