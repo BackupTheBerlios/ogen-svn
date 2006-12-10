@@ -174,6 +174,16 @@ int _aux_table_hasidentitykey;
                     RelPath = "_base\RO0_<%=_aux_table.Name%>.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\SO0_<%=_aux_table.Name%>.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\SC0_<%=_aux_table.Name%>.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
                 /><%
                 }%>
             </Include>

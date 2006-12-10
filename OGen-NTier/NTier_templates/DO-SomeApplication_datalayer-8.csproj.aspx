@@ -161,6 +161,12 @@ int _aux_table_hasidentitykey;
     </Compile>
     <Compile Include="_base\RO0_<%=_aux_table.Name%>.cs">
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_base\SO0_<%=_aux_table.Name%>.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_base\SC0_<%=_aux_table.Name%>.cs">
+      <SubType>Code</SubType>
     </Compile><%
 		}%>
   </ItemGroup>
