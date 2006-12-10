@@ -333,7 +333,7 @@ RETURNS SETOF "v0_User__onlyKeys" AS
 				"IDUser"
 			FROM "User"
 			WHERE
-				("Login" LIKE ''%'' || "Login_search_" || ''%'')
+				("Login" LIKE ''%'' || "Login_search_" || ''%'' /*COLLATE */)
 		LOOP
 			RETURN NEXT _Output;
 		END LOOP;

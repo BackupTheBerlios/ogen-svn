@@ -66,6 +66,64 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		#endregion
 
 		#region public Methods...
+		#region //public SC0_User Serialize();
+		//public SC0_User Serialize() {
+		//	return new SC0_User(Record);
+		//}
+		#endregion
+		#region public SC0_User Serialize();
+		public SC0_User Serialize() {
+			SO0_User[] _serialisableobject;
+
+			lock (record__) {
+				int _current = Current;
+
+				_serialisableobject = new SO0_User[Count];
+
+				Reset();
+				while (Read()) {
+					_serialisableobject[Current] 
+						= new SO0_User(
+							parent_ref_.Fields.IDUser,
+							parent_ref_.Fields.Login,
+							parent_ref_.Fields.Password,
+							parent_ref_.Fields.SomeNullValue
+						);
+				}
+
+				Current = _current;
+			}
+
+			SC0_User _serialize_out = new SC0_User();
+			_serialize_out.SO0_User = _serialisableobject;
+			return _serialize_out;
+		}
+		#endregion
+		#region public void Open(SC0_User serialisablecollection_in);
+		public void Open(SC0_User serialisablecollection_in) {
+			Open(serialisablecollection_in.SO0_User);
+		}
+		#endregion
+		#region public void Open(SO0_User[] serialisableobject_in);
+		public void Open(SO0_User[] serialisableobject_in) {
+			DataTable _datatable = new DataTable();
+			_datatable.Columns.Add(new DataColumn("codProfissao", typeof(int)));
+			_datatable.Columns.Add(new DataColumn("descProfissao", typeof(string)));
+
+			DataRow _datarow;
+			for (int i = 0; i < serialisableobject_in.Length; i++) {
+			    _datarow = _datatable.NewRow();
+				_datarow["IDUser"] = serialisableobject_in[i].IDUser;
+				_datarow["Login"] = serialisableobject_in[i].Login;
+				_datarow["Password"] = serialisableobject_in[i].Password;
+				_datarow["SomeNullValue"] = serialisableobject_in[i].SomeNullValue;
+
+			    _datatable.Rows.Add(_datarow);
+			}
+
+			Open(true, _datatable);
+		}
+		#endregion
 		#region public override bool Read();
 		/// <summary>
 		/// Reads values from Record, assigns them to the appropriate User DataObject property, finally it steps current iteration at the Record forward and returns a bool value indicating if End Of Record has been reached.
@@ -84,29 +142,29 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			if (base.read()) {
 				if (base.Fullmode) {
 					if (base.Record.Rows[Current]["IDUser"] == System.DBNull.Value) {
-						parent_ref_.iduser_ = 0L;
+						parent_ref_.Fields.iduser_ = 0L;
 					} else {
-						parent_ref_.iduser_ = (long)base.Record.Rows[Current]["IDUser"];
+						parent_ref_.Fields.iduser_ = (long)base.Record.Rows[Current]["IDUser"];
 					}
 					if (base.Record.Rows[Current]["Login"] == System.DBNull.Value) {
-						parent_ref_.login_ = string.Empty;
+						parent_ref_.Fields.login_ = string.Empty;
 					} else {
-						parent_ref_.login_ = (string)base.Record.Rows[Current]["Login"];
+						parent_ref_.Fields.login_ = (string)base.Record.Rows[Current]["Login"];
 					}
 					if (base.Record.Rows[Current]["Password"] == System.DBNull.Value) {
-						parent_ref_.password_ = string.Empty;
+						parent_ref_.Fields.password_ = string.Empty;
 					} else {
-						parent_ref_.password_ = (string)base.Record.Rows[Current]["Password"];
+						parent_ref_.Fields.password_ = (string)base.Record.Rows[Current]["Password"];
 					}
 					if (base.Record.Rows[Current]["SomeNullValue"] == System.DBNull.Value) {
-						parent_ref_.SomeNullValue_isNull = true;
+						parent_ref_.Fields.SomeNullValue_isNull = true;
 					} else {
-						parent_ref_.somenullvalue_ = (int)base.Record.Rows[Current]["SomeNullValue"];
+						parent_ref_.Fields.somenullvalue_ = (int)base.Record.Rows[Current]["SomeNullValue"];
 					}
 
-					parent_ref_.haschanges_ = false;
+					parent_ref_.Fields.haschanges_ = false;
 				} else {
-					parent_ref_.iduser_ = (long)((base.Record.Rows[Current]["IDUser"] == System.DBNull.Value) ? 0L : base.Record.Rows[Current]["IDUser"]);
+					parent_ref_.Fields.IDUser = (long)((base.Record.Rows[Current]["IDUser"] == System.DBNull.Value) ? 0L : base.Record.Rows[Current]["IDUser"]);
 
 					if (!doNOTgetObject_in) {
 						parent_ref_.getObject();
@@ -205,7 +263,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDUser_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0)
+				parent_ref_.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0, 19, 0)
 			};
 			return (bool)parent_ref_.Connection.Execute_SQLFunction(
 				"fnc0_User_Record_hasObject_all", 
@@ -274,7 +332,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			bool fullmode_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0)
+				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0, 19, 0)
 			};
 			base.Open(
 				string.Format(
@@ -320,7 +378,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			int page_numRecords_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0), 
+				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0, 19, 0), 
 				parent_ref_.Connection.newDBDataParameter("page_", DbType.Int32, ParameterDirection.Input, page_in, 0), 
 				parent_ref_.Connection.newDBDataParameter("page_numRecords_", DbType.Int32, ParameterDirection.Input, page_numRecords_in, 0)
 			};
@@ -345,8 +403,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			string Password_update_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0), 
-				parent_ref_.Connection.newDBDataParameter("Password_update_", DbType.String, ParameterDirection.Input, Password_update_in, 50)
+				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0, 19, 0), 
+				parent_ref_.Connection.newDBDataParameter("Password_update_", DbType.String, ParameterDirection.Input, Password_update_in, 50, 0, 0)
 			};
 			parent_ref_.Connection.Execute_SQLFunction(
 				"sp0_User_Record_update_SomeUpdateTest_byGroup", 
@@ -366,8 +424,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDGroup_search_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0), 
-				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0)
+				parent_ref_.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0, 19, 0), 
+				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0, 19, 0)
 			};
 			return (bool)parent_ref_.Connection.Execute_SQLFunction(
 				"fnc0_User_Record_hasObject_byGroup", 
@@ -387,7 +445,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDGroup_search_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0)
+				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0, 19, 0)
 			};
 
 			return (long)parent_ref_.Connection.Execute_SQLFunction(
@@ -407,7 +465,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDGroup_search_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0)
+				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0, 19, 0)
 			};
 
 			parent_ref_.Connection.Execute_SQLFunction(

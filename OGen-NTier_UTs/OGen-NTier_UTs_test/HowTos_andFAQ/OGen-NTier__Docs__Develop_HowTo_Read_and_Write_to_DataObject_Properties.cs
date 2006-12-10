@@ -41,9 +41,9 @@ namespace OGen.NTier.UTs.howtos {
 
 
 			DO_User _user = new DO_User();
-			_user.IDUser = 123;
-			_user.Login = "123";
-			_user.Password = "123";
+			_user.Fields.IDUser = 123;
+			_user.Fields.Login = "123";
+			_user.Fields.Password = "123";
 
 			PropertyInfo[] _properties = typeof(DO_User).GetProperties(
 				BindingFlags.Public | 

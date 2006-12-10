@@ -70,14 +70,14 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 				UT0__utils.DBConnections[c].Transaction.Begin();
 				DO_User _user = new DO_User(UT0__utils.DBConnections[c]);
 
-				_user.Login = _testid;
-				_user.Password = _testid;
+				_user.Fields.Login = _testid;
+				_user.Fields.Password = _testid;
 				_user.insObject(false, out _constraint);
 				Assert.IsFalse(_constraint, "there should be no constraint problems");
 
 				_user.clrObject();
-				_user.Login = _testid;
-				_user.Password = _testid;
+				_user.Fields.Login = _testid;
+				_user.Fields.Password = _testid;
 				_user.insObject(false, out _constraint);
 				Assert.IsTrue(_constraint, "constraint problems expected and not found");
 
@@ -95,20 +95,21 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 			long _replacingvalue = 456L;
 
 			DO_User _user = new DO_User();
-			_user.IDUser = _initialvalue;
+			_user.Fields.IDUser = _initialvalue;
 			//---
-			PropertyInfo _iduser = typeof(DO_User).GetProperty("IDUser");
+			PropertyInfo _iduser 
+				= typeof(SO0_User).GetProperty("IDUser");
 			//---
-			Assert.AreEqual(_initialvalue, (long)_iduser.GetValue(_user, null));
+			Assert.AreEqual(_initialvalue, (long)_iduser.GetValue(_user.Fields, null));
 			_iduser.SetValue(
-				_user,
+				_user.Fields,
 				Convert.ChangeType(
 					_replacingvalue,
 					_iduser.PropertyType
 				),
 				null
 			);
-			Assert.AreEqual(_replacingvalue, (long)_iduser.GetValue(_user, null));
+			Assert.AreEqual(_replacingvalue, (long)_iduser.GetValue(_user.Fields, null));
 			//---
 			_user.Dispose(); _user = null;
 
@@ -140,10 +141,10 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 		#region public void UT_Reflection_GetCustomAttribute();
 		[Test]
 		public void UT_Reflection_GetCustomAttribute() {
-			Assert.IsTrue(Attribute.IsDefined(typeof(DO_User).GetProperty("IDUser"), typeof(DOPropertyAttribute)));
+			Assert.IsTrue(Attribute.IsDefined(typeof(SO0_User).GetProperty("IDUser"), typeof(DOPropertyAttribute)));
 
 			DOPropertyAttribute _att = (DOPropertyAttribute)Attribute.GetCustomAttribute(
-			  typeof(DO_User).GetProperty("IDUser"),
+			  typeof(SO0_User).GetProperty("IDUser"),
 			  typeof(DOPropertyAttribute),
 			  true
 			);
@@ -163,25 +164,25 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 			_user.Connection.Open();
 			_user.Connection.Transaction.Begin();
 
-			Assert.IsFalse(_user.hasChanges, "unexpected changes, object just instantiated and no changes have been made");
-			_user.Login = _testid;
-			_user.Password = _testid;
-			Assert.IsTrue(_user.hasChanges, "expected changes, changes have been made over object");
+			Assert.IsFalse(_user.Fields.hasChanges, "unexpected changes, object just instantiated and no changes have been made");
+			_user.Fields.Login = _testid;
+			_user.Fields.Password = _testid;
+			Assert.IsTrue(_user.Fields.hasChanges, "expected changes, changes have been made over object");
 			_iduser = _user.insObject(true, out _constraint);
-			Assert.IsFalse(_user.hasChanges, "unexpected changes, object state commited (insert) over data base");
-			_user.Login = _testid;
-			_user.Password = _testid;
-			Assert.IsFalse(_user.hasChanges, "unexpected changes, no real changes have been made");
-			_user.Password = string.Empty;
-			Assert.IsTrue(_user.hasChanges, "expected changes, real changes have been made");
+			Assert.IsFalse(_user.Fields.hasChanges, "unexpected changes, object state commited (insert) over data base");
+			_user.Fields.Login = _testid;
+			_user.Fields.Password = _testid;
+			Assert.IsFalse(_user.Fields.hasChanges, "unexpected changes, no real changes have been made");
+			_user.Fields.Password = string.Empty;
+			Assert.IsTrue(_user.Fields.hasChanges, "expected changes, real changes have been made");
 			_user.updObject(false, out _constraint);
-			Assert.IsFalse(_user.hasChanges, "unexpected changes, object state commited (update) over data base");
+			Assert.IsFalse(_user.Fields.hasChanges, "unexpected changes, object state commited (update) over data base");
 			_user.clrObject();
-			Assert.IsTrue(_user.hasChanges, "expected changes, object state cleared");
+			Assert.IsTrue(_user.Fields.hasChanges, "expected changes, object state cleared");
 			_user.getObject_byLogin(_testid);
-			Assert.IsFalse(_user.hasChanges, "unexpected changes, object state sinchronized (select) with data base");
+			Assert.IsFalse(_user.Fields.hasChanges, "unexpected changes, object state sinchronized (select) with data base");
 			_user.delObject();
-			Assert.IsTrue(_user.hasChanges, "expected changes, object erased (delete on data base)");
+			Assert.IsTrue(_user.Fields.hasChanges, "expected changes, object erased (delete on data base)");
 			
 			_user.Connection.Transaction.Rollback();
 			_user.Connection.Transaction.Terminate();
@@ -198,7 +199,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 
 			DO_User _user = new DO_User();
 			try {
-				_user.Login = null;
+				_user.Fields.Login = null;
 			} catch {
 				Assert.Fail("unexpected null assignement error!");
 			}

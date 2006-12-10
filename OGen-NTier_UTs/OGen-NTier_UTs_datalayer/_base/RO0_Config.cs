@@ -66,6 +66,64 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		#endregion
 
 		#region public Methods...
+		#region //public SC0_Config Serialize();
+		//public SC0_Config Serialize() {
+		//	return new SC0_Config(Record);
+		//}
+		#endregion
+		#region public SC0_Config Serialize();
+		public SC0_Config Serialize() {
+			SO0_Config[] _serialisableobject;
+
+			lock (record__) {
+				int _current = Current;
+
+				_serialisableobject = new SO0_Config[Count];
+
+				Reset();
+				while (Read()) {
+					_serialisableobject[Current] 
+						= new SO0_Config(
+							parent_ref_.Fields.Name,
+							parent_ref_.Fields.Config,
+							parent_ref_.Fields.Type,
+							parent_ref_.Fields.Description
+						);
+				}
+
+				Current = _current;
+			}
+
+			SC0_Config _serialize_out = new SC0_Config();
+			_serialize_out.SO0_Config = _serialisableobject;
+			return _serialize_out;
+		}
+		#endregion
+		#region public void Open(SC0_Config serialisablecollection_in);
+		public void Open(SC0_Config serialisablecollection_in) {
+			Open(serialisablecollection_in.SO0_Config);
+		}
+		#endregion
+		#region public void Open(SO0_Config[] serialisableobject_in);
+		public void Open(SO0_Config[] serialisableobject_in) {
+			DataTable _datatable = new DataTable();
+			_datatable.Columns.Add(new DataColumn("codProfissao", typeof(int)));
+			_datatable.Columns.Add(new DataColumn("descProfissao", typeof(string)));
+
+			DataRow _datarow;
+			for (int i = 0; i < serialisableobject_in.Length; i++) {
+			    _datarow = _datatable.NewRow();
+				_datarow["Name"] = serialisableobject_in[i].Name;
+				_datarow["Config"] = serialisableobject_in[i].Config;
+				_datarow["Type"] = serialisableobject_in[i].Type;
+				_datarow["Description"] = serialisableobject_in[i].Description;
+
+			    _datatable.Rows.Add(_datarow);
+			}
+
+			Open(true, _datatable);
+		}
+		#endregion
 		#region public override bool Read();
 		/// <summary>
 		/// Reads values from Record, assigns them to the appropriate Config DataObject property, finally it steps current iteration at the Record forward and returns a bool value indicating if End Of Record has been reached.
@@ -84,29 +142,29 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			if (base.read()) {
 				if (base.Fullmode) {
 					if (base.Record.Rows[Current]["Name"] == System.DBNull.Value) {
-						parent_ref_.name_ = string.Empty;
+						parent_ref_.Fields.name_ = string.Empty;
 					} else {
-						parent_ref_.name_ = (string)base.Record.Rows[Current]["Name"];
+						parent_ref_.Fields.name_ = (string)base.Record.Rows[Current]["Name"];
 					}
 					if (base.Record.Rows[Current]["Config"] == System.DBNull.Value) {
-						parent_ref_.config_ = string.Empty;
+						parent_ref_.Fields.config_ = string.Empty;
 					} else {
-						parent_ref_.config_ = (string)base.Record.Rows[Current]["Config"];
+						parent_ref_.Fields.config_ = (string)base.Record.Rows[Current]["Config"];
 					}
 					if (base.Record.Rows[Current]["Type"] == System.DBNull.Value) {
-						parent_ref_.type_ = 0;
+						parent_ref_.Fields.type_ = 0;
 					} else {
-						parent_ref_.type_ = (int)base.Record.Rows[Current]["Type"];
+						parent_ref_.Fields.type_ = (int)base.Record.Rows[Current]["Type"];
 					}
 					if (base.Record.Rows[Current]["Description"] == System.DBNull.Value) {
-						parent_ref_.description_ = string.Empty;
+						parent_ref_.Fields.Description_isNull = true;
 					} else {
-						parent_ref_.description_ = (string)base.Record.Rows[Current]["Description"];
+						parent_ref_.Fields.description_ = (string)base.Record.Rows[Current]["Description"];
 					}
 
-					parent_ref_.haschanges_ = false;
+					parent_ref_.Fields.haschanges_ = false;
 				} else {
-					parent_ref_.name_ = (string)((base.Record.Rows[Current]["Name"] == System.DBNull.Value) ? string.Empty : base.Record.Rows[Current]["Name"]);
+					parent_ref_.Fields.Name = (string)((base.Record.Rows[Current]["Name"] == System.DBNull.Value) ? string.Empty : base.Record.Rows[Current]["Name"]);
 
 					if (!doNOTgetObject_in) {
 						parent_ref_.getObject();
@@ -205,7 +263,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			string Name_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Name_in, 50)
+				parent_ref_.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Name_in, 50, 0, 0)
 			};
 			return (bool)parent_ref_.Connection.Execute_SQLFunction(
 				"fnc0_Config_Record_hasObject_all", 

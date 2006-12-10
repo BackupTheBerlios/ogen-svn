@@ -38,11 +38,6 @@ using OGen.NTier.lib.datalayer;
 namespace OGen.NTier.UTs.lib.datalayer {
 	/// <summary>
 	/// utils DataObject which works as a repository of useful Properties and Methods for DataObjects at OGen.NTier.UTs.lib.datalayer namespace.
-#if !NET20
-	/// <note type="implementnotes">
-	/// Access must be made via <see cref="DO__utils">DO__utils</see>.
-	/// </note>
-#endif
 	/// </summary>
 	public 
 #if NET20
@@ -75,6 +70,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		}
 		#endregion
 
+		/// <summary>
+		/// Application's Name
+		/// </summary>
 		public const string ApplicationName = "OGen-NTier_UTs";
 
 		#region public static Properties...
@@ -109,6 +107,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		#region public static string DBLogfile { get; }
 		private static string dblogfile__;
 
+		/// <summary>
+		/// DataBase Operation's Log File
+		/// </summary>
 		public static string DBLogfile {
 			get {
 				if (dblogfile__ == string.Empty) {
@@ -127,6 +128,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 
 		#region public static Methods...
 		#region public static void DBConnectionstring_reset();
+		/// <summary>
+		/// Forces DataBase's ConnectionString to be re-read from config file.
+		/// </summary>
 		public static void DBConnectionstring_reset() {
 			Config_DBConnectionstrings.Reset();
 		}
@@ -137,6 +141,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		}
 		#endregion
 		#region public static void DBServerType_reset();
+		/// <summary>
+		/// Forces DataBase's Server Type to be re-read from config file.
+		/// </summary>
 		public static void DBServerType_reset() {
 			Config_DBConnectionstrings.Reset();
 		}
@@ -175,32 +182,33 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Forces SomeBoolConfig config to be re-read from Database.
 		/// </summary>
 		public static void SomeBoolConfig_reset() { someboolconfig_beenRead = false; }
-		private static bool someboolconfig = true;
+		private static bool someboolconfig_ = true;
 		/// <summary>
 		/// SomeBoolConfig config which provides access to table Config at Database.
 		/// </summary>
 		public static bool SomeBoolConfig {
 			get {
 				if (!someboolconfig_beenRead) {
-					#region someboolconfig = DO_Config.getObject("SomeBoolConfig");
+					#region someboolconfig_ = DO_Config.getObject("SomeBoolConfig");
 					DO_Config config = new DO_Config();
 					config.getObject("SomeBoolConfig");
-					someboolconfig = bool.Parse(config.Config);
+					someboolconfig_ = bool.Parse(config.Fields.Config);
 					config.Dispose(); config = null;
 					#endregion
-					someboolconfig_beenRead = true;
+					// ToDos: here! if second assembly instance, one cache could override data from the other
+					//someboolconfig_beenRead = true;
 				}
-				return someboolconfig;
+				return someboolconfig_;
 			}
 			set {
 				#region someboolconfig = DO_Config.Config = value;
 				DO_Config config = new DO_Config();
 				config.getObject("SomeBoolConfig");
-				config.Config = value.ToString();
+				config.Fields.Config = value.ToString();
 				config.setObject(false);
 				config.Dispose(); config = null;
 
-				someboolconfig = value;
+				someboolconfig_ = value;
 				someboolconfig_beenRead = true;
 				#endregion
 			}
@@ -222,10 +230,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 					#region someintconfig = DO_Config.getObject("SomeIntConfig");
 					DO_Config config = new DO_Config();
 					config.getObject("SomeIntConfig");
-					someintconfig = int.Parse(config.Config);
+					someintconfig = int.Parse(config.Fields.Config);
 					config.Dispose(); config = null;
 					#endregion
-					someintconfig_beenRead = true;
+					// ToDos: here! if second assembly instance, one cache could override data from the other
+					//someintconfig_beenRead = true;
 				}
 				return someintconfig;
 			}
@@ -233,7 +242,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				#region someintconfig = DO_Config.Config = value;
 				DO_Config config = new DO_Config();
 				config.getObject("SomeIntConfig");
-				config.Config = value.ToString();
+				config.Fields.Config = value.ToString();
 				config.setObject(false);
 				config.Dispose(); config = null;
 
@@ -254,11 +263,16 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		public static string[] SomeMultiLineStringConfig {
 			get {
-				if (somemultilinestringconfig == null) {
+				if (
+					// ToDos: here! if second assembly instance, one cache could override data from the other
+					true
+					||
+					(somemultilinestringconfig == null)
+				) {
 					#region somemultilinestringconfig = DO_Config.getObject("SomeMultiLineStringConfig");
 					DO_Config config = new DO_Config();
 					config.getObject("SomeMultiLineStringConfig");
-					somemultilinestringconfig = config.Config.Split((char)10);
+					somemultilinestringconfig = config.Fields.Config.Split((char)10);
 					config.Dispose(); config = null;
 					#endregion
 				}
@@ -270,9 +284,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				config.getObject("SomeMultiLineStringConfig");
 
 
-				config.Config = string.Empty;
+				config.Fields.Config = string.Empty;
 				for (int i = 0; i < value.Length; i++) {
-					config.Config += string.Format(
+					config.Fields.Config += string.Format(
 						"{0}{1}",
 						(i != 0) ? ((char)10).ToString() : string.Empty, 
 						value[i]
@@ -299,11 +313,16 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		public static string SomeStringConfig {
 			get {
-				if (somestringconfig == null) {
+				if (
+					// ToDos: here! if second assembly instance, one cache could override data from the other
+					true
+					||
+					(somestringconfig == null)
+				) {
 					#region somestringconfig = DO_Config.getObject("SomeStringConfig");
 					DO_Config config = new DO_Config();
 					config.getObject("SomeStringConfig");
-					somestringconfig = config.Config;
+					somestringconfig = config.Fields.Config;
 					config.Dispose(); config = null;
 					#endregion
 				}
@@ -313,7 +332,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				#region somestringconfig = DO_Config.Config = value;
 				DO_Config config = new DO_Config();
 				config.getObject("SomeStringConfig");
-				config.Config = value;
+				config.Fields.Config = value;
 				config.setObject(false);
 				config.Dispose(); config = null;
 

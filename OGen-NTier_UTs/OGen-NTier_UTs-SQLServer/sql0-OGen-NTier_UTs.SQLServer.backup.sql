@@ -1,5 +1,5 @@
 CREATE FUNCTION [dbo].[fnc0_Config_isObject](
-	@Name_ nvarchar (50)
+	@Name_ varchar (50)
 )
 RETURNS Bit
 AS
@@ -117,10 +117,10 @@ END
 
 
 CREATE PROCEDURE [dbo].[sp0_Config_setObject]
-	@Name_ nvarchar (50), 
-	@Config_ nvarchar (50), 
+	@Name_ varchar (50), 
+	@Config_ varchar (50), 
 	@Type_ int, 
-	@Description_ nvarchar (50), 
+	@Description_ varchar (50), 
 
 	@Output_ Int OUT
 AS
@@ -230,7 +230,7 @@ AS
 
 
 CREATE PROCEDURE [dbo].[sp0_Config_delObject]
-	@Name_ nvarchar (50)
+	@Name_ varchar (50)
 AS
 	DELETE
 	FROM [Config]
@@ -284,7 +284,7 @@ BEGIN
 		[IDUser]
 	FROM [User]
 	WHERE
-		([Login] LIKE '%' + @Login_search_ + '%' COLLATE SQL_Latin1_General_CP1_CI_AI)
+		([Login] LIKE '%' + @Login_search_ + '%' COLLATE Latin1_General_CI_AI)
 
 	RETURN
 END
@@ -465,10 +465,10 @@ AS
 
 
 CREATE PROCEDURE [dbo].[sp0_Config_getObject]
-	@Name_ nvarchar (50) OUT, 
-	@Config_ nvarchar (50) OUT, 
+	@Name_ varchar (50) OUT, 
+	@Config_ varchar (50) OUT, 
 	@Type_ int OUT, 
-	@Description_ nvarchar (50) OUT
+	@Description_ varchar (50) OUT
 AS
 	DECLARE @Exists Bit
 	SET @Exists = 0
@@ -653,7 +653,7 @@ AS
 CREATE PROCEDURE [dbo].[sp0_Config_Record_open_all_fullmode]
 AS
 	CREATE TABLE [#Table_temp] (
-		[Name] nvarchar (50)
+		[Name] varchar (50)
 	)
 	
 	INSERT INTO [#Table_temp] (
@@ -668,7 +668,7 @@ AS
 		t1.[Description]
 	FROM [Config] t1
 		INNER JOIN [#Table_temp] t2 ON (
-			(t2.[Name] = t1.[Name])
+			(t2.[Name] = t1.[Name] COLLATE SQL_Latin1_General_CP1_CI_AI)
 		)
 
 	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_Config_Record_open_all]
@@ -825,7 +825,7 @@ AS
 
 	CREATE TABLE [#Table_temp] (
 		[ID_range] BigInt IDENTITY,
-		[Name] nvarchar (50)
+		[Name] varchar (50)
 	)
 	
 	SET ROWCOUNT @ID_range_end
@@ -838,7 +838,7 @@ AS
 		t1.[Name]
 	FROM [Config] t1
 		INNER JOIN [#Table_temp] t2 ON
-			(t2.[Name] = t1.[Name])
+			(t2.[Name] = t1.[Name] COLLATE SQL_Latin1_General_CP1_CI_AI)
 
 	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_Config_Record_open_all]
 	-- NOT HERE!
@@ -1037,7 +1037,7 @@ AS
 
 	CREATE TABLE [#Table_temp] (
 		[ID_range] BigInt IDENTITY,
-		[Name] nvarchar (50)
+		[Name] varchar (50)
 	)
 	
 	SET ROWCOUNT @ID_range_end
@@ -1053,7 +1053,7 @@ AS
 		t1.[Description]
 	FROM [Config] t1
 		INNER JOIN [#Table_temp] t2 ON
-			(t2.[Name] = t1.[Name])
+			(t2.[Name] = t1.[Name] COLLATE SQL_Latin1_General_CP1_CI_AI)
 
 	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_Config_Record_open_all]
 	-- NOT HERE!
@@ -1420,7 +1420,7 @@ END
 
 
 CREATE FUNCTION [dbo].[fnc0_Config_Record_hasObject_all](
-	@Name_ nvarchar (50)
+	@Name_ varchar (50)
 )
 RETURNS BIT
 BEGIN

@@ -121,6 +121,18 @@
     <Compile Include="_base\RO0_UserGroup.cs" />
     <Compile Include="_base\RO0_vUserDefaultGroup.cs" />
     <Compile Include="_base\RO0_vUserGroup.cs" />
+    <Compile Include="_base\SC0_Config.cs" />
+    <Compile Include="_base\SC0_Group.cs" />
+    <Compile Include="_base\SC0_User.cs" />
+    <Compile Include="_base\SC0_UserGroup.cs" />
+    <Compile Include="_base\SC0_vUserDefaultGroup.cs" />
+    <Compile Include="_base\SC0_vUserGroup.cs" />
+    <Compile Include="_base\SO0_Config.cs" />
+    <Compile Include="_base\SO0_Group.cs" />
+    <Compile Include="_base\SO0_User.cs" />
+    <Compile Include="_base\SO0_UserGroup.cs" />
+    <Compile Include="_base\SO0_vUserDefaultGroup.cs" />
+    <Compile Include="_base\SO0_vUserGroup.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\OGen-NTier\NTier_datalayer\NTier_datalayer-8.csproj">

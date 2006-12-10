@@ -55,7 +55,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 
 
 
-			_group.Name = "123";
+			_group.Fields.Name = "123";
 			long _idgroup;
 			try {
 				_idgroup = _group.insObject(true);
@@ -73,7 +73,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 				return; // no need...
 			}
 			Assert.IsTrue(_exists, "can't read inserted item (getObject)");
-			Assert.AreEqual("123", _group.Name, "inserted values difer those just read (insObject/getObject)");
+			Assert.AreEqual("123", _group.Fields.Name, "inserted values difer those just read (insObject/getObject)");
 			try {
 				_group.delObject(_idgroup);
 			} catch (Exception e) {

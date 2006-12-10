@@ -31,6 +31,7 @@ along with OGen; if not, write to the
 #endregion
 using System;
 using System.Data;
+using System.Xml.Serialization;
 
 using OGen.lib.datalayer;
 using OGen.NTier.lib.datalayer;
@@ -38,13 +39,8 @@ using OGen.NTier.lib.datalayer;
 namespace OGen.NTier.UTs.lib.datalayer {
 	/// <summary>
 	/// Config DataObject which provides access to Config table at Database.
-#if !NET20
-	/// <note type="implementnotes">
-	/// Access must be made via <see cref="DO_Config">DO_Config</see>.
-	/// </note>
-#endif
 	/// </summary>
-	[DOClassAttribute("Config", false, true)]
+	[DOClassAttribute("Config", "", "", "", false, true)]
 	public 
 #if NET20
 		partial 
@@ -86,7 +82,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			.DBLogfile
 		) {
 			clrObject();
-			haschanges_ = false;
+			Fields.haschanges_ = false;
 		}
 #if NET20
 			/// <summary>
@@ -103,11 +99,19 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			connection_in
 		) {
 			clrObject();
-			haschanges_ = false;
+			Fields.haschanges_ = false;
 		}
 		#endregion
 
 		#region Properties...
+		#region public FO0_Config Fields { get; set; }
+		internal SO0_Config fields_;
+
+		public SO0_Config Fields {
+			get { return fields_; }
+			set { fields_ = value; }
+		}
+		#endregion
 		#region public RO0_Config Record { get; }
 		private RO0_Config record__;
 
@@ -126,129 +130,14 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
-		#region public bool hasChanges { get; }
-		internal bool haschanges_;
-		/// <summary>
-		/// Indicates if changes have been made to DO0_Config properties since last time getObject method was run.
-		/// </summary>
-		public 
-#if !NET20
-			virtual 
-#endif
-			bool hasChanges {
-			get { return haschanges_; }
-		}
-		#endregion
-		//---
-		#region public string Name { get; set; }
-		internal string name_;// = string.Empty;
-		
-		/// <summary>
-		/// Config's Name.
-		/// </summary>
-		[DOPropertyAttribute("Name", true, false, false, "", "", "", true, false, false, false, false, false, false, true)]
-		public 
-#if !NET20
-			virtual 
-#endif
-			string Name {
-			get {
-				return name_;
-			}
-			set {
-				if (
-					(value != null)
-					&&
-					(!value.Equals(name_))
-				) {
-					name_ = value;
-					haschanges_ = true;
-				}
-			}
-		}
-		#endregion
-		#region public string Config { get; set; }
-		internal string config_;// = string.Empty;
-		
-		/// <summary>
-		/// Config's Config.
-		/// </summary>
-		[DOPropertyAttribute("Config", false, false, false, "", "", "", false, true, false, false, false, false, false, true)]
-		public 
-#if !NET20
-			virtual 
-#endif
-			string Config {
-			get {
-				return config_;
-			}
-			set {
-				if (
-					(value != null)
-					&&
-					(!value.Equals(config_))
-				) {
-					config_ = value;
-					haschanges_ = true;
-				}
-			}
-		}
-		#endregion
-		#region public int Type { get; set; }
-		internal int type_;// = 0;
-		
-		/// <summary>
-		/// Config's Type.
-		/// </summary>
-		[DOPropertyAttribute("Type", false, false, false, "", "", "", false, false, true, false, false, true, false, false)]
-		public 
-#if !NET20
-			virtual 
-#endif
-			int Type {
-			get {
-				return type_;
-			}
-			set {
-				if (
-					(!value.Equals(type_))
-				) {
-					type_ = value;
-					haschanges_ = true;
-				}
-			}
-		}
-		#endregion
-		#region public string Description { get; set; }
-		internal string description_;// = string.Empty;
-		
-		/// <summary>
-		/// Config's Description.
-		/// </summary>
-		[DOPropertyAttribute("Description", false, false, false, "", "", "", false, false, false, false, false, false, false, true)]
-		public 
-#if !NET20
-			virtual 
-#endif
-			string Description {
-			get {
-				return description_;
-			}
-			set {
-				if (
-					(value != null)
-					&&
-					(!value.Equals(description_))
-				) {
-					description_ = value;
-					haschanges_ = true;
-				}
-			}
-		}
-		#endregion
 		#endregion
 
 		#region Methods...
+		#region public SC0_Config Serialize();
+		public SO0_Config Serialize() {
+			return Fields;
+		}
+		#endregion
 		#region public void clrObject();
 		/// <summary>
 		/// Clears all DO0_Config properties, assigning them with their appropriate default property value.
@@ -257,11 +146,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			void clrObject() {
-			Name = string.Empty;
-			Config = string.Empty;
-			Type = 0;
-			Description = string.Empty;
+		void clrObject() {
+			Fields = new SO0_Config();
 		}
 		#endregion
 		#region public bool getObject(...);
@@ -273,9 +159,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			bool getObject() {
+		bool getObject() {
 			return getObject(
-				name_
+				Fields.Name
 			);
 		}
 		/// <summary>
@@ -291,36 +177,36 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			string Name_in
 		) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.InputOutput, Name_in, 50), 
-					base.Connection.newDBDataParameter("Config_", DbType.String, ParameterDirection.Output, null, 50), 
-					base.Connection.newDBDataParameter("Type_", DbType.Int32, ParameterDirection.Output, null, 0), 
-					base.Connection.newDBDataParameter("Description_", DbType.String, ParameterDirection.Output, null, 50)
+					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.InputOutput, Name_in, 50, 0, 0), 
+					base.Connection.newDBDataParameter("Config_", DbType.String, ParameterDirection.Output, null, 50, 0, 0), 
+					base.Connection.newDBDataParameter("Type_", DbType.Int32, ParameterDirection.Output, null, 0, 10, 0), 
+					base.Connection.newDBDataParameter("Description_", DbType.String, ParameterDirection.Output, null, 50, 0, 0)
 				};
 				base.Connection.Execute_SQLFunction("sp0_Config_getObject", _dataparameters);
 
 				if (_dataparameters[0].Value != DBNull.Value) {
 					if (_dataparameters[0].Value == System.DBNull.Value) {
-						name_ = string.Empty;
+						Fields.Name = string.Empty;
 					} else {
-						name_ = (string)_dataparameters[0].Value;
+						Fields.Name = (string)_dataparameters[0].Value;
 					}
 					if (_dataparameters[1].Value == System.DBNull.Value) {
-						config_ = string.Empty;
+						Fields.Config = string.Empty;
 					} else {
-						config_ = (string)_dataparameters[1].Value;
+						Fields.Config = (string)_dataparameters[1].Value;
 					}
 					if (_dataparameters[2].Value == System.DBNull.Value) {
-						type_ = 0;
+						Fields.Type = 0;
 					} else {
-						type_ = (int)_dataparameters[2].Value;
+						Fields.Type = (int)_dataparameters[2].Value;
 					}
 					if (_dataparameters[3].Value == System.DBNull.Value) {
-						description_ = string.Empty;
+						Fields.Description_isNull = true;
 					} else {
-						description_ = (string)_dataparameters[3].Value;
+						Fields.Description = (string)_dataparameters[3].Value;
 					}
 
-					haschanges_ = false;
+					Fields.haschanges_ = false;
 					return true;
 				}
 
@@ -338,9 +224,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			void delObject() {
+		void delObject() {
 			delObject(
-				name_
+				Fields.Name
 			);
 		}
 		/// <summary>
@@ -351,11 +237,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			void delObject(
+		void delObject(
 			string Name_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Name_in, 50)
+				base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Name_in, 50, 0, 0)
 			};
 			base.Connection.Execute_SQLFunction("sp0_Config_delObject", _dataparameters);
 
@@ -371,9 +257,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			bool isObject() {
+		bool isObject() {
 			return isObject(
-				name_
+				Fields.Name
 			);
 		}
 		/// <summary>
@@ -385,11 +271,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			bool isObject(
+		bool isObject(
 			string Name_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Name_in, 50)
+				base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Name_in, 50, 0, 0)
 			};
 
 			return (bool)base.Connection.Execute_SQLFunction(
@@ -412,12 +298,12 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #endif
 			bool setObject(bool forceUpdate_in) {
 			bool ConstraintExist_out;
-			if (forceUpdate_in || haschanges_) {
+			if (forceUpdate_in || Fields.haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, name_, 50), 
-					base.Connection.newDBDataParameter("Config_", DbType.String, ParameterDirection.Input, config_, 50), 
-					base.Connection.newDBDataParameter("Type_", DbType.Int32, ParameterDirection.Input, type_, 0), 
-					base.Connection.newDBDataParameter("Description_", DbType.String, ParameterDirection.Input, description_, 50), 
+					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Fields.Name, 50, 0, 0), 
+					base.Connection.newDBDataParameter("Config_", DbType.String, ParameterDirection.Input, Fields.Config, 50, 0, 0), 
+					base.Connection.newDBDataParameter("Type_", DbType.Int32, ParameterDirection.Input, Fields.Type, 0, 10, 0), 
+					base.Connection.newDBDataParameter("Description_", DbType.String, ParameterDirection.Input, Fields.Description_isNull ? null : (object)Fields.Description, 50, 0, 0), 
 
 					//base.Connection.newDBDataParameter("Exists", DbType.Boolean, ParameterDirection.Output, 0, 1)
 					base.Connection.newDBDataParameter("Output_", DbType.Int32, ParameterDirection.Output, null, 0)
@@ -429,10 +315,10 @@ namespace OGen.NTier.UTs.lib.datalayer {
 
 				ConstraintExist_out = (((int)_dataparameters[4].Value & 2) == 1);
 				if (!ConstraintExist_out) {
-					haschanges_ = false;
+					Fields.haschanges_ = false;
 
 					#region DO__utils...._reset();
-					switch (name_) {
+					switch (Fields.Name) {
 						case "SomeBoolConfig": {
 #if NET20
 							DO__utils

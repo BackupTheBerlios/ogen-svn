@@ -70,30 +70,30 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 
 				#region _iduser = new DO_User(UT0__utils.DBConnections[c]).insObject(true);
 				DO_User _user = new DO_User(UT0__utils.DBConnections[c]);
-				_user.Login = testid_;
-				_user.Password = testid_;
+				_user.Fields.Login = testid_;
+				_user.Fields.Password = testid_;
 				_iduser = _user.insObject(true, out _contraint);
 				_user.Dispose(); _user = null;
 				#endregion
 				#region _idgroup = new DO_Group(UT0__utils.DBConnections[c]).insObject(true);
 				DO_Group _group = new DO_Group(UT0__utils.DBConnections[c]);
-				_group.Name = testid_;
+				_group.Fields.Name = testid_;
 				_idgroup = _group.insObject(true);
 				_group.Dispose(); _group = null;
 				#endregion
 
 				DO_UserGroup _usergroup = new DO_UserGroup(UT0__utils.DBConnections[c]);
-				_usergroup.IDUser = _iduser;
-				_usergroup.IDGroup = _idgroup;
-				_usergroup.Relationdate_isNull = true;
-				_usergroup.Defaultrelation_isNull = true;
+				_usergroup.Fields.IDUser = _iduser;
+				_usergroup.Fields.IDGroup = _idgroup;
+				_usergroup.Fields.Relationdate_isNull = true;
+				_usergroup.Fields.Defaultrelation_isNull = true;
 				_usergroup.setObject(true);
 
 				#region test1...
 				_usergroup.clrObject();
 				_usergroup.getObject(_iduser, _idgroup);
-				Assert.IsTrue(_usergroup.Relationdate_isNull, "DO_UserGroup.Relationdate expected to be nullable ({0})", UT0__utils.DBConnections[c].DBServerType);
-				Assert.IsTrue(_usergroup.Defaultrelation_isNull, "DO_UserGroup.Defaultrelation expected to be nullable ({0})", UT0__utils.DBConnections[c].DBServerType);
+				Assert.IsTrue(_usergroup.Fields.Relationdate_isNull, "DO_UserGroup.Relationdate expected to be nullable ({0})", UT0__utils.DBConnections[c].DBServerType);
+				Assert.IsTrue(_usergroup.Fields.Defaultrelation_isNull, "DO_UserGroup.Defaultrelation expected to be nullable ({0})", UT0__utils.DBConnections[c].DBServerType);
 				#endregion
 				#region test2...
 				for (int i = 0; i < 2; i++) { // test both fullmode and not
@@ -103,8 +103,8 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 						(i == 0) // test both fullmode and not
 					);
 					while (_usergroup.Record.Read()) {
-						Assert.IsTrue(_usergroup.Relationdate_isNull, "DO_UserGroup.Relationdate expected to be nullable ({0})", UT0__utils.DBConnections[c].DBServerType);
-						Assert.IsTrue(_usergroup.Defaultrelation_isNull, "DO_UserGroup.Defaultrelation expected to be nullable ({0})", UT0__utils.DBConnections[c].DBServerType);
+						Assert.IsTrue(_usergroup.Fields.Relationdate_isNull, "DO_UserGroup.Relationdate expected to be nullable ({0})", UT0__utils.DBConnections[c].DBServerType);
+						Assert.IsTrue(_usergroup.Fields.Defaultrelation_isNull, "DO_UserGroup.Defaultrelation expected to be nullable ({0})", UT0__utils.DBConnections[c].DBServerType);
 					}
 					_usergroup.Record.Close();
 				}
@@ -172,6 +172,8 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 		/// exception: Npgsql.NpgsqlException: function sp0_UserGroup_setObject(bigint, bigint, timestamp with time zone, boolean) does not exist
 		/// Severity: ERROR 
 		/// Code: 42883
+		/// 
+		/// Read OGen_DOC_ToDos__bugs.txtab about this bug
 		/// </summary>
 		[Test]
 		public void UT_bugPostgreSQL_noFunctionMatchesTheGivenNameAndArgumentTypes() {
@@ -187,23 +189,23 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 
 				#region _iduser = new DO_User(UT0__utils.DBConnections[c]).insObject(true);
 				DO_User _user = new DO_User(UT0__utils.DBConnections[c]);
-				_user.Login = testid_;
-				_user.Password = testid_;
+				_user.Fields.Login = testid_;
+				_user.Fields.Password = testid_;
 				_iduser = _user.insObject(true, out _contraint);
 				_user.Dispose(); _user = null;
 				#endregion
 				#region _idgroup = new DO_Group(UT0__utils.DBConnections[c]).insObject(true);
 				DO_Group _group = new DO_Group(UT0__utils.DBConnections[c]);
-				_group.Name = testid_;
+				_group.Fields.Name = testid_;
 				_idgroup = _group.insObject(true);
 				_group.Dispose(); _group = null;
 				#endregion
 
 				DO_UserGroup _usergroup = new DO_UserGroup(UT0__utils.DBConnections[c]);
-				_usergroup.IDUser = _iduser;
-				_usergroup.IDGroup = _idgroup;
-				_usergroup.Relationdate_isNull = true;
-				_usergroup.Defaultrelation_isNull = true;
+				_usergroup.Fields.IDUser = _iduser;
+				_usergroup.Fields.IDGroup = _idgroup;
+				_usergroup.Fields.Relationdate_isNull = true;
+				_usergroup.Fields.Defaultrelation_isNull = true;
 				try {
 					_usergroup.setObject(true);
 				} catch {

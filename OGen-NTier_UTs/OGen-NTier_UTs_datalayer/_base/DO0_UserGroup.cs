@@ -31,6 +31,7 @@ along with OGen; if not, write to the
 #endregion
 using System;
 using System.Data;
+using System.Xml.Serialization;
 
 using OGen.lib.datalayer;
 using OGen.NTier.lib.datalayer;
@@ -38,13 +39,8 @@ using OGen.NTier.lib.datalayer;
 namespace OGen.NTier.UTs.lib.datalayer {
 	/// <summary>
 	/// UserGroup DataObject which provides access to UserGroup table at Database.
-#if !NET20
-	/// <note type="implementnotes">
-	/// Access must be made via <see cref="DO_UserGroup">DO_UserGroup</see>.
-	/// </note>
-#endif
 	/// </summary>
-	[DOClassAttribute("UserGroup", false, false)]
+	[DOClassAttribute("UserGroup", "", "", "", false, false)]
 	public 
 #if NET20
 		partial 
@@ -86,7 +82,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			.DBLogfile
 		) {
 			clrObject();
-			haschanges_ = false;
+			Fields.haschanges_ = false;
 		}
 #if NET20
 			/// <summary>
@@ -103,11 +99,19 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			connection_in
 		) {
 			clrObject();
-			haschanges_ = false;
+			Fields.haschanges_ = false;
 		}
 		#endregion
 
 		#region Properties...
+		#region public FO0_UserGroup Fields { get; set; }
+		internal SO0_UserGroup fields_;
+
+		public SO0_UserGroup Fields {
+			get { return fields_; }
+			set { fields_ = value; }
+		}
+		#endregion
 		#region public RO0_UserGroup Record { get; }
 		private RO0_UserGroup record__;
 
@@ -126,157 +130,14 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
-		#region public bool hasChanges { get; }
-		internal bool haschanges_;
-		/// <summary>
-		/// Indicates if changes have been made to DO0_UserGroup properties since last time getObject method was run.
-		/// </summary>
-		public 
-#if !NET20
-			virtual 
-#endif
-			bool hasChanges {
-			get { return haschanges_; }
-		}
-		#endregion
-		//---
-		#region public long IDUser { get; set; }
-		internal long iduser_;// = 0L;
-		
-		/// <summary>
-		/// UserGroup's IDUser.
-		/// </summary>
-		[DOPropertyAttribute("IDUser", true, false, false, "", "", "", false, false, false, false, false, true, false, false)]
-		public 
-#if !NET20
-			virtual 
-#endif
-			long IDUser {
-			get {
-				return iduser_;
-			}
-			set {
-				if (
-					(!value.Equals(iduser_))
-				) {
-					iduser_ = value;
-					haschanges_ = true;
-				}
-			}
-		}
-		#endregion
-		#region public long IDGroup { get; set; }
-		internal long idgroup_;// = 0L;
-		
-		/// <summary>
-		/// UserGroup's IDGroup.
-		/// </summary>
-		[DOPropertyAttribute("IDGroup", true, false, false, "", "", "", false, false, false, false, false, true, false, false)]
-		public 
-#if !NET20
-			virtual 
-#endif
-			long IDGroup {
-			get {
-				return idgroup_;
-			}
-			set {
-				if (
-					(!value.Equals(idgroup_))
-				) {
-					idgroup_ = value;
-					haschanges_ = true;
-				}
-			}
-		}
-		#endregion
-		#region public bool Relationdate_isNull { get; set; }
-		public 
-#if !NET20
-			virtual 
-#endif
-			bool Relationdate_isNull {
-			get { return (relationdate_ == null); }
-			set {
-				//if (value) relationdate_ = null;
-
-				if ((value) && (relationdate_ != null)) {
-					relationdate_ = null;
-					haschanges_ = true;
-				}
-			}
-		}
-		#endregion
-		#region public DateTime Relationdate { get; set; }
-		internal object relationdate_;// = new DateTime(1900, 1, 1);
-		
-		/// <summary>
-		/// UserGroup's Relationdate.
-		/// </summary>
-		[DOPropertyAttribute("Relationdate", false, false, true, "", "", "", false, false, false, false, true, false, false, false)]
-		public 
-#if !NET20
-			virtual 
-#endif
-			DateTime Relationdate {
-			get {
-				return (DateTime)((relationdate_ == null) ? new DateTime(1900, 1, 1) : relationdate_);
-			}
-			set {
-				if (
-					(!value.Equals(relationdate_))
-				) {
-					relationdate_ = value;
-					haschanges_ = true;
-				}
-			}
-		}
-		#endregion
-		#region public bool Defaultrelation_isNull { get; set; }
-		public 
-#if !NET20
-			virtual 
-#endif
-			bool Defaultrelation_isNull {
-			get { return (defaultrelation_ == null); }
-			set {
-				//if (value) defaultrelation_ = null;
-
-				if ((value) && (defaultrelation_ != null)) {
-					defaultrelation_ = null;
-					haschanges_ = true;
-				}
-			}
-		}
-		#endregion
-		#region public bool Defaultrelation { get; set; }
-		internal object defaultrelation_;// = false;
-		
-		/// <summary>
-		/// UserGroup's Defaultrelation.
-		/// </summary>
-		[DOPropertyAttribute("Defaultrelation", false, false, true, "", "", "", false, false, false, true, false, false, false, false)]
-		public 
-#if !NET20
-			virtual 
-#endif
-			bool Defaultrelation {
-			get {
-				return (bool)((defaultrelation_ == null) ? false : defaultrelation_);
-			}
-			set {
-				if (
-					(!value.Equals(defaultrelation_))
-				) {
-					defaultrelation_ = value;
-					haschanges_ = true;
-				}
-			}
-		}
-		#endregion
 		#endregion
 
 		#region Methods...
+		#region public SC0_UserGroup Serialize();
+		public SO0_UserGroup Serialize() {
+			return Fields;
+		}
+		#endregion
 		#region public void clrObject();
 		/// <summary>
 		/// Clears all DO0_UserGroup properties, assigning them with their appropriate default property value.
@@ -285,11 +146,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			void clrObject() {
-			IDUser = 0L;
-			IDGroup = 0L;
-			Relationdate_isNull = true;
-			Defaultrelation_isNull = true;
+		void clrObject() {
+			Fields = new SO0_UserGroup();
 		}
 		#endregion
 		#region public bool getObject(...);
@@ -301,10 +159,10 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			bool getObject() {
+		bool getObject() {
 			return getObject(
-				iduser_, 
-				idgroup_
+				Fields.IDUser, 
+				Fields.IDGroup
 			);
 		}
 		/// <summary>
@@ -322,36 +180,36 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDGroup_in
 		) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.InputOutput, IDUser_in, 0), 
-					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.InputOutput, IDGroup_in, 0), 
-					base.Connection.newDBDataParameter("Relationdate_", DbType.DateTime, ParameterDirection.Output, null, 0), 
-					base.Connection.newDBDataParameter("Defaultrelation_", DbType.Boolean, ParameterDirection.Output, null, 0)
+					base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.InputOutput, IDUser_in, 0, 19, 0), 
+					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.InputOutput, IDGroup_in, 0, 19, 0), 
+					base.Connection.newDBDataParameter("Relationdate_", DbType.DateTime, ParameterDirection.Output, null, 0, 0, 0), 
+					base.Connection.newDBDataParameter("Defaultrelation_", DbType.Boolean, ParameterDirection.Output, null, 0, 0, 0)
 				};
 				base.Connection.Execute_SQLFunction("sp0_UserGroup_getObject", _dataparameters);
 
 				if (_dataparameters[0].Value != DBNull.Value) {
 					if (_dataparameters[0].Value == System.DBNull.Value) {
-						iduser_ = 0L;
+						Fields.IDUser = 0L;
 					} else {
-						iduser_ = (long)_dataparameters[0].Value;
+						Fields.IDUser = (long)_dataparameters[0].Value;
 					}
 					if (_dataparameters[1].Value == System.DBNull.Value) {
-						idgroup_ = 0L;
+						Fields.IDGroup = 0L;
 					} else {
-						idgroup_ = (long)_dataparameters[1].Value;
+						Fields.IDGroup = (long)_dataparameters[1].Value;
 					}
 					if (_dataparameters[2].Value == System.DBNull.Value) {
-						Relationdate_isNull = true;
+						Fields.Relationdate_isNull = true;
 					} else {
-						relationdate_ = (DateTime)_dataparameters[2].Value;
+						Fields.Relationdate = (DateTime)_dataparameters[2].Value;
 					}
 					if (_dataparameters[3].Value == System.DBNull.Value) {
-						Defaultrelation_isNull = true;
+						Fields.Defaultrelation_isNull = true;
 					} else {
-						defaultrelation_ = (bool)_dataparameters[3].Value;
+						Fields.Defaultrelation = (bool)_dataparameters[3].Value;
 					}
 
-					haschanges_ = false;
+					Fields.haschanges_ = false;
 					return true;
 				}
 
@@ -369,10 +227,10 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			void delObject() {
+		void delObject() {
 			delObject(
-				iduser_, 
-				idgroup_
+				Fields.IDUser, 
+				Fields.IDGroup
 			);
 		}
 		/// <summary>
@@ -384,13 +242,13 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			void delObject(
+		void delObject(
 			long IDUser_in, 
 			long IDGroup_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0), 
-				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0)
+				base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0, 19, 0), 
+				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0, 19, 0)
 			};
 			base.Connection.Execute_SQLFunction("sp0_UserGroup_delObject", _dataparameters);
 
@@ -406,10 +264,10 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			bool isObject() {
+		bool isObject() {
 			return isObject(
-				iduser_, 
-				idgroup_
+				Fields.IDUser, 
+				Fields.IDGroup
 			);
 		}
 		/// <summary>
@@ -422,13 +280,13 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			bool isObject(
+		bool isObject(
 			long IDUser_in, 
 			long IDGroup_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0), 
-				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0)
+				base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0, 19, 0), 
+				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0, 19, 0)
 			};
 
 			return (bool)base.Connection.Execute_SQLFunction(
@@ -451,12 +309,12 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #endif
 			bool setObject(bool forceUpdate_in) {
 			bool ConstraintExist_out;
-			if (forceUpdate_in || haschanges_) {
+			if (forceUpdate_in || Fields.haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, iduser_, 0), 
-					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, idgroup_, 0), 
-					base.Connection.newDBDataParameter("Relationdate_", DbType.DateTime, ParameterDirection.Input, relationdate_, 0), 
-					base.Connection.newDBDataParameter("Defaultrelation_", DbType.Boolean, ParameterDirection.Input, defaultrelation_, 0), 
+					base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, Fields.IDUser, 0, 19, 0), 
+					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, Fields.IDGroup, 0, 19, 0), 
+					base.Connection.newDBDataParameter("Relationdate_", DbType.DateTime, ParameterDirection.Input, Fields.Relationdate_isNull ? null : (object)Fields.Relationdate, 0, 0, 0), 
+					base.Connection.newDBDataParameter("Defaultrelation_", DbType.Boolean, ParameterDirection.Input, Fields.Defaultrelation_isNull ? null : (object)Fields.Defaultrelation, 0, 0, 0), 
 
 					//base.Connection.newDBDataParameter("Exists", DbType.Boolean, ParameterDirection.Output, 0, 1)
 					base.Connection.newDBDataParameter("Output_", DbType.Int32, ParameterDirection.Output, null, 0)
@@ -468,7 +326,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 
 				ConstraintExist_out = (((int)_dataparameters[4].Value & 2) == 1);
 				if (!ConstraintExist_out) {
-					haschanges_ = false;
+					Fields.haschanges_ = false;
 				}
 
 				return (((int)_dataparameters[4].Value & 1) != 1);

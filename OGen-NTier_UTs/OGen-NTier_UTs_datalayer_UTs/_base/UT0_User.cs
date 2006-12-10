@@ -55,9 +55,9 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 
 
 
-			_user.Login = "123";
-			_user.Password = "123";
-			_user.SomeNullValue = 123;
+			_user.Fields.Login = "123";
+			_user.Fields.Password = "123";
+			_user.Fields.SomeNullValue = 123;
 			// handle Constraints // ToDos: here!
 
 

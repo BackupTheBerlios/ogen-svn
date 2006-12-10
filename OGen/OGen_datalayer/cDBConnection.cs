@@ -744,7 +744,10 @@ if (Logenabled) {
 //		#endregion
 //		#region public DataSet Execute_SQLQuery_returnDataSet(...);
 //		#region private DataSet Execute_SQLQuery_returnDataSet(...);
-		private DataSet Execute_SQLQuery_returnDataSet(string query_in, IDbConnection connection_in) {
+		private DataSet Execute_SQLQuery_returnDataSet(
+			string query_in, 
+			IDbConnection connection_in
+		) {
 			DataSet Execute_SQLQuery_returnDataSet_out;
 
 			IDbDataAdapter _dataadapter = newDBDataAdapter(query_in, connection_in, true);
@@ -956,7 +959,12 @@ if (Logenabled) {
 		/// <param name="function_in">SQL Function name</param>
 		/// <returns>populated Object with SQL Function's Output</returns>
 		public object Execute_SQLFunction(string function_in) {
-			return Execute_SQLFunction(function_in, new IDbDataParameter[] { }, DbType.Boolean, -1);
+			return Execute_SQLFunction(
+				function_in, 
+				new IDbDataParameter[] { }, 
+				DbType.Boolean, 
+				-1
+			);
 		}
 		#endregion
 		#region public object Execute_SQLFunction(string function_in, DbType returnValue_DbType_in, int returnValue_Size_in);
@@ -967,8 +975,17 @@ if (Logenabled) {
 		/// <param name="returnValue_DbType_in">DbType for return value</param>
 		/// <param name="returnValue_Size_in">Size for return value (the actual DataBase return value Size representation, if such exists)</param>
 		/// <returns>populated Object with SQL Function's Output</returns>
-		public object Execute_SQLFunction(string function_in, DbType returnValue_DbType_in, int returnValue_Size_in) {
-			return Execute_SQLFunction(function_in, new IDbDataParameter[] { }, returnValue_DbType_in, returnValue_Size_in);
+		public object Execute_SQLFunction(
+			string function_in, 
+			DbType returnValue_DbType_in, 
+			int returnValue_Size_in
+		) {
+			return Execute_SQLFunction(
+				function_in, 
+				new IDbDataParameter[] { }, 
+				returnValue_DbType_in, 
+				returnValue_Size_in
+			);
 		}
 		#endregion
 		#region public object Execute_SQLFunction(string function_in, IDbDataParameter[] dataParameters_in);
@@ -978,7 +995,10 @@ if (Logenabled) {
 		/// <param name="function_in">SQL Function name</param>
 		/// <param name="dataParameters_in">SQL Function parameters</param>
 		/// <returns>populated Object with SQL Function's Output</returns>
-		public object Execute_SQLFunction(string function_in, IDbDataParameter[] dataParameters_in) {
+		public object Execute_SQLFunction(
+			string function_in, 
+			IDbDataParameter[] dataParameters_in
+		) {
 			return Execute_SQLFunction(function_in, dataParameters_in, DbType.Boolean, -1);
 		}
 		#endregion
@@ -1116,7 +1136,10 @@ if (Logenabled) {
 		/// Thrown when an empty Connection String has been supplied
 		/// </exception>
 		/// <returns>populated DataSet with SQL Function's Output</returns>
-		public DataSet Execute_SQLFunction_returnDataSet(string function_in, IDbDataParameter[] dataParameters_in) {
+		public DataSet Execute_SQLFunction_returnDataSet(
+			string function_in, 
+			IDbDataParameter[] dataParameters_in
+		) {
 			DataSet Execute_SQLFunction_returnDataSet_out;
 
 			if (isopen_) {
@@ -1171,7 +1194,10 @@ if (Logenabled) {
 		/// <param name="function_in">SQL Function name</param>
 		/// <param name="dataParameters_in">SQL Function parameters</param>
 		/// <returns>populated DataTable with SQL Function's Output</returns>
-		public DataTable Execute_SQLFunction_returnDataTable(string function_in, IDbDataParameter[] dataParameters_in) {
+		public DataTable Execute_SQLFunction_returnDataTable(
+			string function_in, 
+			IDbDataParameter[] dataParameters_in
+		) {
 			DataTable Execute_SQLFunction_returnDataTable_out;
 
 			#region Execute_SQLFunction_returnDataTable_out = Execute_SQLFunction_returnDataSet(function_in, dataParameters_in).Tables[0];
@@ -1591,6 +1617,18 @@ ORDER BY SCHEMA_NAME"
 		/// </summary>
 		/// <returns>String array, representing a list of Table names</returns>
 		public cDBTable[] getTables(
+		) {
+			return getTables(
+				string.Empty,
+				string.Empty
+			);
+		}
+
+		/// <summary>
+		/// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
+		/// </summary>
+		/// <returns>String array, representing a list of Table names</returns>
+		public cDBTable[] getTables(
 			string sqlFunction_in
 		) {
 			return getTables(
@@ -1744,6 +1782,20 @@ string.Empty
 		}
 		#endregion
 		#region public cDBTableField[] getTableFields(...);
+		/// <summary>
+		/// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Field names for some specific Table.
+		/// </summary>
+		/// <param name="tableName_in">Table name for which Field names are to be retrieved</param>
+		/// <returns>String array, representing a list of Field names</returns>
+		public cDBTableField[] getTableFields(
+			string tableName_in
+		) {
+			return getTableFields(
+				tableName_in,
+				string.Empty
+			);
+		}
+
 		/// <summary>
 		/// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Field names for some specific Table.
 		/// </summary>

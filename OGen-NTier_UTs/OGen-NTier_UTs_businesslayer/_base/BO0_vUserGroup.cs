@@ -30,6 +30,7 @@ along with OGen; if not, write to the
 */
 #endregion
 using System;
+using System.Xml.Serialization;
 
 using OGen.NTier.lib.datalayer;
 using OGen.NTier.lib.businesslayer;
@@ -39,12 +40,8 @@ using OGen.NTier.UTs.lib.datalayer;
 namespace OGen.NTier.UTs.lib.businesslayer {
 	/// <summary>
 	/// vUserGroup BusinessObject which provides access to <see cref="OGen.NTier.UTs.lib.datalayer.DO_vUserGroup">DO_vUserGroup</see> for the Business Layer.
-#if !NET20
-	/// <note type="implementnotes">
-	/// Access must be made via <see cref="BO_vUserGroup">BO_vUserGroup</see>.
-	/// </note>
-#endif
 	/// </summary>
+	[DOClassAttribute("vUserGroup", "", "", "", true, false)]
 	public 
 #if NET20
 		partial 
@@ -59,12 +56,9 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 #endif
 		: BO__base {
 		#region public BO_vUserGroup(...);
-#if NET20
-		public BO_vUserGroup
-#else
-		internal BO0_vUserGroup
+#if !NET20
+		internal BO0_vUserGroup() {}
 #endif
-		() {}
 
 		///
 #if NET20
@@ -73,129 +67,240 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 		~BO0_vUserGroup
 #endif
 		() {
-			if (mainaggregate != null) {
-				mainaggregate.Dispose(); mainaggregate = null;
+			if (mainaggregate__ != null) {
+				mainaggregate__.Dispose(); mainaggregate__ = null;
 			}
 		}
 		#endregion
 
 		#region private Properties...
-		private DO_vUserGroup mainaggregate;
+		private DO_vUserGroup mainaggregate__;
 
 		///
-		protected DO_vUserGroup mainAggregate {
+#if NET20
+		private 
+#else
+		protected 
+#endif
+		DO_vUserGroup mainAggregate {
 			get {
-				if (mainaggregate == null) {
+				if (mainaggregate__ == null) {
 					// instantiating for the first time and
 					// only because it became needed, otherwise
 					// never instantiated...
-					mainaggregate = new DO_vUserGroup();
+					mainaggregate__ = new DO_vUserGroup();
 				}
-				return mainaggregate;
+				return mainaggregate__;
 			}
 		}
-
+		#endregion
+		#region public Properties...
 		/// <summary>
 		/// Exposes RecordObject.
 		/// </summary>
 		public override iRecordObject Record {
 			get { return mainAggregate.Record; }
 		}
-		#endregion
-		#region public Properties...
+
+		public SO0_vUserGroup Fields {
+			get { return mainAggregate.Fields; }
+		}
 		#region public long IDUser { get; set; }
 		/// <summary>
 		/// vUserGroup's IDUser.
 		/// </summary>
+		[DOPropertyAttribute(
+			"IDUser", 
+			"", 
+			"", 
+			true, 
+			false, 
+			false, 
+			"", 
+			"", 
+			"", 
+			false, 
+			false, 
+			false, 
+			false, 
+			false, 
+			true, 
+			false, 
+			false, 
+			false, 
+			false, 
+			0, 
+			""
+		)]
 		public 
 #if !NET20
 			virtual 
 #endif
-			long IDUser {
-			get { return mainAggregate.IDUser; }
-			set { mainAggregate.IDUser = value; }
-		}
-		#endregion
-		#region public bool Login_isNull { get; set; }
-		public 
-#if !NET20
-			virtual 
-#endif
-			bool Login_isNull {
-			get { return mainAggregate.Login_isNull; }
-			set { mainAggregate.Login_isNull = value; }
+		long IDUser {
+			get { return mainAggregate.Fields.IDUser; }
+			set { mainAggregate.Fields.IDUser = value; }
 		}
 		#endregion
 		#region public string Login { get; set; }
 		/// <summary>
 		/// vUserGroup's Login.
 		/// </summary>
+		[DOPropertyAttribute(
+			"Login", 
+			"", 
+			"", 
+			false, 
+			false, 
+			false, 
+			"", 
+			"", 
+			"", 
+			false, 
+			false, 
+			false, 
+			false, 
+			false, 
+			false, 
+			false, 
+			true, 
+			false, 
+			false, 
+			50, 
+			""
+		)]
 		public 
 #if !NET20
 			virtual 
 #endif
-			string Login {
-			get { return mainAggregate.Login; }
-			set { mainAggregate.Login = value; }
+		string Login {
+			get { return mainAggregate.Fields.Login; }
+			set { mainAggregate.Fields.Login = value; }
 		}
 		#endregion
 		#region public long IDGroup { get; set; }
 		/// <summary>
 		/// vUserGroup's IDGroup.
 		/// </summary>
+		[DOPropertyAttribute(
+			"IDGroup", 
+			"", 
+			"", 
+			true, 
+			false, 
+			false, 
+			"", 
+			"", 
+			"", 
+			false, 
+			false, 
+			false, 
+			false, 
+			false, 
+			true, 
+			false, 
+			false, 
+			false, 
+			false, 
+			0, 
+			""
+		)]
 		public 
 #if !NET20
 			virtual 
 #endif
-			long IDGroup {
-			get { return mainAggregate.IDGroup; }
-			set { mainAggregate.IDGroup = value; }
-		}
-		#endregion
-		#region public bool Name_isNull { get; set; }
-		public 
-#if !NET20
-			virtual 
-#endif
-			bool Name_isNull {
-			get { return mainAggregate.Name_isNull; }
-			set { mainAggregate.Name_isNull = value; }
+		long IDGroup {
+			get { return mainAggregate.Fields.IDGroup; }
+			set { mainAggregate.Fields.IDGroup = value; }
 		}
 		#endregion
 		#region public string Name { get; set; }
 		/// <summary>
 		/// vUserGroup's Name.
 		/// </summary>
+		[DOPropertyAttribute(
+			"Name", 
+			"", 
+			"", 
+			false, 
+			false, 
+			false, 
+			"", 
+			"", 
+			"", 
+			false, 
+			false, 
+			false, 
+			false, 
+			false, 
+			false, 
+			false, 
+			true, 
+			false, 
+			false, 
+			50, 
+			""
+		)]
 		public 
 #if !NET20
 			virtual 
 #endif
-			string Name {
-			get { return mainAggregate.Name; }
-			set { mainAggregate.Name = value; }
-		}
-		#endregion
-		#region public bool Relationdate_isNull { get; set; }
-		public 
-#if !NET20
-			virtual 
-#endif
-			bool Relationdate_isNull {
-			get { return mainAggregate.Relationdate_isNull; }
-			set { mainAggregate.Relationdate_isNull = value; }
+		string Name {
+			get { return mainAggregate.Fields.Name; }
+			set { mainAggregate.Fields.Name = value; }
 		}
 		#endregion
 		#region public DateTime Relationdate { get; set; }
 		/// <summary>
 		/// vUserGroup's Relationdate.
 		/// </summary>
+		[DOPropertyAttribute(
+			"Relationdate", 
+			"", 
+			"", 
+			false, 
+			false, 
+			false, 
+			"", 
+			"", 
+			"", 
+			false, 
+			false, 
+			false, 
+			false, 
+			true, 
+			false, 
+			false, 
+			false, 
+			false, 
+			false, 
+			0, 
+			""
+		)]
 		public 
 #if !NET20
 			virtual 
 #endif
-			DateTime Relationdate {
-			get { return mainAggregate.Relationdate; }
-			set { mainAggregate.Relationdate = value; }
+		DateTime Relationdate {
+			get { return mainAggregate.Fields.Relationdate; }
+			set { mainAggregate.Fields.Relationdate = value; }
+		}
+		#endregion
+		#endregion
+
+		#region public Methods...
+		#region public SC0_vUserGroup Serialize();
+		public SO0_vUserGroup Serialize() {
+			return mainAggregate.Serialize();
+		}
+		#endregion
+		#region public void Deserialize(SO0_vUserGroup vUserGroup_in);
+		public void Deserialize(SO0_vUserGroup vUserGroup_in) {
+			mainAggregate.Fields = vUserGroup_in;
+		}
+		#endregion
+		#region public SC0_vUserGroup Record_Serialize();
+		public SC0_vUserGroup Record_Serialize() {
+			return mainAggregate.Record.Serialize();
 		}
 		#endregion
 		#endregion

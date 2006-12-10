@@ -53,8 +53,8 @@ namespace OGen.NTier.UTs.howtos {
 			_user.Connection.Transaction.Begin();
 
 			// performing some operations on User Data Object
-			_user.Login = _testid;
-			_user.Password = _testid;
+			_user.Fields.Login = _testid;
+			_user.Fields.Password = _testid;
 			_iduser = _user.insObject(true, out _constraint);
 			// handling constraint code should be added here
 

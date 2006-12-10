@@ -31,6 +31,7 @@ along with OGen; if not, write to the
 #endregion
 using System;
 using System.Data;
+using System.Xml.Serialization;
 
 using OGen.lib.datalayer;
 using OGen.NTier.lib.datalayer;
@@ -38,13 +39,8 @@ using OGen.NTier.lib.datalayer;
 namespace OGen.NTier.UTs.lib.datalayer {
 	/// <summary>
 	/// Group DataObject which provides access to Group table at Database.
-#if !NET20
-	/// <note type="implementnotes">
-	/// Access must be made via <see cref="DO_Group">DO_Group</see>.
-	/// </note>
-#endif
 	/// </summary>
-	[DOClassAttribute("Group", false, false)]
+	[DOClassAttribute("Group", "", "", "", false, false)]
 	public 
 #if NET20
 		partial 
@@ -86,7 +82,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			.DBLogfile
 		) {
 			clrObject();
-			haschanges_ = false;
+			Fields.haschanges_ = false;
 		}
 #if NET20
 			/// <summary>
@@ -103,11 +99,19 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			connection_in
 		) {
 			clrObject();
-			haschanges_ = false;
+			Fields.haschanges_ = false;
 		}
 		#endregion
 
 		#region Properties...
+		#region public FO0_Group Fields { get; set; }
+		internal SO0_Group fields_;
+
+		public SO0_Group Fields {
+			get { return fields_; }
+			set { fields_ = value; }
+		}
+		#endregion
 		#region public RO0_Group Record { get; }
 		private RO0_Group record__;
 
@@ -126,75 +130,14 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
-		#region public bool hasChanges { get; }
-		internal bool haschanges_;
-		/// <summary>
-		/// Indicates if changes have been made to DO0_Group properties since last time getObject method was run.
-		/// </summary>
-		public 
-#if !NET20
-			virtual 
-#endif
-			bool hasChanges {
-			get { return haschanges_; }
-		}
-		#endregion
-		//---
-		#region public long IDGroup { get; set; }
-		internal long idgroup_;// = 0L;
-		
-		/// <summary>
-		/// Group's IDGroup.
-		/// </summary>
-		[DOPropertyAttribute("IDGroup", true, true, false, "", "", "", false, false, false, false, false, true, false, false)]
-		public 
-#if !NET20
-			virtual 
-#endif
-			long IDGroup {
-			get {
-				return idgroup_;
-			}
-			set {
-				if (
-					(!value.Equals(idgroup_))
-				) {
-					idgroup_ = value;
-					haschanges_ = true;
-				}
-			}
-		}
-		#endregion
-		#region public string Name { get; set; }
-		internal string name_;// = string.Empty;
-		
-		/// <summary>
-		/// Group's Name.
-		/// </summary>
-		[DOPropertyAttribute("Name", false, false, false, "", "", "", false, false, false, false, false, false, false, true)]
-		public 
-#if !NET20
-			virtual 
-#endif
-			string Name {
-			get {
-				return name_;
-			}
-			set {
-				if (
-					(value != null)
-					&&
-					(!value.Equals(name_))
-				) {
-					name_ = value;
-					haschanges_ = true;
-				}
-			}
-		}
-		#endregion
 		#endregion
 
 		#region Methods...
+		#region public SC0_Group Serialize();
+		public SO0_Group Serialize() {
+			return Fields;
+		}
+		#endregion
 		#region public void clrObject();
 		/// <summary>
 		/// Clears all DO0_Group properties, assigning them with their appropriate default property value.
@@ -203,9 +146,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			void clrObject() {
-			IDGroup = 0L;
-			Name = string.Empty;
+		void clrObject() {
+			Fields = new SO0_Group();
 		}
 		#endregion
 		#region public bool getObject(...);
@@ -217,9 +159,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			bool getObject() {
+		bool getObject() {
 			return getObject(
-				idgroup_
+				Fields.IDGroup
 			);
 		}
 		/// <summary>
@@ -236,24 +178,24 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		) {
 			if (IDGroup_in != 0L) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.InputOutput, IDGroup_in, 0), 
-					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Output, null, 50)
+					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.InputOutput, IDGroup_in, 0, 19, 0), 
+					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Output, null, 50, 0, 0)
 				};
 				base.Connection.Execute_SQLFunction("sp0_Group_getObject", _dataparameters);
 
 				if (_dataparameters[0].Value != DBNull.Value) {
 					if (_dataparameters[0].Value == System.DBNull.Value) {
-						idgroup_ = 0L;
+						Fields.IDGroup = 0L;
 					} else {
-						idgroup_ = (long)_dataparameters[0].Value;
+						Fields.IDGroup = (long)_dataparameters[0].Value;
 					}
 					if (_dataparameters[1].Value == System.DBNull.Value) {
-						name_ = string.Empty;
+						Fields.Name = string.Empty;
 					} else {
-						name_ = (string)_dataparameters[1].Value;
+						Fields.Name = (string)_dataparameters[1].Value;
 					}
 
-					haschanges_ = false;
+					Fields.haschanges_ = false;
 					return true;
 				}
 			}
@@ -272,9 +214,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			void delObject() {
+		void delObject() {
 			delObject(
-				idgroup_
+				Fields.IDGroup
 			);
 		}
 		/// <summary>
@@ -285,11 +227,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			void delObject(
+		void delObject(
 			long IDGroup_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0)
+				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0, 19, 0)
 			};
 			base.Connection.Execute_SQLFunction("sp0_Group_delObject", _dataparameters);
 
@@ -305,9 +247,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			bool isObject() {
+		bool isObject() {
 			return isObject(
-				idgroup_
+				Fields.IDGroup
 			);
 		}
 		/// <summary>
@@ -319,11 +261,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			bool isObject(
+		bool isObject(
 			long IDGroup_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0)
+				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0, 19, 0)
 			};
 
 			return (bool)base.Connection.Execute_SQLFunction(
@@ -344,12 +286,12 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			long insObject(
+		long insObject(
 			bool selectIdentity_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Output, null, 0), 
-				base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, name_, 50), 
+				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Output, null, 0, 19, 0), 
+				base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Fields.Name, 50, 0, 0), 
 
 				base.Connection.newDBDataParameter("SelectIdentity_", DbType.Boolean, ParameterDirection.Input, selectIdentity_in, 1)
 			};
@@ -358,11 +300,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				_dataparameters
 			);
 
-			IDGroup = (long)_dataparameters[0].Value;
-			haschanges_ = false;
+			Fields.IDGroup = (long)_dataparameters[0].Value;
+			Fields.haschanges_ = false;
 			
 
-			return IDGroup;
+			return Fields.IDGroup;
 		}
 		#endregion
 		#region public void updObject(...);
@@ -374,17 +316,17 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #if !NET20
 			virtual 
 #endif
-			void updObject(bool forceUpdate_in) {
-			if (forceUpdate_in || haschanges_) {
+		void updObject(bool forceUpdate_in) {
+			if (forceUpdate_in || Fields.haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, idgroup_, 0), 
-					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, name_, 50)
+					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, Fields.IDGroup, 0, 19, 0), 
+					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Fields.Name, 50, 0, 0)
 				};
 				base.Connection.Execute_SQLFunction(
 					"sp0_Group_updObject", 
 					_dataparameters
 				);
-				haschanges_ = false;
+				Fields.haschanges_ = false;
 			}
 		}
 		#endregion

@@ -46,13 +46,11 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			: BO0_vUserGroup 
 #endif
 	{
-#if !NET20
 		#region public BO_vUserGroup(...);
 		///
 		public BO_vUserGroup() {
 		}
 		#endregion
-#endif
 
 		#region private Properties...
 		#endregion

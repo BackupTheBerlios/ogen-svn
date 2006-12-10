@@ -55,10 +55,10 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 
 
 
-			_usergroup.IDUser = 123L;
-			_usergroup.IDGroup = 123L;
-			_usergroup.Relationdate = new DateTime(2341, 12, 12);
-			_usergroup.Defaultrelation = true;
+			_usergroup.Fields.IDUser = 123L;
+			_usergroup.Fields.IDGroup = 123L;
+			_usergroup.Fields.Relationdate = new DateTime(2341, 12, 12);
+			_usergroup.Fields.Defaultrelation = true;
 			// setObject(); // ToDos: here!
 
 

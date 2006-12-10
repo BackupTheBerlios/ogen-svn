@@ -66,6 +66,60 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		#endregion
 
 		#region public Methods...
+		#region //public SC0_Group Serialize();
+		//public SC0_Group Serialize() {
+		//	return new SC0_Group(Record);
+		//}
+		#endregion
+		#region public SC0_Group Serialize();
+		public SC0_Group Serialize() {
+			SO0_Group[] _serialisableobject;
+
+			lock (record__) {
+				int _current = Current;
+
+				_serialisableobject = new SO0_Group[Count];
+
+				Reset();
+				while (Read()) {
+					_serialisableobject[Current] 
+						= new SO0_Group(
+							parent_ref_.Fields.IDGroup,
+							parent_ref_.Fields.Name
+						);
+				}
+
+				Current = _current;
+			}
+
+			SC0_Group _serialize_out = new SC0_Group();
+			_serialize_out.SO0_Group = _serialisableobject;
+			return _serialize_out;
+		}
+		#endregion
+		#region public void Open(SC0_Group serialisablecollection_in);
+		public void Open(SC0_Group serialisablecollection_in) {
+			Open(serialisablecollection_in.SO0_Group);
+		}
+		#endregion
+		#region public void Open(SO0_Group[] serialisableobject_in);
+		public void Open(SO0_Group[] serialisableobject_in) {
+			DataTable _datatable = new DataTable();
+			_datatable.Columns.Add(new DataColumn("codProfissao", typeof(int)));
+			_datatable.Columns.Add(new DataColumn("descProfissao", typeof(string)));
+
+			DataRow _datarow;
+			for (int i = 0; i < serialisableobject_in.Length; i++) {
+			    _datarow = _datatable.NewRow();
+				_datarow["IDGroup"] = serialisableobject_in[i].IDGroup;
+				_datarow["Name"] = serialisableobject_in[i].Name;
+
+			    _datatable.Rows.Add(_datarow);
+			}
+
+			Open(true, _datatable);
+		}
+		#endregion
 		#region public override bool Read();
 		/// <summary>
 		/// Reads values from Record, assigns them to the appropriate Group DataObject property, finally it steps current iteration at the Record forward and returns a bool value indicating if End Of Record has been reached.
@@ -84,19 +138,19 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			if (base.read()) {
 				if (base.Fullmode) {
 					if (base.Record.Rows[Current]["IDGroup"] == System.DBNull.Value) {
-						parent_ref_.idgroup_ = 0L;
+						parent_ref_.Fields.idgroup_ = 0L;
 					} else {
-						parent_ref_.idgroup_ = (long)base.Record.Rows[Current]["IDGroup"];
+						parent_ref_.Fields.idgroup_ = (long)base.Record.Rows[Current]["IDGroup"];
 					}
 					if (base.Record.Rows[Current]["Name"] == System.DBNull.Value) {
-						parent_ref_.name_ = string.Empty;
+						parent_ref_.Fields.name_ = string.Empty;
 					} else {
-						parent_ref_.name_ = (string)base.Record.Rows[Current]["Name"];
+						parent_ref_.Fields.name_ = (string)base.Record.Rows[Current]["Name"];
 					}
 
-					parent_ref_.haschanges_ = false;
+					parent_ref_.Fields.haschanges_ = false;
 				} else {
-					parent_ref_.idgroup_ = (long)((base.Record.Rows[Current]["IDGroup"] == System.DBNull.Value) ? 0L : base.Record.Rows[Current]["IDGroup"]);
+					parent_ref_.Fields.IDGroup = (long)((base.Record.Rows[Current]["IDGroup"] == System.DBNull.Value) ? 0L : base.Record.Rows[Current]["IDGroup"]);
 
 					if (!doNOTgetObject_in) {
 						parent_ref_.getObject();

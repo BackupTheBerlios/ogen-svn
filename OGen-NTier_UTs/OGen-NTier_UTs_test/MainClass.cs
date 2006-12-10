@@ -47,8 +47,6 @@ namespace OGen.NTier.UTs.test {
 	class MainClass {
 		[STAThread]
 		static void Main(string[] args) {
-
-
 			//DO_UserGroup _usergroup_test = new DO_UserGroup(
 			//    //new cDBConnection(
 			//    //    eDBServerTypes.SQLServer,
@@ -61,21 +59,34 @@ namespace OGen.NTier.UTs.test {
 			//_usergroup_test.Defaultrelation_isNull = true;
 			//_usergroup_test.setObject(true);
 
+			//OGen.NTier.UTs.lib.datalayer.UTs.UT__utils _ut_utils
+			//    = new OGen.NTier.UTs.lib.datalayer.UTs.UT__utils();
+			//_ut_utils.TestFixtureSetUp();
+			//_ut_utils.UT_Check_DataObjects_integrity();
+			//return;
+
+			//OGen.NTier.UTs.lib.datalayer.UTs.UT_User _ut_user 
+			//    = new OGen.NTier.UTs.lib.datalayer.UTs.UT_User();
+			//_ut_user.TestFixtureSetUp();
+			//_ut_user.UT_hasChanges();
+			//return;
+
 
 			OGen.NTier.UTs.lib.datalayer.UTs.UT_UserGroup
 			    _ut_usergroup = new OGen.NTier.UTs.lib.datalayer.UTs.UT_UserGroup();
 			_ut_usergroup.TestFixtureSetUp();
 			_ut_usergroup.UT_bugPostgreSQL_noFunctionMatchesTheGivenNameAndArgumentTypes();
+			//_ut_usergroup.UT_NullableFields();
 			return;
 
 
 			DO_Config _config_test = new DO_Config();
 			_config_test.Connection.Open();
 			_config_test.Connection.Transaction.Begin();
-			_config_test.Name = "test";
-			_config_test.Description = "test";
-			_config_test.Config = "test";
-			_config_test.Type = 1;
+			_config_test.Fields.Name = "test";
+			_config_test.Fields.Description = "test";
+			_config_test.Fields.Config = "test";
+			_config_test.Fields.Type = 1;
 			try {
 				_config_test.setObject(true);
 				Console.WriteLine("ok");
@@ -130,9 +141,9 @@ namespace OGen.NTier.UTs.test {
 						_conter = DateTime.Now.Ticks;
 
 						for (int c = 0; c < _cycles; c++) {
-							_config.Name = c.ToString();
-							_config.Config = "DELETE THIS, IT IS A TEST";
-							_config.Type = 2;
+							_config.Fields.Name = c.ToString();
+							_config.Fields.Config = "DELETE THIS, IT IS A TEST";
+							_config.Fields.Type = 2;
 							_config.setObject(true);
 						}
 
@@ -164,7 +175,7 @@ namespace OGen.NTier.UTs.test {
 
 						_config.Record.Open_all(true);
 						while (_config.Record.Read()) {
-							if (_config.Config == "DELETE THIS, IT IS A TEST") {
+							if (_config.Fields.Config == "DELETE THIS, IT IS A TEST") {
 								_config.delObject();
 							}
 						}
@@ -181,9 +192,9 @@ namespace OGen.NTier.UTs.test {
 						#region _config.getObject();
 						_conter = DateTime.Now.Ticks;
 
-						_config.Name = "SomeIntConfig";
-						_config.Config = "1245";
-						_config.Type = 4;
+						_config.Fields.Name = "SomeIntConfig";
+						_config.Fields.Config = "1245";
+						_config.Fields.Type = 4;
 						_config.setObject(true);
 
 						for (int c = 0; c < _cycles; c++) {
@@ -207,14 +218,14 @@ namespace OGen.NTier.UTs.test {
 
 						for (int c = 0; c < _cycles; c++) {
 							bool _constraint;
-							_user.Login = c.ToString();
-							_user.Password = "DELETE THIS, IT IS A TEST";
+							_user.Fields.Login = c.ToString();
+							_user.Fields.Password = "DELETE THIS, IT IS A TEST";
 							_user.insObject(true, out _constraint);
 						}
 
 						_user.Record.Open_all(true);
 						while (_user.Record.Read()) {
-							if (_user.Password == "DELETE THIS, IT IS A TEST") {
+							if (_user.Fields.Password == "DELETE THIS, IT IS A TEST") {
 								_user.delObject();
 							}
 						}
@@ -233,8 +244,8 @@ namespace OGen.NTier.UTs.test {
 						for (int c = 0; c < _cycles; c++) {
 							if (!_user.isObject_byLogin("fmonteiro")) {
 								bool _constraint;
-								_user.Login = "fmonteiro";
-								_user.Password = "passpub";
+								_user.Fields.Login = "fmonteiro";
+								_user.Fields.Password = "passpub";
 								_user.insObject(true, out _constraint);
 							}
 							_user.getObject_byLogin("fmonteiro");

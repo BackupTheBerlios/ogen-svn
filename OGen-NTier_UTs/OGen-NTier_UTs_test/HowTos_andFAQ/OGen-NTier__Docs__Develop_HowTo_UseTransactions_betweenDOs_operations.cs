@@ -58,8 +58,8 @@ namespace OGen.NTier.UTs.howtos {
 			// sharing connection with User Data Object
 			DO_User _user = new DO_User(_con);
 			// performing some operations on User Data Object
-			_user.Login = _testid;
-			_user.Password = _testid;
+			_user.Fields.Login = _testid;
+			_user.Fields.Password = _testid;
 			_iduser = _user.insObject(true, out _constraint);
 			// handling constraint code should be added here
 			_user.Dispose(); _user = null;
@@ -67,17 +67,17 @@ namespace OGen.NTier.UTs.howtos {
 			// sharing connection with Group Data Object
 			DO_Group _group = new DO_Group(_con);
 			// performing some operations on User Data Object
-			_group.Name = _testid;
+			_group.Fields.Name = _testid;
 			_idgroup = _group.insObject(true);
 			_group.Dispose(); _group = null;
 
 			// sharing connection with Group Data Object
 			DO_UserGroup _usergroup = new DO_UserGroup(_con);
 			// performing some operations on User Data Object
-			_usergroup.IDGroup = _idgroup;
-			_usergroup.IDUser = _iduser;
-			_usergroup.Relationdate = DateTime.Now;
-			_usergroup.Defaultrelation = false;
+			_usergroup.Fields.IDGroup = _idgroup;
+			_usergroup.Fields.IDUser = _iduser;
+			_usergroup.Fields.Relationdate = DateTime.Now;
+			_usergroup.Fields.Defaultrelation = false;
 			_usergroup.setObject(false);
 			_usergroup.Dispose(); _usergroup = null;
 

@@ -66,6 +66,66 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		#endregion
 
 		#region public Methods...
+		#region //public SC0_vUserGroup Serialize();
+		//public SC0_vUserGroup Serialize() {
+		//	return new SC0_vUserGroup(Record);
+		//}
+		#endregion
+		#region public SC0_vUserGroup Serialize();
+		public SC0_vUserGroup Serialize() {
+			SO0_vUserGroup[] _serialisableobject;
+
+			lock (record__) {
+				int _current = Current;
+
+				_serialisableobject = new SO0_vUserGroup[Count];
+
+				Reset();
+				while (Read()) {
+					_serialisableobject[Current] 
+						= new SO0_vUserGroup(
+							parent_ref_.Fields.IDUser,
+							parent_ref_.Fields.Login,
+							parent_ref_.Fields.IDGroup,
+							parent_ref_.Fields.Name,
+							parent_ref_.Fields.Relationdate
+						);
+				}
+
+				Current = _current;
+			}
+
+			SC0_vUserGroup _serialize_out = new SC0_vUserGroup();
+			_serialize_out.SO0_vUserGroup = _serialisableobject;
+			return _serialize_out;
+		}
+		#endregion
+		#region public void Open(SC0_vUserGroup serialisablecollection_in);
+		public void Open(SC0_vUserGroup serialisablecollection_in) {
+			Open(serialisablecollection_in.SO0_vUserGroup);
+		}
+		#endregion
+		#region public void Open(SO0_vUserGroup[] serialisableobject_in);
+		public void Open(SO0_vUserGroup[] serialisableobject_in) {
+			DataTable _datatable = new DataTable();
+			_datatable.Columns.Add(new DataColumn("codProfissao", typeof(int)));
+			_datatable.Columns.Add(new DataColumn("descProfissao", typeof(string)));
+
+			DataRow _datarow;
+			for (int i = 0; i < serialisableobject_in.Length; i++) {
+			    _datarow = _datatable.NewRow();
+				_datarow["IDUser"] = serialisableobject_in[i].IDUser;
+				_datarow["Login"] = serialisableobject_in[i].Login;
+				_datarow["IDGroup"] = serialisableobject_in[i].IDGroup;
+				_datarow["Name"] = serialisableobject_in[i].Name;
+				_datarow["Relationdate"] = serialisableobject_in[i].Relationdate;
+
+			    _datatable.Rows.Add(_datarow);
+			}
+
+			Open(true, _datatable);
+		}
+		#endregion
 		#region public override bool Read();
 		/// <summary>
 		/// Reads values from Record, assigns them to the appropriate vUserGroup DataObject property, finally it steps current iteration at the Record forward and returns a bool value indicating if End Of Record has been reached.
@@ -84,35 +144,35 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			if (base.read()) {
 				if (base.Fullmode) {
 					if (base.Record.Rows[Current]["IDUser"] == System.DBNull.Value) {
-						parent_ref_.iduser_ = 0L;
+						parent_ref_.Fields.iduser_ = 0L;
 					} else {
-						parent_ref_.iduser_ = (long)base.Record.Rows[Current]["IDUser"];
+						parent_ref_.Fields.iduser_ = (long)base.Record.Rows[Current]["IDUser"];
 					}
 					if (base.Record.Rows[Current]["Login"] == System.DBNull.Value) {
-						parent_ref_.Login_isNull = true;
+						parent_ref_.Fields.login_ = string.Empty;
 					} else {
-						parent_ref_.login_ = (string)base.Record.Rows[Current]["Login"];
+						parent_ref_.Fields.login_ = (string)base.Record.Rows[Current]["Login"];
 					}
 					if (base.Record.Rows[Current]["IDGroup"] == System.DBNull.Value) {
-						parent_ref_.idgroup_ = 0L;
+						parent_ref_.Fields.idgroup_ = 0L;
 					} else {
-						parent_ref_.idgroup_ = (long)base.Record.Rows[Current]["IDGroup"];
+						parent_ref_.Fields.idgroup_ = (long)base.Record.Rows[Current]["IDGroup"];
 					}
 					if (base.Record.Rows[Current]["Name"] == System.DBNull.Value) {
-						parent_ref_.Name_isNull = true;
+						parent_ref_.Fields.name_ = string.Empty;
 					} else {
-						parent_ref_.name_ = (string)base.Record.Rows[Current]["Name"];
+						parent_ref_.Fields.name_ = (string)base.Record.Rows[Current]["Name"];
 					}
 					if (base.Record.Rows[Current]["Relationdate"] == System.DBNull.Value) {
-						parent_ref_.Relationdate_isNull = true;
+						parent_ref_.Fields.relationdate_ = new DateTime(1900, 1, 1);
 					} else {
-						parent_ref_.relationdate_ = (DateTime)base.Record.Rows[Current]["Relationdate"];
+						parent_ref_.Fields.relationdate_ = (DateTime)base.Record.Rows[Current]["Relationdate"];
 					}
 
-					parent_ref_.haschanges_ = false;
+					parent_ref_.Fields.haschanges_ = false;
 				} else {
-					parent_ref_.iduser_ = (long)((base.Record.Rows[Current]["IDUser"] == System.DBNull.Value) ? 0L : base.Record.Rows[Current]["IDUser"]);
-					parent_ref_.login_ = (string)((base.Record.Rows[Current]["Login"] == System.DBNull.Value) ? string.Empty : base.Record.Rows[Current]["Login"]);
+					parent_ref_.Fields.IDUser = (long)((base.Record.Rows[Current]["IDUser"] == System.DBNull.Value) ? 0L : base.Record.Rows[Current]["IDUser"]);
+					parent_ref_.Fields.Login = (string)((base.Record.Rows[Current]["Login"] == System.DBNull.Value) ? string.Empty : base.Record.Rows[Current]["Login"]);
 
 					if (!doNOTgetObject_in) {
 						parent_ref_.getObject();

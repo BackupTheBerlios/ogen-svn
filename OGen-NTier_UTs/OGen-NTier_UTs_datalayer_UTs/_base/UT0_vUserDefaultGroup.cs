@@ -55,11 +55,11 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 
 
 
-			_vuserdefaultgroup.IDUser = 123L;
-			_vuserdefaultgroup.Login = "123";
-			_vuserdefaultgroup.IDGroup = 123L;
-			_vuserdefaultgroup.Name = "123";
-			_vuserdefaultgroup.Relationdate = new DateTime(2341, 12, 12);
+			_vuserdefaultgroup.Fields.IDUser = 123L;
+			_vuserdefaultgroup.Fields.Login = "123";
+			_vuserdefaultgroup.Fields.IDGroup = 123L;
+			_vuserdefaultgroup.Fields.Name = "123";
+			_vuserdefaultgroup.Fields.Relationdate = new DateTime(2341, 12, 12);
 			// setObject(); // ToDos: here!
 
 
