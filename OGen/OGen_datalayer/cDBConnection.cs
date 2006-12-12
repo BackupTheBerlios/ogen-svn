@@ -537,40 +537,50 @@ namespace OGen.lib.datalayer {
 			IDbDataParameter _newdbdataparameter_out;
 
 			switch (DBServerType) {
-				case eDBServerTypes.SQLServer: {
+				case eDBServerTypes.SQLServer:
 					_newdbdataparameter_out = new SqlParameter();
 					_newdbdataparameter_out.ParameterName = 
 						(name_in.Substring(0, 1) == "@") ?
 					name_in : 
 						string.Format("@{0}", name_in);
 					break;
-				}
-				case eDBServerTypes.PostgreSQL: {
+				case eDBServerTypes.PostgreSQL:
 					_newdbdataparameter_out = new NpgsqlParameter();
 					_newdbdataparameter_out.ParameterName = ":\"" + name_in + "\"";
 					break;
-				}
-				case eDBServerTypes.MySQL: {
+				case eDBServerTypes.MySQL:
 					_newdbdataparameter_out = new MySql.Data.MySqlClient.MySqlParameter();
 					_newdbdataparameter_out.ParameterName = "?" + name_in;
 					break;
-				}
 				case eDBServerTypes.Excel:
-				case eDBServerTypes.Access: {
+				case eDBServerTypes.Access:
 					_newdbdataparameter_out = new OleDbParameter();
 					_newdbdataparameter_out.ParameterName = name_in;
 					break;
-				}
-				case eDBServerTypes.ODBC: {
+				case eDBServerTypes.ODBC:
 					_newdbdataparameter_out = new OdbcParameter();
 					_newdbdataparameter_out.ParameterName = name_in;
 					break;
-				}
-				default: {
+				default:
 					throw new Exception("invalid DBServerType");
-				}
 			}
-			_newdbdataparameter_out.DbType = dbType_in;
+
+
+// fmonteiro: by default npgsql assumes any datetime 
+// to be time zoned
+if (
+	(DBServerType == eDBServerTypes.PostgreSQL)
+	&&
+	(dbType_in == DbType.DateTime)
+) {
+	_newdbdataparameter_out.DbType = dbType_in;
+	// EXPLICITLY assuming datetime without time zone
+	((NpgsqlParameter)_newdbdataparameter_out).NpgsqlDbType = NpgsqlTypes.NpgsqlDbType.Timestamp;
+} else {
+	_newdbdataparameter_out.DbType = dbType_in;
+}
+
+
 			_newdbdataparameter_out.Direction = parameterDirection_in;
 			if ((value_in == null) || (value_in == DBNull.Value)) {
 				if (DBServerType == eDBServerTypes.SQLServer) {

@@ -783,45 +783,61 @@ namespace OGen.lib.datalayer {
 			public static NpgsqlDbType PgsqlDbType_Parse(string value_in) {
 				switch (value_in.ToLower()) {
 					case "timestamp with time zone": 
-					case "timestamptz": 
+					case "timestamptz":
+						return NpgsqlDbType.TimestampTZ;
+
 					case "timestamp without time zone": 
-					case "timestamp": { return NpgsqlDbType.Timestamp; }
+					case "timestamp":
+						return NpgsqlDbType.Timestamp;
 
 					case "boolean": 
-					case "bool": { return NpgsqlDbType.Boolean; }
+					case "bool":
+						return NpgsqlDbType.Boolean;
 
 					case "bigint": 
-					case "int8": { return NpgsqlDbType.Bigint; }
+					case "int8":
+						return NpgsqlDbType.Bigint;
 
 					case "integer": 
-					case "int4": { return NpgsqlDbType.Integer; }
+					case "int4":
+						return NpgsqlDbType.Integer;
 
 					case "smallint": 
-					case "int2": { return NpgsqlDbType.Smallint; }
+					case "int2":
+						return NpgsqlDbType.Smallint;
 
-					case "text": { return NpgsqlDbType.Text; }
+					case "text":
+						return NpgsqlDbType.Text;
 
 					case "character varying": 
-					case "varchar": { return NpgsqlDbType.Varchar; }
+					case "varchar":
+						return NpgsqlDbType.Varchar;
 
 					case "real": 
-					case "float4": { return NpgsqlDbType.Real; }
+					case "float4":
+						return NpgsqlDbType.Real;
 
 					case "double precision": 
-					case "float8": { return NpgsqlDbType.Double; }
+					case "float8":
+						return NpgsqlDbType.Double;
 
-					case "numeric": { return NpgsqlDbType.Numeric; }
+					case "numeric":
+						return NpgsqlDbType.Numeric;
 
-					case "bytea": { return NpgsqlDbType.Bytea; }
+					case "bytea":
+						return NpgsqlDbType.Bytea;
 
-					case "date": { return NpgsqlDbType.Date; }
+					case "date":
+						return NpgsqlDbType.Date;
 
 					case "time without time zone": 
 					case "time": 
 					case "time with time zone": 
-					case "timetz": { return NpgsqlDbType.Time; }
+					case "timetz":
+						return NpgsqlDbType.Time;
 
-					case "money": { return NpgsqlDbType.Money; }
+					case "money":
+						return NpgsqlDbType.Money;
 
 					#region default: throw new Exception("...");
 					//case "bigserial":
@@ -911,22 +927,37 @@ namespace OGen.lib.datalayer {
 			#region public static DbType PgsqlDbType2DbType(...);
 			public static DbType PgsqlDbType2DbType(NpgsqlDbType pgsqlDbType_in) {
 				switch (pgsqlDbType_in) {
-					case NpgsqlDbType.Bigint: { return DbType.Int64; }
-					case NpgsqlDbType.Integer: { return DbType.Int32; }
-					case NpgsqlDbType.Smallint: { return DbType.Int16; }
-					case NpgsqlDbType.Boolean: { return DbType.Boolean; }
+					case NpgsqlDbType.Bigint:
+						return DbType.Int64;
+					case NpgsqlDbType.Integer:
+						return DbType.Int32;
+					case NpgsqlDbType.Smallint:
+						return DbType.Int16;
+					case NpgsqlDbType.Boolean:
+						return DbType.Boolean;
 
 					case NpgsqlDbType.Varchar:
-					case NpgsqlDbType.Text: { return DbType.String; }
+					case NpgsqlDbType.Text:
+						return DbType.String;
 
-					case NpgsqlDbType.Timestamp: { return DbType.DateTime; }
-					case NpgsqlDbType.Real: { return DbType.Single; }
-					case NpgsqlDbType.Double: { return DbType.Double; }
-					case NpgsqlDbType.Numeric: { return DbType.Decimal; }
-					case NpgsqlDbType.Bytea: { return DbType.Binary; }
-					case NpgsqlDbType.Date: { return DbType.Date; }
-					case NpgsqlDbType.Time: { return DbType.Time; }
-					case NpgsqlDbType.Money: { return DbType.Decimal; }
+					case NpgsqlDbType.TimestampTZ:
+					case NpgsqlDbType.Timestamp:
+						return DbType.DateTime;
+
+					case NpgsqlDbType.Real:
+						return DbType.Single;
+					case NpgsqlDbType.Double:
+						return DbType.Double;
+					case NpgsqlDbType.Numeric:
+						return DbType.Decimal;
+					case NpgsqlDbType.Bytea:
+						return DbType.Binary;
+					case NpgsqlDbType.Date:
+						return DbType.Date;
+					case NpgsqlDbType.Time:
+						return DbType.Time;
+					case NpgsqlDbType.Money:
+						return DbType.Decimal;
 
 					#region default: throw new Exception("...");
 					default: {
