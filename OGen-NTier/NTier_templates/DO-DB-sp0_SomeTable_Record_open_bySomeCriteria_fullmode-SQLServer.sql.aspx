@@ -63,7 +63,8 @@ bool isFirst;
 	@<%=_aux_field_name%>_search_ <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? " (" + _aux_field.Size + ")" : ""%><%=(_aux_field.Numeric_Scale > 0) ? " (" + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale + ")" : ""%><%=(f != _aux_search.SearchParameters.Count - 1) ? ", " : ""%><%
 	}%>
 AS
-	CREATE TABLE [#Table_temp] (<%
+	CREATE TABLE [#Table_temp] (
+		[ID_range] BigInt IDENTITY,<%
 	for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 		_aux_field = _aux_table.Fields_onlyPK[k];%>
 		[<%=_aux_field.Name%>] <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(_aux_field.isText) ? " (" + _aux_field.Size + ")" : ""%><%=(_aux_field.Numeric_Scale > 0) ? " (" + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale + ")" : ""%><%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
@@ -101,6 +102,7 @@ AS
 
 	-- CHANGE ORDER BY IN: [dbo].[sp_<%=_aux_table.Name%>_Record_open_<%=_aux_search.Name%>]
 	-- NOT HERE!
+	ORDER BY t2.[ID_range]
 
 	DROP TABLE [#Table_temp]
 --GO

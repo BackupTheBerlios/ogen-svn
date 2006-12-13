@@ -113,6 +113,7 @@ AS
 
 	-- CHANGE ORDER BY IN: [dbo].[sp_<%=_aux_table.Name%>_Record_open_<%=_aux_search.Name%>]
 	-- NOT HERE!
+	ORDER BY t2.[ID_range]
 
 	DROP TABLE [#Table_temp]
 
