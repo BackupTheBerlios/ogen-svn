@@ -348,19 +348,29 @@ namespace OGen.lib.datalayer {
 						);
 					}
 
+					_sqlcommand.CommandTimeout = connection_in.ConnectionTimeout;
+
 					return _sqlcommand;
 				}
 				case eDBServerTypes.PostgreSQL: {
-					return new NpgsqlCommand(
+					NpgsqlCommand _sqlcommand = new NpgsqlCommand(
 						command_in,
 						(NpgsqlConnection)connection_in
 					);
+
+					_sqlcommand.CommandTimeout = connection_in.ConnectionTimeout;
+
+					return _sqlcommand;
 				}
 				case eDBServerTypes.MySQL: {
-					return new MySql.Data.MySqlClient.MySqlCommand(
+					MySql.Data.MySqlClient.MySqlCommand _sqlcommand = new MySql.Data.MySqlClient.MySqlCommand(
 						command_in,
 						(MySql.Data.MySqlClient.MySqlConnection)connection_in
 					);
+
+					_sqlcommand.CommandTimeout = connection_in.ConnectionTimeout;
+
+					return _sqlcommand;
 				}
 				case eDBServerTypes.Excel:
 				case eDBServerTypes.Access: {
