@@ -183,6 +183,11 @@
     <Compile Include="ClaSSe\utils.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="_newStuff\eMetadata.cs" />
+    <Compile Include="_newStuff\eSQLScriptOptions.cs" />
+    <Compile Include="_newStuff\Metadata.cs" />
+    <Compile Include="_newStuff\Metadata_DBs.cs" />
+    <Compile Include="_newStuff\Metadata_Tables.cs" />
     <None Include="COPYING" />
     <Content Include="LICENSE.GPL.txt" />
     <Content Include="LICENSE.txt" />
