@@ -193,6 +193,44 @@ namespace OGen.NTier.lib.datalayer {
 			fullmode__ = fullmode_in;
 			isopened_ = true;
 		}
+
+		public virtual void Open(
+			bool fullmode_in, 
+			DataTable dataTable_in,
+			int page_in,
+			int page_numRecords_in
+		) {
+			#region Checking...
+			if (isopened_)
+				throw InvalidRecordStateException_alreadyOpened;
+			#endregion
+
+			#region DataTable _datatable[0..n] = dataTable_in[(page_in - 1) * page_numRecords_in .. page_in * page_numRecords_in];
+			DataTable _datatable = new DataTable();
+			for (int c = 0; c < dataTable_in.Columns.Count; c++) {
+				_datatable.Columns.Add(
+					dataTable_in.Columns[c].ColumnName,
+					dataTable_in.Columns[c].DataType
+				);
+			}
+			DataRow _datarow;
+			for (int r = (page_in - 1) * page_numRecords_in; r < page_in * page_numRecords_in; r++) {
+				if (r == dataTable_in.Rows.Count) break;
+
+				_datarow = _datatable.NewRow();
+				for (int c = 0; c < dataTable_in.Columns.Count; c++) {
+					_datarow[c] = dataTable_in.Rows[r][c];
+				}
+				_datatable.Rows.Add(_datarow);
+			}
+			#endregion
+
+			record__ = _datatable;
+			current__ = -1;
+			fullmode__ = fullmode_in;
+			isopened_ = true;
+		}
+
 		//public virtual void Open(string Query_) {
 		//	Open(Query_, true);
 		//}
