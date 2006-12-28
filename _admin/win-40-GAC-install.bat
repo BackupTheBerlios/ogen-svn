@@ -126,7 +126,7 @@ GOTO eof
 :tryinstall
 	IF '%4' == 'f' GOTO eof
 	IF NOT EXIST ..\_release.no-svn\%3.dll GOTO eof
-	gacutil /u %3
+	::gacutil /u %3
 	gacutil /i ..\_release.no-svn\%3.dll
 GOTO eof
 
