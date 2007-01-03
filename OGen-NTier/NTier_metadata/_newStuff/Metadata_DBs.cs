@@ -3,6 +3,7 @@ using System;
 //using System.Text;
 
 namespace OGen.NTier.lib.metadata {
-	class Metadata_DBs {
+	[XmlRoot("dbs")]
+	public class Metadata_DBs {
 	}
 }
