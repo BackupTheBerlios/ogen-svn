@@ -144,13 +144,13 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 
 			DataRow _datarow;
 			for (int i = 0; i < serialisableobject_in.Length; i++) {
-			    _datarow = _datatable.NewRow();<%
+				_datarow = _datatable.NewRow();<%
 				for (int f = 0; f < _aux_table.Fields.Count; f++) {
 					_aux_field = _aux_table.Fields[f];%><%=""%>
 				_datarow["<%=_aux_field.Name%>"] = serialisableobject_in[i].<%=_aux_field.Name%>;<%
 				}%>
 
-			    _datatable.Rows.Add(_datarow);
+				_datatable.Rows.Add(_datarow);
 			}
 
 			Open(true, _datatable);
