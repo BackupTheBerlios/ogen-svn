@@ -31,7 +31,7 @@ projectURL            ="http://ogen.berlios.de/"
 
 
 	copyrightText="Copyright (C) 2002 Francisco Monteiro"
-	feedbackEmailAddress="francisco.r.monteiro@gmail.com"
+	feedbackEmailAddress="frm@fct.unl.pt"
 	version="v0.1"
 	date="2005.07.19 21:46">
 
@@ -1343,9 +1343,9 @@ ToDos: here!&lt;br&gt;
 
 
 	<authors>
-		<author idAuthor="1" name="Francisco Monteiro" copyrightText="Copyright (C) 2002 Francisco Monteiro" feedbackEmailAddress="francisco.r.monteiro@gmail.com" />
+		<author idAuthor="1" name="Francisco Monteiro" copyrightText="Copyright (C) 2002 Francisco Monteiro" feedbackEmailAddress="frm@fct.unl.pt" />
 <!--
-		<author idAuthor="2" name="xico" copyrightText="Copyright (C) 2002 Francisco Monteiro" feedbackEmailAddress="francisco.r.monteiro@gmail.com" />
+		<author idAuthor="2" name="xico" copyrightText="Copyright (C) 2002 Francisco Monteiro" feedbackEmailAddress="frm@fct.unl.pt" />
 -->
 	</authors>
 
