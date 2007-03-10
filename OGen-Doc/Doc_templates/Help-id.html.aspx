@@ -47,14 +47,13 @@ string _topic;
 bool _topic_found;
 #endregion
 //-----------------------------------------------------------------------------------------
-%>
-<html>
+%><html>
 	<head>
 		<title>
 			<%=_aux_doc.DocumentationName%> - <%=_subject.Name%>
 		</title>
 		<link rel="stylesheet" href="_include/doc.css" type="text/css" />
-		<script language="JavaScript" src="_include/lib_doc.js" />
+		<!--<script language="JavaScript" src="_include/lib_doc.js"></script>-->
 	</head>
 	<body
 		bottommargin="0"

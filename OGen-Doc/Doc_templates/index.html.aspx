@@ -37,14 +37,13 @@ DocMetadata _aux_doc = new DocMetadata();
 _aux_doc.LoadState_fromFile(_arg_MetadataFilepath);
 #endregion
 //-----------------------------------------------------------------------------------------
-%>
-<html>
+%><html>
 	<head>
 		<title>
 			<%=_aux_doc.DocumentationName%> - Documentation
 		</title>
 		<link rel="stylesheet" href="_include/doc.css" type="text/css" />
-		<script language="JavaScript" src="_include/lib_doc.js" />
+		<!--<script language="JavaScript" src="_include/lib_doc.js"></script>-->
 	</head>
 	<body
 		bottommargin="0"
