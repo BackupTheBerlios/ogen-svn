@@ -3,13 +3,13 @@
         ProjectType = "Local"
         ProductVersion = "7.10.3077"
         SchemaVersion = "2.0"
-        ProjectGuid = "{46D90ABA-A5C9-4730-A585-8D91EFC7B398}"
+        ProjectGuid = "{4AE20414-478E-4859-849E-929741A5936C}"
     >
         <Build>
             <Settings
                 ApplicationIcon = ""
                 AssemblyKeyContainerName = ""
-                AssemblyName = "OGen.lib.datalayer.UTs"
+                AssemblyName = "OGen.lib.datalayer"
                 AssemblyOriginatorKeyFile = ""
                 DefaultClientScript = "JScript"
                 DefaultHTMLPageLayout = "Grid"
@@ -18,7 +18,7 @@
                 OutputType = "Library"
                 PreBuildEvent = ""
                 PostBuildEvent = ""
-                RootNamespace = "OGen.lib.datalayer.UTs"
+                RootNamespace = "OGen.lib.datalayer"
                 RunPostBuildEvent = "OnBuildSuccess"
                 StartupObject = ""
             >
@@ -28,8 +28,8 @@
                     BaseAddress = "285212672"
                     CheckForOverflowUnderflow = "false"
                     ConfigurationOverrideFile = ""
-                    DefineConstants = "DEBUG;TRACE;MySQL;PostgreSQL"
-                    DocumentationFile = ""
+                    DefineConstants = "DEBUG;TRACE;MySQL"
+                    DocumentationFile = "bin\Debug\OGen.lib.datalayer.xml"
                     DebugSymbols = "true"
                     FileAlignment = "4096"
                     IncrementalBuild = "false"
@@ -48,8 +48,8 @@
                     BaseAddress = "285212672"
                     CheckForOverflowUnderflow = "false"
                     ConfigurationOverrideFile = ""
-                    DefineConstants = "TRACE;MySQL;PostgreSQL"
-                    DocumentationFile = ""
+                    DefineConstants = "TRACE;MySQL"
+                    DocumentationFile = "bin\Release\OGen.lib.datalayer.xml"
                     DebugSymbols = "false"
                     FileAlignment = "4096"
                     IncrementalBuild = "false"
@@ -80,37 +80,53 @@
                     HintPath = "..\..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
-                    Name = "OGen_config"
-                    Project = "{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
-                    Name = "OGen_datalayer"
-                    Project = "{4AE20414-478E-4859-849E-929741A5936C}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
-                    Name = "nunit.framework"
-                    AssemblyName = "nunit.framework"
-                    HintPath = "..\..\..\..\..\..\Program Files\NUnit-Net-1.1 2.2.8\bin\nunit.framework.dll"
-                    AssemblyFolderKey = "hklm\dn\nunit.framework1.1"
+                    Name = "MySql.Data"
+                    AssemblyName = "MySql.Data"
+                    HintPath = "..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 1.0.7\bin\.NET 1.1\MySql.Data.dll"
+                    AssemblyFolderKey = "hklm\mysql connector net 1.0.7"
                 />
             </References>
         </Build>
         <Files>
             <Include>
                 <File
-                    RelPath = "app.config"
-                    BuildAction = "None"
+                    RelPath = "AssemblyInfo.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "AssemblyInfo.cs"
+                    RelPath = "cDBConnection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "cDBTable.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "cDBTableField.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "cDBTransaction.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "cDBType.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
                     RelPath = "COPYING"
                     BuildAction = "None"
+                />
+                <File
+                    RelPath = "eDBServerTypes.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
                 />
                 <File
                     RelPath = "LICENSE.GPL.txt"
@@ -121,12 +137,7 @@
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "UT_DBConnection.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "UT_utils.cs"
+                    RelPath = "utils.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />

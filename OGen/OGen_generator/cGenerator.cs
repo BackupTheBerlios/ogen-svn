@@ -248,6 +248,7 @@ namespace OGen.lib.generator {
 				for (int o = 0; o < templates_[template_].Outputs.Count; o++) {
 //					#region if (!dbconnectionstrings_.Contains(eDBServerTypes. ...)) continue;
 					switch (templates_[template_].Outputs[o].Type) {
+#if PostgreSQL
 						case cOutput.eType.PostgreSQL_Function: 
 						case cOutput.eType.PostgreSQL_StoredProcedure: 
 						case cOutput.eType.PostgreSQL_View: {
@@ -255,6 +256,8 @@ namespace OGen.lib.generator {
 //							_con = (cDBConnection)connection_[eDBServerTypes.PostgreSQL];
 							break;
 						}
+#endif
+#if MySQL
 						case cOutput.eType.MySQL_Function: 
 						case cOutput.eType.MySQL_StoredProcedure: 
 						case cOutput.eType.MySQL_View: {
@@ -262,6 +265,7 @@ namespace OGen.lib.generator {
 //							_con = (cDBConnection)connection_[eDBServerTypes.MySQL];
 							break;
 						}
+#endif
 						case cOutput.eType.SQLServer_Function: 
 						case cOutput.eType.SQLServer_StoredProcedure: 
 						case cOutput.eType.SQLServer_View: {
@@ -477,7 +481,9 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 	if (!dbconnectionstrings_[d].enabled_aux__) continue;
 
 	switch (dbconnectionstrings_[d].Connection.DBServerType) {
+#if MySQL
 		case eDBServerTypes.MySQL:
+#endif
 		case eDBServerTypes.SQLServer: {
 			if (dbconnectionstrings_[d].exists_aux__) 
 				dbconnectionstrings_[d].Connection.SQLFunction_delete(_ouputTo);
@@ -494,7 +500,9 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 	if (!dbconnectionstrings_[d].enabled_aux__) continue;
 
 	switch (dbconnectionstrings_[d].Connection.DBServerType) {
+#if MySQL
 		case eDBServerTypes.MySQL:
+#endif
 		case eDBServerTypes.SQLServer: {
 			if (dbconnectionstrings_[d].exists_aux__) 
 				dbconnectionstrings_[d].Connection.SQLStoredProcedure_delete(_ouputTo);
@@ -511,7 +519,9 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 	if (!dbconnectionstrings_[d].enabled_aux__) continue;
 
 	switch (dbconnectionstrings_[d].Connection.DBServerType) {
+#if MySQL
 		case eDBServerTypes.MySQL:
+#endif
 		case eDBServerTypes.SQLServer: {
 			if (dbconnectionstrings_[d].exists_aux__) 
 				dbconnectionstrings_[d].Connection.SQLView_delete(_ouputTo);

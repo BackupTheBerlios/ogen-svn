@@ -31,8 +31,12 @@ along with OGen; if not, write to the
 #endregion
 using System;
 using System.Data;
+#if PostgreSQL
 using NpgsqlTypes;
+#endif
+#if MySQL
 using MySql.Data.MySqlClient;
+#endif
 //using OGen.lib.config;
 
 namespace OGen.lib.datalayer {
@@ -83,10 +87,14 @@ namespace OGen.lib.datalayer {
 					}
 					case eParameter.User: {
 						switch (dbServerTypes_in) {
+#if PostgreSQL
 							case eDBServerTypes.PostgreSQL: {
 								return ParseParameter(connectionstring_in, dbServerTypes_in, "User ID");
 							}
+#endif
+#if MySQL
 							case eDBServerTypes.MySQL:
+#endif
 							case eDBServerTypes.SQLServer: {
 								return ParseParameter(connectionstring_in, dbServerTypes_in, "uid");
 							}
@@ -245,6 +253,7 @@ namespace OGen.lib.datalayer {
 								userPassword_in, 
 								dataBaseName_in
 							);
+#if PostgreSQL
 						case eDBServerTypes.PostgreSQL:
 							return string.Format(
 								"Server={0};User ID={1};Password={2};Database={3};", 
@@ -253,6 +262,8 @@ namespace OGen.lib.datalayer {
 								userPassword_in, 
 								dataBaseName_in
 							);
+#endif
+#if MySQL
 						case eDBServerTypes.MySQL:
 							return string.Format(
 								"Server={0};Uid={1};Pwd={2};Database={3};",
@@ -261,6 +272,7 @@ namespace OGen.lib.datalayer {
 								userPassword_in,
 								dataBaseName_in
 							);
+#endif
 						case eDBServerTypes.ODBC:
 						case eDBServerTypes.Access:
 						case eDBServerTypes.Excel:
@@ -407,8 +419,12 @@ namespace OGen.lib.datalayer {
 			public static string object2SQLobject(object object_in, eDBServerTypes dbServerType_in) {
 				if (object_in == null) {
 					switch (dbServerType_in) {
+#if PostgreSQL
 						case eDBServerTypes.PostgreSQL:
+#endif
+#if MySQL
 						case eDBServerTypes.MySQL:
+#endif
 						case eDBServerTypes.SQLServer: {
 							return "null";
 						}
@@ -435,28 +451,32 @@ namespace OGen.lib.datalayer {
 								return object2SQLobject(null, dbServerType_in);
 							} else {
 								switch (dbServerType_in) {
+#if MySQL
+									case eDBServerTypes.MySQL:
+#endif
+#if PostgreSQL
 									case eDBServerTypes.PostgreSQL:
-									case eDBServerTypes.MySQL: {
 										// ToDos: here! check if changes made are correct (I need test units for this)
 										// return string.Format("timestamp ''{0}''", _datetime.ToString("yyyy-MM-dd HH:mm:ss"));
 										return string.Format("timestamp '{0}'", _datetime.ToString("yyyy-MM-dd HH:mm:ss"));
-									}
-									case eDBServerTypes.SQLServer: {
+#endif
+									case eDBServerTypes.SQLServer:
 										return string.Format("CONVERT(DATETIME, \'{0}\', 120)", _datetime.ToString("yyyy-MM-dd HH:mm:ss"));
-									}
 								}
 							}
 							break;
 						}
 						case "System.Boolean": {
 							switch (dbServerType_in) {
+#if MySQL
+								case eDBServerTypes.MySQL:
+#endif
+#if PostgreSQL
 								case eDBServerTypes.PostgreSQL:
-								case eDBServerTypes.MySQL: {
 									return (((bool)object_in) ? "true" : "false");
-								}
-								case eDBServerTypes.SQLServer: {
+#endif
+								case eDBServerTypes.SQLServer:
 									return (((bool)object_in) ? "1" : "0");
-								}
 							}
 							break;
 						}
@@ -779,6 +799,7 @@ namespace OGen.lib.datalayer {
 				throw new Exception(string.Format("invalid db type: {0}", value_in));
 			}
 			#endregion
+#if PostgreSQL
 			#region public static NpgsqlDbType PgsqlDbType_Parse(string value_in);
 			public static NpgsqlDbType PgsqlDbType_Parse(string value_in) {
 				switch (value_in.ToLower()) {
@@ -851,6 +872,8 @@ namespace OGen.lib.datalayer {
 				}
 			}
 			#endregion
+#endif
+#if MySQL
 			#region public static MySqlDbType MySqlDbType_Parse(string value_in);
 			public static MySqlDbType MySqlDbType_Parse(string value_in) {
 				switch (value_in.ToLower()) {
@@ -879,6 +902,7 @@ namespace OGen.lib.datalayer {
 				}
 			}
 			#endregion
+#endif
 
 			#region public static DbType SqlDbType2DbType(...);
 			public static DbType SqlDbType2DbType(SqlDbType sqlDbType_in) {
@@ -924,6 +948,7 @@ namespace OGen.lib.datalayer {
 				}
 			}
 			#endregion
+#if PostgreSQL
 			#region public static DbType PgsqlDbType2DbType(...);
 			public static DbType PgsqlDbType2DbType(NpgsqlDbType pgsqlDbType_in) {
 				switch (pgsqlDbType_in) {
@@ -970,6 +995,8 @@ namespace OGen.lib.datalayer {
 				}
 			}
 			#endregion
+#endif
+#if MySQL
 			#region public static DbType MySqlDbType2DbType(MySqlDbType mySqlDbType_in);
 			public static DbType MySqlDbType2DbType(MySqlDbType mySqlDbType_in) {
 				switch (mySqlDbType_in) {
@@ -1007,6 +1034,7 @@ namespace OGen.lib.datalayer {
 				}
 			}
 			#endregion
+#endif
 		}
 
 		#region public static bool isBool(...);

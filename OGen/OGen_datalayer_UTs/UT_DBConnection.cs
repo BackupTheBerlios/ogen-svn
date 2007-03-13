@@ -36,6 +36,7 @@ using NUnit.Framework;
 
 using OGen.lib.datalayer;
 
+#if PostgreSQL
 namespace OGen.lib.datalayer.UTs {
 	[TestFixture]
 	public class UT_DBConnection { public UT_DBConnection() {}
@@ -666,3 +667,4 @@ namespace OGen.lib.datalayer.UTs {
 //		#endregion
 	}
 }
+#endif

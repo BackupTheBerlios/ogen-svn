@@ -36,6 +36,7 @@ using NUnit.Framework;
 
 using OGen.lib.datalayer;
 
+#if PostgreSQL
 namespace OGen.lib.datalayer.UTs {
 	[TestFixture]
 	public class UT_utils { public UT_utils() {}
@@ -160,3 +161,4 @@ namespace OGen.lib.datalayer.UTs {
 		#endregion
 	}
 }
+#endif

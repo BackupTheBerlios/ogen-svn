@@ -57,15 +57,18 @@ namespace OGen.lib.datalayer {
 		/// </summary>
 		SQLServer = 3,			// SQLClient
 
+#if PostgreSQL
 		/// <summary>
 		/// PostgreSQL Client
 		/// </summary>
 		PostgreSQL = 4,			// PostgreSQL
-
+#endif
+#if MySQL
 		/// <summary>
 		/// MySQL Client
 		/// </summary>
 		MySQL = 5,				// MySQL
+#endif
 
 		/// <summary>
 		/// invalid type
@@ -81,12 +84,14 @@ namespace OGen.lib.datalayer {
 		/// <summary>
 		/// SQL Server Client
 		/// </summary>
-		SQLServer = 3, 
+		SQLServer = 3,
 
+#if PostgreSQL
 		/// <summary>
 		/// PostgreSQL Client
 		/// </summary>
 		PostgreSQL = 4,
+#endif
 
 		/// <summary>
 		/// invalid type

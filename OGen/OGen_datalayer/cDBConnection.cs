@@ -36,8 +36,12 @@ using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.IO;
 using System.Text;
+#if PostgreSQL
 using Npgsql;
+#endif
+#if MySQL
 using MySql.Data.MySqlClient;
+#endif
 
 namespace OGen.lib.datalayer {
 	#region /// <summary>...</summary>
@@ -307,25 +311,23 @@ namespace OGen.lib.datalayer {
 		#region private IDbConnection newDBConnection();
 		private IDbConnection newDBConnection() {
 			switch (dbservertype_) {
-				case eDBServerTypes.ODBC: {
+				case eDBServerTypes.ODBC:
 					return new OdbcConnection(connectionstring_);
-				}
-				case eDBServerTypes.SQLServer: {
+				case eDBServerTypes.SQLServer:
 					return new SqlConnection(connectionstring_);
-				}
 				case eDBServerTypes.Access:
-				case eDBServerTypes.Excel: {
+				case eDBServerTypes.Excel:
 					return new OleDbConnection(connectionstring_);
-				}
-				case eDBServerTypes.PostgreSQL: {
+#if PostgreSQL
+				case eDBServerTypes.PostgreSQL:
 					return new NpgsqlConnection(connectionstring_);
-				}
-				case eDBServerTypes.MySQL: {
+#endif
+#if MySQL
+				case eDBServerTypes.MySQL:
 					return new MySql.Data.MySqlClient.MySqlConnection(connectionstring_);
-				}
-				default: {
+#endif
+				default:
 					throw new Exception("invalid DBServerType");
-				}
 			}
 		}
 		#endregion
@@ -352,6 +354,7 @@ namespace OGen.lib.datalayer {
 
 					return _sqlcommand;
 				}
+#if PostgreSQL
 				case eDBServerTypes.PostgreSQL: {
 					NpgsqlCommand _sqlcommand = new NpgsqlCommand(
 						command_in,
@@ -362,6 +365,8 @@ namespace OGen.lib.datalayer {
 
 					return _sqlcommand;
 				}
+#endif
+#if MySQL
 				case eDBServerTypes.MySQL: {
 					MySql.Data.MySqlClient.MySqlCommand _sqlcommand = new MySql.Data.MySqlClient.MySqlCommand(
 						command_in,
@@ -372,22 +377,20 @@ namespace OGen.lib.datalayer {
 
 					return _sqlcommand;
 				}
+#endif
 				case eDBServerTypes.Excel:
-				case eDBServerTypes.Access: {
+				case eDBServerTypes.Access:
 					return new OleDbCommand(
 						command_in,
 						(OleDbConnection)connection_in
 					);
-				}
-				case eDBServerTypes.ODBC: {
+				case eDBServerTypes.ODBC:
 					return new OdbcCommand(
 						command_in,
 						(OdbcConnection)connection_in
 					);
-				}
-				default: {
+				default:
 					throw new Exception("invalid DBServerType");
-				}
 			}
 		}
 		#endregion
@@ -404,34 +407,35 @@ namespace OGen.lib.datalayer {
 					}
 					return _sqldataadapter;
 				}
+#if PostgreSQL
 				case eDBServerTypes.PostgreSQL: {
 					return new NpgsqlDataAdapter(
 						(isQuery_notProcedure_in) ? query_in : "\"" + query_in + "\"",
 						(NpgsqlConnection)connection_in
 					);
 				}
+#endif
+#if MySQL
 				case eDBServerTypes.MySQL: {
 					return new MySql.Data.MySqlClient.MySqlDataAdapter(
 						query_in,
 						(MySql.Data.MySqlClient.MySqlConnection)connection_in
 					);
 				}
+#endif
 				case eDBServerTypes.Excel:
-				case eDBServerTypes.Access: {
+				case eDBServerTypes.Access:
 					return new OleDbDataAdapter(
 						query_in,
 						(OleDbConnection)connection_in
 					);
-				}
-				case eDBServerTypes.ODBC: {
+				case eDBServerTypes.ODBC:
 					return new OdbcDataAdapter(
 						query_in,
 						(OdbcConnection)connection_in
 					);
-				}
-				default: {
+				default:
 					throw new Exception("invalid DBServerType");
-				}
 			}
 		}
 		#endregion
@@ -554,14 +558,18 @@ namespace OGen.lib.datalayer {
 					name_in : 
 						string.Format("@{0}", name_in);
 					break;
+#if PostgreSQL
 				case eDBServerTypes.PostgreSQL:
 					_newdbdataparameter_out = new NpgsqlParameter();
 					_newdbdataparameter_out.ParameterName = ":\"" + name_in + "\"";
 					break;
+#endif
+#if MySQL
 				case eDBServerTypes.MySQL:
 					_newdbdataparameter_out = new MySql.Data.MySqlClient.MySqlParameter();
 					_newdbdataparameter_out.ParameterName = "?" + name_in;
 					break;
+#endif
 				case eDBServerTypes.Excel:
 				case eDBServerTypes.Access:
 					_newdbdataparameter_out = new OleDbParameter();
@@ -575,7 +583,7 @@ namespace OGen.lib.datalayer {
 					throw new Exception("invalid DBServerType");
 			}
 
-
+#if PostgreSQL
 // fmonteiro: by default npgsql assumes any datetime 
 // to be time zoned
 if (
@@ -587,8 +595,11 @@ if (
 	// EXPLICITLY assuming datetime without time zone
 	((NpgsqlParameter)_newdbdataparameter_out).NpgsqlDbType = NpgsqlTypes.NpgsqlDbType.Timestamp;
 } else {
+#endif
 	_newdbdataparameter_out.DbType = dbType_in;
+#if PostgreSQL
 }
+#endif
 
 
 			_newdbdataparameter_out.Direction = parameterDirection_in;
@@ -873,6 +884,7 @@ if (Logenabled) {
 				command_in.Parameters.Add(dataParameters_in[i]);
 			}
 			#endregion
+#if PostgreSQL
 			#region //depricated Npgsql stuff...
 //			if (DBServerType == eDBServerTypes.PostgreSQL) {
 //				string in_parameters = "";
@@ -909,27 +921,32 @@ if (Logenabled) {
 //				command_.CommandText = Storedprocedure_;
 //			}
 			#endregion
+#endif
 			#region command_in.CommandText = function_in;
 			switch (dbservertype_) {
-				case eDBServerTypes.PostgreSQL: {
+#if PostgreSQL
+				case eDBServerTypes.PostgreSQL:
 					command_in.CommandText =
 						string.Format("\"{0}\"", function_in);
 					break;
-				}
+#endif
 				case eDBServerTypes.SQLServer:
+#if MySQL
 				case eDBServerTypes.MySQL:
-				default: {
+#endif
+				default:
 					command_in.CommandText = function_in;
 					break;
-				}
 			}
 			#endregion
 			command_in.CommandType = CommandType.StoredProcedure;
 			try {
 				if (returnValue_Size_in >= 0) {
 					switch (dbservertype_) {
+#if MySQL
+						case eDBServerTypes.MySQL:
+#endif
 						case eDBServerTypes.SQLServer:
-						case eDBServerTypes.MySQL: {
 							command_in.Parameters.Add(
 								newDBDataParameter(
 									"SomeOutput",
@@ -945,12 +962,12 @@ if (Logenabled) {
 									command_in.Parameters.Count - 1
 								]).Value;
 							break;
-						}
-						case eDBServerTypes.PostgreSQL: {
+#if PostgreSQL
+						case eDBServerTypes.PostgreSQL:
 							Execute_SQLFunction_out = 
 								command_in.ExecuteScalar();
 							break;
-						}
+#endif
 						default:
 							throw new Exception("invalid DBServerType");
 					}
@@ -1241,8 +1258,10 @@ if (Logenabled) {
 		}
 		private /*static*/ string sqlfunction_exists(string name_in, eDBServerTypes dbServerType_in) {
 			switch (dbServerType_in) {
+#if PostgreSQL
+				case eDBServerTypes.PostgreSQL:
+#endif
 				case eDBServerTypes.SQLServer:
-				case eDBServerTypes.PostgreSQL: {
 					return string.Format(
 						#region "SELECT ...", 
 						@"
@@ -1256,8 +1275,8 @@ WHERE
 						#endregion
 						name_in
 					);
-				}
-				case eDBServerTypes.MySQL: {
+#if MySQL
+				case eDBServerTypes.MySQL:
 					string _database = Connectionstring_database();
 					return string.Format(
 						#region "SELECT ...", 
@@ -1275,14 +1294,13 @@ WHERE
 						name_in, 
 						_database
 					);
-				}
-				default: {
+#endif
+				default:
 					throw new Exception(string.Format(
 						"{0}.{1}.sqlfunction_exists(): - not implemented!",
 						typeof(cDBConnection).Namespace,
 						typeof(cDBConnection).Name
 					));
-				}
 			}
 		}
 
@@ -1309,12 +1327,15 @@ WHERE
 						name_in
 					);
 				}
+#if MySQL
 				case eDBServerTypes.MySQL: {
 					return string.Format(
 						"DROP FUNCTION `{0}`",
 						name_in
 					);
 				}
+#endif
+#if PostgreSQL
 				case eDBServerTypes.PostgreSQL:
 					// ToDos: here! not implemented
 					// NOTES: It's not as easy as it is for SQLServer and MySQL. PostgreSQL 
@@ -1323,6 +1344,7 @@ WHERE
 					// function.
 					// To overcome such probleme, remember that in PostgreSQL you can use:
 					// CREATE OR REPLACE FUNCTION "some_function"
+#endif
 				default: {
 					throw new Exception(
 						string.Format(
@@ -1355,8 +1377,10 @@ WHERE
 		}
 		private /*static*/ string sqlstoredprocedure_exists(string name_in, eDBServerTypes dbServerType_in) {
 			switch (dbServerType_in) {
+#if PostgreSQL
+				case eDBServerTypes.PostgreSQL:
+#endif
 				case eDBServerTypes.SQLServer:
-				case eDBServerTypes.PostgreSQL: {
 					return string.Format(
 						#region "SELECT ...", 
 						@"
@@ -1370,8 +1394,8 @@ WHERE
 						#endregion
 						name_in
 					);
-				}
-				case eDBServerTypes.MySQL: {
+#if MySQL
+				case eDBServerTypes.MySQL:
 					string _database = Connectionstring_database();
 					return string.Format(
 						#region "SELECT ...", 
@@ -1389,7 +1413,7 @@ WHERE
 						name_in, 
 						_database
 					);
-				}
+#endif
 				default: {
 					throw new Exception("not implemented");
 				}
@@ -1418,12 +1442,15 @@ WHERE
 						name_in
 					);
 				}
+#if MySQL
 				case eDBServerTypes.MySQL: {
 					return string.Format(
 						"DROP PROCEDURE `{0}`",
 						name_in
 					);
 				}
+#endif
+#if PostgreSQL
 				case eDBServerTypes.PostgreSQL:
 					// ToDos: here! not implemented
 					// NOTES: It's not as easy as it is for SQLServer and MySQL. PostgreSQL 
@@ -1433,6 +1460,7 @@ WHERE
 					// To overcome such probleme, remember that in PostgreSQL you can use:
 					// CREATE OR REPLACE PROCEDURE "some_procedure"
 					// PostgreSQL supports Stored Procedures.
+#endif
 				default: {
 					throw new Exception(
 						string.Format(
@@ -1464,8 +1492,10 @@ WHERE
 		}
 		private /*static*/ string sqlview_exists(string name_in, eDBServerTypes dbServerType_in) {
 			switch (dbServerType_in) {
+#if PostgreSQL
+				case eDBServerTypes.PostgreSQL:
+#endif
 				case eDBServerTypes.SQLServer:
-				case eDBServerTypes.PostgreSQL: {
 					return string.Format(
 						#region "SELECT ...", 
 						@"
@@ -1479,8 +1509,8 @@ WHERE
 						#endregion
 						name_in
 					);
-				}
-				case eDBServerTypes.MySQL: {
+#if MySQL
+				case eDBServerTypes.MySQL:
 					string _database = Connectionstring_database();
 					return string.Format(
 						#region "SELECT ...", 
@@ -1498,14 +1528,13 @@ WHERE
 						name_in, 
 						_database
 					);
-				}
-				default: {
+#endif
+				default:
 					throw new Exception(string.Format(
 						"{0}.{1}.sqlview_exists(): - not implemented!",
 						typeof(cDBConnection).Namespace,
 						typeof(cDBConnection).Name
 					));
-				}
 			}
 		}
 		/// <summary>
@@ -1525,22 +1554,24 @@ WHERE
 		}
 		private static string sqlview_delete(string name_in, eDBServerTypes dbServerType_in) {
 			switch (dbServerType_in) {
-				case eDBServerTypes.SQLServer: {
+				case eDBServerTypes.SQLServer:
 					return string.Format(
 						"DROP VIEW {0}",
 						name_in
 					);
-				}
-				case eDBServerTypes.MySQL: {
+#if MySQL
+				case eDBServerTypes.MySQL:
 					return string.Format(
 						"DROP VIEW `{0}`",
 						name_in
 					);
-				}
+#endif
+#if PostgreSQL
 				case eDBServerTypes.PostgreSQL:
 					// ToDos: here! not implemented, needed if droping, 
 					// no need when replacing, you can use:
 					// CREATE OR REPLACE VIEW "some_view"
+#endif
 				default: {
 					throw new Exception(
 						string.Format(
@@ -1577,8 +1608,10 @@ WHERE
 
 			string _query;
 			switch (dbservertype_) {
+#if PostgreSQL
+				case eDBServerTypes.PostgreSQL:
+#endif
 				case eDBServerTypes.SQLServer:
-				case eDBServerTypes.PostgreSQL: {
 					_query = @"
 SELECT CATALOG_NAME 
 FROM INFORMATION_SCHEMA.SCHEMATA 
@@ -1596,8 +1629,8 @@ GROUP BY CATALOG_NAME
 ORDER BY CATALOG_NAME"
 					;
 					break;
-				}
-				case eDBServerTypes.MySQL: {
+#if MySQL
+				case eDBServerTypes.MySQL:
 					_query = @"
 SELECT SCHEMA_NAME 
 FROM INFORMATION_SCHEMA.SCHEMATA 
@@ -1608,7 +1641,7 @@ WHERE
 ORDER BY SCHEMA_NAME"
 					;
 					break;
-				}
+#endif
 				default: {
 					throw new Exception(
 						string.Format(
@@ -1677,8 +1710,10 @@ ORDER BY SCHEMA_NAME"
 			) {
 				StringBuilder _query = new StringBuilder(string.Empty);
 				switch (dbservertype_) {
-					case eDBServerTypes.SQLServer:
+#if PostgreSQL
 					case eDBServerTypes.PostgreSQL:
+#endif
+					case eDBServerTypes.SQLServer:
 						#region query.Append("SELECT ...");
 						_query.Append(@"
 SELECT
@@ -1735,6 +1770,7 @@ WHERE
 						_query.Append(@"ORDER BY ""Name"" ");
 						#endregion
 						break;
+#if MySQL
 					case eDBServerTypes.MySQL:
 						string _database = Connectionstring_database();
 						#region _query.Append("SELECT ...");
@@ -1775,6 +1811,7 @@ WHERE
 						_query.Append(@"ORDER BY ""Name"" ");
 						#endregion
 						break;
+#endif
 					default:
 						throw new Exception("not implemented");
 				}
@@ -1792,7 +1829,12 @@ WHERE
 			for (int r = 0; r < _dtemp.Rows.Count; r++)
 				getTables_out[r] = new cDBTable(
 					(string)_dtemp.Rows[r]["Name"],
-					(dbservertype_ == eDBServerTypes.MySQL) ? ((long)_dtemp.Rows[r]["isVT"] == 1L) : ((int)_dtemp.Rows[r]["isVT"] == 1), 
+#if MySQL
+					(dbservertype_ == eDBServerTypes.MySQL) ? 
+						((long)_dtemp.Rows[r]["isVT"] == 1L) : 
+#endif
+						((int)_dtemp.Rows[r]["isVT"] == 1)
+					, 
 // ToDos: here!
 string.Empty
 				);
@@ -1987,6 +2029,7 @@ ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION",
 						);
 						#endregion
 						break;
+#if PostgreSQL
 					case eDBServerTypes.PostgreSQL:
 						#region _query = "SELECT ...";
 						_query = string.Format(@"
@@ -2082,6 +2125,8 @@ ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 						);
 						#endregion
 						break;
+#endif
+#if MySQL
 					case eDBServerTypes.MySQL:
 						string _database = Connectionstring_database();
 						#region _query = "SELECT ...";
@@ -2128,6 +2173,7 @@ ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 						);
 						#endregion
 						break;
+#endif
 					default:
 						throw new Exception(string.Format(
 							"{0}.{1}.getTableFields: - not implemented", 
@@ -2151,6 +2197,7 @@ ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 
 				getTableFields_out[r].Name				= (string)_dtemp.Rows[r]["Name"];
 				switch (dbservertype_) {
+#if MySQL
 					case eDBServerTypes.MySQL:
 						getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Size"];
 						getTableFields_out[r].isNullable = ((long)_dtemp.Rows[r]["isNullable"] == 1L);
@@ -2164,6 +2211,8 @@ ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 						getTableFields_out[r].Numeric_Precision = (_dtemp.Rows[r]["Numeric_Precision"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Numeric_Precision"];
 						getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r]["Numeric_Scale"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Numeric_Scale"];
 						break;
+#endif
+#if PostgreSQL
 					case eDBServerTypes.PostgreSQL:
 						getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Size"];
 						getTableFields_out[r].isNullable = ((int)_dtemp.Rows[r]["isNullable"] == 1);
@@ -2177,6 +2226,7 @@ ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 						getTableFields_out[r].Numeric_Precision = (_dtemp.Rows[r]["Numeric_Precision"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Numeric_Precision"];
 						getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r]["Numeric_Scale"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Numeric_Scale"];
 						break;
+#endif
 					case eDBServerTypes.SQLServer: {
 						getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Size"];
 						getTableFields_out[r].isNullable = ((int)_dtemp.Rows[r]["isNullable"] == 1);
