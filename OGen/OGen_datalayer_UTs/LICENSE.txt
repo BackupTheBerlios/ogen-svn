@@ -38,6 +38,7 @@ OGen is licensed under various different licenses.
 	* OGen.NTier.UTs.lib.datalayer.UTs: MIT
 	* OGen.NTier.UTs.test: MIT
 	* OGen-NTier_UTs-PostgreSQL: MIT
+	* OGen-NTier_UTs-SQLServer: MIT
 	* OGen-metadatas: MIT
 	* OGen.Doc.lib.generator: MIT
 	* OGen.Doc.lib.metadata: MIT
