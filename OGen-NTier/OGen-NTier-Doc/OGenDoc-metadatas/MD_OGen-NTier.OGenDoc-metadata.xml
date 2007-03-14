@@ -60,9 +60,34 @@ ToDos: here!
 					description="ToDos: here!" 
 					document="
 
-OGen is distributed under the 
-&lt;a href=&quot;http://www.opensource.org/licenses/mit-license.html&quot;&gt;
-	The MIT License&lt;/a&gt;
+OGen is distributed under the permissive
+&lt;a href=&quot;http://www.opensource.org/licenses/mit-license.php&quot;&gt;
+	MIT License&lt;/a&gt;
+
+which is similar to the
+
+&lt;!--
+&lt;a href=&quot;http://www.opensource.org/licenses/bsd-license.php&quot;&gt;
+--&gt;
+	BSD License
+&lt;!--
+&lt;/a&gt;
+--&gt;
+
+and is
+
+&lt;a href=&quot;http://www.fsf.org/licensing/licenses/index_html#GPLCompatibleLicenses&quot;&gt;
+	compatible&lt;/a&gt;
+
+with the
+
+&lt;!--
+&lt;a href=&quot;http://www.fsf.org/licensing/licenses/gpl.txt&quot;&gt;
+--&gt;
+	GNU General Public License (&quot;GNU GPL&quot;)
+&lt;!--
+&lt;/a&gt;
+--&gt;
 
 " />
 				<document idDocument="3" 

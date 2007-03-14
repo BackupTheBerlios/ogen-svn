@@ -91,24 +91,28 @@ namespace OGen.NTier.lib.metadata {
 			set { dbs_ = value; }
 		}
 		#endregion
+#if PostgreSQL
 //		#region private string supports_postgresql__ { get; }
 		[ClaSSPropertyAttribute("supports_PostgreSQL", ClaSSPropertyAttribute.eType.standard, false)]
 		private string supports_postgresql__ {
 			get { return (Search(eDBServerTypes.PostgreSQL) != -1).ToString(); }
 		}
 //		#endregion
+#endif
 //		#region private string supports_sqlserver__ { get; }
 		[ClaSSPropertyAttribute("supports_SQLServer", ClaSSPropertyAttribute.eType.standard, false)]
 		private string supports_sqlserver__ {
 			get { return (Search(eDBServerTypes.SQLServer) != -1).ToString(); }
 		}
 //		#endregion
+#if MySQL
 //		#region private string supports_mysql__ { get; }
 		[ClaSSPropertyAttribute("supports_MySQL", ClaSSPropertyAttribute.eType.standard, false)]
 		private string supports_mysql__ {
 			get { return (Search(eDBServerTypes.MySQL) != -1).ToString(); }
 		}
 //		#endregion
+#endif
 //		#endregion
 		#region Properties...
 		#region public cDBMetadata Root_ref;

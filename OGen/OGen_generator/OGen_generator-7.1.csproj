@@ -28,7 +28,7 @@
                     BaseAddress = "285212672"
                     CheckForOverflowUnderflow = "false"
                     ConfigurationOverrideFile = ""
-                    DefineConstants = "DEBUG;TRACE;MySQL;PostgreSQL"
+                    DefineConstants = "DEBUG;TRACE;PostgreSQL"
                     DocumentationFile = ""
                     DebugSymbols = "true"
                     FileAlignment = "4096"
@@ -48,7 +48,7 @@
                     BaseAddress = "285212672"
                     CheckForOverflowUnderflow = "false"
                     ConfigurationOverrideFile = ""
-                    DefineConstants = "TRACE;MySQL;PostgreSQL"
+                    DefineConstants = "TRACE;PostgreSQL"
                     DocumentationFile = ""
                     DebugSymbols = "false"
                     FileAlignment = "4096"
@@ -108,12 +108,6 @@
                     Name = "OGen_parser"
                     Project = "{981BC7DE-D93C-446E-861E-60A20E4E3391}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
-                    Name = "MySql.Data"
-                    AssemblyName = "MySql.Data"
-                    HintPath = "..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 1.0.7\bin\.NET 1.1\MySql.Data.dll"
-                    AssemblyFolderKey = "hklm\mysql connector net 1.0.7"
                 />
                 <Reference
                     Name = "Npgsql"

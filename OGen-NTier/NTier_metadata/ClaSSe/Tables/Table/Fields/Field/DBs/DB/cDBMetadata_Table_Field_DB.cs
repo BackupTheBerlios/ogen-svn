@@ -15,8 +15,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 using System;
 using System.Reflection;
 using System.Data;
+#if PostgreSQL
 using NpgsqlTypes;
+#endif
+#if MySQL
 using MySql.Data.MySqlClient;
+#endif
 
 using OGen.lib.datalayer;
 using OGen.lib.collections;
@@ -167,12 +171,16 @@ namespace OGen.NTier.lib.metadata {
 					case eDBServerTypes.SQLServer:
 						DBType_generic_out.Value = OGen.lib.datalayer.utils.convert.SqlDbType2DbType((SqlDbType)DBType_inDB);
 						break;
+#if PostgreSQL
 					case eDBServerTypes.PostgreSQL:
 						DBType_generic_out.Value = OGen.lib.datalayer.utils.convert.PgsqlDbType2DbType((NpgsqlDbType)DBType_inDB);
 						break;
+#endif
+#if MySQL
 					case eDBServerTypes.MySQL:
 						DBType_generic_out.Value = OGen.lib.datalayer.utils.convert.MySqlDbType2DbType((MySqlDbType)DBType_inDB);
 						break;
+#endif
 					default:
 						throw new Exception(
 							string.Format(
@@ -200,16 +208,20 @@ namespace OGen.NTier.lib.metadata {
 							DBType_inDB_name, 
 							false
 						);
+#if PostgreSQL
 					case eDBServerTypes.PostgreSQL:
 						return (int)OGen.lib.datalayer.utils.convert.PgsqlDbType_Parse(
 							//base.Property_standard["type"], 
 							DBType_inDB_name
 						);
+#endif
+#if MySQL
 					case eDBServerTypes.MySQL:
 						return (int)OGen.lib.datalayer.utils.convert.MySqlDbType_Parse(
 							//base.Property_standard["type"], 
 							DBType_inDB_name
 						);
+#endif
 					default:
 						throw new Exception(
 							string.Format(

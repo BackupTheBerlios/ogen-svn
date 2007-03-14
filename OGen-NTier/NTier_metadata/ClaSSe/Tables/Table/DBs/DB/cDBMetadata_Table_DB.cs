@@ -15,8 +15,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 using System;
 using System.Reflection;
 using System.Data;
+#if PostgreSQL
 using NpgsqlTypes;
+#endif
+#if MySQL
 using MySql.Data.MySqlClient;
+#endif
 
 using OGen.lib.datalayer;
 using OGen.lib.collections;

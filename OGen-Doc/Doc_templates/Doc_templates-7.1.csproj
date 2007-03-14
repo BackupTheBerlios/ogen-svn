@@ -90,12 +90,6 @@
                     HintPath = "..\..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
-                    Name = "MySql.Data"
-                    AssemblyName = "MySql.Data"
-                    HintPath = "..\..\..\..\..\..\Program Files\MySQL\MySQL Connector Net 1.0.7\bin\.NET 1.1\MySql.Data.dll"
-                    AssemblyFolderKey = "hklm\mysql connector net 1.0.7"
-                />
-                <Reference
                     Name = "OGen_collections"
                     Project = "{A6E837F8-780F-4D05-B3ED-2FF1906B5766}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"

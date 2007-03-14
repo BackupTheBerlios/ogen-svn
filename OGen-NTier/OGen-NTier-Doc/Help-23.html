@@ -1,107 +1,93 @@
 <html>
-	<head>
-		<title>
-			OGen - search
-		</title>
-		<link rel="stylesheet" href="_include/doc.css" type="text/css" />
-		<!--<script language="JavaScript" src="_include/lib_doc.js"></script>-->
-	</head>
-	<body
-		bottommargin="0"
-		topmargin="0"
-		leftmargin="0"
-		rightmargin="0">
+    <head>
+        <title>Parser Error</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
 
-		<table cellpadding="0" cellspacing="0" width="100%" border="0">
-			<tr>
-				<td colspan="3" bgcolor="#99CCFF">
-					<table cellpadding="5" cellspacing="5" width="100%" class="menu" border="0">
-						<tr>
-							<td align="left">
-								<a href="http://ogen.berlios.de/">
-									OGen</a>
-								&gt;
-								<a href="index.html">
-									Documentation</a> &gt; <a href='Help-0.html'>Help</a> &gt; <a href='Help-2.html'>introduction</a> &gt; <a href='Help-20.html'>using Data Objects</a> &gt; <a href='Help-22.html'>searches</a> &gt; <b>search</b>
-									&gt; <a href="Help-24.html">
-										defining a search</a>
-							</td>
-							<td align="right">
-								v0.1</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-			<tr valign="top">
-				<td colspan="3" bgcolor="#000000" height="1"></td>
-			</tr>
-			<tr>
-				<td width="10"></td>
-				<td>
-					<br>
+    <body bgcolor="white">
 
-					<span class="title">search</span>
-					<br>
-					<span class="text">ToDos: here!</span>
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
 
-					<br>
-				</td>
-				<td width="10"></td>
-			</tr>
-			<tr>
-				<td width="10"></td>
-				<td>
-					<br>
-				</td>
-				<td width="10"></td>
-			</tr>
-			<tr>
-				<td width="10"></td>
-				<td>
-					<!--tr valign="top">
-						<td></td>
-						<td colspan="1" bgcolor="#000000" height="1"></td>
-						<td></td>
-					</tr-->
-					<hr size="1"><br>
-					<span class="text">
-						&gt; <a href="Help-24.html">defining a search</a><br>
-						ToDos: here!.<br>
-					</span>
-					<br>
-					<span class="text">
-						&gt; <a href="Help-25.html">tweaking a search</a><br>
-						ToDos: here!.<br>
-					</span>
-					<br>
-					<span class="text">
-						&gt; <a href="Help-26.html">using a search</a><br>
-						ToDos: here!.<br>
-					</span>
-					<br>
-				</td>
-				<td width="10"></td>
-			</tr>
-			<tr>
-				<td colspan="3" bgcolor="#000000" height="1"></td>
-			</tr>
-			<tr>
-				<td colspan="3">
-					<table cellpadding="5" cellspacing="5" width="100%" border="0">
-						<tr>
-							<td align="left" valign="top">
-								<a href="mailto:frm@fct.unl.pt?subject=/Help/introduction/using Data Objects/searches/search">Send comments on this topic.</a>
-								<br>
-								<a href="LICENSE.FDL.txt">Copyright (C) 2002 Francisco Monteiro</a>
-							</td>
-							<td align="right" valign="top">
-									&gt; <a href="Help-24.html">
-										defining a search</a>
-							</td>
-						</tr>
-					</table>
-				</td>
-			</tr>
-		</table>
-	</body>
+            <h2> <i>Parser Error</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An error occurred during the parsing of a resource required to service this request.   Please review the following specific parse error details and modify your source file appropriately.
+            <br><br>
+
+            <b> Parser Error Message: </b>Could not load type 'OGen.Doc.lib.templates.Global'.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+<font color=red>Line 1:  &lt;%@ Application Codebehind=&quot;Global.asax.cs&quot; Inherits=&quot;OGen.Doc.lib.templates.Global&quot; %&gt;
+</font></pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> /global.asax<b> &nbsp;&nbsp; Line: </b> 1
+            <br><br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
 </html>
+<!-- 
+[HttpException]: Could not load type 'OGen.Doc.lib.templates.Global'.
+   at System.Web.UI.TemplateParser.GetType(String typeName, Boolean ignoreCase, Boolean throwOnError)
+   at System.Web.UI.TemplateParser.ProcessInheritsAttribute(String baseTypeName, String codeFileBaseTypeName, String src, Assembly assembly)
+   at System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+[Exception]: Could not load type 'OGen.Doc.lib.templates.Global'.
+   at System.Web.UI.TemplateParser.ProcessException(Exception ex)
+   at System.Web.UI.TemplateParser.PostProcessMainDirectiveAttributes(IDictionary parseData)
+   at System.Web.UI.TemplateParser.ProcessMainDirective(IDictionary mainDirective)
+   at System.Web.UI.TemplateParser.ProcessDirective(String directiveName, IDictionary directive)
+   at System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+[Exception]: Could not load type 'OGen.Doc.lib.templates.Global'.
+   at System.Web.UI.TemplateParser.ProcessException(Exception ex)
+   at System.Web.UI.TemplateParser.ParseStringInternal(String text, Encoding fileEncoding)
+   at System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+[HttpParseException]: Could not load type 'OGen.Doc.lib.templates.Global'.
+   at System.Web.UI.TemplateParser.ParseString(String text, VirtualPath virtualPath, Encoding fileEncoding)
+   at System.Web.UI.TemplateParser.ParseFile(String physicalPath, VirtualPath virtualPath)
+   at System.Web.UI.TemplateParser.ParseInternal()
+   at System.Web.UI.TemplateParser.Parse()
+   at System.Web.Compilation.BaseTemplateBuildProvider.get_CodeCompilerType()
+   at System.Web.Compilation.BuildProvider.GetCompilerTypeFromBuildProvider(BuildProvider buildProvider)
+   at System.Web.Compilation.BuildProvidersCompiler.ProcessBuildProviders()
+   at System.Web.Compilation.BuildProvidersCompiler.PerformBuild()
+   at System.Web.Compilation.ApplicationBuildProvider.GetGlobalAsaxBuildResult(Boolean isPrecompiledApp)
+   at System.Web.Compilation.BuildManager.CompileGlobalAsax()
+   at System.Web.Compilation.BuildManager.EnsureTopLevelFilesCompiled()
+[HttpException]: Could not load type 'OGen.Doc.lib.templates.Global'.
+   at System.Web.Compilation.BuildManager.ReportTopLevelCompilationException()
+   at System.Web.Compilation.BuildManager.EnsureTopLevelFilesCompiled()
+   at System.Web.Hosting.HostingEnvironment.Initialize(ApplicationManager appManager, IApplicationHost appHost, IConfigMapPathFactory configMapPathFactory, HostingEnvironmentParameters hostingParameters)
+[HttpException]: Could not load type 'OGen.Doc.lib.templates.Global'.
+   at System.Web.HttpRuntime.FirstRequestInit(HttpContext context)
+   at System.Web.HttpRuntime.EnsureFirstRequestInit(HttpContext context)
+   at System.Web.HttpRuntime.ProcessRequestInternal(HttpWorkerRequest wr)
+-->
