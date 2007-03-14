@@ -127,14 +127,14 @@
       <DependentUpon>Global.asax</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <None Include="COPYING" />
+    <None Include="COPYING.MIT" />
     <Content Include="doc.css" />
     <Content Include="FAQ-id.html.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Help-id.html.aspx" />
     <Content Include="index.html.aspx" />
     <Content Include="lib_doc.js" />
-    <Content Include="LICENSE.GPL.txt" />
+    <Content Include="LICENSE.MIT.txt" />
     <Content Include="LICENSE.txt" />
     <Content Include="templates.config.xml" />
     <Content Include="Web.config" />
