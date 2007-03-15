@@ -60,7 +60,7 @@ GOTO eof
 	::FOR %%a IN (COPYING LICENSE.GPL.txt COPYING.DOC LICENSE.FDL.txt COPYING.LIB LICENSE.LGPL.txt LICENSE.txt) DO IF EXIST ..\%1\%2\%%a DEL /q ..\%1\%2\%%a
 
 	IF NOT '%8' == 't' GOTO skip_doc
-		IF EXIST ..\%1\%2\NDoc RMDIR /S /Q ..\%1\%2\NDoc
+::		IF EXIST ..\%1\%2\NDoc RMDIR /S /Q ..\%1\%2\NDoc
 ::		IF EXIST ..\%1\%2\_include RMDIR /S /Q ..\%1\%2\_include
 ::		IF EXIST ..\%1\%2\FAQ-*.html DEL /F /Q ..\%1\%2\FAQ-*.html
 ::		IF EXIST ..\%1\%2\Help-*.html DEL /F /Q ..\%1\%2\Help-*.html

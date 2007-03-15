@@ -12,6 +12,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 */
 #endregion
+#if MySQL
 using System;
 using System.Data;
 using MySql.Data.MySqlClient;
@@ -456,3 +457,4 @@ throw new Exception("not implemented!");
 //		#endregion
 	}
 }
+#endif

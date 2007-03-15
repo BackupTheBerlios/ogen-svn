@@ -32,8 +32,8 @@ bool _isFirst;
 		<title>
 			<%=_aux_doc.DocumentationName%> - <%=_faqsubject.Name%>
 		</title>
-		<link rel="stylesheet" href="_include/doc.css" type="text/css" />
-		<!--<script language="JavaScript" src="_include/lib_doc.js"></script>-->
+		<link rel="stylesheet" href="_include/doc.css" type="text/css" /><%--
+		<script language="JavaScript" src="_include/lib_doc.js"></script>--%>
 	</head>
 	<body
 		bottommargin="0"

@@ -12,6 +12,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 */
 #endregion
+#if PostgreSQL
 using System;
 using System.Data;
 using Npgsql;
@@ -40,7 +41,7 @@ namespace OGen.lib.datalayer.newStuff {
 		//#endregion
 
 		//#region public static properties...
-		#region public static DBUtils Utils { get; }
+#region public static DBUtils Utils { get; }
 		private static DBUtils utils__ = null;
 
 		public static DBUtils Utils {
@@ -54,14 +55,14 @@ namespace OGen.lib.datalayer.newStuff {
 		#endregion
 		//#endregion
 		//#region public properties...
-		#region public override DBUtils utils { get; }
+#region public override DBUtils utils { get; }
 		public override DBUtils utils {
 			get {
 				return Utils;
 			}
 		}
 		#endregion
-		#region public override IDbConnection exposeConnection { get; }
+#region public override IDbConnection exposeConnection { get; }
 		public override IDbConnection exposeConnection {
 			get {
 				if (connection__ == null) {
@@ -75,7 +76,7 @@ namespace OGen.lib.datalayer.newStuff {
 		//#endregion
 
 		//#region private Methods...
-		#region protected override IDbCommand newDBCommand(string command_in, IDbConnection connection_in);
+#region protected override IDbCommand newDBCommand(string command_in, IDbConnection connection_in);
 		protected override IDbCommand newDBCommand(string command_in, IDbConnection connection_in) {
 			IDbCommand _newdbcommand_out;
 
@@ -95,7 +96,7 @@ namespace OGen.lib.datalayer.newStuff {
 			return _newdbcommand_out;
 		}
 		#endregion
-		#region protected override IDbDataAdapter newDBDataAdapter(string query_in, IDbConnection connection_in, bool isQuery_notProcedure_in);
+#region protected override IDbDataAdapter newDBDataAdapter(string query_in, IDbConnection connection_in, bool isQuery_notProcedure_in);
 		protected override IDbDataAdapter newDBDataAdapter(string query_in, IDbConnection connection_in, bool isQuery_notProcedure_in) {
 			IDbDataAdapter _newdbdataadapter_out = new NpgsqlDataAdapter(
 				query_in,
@@ -111,7 +112,7 @@ namespace OGen.lib.datalayer.newStuff {
 		#endregion
 		//#endregion
 		//#region public Methods...
-		#region public override IDbDataParameter newDBDataParameter(...);
+#region public override IDbDataParameter newDBDataParameter(...);
 		public override IDbDataParameter newDBDataParameter(string name_in, DbType dbType_in, ParameterDirection parameterDirection_in, object value_in, int size_in) {
 			IDbDataParameter _newdbdataparameter_out;
 
@@ -150,12 +151,12 @@ namespace OGen.lib.datalayer.newStuff {
 			}
 
 			object Execute_SQLFunction_out = null;
-			#region command_.Parameters = dataParameters_in;
+#region command_.Parameters = dataParameters_in;
 			for (int i = 0; i < dataParameters_in.Length; i++) {
 				command_in.Parameters.Add(dataParameters_in[i]);
 			}
 			#endregion
-			#region command_in.CommandText = function_in;
+#region command_in.CommandText = function_in;
 			//switch (dbservertype_) {
 			//    case eDBServerTypes.PostgreSQL: {
 						command_in.CommandText =
@@ -223,10 +224,10 @@ namespace OGen.lib.datalayer.newStuff {
 
 
 		//---
-		#region protected override string sqlfunction_exists(...);
+#region protected override string sqlfunction_exists(...);
 		protected override string sqlfunction_exists(string name_in) {
 			return string.Format(
-				#region "SELECT ...", 
+#region "SELECT ...", 
 				@"
 SELECT null
 FROM INFORMATION_SCHEMA.ROUTINES
@@ -240,7 +241,7 @@ WHERE
 			);
 		}
 		#endregion
-		#region protected override string sqlfunction_delete(...);
+#region protected override string sqlfunction_delete(...);
 		protected override string sqlfunction_delete(string name_in) {
 			// ToDos: here! not implemented
 			// NOTES: It's not as easy as it is for SQLServer and MySQL. PostgreSQL 
@@ -253,10 +254,10 @@ WHERE
 			throw new Exception("- not implemented!");
 		}
 		#endregion
-		#region protected override string sqlstoredprocedure_exists(...);
+#region protected override string sqlstoredprocedure_exists(...);
 		protected override string sqlstoredprocedure_exists(string name_in) {
 			return string.Format(
-				#region "SELECT ...",
+#region "SELECT ...",
 @"
 SELECT null
 FROM INFORMATION_SCHEMA.ROUTINES
@@ -270,7 +271,7 @@ WHERE
 			);
 		}
 		#endregion
-		#region protected override string sqlstoredprocedure_delete(...);
+#region protected override string sqlstoredprocedure_delete(...);
 		protected override string sqlstoredprocedure_delete(string name_in) {
 			// ToDos: here! not implemented
 			// NOTES: It's not as easy as it is for SQLServer and MySQL. PostgreSQL 
@@ -284,10 +285,10 @@ WHERE
 			throw new Exception("- not implemented!");
 		}
 		#endregion
-		#region protected override string sqlview_exists(...);
+#region protected override string sqlview_exists(...);
 		protected override string sqlview_exists(string name_in) {
 			return string.Format(
-				#region "SELECT ...",
+#region "SELECT ...",
 @"
 SELECT null
 FROM INFORMATION_SCHEMA.TABLES
@@ -301,7 +302,7 @@ WHERE
 			);
 		}
 		#endregion
-		#region protected override string sqlview_delete(...);
+#region protected override string sqlview_delete(...);
 		protected override string sqlview_delete(string name_in) {
 			// ToDos: here! not implemented, needed if droping, 
 			// no need when replacing, you can use:
@@ -311,7 +312,7 @@ WHERE
 		}
 		#endregion
 		//---
-		#region protected override string getdbs(...);
+#region protected override string getdbs(...);
 		protected override string getdbs() {
 			return
 @"
@@ -325,10 +326,10 @@ ORDER BY CATALOG_NAME
 			;
 		}
 		#endregion
-		#region protected override string gettables(...);
+#region protected override string gettables(...);
 		protected override string gettables(string subAppName_in) {
             StringBuilder _query = new StringBuilder(string.Empty);
-			#region _query.Append(@"SELECT ...");
+#region _query.Append(@"SELECT ...");
 			_query.Append(@"
 SELECT
 	TABLE_NAME AS ""Name"",
@@ -388,11 +389,11 @@ WHERE
 			return _query.ToString();
 		}
 		#endregion
-		#region protected override string gettablefields(...);
+#region protected override string gettablefields(...);
 		protected override string gettablefields(
 			string tableName_in
 		) {
-			#region return "SELECT ...";
+#region return "SELECT ...";
 			return string.Format(@"
 SELECT
 	t1.COLUMN_NAME AS ""Name"", 
@@ -485,3 +486,4 @@ ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 		#endregion
 	}
 }
+#endif
