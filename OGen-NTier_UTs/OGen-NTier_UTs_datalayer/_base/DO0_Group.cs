@@ -2,7 +2,7 @@
 /*
 
 OGen
-Copyright (C) 2002 Francisco Monteiro
+Copyright (c) 2002 Francisco Monteiro
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -161,7 +161,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		) {
 			if (IDGroup_in != 0L) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.InputOutput, IDGroup_in, 0, 19, 0), 
+					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.InputOutput, IDGroup_in, 0, 0, 0), 
 					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Output, null, 50, 0, 0)
 				};
 				base.Connection.Execute_SQLFunction("sp0_Group_getObject", _dataparameters);
@@ -214,7 +214,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDGroup_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0, 19, 0)
+				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0, 0, 0)
 			};
 			base.Connection.Execute_SQLFunction("sp0_Group_delObject", _dataparameters);
 
@@ -248,7 +248,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDGroup_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0, 19, 0)
+				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0, 0, 0)
 			};
 
 			return (bool)base.Connection.Execute_SQLFunction(
@@ -273,7 +273,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			bool selectIdentity_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Output, null, 0, 19, 0), 
+				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Output, null, 0, 0, 0), 
 				base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Fields.Name, 50, 0, 0), 
 
 				base.Connection.newDBDataParameter("SelectIdentity_", DbType.Boolean, ParameterDirection.Input, selectIdentity_in, 1)
@@ -302,7 +302,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		void updObject(bool forceUpdate_in) {
 			if (forceUpdate_in || Fields.haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, Fields.IDGroup, 0, 19, 0), 
+					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, Fields.IDGroup, 0, 0, 0), 
 					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Fields.Name, 50, 0, 0)
 				};
 				base.Connection.Execute_SQLFunction(

@@ -2,7 +2,7 @@
 /*
 
 OGen
-Copyright (C) 2002 Francisco Monteiro
+Copyright (c) 2002 Francisco Monteiro
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -95,13 +95,13 @@ namespace OGen.NTier.UTs.lib.datalayer {
 
 			DataRow _datarow;
 			for (int i = 0; i < serialisableobject_in.Length; i++) {
-			    _datarow = _datatable.NewRow();
+				_datarow = _datatable.NewRow();
 				_datarow["Name"] = serialisableobject_in[i].Name;
 				_datarow["Config"] = serialisableobject_in[i].Config;
 				_datarow["Type"] = serialisableobject_in[i].Type;
 				_datarow["Description"] = serialisableobject_in[i].Description;
 
-			    _datatable.Rows.Add(_datarow);
+				_datatable.Rows.Add(_datarow);
 			}
 
 			Open(true, _datatable);
@@ -140,7 +140,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 						parent_ref_.Fields.type_ = (int)base.Record.Rows[Current]["Type"];
 					}
 					if (base.Record.Rows[Current]["Description"] == System.DBNull.Value) {
-						parent_ref_.Fields.Description_isNull = true;
+						parent_ref_.Fields.description_ = string.Empty;
 					} else {
 						parent_ref_.Fields.description_ = (string)base.Record.Rows[Current]["Description"];
 					}

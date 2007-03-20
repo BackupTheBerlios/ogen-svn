@@ -514,7 +514,11 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 										/*01*/ ConfigField,
 										/*02*/ DatatypeField,
 										/*03*/ _aux_table.Name, 
+#if MySQL
 										/*04*/ (_aux_metadata.DBs.FirstDefaultAvailable_DBServerType() == eDBServerTypes.MySQL) ? "`" :"\""
+#else
+										/*04*/ "\""
+#endif
 									)
 								);%>
 					switch (Fields.<%=NameField%>) {<%

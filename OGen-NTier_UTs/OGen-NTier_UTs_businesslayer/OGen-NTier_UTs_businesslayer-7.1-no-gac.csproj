@@ -9,7 +9,7 @@
             <Settings
                 ApplicationIcon = ""
                 AssemblyKeyContainerName = ""
-                AssemblyName = "OGen.NTier.UTs.lib.businesslayer"
+                AssemblyName = "OGen.NTier.UTs.lib.businesslayer-1.1"
                 AssemblyOriginatorKeyFile = ""
                 DefaultClientScript = "JScript"
                 DefaultHTMLPageLayout = "Grid"
@@ -76,28 +76,28 @@
                 />
                 <Reference
                     Name = "System.XML"
-                    AssemblyName = "System.Xml"
+                    AssemblyName = "System.XML"
                     HintPath = "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
-                    Name = "OGen-NTier_UTs_datalayer"
+                    Name = "OGen-NTier_UTs_datalayer-1.1"
                     Project = "{2C45EF1A-75BE-4B12-A232-62DEB5662239}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
                 <Reference
-                    Name = "NTier_businesslayer-7.1"
-                    Project = "{8AEBEA64-6FC4-430C-922C-B88D105AE91C}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                    Name = "OGen.lib.datalayer-1.1"
+                    AssemblyName = "OGen.lib.datalayer-1.1"
+                    AssemblyFolderKey = "hklm\dn\ogen"
                 />
                 <Reference
-                    Name = "NTier_datalayer-7.1"
-                    Project = "{38BEF535-92F1-4C55-9CEA-8F8D3E82CAFD}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                    Name = "OGen.NTier.lib.datalayer-1.1"
+                    AssemblyName = "OGen.NTier.lib.datalayer-1.1"
+                    AssemblyFolderKey = "hklm\dn\ogen"
                 />
                 <Reference
-                    Name = "OGen_datalayer-7.1"
-                    Project = "{4AE20414-478E-4859-849E-929741A5936C}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                    Name = "OGen.NTier.lib.businesslayer-1.1"
+                    AssemblyName = "OGen.NTier.lib.businesslayer-1.1"
+                    AssemblyFolderKey = "hklm\dn\ogen"
                 />
             </References>
         </Build>
@@ -114,32 +114,12 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "BO_Group.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "BO_User.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "BO_UserGroup.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "BO_vUserDefaultGroup.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "BO_vUserGroup.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
                     RelPath = "_base\BO0_Config.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "BO_Group.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -149,7 +129,67 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "BO_GroupPermition.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\BO0_GroupPermition.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "BO_Language.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\BO0_Language.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "BO_Log.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\BO0_Log.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "BO_Logcode.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\BO0_Logcode.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "BO_Permition.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\BO0_Permition.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "BO_User.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "_base\BO0_User.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "BO_UserGroup.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -159,7 +199,37 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "BO_Word.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\BO0_Word.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "BO_WordLanguage.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\BO0_WordLanguage.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "BO_vUserDefaultGroup.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "_base\BO0_vUserDefaultGroup.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "BO_vUserGroup.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -172,4 +242,3 @@
         </Files>
     </CSHARP>
 </VisualStudioProject>
-

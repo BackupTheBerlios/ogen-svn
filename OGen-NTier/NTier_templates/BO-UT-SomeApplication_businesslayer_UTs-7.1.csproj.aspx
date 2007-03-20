@@ -42,7 +42,7 @@ int _aux_table_hasidentitykey;
             <Settings
                 ApplicationIcon = ""
                 AssemblyKeyContainerName = ""
-                AssemblyName = "<%=_aux_metadata.Namespace%>.lib.businesslayer.UTs"
+                AssemblyName = "<%=_aux_metadata.Namespace%>.lib.businesslayer.UTs-1.1"
                 AssemblyOriginatorKeyFile = ""
                 DefaultClientScript = "JScript"
                 DefaultHTMLPageLayout = "Grid"
@@ -119,22 +119,22 @@ int _aux_table_hasidentitykey;
                     AssemblyFolderKey = "hklm\dn\nunit.framework"
                 />
                 <Reference
-                    Name = "OGen.lib.datalayer"
-                    AssemblyName = "OGen.lib.datalayer"
+                    Name = "OGen.lib.datalayer-1.1"
+                    AssemblyName = "OGen.lib.datalayer-1.1"
                     AssemblyFolderKey = "hklm\dn\ogen"
                 />
                 <Reference
-                    Name = "OGen.NTier.lib.datalayer"
-                    AssemblyName = "OGen.NTier.lib.datalayer"
+                    Name = "OGen.NTier.lib.datalayer-1.1"
+                    AssemblyName = "OGen.NTier.lib.datalayer-1.1"
                     AssemblyFolderKey = "hklm\dn\ogen"
                 />
                 <Reference
-                    Name = "<%=_aux_metadata.ApplicationName%>_datalayer"
+                    Name = "<%=_aux_metadata.ApplicationName%>_datalayer-1.1"
                     Project = "{<%=_aux_metadata.GUIDDatalayer%>}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
                 <Reference
-                    Name = "<%=_aux_metadata.ApplicationName%>_businesslayer"
+                    Name = "<%=_aux_metadata.ApplicationName%>_businesslayer-1.1"
                     Project = "{<%=_aux_metadata.GUIDBusinesslayer%>}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />

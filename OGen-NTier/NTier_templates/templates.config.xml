@@ -98,7 +98,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</outputs>
 		<dependencies />
 	</template>
-	<template name="SomeApplication.OGen-NTier.bat.aspx" 
+	<template name="SomeApplication.OGen-NTier-1.1.bat.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
@@ -107,7 +107,21 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</arguments>
 		<conditions />
 		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}.OGen-NTier.bat" 
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}.OGen-NTier-1.1.bat" 
+				type="File" mode="Create_doNotReplace" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="SomeApplication.OGen-NTier-2.0.bat.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
+			<argument name="OGenPath" value="${CONFIG.ogenPath}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}.OGen-NTier-2.0.bat" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
@@ -125,7 +139,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</outputs>
 		<dependencies />
 	</template>
-	<template name="SomeApplication.ndoc.aspx" 
+	<template name="SomeApplication.ndoc-1.1.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
@@ -133,7 +147,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</arguments>
 		<conditions />
 		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}.ndoc" 
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-1.1.ndoc" 
+				type="File" mode="Create_doNotReplace" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="SomeApplication.ndoc-2.0.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-2.0.ndoc" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
@@ -437,12 +464,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/app.config" 
 				type="File" mode="Create_doNotReplace" />
-			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.datalayer.UTs.config" 
+			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.datalayer.UTs-1.1.config" 
+				type="File" mode="Create_doNotReplace" />
+			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.datalayer.UTs-2.0.config" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
-	<template name="DO-UT-SomeNamespace.lib.datalayer.UTs.nunit.aspx" 
+	<template name="DO-UT-SomeNamespace.lib.datalayer.UTs-1.1.nunit.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
@@ -452,7 +481,22 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</arguments>
 		<conditions />
 		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.datalayer.UTs.nunit" 
+			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.datalayer.UTs-1.1.nunit" 
+				type="File" mode="Create_doNotReplace" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="DO-UT-SomeNamespace.lib.datalayer.UTs-2.0.nunit.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<!--argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" /-->
+			<argument name="ApplicationName" value="${ROOT.applicationName}" />
+			<argument name="Namespace" value="${ROOT.namespace}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.datalayer.UTs-2.0.nunit" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
@@ -547,12 +591,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/app.config" 
 				type="File" mode="Create_doNotReplace" />
-			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.businesslayer.UTs.config" 
+			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.businesslayer.UTs-1.1.config" 
+				type="File" mode="Create_doNotReplace" />
+			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.businesslayer.UTs-2.0.config" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
-	<template name="BO-UT-SomeNamespace.lib.businesslayer.UTs.nunit.aspx" 
+	<template name="BO-UT-SomeNamespace.lib.businesslayer.UTs-1.1.nunit.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
@@ -562,7 +608,22 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</arguments>
 		<conditions />
 		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.businesslayer.UTs.nunit" 
+			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.businesslayer.UTs-1.1.nunit" 
+				type="File" mode="Create_doNotReplace" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="BO-UT-SomeNamespace.lib.businesslayer.UTs-2.0.nunit.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT">
+		<arguments>
+			<!--argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" /-->
+			<argument name="ApplicationName" value="${ROOT.applicationName}" />
+			<argument name="Namespace" value="${ROOT.namespace}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="${CONFIG.outputPath}/${ROOT.namespace}.lib.businesslayer.UTs-2.0.nunit" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />

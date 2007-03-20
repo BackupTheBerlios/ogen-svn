@@ -11,7 +11,13 @@
 @ECHO OFF
 :: is a doc project, hence:
 IF '%8' == 't' GOTO eof
-IF NOT '%1' == '' GOTO install
+
+SET fw=
+IF '%1' == '/1_1' SET fw=1.1
+IF '%1' == '/2_0' SET fw=2.0
+IF '%fw%' == '' GOTO error4
+
+IF NOT '%2' == '' GOTO install
 
 
 SET SetEnvironmentPath=
@@ -25,7 +31,7 @@ IF NOT EXIST "OGen-solutions.txt" GOTO error2
 IF NOT EXIST "OGen-projects.txt" GOTO error3
 
 
-FOR /F "tokens=1,2,3,4,5,6,7,8 delims=, " %%a IN (OGen-projects.txt) DO CALL %0 %%a %%b %%c %%d %%e %%f %%g %%h
+FOR /F "tokens=1,2,3,4,5,6,7,8 delims=, " %%a IN (OGen-projects.txt) DO CALL %0 %1 %%a %%b %%c %%d %%e %%f %%g %%h
 PAUSE
 GOTO eof
 
@@ -48,10 +54,17 @@ GOTO eof
 	ECHO Can't find file 'OGen-projects.txt'
 	PAUSE
 GOTO eof
+:error4
+	ECHO.
+	ECHO.
+	ECHO must specify framework version
+	PAUSE
+GOTO eof
 
 
 :install
-gacutil /u %3
+SHIFT
+gacutil /u %3-%fw%
 
 
 :eof

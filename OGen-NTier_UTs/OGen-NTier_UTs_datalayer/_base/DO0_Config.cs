@@ -2,7 +2,7 @@
 /*
 
 OGen
-Copyright (C) 2002 Francisco Monteiro
+Copyright (c) 2002 Francisco Monteiro
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -162,7 +162,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
 					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.InputOutput, Name_in, 50, 0, 0), 
 					base.Connection.newDBDataParameter("Config_", DbType.String, ParameterDirection.Output, null, 50, 0, 0), 
-					base.Connection.newDBDataParameter("Type_", DbType.Int32, ParameterDirection.Output, null, 0, 10, 0), 
+					base.Connection.newDBDataParameter("Type_", DbType.Int32, ParameterDirection.Output, null, 0, 0, 0), 
 					base.Connection.newDBDataParameter("Description_", DbType.String, ParameterDirection.Output, null, 50, 0, 0)
 				};
 				base.Connection.Execute_SQLFunction("sp0_Config_getObject", _dataparameters);
@@ -184,7 +184,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 						Fields.Type = (int)_dataparameters[2].Value;
 					}
 					if (_dataparameters[3].Value == System.DBNull.Value) {
-						Fields.Description_isNull = true;
+						Fields.Description = string.Empty;
 					} else {
 						Fields.Description = (string)_dataparameters[3].Value;
 					}
@@ -285,8 +285,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
 					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Fields.Name, 50, 0, 0), 
 					base.Connection.newDBDataParameter("Config_", DbType.String, ParameterDirection.Input, Fields.Config, 50, 0, 0), 
-					base.Connection.newDBDataParameter("Type_", DbType.Int32, ParameterDirection.Input, Fields.Type, 0, 10, 0), 
-					base.Connection.newDBDataParameter("Description_", DbType.String, ParameterDirection.Input, Fields.Description_isNull ? null : (object)Fields.Description, 50, 0, 0), 
+					base.Connection.newDBDataParameter("Type_", DbType.Int32, ParameterDirection.Input, Fields.Type, 0, 0, 0), 
+					base.Connection.newDBDataParameter("Description_", DbType.String, ParameterDirection.Input, Fields.Description, 50, 0, 0), 
 
 					//base.Connection.newDBDataParameter("Exists", DbType.Boolean, ParameterDirection.Output, 0, 1)
 					base.Connection.newDBDataParameter("Output_", DbType.Int32, ParameterDirection.Output, null, 0)

@@ -9,9 +9,14 @@
 :: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 :: 
 @ECHO OFF
-IF '%1' == '/install' GOTO install
-IF '%1' == '/check' GOTO check
-IF NOT '%1' == '' GOTO error5
+SET fw=
+IF '%1' == '/1_1' SET fw=1.1
+IF '%1' == '/2_0' SET fw=2.0
+IF '%fw%' == '' GOTO error6
+
+IF '%2' == '/install' GOTO install
+IF '%2' == '/check' GOTO check
+IF NOT '%2' == '' GOTO error5
 
 
 SET SetEnvironmentPath=
@@ -27,13 +32,13 @@ IF NOT EXIST "OGen-projects.txt" GOTO error3
 
 SET hasErrors=
 FOR /F "tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (OGen-projects.txt) DO (
-	CALL %0 /check %%a %%b %%c %%d %%e %%f %%g %%h %%i
+	CALL %0 %1 /check %%a %%b %%c %%d %%e %%f %%g %%h %%i
 )
 IF NOT "%hasErrors%" == "" GOTO error4
 
 
 FOR /F "tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (OGen-projects.txt) DO (
-	CALL %0 /install %%a %%b %%c %%d %%e %%f %%g %%h %%i
+	CALL %0 %1 /install %%a %%b %%c %%d %%e %%f %%g %%h %%i
 )
 PAUSE
 GOTO eof
@@ -68,12 +73,19 @@ GOTO eof
 :error5
 	ECHO.
 	ECHO.
-	ECHO invalid arguments: %1
+	ECHO invalid arguments: %2
+	PAUSE
+GOTO eof
+:error6
+	ECHO.
+	ECHO.
+	ECHO must specify framework version
 	PAUSE
 GOTO eof
 
 
 :check
+	SHIFT
 	SHIFT
 
 	:: is not a Release, hence:
@@ -82,12 +94,13 @@ GOTO eof
 	IF '%5' == 'f' SET binDir=bin\Release
 	IF '%5' == 't' SET binDir=bin
 
-	IF '%6' == 'f' IF NOT EXIST ..\%1\%2\%binDir%\%3.dll SET hasErrors=%3.dll;%hasErrors%
-	IF '%6' == 't' IF NOT EXIST ..\%1\%2\%binDir%\%3.exe SET hasErrors=%3.exe;%hasErrors%
+	IF '%6' == 'f' IF NOT EXIST ..\%1\%2\%binDir%\%3-%fw%.dll SET hasErrors=%3-%fw%.dll;%hasErrors%
+	IF '%6' == 't' IF NOT EXIST ..\%1\%2\%binDir%\%3-%fw%.exe SET hasErrors=%3-%fw%.exe;%hasErrors%
 GOTO eof
 
 
 :install
+	SHIFT
 	SHIFT
 
 	:: is not a Release, hence:
@@ -98,19 +111,19 @@ GOTO eof
 	IF NOT EXIST ..\_release.no-svn MKDIR ..\_release.no-svn
 
 	:: if file has not been compiled, i'll try to install it if available from _release.no-svn dir...
-	::IF NOT EXIST ..\%1\%2\%binDir%\%3.dll GOTO tryinstall
+	::IF NOT EXIST ..\%1\%2\%binDir%\%3-%fw%.dll GOTO tryinstall
 
-	IF '%6' == 'f' IF EXIST ..\%1\%2\%binDir%\%3.dll COPY ..\%1\%2\%binDir%\%3.dll ..\_release.no-svn
-	::IF EXIST ..\%1\%2\%binDir%\%3.xml COPY ..\%1\%2\%binDir%\%3.xml ..\_release.no-svn
+	IF '%6' == 'f' IF EXIST ..\%1\%2\%binDir%\%3-%fw%.dll COPY ..\%1\%2\%binDir%\%3-%fw%.dll ..\_release.no-svn
+	::IF EXIST ..\%1\%2\%binDir%\%3.xml COPY ..\%1\%2\%binDir%\%3-%fw%.xml ..\_release.no-svn
 
-	IF '%6' == 't' IF EXIST ..\%1\%2\%binDir%\%3.exe COPY ..\%1\%2\%binDir%\%3.exe ..\_release.no-svn
-	::IF '%6' == 't' IF EXIST ..\%1\%2\%binDir%\%3.exe.config IF NOT EXIST ..\_release.no-svn\%3.exe.config COPY ..\%1\%2\%binDir%\%3.exe.config ..\_release.no-svn
+	IF '%6' == 't' IF EXIST ..\%1\%2\%binDir%\%3-%fw%.exe COPY ..\%1\%2\%binDir%\%3-%fw%.exe ..\_release.no-svn
+	::IF '%6' == 't' IF EXIST ..\%1\%2\%binDir%\%3-%fw%.exe.config IF NOT EXIST ..\_release.no-svn\%3-%fw%.exe.config COPY ..\%1\%2\%binDir%\%3-%fw%.exe.config ..\_release.no-svn
 
 :tryinstall
 	IF '%4' == 'f' GOTO eof
-	IF NOT EXIST ..\_release.no-svn\%3.dll GOTO eof
+	IF NOT EXIST ..\_release.no-svn\%3-%fw%.dll GOTO eof
 	::gacutil /u %3
-	gacutil /i ..\_release.no-svn\%3.dll
+	gacutil /i ..\_release.no-svn\%3-%fw%.dll
 GOTO eof
 
 

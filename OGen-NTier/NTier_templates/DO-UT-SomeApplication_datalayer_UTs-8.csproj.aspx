@@ -43,7 +43,7 @@ int _aux_table_hasidentitykey;
     </ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
-    <AssemblyName><%=_aux_metadata.Namespace%>.lib.datalayer.UTs</AssemblyName>
+    <AssemblyName><%=_aux_metadata.Namespace%>.lib.datalayer.UTs-2.0</AssemblyName>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
@@ -112,12 +112,12 @@ int _aux_table_hasidentitykey;
       <HintPath>C:\Program Files\NUnit 2.2\bin\nunit.framework.dll</HintPath>
       <AssemblyFolderKey>hklm\dn\nunit.framework</AssemblyFolderKey>
     </Reference>
-    <Reference Include="OGen.lib.datalayer">
-      <Name>OGen.lib.datalayer</Name>
+    <Reference Include="OGen.lib.datalayer-2.0">
+      <Name>OGen.lib.datalayer-2.0</Name>
       <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
     </Reference>
-    <Reference Include="OGen.NTier.lib.datalayer">
-      <Name>OGen.NTier.lib.datalayer</Name>
+    <Reference Include="OGen.NTier.lib.datalayer-2.0">
+      <Name>OGen.NTier.lib.datalayer-2.0</Name>
       <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
     </Reference>
     <Reference Include="System">

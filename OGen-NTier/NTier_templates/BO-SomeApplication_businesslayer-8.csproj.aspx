@@ -43,7 +43,7 @@ int _aux_table_hasidentitykey;
     </ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
-    <AssemblyName><%=_aux_metadata.Namespace%>.lib.businesslayer</AssemblyName>
+    <AssemblyName><%=_aux_metadata.Namespace%>.lib.businesslayer-2.0</AssemblyName>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
@@ -106,16 +106,16 @@ int _aux_table_hasidentitykey;
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="OGen.lib.datalayer">
-      <Name>OGen.lib.datalayer</Name>
+    <Reference Include="OGen.lib.datalayer-2.0">
+      <Name>OGen.lib.datalayer-2.0</Name>
       <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
     </Reference>
-    <Reference Include="OGen.NTier.lib.businesslayer">
-      <Name>OGen.NTier.lib.businesslayer</Name>
+    <Reference Include="OGen.NTier.lib.businesslayer-2.0">
+      <Name>OGen.NTier.lib.businesslayer-2.0</Name>
       <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
     </Reference>
-    <Reference Include="OGen.NTier.lib.datalayer">
-      <Name>OGen.NTier.lib.datalayer</Name>
+    <Reference Include="OGen.NTier.lib.datalayer-2.0">
+      <Name>OGen.NTier.lib.datalayer-2.0</Name>
       <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
     </Reference>
     <Reference Include="System">
@@ -128,7 +128,7 @@ int _aux_table_hasidentitykey;
       <Name>System.XML</Name>
     </Reference>
     <ProjectReference Include="..\<%=_aux_metadata.ApplicationName%>_datalayer\<%=_aux_metadata.ApplicationName%>_datalayer-8.csproj">
-      <Name><%=_aux_metadata.ApplicationName%>_datalayer</Name>
+      <Name><%=_aux_metadata.ApplicationName%>_datalayer-2.0</Name>
       <Project>{<%=_aux_metadata.GUIDDatalayer%>}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>

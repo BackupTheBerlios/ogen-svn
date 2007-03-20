@@ -14,6 +14,47 @@ AS
 ;
 
 
+CREATE OR REPLACE VIEW "v0_GroupPermition__onlyKeys"
+AS
+	SELECT
+		"IDGroup", 
+		"IDPermition"
+	FROM "GroupPermition"
+;
+
+
+CREATE OR REPLACE VIEW "v0_Language__onlyKeys"
+AS
+	SELECT
+		"IDLanguage"
+	FROM "Language"
+;
+
+
+CREATE OR REPLACE VIEW "v0_Log__onlyKeys"
+AS
+	SELECT
+		"IDLog"
+	FROM "Log"
+;
+
+
+CREATE OR REPLACE VIEW "v0_Logcode__onlyKeys"
+AS
+	SELECT
+		"IDLogcode"
+	FROM "Logcode"
+;
+
+
+CREATE OR REPLACE VIEW "v0_Permition__onlyKeys"
+AS
+	SELECT
+		"IDPermition"
+	FROM "Permition"
+;
+
+
 CREATE OR REPLACE VIEW "v0_User__onlyKeys"
 AS
 	SELECT
@@ -28,6 +69,23 @@ AS
 		"IDUser", 
 		"IDGroup"
 	FROM "UserGroup"
+;
+
+
+CREATE OR REPLACE VIEW "v0_Word__onlyKeys"
+AS
+	SELECT
+		"IDWord"
+	FROM "Word"
+;
+
+
+CREATE OR REPLACE VIEW "v0_WordLanguage__onlyKeys"
+AS
+	SELECT
+		"IDWord", 
+		"IDLanguage"
+	FROM "WordLanguage"
 ;
 
 
@@ -76,6 +134,77 @@ AS '
 	END;
 ' LANGUAGE 'plpgsql' STABLE;
 
+CREATE OR REPLACE FUNCTION "fnc0_GroupPermition_isObject"("IDGroup_" bigint, "IDPermition_" bigint)
+RETURNS boolean
+AS '
+	BEGIN
+		RETURN EXISTS(
+			SELECT
+				true -- whatever, just checking existence
+			FROM "GroupPermition"
+			WHERE
+				("IDGroup" = "IDGroup_") AND
+				("IDPermition" = "IDPermition_")
+		);
+	END;
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_Language_isObject"("IDLanguage_" bigint)
+RETURNS boolean
+AS '
+	BEGIN
+		RETURN EXISTS(
+			SELECT
+				true -- whatever, just checking existence
+			FROM "Language"
+			WHERE
+				("IDLanguage" = "IDLanguage_")
+		);
+	END;
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_Log_isObject"("IDLog_" bigint)
+RETURNS boolean
+AS '
+	BEGIN
+		RETURN EXISTS(
+			SELECT
+				true -- whatever, just checking existence
+			FROM "Log"
+			WHERE
+				("IDLog" = "IDLog_")
+		);
+	END;
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_Logcode_isObject"("IDLogcode_" bigint)
+RETURNS boolean
+AS '
+	BEGIN
+		RETURN EXISTS(
+			SELECT
+				true -- whatever, just checking existence
+			FROM "Logcode"
+			WHERE
+				("IDLogcode" = "IDLogcode_")
+		);
+	END;
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_Permition_isObject"("IDPermition_" bigint)
+RETURNS boolean
+AS '
+	BEGIN
+		RETURN EXISTS(
+			SELECT
+				true -- whatever, just checking existence
+			FROM "Permition"
+			WHERE
+				("IDPermition" = "IDPermition_")
+		);
+	END;
+' LANGUAGE 'plpgsql' STABLE;
+
 CREATE OR REPLACE FUNCTION "fnc0_User_isObject"("IDUser_" bigint)
 RETURNS boolean
 AS '
@@ -101,6 +230,35 @@ AS '
 			WHERE
 				("IDUser" = "IDUser_") AND
 				("IDGroup" = "IDGroup_")
+		);
+	END;
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_Word_isObject"("IDWord_" bigint)
+RETURNS boolean
+AS '
+	BEGIN
+		RETURN EXISTS(
+			SELECT
+				true -- whatever, just checking existence
+			FROM "Word"
+			WHERE
+				("IDWord" = "IDWord_")
+		);
+	END;
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_WordLanguage_isObject"("IDWord_" bigint, "IDLanguage_" bigint)
+RETURNS boolean
+AS '
+	BEGIN
+		RETURN EXISTS(
+			SELECT
+				true -- whatever, just checking existence
+			FROM "WordLanguage"
+			WHERE
+				("IDWord" = "IDWord_") AND
+				("IDLanguage" = "IDLanguage_")
 		);
 	END;
 ' LANGUAGE 'plpgsql' STABLE;
@@ -200,6 +358,67 @@ RETURNS int4 AS
 '
 LANGUAGE 'plpgsql' VOLATILE;
 
+CREATE OR REPLACE FUNCTION "sp0_GroupPermition_setObject"(
+	"IDGroup_" bigint, 
+	"IDPermition_" bigint
+)
+RETURNS int4 AS
+'
+	/*************************************
+	 *  returns                          *
+	 *    00 0: not exist, no constraint *
+	 *    01 1: exists, no constraint    *
+	 *    10 2: constraint, not exist    *
+	 *    11 3: exists, constraint       *
+	 *                                   *
+	 *  bit 0: existance                 *
+	 *  bit 1: constraint                *
+	 *************************************/
+
+	DECLARE
+		_Exists bool; 
+		_ConstraintExist bool;
+		_Output int4;
+	BEGIN
+		_Exists := EXISTS (
+			SELECT true -- whatever, just checking existence
+			FROM "GroupPermition"
+			WHERE
+				("IDGroup" = "IDGroup_") AND
+				("IDPermition" = "IDPermition_")
+		);
+		IF (_Exists) THEN
+			_ConstraintExist := 0;
+			/* no need!
+			IF NOT (_ConstraintExist) THEN
+				UPDATE "GroupPermition"
+				SET
+				WHERE
+					("IDGroup" = "IDGroup_") AND
+					("IDPermition" = "IDPermition_");
+			END IF;
+			*/
+		ELSE
+			_ConstraintExist := 0;
+			IF NOT (_ConstraintExist) THEN
+				INSERT INTO "GroupPermition" (
+					"IDGroup", 
+					"IDPermition"
+				) VALUES (
+					"IDGroup_", 
+					"IDPermition_"
+				);
+			END IF;
+		END IF;
+
+		_Output := 0;
+		IF (_Exists) THEN _Output := _Output + 1; END IF;
+		IF (_ConstraintExist) THEN _Output := _Output + 2; END IF;
+		RETURN _Output AS "Output_";
+	END;
+'
+LANGUAGE 'plpgsql' VOLATILE;
+
 CREATE OR REPLACE FUNCTION "sp0_UserGroup_setObject"(
 	"IDUser_" bigint, 
 	"IDGroup_" bigint, 
@@ -267,6 +486,69 @@ RETURNS int4 AS
 '
 LANGUAGE 'plpgsql' VOLATILE;
 
+CREATE OR REPLACE FUNCTION "sp0_WordLanguage_setObject"(
+	"IDWord_" bigint, 
+	"IDLanguage_" bigint, 
+	"Translation_" character varying
+)
+RETURNS int4 AS
+'
+	/*************************************
+	 *  returns                          *
+	 *    00 0: not exist, no constraint *
+	 *    01 1: exists, no constraint    *
+	 *    10 2: constraint, not exist    *
+	 *    11 3: exists, constraint       *
+	 *                                   *
+	 *  bit 0: existance                 *
+	 *  bit 1: constraint                *
+	 *************************************/
+
+	DECLARE
+		_Exists bool; 
+		_ConstraintExist bool;
+		_Output int4;
+	BEGIN
+		_Exists := EXISTS (
+			SELECT true -- whatever, just checking existence
+			FROM "WordLanguage"
+			WHERE
+				("IDWord" = "IDWord_") AND
+				("IDLanguage" = "IDLanguage_")
+		);
+		IF (_Exists) THEN
+			_ConstraintExist := 0;
+			IF NOT (_ConstraintExist) THEN
+				UPDATE "WordLanguage"
+				SET
+					"Translation" = "Translation_"
+				WHERE
+					("IDWord" = "IDWord_") AND
+					("IDLanguage" = "IDLanguage_");
+			END IF;
+		ELSE
+			_ConstraintExist := 0;
+			IF NOT (_ConstraintExist) THEN
+				INSERT INTO "WordLanguage" (
+					"IDWord", 
+					"IDLanguage", 
+					"Translation"
+				) VALUES (
+					"IDWord_", 
+					"IDLanguage_", 
+					"Translation_"
+				);
+			END IF;
+		END IF;
+
+		_Output := 0;
+		IF (_Exists) THEN _Output := _Output + 1; END IF;
+		IF (_ConstraintExist) THEN _Output := _Output + 2; END IF;
+		RETURN _Output AS "Output_";
+	END;
+'
+LANGUAGE 'plpgsql' VOLATILE;
+
 CREATE OR REPLACE FUNCTION "sp0_Config_delObject"("Name_" character varying)
 RETURNS void
 AS '
@@ -288,6 +570,72 @@ AS '
 		FROM "Group"
 		WHERE
 			("IDGroup" = "IDGroup_");
+
+		RETURN;
+	END;
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_GroupPermition_delObject"("IDGroup_" bigint, "IDPermition_" bigint)
+RETURNS void
+AS '
+	BEGIN
+		DELETE
+		FROM "GroupPermition"
+		WHERE
+			("IDGroup" = "IDGroup_") AND
+			("IDPermition" = "IDPermition_");
+
+		RETURN;
+	END;
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_Language_delObject"("IDLanguage_" bigint)
+RETURNS void
+AS '
+	BEGIN
+		DELETE
+		FROM "Language"
+		WHERE
+			("IDLanguage" = "IDLanguage_");
+
+		RETURN;
+	END;
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_Log_delObject"("IDLog_" bigint)
+RETURNS void
+AS '
+	BEGIN
+		DELETE
+		FROM "Log"
+		WHERE
+			("IDLog" = "IDLog_");
+
+		RETURN;
+	END;
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_Logcode_delObject"("IDLogcode_" bigint)
+RETURNS void
+AS '
+	BEGIN
+		DELETE
+		FROM "Logcode"
+		WHERE
+			("IDLogcode" = "IDLogcode_");
+
+		RETURN;
+	END;
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_Permition_delObject"("IDPermition_" bigint)
+RETURNS void
+AS '
+	BEGIN
+		DELETE
+		FROM "Permition"
+		WHERE
+			("IDPermition" = "IDPermition_");
 
 		RETURN;
 	END;
@@ -315,6 +663,33 @@ AS '
 		WHERE
 			("IDUser" = "IDUser_") AND
 			("IDGroup" = "IDGroup_");
+
+		RETURN;
+	END;
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_Word_delObject"("IDWord_" bigint)
+RETURNS void
+AS '
+	BEGIN
+		DELETE
+		FROM "Word"
+		WHERE
+			("IDWord" = "IDWord_");
+
+		RETURN;
+	END;
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_WordLanguage_delObject"("IDWord_" bigint, "IDLanguage_" bigint)
+RETURNS void
+AS '
+	BEGIN
+		DELETE
+		FROM "WordLanguage"
+		WHERE
+			("IDWord" = "IDWord_") AND
+			("IDLanguage" = "IDLanguage_");
 
 		RETURN;
 	END;
@@ -681,6 +1056,175 @@ AS '
 '
 LANGUAGE 'plpgsql' STABLE;
 
+CREATE OR REPLACE FUNCTION "sp0_GroupPermition_getObject"("IDGroup_" bigint, "IDPermition_" bigint)
+RETURNS "GroupPermition"
+AS '
+	DECLARE
+		_Output "GroupPermition"%ROWTYPE;
+		_Exists boolean = false;
+	BEGIN
+
+		SELECT
+			"IDGroup", 
+			"IDPermition", 
+			true
+		INTO
+			_Output."IDGroup", 
+			_Output."IDPermition", 
+			_Exists
+		FROM "GroupPermition"
+		WHERE
+			("IDGroup" = "IDGroup_") AND
+			("IDPermition" = "IDPermition_");
+
+		IF NOT (_Exists) THEN
+			_Output."IDGroup" := NULL;
+			_Output."IDPermition" := NULL;
+		END IF;
+
+		RETURN _Output;
+	END;
+'
+LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_Language_getObject"("IDLanguage_" bigint)
+RETURNS "Language"
+AS '
+	DECLARE
+		_Output "Language"%ROWTYPE;
+		_Exists boolean = false;
+	BEGIN
+
+		SELECT
+			"IDLanguage", 
+			"IDWord_name", 
+			true
+		INTO
+			_Output."IDLanguage", 
+			_Output."IDWord_name", 
+			_Exists
+		FROM "Language"
+		WHERE
+			("IDLanguage" = "IDLanguage_");
+
+		IF NOT (_Exists) THEN
+			_Output."IDLanguage" := NULL;
+			_Output."IDWord_name" := NULL;
+		END IF;
+
+		RETURN _Output;
+	END;
+'
+LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_Log_getObject"("IDLog_" bigint)
+RETURNS "Log"
+AS '
+	DECLARE
+		_Output "Log"%ROWTYPE;
+		_Exists boolean = false;
+	BEGIN
+
+		SELECT
+			"IDLog", 
+			"IDLogcode", 
+			"IDUser_posted", 
+			"Date_posted", 
+			"Logdata", 
+			true
+		INTO
+			_Output."IDLog", 
+			_Output."IDLogcode", 
+			_Output."IDUser_posted", 
+			_Output."Date_posted", 
+			_Output."Logdata", 
+			_Exists
+		FROM "Log"
+		WHERE
+			("IDLog" = "IDLog_");
+
+		IF NOT (_Exists) THEN
+			_Output."IDLog" := NULL;
+			_Output."IDLogcode" := NULL;
+			_Output."IDUser_posted" := NULL;
+			_Output."Date_posted" := NULL;
+			_Output."Logdata" := NULL;
+		END IF;
+
+		RETURN _Output;
+	END;
+'
+LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_Logcode_getObject"("IDLogcode_" bigint)
+RETURNS "Logcode"
+AS '
+	DECLARE
+		_Output "Logcode"%ROWTYPE;
+		_Exists boolean = false;
+	BEGIN
+
+		SELECT
+			"IDLogcode", 
+			"Warning", 
+			"Error", 
+			"Code", 
+			"Description", 
+			true
+		INTO
+			_Output."IDLogcode", 
+			_Output."Warning", 
+			_Output."Error", 
+			_Output."Code", 
+			_Output."Description", 
+			_Exists
+		FROM "Logcode"
+		WHERE
+			("IDLogcode" = "IDLogcode_");
+
+		IF NOT (_Exists) THEN
+			_Output."IDLogcode" := NULL;
+			_Output."Warning" := NULL;
+			_Output."Error" := NULL;
+			_Output."Code" := NULL;
+			_Output."Description" := NULL;
+		END IF;
+
+		RETURN _Output;
+	END;
+'
+LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_Permition_getObject"("IDPermition_" bigint)
+RETURNS "Permition"
+AS '
+	DECLARE
+		_Output "Permition"%ROWTYPE;
+		_Exists boolean = false;
+	BEGIN
+
+		SELECT
+			"IDPermition", 
+			"Name", 
+			true
+		INTO
+			_Output."IDPermition", 
+			_Output."Name", 
+			_Exists
+		FROM "Permition"
+		WHERE
+			("IDPermition" = "IDPermition_");
+
+		IF NOT (_Exists) THEN
+			_Output."IDPermition" := NULL;
+			_Output."Name" := NULL;
+		END IF;
+
+		RETURN _Output;
+	END;
+'
+LANGUAGE 'plpgsql' STABLE;
+
 CREATE OR REPLACE FUNCTION "sp0_User_getObject"("IDUser_" bigint)
 RETURNS "User"
 AS '
@@ -747,6 +1291,70 @@ AS '
 			_Output."IDGroup" := NULL;
 			_Output."Relationdate" := NULL;
 			_Output."Defaultrelation" := NULL;
+		END IF;
+
+		RETURN _Output;
+	END;
+'
+LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_Word_getObject"("IDWord_" bigint)
+RETURNS "Word"
+AS '
+	DECLARE
+		_Output "Word"%ROWTYPE;
+		_Exists boolean = false;
+	BEGIN
+
+		SELECT
+			"IDWord", 
+			"DeleteThisTestField", 
+			true
+		INTO
+			_Output."IDWord", 
+			_Output."DeleteThisTestField", 
+			_Exists
+		FROM "Word"
+		WHERE
+			("IDWord" = "IDWord_");
+
+		IF NOT (_Exists) THEN
+			_Output."IDWord" := NULL;
+			_Output."DeleteThisTestField" := NULL;
+		END IF;
+
+		RETURN _Output;
+	END;
+'
+LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_WordLanguage_getObject"("IDWord_" bigint, "IDLanguage_" bigint)
+RETURNS "WordLanguage"
+AS '
+	DECLARE
+		_Output "WordLanguage"%ROWTYPE;
+		_Exists boolean = false;
+	BEGIN
+
+		SELECT
+			"IDWord", 
+			"IDLanguage", 
+			"Translation", 
+			true
+		INTO
+			_Output."IDWord", 
+			_Output."IDLanguage", 
+			_Output."Translation", 
+			_Exists
+		FROM "WordLanguage"
+		WHERE
+			("IDWord" = "IDWord_") AND
+			("IDLanguage" = "IDLanguage_");
+
+		IF NOT (_Exists) THEN
+			_Output."IDWord" := NULL;
+			_Output."IDLanguage" := NULL;
+			_Output."Translation" := NULL;
 		END IF;
 
 		RETURN _Output;
@@ -1730,6 +2338,150 @@ AS '
 	END;
 ' LANGUAGE 'plpgsql' VOLATILE;
 
+CREATE OR REPLACE FUNCTION "sp0_Language_insObject"("IDWord_name_" bigint,  "SelectIdentity_" boolean)
+RETURNS bigint
+AS '
+	/**********************************
+	 *  returns                       *
+	 *   -1: constraint exists        *
+	 *    0: no need to get Identity  *
+	 *   >0: Identity                 *
+	 **********************************/
+
+	DECLARE
+		IdentityKey bigint = CAST(0 AS bigint);
+	BEGIN
+			INSERT INTO "Language" (
+				"IDWord_name"
+			) VALUES (
+				"IDWord_name_"
+			);
+			IF ("SelectIdentity_") THEN
+				SELECT
+					"IDLanguage"
+				INTO
+					IdentityKey
+				FROM "Language"
+				ORDER BY "IDLanguage" DESC LIMIT 1;
+			ELSE
+				IdentityKey := CAST(0 AS bigint);
+			END IF;
+
+		RETURN IdentityKey AS "IDLanguage_";
+	END;
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_Log_insObject"("IDLogcode_" bigint, "IDUser_posted_" bigint, "Date_posted_" timestamp without time zone, "Logdata_" character varying,  "SelectIdentity_" boolean)
+RETURNS bigint
+AS '
+	/**********************************
+	 *  returns                       *
+	 *   -1: constraint exists        *
+	 *    0: no need to get Identity  *
+	 *   >0: Identity                 *
+	 **********************************/
+
+	DECLARE
+		IdentityKey bigint = CAST(0 AS bigint);
+	BEGIN
+			INSERT INTO "Log" (
+				"IDLogcode", 
+				"IDUser_posted", 
+				"Date_posted", 
+				"Logdata"
+			) VALUES (
+				"IDLogcode_", 
+				"IDUser_posted_", 
+				"Date_posted_", 
+				"Logdata_"
+			);
+			IF ("SelectIdentity_") THEN
+				SELECT
+					"IDLog"
+				INTO
+					IdentityKey
+				FROM "Log"
+				ORDER BY "IDLog" DESC LIMIT 1;
+			ELSE
+				IdentityKey := CAST(0 AS bigint);
+			END IF;
+
+		RETURN IdentityKey AS "IDLog_";
+	END;
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_Logcode_insObject"("Warning_" boolean, "Error_" boolean, "Code_" character varying, "Description_" character varying,  "SelectIdentity_" boolean)
+RETURNS bigint
+AS '
+	/**********************************
+	 *  returns                       *
+	 *   -1: constraint exists        *
+	 *    0: no need to get Identity  *
+	 *   >0: Identity                 *
+	 **********************************/
+
+	DECLARE
+		IdentityKey bigint = CAST(0 AS bigint);
+	BEGIN
+			INSERT INTO "Logcode" (
+				"Warning", 
+				"Error", 
+				"Code", 
+				"Description"
+			) VALUES (
+				"Warning_", 
+				"Error_", 
+				"Code_", 
+				"Description_"
+			);
+			IF ("SelectIdentity_") THEN
+				SELECT
+					"IDLogcode"
+				INTO
+					IdentityKey
+				FROM "Logcode"
+				ORDER BY "IDLogcode" DESC LIMIT 1;
+			ELSE
+				IdentityKey := CAST(0 AS bigint);
+			END IF;
+
+		RETURN IdentityKey AS "IDLogcode_";
+	END;
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_Permition_insObject"("Name_" character varying,  "SelectIdentity_" boolean)
+RETURNS bigint
+AS '
+	/**********************************
+	 *  returns                       *
+	 *   -1: constraint exists        *
+	 *    0: no need to get Identity  *
+	 *   >0: Identity                 *
+	 **********************************/
+
+	DECLARE
+		IdentityKey bigint = CAST(0 AS bigint);
+	BEGIN
+			INSERT INTO "Permition" (
+				"Name"
+			) VALUES (
+				"Name_"
+			);
+			IF ("SelectIdentity_") THEN
+				SELECT
+					"IDPermition"
+				INTO
+					IdentityKey
+				FROM "Permition"
+				ORDER BY "IDPermition" DESC LIMIT 1;
+			ELSE
+				IdentityKey := CAST(0 AS bigint);
+			END IF;
+
+		RETURN IdentityKey AS "IDPermition_";
+	END;
+' LANGUAGE 'plpgsql' VOLATILE;
+
 CREATE OR REPLACE FUNCTION "sp0_User_insObject"("Login_" character varying, "Password_" character varying, "SomeNullValue_" integer,  "SelectIdentity_" boolean)
 RETURNS bigint
 AS '
@@ -1776,6 +2528,39 @@ AS '
 	END;
 ' LANGUAGE 'plpgsql' VOLATILE;
 
+CREATE OR REPLACE FUNCTION "sp0_Word_insObject"("DeleteThisTestField_" boolean,  "SelectIdentity_" boolean)
+RETURNS bigint
+AS '
+	/**********************************
+	 *  returns                       *
+	 *   -1: constraint exists        *
+	 *    0: no need to get Identity  *
+	 *   >0: Identity                 *
+	 **********************************/
+
+	DECLARE
+		IdentityKey bigint = CAST(0 AS bigint);
+	BEGIN
+			INSERT INTO "Word" (
+				"DeleteThisTestField"
+			) VALUES (
+				"DeleteThisTestField_"
+			);
+			IF ("SelectIdentity_") THEN
+				SELECT
+					"IDWord"
+				INTO
+					IdentityKey
+				FROM "Word"
+				ORDER BY "IDWord" DESC LIMIT 1;
+			ELSE
+				IdentityKey := CAST(0 AS bigint);
+			END IF;
+
+		RETURN IdentityKey AS "IDWord_";
+	END;
+' LANGUAGE 'plpgsql' VOLATILE;
+
 CREATE OR REPLACE FUNCTION "sp0_Group_updObject"("IDGroup_" bigint, "Name_" character varying)
 RETURNS bool
 AS '
@@ -1791,6 +2576,96 @@ AS '
 				"Name" = "Name_"
 			WHERE
 				("IDGroup" = "IDGroup_")
+			;
+
+			RETURN false AS "ConstraintExist_";
+	END;
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_Language_updObject"("IDLanguage_" bigint, "IDWord_name_" bigint)
+RETURNS bool
+AS '
+	/***********************************************
+	 *  returns                                    *
+	 *    true: constraint exists, update NOT made * 
+	 *    false: NO constraint, update made        *
+	 ***********************************************/
+
+	BEGIN
+			UPDATE "Language"
+			SET
+				"IDWord_name" = "IDWord_name_"
+			WHERE
+				("IDLanguage" = "IDLanguage_")
+			;
+
+			RETURN false AS "ConstraintExist_";
+	END;
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_Log_updObject"("IDLog_" bigint, "IDLogcode_" bigint, "IDUser_posted_" bigint, "Date_posted_" timestamp without time zone, "Logdata_" character varying)
+RETURNS bool
+AS '
+	/***********************************************
+	 *  returns                                    *
+	 *    true: constraint exists, update NOT made * 
+	 *    false: NO constraint, update made        *
+	 ***********************************************/
+
+	BEGIN
+			UPDATE "Log"
+			SET
+				"IDLogcode" = "IDLogcode_", 
+				"IDUser_posted" = "IDUser_posted_", 
+				"Date_posted" = "Date_posted_", 
+				"Logdata" = "Logdata_"
+			WHERE
+				("IDLog" = "IDLog_")
+			;
+
+			RETURN false AS "ConstraintExist_";
+	END;
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_Logcode_updObject"("IDLogcode_" bigint, "Warning_" boolean, "Error_" boolean, "Code_" character varying, "Description_" character varying)
+RETURNS bool
+AS '
+	/***********************************************
+	 *  returns                                    *
+	 *    true: constraint exists, update NOT made * 
+	 *    false: NO constraint, update made        *
+	 ***********************************************/
+
+	BEGIN
+			UPDATE "Logcode"
+			SET
+				"Warning" = "Warning_", 
+				"Error" = "Error_", 
+				"Code" = "Code_", 
+				"Description" = "Description_"
+			WHERE
+				("IDLogcode" = "IDLogcode_")
+			;
+
+			RETURN false AS "ConstraintExist_";
+	END;
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_Permition_updObject"("IDPermition_" bigint, "Name_" character varying)
+RETURNS bool
+AS '
+	/***********************************************
+	 *  returns                                    *
+	 *    true: constraint exists, update NOT made * 
+	 *    false: NO constraint, update made        *
+	 ***********************************************/
+
+	BEGIN
+			UPDATE "Permition"
+			SET
+				"Name" = "Name_"
+			WHERE
+				("IDPermition" = "IDPermition_")
 			;
 
 			RETURN false AS "ConstraintExist_";
@@ -1826,6 +2701,27 @@ AS '
 
 			RETURN false AS "ConstraintExist_";
 		END IF;
+	END;
+' LANGUAGE 'plpgsql' VOLATILE;
+
+CREATE OR REPLACE FUNCTION "sp0_Word_updObject"("IDWord_" bigint, "DeleteThisTestField_" boolean)
+RETURNS bool
+AS '
+	/***********************************************
+	 *  returns                                    *
+	 *    true: constraint exists, update NOT made * 
+	 *    false: NO constraint, update made        *
+	 ***********************************************/
+
+	BEGIN
+			UPDATE "Word"
+			SET
+				"DeleteThisTestField" = "DeleteThisTestField_"
+			WHERE
+				("IDWord" = "IDWord_")
+			;
+
+			RETURN false AS "ConstraintExist_";
 	END;
 ' LANGUAGE 'plpgsql' VOLATILE;
 

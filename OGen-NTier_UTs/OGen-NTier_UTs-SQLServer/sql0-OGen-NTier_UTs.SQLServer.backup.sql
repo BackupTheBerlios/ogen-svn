@@ -1,297 +1,3049 @@
-CREATE FUNCTION [dbo].[fnc0_Config_isObject](
-	@Name_ varchar (50)
-)
-RETURNS Bit
-AS
-BEGIN
-	DECLARE @isObject Bit
-	SET @isObject = 0
+<html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
 
-	SELECT @isObject = 1
-	FROM [Config]
-	WHERE
-		([Name] = @Name_)
+    <body bgcolor="white">
 
-	RETURN @isObject
-END
---GO
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
 
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
 
-CREATE FUNCTION [dbo].[fnc0_Group_isObject](
-	@IDGroup_ bigint
-)
-RETURNS Bit
-AS
-BEGIN
-	DECLARE @isObject Bit
-	SET @isObject = 0
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
 
-	SELECT @isObject = 1
-	FROM [Group]
-	WHERE
-		([IDGroup] = @IDGroup_)
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
 
-	RETURN @isObject
-END
---GO
+            <br><br>
 
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
 
-CREATE FUNCTION [dbo].[fnc0_User_isObject](
-	@IDUser_ bigint
-)
-RETURNS Bit
-AS
-BEGIN
-	DECLARE @isObject Bit
-	SET @isObject = 0
+            <b>Source Error:</b> <br><br>
 
-	SELECT @isObject = 1
-	FROM [User]
-	WHERE
-		([IDUser] = @IDUser_)
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
 
-	RETURN @isObject
-END
---GO
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: )</pre></code>
 
+                  </td>
+               </tr>
+            </table>
 
-CREATE FUNCTION [dbo].[fnc0_UserGroup_isObject](
-	@IDUser_ bigint, 
-	@IDGroup_ bigint
-)
-RETURNS Bit
-AS
-BEGIN
-	DECLARE @isObject Bit
-	SET @isObject = 0
+            <br>
 
-	SELECT @isObject = 1
-	FROM [UserGroup]
-	WHERE
-		([IDUser] = @IDUser_) AND
-		([IDGroup] = @IDGroup_)
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
 
-	RETURN @isObject
-END
---GO
+            <b>Stack Trace:</b> <br><br>
 
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
 
-CREATE FUNCTION [dbo].[fnc0_vUserDefaultGroup_isObject](
-	@IDUser_ bigint
-)
-RETURNS Bit
-AS
-BEGIN
-	DECLARE @isObject Bit
-	SET @isObject = 0
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
 
-	SELECT @isObject = 1
-	FROM [vUserDefaultGroup]
-	WHERE
-		([IDUser] = @IDUser_)
+                  </td>
+               </tr>
+            </table>
 
-	RETURN @isObject
-END
---GO
+            <br>
 
+            <hr width=100% size=1 color=silver>
 
-CREATE FUNCTION [dbo].[fnc0_vUserGroup_isObject](
-	@IDUser_ bigint, 
-	@IDGroup_ bigint
-)
-RETURNS Bit
-AS
-BEGIN
-	DECLARE @isObject Bit
-	SET @isObject = 0
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
 
-	SELECT @isObject = 1
-	FROM [vUserGroup]
-	WHERE
-		([IDUser] = @IDUser_) AND
-		([IDGroup] = @IDGroup_)
+            </font>
 
-	RETURN @isObject
-END
---GO
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.17.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
 
+    <body bgcolor="white">
 
-CREATE PROCEDURE [dbo].[sp0_Config_setObject]
-	@Name_ varchar (50), 
-	@Config_ varchar (50), 
-	@Type_ int, 
-	@Description_ varchar (50), 
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
 
-	@Output_ Int OUT
-AS
-	DECLARE @Exists Bit
-	DECLARE @ConstraintExist Bit
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
 
-	IF NOT EXISTS (
-		SELECT NULL--[Name]
-		FROM [Config]
-		WHERE
-			([Name] = @Name_)
-	) BEGIN
-		SET @Exists = 0
-		SET @ConstraintExist = 0
-		IF (@ConstraintExist = 0) BEGIN
-			INSERT INTO [Config] (
-				[Name], 
-				[Config], 
-				[Type], 
-				[Description]
-			) VALUES (
-				@Name_, 
-				@Config_, 
-				@Type_, 
-				@Description_
-			)
-		END
-	END ELSE BEGIN
-		SET @Exists = 1
-		SET @ConstraintExist = 0
-		IF (@ConstraintExist = 0) BEGIN
-			UPDATE [Config]
-			SET
-				[Config] = @Config_, 
-				[Type] = @Type_, 
-				[Description] = @Description_
-			WHERE
-				([Name] = @Name_)
-		END
-	END
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
 
-	SET @Output_ = 0
-	IF (@Exists = 1) BEGIN
-		SET @Output_ = @Output_ + 1
-	END
-	IF (@ConstraintExist = 1) BEGIN
-		SET @Output_ = @Output_ + 2
-	END
---GO
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
 
+            <br><br>
 
-CREATE PROCEDURE [dbo].[sp0_UserGroup_setObject]
-	@IDUser_ bigint, 
-	@IDGroup_ bigint, 
-	@Relationdate_ datetime, 
-	@Defaultrelation_ bit, 
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
 
-	@Output_ Int OUT
-AS
-	DECLARE @Exists Bit
-	DECLARE @ConstraintExist Bit
+            <b>Source Error:</b> <br><br>
 
-	IF NOT EXISTS (
-		SELECT NULL--[IDUser]
-		FROM [UserGroup]
-		WHERE
-			([IDUser] = @IDUser_) AND
-			([IDGroup] = @IDGroup_)
-	) BEGIN
-		SET @Exists = 0
-		SET @ConstraintExist = 0
-		IF (@ConstraintExist = 0) BEGIN
-			INSERT INTO [UserGroup] (
-				[IDUser], 
-				[IDGroup], 
-				[Relationdate], 
-				[Defaultrelation]
-			) VALUES (
-				@IDUser_, 
-				@IDGroup_, 
-				@Relationdate_, 
-				@Defaultrelation_
-			)
-		END
-	END ELSE BEGIN
-		SET @Exists = 1
-		SET @ConstraintExist = 0
-		IF (@ConstraintExist = 0) BEGIN
-			UPDATE [UserGroup]
-			SET
-				[Relationdate] = @Relationdate_, 
-				[Defaultrelation] = @Defaultrelation_
-			WHERE
-				([IDUser] = @IDUser_) AND
-				([IDGroup] = @IDGroup_)
-		END
-	END
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
 
-	SET @Output_ = 0
-	IF (@Exists = 1) BEGIN
-		SET @Output_ = @Output_ + 1
-	END
-	IF (@ConstraintExist = 1) BEGIN
-		SET @Output_ = @Output_ + 2
-	END
---GO
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: )</pre></code>
 
+                  </td>
+               </tr>
+            </table>
 
-CREATE PROCEDURE [dbo].[sp0_Config_delObject]
-	@Name_ varchar (50)
-AS
-	DELETE
-	FROM [Config]
-	WHERE
-		([Name] = @Name_)
---GO
+            <br>
 
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
 
-CREATE PROCEDURE [dbo].[sp0_Group_delObject]
-	@IDGroup_ bigint
-AS
-	DELETE
-	FROM [Group]
-	WHERE
-		([IDGroup] = @IDGroup_)
---GO
+            <b>Stack Trace:</b> <br><br>
 
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
 
-CREATE PROCEDURE [dbo].[sp0_User_delObject]
-	@IDUser_ bigint
-AS
-	DELETE
-	FROM [User]
-	WHERE
-		([IDUser] = @IDUser_)
---GO
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
 
+                  </td>
+               </tr>
+            </table>
 
-CREATE PROCEDURE [dbo].[sp0_UserGroup_delObject]
-	@IDUser_ bigint, 
-	@IDGroup_ bigint
-AS
-	DELETE
-	FROM [UserGroup]
-	WHERE
-		([IDUser] = @IDUser_) AND
-		([IDGroup] = @IDGroup_)
---GO
+            <br>
 
+            <hr width=100% size=1 color=silver>
 
-CREATE FUNCTION [dbo].[fnc_User_isObject_byLogin](
-	@Login_search_ nvarchar (50)
-)
-RETURNS @finalresult TABLE (
-	[IDUser] bigint
-)
-AS
-BEGIN
-	INSERT INTO @finalresult
-	SELECT
-		[IDUser]
-	FROM [User]
-	WHERE
-		([Login] LIKE '%' + @Login_search_ + '%' COLLATE Latin1_General_CI_AI)
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
 
-	RETURN
-END
---GO
+            </font>
 
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.17.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
 
-CREATE FUNCTION [dbo].[fnc_Config_Record_open_all](
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: )</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.17.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: )</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.17.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: )</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.17.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: )</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.17.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: )</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.17.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: )</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.17.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: )</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.17.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: )</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.17.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: )</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.17.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: )</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.17.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: )</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_isobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.17.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 39: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 40: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 41: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 42: 	}%&gt;
+Line 43: </pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_setObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 41
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_setobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_setObject-SQLServer.sql.aspx:41
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_setobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_setObject-SQLServer.sql.aspx:line 41
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_setobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.0.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 39: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 40: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 41: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 42: 	}%&gt;
+Line 43: </pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_setObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 41
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_setobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_setObject-SQLServer.sql.aspx:41
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_setobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_setObject-SQLServer.sql.aspx:line 41
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_setobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.0.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 39: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 40: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 41: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 42: 	}%&gt;
+Line 43: </pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_setObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 41
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_setobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_setObject-SQLServer.sql.aspx:41
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_setobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_setObject-SQLServer.sql.aspx:line 41
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_setobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.0.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 39: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 40: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 41: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 42: 	}%&gt;
+Line 43: </pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_setObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 41
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_setobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_setObject-SQLServer.sql.aspx:41
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_setobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_setObject-SQLServer.sql.aspx:line 41
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_setobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.0.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.8.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.8.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.8.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.8.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.8.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.8.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.8.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.8.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.8.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.8.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 39: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_delobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.8.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 46: 	_aux_field = _aux_search.SearchParameters[f].Field;
+Line 47: 	_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 48: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_search.SearchParameters.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 49: }%&gt;
+Line 50: )</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 48
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc_sometable_isobject_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx:48
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc_sometable_isobject_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx:line 48
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc_sometable_isobject_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.1.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+-->CREATE FUNCTION [dbo].[fnc_Config_Record_open_all](
 )
 RETURNS TABLE
 AS
@@ -315,46 +3067,217 @@ RETURN
 --GO
 
 
-CREATE FUNCTION [dbo].[fnc_User_Record_open_byGroup](
-	@IDGroup_search_ bigint
-)
-RETURNS TABLE
-AS
-RETURN
-	SELECT
-		[IDUser]
-	FROM [User]/*
-	WHERE
-		([IDGroup] = @IDGroup_search_)*/
---GO
+<html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
 
+    <body bgcolor="white">
 
-CREATE FUNCTION [dbo].[fnc_UserGroup_Record_open_byUser_Defaultrelation](
-	@IDUser_search_ bigint, 
-	@Relationdate_search_ datetime
-)
-RETURNS TABLE
-AS
-RETURN
-	SELECT
-		[IDUser], 
-		[IDGroup]
-	FROM [UserGroup]
-	WHERE
-		([IDUser] = @IDUser_search_) AND
-		((
-			(@Relationdate_search_ IS NULL)
-			AND
-			([Relationdate] IS NULL)
-		) OR (
-			NOT (@Relationdate_search_ IS NULL)
-			AND
-			([Relationdate] = @Relationdate_search_)
-		))
---GO
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
 
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
 
-CREATE FUNCTION [dbo].[fnc_vUserDefaultGroup_Record_open_all](
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 46: 		_aux_field = _aux_search.SearchParameters[f].Field;
+Line 47: 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 48: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_search.SearchParameters.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 49: 	}%&gt;
+Line 50: )</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 48
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc_sometable_record_open_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx:48
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc_sometable_record_open_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx:line 48
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc_sometable_record_open_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.37.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 46: 		_aux_field = _aux_search.SearchParameters[f].Field;
+Line 47: 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 48: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_search.SearchParameters.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 49: 	}%&gt;
+Line 50: )</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 48
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc_sometable_record_open_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx:48
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc_sometable_record_open_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx:line 48
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc_sometable_record_open_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.37.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+-->CREATE FUNCTION [dbo].[fnc_vUserDefaultGroup_Record_open_all](
 )
 RETURNS TABLE
 AS
@@ -402,51 +3325,217 @@ AS
 --GO
 
 
-CREATE PROCEDURE [dbo].[sp_User_Record_open_byGroup]
-	@IDGroup_search_ bigint
-AS
-	SELECT
-		t1.[IDUser]
-	FROM [User] t1
-	INNER JOIN [dbo].[fnc_User_Record_open_byGroup](
-		@IDGroup_search_
-	) t2 ON (
-		(t2.[IDUser] = t1.[IDUser])
-	)
+<html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
 
-	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_User_Record_open_byGroup]
-	-- NOT HERE!
+    <body bgcolor="white">
 
-	-- CHANGE ORDER BY HERE:
-	-- ORDER BY t1.[SomeField]
---GO
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
 
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
 
-CREATE PROCEDURE [dbo].[sp_UserGroup_Record_open_byUser_Defaultrelation]
-	@IDUser_search_ bigint, 
-	@Relationdate_search_ datetime
-AS
-	SELECT
-		t1.[IDUser], 
-		t1.[IDGroup]
-	FROM [UserGroup] t1
-	INNER JOIN [dbo].[fnc_UserGroup_Record_open_byUser_Defaultrelation](
-		@IDUser_search_, 
-		@Relationdate_search_
-	) t2 ON (
-		(t2.[IDUser] = t1.[IDUser]) AND
-		(t2.[IDGroup] = t1.[IDGroup])
-	)
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
 
-	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_UserGroup_Record_open_byUser_Defaultrelation]
-	-- NOT HERE!
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
 
-	-- CHANGE ORDER BY HERE:
-	-- ORDER BY t1.[SomeField]
---GO
+            <br><br>
 
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
 
-CREATE PROCEDURE [dbo].[sp_vUserDefaultGroup_Record_open_all]
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 43: 		_aux_field = _aux_search.SearchParameters[f].Field;
+Line 44: 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 45: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_search.SearchParameters.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 46: 	}%&gt;
+Line 47: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 45
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp_sometable_record_open_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx:45
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp_sometable_record_open_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx:line 45
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp_sometable_record_open_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.25.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 43: 		_aux_field = _aux_search.SearchParameters[f].Field;
+Line 44: 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 45: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_search.SearchParameters.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 46: 	}%&gt;
+Line 47: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 45
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp_sometable_record_open_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx:45
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp_sometable_record_open_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp_SomeTable_Record_open_bySomeCriteria-SQLServer.sql.aspx:line 45
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp_sometable_record_open_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.25.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+-->CREATE PROCEDURE [dbo].[sp_vUserDefaultGroup_Record_open_all]
 AS
 	SELECT
 		t1.[IDUser]
@@ -464,876 +3553,3472 @@ AS
 --GO
 
 
-CREATE PROCEDURE [dbo].[sp0_Config_getObject]
-	@Name_ varchar (50) OUT, 
-	@Config_ varchar (50) OUT, 
-	@Type_ int OUT, 
-	@Description_ varchar (50) OUT
-AS
-	DECLARE @Exists Bit
-	SET @Exists = 0
-
-	SELECT
-		@Name_ = [Name], 
-		@Config_ = [Config], 
-		@Type_ = [Type], 
-		@Description_ = [Description], 
-		@Exists = 1
-	FROM [Config]
-	WHERE
-		([Name] = @Name_)
-
-	IF (@exists = 0) BEGIN
-		SET @Name_ = NULL
-	END
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_Group_getObject]
-	@IDGroup_ bigint OUT, 
-	@Name_ nvarchar (50) OUT
-AS
-	DECLARE @Exists Bit
-	SET @Exists = 0
-
-	SELECT
-		@IDGroup_ = [IDGroup], 
-		@Name_ = [Name], 
-		@Exists = 1
-	FROM [Group]
-	WHERE
-		([IDGroup] = @IDGroup_)
-
-	IF (@exists = 0) BEGIN
-		SET @IDGroup_ = NULL
-	END
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_User_getObject]
-	@IDUser_ bigint OUT, 
-	@Login_ nvarchar (50) OUT, 
-	@Password_ nvarchar (50) OUT, 
-	@SomeNullValue_ int OUT
-AS
-	DECLARE @Exists Bit
-	SET @Exists = 0
-
-	SELECT
-		@IDUser_ = [IDUser], 
-		@Login_ = [Login], 
-		@Password_ = [Password], 
-		@SomeNullValue_ = [SomeNullValue], 
-		@Exists = 1
-	FROM [User]
-	WHERE
-		([IDUser] = @IDUser_)
-
-	IF (@exists = 0) BEGIN
-		SET @IDUser_ = NULL
-	END
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_UserGroup_getObject]
-	@IDUser_ bigint OUT, 
-	@IDGroup_ bigint OUT, 
-	@Relationdate_ datetime OUT, 
-	@Defaultrelation_ bit OUT
-AS
-	DECLARE @Exists Bit
-	SET @Exists = 0
-
-	SELECT
-		@IDUser_ = [IDUser], 
-		@IDGroup_ = [IDGroup], 
-		@Relationdate_ = [Relationdate], 
-		@Defaultrelation_ = [Defaultrelation], 
-		@Exists = 1
-	FROM [UserGroup]
-	WHERE
-		([IDUser] = @IDUser_) AND
-		([IDGroup] = @IDGroup_)
-
-	IF (@exists = 0) BEGIN
-		SET @IDUser_ = NULL
-		SET @IDGroup_ = NULL
-	END
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_vUserDefaultGroup_getObject]
-	@IDUser_ bigint OUT, 
-	@Login_ nvarchar (50) OUT, 
-	@IDGroup_ bigint OUT, 
-	@Name_ nvarchar (50) OUT, 
-	@Relationdate_ datetime OUT
-AS
-	DECLARE @Exists Bit
-	SET @Exists = 0
-
-	SELECT
-		@IDUser_ = [IDUser], 
-		@Login_ = [Login], 
-		@IDGroup_ = [IDGroup], 
-		@Name_ = [Name], 
-		@Relationdate_ = [Relationdate], 
-		@Exists = 1
-	FROM [vUserDefaultGroup]
-	WHERE
-		([IDUser] = @IDUser_)
-
-	IF (@exists = 0) BEGIN
-		SET @IDUser_ = NULL
-	END
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_vUserGroup_getObject]
-	@IDUser_ bigint OUT, 
-	@Login_ nvarchar (50) OUT, 
-	@IDGroup_ bigint OUT, 
-	@Name_ nvarchar (50) OUT, 
-	@Relationdate_ datetime OUT
-AS
-	DECLARE @Exists Bit
-	SET @Exists = 0
-
-	SELECT
-		@IDUser_ = [IDUser], 
-		@Login_ = [Login], 
-		@IDGroup_ = [IDGroup], 
-		@Name_ = [Name], 
-		@Relationdate_ = [Relationdate], 
-		@Exists = 1
-	FROM [vUserGroup]
-	WHERE
-		([IDUser] = @IDUser_) AND
-		([IDGroup] = @IDGroup_)
-
-	IF (@exists = 0) BEGIN
-		SET @IDUser_ = NULL
-		SET @IDGroup_ = NULL
-	END
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_User_getObject_byLogin]
-	@Login_search_ nvarchar (50), 
-	@IDUser bigint OUT, 
-	@Login nvarchar (50) OUT, 
-	@Password nvarchar (50) OUT, 
-	@SomeNullValue int OUT
-AS
-	DECLARE @Exists Bit
-	SET @Exists = 0
-
-	SELECT
-		@IDUser = t1.[IDUser], 
-		@Login = t1.[Login], 
-		@Password = t1.[Password], 
-		@SomeNullValue = t1.[SomeNullValue], 
-		@Exists = 1
-	FROM [User] t1
-	INNER JOIN [dbo].[fnc_User_isObject_byLogin](
-		@Login_search_
-	) t2 ON (
-		(t2.[IDUser] = t1.[IDUser])
-	)
-
-	IF (@Exists = 0) BEGIN
-		SET @IDUser = NULL
-		SET @Login = NULL
-		SET @Password = NULL
-		SET @SomeNullValue = NULL
-	END
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_Config_Record_open_all_fullmode]
-AS
-	CREATE TABLE [#Table_temp] (
-		[Name] varchar (50)
-	)
-	
-	INSERT INTO [#Table_temp] (
-		[Name]
-	)
-	EXEC [dbo].[sp_Config_Record_open_all] 
-
-	SELECT
-		t1.[Name], 
-		t1.[Config], 
-		t1.[Type], 
-		t1.[Description]
-	FROM [Config] t1
-		INNER JOIN [#Table_temp] t2 ON (
-			(t2.[Name] = t1.[Name] COLLATE SQL_Latin1_General_CP1_CI_AI)
-		)
-
-	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_Config_Record_open_all]
-	-- NOT HERE!
-
-	-- CHANGE ORDER BY IN: [dbo].[sp_Config_Record_open_all]
-	-- NOT HERE!
-
-	DROP TABLE [#Table_temp]
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_User_Record_open_all_fullmode]
-AS
-	CREATE TABLE [#Table_temp] (
-		[IDUser] bigint
-	)
-	
-	INSERT INTO [#Table_temp] (
-		[IDUser]
-	)
-	EXEC [dbo].[sp_User_Record_open_all] 
-
-	SELECT
-		t1.[IDUser], 
-		t1.[Login], 
-		t1.[Password], 
-		t1.[SomeNullValue]
-	FROM [User] t1
-		INNER JOIN [#Table_temp] t2 ON (
-			(t2.[IDUser] = t1.[IDUser])
-		)
-
-	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_User_Record_open_all]
-	-- NOT HERE!
-
-	-- CHANGE ORDER BY IN: [dbo].[sp_User_Record_open_all]
-	-- NOT HERE!
-
-	DROP TABLE [#Table_temp]
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_User_Record_open_byGroup_fullmode]
-	@IDGroup_search_ bigint
-AS
-	CREATE TABLE [#Table_temp] (
-		[IDUser] bigint
-	)
-	
-	INSERT INTO [#Table_temp] (
-		[IDUser]
-	)
-	EXEC [dbo].[sp_User_Record_open_byGroup] @IDGroup_search_
-
-	SELECT
-		t1.[IDUser], 
-		t1.[Login], 
-		t1.[Password], 
-		t1.[SomeNullValue]
-	FROM [User] t1
-		INNER JOIN [#Table_temp] t2 ON (
-			(t2.[IDUser] = t1.[IDUser])
-		)
-
-	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_User_Record_open_byGroup]
-	-- NOT HERE!
-
-	-- CHANGE ORDER BY IN: [dbo].[sp_User_Record_open_byGroup]
-	-- NOT HERE!
-
-	DROP TABLE [#Table_temp]
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_UserGroup_Record_open_byUser_Defaultrelation_fullmode]
-	@IDUser_search_ bigint, 
-	@Relationdate_search_ datetime
-AS
-	CREATE TABLE [#Table_temp] (
-		[IDUser] bigint, 
-		[IDGroup] bigint
-	)
-	
-	INSERT INTO [#Table_temp] (
-		[IDUser], 
-		[IDGroup]
-	)
-	EXEC [dbo].[sp_UserGroup_Record_open_byUser_Defaultrelation] @IDUser_search_, @Relationdate_search_
-
-	SELECT
-		t1.[IDUser], 
-		t1.[IDGroup], 
-		t1.[Relationdate], 
-		t1.[Defaultrelation]
-	FROM [UserGroup] t1
-		INNER JOIN [#Table_temp] t2 ON (
-			(t2.[IDUser] = t1.[IDUser])AND 
-			(t2.[IDGroup] = t1.[IDGroup])
-		)
-
-	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_UserGroup_Record_open_byUser_Defaultrelation]
-	-- NOT HERE!
-
-	-- CHANGE ORDER BY IN: [dbo].[sp_UserGroup_Record_open_byUser_Defaultrelation]
-	-- NOT HERE!
-
-	DROP TABLE [#Table_temp]
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_vUserDefaultGroup_Record_open_all_fullmode]
-AS
-	CREATE TABLE [#Table_temp] (
-		[IDUser] bigint
-	)
-	
-	INSERT INTO [#Table_temp] (
-		[IDUser]
-	)
-	EXEC [dbo].[sp_vUserDefaultGroup_Record_open_all] 
-
-	SELECT
-		t1.[IDUser], 
-		t1.[Login], 
-		t1.[IDGroup], 
-		t1.[Name], 
-		t1.[Relationdate]
-	FROM [vUserDefaultGroup] t1
-		INNER JOIN [#Table_temp] t2 ON (
-			(t2.[IDUser] = t1.[IDUser])
-		)
-
-	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_vUserDefaultGroup_Record_open_all]
-	-- NOT HERE!
-
-	-- CHANGE ORDER BY IN: [dbo].[sp_vUserDefaultGroup_Record_open_all]
-	-- NOT HERE!
-
-	DROP TABLE [#Table_temp]
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_Config_Record_open_all_page]
-	@page_ Int,
-	@page_numRecords_ Int
-AS
-	DECLARE @ID_range_begin BigInt
-	DECLARE @ID_range_end BigInt
-	SET @ID_range_begin = ((@page_ - 1) * @page_numRecords_ + 1)
-	SET @ID_range_end = (@page_ * @page_numRecords_)
-
-	SET NOCOUNT ON
-
-	CREATE TABLE [#Table_temp] (
-		[ID_range] BigInt IDENTITY,
-		[Name] varchar (50)
-	)
-	
-	SET ROWCOUNT @ID_range_end
-	INSERT INTO [#Table_temp] (
-		[Name]
-	)
-	EXEC [dbo].[sp_Config_Record_open_all] 
-
-	SELECT
-		t1.[Name]
-	FROM [Config] t1
-		INNER JOIN [#Table_temp] t2 ON
-			(t2.[Name] = t1.[Name] COLLATE SQL_Latin1_General_CP1_CI_AI)
-
-	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_Config_Record_open_all]
-	-- NOT HERE!
-	WHERE (t2.[ID_range] BETWEEN @ID_range_begin AND @ID_range_end)
-
-	-- CHANGE ORDER BY IN: [dbo].[sp_Config_Record_open_all]
-	-- NOT HERE!
-
-	DROP TABLE [#Table_temp]
-
-	SET NOCOUNT OFF
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_User_Record_open_all_page]
-	@page_ Int,
-	@page_numRecords_ Int
-AS
-	DECLARE @ID_range_begin BigInt
-	DECLARE @ID_range_end BigInt
-	SET @ID_range_begin = ((@page_ - 1) * @page_numRecords_ + 1)
-	SET @ID_range_end = (@page_ * @page_numRecords_)
-
-	SET NOCOUNT ON
-
-	CREATE TABLE [#Table_temp] (
-		[ID_range] BigInt IDENTITY,
-		[IDUser] bigint
-	)
-	
-	SET ROWCOUNT @ID_range_end
-	INSERT INTO [#Table_temp] (
-		[IDUser]
-	)
-	EXEC [dbo].[sp_User_Record_open_all] 
-
-	SELECT
-		t1.[IDUser]
-	FROM [User] t1
-		INNER JOIN [#Table_temp] t2 ON
-			(t2.[IDUser] = t1.[IDUser])
-
-	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_User_Record_open_all]
-	-- NOT HERE!
-	WHERE (t2.[ID_range] BETWEEN @ID_range_begin AND @ID_range_end)
-
-	-- CHANGE ORDER BY IN: [dbo].[sp_User_Record_open_all]
-	-- NOT HERE!
-
-	DROP TABLE [#Table_temp]
-
-	SET NOCOUNT OFF
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_User_Record_open_byGroup_page]
-	@IDGroup_search_ bigint, 
-	@page_ Int,
-	@page_numRecords_ Int
-AS
-	DECLARE @ID_range_begin BigInt
-	DECLARE @ID_range_end BigInt
-	SET @ID_range_begin = ((@page_ - 1) * @page_numRecords_ + 1)
-	SET @ID_range_end = (@page_ * @page_numRecords_)
-
-	SET NOCOUNT ON
-
-	CREATE TABLE [#Table_temp] (
-		[ID_range] BigInt IDENTITY,
-		[IDUser] bigint
-	)
-	
-	SET ROWCOUNT @ID_range_end
-	INSERT INTO [#Table_temp] (
-		[IDUser]
-	)
-	EXEC [dbo].[sp_User_Record_open_byGroup] @IDGroup_search_
-
-	SELECT
-		t1.[IDUser]
-	FROM [User] t1
-		INNER JOIN [#Table_temp] t2 ON
-			(t2.[IDUser] = t1.[IDUser])
-
-	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_User_Record_open_byGroup]
-	-- NOT HERE!
-	WHERE (t2.[ID_range] BETWEEN @ID_range_begin AND @ID_range_end)
-
-	-- CHANGE ORDER BY IN: [dbo].[sp_User_Record_open_byGroup]
-	-- NOT HERE!
-
-	DROP TABLE [#Table_temp]
-
-	SET NOCOUNT OFF
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_UserGroup_Record_open_byUser_Defaultrelation_page]
-	@IDUser_search_ bigint, 
-	@Relationdate_search_ datetime, 
-	@page_ Int,
-	@page_numRecords_ Int
-AS
-	DECLARE @ID_range_begin BigInt
-	DECLARE @ID_range_end BigInt
-	SET @ID_range_begin = ((@page_ - 1) * @page_numRecords_ + 1)
-	SET @ID_range_end = (@page_ * @page_numRecords_)
-
-	SET NOCOUNT ON
-
-	CREATE TABLE [#Table_temp] (
-		[ID_range] BigInt IDENTITY,
-		[IDUser] bigint, 
-		[IDGroup] bigint
-	)
-	
-	SET ROWCOUNT @ID_range_end
-	INSERT INTO [#Table_temp] (
-		[IDUser], 
-		[IDGroup]
-	)
-	EXEC [dbo].[sp_UserGroup_Record_open_byUser_Defaultrelation] @IDUser_search_, @Relationdate_search_
-
-	SELECT
-		t1.[IDUser], 
-		t1.[IDGroup]
-	FROM [UserGroup] t1
-		INNER JOIN [#Table_temp] t2 ON
-			(t2.[IDUser] = t1.[IDUser])AND 
-			(t2.[IDGroup] = t1.[IDGroup])
-
-	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_UserGroup_Record_open_byUser_Defaultrelation]
-	-- NOT HERE!
-	WHERE (t2.[ID_range] BETWEEN @ID_range_begin AND @ID_range_end)
-
-	-- CHANGE ORDER BY IN: [dbo].[sp_UserGroup_Record_open_byUser_Defaultrelation]
-	-- NOT HERE!
-
-	DROP TABLE [#Table_temp]
-
-	SET NOCOUNT OFF
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_vUserDefaultGroup_Record_open_all_page]
-	@page_ Int,
-	@page_numRecords_ Int
-AS
-	DECLARE @ID_range_begin BigInt
-	DECLARE @ID_range_end BigInt
-	SET @ID_range_begin = ((@page_ - 1) * @page_numRecords_ + 1)
-	SET @ID_range_end = (@page_ * @page_numRecords_)
-
-	SET NOCOUNT ON
-
-	CREATE TABLE [#Table_temp] (
-		[ID_range] BigInt IDENTITY,
-		[IDUser] bigint
-	)
-	
-	SET ROWCOUNT @ID_range_end
-	INSERT INTO [#Table_temp] (
-		[IDUser]
-	)
-	EXEC [dbo].[sp_vUserDefaultGroup_Record_open_all] 
-
-	SELECT
-		t1.[IDUser]
-	FROM [vUserDefaultGroup] t1
-		INNER JOIN [#Table_temp] t2 ON
-			(t2.[IDUser] = t1.[IDUser])
-
-	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_vUserDefaultGroup_Record_open_all]
-	-- NOT HERE!
-	WHERE (t2.[ID_range] BETWEEN @ID_range_begin AND @ID_range_end)
-
-	-- CHANGE ORDER BY IN: [dbo].[sp_vUserDefaultGroup_Record_open_all]
-	-- NOT HERE!
-
-	DROP TABLE [#Table_temp]
-
-	SET NOCOUNT OFF
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_Config_Record_open_all_page_fullmode]
-	@page_ Int,
-	@page_numRecords_ Int
-AS
-	DECLARE @ID_range_begin BigInt
-	DECLARE @ID_range_end BigInt
-	SET @ID_range_begin = ((@page_ - 1) * @page_numRecords_ + 1)
-	SET @ID_range_end = (@page_ * @page_numRecords_)
-
-	SET NOCOUNT ON
-
-	CREATE TABLE [#Table_temp] (
-		[ID_range] BigInt IDENTITY,
-		[Name] varchar (50)
-	)
-	
-	SET ROWCOUNT @ID_range_end
-	INSERT INTO [#Table_temp] (
-		[Name]
-	)
-	EXEC [dbo].[sp_Config_Record_open_all] 
-
-	SELECT
-		t1.[Name], 
-		t1.[Config], 
-		t1.[Type], 
-		t1.[Description]
-	FROM [Config] t1
-		INNER JOIN [#Table_temp] t2 ON
-			(t2.[Name] = t1.[Name] COLLATE SQL_Latin1_General_CP1_CI_AI)
-
-	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_Config_Record_open_all]
-	-- NOT HERE!
-	WHERE (t2.[ID_range] BETWEEN @ID_range_begin AND @ID_range_end)
-
-	-- CHANGE ORDER BY IN: [dbo].[sp_Config_Record_open_all]
-	-- NOT HERE!
-
-	DROP TABLE [#Table_temp]
-
-	SET NOCOUNT OFF
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_User_Record_open_all_page_fullmode]
-	@page_ Int,
-	@page_numRecords_ Int
-AS
-	DECLARE @ID_range_begin BigInt
-	DECLARE @ID_range_end BigInt
-	SET @ID_range_begin = ((@page_ - 1) * @page_numRecords_ + 1)
-	SET @ID_range_end = (@page_ * @page_numRecords_)
-
-	SET NOCOUNT ON
-
-	CREATE TABLE [#Table_temp] (
-		[ID_range] BigInt IDENTITY,
-		[IDUser] bigint
-	)
-	
-	SET ROWCOUNT @ID_range_end
-	INSERT INTO [#Table_temp] (
-		[IDUser]
-	)
-	EXEC [dbo].[sp_User_Record_open_all] 
-
-	SELECT
-		t1.[IDUser], 
-		t1.[Login], 
-		t1.[Password], 
-		t1.[SomeNullValue]
-	FROM [User] t1
-		INNER JOIN [#Table_temp] t2 ON
-			(t2.[IDUser] = t1.[IDUser])
-
-	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_User_Record_open_all]
-	-- NOT HERE!
-	WHERE (t2.[ID_range] BETWEEN @ID_range_begin AND @ID_range_end)
-
-	-- CHANGE ORDER BY IN: [dbo].[sp_User_Record_open_all]
-	-- NOT HERE!
-
-	DROP TABLE [#Table_temp]
-
-	SET NOCOUNT OFF
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_User_Record_open_byGroup_page_fullmode]
-	@IDGroup_search_ bigint, 
-	@page_ Int,
-	@page_numRecords_ Int
-AS
-	DECLARE @ID_range_begin BigInt
-	DECLARE @ID_range_end BigInt
-	SET @ID_range_begin = ((@page_ - 1) * @page_numRecords_ + 1)
-	SET @ID_range_end = (@page_ * @page_numRecords_)
-
-	SET NOCOUNT ON
-
-	CREATE TABLE [#Table_temp] (
-		[ID_range] BigInt IDENTITY,
-		[IDUser] bigint
-	)
-	
-	SET ROWCOUNT @ID_range_end
-	INSERT INTO [#Table_temp] (
-		[IDUser]
-	)
-	EXEC [dbo].[sp_User_Record_open_byGroup] @IDGroup_search_
-
-	SELECT
-		t1.[IDUser], 
-		t1.[Login], 
-		t1.[Password], 
-		t1.[SomeNullValue]
-	FROM [User] t1
-		INNER JOIN [#Table_temp] t2 ON
-			(t2.[IDUser] = t1.[IDUser])
-
-	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_User_Record_open_byGroup]
-	-- NOT HERE!
-	WHERE (t2.[ID_range] BETWEEN @ID_range_begin AND @ID_range_end)
-
-	-- CHANGE ORDER BY IN: [dbo].[sp_User_Record_open_byGroup]
-	-- NOT HERE!
-
-	DROP TABLE [#Table_temp]
-
-	SET NOCOUNT OFF
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_UserGroup_Record_open_byUser_Defaultrelation_page_fullmode]
-	@IDUser_search_ bigint, 
-	@Relationdate_search_ datetime, 
-	@page_ Int,
-	@page_numRecords_ Int
-AS
-	DECLARE @ID_range_begin BigInt
-	DECLARE @ID_range_end BigInt
-	SET @ID_range_begin = ((@page_ - 1) * @page_numRecords_ + 1)
-	SET @ID_range_end = (@page_ * @page_numRecords_)
-
-	SET NOCOUNT ON
-
-	CREATE TABLE [#Table_temp] (
-		[ID_range] BigInt IDENTITY,
-		[IDUser] bigint, 
-		[IDGroup] bigint
-	)
-	
-	SET ROWCOUNT @ID_range_end
-	INSERT INTO [#Table_temp] (
-		[IDUser], 
-		[IDGroup]
-	)
-	EXEC [dbo].[sp_UserGroup_Record_open_byUser_Defaultrelation] @IDUser_search_, @Relationdate_search_
-
-	SELECT
-		t1.[IDUser], 
-		t1.[IDGroup], 
-		t1.[Relationdate], 
-		t1.[Defaultrelation]
-	FROM [UserGroup] t1
-		INNER JOIN [#Table_temp] t2 ON
-			(t2.[IDUser] = t1.[IDUser])AND 
-			(t2.[IDGroup] = t1.[IDGroup])
-
-	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_UserGroup_Record_open_byUser_Defaultrelation]
-	-- NOT HERE!
-	WHERE (t2.[ID_range] BETWEEN @ID_range_begin AND @ID_range_end)
-
-	-- CHANGE ORDER BY IN: [dbo].[sp_UserGroup_Record_open_byUser_Defaultrelation]
-	-- NOT HERE!
-
-	DROP TABLE [#Table_temp]
-
-	SET NOCOUNT OFF
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_vUserDefaultGroup_Record_open_all_page_fullmode]
-	@page_ Int,
-	@page_numRecords_ Int
-AS
-	DECLARE @ID_range_begin BigInt
-	DECLARE @ID_range_end BigInt
-	SET @ID_range_begin = ((@page_ - 1) * @page_numRecords_ + 1)
-	SET @ID_range_end = (@page_ * @page_numRecords_)
-
-	SET NOCOUNT ON
-
-	CREATE TABLE [#Table_temp] (
-		[ID_range] BigInt IDENTITY,
-		[IDUser] bigint
-	)
-	
-	SET ROWCOUNT @ID_range_end
-	INSERT INTO [#Table_temp] (
-		[IDUser]
-	)
-	EXEC [dbo].[sp_vUserDefaultGroup_Record_open_all] 
-
-	SELECT
-		t1.[IDUser], 
-		t1.[Login], 
-		t1.[IDGroup], 
-		t1.[Name], 
-		t1.[Relationdate]
-	FROM [vUserDefaultGroup] t1
-		INNER JOIN [#Table_temp] t2 ON
-			(t2.[IDUser] = t1.[IDUser])
-
-	-- CHANGE WHERE CONDITION IN: [dbo].[fnc_vUserDefaultGroup_Record_open_all]
-	-- NOT HERE!
-	WHERE (t2.[ID_range] BETWEEN @ID_range_begin AND @ID_range_end)
-
-	-- CHANGE ORDER BY IN: [dbo].[sp_vUserDefaultGroup_Record_open_all]
-	-- NOT HERE!
-
-	DROP TABLE [#Table_temp]
-
-	SET NOCOUNT OFF
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_User_Record_update_SomeUpdateTest_byGroup]
-	@IDGroup_search_ bigint, 
-	@Password_update_ nvarchar (50)
-AS
-	UPDATE [User]
-	SET
-		[Password] = @Password_update_
-	FROM [dbo].[fnc_User_Record_open_byGroup](
-		@IDGroup_search_
-	) t1
-	WHERE
-		(t1.[IDUser] = [User].[IDUser])
---GO
-
-
-CREATE PROCEDURE [dbo].[sp0_UserGroup_Record_update_SomeUpdateTest_byUser_Defaultrelation]
-	@IDUser_search_ bigint, 
-	@Relationdate_search_ datetime, 
-	@Relationdate_update_ datetime
-AS
-	UPDATE [UserGroup]
-	SET
-		[Relationdate] = @Relationdate_update_
-	FROM [dbo].[fnc_UserGroup_Record_open_byUser_Defaultrelation](
-		@IDUser_search_, 
-		@Relationdate_search_
-	) t1
-	WHERE
-		(t1.[IDUser] = [UserGroup].[IDUser]) AND
-		(t1.[IDGroup] = [UserGroup].[IDGroup])
---GO
-
-
-CREATE FUNCTION [dbo].[fnc0_User__ConstraintExist](
-	@IDUser bigint, 
-	@Login nvarchar (50), 
-	@Password nvarchar (50), 
-	@SomeNullValue int
-)
-RETURNS Bit
-AS
-BEGIN
-	DECLARE @ConstraintExist Bit
-	SET @ConstraintExist = 0
-	
-	IF (@ConstraintExist = 0) BEGIN
-		SELECT
-			@ConstraintExist = 1
-		FROM [dbo].[fnc_User_isObject_byLogin](
-			@Login
-		)
-		WHERE
-			NOT (
-				([IDUser] = @IDUser)
-			)
-	END
-		
-	RETURN @ConstraintExist
-END
---GO
-
-
-CREATE FUNCTION [dbo].[fnc0_User_isObject_byLogin](
-	@Login_search_ nvarchar (50)
-)
-RETURNS Bit
-AS
-BEGIN
-	DECLARE @isObject Bit
-	SET @isObject = 0
-
-	SELECT
-		@isObject = 1
-	FROM [dbo].[fnc_User_isObject_byLogin](
-		@Login_search_
-	)
-
-	RETURN @isObject
-END
---GO
-
-
-CREATE FUNCTION [dbo].[fnc0_Config_Record_count_all](
+<html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 39: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt; OUT&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 39: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt; OUT&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 39: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt; OUT&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 39: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt; OUT&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 39: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt; OUT&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 39: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt; OUT&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 39: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt; OUT&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 39: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt; OUT&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 39: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt; OUT&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 39: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt; OUT&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 39: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt; OUT&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 39: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt; OUT&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 39: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt; OUT&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_getobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.2.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 42: 	_aux_field = _aux_search.SearchParameters[f].Field;
+Line 43: 	_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 44: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 45: }
+Line 46: for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 44
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_getobject_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject_bySomeCriteria-SQLServer.sql.aspx:44
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_getobject_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_getObject_bySomeCriteria-SQLServer.sql.aspx:line 44
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_getobject_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.30.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 51: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 52: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 53: 		[&lt;%=_aux_field.Name%&gt;] &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 54: 	}%&gt;
+Line 55: 	)</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 53
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_open_bysomecriteria_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-SQLServer.sql.aspx:53
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-SQLServer.sql.aspx:line 53
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_fullmode_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.34.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 51: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 52: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 53: 		[&lt;%=_aux_field.Name%&gt;] &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 54: 	}%&gt;
+Line 55: 	)</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 53
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_open_bysomecriteria_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-SQLServer.sql.aspx:53
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-SQLServer.sql.aspx:line 53
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_fullmode_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.34.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 44: 		_aux_field = _aux_search.SearchParameters[f].Field;
+Line 45: 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 46: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_search.SearchParameters.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 47: 	}%&gt;
+Line 48: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 46
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_open_bysomecriteria_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-SQLServer.sql.aspx:46
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-SQLServer.sql.aspx:line 46
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_fullmode_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.34.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 44: 		_aux_field = _aux_search.SearchParameters[f].Field;
+Line 45: 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 46: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_search.SearchParameters.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 47: 	}%&gt;
+Line 48: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 46
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_open_bysomecriteria_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-SQLServer.sql.aspx:46
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-SQLServer.sql.aspx:line 46
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_fullmode_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.34.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 51: 	for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 52: 		_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 53: 		[&lt;%=_aux_field.Name%&gt;] &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 54: 	}%&gt;
+Line 55: 	)</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 53
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_open_bysomecriteria_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-SQLServer.sql.aspx:53
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_fullmode-SQLServer.sql.aspx:line 53
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_fullmode_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.34.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 60: 		for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 61: 			_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 62: 		[&lt;%=_aux_field.Name%&gt;] &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 63: 		}%&gt;
+Line 64: 	)</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 62
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-SQLServer.sql.aspx:62
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-SQLServer.sql.aspx:line 62
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.42.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 60: 		for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 61: 			_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 62: 		[&lt;%=_aux_field.Name%&gt;] &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 63: 		}%&gt;
+Line 64: 	)</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 62
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-SQLServer.sql.aspx:62
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-SQLServer.sql.aspx:line 62
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.42.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 44: 		_aux_field = _aux_search.SearchParameters[f].Field;
+Line 45: 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 46: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 47: 	}%&gt;
+Line 48: 	@page_ Int,</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 46
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-SQLServer.sql.aspx:46
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-SQLServer.sql.aspx:line 46
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.42.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 44: 		_aux_field = _aux_search.SearchParameters[f].Field;
+Line 45: 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 46: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 47: 	}%&gt;
+Line 48: 	@page_ Int,</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 46
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-SQLServer.sql.aspx:46
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-SQLServer.sql.aspx:line 46
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.42.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 60: 		for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 61: 			_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 62: 		[&lt;%=_aux_field.Name%&gt;] &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 63: 		}%&gt;
+Line 64: 	)</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 62
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-SQLServer.sql.aspx:62
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page-SQLServer.sql.aspx:line 62
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.42.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 60: 		for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 61: 			_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 62: 		[&lt;%=_aux_field.Name%&gt;] &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 63: 		}%&gt;
+Line 64: 	)</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 62
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx:62
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx:line 62
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_fullmode_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.19.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 60: 		for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 61: 			_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 62: 		[&lt;%=_aux_field.Name%&gt;] &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 63: 		}%&gt;
+Line 64: 	)</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 62
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx:62
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx:line 62
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_fullmode_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.19.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 44: 		_aux_field = _aux_search.SearchParameters[f].Field;
+Line 45: 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 46: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 47: 	}%&gt;
+Line 48: 	@page_ Int,</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 46
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx:46
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx:line 46
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_fullmode_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.19.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 44: 		_aux_field = _aux_search.SearchParameters[f].Field;
+Line 45: 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 46: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 47: 	}%&gt;
+Line 48: 	@page_ Int,</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 46
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx:46
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx:line 46
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_fullmode_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.19.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 60: 		for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 61: 			_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 62: 		[&lt;%=_aux_field.Name%&gt;] &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 63: 		}%&gt;
+Line 64: 	)</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 62
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx:62
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_fullmode_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_open_bySomeCriteria_page_fullmode-SQLServer.sql.aspx:line 62
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_open_bysomecriteria_page_fullmode_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.19.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 45: 	_aux_field = _aux_search.SearchParameters[f].Field;
+Line 46: 	_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 47: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 48: }
+Line 49: for (int f = 0; f &lt; update.UpdateParameters.Count; f++) {</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_update_SomeUpdate_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 47
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_update_someupdate_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_update_SomeUpdate_bySomeCriteria-SQLServer.sql.aspx:47
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_update_someupdate_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_update_SomeUpdate_bySomeCriteria-SQLServer.sql.aspx:line 47
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_update_someupdate_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.7.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 45: 	_aux_field = _aux_search.SearchParameters[f].Field;
+Line 46: 	_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 47: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 48: }
+Line 49: for (int f = 0; f &lt; update.UpdateParameters.Count; f++) {</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_update_SomeUpdate_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 47
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_update_someupdate_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_update_SomeUpdate_bySomeCriteria-SQLServer.sql.aspx:47
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_update_someupdate_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_update_SomeUpdate_bySomeCriteria-SQLServer.sql.aspx:line 47
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_update_someupdate_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.7.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 38: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 39: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 40: 	@&lt;%=_aux_field.Name%&gt; &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 41: 	}%&gt;
+Line 42: )</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable__ConstraintExist-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 40
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable__constraintexist_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable__ConstraintExist-SQLServer.sql.aspx:40
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable__constraintexist_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable__ConstraintExist-SQLServer.sql.aspx:line 40
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable__constraintexist_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.36.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 42: 		_aux_field = _aux_search.SearchParameters[f].Field;
+Line 43: 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 44: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_search.SearchParameters.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 45: 	}%&gt;
+Line 46: )</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 44
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_isobject_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx:44
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_isobject_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_isObject_bySomeCriteria-SQLServer.sql.aspx:line 44
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_isobject_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.16.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+-->CREATE FUNCTION [dbo].[fnc0_Config_Record_count_all](
 )
 RETURNS BigInt
 BEGIN
@@ -1365,45 +7050,217 @@ END
 --GO
 
 
-CREATE FUNCTION [dbo].[fnc0_User_Record_count_byGroup](
-	@IDGroup_search_ bigint
-)
-RETURNS BigInt
-BEGIN
-	DECLARE @Record_count_out BigInt
-	SET @Record_count_out = 0
+<html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
 
-	SELECT @Record_count_out = COUNT([IDUser])
-	FROM [dbo].[fnc_User_Record_open_byGroup](
-		@IDGroup_search_
-	)
+    <body bgcolor="white">
 
-	RETURN @Record_count_out
-END
---GO
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
 
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
 
-CREATE FUNCTION [dbo].[fnc0_UserGroup_Record_count_byUser_Defaultrelation](
-	@IDUser_search_ bigint, 
-	@Relationdate_search_ datetime
-)
-RETURNS BigInt
-BEGIN
-	DECLARE @Record_count_out BigInt
-	SET @Record_count_out = 0
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
 
-	SELECT @Record_count_out = COUNT([IDUser])
-	FROM [dbo].[fnc_UserGroup_Record_open_byUser_Defaultrelation](
-		@IDUser_search_, 
-		@Relationdate_search_
-	)
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
 
-	RETURN @Record_count_out
-END
---GO
+            <br><br>
 
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
 
-CREATE FUNCTION [dbo].[fnc0_vUserDefaultGroup_Record_count_all](
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 41: 		_aux_field = _aux_search.SearchParameters[f].Field;
+Line 42: 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 43: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_search.SearchParameters.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 44: 	}%&gt;
+Line 45: )</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_count_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 43
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_record_count_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_count_bySomeCriteria-SQLServer.sql.aspx:43
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_record_count_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_count_bySomeCriteria-SQLServer.sql.aspx:line 43
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_record_count_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.6.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 41: 		_aux_field = _aux_search.SearchParameters[f].Field;
+Line 42: 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 43: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_search.SearchParameters.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 44: 	}%&gt;
+Line 45: )</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_count_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 43
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_record_count_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_count_bySomeCriteria-SQLServer.sql.aspx:43
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_record_count_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_count_bySomeCriteria-SQLServer.sql.aspx:line 43
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_record_count_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.6.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+-->CREATE FUNCTION [dbo].[fnc0_vUserDefaultGroup_Record_count_all](
 )
 RETURNS BigInt
 BEGIN
@@ -1419,226 +7276,2107 @@ END
 --GO
 
 
-CREATE FUNCTION [dbo].[fnc0_Config_Record_hasObject_all](
-	@Name_ varchar (50)
-)
-RETURNS BIT
-BEGIN
-	DECLARE @Record_hasObject_out Bit
-	SET @Record_hasObject_out = 0
+<html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
 
-	SELECT @Record_hasObject_out = 1
-	FROM [dbo].[fnc_Config_Record_open_all](
-	)
-	WHERE
-		([Name] = @Name_)
+    <body bgcolor="white">
 
-	RETURN @Record_hasObject_out
-END
---GO
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
 
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
 
-CREATE FUNCTION [dbo].[fnc0_User_Record_hasObject_all](
-	@IDUser_ bigint
-)
-RETURNS BIT
-BEGIN
-	DECLARE @Record_hasObject_out Bit
-	SET @Record_hasObject_out = 0
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
 
-	SELECT @Record_hasObject_out = 1
-	FROM [dbo].[fnc_User_Record_open_all](
-	)
-	WHERE
-		([IDUser] = @IDUser_)
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
 
-	RETURN @Record_hasObject_out
-END
---GO
+            <br><br>
 
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
 
-CREATE FUNCTION [dbo].[fnc0_User_Record_hasObject_byGroup](
-	@IDUser_ bigint, 
-	@IDGroup_search_ bigint
-)
-RETURNS BIT
-BEGIN
-	DECLARE @Record_hasObject_out Bit
-	SET @Record_hasObject_out = 0
+            <b>Source Error:</b> <br><br>
 
-	SELECT @Record_hasObject_out = 1
-	FROM [dbo].[fnc_User_Record_open_byGroup](
-		@IDGroup_search_
-	)
-	WHERE
-		([IDUser] = @IDUser_)
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
 
-	RETURN @Record_hasObject_out
-END
---GO
+Line 42: for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 43: 	_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 44: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 45: }
+Line 46: for (int f = 0; f &lt; _aux_search.SearchParameters.Count; f++) {</pre></code>
 
+                  </td>
+               </tr>
+            </table>
 
-CREATE FUNCTION [dbo].[fnc0_UserGroup_Record_hasObject_byUser_Defaultrelation](
-	@IDUser_ bigint, 
-	@IDGroup_ bigint, 
-	@IDUser_search_ bigint, 
-	@Relationdate_search_ datetime
-)
-RETURNS BIT
-BEGIN
-	DECLARE @Record_hasObject_out Bit
-	SET @Record_hasObject_out = 0
+            <br>
 
-	SELECT @Record_hasObject_out = 1
-	FROM [dbo].[fnc_UserGroup_Record_open_byUser_Defaultrelation](
-		@IDUser_search_, 
-		@Relationdate_search_
-	)
-	WHERE
-		([IDUser] = @IDUser_) AND
-		([IDGroup] = @IDGroup_)
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 44
+            <br><br>
 
-	RETURN @Record_hasObject_out
-END
---GO
+            <b>Stack Trace:</b> <br><br>
 
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
 
-CREATE FUNCTION [dbo].[fnc0_vUserDefaultGroup_Record_hasObject_all](
-	@IDUser_ bigint
-)
-RETURNS BIT
-BEGIN
-	DECLARE @Record_hasObject_out Bit
-	SET @Record_hasObject_out = 0
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_record_hasobject_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx:44
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
 
-	SELECT @Record_hasObject_out = 1
-	FROM [dbo].[fnc_vUserDefaultGroup_Record_open_all](
-	)
-	WHERE
-		([IDUser] = @IDUser_)
+                  </td>
+               </tr>
+            </table>
 
-	RETURN @Record_hasObject_out
-END
---GO
+            <br>
 
+            <hr width=100% size=1 color=silver>
 
-CREATE PROCEDURE [dbo].[sp0_Group_insObject]
-	@IDGroup_ bigint OUT, 
-	@Name_ nvarchar (50), 
-	@SelectIdentity_ Bit
-AS
-		INSERT INTO [Group] (
-			[Name]
-		) VALUES (
-			@Name_
-		)
-		IF (@SelectIdentity_ = 1) BEGIN
-			SET @IDGroup_ = @@IDENTITY
-		END ELSE BEGIN
-			SET @IDGroup_ = CAST(0 AS bigint)
-		END
---GO
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
 
+            </font>
 
-CREATE PROCEDURE [dbo].[sp0_User_insObject]
-	@IDUser_ bigint OUT, 
-	@Login_ nvarchar (50), 
-	@Password_ nvarchar (50), 
-	@SomeNullValue_ int, 
-	@SelectIdentity_ Bit
-AS
-	DECLARE @ConstraintExist Bit
-	SET @ConstraintExist = [dbo].[fnc0_User__ConstraintExist](
-		0, 
-		@Login_, 
-		@Password_, 
-		@SomeNullValue_
-	)
-	IF (@ConstraintExist = 0) BEGIN
-		INSERT INTO [User] (
-			[Login], 
-			[Password], 
-			[SomeNullValue]
-		) VALUES (
-			@Login_, 
-			@Password_, 
-			@SomeNullValue_
-		)
-		IF (@SelectIdentity_ = 1) BEGIN
-			SET @IDUser_ = @@IDENTITY
-		END ELSE BEGIN
-			SET @IDUser_ = CAST(0 AS bigint)
-		END
-	END ELSE BEGIN
-		SET @IDUser_ = CAST(-1 AS bigint)
-	END
---GO
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_record_hasobject_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx:line 44
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_record_hasobject_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.55.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
 
+    <body bgcolor="white">
 
-CREATE PROCEDURE [dbo].[sp0_Group_updObject]
-	@IDGroup_ bigint, 
-	@Name_ nvarchar (50)
-AS
-		UPDATE [Group]
-		SET
-			[Name] = @Name_
-		WHERE
-			[IDGroup] = @IDGroup_
---GO
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
 
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
 
-CREATE PROCEDURE [dbo].[sp0_User_updObject]
-	@IDUser_ bigint, 
-	@Login_ nvarchar (50), 
-	@Password_ nvarchar (50), 
-	@SomeNullValue_ int, 
-	@ConstraintExist_ Bit OUT
-AS
-	SET @ConstraintExist_ = [dbo].[fnc0_User__ConstraintExist](
-		@IDUser_, 
-		@Login_, 
-		@Password_, 
-		@SomeNullValue_
-	)
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
 
-	IF (@ConstraintExist_ = 0) BEGIN
-		UPDATE [User]
-		SET
-			[Login] = @Login_, 
-			[Password] = @Password_, 
-			[SomeNullValue] = @SomeNullValue_
-		WHERE
-			[IDUser] = @IDUser_
-	END
---GO
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
 
+            <br><br>
 
-CREATE PROCEDURE [dbo].[sp0_User_delObject_byLogin]
-	@Login_search_ nvarchar (50), 
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
 
-	@Exists_ BIT OUT
-AS
-	DECLARE @IDUser bigint
+            <b>Source Error:</b> <br><br>
 
-	SET @Exists_ = 0
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
 
-	SELECT
-		@IDUser = [IDUser], 
-		@Exists_ = 1
-	FROM [dbo].[fnc_User_isObject_byLogin](
-		@Login_search_
-	)
+Line 42: for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 43: 	_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 44: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 45: }
+Line 46: for (int f = 0; f &lt; _aux_search.SearchParameters.Count; f++) {</pre></code>
 
-	IF (@Exists_ = 1) BEGIN
-		DELETE
-		FROM [User]
-		WHERE
-			([IDUser] = @IDUser)
-	END
---GO
+                  </td>
+               </tr>
+            </table>
 
+            <br>
 
-CREATE PROCEDURE [dbo].[sp0_Config_Record_delete_all]
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 44
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_record_hasobject_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx:44
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_record_hasobject_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx:line 44
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_record_hasobject_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.55.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 42: for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 43: 	_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 44: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 45: }
+Line 46: for (int f = 0; f &lt; _aux_search.SearchParameters.Count; f++) {</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 44
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_record_hasobject_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx:44
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_record_hasobject_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx:line 44
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_record_hasobject_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.55.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 42: for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 43: 	_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 44: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 45: }
+Line 46: for (int f = 0; f &lt; _aux_search.SearchParameters.Count; f++) {</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 44
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_record_hasobject_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx:44
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_record_hasobject_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx:line 44
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_record_hasobject_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.55.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 42: for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 43: 	_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 44: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(k != _aux_table.Fields_onlyPK.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 45: }
+Line 46: for (int f = 0; f &lt; _aux_search.SearchParameters.Count; f++) {</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 44
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_fnc0_sometable_record_hasobject_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx:44
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_fnc0_sometable_record_hasobject_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx:line 44
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_fnc0_sometable_record_hasobject_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.55.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 39: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 40: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 41: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.isIdentity) ? &quot; OUT&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 42: 	}%&gt;
+Line 43: 	@SelectIdentity_ Bit</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 41
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx:41
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx:line 41
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.32.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 39: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 40: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 41: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.isIdentity) ? &quot; OUT&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 42: 	}%&gt;
+Line 43: 	@SelectIdentity_ Bit</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 41
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx:41
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx:line 41
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.32.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 39: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 40: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 41: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.isIdentity) ? &quot; OUT&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 42: 	}%&gt;
+Line 43: 	@SelectIdentity_ Bit</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 41
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx:41
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx:line 41
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.32.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 39: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 40: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 41: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.isIdentity) ? &quot; OUT&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 42: 	}%&gt;
+Line 43: 	@SelectIdentity_ Bit</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 41
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx:41
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx:line 41
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.32.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 39: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 40: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 41: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.isIdentity) ? &quot; OUT&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 42: 	}%&gt;
+Line 43: 	@SelectIdentity_ Bit</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 41
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx:41
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx:line 41
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.32.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 39: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 40: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 41: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.isIdentity) ? &quot; OUT&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 42: 	}%&gt;
+Line 43: 	@SelectIdentity_ Bit</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 41
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx:41
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx:line 41
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.32.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 39: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 40: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 41: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.isIdentity) ? &quot; OUT&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 42: 	}%&gt;
+Line 43: 	@SelectIdentity_ Bit</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 41
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx:41
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_insObject-SQLServer.sql.aspx:line 41
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_insobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.32.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 40: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 41: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 42: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 43: 	}%&gt;&lt;%
+Line 44: 	if (_aux_table_searches_hasexplicituniqueindex) {%&gt;, </pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 42
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx:42
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx:line 42
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.28.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 40: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 41: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 42: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 43: 	}%&gt;&lt;%
+Line 44: 	if (_aux_table_searches_hasexplicituniqueindex) {%&gt;, </pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 42
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx:42
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx:line 42
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.28.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 40: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 41: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 42: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 43: 	}%&gt;&lt;%
+Line 44: 	if (_aux_table_searches_hasexplicituniqueindex) {%&gt;, </pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 42
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx:42
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx:line 42
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.28.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 40: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 41: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 42: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 43: 	}%&gt;&lt;%
+Line 44: 	if (_aux_table_searches_hasexplicituniqueindex) {%&gt;, </pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 42
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx:42
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx:line 42
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.28.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 40: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 41: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 42: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 43: 	}%&gt;&lt;%
+Line 44: 	if (_aux_table_searches_hasexplicituniqueindex) {%&gt;, </pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 42
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx:42
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx:line 42
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.28.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 40: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 41: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 42: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 43: 	}%&gt;&lt;%
+Line 44: 	if (_aux_table_searches_hasexplicituniqueindex) {%&gt;, </pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 42
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx:42
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx:line 42
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.28.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 40: 	for (int f = 0; f &lt; _aux_table.Fields.Count; f++) {
+Line 41: 		_aux_field = _aux_table.Fields[f];%&gt;
+<font color=red>Line 42: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_table.Fields.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 43: 	}%&gt;&lt;%
+Line 44: 	if (_aux_table_searches_hasexplicituniqueindex) {%&gt;, </pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 42
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx:42
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject-SQLServer.sql.aspx:line 42
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_updobject_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.28.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 42: 		_aux_field = _aux_search.SearchParameters[f].Field;
+Line 43: 		_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 44: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 45: 	}%&gt;
+Line 46: </pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 44
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_delobject_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject_bySomeCriteria-SQLServer.sql.aspx:44
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_delobject_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_delObject_bySomeCriteria-SQLServer.sql.aspx:line 44
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_delobject_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.41.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+-->CREATE PROCEDURE [dbo].[sp0_Config_Record_delete_all]
 AS
 	DELETE [Config]
 	FROM [Config] t1
@@ -1658,52 +9396,319 @@ AS
 --GO
 
 
-CREATE PROCEDURE [dbo].[sp0_User_Record_delete_byGroup]
-	@IDGroup_search_ bigint
-AS
-	DELETE [User]
-	FROM [User] t1
-	INNER JOIN [dbo].[fnc_User_Record_open_byGroup](
-		@IDGroup_search_
-	) t2 ON
-		(t2.[IDUser] = t1.[IDUser])
---GO
+<html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
 
+    <body bgcolor="white">
 
-CREATE PROCEDURE [dbo].[sp0_UserGroup_Record_delete_byUser_Defaultrelation]
-	@IDUser_search_ bigint, 
-	@Relationdate_search_ datetime
-AS
-	DELETE [UserGroup]
-	FROM [UserGroup] t1
-	INNER JOIN [dbo].[fnc_UserGroup_Record_open_byUser_Defaultrelation](
-		@IDUser_search_, 
-		@Relationdate_search_
-	) t2 ON
-		(t2.[IDUser] = t1.[IDUser]) AND
-		(t2.[IDGroup] = t1.[IDGroup])
---GO
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
 
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
 
-CREATE PROCEDURE [dbo].[sp0_User_updObject_SomeUpdateTest]
-	@IDUser_ bigint, 
-	@Password_update_ nvarchar (50), 
-	@ConstraintExist_ Bit OUT
-AS
-	SET @ConstraintExist_ = [dbo].[fnc0_User__ConstraintExist](
-		@IDUser_, 
-		NULL, 
-		@Password_update_, 
-		NULL
-	)
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
 
-	IF (@ConstraintExist_ = 0) BEGIN
-		UPDATE [User]
-		SET
-			[Password] = @Password_update_
-		WHERE
-			([IDUser] = @IDUser_)
-	END
---GO
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
 
+            <br><br>
 
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 43: 	_aux_field = _aux_search.SearchParameters[f].Field;
+Line 44: 	_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 45: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_search.SearchParameters.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 46: }%&gt;
+Line 47: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 45
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_delete_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-SQLServer.sql.aspx:45
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_delete_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-SQLServer.sql.aspx:line 45
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_delete_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.24.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 43: 	_aux_field = _aux_search.SearchParameters[f].Field;
+Line 44: 	_aux_field_name = _aux_search.SearchParameters[f].ParamName;%&gt;
+<font color=red>Line 45: 	@&lt;%=_aux_field_name%&gt;_search_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(f != _aux_search.SearchParameters.Count - 1) ? &quot;, &quot; : &quot;&quot;%&gt;&lt;%
+</font>Line 46: }%&gt;
+Line 47: AS</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 45
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_record_delete_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-SQLServer.sql.aspx:45
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_record_delete_bysomecriteria_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_Record_delete_bySomeCriteria-SQLServer.sql.aspx:line 45
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_record_delete_bysomecriteria_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_b0gfvt4y.24.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+--><html>
+    <head>
+        <title>Object reference not set to an instance of an object.</title>
+        <style>
+         body {font-family:"Verdana";font-weight:normal;font-size: .7em;color:black;} 
+         p {font-family:"Verdana";font-weight:normal;color:black;margin-top: -5px}
+         b {font-family:"Verdana";font-weight:bold;color:black;margin-top: -5px}
+         H1 { font-family:"Verdana";font-weight:normal;font-size:18pt;color:red }
+         H2 { font-family:"Verdana";font-weight:normal;font-size:14pt;color:maroon }
+         pre {font-family:"Lucida Console";font-size: .9em}
+         .marker {font-weight: bold; color: black;text-decoration: none;}
+         .version {color: gray;}
+         .error {margin-bottom: 10px;}
+         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }
+        </style>
+    </head>
+
+    <body bgcolor="white">
+
+            <span><H1>Server Error in '/' Application.<hr width=100% size=1 color=silver></H1>
+
+            <h2> <i>Object reference not set to an instance of an object.</i> </h2></span>
+
+            <font face="Arial, Helvetica, Geneva, SunSans-Regular, sans-serif ">
+
+            <b> Description: </b>An unhandled exception occurred during the execution of the current web request. Please review the stack trace for more information about the error and where it originated in the code.
+
+            <br><br>
+
+            <b> Exception Details: </b>System.NullReferenceException: Object reference not set to an instance of an object.<br><br>
+
+            <b>Source Error:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+Line 42: for (int k = 0; k &lt; _aux_table.Fields_onlyPK.Count; k++) {
+Line 43: 	_aux_field = _aux_table.Fields_onlyPK[k];%&gt;
+<font color=red>Line 44: 	@&lt;%=_aux_field.Name%&gt;_ &lt;%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%&gt;&lt;%=(_aux_field.isText) ? &quot; (&quot; + _aux_field.Size + &quot;)&quot; : &quot;&quot;%&gt;&lt;%=(_aux_field.Numeric_Scale &gt; 0) ? &quot; (&quot; + _aux_field.Numeric_Precision + &quot;, &quot; + _aux_field.Numeric_Scale + &quot;)&quot; : &quot;&quot;%&gt;, &lt;%
+</font>Line 45: }
+Line 46: for (int f = 0; f &lt; aux_update.UpdateParameters.Count; f++) {</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <b> Source File: </b> c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject_SomeUpdate-SQLServer.sql.aspx<b> &nbsp;&nbsp; Line: </b> 44
+            <br><br>
+
+            <b>Stack Trace:</b> <br><br>
+
+            <table width=100% bgcolor="#ffffcc">
+               <tr>
+                  <td>
+                      <code><pre>
+
+[NullReferenceException: Object reference not set to an instance of an object.]
+   ASP.do_db_sp0_sometable_updobject_someupdate_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject_SomeUpdate-SQLServer.sql.aspx:44
+   System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children) +98
+   System.Web.UI.Control.RenderChildren(HtmlTextWriter writer) +21
+   System.Web.UI.Page.Render(HtmlTextWriter writer) +27
+   System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter) +53
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter) +294
+   System.Web.UI.Control.RenderControl(HtmlTextWriter writer) +24
+   System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint) +7425
+</pre></code>
+
+                  </td>
+               </tr>
+            </table>
+
+            <br>
+
+            <hr width=100% size=1 color=silver>
+
+            <b>Version Information:</b>&nbsp;Microsoft .NET Framework Version:2.0.50727.42; ASP.NET Version:2.0.50727.210
+
+            </font>
+
+    </body>
+</html>
+<!-- 
+[NullReferenceException]: Object reference not set to an instance of an object.
+   at ASP.do_db_sp0_sometable_updobject_someupdate_sqlserver_sql_aspx.__Render__control1(HtmlTextWriter __w, Control parameterContainer) in c:\Documents and Settings\fmonteir\My Documents\OGen.berlios.de\OGen-NTier\NTier_templates\DO-DB-sp0_SomeTable_updObject_SomeUpdate-SQLServer.sql.aspx:line 44
+   at System.Web.UI.Control.RenderChildrenInternal(HtmlTextWriter writer, ICollection children)
+   at System.Web.UI.Control.RenderChildren(HtmlTextWriter writer)
+   at System.Web.UI.Page.Render(HtmlTextWriter writer)
+   at System.Web.UI.Control.RenderControlInternal(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer, ControlAdapter adapter)
+   at System.Web.UI.Control.RenderControl(HtmlTextWriter writer)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+[HttpUnhandledException]: Exception of type 'System.Web.HttpUnhandledException' was thrown.
+   at System.Web.UI.Page.HandleError(Exception e)
+   at System.Web.UI.Page.ProcessRequestMain(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest(Boolean includeStagesBeforeAsyncPoint, Boolean includeStagesAfterAsyncPoint)
+   at System.Web.UI.Page.ProcessRequest()
+   at System.Web.UI.Page.ProcessRequestWithNoAssert(HttpContext context)
+   at System.Web.UI.Page.ProcessRequest(HttpContext context)
+   at ASP.do_db_sp0_sometable_updobject_someupdate_sqlserver_sql_aspx.ProcessRequest(HttpContext context) in c:\WINDOWS\Microsoft.NET\Framework\v2.0.50727\Temporary ASP.NET Files\root\704fe456\46c4e788\App_Web_kds7iq05.26.cs:line 0
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+-->

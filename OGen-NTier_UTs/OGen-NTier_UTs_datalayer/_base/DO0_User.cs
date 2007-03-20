@@ -2,7 +2,7 @@
 /*
 
 OGen
-Copyright (C) 2002 Francisco Monteiro
+Copyright (c) 2002 Francisco Monteiro
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -161,10 +161,10 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		) {
 			if (IDUser_in != 0L) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.InputOutput, IDUser_in, 0, 19, 0), 
+					base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.InputOutput, IDUser_in, 0, 0, 0), 
 					base.Connection.newDBDataParameter("Login_", DbType.String, ParameterDirection.Output, null, 50, 0, 0), 
 					base.Connection.newDBDataParameter("Password_", DbType.String, ParameterDirection.Output, null, 50, 0, 0), 
-					base.Connection.newDBDataParameter("SomeNullValue_", DbType.Int32, ParameterDirection.Output, null, 0, 10, 0)
+					base.Connection.newDBDataParameter("SomeNullValue_", DbType.Int32, ParameterDirection.Output, null, 0, 0, 0)
 				};
 				base.Connection.Execute_SQLFunction("sp0_User_getObject", _dataparameters);
 
@@ -226,7 +226,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDUser_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0, 19, 0)
+				base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0, 0, 0)
 			};
 			base.Connection.Execute_SQLFunction("sp0_User_delObject", _dataparameters);
 
@@ -260,7 +260,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDUser_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0, 19, 0)
+				base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0, 0, 0)
 			};
 
 			return (bool)base.Connection.Execute_SQLFunction(
@@ -287,10 +287,10 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			out bool constraintExist_out
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Output, null, 0, 19, 0), 
+				base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Output, null, 0, 0, 0), 
 				base.Connection.newDBDataParameter("Login_", DbType.String, ParameterDirection.Input, Fields.Login, 50, 0, 0), 
 				base.Connection.newDBDataParameter("Password_", DbType.String, ParameterDirection.Input, Fields.Password, 50, 0, 0), 
-				base.Connection.newDBDataParameter("SomeNullValue_", DbType.Int32, ParameterDirection.Input, Fields.SomeNullValue_isNull ? null : (object)Fields.SomeNullValue, 0, 10, 0), 
+				base.Connection.newDBDataParameter("SomeNullValue_", DbType.Int32, ParameterDirection.Input, Fields.SomeNullValue_isNull ? null : (object)Fields.SomeNullValue, 0, 0, 0), 
 
 				base.Connection.newDBDataParameter("SelectIdentity_", DbType.Boolean, ParameterDirection.Input, selectIdentity_in, 1)
 			};
@@ -321,10 +321,10 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		void updObject(bool forceUpdate_in, out bool constraintExist_out) {
 			if (forceUpdate_in || Fields.haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, Fields.IDUser, 0, 19, 0), 
+					base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, Fields.IDUser, 0, 0, 0), 
 					base.Connection.newDBDataParameter("Login_", DbType.String, ParameterDirection.Input, Fields.Login, 50, 0, 0), 
 					base.Connection.newDBDataParameter("Password_", DbType.String, ParameterDirection.Input, Fields.Password, 50, 0, 0), 
-					base.Connection.newDBDataParameter("SomeNullValue_", DbType.Int32, ParameterDirection.Input, Fields.SomeNullValue_isNull ? null : (object)Fields.SomeNullValue, 0, 10, 0), 
+					base.Connection.newDBDataParameter("SomeNullValue_", DbType.Int32, ParameterDirection.Input, Fields.SomeNullValue_isNull ? null : (object)Fields.SomeNullValue, 0, 0, 0), 
 
 					base.Connection.newDBDataParameter("ConstraintExist_", DbType.Boolean, ParameterDirection.Output, null, 1)
 				};
@@ -356,10 +356,10 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
 				base.Connection.newDBDataParameter("Login_search_", DbType.String, ParameterDirection.Input, Login_search_in, 50, 0, 0), 
-				base.Connection.newDBDataParameter("IDUser", DbType.Int64, ParameterDirection.Output, null, 0, 19, 0), 
+				base.Connection.newDBDataParameter("IDUser", DbType.Int64, ParameterDirection.Output, null, 0, 0, 0), 
 				base.Connection.newDBDataParameter("Login", DbType.String, ParameterDirection.Output, null, 50, 0, 0), 
 				base.Connection.newDBDataParameter("Password", DbType.String, ParameterDirection.Output, null, 50, 0, 0), 
-				base.Connection.newDBDataParameter("SomeNullValue", DbType.Int32, ParameterDirection.Output, null, 0, 10, 0)
+				base.Connection.newDBDataParameter("SomeNullValue", DbType.Int32, ParameterDirection.Output, null, 0, 0, 0)
 			};
 			base.Connection.Execute_SQLFunction(
 				"sp0_User_getObject_byLogin", 
@@ -453,7 +453,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		void updObject_SomeUpdateTest(bool forceUpdate_in, out bool constraintExist_out) {
 			if (forceUpdate_in || Fields.haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDUser", DbType.Int64, ParameterDirection.Input, Fields.IDUser, 0, 19, 0), 
+					base.Connection.newDBDataParameter("IDUser", DbType.Int64, ParameterDirection.Input, Fields.IDUser, 0, 0, 0), 
 					base.Connection.newDBDataParameter("Password_update", DbType.String, ParameterDirection.Input, Fields.Password, 50, 0, 0), 
 
 					base.Connection.newDBDataParameter("ConstraintExist", DbType.Boolean, ParameterDirection.Output, null, 1)

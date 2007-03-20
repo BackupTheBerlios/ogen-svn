@@ -1,4 +1,4 @@
-﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectType>Local</ProjectType>
     <ProductVersion>8.0.50727</ProductVersion>
@@ -10,7 +10,7 @@
     </ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
-    <AssemblyName>OGen.NTier.UTs.lib.datalayer.UTs</AssemblyName>
+    <AssemblyName>OGen.NTier.UTs.lib.datalayer.UTs-2.0</AssemblyName>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
@@ -79,12 +79,12 @@
       <HintPath>C:\Program Files\NUnit 2.2\bin\nunit.framework.dll</HintPath>
       <AssemblyFolderKey>hklm\dn\nunit.framework</AssemblyFolderKey>
     </Reference>
-    <Reference Include="OGen.lib.datalayer">
-      <Name>OGen.lib.datalayer</Name>
+    <Reference Include="OGen.lib.datalayer-2.0">
+      <Name>OGen.lib.datalayer-2.0</Name>
       <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
     </Reference>
-    <Reference Include="OGen.NTier.lib.datalayer">
-      <Name>OGen.NTier.lib.datalayer</Name>
+    <Reference Include="OGen.NTier.lib.datalayer-2.0">
+      <Name>OGen.NTier.lib.datalayer-2.0</Name>
       <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
     </Reference>
     <Reference Include="System">
@@ -107,8 +107,7 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="UT__utils.cs" />
-    <Compile Include="_base\UT0__utils.cs">
+   	<Compile Include="_base\UT0__utils.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="UT_Config.cs">
@@ -123,6 +122,36 @@
     <Compile Include="_base\UT0_Group.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UT_GroupPermition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_base\UT0_GroupPermition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UT_Language.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_base\UT0_Language.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UT_Log.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_base\UT0_Log.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UT_Logcode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_base\UT0_Logcode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UT_Permition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_base\UT0_Permition.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="UT_User.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -133,6 +162,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="_base\UT0_UserGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UT_Word.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_base\UT0_Word.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="UT_WordLanguage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_base\UT0_WordLanguage.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="UT_vUserDefaultGroup.cs">

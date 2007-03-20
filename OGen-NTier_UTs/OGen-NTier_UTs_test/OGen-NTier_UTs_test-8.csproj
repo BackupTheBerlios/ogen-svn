@@ -10,7 +10,7 @@
     </ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
-    <AssemblyName>OGen.NTier.UTs.test</AssemblyName>
+    <AssemblyName>OGen.NTier.UTs.test-2.0</AssemblyName>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
@@ -74,16 +74,16 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="OGen.lib.datalayer">
-      <Name>OGen.lib.datalayer</Name>
+    <Reference Include="OGen.lib.datalayer-2.0">
+      <Name>OGen.lib.datalayer-2.0</Name>
       <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
     </Reference>
-    <Reference Include="OGen.NTier.lib.businesslayer">
-      <Name>OGen.NTier.lib.businesslayer</Name>
+    <Reference Include="OGen.NTier.lib.businesslayer-2.0">
+      <Name>OGen.NTier.lib.businesslayer-2.0</Name>
       <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
     </Reference>
-    <Reference Include="OGen.NTier.lib.datalayer">
-      <Name>OGen.NTier.lib.datalayer</Name>
+    <Reference Include="OGen.NTier.lib.datalayer-2.0">
+      <Name>OGen.NTier.lib.datalayer-2.0</Name>
       <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
     </Reference>
     <Reference Include="System">
@@ -100,10 +100,6 @@
       <Project>{B3555514-3A7D-4159-B05D-E8D0C265B649}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\OGen-NTier_UTs_businesslayer_UTs\OGen-NTier_UTs_businesslayer_UTs-8.csproj">
-      <Project>{980912F1-6877-4BD1-A2E0-61D366839C52}</Project>
-      <Name>OGen-NTier_UTs_businesslayer_UTs-8</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OGen-NTier_UTs_datalayer\OGen-NTier_UTs_datalayer-8.csproj">
       <Name>OGen-NTier_UTs_datalayer</Name>
       <Project>{2C45EF1A-75BE-4B12-A232-62DEB5662239}</Project>
@@ -119,21 +115,6 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="HowTos_andFAQ\OGen-NTier__Docs__Develop_HowTo_List_DataObjects.cs" />
-    <Compile Include="HowTos_andFAQ\OGen-NTier__Docs__Develop_HowTo_Read_and_Write_to_DataObject_Properties.cs" />
-    <Compile Include="HowTos_andFAQ\OGen-NTier__Docs__Develop_HowTo_Read_DataObject_Property_Attributes.cs" />
-    <Compile Include="HowTos_andFAQ\OGen-NTier__Docs__Develop_HowTo_UseTransactions_betweenDOs_operations.cs" />
-    <Compile Include="HowTos_andFAQ\OGen-NTier__Docs__Develop_HowTo_UseTransactions_inDOs.cs" />
-    <Compile Include="HowTos_andFAQ\OGen__Docs__Develop_HowTo_Execute_SQLFunction.cs" />
-    <Compile Include="HowTos_andFAQ\OGen__Docs__Develop_HowTo_Execute_SQLFunction_returnDataTable.cs" />
-    <Compile Include="HowTos_andFAQ\OGen__Docs__Develop_HowTo_Execute_SQLFunction_returnSomevalue.cs" />
-    <Compile Include="HowTos_andFAQ\OGen__Docs__Develop_HowTo_Execute_SQLQuery.cs" />
-    <Compile Include="HowTos_andFAQ\OGen__Docs__Develop_HowTo_Execute_SQLQuery_returnDataTable.cs" />
-    <Compile Include="HowTos_andFAQ\OGen__Docs__Develop_HowTo_List_DB_TableFields.cs" />
-    <Compile Include="HowTos_andFAQ\OGen__Docs__Develop_HowTo_List_DB_Tables.cs" />
-    <Compile Include="HowTos_andFAQ\OGen__Docs__Develop_HowTo_List_DBs.cs" />
-    <Compile Include="HowTos_andFAQ\OGen__Docs__Develop_HowTo_UseTransactions.cs" />
-    <Compile Include="HowTos_andFAQ\OGen__Docs__Contrib_Considerations-CSharpCodingStyle.cs" />
     <Compile Include="MainClass.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -2,7 +2,7 @@
 /*
 
 OGen
-Copyright (C) 2002 Francisco Monteiro
+Copyright (c) 2002 Francisco Monteiro
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -96,14 +96,14 @@ namespace OGen.NTier.UTs.lib.datalayer {
 
 			DataRow _datarow;
 			for (int i = 0; i < serialisableobject_in.Length; i++) {
-			    _datarow = _datatable.NewRow();
+				_datarow = _datatable.NewRow();
 				_datarow["IDUser"] = serialisableobject_in[i].IDUser;
 				_datarow["Login"] = serialisableobject_in[i].Login;
 				_datarow["IDGroup"] = serialisableobject_in[i].IDGroup;
 				_datarow["Name"] = serialisableobject_in[i].Name;
 				_datarow["Relationdate"] = serialisableobject_in[i].Relationdate;
 
-			    _datatable.Rows.Add(_datarow);
+				_datatable.Rows.Add(_datarow);
 			}
 
 			Open(true, _datatable);
@@ -132,7 +132,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 						parent_ref_.Fields.iduser_ = (long)base.Record.Rows[Current]["IDUser"];
 					}
 					if (base.Record.Rows[Current]["Login"] == System.DBNull.Value) {
-						parent_ref_.Fields.login_ = string.Empty;
+						parent_ref_.Fields.Login_isNull = true;
 					} else {
 						parent_ref_.Fields.login_ = (string)base.Record.Rows[Current]["Login"];
 					}
@@ -142,12 +142,12 @@ namespace OGen.NTier.UTs.lib.datalayer {
 						parent_ref_.Fields.idgroup_ = (long)base.Record.Rows[Current]["IDGroup"];
 					}
 					if (base.Record.Rows[Current]["Name"] == System.DBNull.Value) {
-						parent_ref_.Fields.name_ = string.Empty;
+						parent_ref_.Fields.Name_isNull = true;
 					} else {
 						parent_ref_.Fields.name_ = (string)base.Record.Rows[Current]["Name"];
 					}
 					if (base.Record.Rows[Current]["Relationdate"] == System.DBNull.Value) {
-						parent_ref_.Fields.relationdate_ = new DateTime(1900, 1, 1);
+						parent_ref_.Fields.Relationdate_isNull = true;
 					} else {
 						parent_ref_.Fields.relationdate_ = (DateTime)base.Record.Rows[Current]["Relationdate"];
 					}

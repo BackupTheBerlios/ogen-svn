@@ -10,7 +10,7 @@
     </ApplicationIcon>
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
-    <AssemblyName>OGen.NTier.UTs.lib.businesslayer</AssemblyName>
+    <AssemblyName>OGen.NTier.UTs.lib.businesslayer-2.0</AssemblyName>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
@@ -95,7 +95,7 @@
       <Name>OGen_datalayer-8</Name>
     </ProjectReference>
     <ProjectReference Include="..\OGen-NTier_UTs_datalayer\OGen-NTier_UTs_datalayer-8.csproj">
-      <Name>OGen-NTier_UTs_datalayer</Name>
+      <Name>OGen-NTier_UTs_datalayer-2.0</Name>
       <Project>{2C45EF1A-75BE-4B12-A232-62DEB5662239}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
@@ -116,6 +116,36 @@
     <Compile Include="_base\BO0_Group.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="BO_GroupPermition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_base\BO0_GroupPermition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BO_Language.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_base\BO0_Language.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BO_Log.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_base\BO0_Log.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BO_Logcode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_base\BO0_Logcode.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BO_Permition.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_base\BO0_Permition.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="BO_User.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -126,6 +156,18 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="_base\BO0_UserGroup.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BO_Word.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_base\BO0_Word.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="BO_WordLanguage.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_base\BO0_WordLanguage.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="BO_vUserDefaultGroup.cs">

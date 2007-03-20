@@ -42,7 +42,7 @@ int _aux_table_hasidentitykey;
             <Settings
                 ApplicationIcon = ""
                 AssemblyKeyContainerName = ""
-                AssemblyName = "<%=_aux_metadata.Namespace%>.lib.datalayer"
+                AssemblyName = "<%=_aux_metadata.Namespace%>.lib.datalayer-1.1"
                 AssemblyOriginatorKeyFile = ""
                 DefaultClientScript = "JScript"
                 DefaultHTMLPageLayout = "Grid"
@@ -113,13 +113,13 @@ int _aux_table_hasidentitykey;
                     HintPath = "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
-                    Name = "OGen.lib.datalayer"
-                    AssemblyName = "OGen.lib.datalayer"
+                    Name = "OGen.lib.datalayer-1.1"
+                    AssemblyName = "OGen.lib.datalayer-1.1"
                     AssemblyFolderKey = "hklm\dn\ogen"
                 />
                 <Reference
-                    Name = "OGen.NTier.lib.datalayer"
-                    AssemblyName = "OGen.NTier.lib.datalayer"
+                    Name = "OGen.NTier.lib.datalayer-1.1"
+                    AssemblyName = "OGen.NTier.lib.datalayer-1.1"
                     AssemblyFolderKey = "hklm\dn\ogen"
                 />
             </References>
