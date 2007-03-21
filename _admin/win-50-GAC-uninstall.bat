@@ -31,7 +31,7 @@ IF NOT EXIST "OGen-solutions.txt" GOTO error2
 IF NOT EXIST "OGen-projects.txt" GOTO error3
 
 
-FOR /F "tokens=1,2,3,4,5,6,7,8 delims=, " %%a IN (OGen-projects.txt) DO CALL %0 %1 %%a %%b %%c %%d %%e %%f %%g %%h
+FOR /F "tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (OGen-projects.txt) DO CALL %0 %1 %%a %%b %%c %%d %%e %%f %%g %%h %%i
 PAUSE
 GOTO eof
 
@@ -63,8 +63,23 @@ GOTO eof
 
 
 :install
-SHIFT
-gacutil /u %3-%fw%
+	SHIFT
+
+	:::: is not a Release, hence:
+	::IF '%9' == 'f' GOTO eof
+	:::: is a Web App, hence:
+	::IF '%5' == 't' GOTO eof
+	:::: is an Executable, hence:
+	::IF '%6' == 't' GOTO eof
+	:::: is a Doc project, hence:
+	::IF '%8' == 't' GOTO eof
+
+	:: all resumed in one condition, 
+	:: is not on GAC, hence:
+	IF '%4' == 'f' GOTO eof
+
+	gacutil /u %3-%fw%
+GOTO eof
 
 
 :eof

@@ -24,34 +24,34 @@ for /f "usebackq tokens=1* delims=^|" %%a in (`echo %parentdir%`) do (
 
 if "%currentdir%" == "" goto error1
 if "%parentdir%" == "" goto error2
-if not exist ..\_release.no-svn mkdir ..\_release.no-svn
+if not exist ..\bin mkdir ..\bin
 
 
 ::---
 set configfilename=OGen.Doc.presentationlayer.console
 set configfile=%configfilename%-1.1.exe
-type config-templates\%configfilename%.exe-1.config>..\_release.no-svn\%configfile%.config
-echo     ^<add key="Templates" value="%parentdir%\OGen-Doc\Doc_templates\templates.config.xml" /^>>>..\_release.no-svn\%configfile%.config
-type config-templates\%configfilename%.exe-2.config>>..\_release.no-svn\%configfile%.config
-COPY ..\_release.no-svn\%configfile%.config ..\_release.no-svn\%configfilename%-2.0.exe.config
+type config-templates\%configfilename%.exe-1.config>..\bin\%configfile%.config
+echo     ^<add key="Templates" value="%parentdir%\OGen-Doc\Doc_templates\templates.config.xml" /^>>>..\bin\%configfile%.config
+type config-templates\%configfilename%.exe-2.config>>..\bin\%configfile%.config
+COPY ..\bin\%configfile%.config ..\bin\%configfilename%-2.0.exe.config
 echo %configfile%.config
 ::---
 set configfilename=OGen.NTier.presentationlayer.console
 set configfile=%configfilename%-1.1.exe
-type config-templates\%configfilename%.exe-1.config>..\_release.no-svn\%configfile%.config
-echo     ^<add key="Templates" value="%parentdir%\OGen-NTier\NTier_templates\templates.config.xml" /^>>>..\_release.no-svn\%configfile%.config
-echo     ^<add key="ogenPath" value="%parentdir%\_release.no-svn" /^>>>..\_release.no-svn\%configfile%.config
-type config-templates\%configfilename%.exe-2.config>>..\_release.no-svn\%configfile%.config
-COPY ..\_release.no-svn\%configfile%.config ..\_release.no-svn\%configfilename%-2.0.exe.config
+type config-templates\%configfilename%.exe-1.config>..\bin\%configfile%.config
+echo     ^<add key="Templates" value="%parentdir%\OGen-NTier\NTier_templates\templates.config.xml" /^>>>..\bin\%configfile%.config
+echo     ^<add key="ogenPath" value="%parentdir%\bin" /^>>>..\bin\%configfile%.config
+type config-templates\%configfilename%.exe-2.config>>..\bin\%configfile%.config
+COPY ..\bin\%configfile%.config ..\bin\%configfilename%-2.0.exe.config
 echo %configfile%.config
 ::---
 set configfilename=OGen.NTier.presentationlayer.winforms
 set configfile=%configfilename%-1.1.exe
-type config-templates\%configfilename%.exe-1.config>..\_release.no-svn\%configfile%.config
-echo     ^<add key="Templates" value="%parentdir%\OGen-NTier\NTier_templates\templates.config.xml" /^>>>..\_release.no-svn\%configfile%.config
-echo     ^<add key="ogenPath" value="%parentdir%\_release.no-svn" /^>>>..\_release.no-svn\%configfile%.config
-type config-templates\%configfilename%.exe-2.config>>..\_release.no-svn\%configfile%.config
-COPY ..\_release.no-svn\%configfile%.config ..\_release.no-svn\%configfilename%-2.0.exe.config
+type config-templates\%configfilename%.exe-1.config>..\bin\%configfile%.config
+echo     ^<add key="Templates" value="%parentdir%\OGen-NTier\NTier_templates\templates.config.xml" /^>>>..\bin\%configfile%.config
+echo     ^<add key="ogenPath" value="%parentdir%\bin" /^>>>..\bin\%configfile%.config
+type config-templates\%configfilename%.exe-2.config>>..\bin\%configfile%.config
+COPY ..\bin\%configfile%.config ..\bin\%configfilename%-2.0.exe.config
 echo %configfile%.config
 ::---
 goto eof

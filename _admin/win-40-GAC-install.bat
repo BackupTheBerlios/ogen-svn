@@ -108,22 +108,22 @@ GOTO eof
 
 	IF '%5' == 'f' SET binDir=bin\Release
 	IF '%5' == 't' SET binDir=bin
-	IF NOT EXIST ..\_release.no-svn MKDIR ..\_release.no-svn
+	IF NOT EXIST ..\bin MKDIR ..\bin
 
-	:: if file has not been compiled, i'll try to install it if available from _release.no-svn dir...
+	:: if file has not been compiled, i'll try to install it if available from bin dir...
 	::IF NOT EXIST ..\%1\%2\%binDir%\%3-%fw%.dll GOTO tryinstall
 
-	IF '%6' == 'f' IF EXIST ..\%1\%2\%binDir%\%3-%fw%.dll COPY ..\%1\%2\%binDir%\%3-%fw%.dll ..\_release.no-svn
-	::IF EXIST ..\%1\%2\%binDir%\%3.xml COPY ..\%1\%2\%binDir%\%3-%fw%.xml ..\_release.no-svn
+	IF '%6' == 'f' IF EXIST ..\%1\%2\%binDir%\%3-%fw%.dll COPY ..\%1\%2\%binDir%\%3-%fw%.dll ..\bin
+	::IF EXIST ..\%1\%2\%binDir%\%3.xml COPY ..\%1\%2\%binDir%\%3-%fw%.xml ..\bin
 
-	IF '%6' == 't' IF EXIST ..\%1\%2\%binDir%\%3-%fw%.exe COPY ..\%1\%2\%binDir%\%3-%fw%.exe ..\_release.no-svn
-	::IF '%6' == 't' IF EXIST ..\%1\%2\%binDir%\%3-%fw%.exe.config IF NOT EXIST ..\_release.no-svn\%3-%fw%.exe.config COPY ..\%1\%2\%binDir%\%3-%fw%.exe.config ..\_release.no-svn
+	IF '%6' == 't' IF EXIST ..\%1\%2\%binDir%\%3-%fw%.exe COPY ..\%1\%2\%binDir%\%3-%fw%.exe ..\bin
+	::IF '%6' == 't' IF EXIST ..\%1\%2\%binDir%\%3-%fw%.exe.config IF NOT EXIST ..\bin\%3-%fw%.exe.config COPY ..\%1\%2\%binDir%\%3-%fw%.exe.config ..\bin
 
 :tryinstall
 	IF '%4' == 'f' GOTO eof
-	IF NOT EXIST ..\_release.no-svn\%3-%fw%.dll GOTO eof
+	IF NOT EXIST ..\bin\%3-%fw%.dll GOTO eof
 	::gacutil /u %3
-	gacutil /i ..\_release.no-svn\%3-%fw%.dll
+	gacutil /i ..\bin\%3-%fw%.dll
 GOTO eof
 
 
