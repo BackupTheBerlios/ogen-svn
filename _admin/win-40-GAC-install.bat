@@ -19,6 +19,11 @@ IF '%2' == '/check' GOTO check
 IF NOT '%2' == '' GOTO error5
 
 
+for /f "usebackq tokens=1* delims=^|" %%a in (`cd`) do (
+	IF NOT "%%~fa\" == "%~d0%~p0" GOTO error7
+)
+
+
 SET SetEnvironmentPath=
 IF '%1' == '/1_1' IF EXIST "C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat" SET SetEnvironmentPath="c:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat"
 IF '%1' == '/2_0' IF EXIST "C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" SET SetEnvironmentPath="C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat"
@@ -47,25 +52,25 @@ GOTO eof
 :error1
 	ECHO.
 	ECHO.
-	ECHO Can't set environment for Microsoft Visual Studio .NET tools
+	ECHO ERROR 1: - Can't set environment for Microsoft Visual Studio .NET tools
 	PAUSE
 GOTO eof
 :error2
 	ECHO.
 	ECHO.
-	ECHO Can't find file 'OGen-solutions.txt'
+	ECHO ERROR 2: - Can't find file 'OGen-solutions.txt'
 	PAUSE
 GOTO eof
 :error3
 	ECHO.
 	ECHO.
-	ECHO Can't find file 'OGen-projects.txt'
+	ECHO ERROR 3: - Can't find file 'OGen-projects.txt'
 	PAUSE
 GOTO eof
 :error4
 	ECHO.
 	ECHO.
-	ECHO Can't find files:
+	ECHO ERROR 4: - Can't find files:
 	ECHO %hasErrors%
 	SET hasErrors=
 	PAUSE
@@ -73,13 +78,19 @@ GOTO eof
 :error5
 	ECHO.
 	ECHO.
-	ECHO invalid arguments: %2
+	ECHO ERROR 5: - invalid arguments: %2
 	PAUSE
 GOTO eof
 :error6
 	ECHO.
 	ECHO.
-	ECHO must specify framework version
+	ECHO ERROR 6: - must specify framework version
+	PAUSE
+GOTO eof
+:error7
+	ECHO.
+	ECHO.
+	ECHO ERROR 7: - %~n0%~x0 must be called from it's own directory: %~f0
 	PAUSE
 GOTO eof
 

@@ -9,8 +9,14 @@
 :: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 :: 
 @ECHO OFF
+
 IF '%1' == '/test' GOTO test
 IF NOT '%1' == '' GOTO error1
+
+
+for /f "usebackq tokens=1* delims=^|" %%a in (`cd`) do (
+	IF NOT "%%~fa\" == "%~d0%~p0" GOTO error4
+)
 
 
 IF NOT EXIST "OGen-solutions.txt" GOTO error2
@@ -55,21 +61,28 @@ GOTO eof
 :error1
 	ECHO.
 	ECHO.
-	ECHO invalid arguments: %1
+	ECHO ERROR 1: - invalid arguments: %1
 	PAUSE
 GOTO eof
 :error2
 	ECHO.
 	ECHO.
-	ECHO Can't find file 'OGen-solutions.txt'
+	ECHO ERROR 2: - Can't find file 'OGen-solutions.txt'
 	PAUSE
 GOTO eof
 :error3
 	ECHO.
 	ECHO.
-	ECHO Can't find file 'OGen-projects.txt'
+	ECHO ERROR 3: - Can't find file 'OGen-projects.txt'
+	PAUSE
+GOTO eof
+:error4
+	ECHO.
+	ECHO.
+	ECHO ERROR 4: - %~n0%~x0 must be called from it's own directory: %~f0
 	PAUSE
 GOTO eof
 
 
 :eof
+SET errorFound=

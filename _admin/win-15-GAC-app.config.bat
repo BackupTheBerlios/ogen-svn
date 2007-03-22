@@ -22,8 +22,10 @@ for /f "usebackq tokens=1* delims=^|" %%a in (`echo %parentdir%`) do (
 )
 
 
-if "%currentdir%" == "" goto error1
-if "%parentdir%" == "" goto error2
+IF "%currentdir%" == "" GOTO error1
+IF "%parentdir%" == "" GOTO error2
+IF NOT "%currentdir%\" == "%~d0%~p0" GOTO error4
+
 if not exist ..\bin mkdir ..\bin
 
 
@@ -58,13 +60,29 @@ goto eof
 
 
 :error1
-	echo can't determine current dir
-	pause
-goto eof
+	ECHO.
+	ECHO.
+	ECHO ERROR 1: - can't determine current dir
+::PAUSE
+GOTO eof
 :error2
-	echo can't determine parent dir
-	pause
-goto eof
+	ECHO.
+	ECHO.
+	ECHO ERROR 2: - can't determine parent dir
+::PAUSE
+GOTO eof
+:error3
+	ECHO.
+	ECHO.
+	ECHO ERROR 3: - %~n0%~x0 must be called from it's own directory: %~f0
+::PAUSE
+GOTO eof
+:error4
+	ECHO.
+	ECHO.
+	ECHO ERROR 4: - %~n0%~x0 must be called from it's own directory: %~f0
+::PAUSE
+GOTO eof
 
 
 :eof

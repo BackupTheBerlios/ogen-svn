@@ -12,6 +12,11 @@
 IF NOT '%1' == '' GOTO test
 
 
+for /f "usebackq tokens=1* delims=^|" %%a in (`cd`) do (
+	IF NOT "%%~fa\" == "%~d0%~p0" GOTO error4
+)
+
+
 IF NOT EXIST "OGen-solutions.txt" GOTO error2
 IF NOT EXIST "OGen-projects.txt" GOTO error3
 
@@ -43,13 +48,19 @@ GOTO eof
 :error2
 	ECHO.
 	ECHO.
-	ECHO Can't find file 'OGen-solutions.txt'
+	ECHO ERROR 2: - Can't find file 'OGen-solutions.txt'
 	PAUSE
 GOTO eof
 :error3
 	ECHO.
 	ECHO.
-	ECHO Can't find file 'OGen-projects.txt'
+	ECHO ERROR 3: - Can't find file 'OGen-projects.txt'
+	PAUSE
+GOTO eof
+:error4
+	ECHO.
+	ECHO.
+	ECHO ERROR 4: - %~n0%~x0 must be called from it's own directory: %~f0
 	PAUSE
 GOTO eof
 

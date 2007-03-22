@@ -16,6 +16,11 @@ IF '%8' == 't' GOTO eof
 IF NOT '%1' == '' GOTO copysharedkey
 
 
+for /f "usebackq tokens=1* delims=^|" %%a in (`cd`) do (
+	IF NOT "%%~fa\" == "%~d0%~p0" GOTO error4
+)
+
+
 SET SetEnvironmentPath=
 IF '%SetEnvironmentPath%' == '' IF EXIST "C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" SET SetEnvironmentPath="C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat"
 IF '%SetEnvironmentPath%' == '' IF EXIST "C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat" SET SetEnvironmentPath="c:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat"
@@ -54,19 +59,25 @@ GOTO eof
 :error1
 	ECHO.
 	ECHO.
-	ECHO Can't set environment for Microsoft Visual Studio .NET tools
+	ECHO ERROR 1: - Can't set environment for Microsoft Visual Studio .NET tools
 	PAUSE
 GOTO eof
 :error2
 	ECHO.
 	ECHO.
-	ECHO Can't find file 'OGen-solutions.txt'
+	ECHO ERROR 2: - Can't find file 'OGen-solutions.txt'
 	PAUSE
 GOTO eof
 :error3
 	ECHO.
 	ECHO.
-	ECHO Can't find file 'OGen-projects.txt'
+	ECHO ERROR 3: - Can't find file 'OGen-projects.txt'
+	PAUSE
+GOTO eof
+:error4
+	ECHO.
+	ECHO.
+	ECHO ERROR 4: - %~n0%~x0 must be called from it's own directory: %~f0
 	PAUSE
 GOTO eof
 
@@ -83,3 +94,4 @@ GOTO eof
 
 :eof
 SET SetEnvironmentPath=
+SET errorFound=
