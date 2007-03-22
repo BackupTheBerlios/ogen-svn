@@ -24,7 +24,6 @@ namespace OGen.NTier.presentationlayer.winforms {
 	public class frm_about : System.Windows.Forms.Form {
 		private System.Windows.Forms.TextBox textBox1;
 		private System.Windows.Forms.Button btnOK;
-		private System.Windows.Forms.LinkLabel lklGPL;
 
 		#region generated code...
 		/// <summary>
@@ -50,61 +49,39 @@ namespace OGen.NTier.presentationlayer.winforms {
 		/// the contents of this method with the code editor.
 		/// </summary>
 		private void InitializeComponent() {
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_about));
 			this.textBox1 = new System.Windows.Forms.TextBox();
 			this.btnOK = new System.Windows.Forms.Button();
-			this.lklGPL = new System.Windows.Forms.LinkLabel();
 			this.SuspendLayout();
 			// 
 			// textBox1
 			// 
-			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-				| System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
+			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+						| System.Windows.Forms.AnchorStyles.Left)
+						| System.Windows.Forms.AnchorStyles.Right)));
 			this.textBox1.Location = new System.Drawing.Point(8, 8);
 			this.textBox1.Multiline = true;
 			this.textBox1.Name = "textBox1";
 			this.textBox1.ReadOnly = true;
-			this.textBox1.Size = new System.Drawing.Size(512, 272);
+			this.textBox1.Size = new System.Drawing.Size(512, 298);
 			this.textBox1.TabIndex = 2;
 			this.textBox1.TabStop = false;
-			this.textBox1.Text = @"
-
-OGen
-Copyright (C) 2002 Francisco Monteiro
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the ""Software""), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
+			this.textBox1.Text = resources.GetString("textBox1.Text");
 			// 
 			// btnOK
 			// 
 			this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnOK.Location = new System.Drawing.Point(440, 312);
 			this.btnOK.Name = "btnOK";
+			this.btnOK.Size = new System.Drawing.Size(75, 23);
 			this.btnOK.TabIndex = 0;
 			this.btnOK.Text = "OK";
 			this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-			// 
-			// lklGPL
-			// 
-			this.lklGPL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-				| System.Windows.Forms.AnchorStyles.Right)));
-			this.lklGPL.Location = new System.Drawing.Point(16, 288);
-			this.lklGPL.Name = "lklGPL";
-			this.lklGPL.Size = new System.Drawing.Size(504, 23);
-			this.lklGPL.TabIndex = 1;
-			this.lklGPL.TabStop = true;
-			this.lklGPL.Text = "Read the GNU General Public License";
-			this.lklGPL.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-			this.lklGPL.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklGPL_LinkClicked);
 			// 
 			// frm_about
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
 			this.ClientSize = new System.Drawing.Size(528, 341);
-			this.Controls.Add(this.lklGPL);
 			this.Controls.Add(this.btnOK);
 			this.Controls.Add(this.textBox1);
 			this.MinimumSize = new System.Drawing.Size(536, 368);
@@ -112,6 +89,7 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "OGen - about";
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 		#endregion

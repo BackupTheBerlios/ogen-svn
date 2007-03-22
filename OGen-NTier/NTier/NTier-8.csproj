@@ -253,9 +253,6 @@
     <Compile Include="frm_about.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_GPL.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frm_Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -336,9 +333,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_about.resx">
       <DependentUpon>frm_about.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_GPL.resx">
-      <DependentUpon>frm_GPL.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Main.resx">
       <DependentUpon>frm_Main.cs</DependentUpon>

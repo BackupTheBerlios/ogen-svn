@@ -182,16 +182,6 @@
                     BuildAction = "EmbeddedResource"
                 />
                 <File
-                    RelPath = "frm_GPL.cs"
-                    SubType = "Form"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "frm_GPL.resx"
-                    DependentUpon = "frm_GPL.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
                     RelPath = "frm_Main.cs"
                     SubType = "Form"
                     BuildAction = "Compile"
