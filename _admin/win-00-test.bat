@@ -85,4 +85,3 @@ GOTO eof
 
 
 :eof
-SET errorFound=
