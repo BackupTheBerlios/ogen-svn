@@ -15,7 +15,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 using System;
 using System.Data;
 
-namespace OGen.lib.datalayer {
+namespace OGen.lib.datalayer.newStuff {
 	public abstract class DBUtils {
 	}
 }

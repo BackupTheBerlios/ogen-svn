@@ -22,6 +22,19 @@ namespace OGen.lib.datalayer.newStuff {
 		//#region public cDBConnection(...);
 		/// <param name="dbServerType_in">DataBase Server Type</param>
 		/// <param name="connectionstring_in">Connection String</param>
+		public cDBConnection(
+			eDBServerTypes dbServerType_in,
+			string connectionstring_in
+		) :this (
+			dbServerType_in,
+			connectionstring_in,
+			string.Empty
+		) {
+		}
+
+		//#region public cDBConnection(...);
+		/// <param name="dbServerType_in">DataBase Server Type</param>
+		/// <param name="connectionstring_in">Connection String</param>
 		/// <param name="logfile_in">Log File (null or empty string disables log)</param>
 		public cDBConnection(
 			eDBServerTypes dbServerType_in, 
