@@ -149,7 +149,8 @@
     </Content>
     <Content Include="BO-UT-SomeApplication_businesslayer_UTs.cmbx.aspx" />
     <Content Include="BO-UT-SomeApplication_businesslayer_UTs.prjx.aspx" />
-    <Content Include="BO-UT-SomeNamespace.lib.businesslayer.UTs.nunit.aspx" />
+    <Content Include="BO-UT-SomeNamespace.lib.businesslayer.UTs-1.1.nunit.aspx" />
+    <Content Include="BO-UT-SomeNamespace.lib.businesslayer.UTs-2.0.nunit.aspx" />
     <Content Include="BO-UT-UT0_SomeTable.cs.aspx" />
     <Content Include="BO-UT-UT_app.config.aspx">
       <SubType>ASPXCodeBehind</SubType>
@@ -164,6 +165,8 @@
     <Content Include="DO-SO0_SomeTable.cs.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
+    <Content Include="DO-UT-SomeNamespace.lib.datalayer.UTs-1.1.nunit.aspx" />
+    <Content Include="DO-UT-SomeNamespace.lib.datalayer.UTs-2.0.nunit.aspx" />
     <Content Include="DO-UT-UT0__utils.cs.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
@@ -314,7 +317,6 @@
     <Content Include="DO-UT-SomeApplication_datalayer_UTs.prjx.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
-    <Content Include="DO-UT-SomeNamespace.lib.datalayer.UTs.nunit.aspx" />
     <Content Include="DO-UT-UT0_SomeTable.cs.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
@@ -322,13 +324,15 @@
       <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="DO-UT-UT_SomeTable.cs.aspx" />
-    <Content Include="Global.asax" />
     <Content Include="LICENSE.MIT.txt" />
     <Content Include="LICENSE.txt" />
+    <Content Include="SomeApplication-1.1.ndoc.aspx" />
+    <Content Include="SomeApplication-2.0.ndoc.aspx" />
     <Content Include="SomeApplication-8.sln.aspx" />
     <Content Include="SomeApplication.cmbx.aspx" />
-    <Content Include="SomeApplication.ndoc.aspx" />
     <Content Include="SomeApplication-7.1.sln.aspx" />
+    <Content Include="SomeApplication.OGen-NTier-1.1.bat.aspx" />
+    <Content Include="SomeApplication.OGen-NTier-2.0.bat.aspx" />
     <Content Include="SomeApplication_AssemblyInfo.cs.txt" />
     <Content Include="SomeApplication_test-8.csproj.aspx" />
     <Content Include="SomeApplication_test.cmbx.aspx" />
@@ -343,14 +347,7 @@
     <Compile Include="AssemblyInfo-VisualStudio.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <None Include="COPYING.MIT" />
-    <EmbeddedResource Include="Global.asax.resx">
-      <DependentUpon>Global.asax.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

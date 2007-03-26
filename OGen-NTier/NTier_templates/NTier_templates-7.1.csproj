@@ -193,7 +193,11 @@
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "BO-UT-SomeNamespace.lib.businesslayer.UTs.nunit.aspx"
+                    RelPath = "BO-UT-SomeNamespace.lib.businesslayer.UTs-1.1.nunit.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "BO-UT-SomeNamespace.lib.businesslayer.UTs-2.0.nunit.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -294,6 +298,18 @@
                 />
                 <File
                     RelPath = "DO-DB-fnc0_SomeTable_Record_hasObject_bySomeCriteria-SQLServer.sql.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "DO-DB-OGen_fnc0__Split-SQLServer.sql"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "DO-DB-OGen_sp0__getTableFields-SQLServer.sql"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "DO-DB-OGen_sp0__getTables-SQLServer.sql"
                     BuildAction = "Content"
                 />
                 <File
@@ -489,6 +505,14 @@
                     BuildAction = "Content"
                 />
                 <File
+                    RelPath = "DO-SC0_SomeTable.cs.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "DO-SO0_SomeTable.cs.aspx"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "DO-SomeApplication_datalayer.cmbx.aspx"
                     BuildAction = "Content"
                 />
@@ -521,7 +545,11 @@
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "DO-UT-SomeNamespace.lib.datalayer.UTs.nunit.aspx"
+                    RelPath = "DO-UT-SomeNamespace.lib.datalayer.UTs-1.1.nunit.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "DO-UT-SomeNamespace.lib.datalayer.UTs-2.0.nunit.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -545,21 +573,6 @@
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "Global.asax"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "Global.asax.cs"
-                    DependentUpon = "Global.asax"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "Global.asax.resx"
-                    DependentUpon = "Global.asax.cs"
-                    BuildAction = "EmbeddedResource"
-                />
-                <File
                     RelPath = "LICENSE.MIT.txt"
                     BuildAction = "Content"
                 />
@@ -572,11 +585,11 @@
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "SomeApplication.ndoc.aspx"
+                    RelPath = "SomeApplication.OGen-NTier-1.1.bat.aspx"
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "SomeApplication.OGen-NTier.bat.aspx"
+                    RelPath = "SomeApplication.OGen-NTier-2.0.bat.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -601,6 +614,14 @@
                 />
                 <File
                     RelPath = "SomeApplication_test-8.csproj.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "SomeApplication-1.1.ndoc.aspx"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "SomeApplication-2.0.ndoc.aspx"
                     BuildAction = "Content"
                 />
                 <File
