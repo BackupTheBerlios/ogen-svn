@@ -28,7 +28,7 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		</db>
 		<db dbServerType="SQLServer">
 			<connections>
-				<connection configMode="DEBUG" isDefault="False" generateSQL="False" isIndexed_andReadOnly="False" connectionstring="server=127.0.0.1;uid=sa;pwd=passpub;database=OGen-NTier_UTs;" />
+				<connection configMode="DEBUG" isDefault="False" generateSQL="True" isIndexed_andReadOnly="False" connectionstring="server=127.0.0.1;uid=sa;pwd=passpub;database=OGen-NTier_UTs;" />
 				<connection configMode="!DEBUG" isDefault="False" generateSQL="False" isIndexed_andReadOnly="False" connectionstring="server=127.0.0.1;uid=sa;pwd=passpub;database=OGen-NTier_UTs;" />
 			</connections>
 		</db>
