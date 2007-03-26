@@ -1,9 +1,9 @@
 <project SchemaVersion="1.3">
     <assemblies>
-        <assembly location=".\Doc_metadata\bin\Debug\OGen.Doc.lib.metadata-2.0.dll" documentation=".\Doc_metadata\bin\Debug\OGen.Doc.lib.metadata.xml" />
-        <assembly location=".\Doc_generator\bin\Debug\OGen.Doc.lib.generator-2.0.dll" documentation=".\Doc_generator\bin\Debug\OGen.Doc.lib.generator.xml" />
-        <assembly location="..\OGen\OGen_config\bin\Debug\OGen.lib.config-2.0.dll" documentation="..\OGen\OGen_config\bin\Debug\OGen.lib.config.xml" />
-        <assembly location="..\OGen\OGen_datalayer\bin\Debug\OGen.lib.datalayer-2.0.dll" documentation="..\OGen\OGen_datalayer\bin\Debug\OGen.lib.datalayer.xml" />
+        <assembly location=".\Doc_metadata\bin\Debug\OGen.Doc.lib.metadata-2.0.dll" documentation=".\Doc_metadata\bin\Debug\OGen.Doc.lib.metadata-2.0.xml" />
+        <assembly location=".\Doc_generator\bin\Debug\OGen.Doc.lib.generator-2.0.dll" documentation=".\Doc_generator\bin\Debug\OGen.Doc.lib.generator-2.0.xml" />
+        <assembly location="..\OGen\OGen_config\bin\Debug\OGen.lib.config-2.0.dll" documentation="..\OGen\OGen_config\bin\Debug\OGen.lib.config-2.0.xml" />
+        <assembly location="..\OGen\OGen_datalayer\bin\Debug\OGen.lib.datalayer-2.0.dll" documentation="..\OGen\OGen_datalayer\bin\Debug\OGen.lib.datalayer-2.0.xml" />
     </assemblies>
     <documenters>
         <documenter name="JavaDoc">

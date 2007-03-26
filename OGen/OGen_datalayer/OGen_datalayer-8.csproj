@@ -35,7 +35,7 @@
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
     <DefineConstants>TRACE;DEBUG;PostgreSQL</DefineConstants>
-    <DocumentationFile>bin\Debug\OGen.lib.datalayer.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\OGen.lib.datalayer-2.0.xml</DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
     <NoStdLib>false</NoStdLib>
@@ -57,7 +57,7 @@
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
     <DefineConstants>TRACE;PostgreSQL</DefineConstants>
-    <DocumentationFile>bin\Release\OGen.lib.datalayer.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\OGen.lib.datalayer-2.0.xml</DocumentationFile>
     <DebugSymbols>false</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
     <NoStdLib>false</NoStdLib>

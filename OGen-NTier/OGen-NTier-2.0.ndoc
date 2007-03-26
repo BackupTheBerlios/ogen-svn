@@ -1,8 +1,8 @@
 <project SchemaVersion="1.3">
     <assemblies>
-        <assembly location=".\NTier_datalayer\bin\Debug\OGen.NTier.lib.datalayer-2.0.dll" documentation=".\NTier_datalayer\bin\Debug\OGen.NTier.lib.datalayer.xml" />
-        <assembly location=".\NTier_businesslayer\bin\Debug\OGen.NTier.lib.businesslayer-2.0.dll" documentation=".\NTier_businesslayer\bin\Debug\OGen.NTier.lib.businesslayer.xml" />
-        <assembly location="..\OGen\OGen_datalayer\bin\Debug\OGen.lib.datalayer-2.0.dll" documentation="..\OGen\OGen_datalayer\bin\Debug\OGen.lib.datalayer.xml" />
+        <assembly location=".\NTier_datalayer\bin\Debug\OGen.NTier.lib.datalayer-2.0.dll" documentation=".\NTier_datalayer\bin\Debug\OGen.NTier.lib.datalayer-2.0.xml" />
+        <assembly location=".\NTier_businesslayer\bin\Debug\OGen.NTier.lib.businesslayer-2.0.dll" documentation=".\NTier_businesslayer\bin\Debug\OGen.NTier.lib.businesslayer-2.0.xml" />
+        <assembly location="..\OGen\OGen_datalayer\bin\Debug\OGen.lib.datalayer-2.0.dll" documentation="..\OGen\OGen_datalayer\bin\Debug\OGen.lib.datalayer-2.0.xml" />
     </assemblies>
     <documenters>
         <documenter name="JavaDoc">

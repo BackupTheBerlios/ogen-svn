@@ -116,13 +116,13 @@ namespace OGen.NTier.presentationlayer.winforms {
 			this.Close();
 		}
 
-		private void lklGPL_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e) {
-			this.Hide();
-
-			frm_GPL gpl = new frm_GPL();
-			gpl.ShowDialog();
-
-			this.Show();
-		}
+		//private void lklGPL_LinkClicked(object sender, System.Windows.Forms.LinkLabelLinkClickedEventArgs e) {
+		//    this.Hide();
+		//
+		//    frm_GPL gpl = new frm_GPL();
+		//    gpl.ShowDialog();
+		//
+		//    this.Show();
+		//}
 	}
 }

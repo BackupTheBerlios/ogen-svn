@@ -38,12 +38,12 @@ if (cDBMetadata.Metacache.Contains(_arg_MetadataFilepath)) {
 //-----------------------------------------------------------------------------------------
 %><project SchemaVersion="1.3">
     <assemblies>
-        <assembly location="<%=Assembly.Load("OGen.lib.config").Location%>" documentation="<%=Assembly.Load("OGen.lib.config").Location.Substring(0, Assembly.Load("OGen.lib.config").Location.Length - 4)%>.xml" />
-        <assembly location="<%=Assembly.Load("OGen.lib.datalayer").Location%>" documentation="<%=Assembly.Load("OGen.lib.datalayer").Location.Substring(0, Assembly.Load("OGen.lib.datalayer").Location.Length - 4)%>.xml" />
-        <assembly location="<%=Assembly.Load("OGen.NTier.lib.datalayer").Location%>" documentation="<%=Assembly.Load("OGen.NTier.lib.datalayer").Location.Substring(0, Assembly.Load("OGen.NTier.lib.datalayer").Location.Length - 4)%>.xml" />
-        <assembly location="<%=Assembly.Load("OGen.NTier.lib.businesslayer").Location%>" documentation="<%=Assembly.Load("OGen.NTier.lib.businesslayer").Location.Substring(0, Assembly.Load("OGen.NTier.lib.businesslayer").Location.Length - 4)%>.xml" />
-        <assembly location=".\<%=_aux_metadata.ApplicationName%>_datalayer\bin\Debug\<%=_aux_metadata.Namespace%>.lib.datalayer-1.1.dll" documentation=".\<%=_aux_metadata.ApplicationName%>_datalayer\bin\Debug\<%=_aux_metadata.Namespace%>.lib.datalayer.xml" />
-        <assembly location=".\<%=_aux_metadata.ApplicationName%>_businesslayer\bin\Debug\<%=_aux_metadata.Namespace%>.lib.businesslayer-1.1.dll" documentation=".\<%=_aux_metadata.ApplicationName%>_businesslayer\bin\Debug\<%=_aux_metadata.Namespace%>.lib.businesslayer.xml" />
+        <assembly location="<%=Assembly.Load("OGen.lib.config").Location%>" documentation="<%=Assembly.Load("OGen.lib.config").Location.Substring(0, Assembly.Load("OGen.lib.config").Location.Length - 4)%>-2.0.xml" />
+        <assembly location="<%=Assembly.Load("OGen.lib.datalayer").Location%>" documentation="<%=Assembly.Load("OGen.lib.datalayer").Location.Substring(0, Assembly.Load("OGen.lib.datalayer").Location.Length - 4)%>-2.0.xml" />
+        <assembly location="<%=Assembly.Load("OGen.NTier.lib.datalayer").Location%>" documentation="<%=Assembly.Load("OGen.NTier.lib.datalayer").Location.Substring(0, Assembly.Load("OGen.NTier.lib.datalayer").Location.Length - 4)%>-2.0.xml" />
+        <assembly location="<%=Assembly.Load("OGen.NTier.lib.businesslayer").Location%>" documentation="<%=Assembly.Load("OGen.NTier.lib.businesslayer").Location.Substring(0, Assembly.Load("OGen.NTier.lib.businesslayer").Location.Length - 4)%>-2.0.xml" />
+        <assembly location=".\<%=_aux_metadata.ApplicationName%>_datalayer\bin\Debug\<%=_aux_metadata.Namespace%>.lib.datalayer-2.0.dll" documentation=".\<%=_aux_metadata.ApplicationName%>_datalayer\bin\Debug\<%=_aux_metadata.Namespace%>.lib.datalayer-2.0.xml" />
+        <assembly location=".\<%=_aux_metadata.ApplicationName%>_businesslayer\bin\Debug\<%=_aux_metadata.Namespace%>.lib.businesslayer-2.0.dll" documentation=".\<%=_aux_metadata.ApplicationName%>_businesslayer\bin\Debug\<%=_aux_metadata.Namespace%>.lib.businesslayer-2.0.xml" />
     </assemblies>
     <documenters>
         <documenter name="JavaDoc">

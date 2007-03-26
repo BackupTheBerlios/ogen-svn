@@ -68,7 +68,7 @@ int _aux_table_hasidentitykey;
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
     <DefineConstants>TRACE;DEBUG;NET20</DefineConstants>
-    <DocumentationFile>bin\Debug\<%=_aux_metadata.Namespace%>.lib.businesslayer.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\<%=_aux_metadata.Namespace%>.lib.businesslayer-2.0.xml</DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
     <NoStdLib>false</NoStdLib>
@@ -90,8 +90,7 @@ int _aux_table_hasidentitykey;
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
     <DefineConstants>TRACE;NET20</DefineConstants>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>bin\Release\<%=_aux_metadata.Namespace%>.lib.businesslayer-2.0.xml</DocumentationFile>
     <DebugSymbols>false</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
     <NoStdLib>false</NoStdLib>

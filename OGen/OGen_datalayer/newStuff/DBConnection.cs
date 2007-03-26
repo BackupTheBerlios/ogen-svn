@@ -20,17 +20,17 @@ using System.IO;
 namespace OGen.lib.datalayer.newStuff {
     public abstract class cDBConnection {
 		//#region public cDBConnection(...);
-		/// <param name="dbServerType_in">DataBase Server Type</param>
-		/// <param name="connectionstring_in">Connection String</param>
-		public cDBConnection(
-			eDBServerTypes dbServerType_in,
-			string connectionstring_in
-		) :this (
-			dbServerType_in,
-			connectionstring_in,
-			string.Empty
-		) {
-		}
+		///// <param name="dbServerType_in">DataBase Server Type</param>
+		///// <param name="connectionstring_in">Connection String</param>
+		//public cDBConnection(
+		//    eDBServerTypes dbServerType_in,
+		//    string connectionstring_in
+		//) :this (
+		//    dbServerType_in,
+		//    connectionstring_in,
+		//    string.Empty
+		//) {
+		//}
 
 		//#region public cDBConnection(...);
 		/// <param name="dbServerType_in">DataBase Server Type</param>
@@ -52,7 +52,10 @@ namespace OGen.lib.datalayer.newStuff {
 
 			dbservertype_ = dbServerType_in;
 			connectionstring_ = connectionstring_in;
-			logfile_ = logfile_in;
+			logfile_ 
+				= (logfile_in != null)
+				? logfile_in
+				: string.Empty;
 			logenabled_ = 
 				(logfile_in != null) 
 				&& 

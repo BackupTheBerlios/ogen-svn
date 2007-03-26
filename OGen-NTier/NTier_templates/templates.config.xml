@@ -139,7 +139,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</outputs>
 		<dependencies />
 	</template>
-	<template name="SomeApplication.ndoc-1.1.aspx" 
+	<template name="SomeApplication-1.1.ndoc.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
@@ -152,7 +152,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</outputs>
 		<dependencies />
 	</template>
-	<template name="SomeApplication.ndoc-2.0.aspx" 
+	<template name="SomeApplication-2.0.ndoc.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
