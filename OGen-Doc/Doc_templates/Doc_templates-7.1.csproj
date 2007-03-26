@@ -115,6 +115,16 @@
                     HintPath = "..\..\..\..\..\..\Program Files\Npgsql1.0\Npgsql\bin\ms1.1\Npgsql.dll"
                     AssemblyFolderKey = "hklm\dn\npgsql1.1"
                 />
+                <Reference
+                    Name = "OGen_parser-7.1"
+                    Project = "{981BC7DE-D93C-446E-861E-60A20E4E3391}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "OGen_webforms-7.1"
+                    Project = "{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
             </References>
         </Build>
         <Files>
@@ -135,21 +145,6 @@
                 <File
                     RelPath = "FAQ-id.html.aspx"
                     BuildAction = "Content"
-                />
-                <File
-                    RelPath = "Global.asax"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "Global.asax.cs"
-                    DependentUpon = "Global.asax"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "Global.asax.resx"
-                    DependentUpon = "Global.asax.cs"
-                    BuildAction = "EmbeddedResource"
                 />
                 <File
                     RelPath = "Help-id.html.aspx"

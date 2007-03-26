@@ -123,14 +123,9 @@
     <Compile Include="AssemblyInfo-VisualStudio.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <None Include="COPYING.MIT" />
     <Content Include="doc.css" />
     <Content Include="FAQ-id.html.aspx" />
-    <Content Include="Global.asax" />
     <Content Include="Help-id.html.aspx" />
     <Content Include="index.html.aspx" />
     <Content Include="lib_doc.js" />
@@ -138,9 +133,6 @@
     <Content Include="LICENSE.txt" />
     <Content Include="templates.config.xml" />
     <Content Include="Web.config" />
-    <EmbeddedResource Include="Global.asax.resx">
-      <DependentUpon>Global.asax.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
