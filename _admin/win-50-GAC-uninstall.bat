@@ -29,7 +29,8 @@ SET SetEnvironmentPath=
 IF '%1' == '/1_1' IF EXIST "C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat" SET SetEnvironmentPath="c:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat"
 IF '%1' == '/2_0' IF EXIST "C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" SET SetEnvironmentPath="C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat"
 IF '%SetEnvironmentPath%' == '' GOTO error1
-CALL %SetEnvironmentPath% x86
+::CALL %SetEnvironmentPath% x86
+  CALL %SetEnvironmentPath% %PROCESSOR_ARCHITECTURE%
 
 
 IF NOT EXIST "OGen-solutions.txt" GOTO error2
