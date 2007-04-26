@@ -70,13 +70,13 @@ GOTO eof
 	IF EXIST ..\%1\%2\obj RMDIR /S /Q ..\%1\%2\obj
 	::FOR %%a IN (COPYING LICENSE.GPL.txt COPYING.DOC LICENSE.FDL.txt COPYING.LIB LICENSE.LGPL.txt LICENSE.txt) DO IF EXIST ..\%1\%2\%%a DEL /q ..\%1\%2\%%a
 
-	IF NOT '%8' == 't' GOTO skip_doc
-::		IF EXIST ..\%1\%2\NDoc RMDIR /S /Q ..\%1\%2\NDoc
-::		IF EXIST ..\%1\%2\_include RMDIR /S /Q ..\%1\%2\_include
-::		IF EXIST ..\%1\%2\FAQ-*.html DEL /F /Q ..\%1\%2\FAQ-*.html
-::		IF EXIST ..\%1\%2\Help-*.html DEL /F /Q ..\%1\%2\Help-*.html
-::		IF EXIST ..\%1\%2\index.html DEL /F /Q ..\%1\%2\index.html
-	:skip_doc
+	IF '%8' == 't' (
+		REM IF EXIST ..\%1\%2\NDoc RMDIR /S /Q ..\%1\%2\NDoc
+		REM IF EXIST ..\%1\%2\_include RMDIR /S /Q ..\%1\%2\_include
+		REM IF EXIST ..\%1\%2\FAQ-*.html DEL /F /Q ..\%1\%2\FAQ-*.html
+		REM IF EXIST ..\%1\%2\Help-*.html DEL /F /Q ..\%1\%2\Help-*.html
+		REM IF EXIST ..\%1\%2\index.html DEL /F /Q ..\%1\%2\index.html
+	)
 
 
 :eof

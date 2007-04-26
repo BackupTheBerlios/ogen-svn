@@ -84,10 +84,10 @@ GOTO eof
 
 
 :copysharedkey
-	IF NOT EXIST ..\%1\OGen-shared.snk GOTO copysharedkey_copy
+	IF EXIST ..\%1\OGen-shared.snk (
 		ATTRIB -r -h -s ..\%1\OGen-shared.snk
 		DEL /F /Q ..\%1\OGen-shared.snk
-	:copysharedkey_copy
+	)
 	COPY OGen-shared.snk ..\%1\OGen-shared.snk
 	ATTRIB +r ..\%1\OGen-shared.snk
 :eof_copysharedkey

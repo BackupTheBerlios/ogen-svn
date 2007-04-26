@@ -88,53 +88,53 @@ GOTO eof
 
 
 :install_step1
-	IF NOT '%7' == 'MIT' GOTO skip_mit
+	IF '%7' == 'MIT' (
 		COPY licenses\COPYING.MIT ..\%1\%2\COPYING.MIT
 		COPY licenses\LICENSE.MIT.txt ..\%1\%2\LICENSE.MIT.txt
 		FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO COPY /y licenses\COPYING.MIT ..\%%a\COPYING.MIT
 		FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO COPY /y licenses\LICENSE.MIT.txt ..\%%a\LICENSE.MIT.txt
-	GOTO install_step2
-	:skip_mit
-		IF EXIST ..\%1\%2\COPYING.MIT				DEL /q /f ..\%1\%2\COPYING.MIT
-		IF EXIST ..\%1\%2\LICENSE.MIT.txt		DEL /q /f ..\%1\%2\LICENSE.MIT.txt
-		::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\COPYING.MIT DEL /q /f ..\%%a\COPYING.MIT
-		::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\LICENSE.MIT.txt DEL /q /f ..\%%a\LICENSE.MIT.txt
+		GOTO install_step2
+	)
+	IF EXIST ..\%1\%2\COPYING.MIT				DEL /q /f ..\%1\%2\COPYING.MIT
+	IF EXIST ..\%1\%2\LICENSE.MIT.txt		DEL /q /f ..\%1\%2\LICENSE.MIT.txt
+	::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\COPYING.MIT DEL /q /f ..\%%a\COPYING.MIT
+	::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\LICENSE.MIT.txt DEL /q /f ..\%%a\LICENSE.MIT.txt
 
-	IF NOT '%7' == 'GNU_GPL' GOTO skip_gpl
+	IF '%7' == 'GNU_GPL' (
 		COPY licenses\COPYING ..\%1\%2\COPYING
 		COPY licenses\LICENSE.GPL.txt ..\%1\%2\LICENSE.GPL.txt
 		FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO COPY /y licenses\COPYING ..\%%a\COPYING
 		FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO COPY /y licenses\LICENSE.GPL.txt ..\%%a\LICENSE.GPL.txt
-	GOTO install_step2
-	:skip_gpl
-		IF EXIST ..\%1\%2\COPYING						DEL /q /f ..\%1\%2\COPYING
-		IF EXIST ..\%1\%2\LICENSE.GPL.txt		DEL /q /f ..\%1\%2\LICENSE.GPL.txt
-		::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\COPYING DEL /q /f ..\%%a\COPYING
-		::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\LICENSE.GPL.txt DEL /q /f ..\%%a\LICENSE.GPL.txt
+		GOTO install_step2
+	)
+	IF EXIST ..\%1\%2\COPYING						DEL /q /f ..\%1\%2\COPYING
+	IF EXIST ..\%1\%2\LICENSE.GPL.txt		DEL /q /f ..\%1\%2\LICENSE.GPL.txt
+	::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\COPYING DEL /q /f ..\%%a\COPYING
+	::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\LICENSE.GPL.txt DEL /q /f ..\%%a\LICENSE.GPL.txt
 
-	IF NOT '%7' == 'GNU_LGPL' GOTO skip_lgpl
+	IF '%7' == 'GNU_LGPL' (
 		COPY licenses\COPYING.LIB ..\%1\%2\COPYING.LIB
 		COPY licenses\LICENSE.LGPL.txt ..\%1\%2\LICENSE.LGPL.txt
 		FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO COPY /y licenses\COPYING.LIB ..\%%a\COPYING.LIB
 		FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO COPY /y licenses\LICENSE.LGPL.txt ..\%%a\LICENSE.LGPL.txt
-	GOTO install_step2
-	:skip_lgpl
-		IF EXIST ..\%1\%2\COPYING.LIB				DEL /q /f ..\%1\%2\COPYING.LIB
-		IF EXIST ..\%1\%2\LICENSE.LGPL.txt	DEL /q /f ..\%1\%2\LICENSE.LGPL.txt
-		::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\COPYING.LIB DEL /q /f ..\%%a\COPYING.LIB
-		::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\LICENSE.LGPL.txt DEL /q /f ..\%%a\LICENSE.LGPL.txt
+		GOTO install_step2
+	)
+	IF EXIST ..\%1\%2\COPYING.LIB				DEL /q /f ..\%1\%2\COPYING.LIB
+	IF EXIST ..\%1\%2\LICENSE.LGPL.txt	DEL /q /f ..\%1\%2\LICENSE.LGPL.txt
+	::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\COPYING.LIB DEL /q /f ..\%%a\COPYING.LIB
+	::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\LICENSE.LGPL.txt DEL /q /f ..\%%a\LICENSE.LGPL.txt
 
-	IF NOT '%7' == 'GNU_FDL' GOTO skip_fdl
+	IF '%7' == 'GNU_FDL' (
 		COPY licenses\COPYING.DOC ..\%1\%2\COPYING.DOC
 		COPY licenses\LICENSE.FDL.txt ..\%1\%2\LICENSE.FDL.txt
 		FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO COPY /y licenses\COPYING.DOC ..\%%a\COPYING.DOC
 		FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO COPY /y licenses\LICENSE.FDL.txt ..\%%a\LICENSE.FDL.txt
-	GOTO install_step2
-	:skip_fdl
-		IF EXIST ..\%1\%2\COPYING.DOC				DEL /q /f ..\%1\%2\COPYING.DOC
-		IF EXIST ..\%1\%2\LICENSE.FDL.txt		DEL /q /f ..\%1\%2\LICENSE.FDL.txt
-		::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\COPYING.DOC DEL /q /f ..\%%a\COPYING.DOC
-		::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\LICENSE.FDL.txt DEL /q /f ..\%%a\LICENSE.FDL.txt
+		GOTO install_step2
+	)
+	IF EXIST ..\%1\%2\COPYING.DOC				DEL /q /f ..\%1\%2\COPYING.DOC
+	IF EXIST ..\%1\%2\LICENSE.FDL.txt		DEL /q /f ..\%1\%2\LICENSE.FDL.txt
+	::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\COPYING.DOC DEL /q /f ..\%%a\COPYING.DOC
+	::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\LICENSE.FDL.txt DEL /q /f ..\%%a\LICENSE.FDL.txt
 
 :install_step2
 	::COPY /y licenses\README.txt ..\%1\%2\README.txt
