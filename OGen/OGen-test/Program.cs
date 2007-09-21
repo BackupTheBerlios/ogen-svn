@@ -24,7 +24,11 @@ namespace OGen.test {
 			newStuff.cDBConnection _con = newStuff.cDBConnection.newDBConnection(
 				eDBServerTypes.PostgreSQL, 
 				"Server=127.0.0.1;Port=5432;User ID=postgres;Password=passpub;Database=OGen-NTier_UTs;", 
-				"D:\\Documents and Settings\\cgm0195\\My Documents\\OGen\\log.no-svn.txt"
+				#if NET20
+				System.Configuration.ConfigurationManager.AppSettings["DBLogfile"]
+				#else
+				System.Configuration.ConfigurationSettings.AppSettings["DBLogfile"]
+				#endif
 			);
 			_con.Open();
 			_con.Transaction.Begin();
