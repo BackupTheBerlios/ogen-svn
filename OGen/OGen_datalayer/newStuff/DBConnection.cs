@@ -970,7 +970,7 @@ string.Empty
 							//---
 							getTableFields_out[r].isIdentity = ((int)_dtemp.Rows[r]["isIdentity"] == 1);
 							getTableFields_out[r].isPK = ((int)_dtemp.Rows[r]["isPK"] == 1);
-							break;
+				//			break;
 				//        }
 				//    default: {
 				//            throw new Exception(

@@ -141,6 +141,53 @@
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
+                <File
+                    RelPath = "newStuff\DBConnection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "newStuff\DBConnection__base-temp.cs"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "newStuff\DBConnection_MySQL.cs"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "newStuff\DBConnection_PostgreSQL.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "newStuff\DBConnection_SQLServer.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "newStuff\DBTransaction.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "newStuff\DBUtils.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "newStuff\DBUtils_MySQL.cs"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "newStuff\DBUtils_PostgreSQL.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "newStuff\DBUtils_SQLServer.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
             </Include>
         </Files>
     </CSHARP>

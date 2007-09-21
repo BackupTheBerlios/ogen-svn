@@ -55,6 +55,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_parser_UTs", "OGen_par
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen-test", "OGen-test\OGen-test-7.1.csproj", "{FA715753-49D2-4F13-B21B-37F0F9B61487}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -117,6 +121,10 @@ Global
 		{41D123D7-BA39-4661-8285-8FE17E89AB33}.Debug.Build.0 = Debug|.NET
 		{41D123D7-BA39-4661-8285-8FE17E89AB33}.Release.ActiveCfg = Release|.NET
 		{41D123D7-BA39-4661-8285-8FE17E89AB33}.Release.Build.0 = Release|.NET
+		{FA715753-49D2-4F13-B21B-37F0F9B61487}.Debug.ActiveCfg = Debug|.NET
+		{FA715753-49D2-4F13-B21B-37F0F9B61487}.Debug.Build.0 = Debug|.NET
+		{FA715753-49D2-4F13-B21B-37F0F9B61487}.Release.ActiveCfg = Release|.NET
+		{FA715753-49D2-4F13-B21B-37F0F9B61487}.Release.Build.0 = Release|.NET
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

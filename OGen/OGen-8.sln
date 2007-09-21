@@ -1,3 +1,4 @@
+
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_config", "OGen_config\OGen_config-8.csproj", "{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}"
@@ -27,6 +28,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_winforms_UTs", "OGen_winforms_UTs\OGen_winforms_UTs-8.csproj", "{78AF375C-E64E-49D0-AD35-24447821F7CD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_parser_UTs", "OGen_parser_UTs\OGen_parser_UTs-8.csproj", "{41D123D7-BA39-4661-8285-8FE17E89AB33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen-test", "OGen-test\OGen-test-8.csproj", "{4445DA1C-CAFF-4555-B468-7F84B87CD98B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,6 +92,11 @@ Global
 		{41D123D7-BA39-4661-8285-8FE17E89AB33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41D123D7-BA39-4661-8285-8FE17E89AB33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41D123D7-BA39-4661-8285-8FE17E89AB33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46D90ABA-A5C9-4730-A585-8D91EFC7B398}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4445DA1C-CAFF-4555-B468-7F84B87CD98B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4445DA1C-CAFF-4555-B468-7F84B87CD98B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4445DA1C-CAFF-4555-B468-7F84B87CD98B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4445DA1C-CAFF-4555-B468-7F84B87CD98B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

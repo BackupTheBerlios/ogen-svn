@@ -34,7 +34,7 @@
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>TRACE;DEBUG;PostgreSQL</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NET20;PostgreSQL</DefineConstants>
     <DocumentationFile>bin\Debug\OGen.lib.datalayer-2.0.xml</DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
@@ -105,12 +105,45 @@
     <Compile Include="eDBServerTypes.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="newStuff\DBConnection.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="newStuff\DBConnection_MySQL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="newStuff\DBConnection_PostgreSQL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="newStuff\DBConnection_SQLServer.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="newStuff\DBConnection__base-temp.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="newStuff\DBTransaction.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="newStuff\DBUtils.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="newStuff\DBUtils_MySQL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="newStuff\DBUtils_PostgreSQL.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="newStuff\DBUtils_SQLServer.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="utils.cs">
       <SubType>Code</SubType>
     </Compile>
     <None Include="COPYING.MIT" />
     <Content Include="LICENSE.MIT.txt" />
     <Content Include="LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="newStuff" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
