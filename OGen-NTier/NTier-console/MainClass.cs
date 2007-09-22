@@ -46,7 +46,14 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 				}
 			} else {
 #if DEBUG
-				DoIt(@"X:\MyDocuments\_RAM-unsorted-COPY\MySharedProjects.BerliOS.SVN\OGen-NTier_UTs\OGen-metadatas\MD_OGen-NTier_UTs.OGen-metadata.xml");
+				DoIt(@"X:\OGen.berlios.de\OGen-NTier_UTs\OGen-metadatas\MD_OGen-NTier_UTs.OGen-metadata.xml");
+
+				Console.WriteLine("Press any key to continue...");
+				#if NET20
+				Console.ReadKey();
+				#else
+				Console.ReadLine();
+				#endif
 #else
 				Console.WriteLine("must provide xml file");
 #endif
