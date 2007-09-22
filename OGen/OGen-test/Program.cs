@@ -15,14 +15,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 using System;
 using System.Data;
 using OGen.lib.datalayer;
-using newStuff = OGen.lib.datalayer.newStuff;
+using OGen.lib.datalayer.PostgreSQL;
 
 namespace OGen.test {
 	class Program {
 		public static void Main(string[] args) {
 			
-			newStuff.cDBConnection _con = newStuff.cDBConnection.newDBConnection(
-				eDBServerTypes.PostgreSQL, 
+			cDBConnection _con = new cDBConnection_PostgreSQL(
 				"Server=127.0.0.1;Port=5432;User ID=postgres;Password=passpub;Database=OGen-NTier_UTs;", 
 				#if NET20
 				System.Configuration.ConfigurationManager.AppSettings["DBLogfile"]
