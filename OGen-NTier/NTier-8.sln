@@ -1,5 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
+# SharpDevelop 2.1.0.2429
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_generator", "NTier_generator\NTier_generator-8.csproj", "{BC9835E7-8878-479D-BC0F-909FA77344DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_collections", "..\OGen\OGen_collections\OGen_collections-8.csproj", "{A6E837F8-780F-4D05-B3ED-2FF1906B5766}"
@@ -35,6 +37,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_businesslayer_UTs", "NTier_businesslayer_UTs\NTier_businesslayer_UTs-8.csproj", "{21037A3C-D93B-45B2-B78A-76C92BA93A11}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_datalayer_UTs", "NTier_datalayer_UTs\NTier_datalayer_UTs-8.csproj", "{CC28B2F4-2235-4605-98B5-8889F7BBC118}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer__base-8", "..\OGen\OGen_datalayer__base\OGen_datalayer__base-8.csproj", "{D66D0E69-852C-4695-9D63-C9AB1A959E0B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_PostgreSQL-8", "..\OGen\OGen_datalayer_PostgreSQL\OGen_datalayer_PostgreSQL-8.csproj", "{07D7D1E0-A4F9-45C3-8100-FC60AC3BF8FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_SQLServer-8", "..\OGen\OGen_datalayer_SQLServer\OGen_datalayer_SQLServer-8.csproj", "{F26C7DB4-A67C-48A9-8B20-873EE8CFA5E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_MySQL-8", "..\OGen\OGen_datalayer_MySQL\OGen_datalayer_MySQL-8.csproj", "{8F5F21DB-FED4-46A9-9E7E-B50B678D12B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -114,6 +124,22 @@ Global
 		{CC28B2F4-2235-4605-98B5-8889F7BBC118}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC28B2F4-2235-4605-98B5-8889F7BBC118}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC28B2F4-2235-4605-98B5-8889F7BBC118}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D66D0E69-852C-4695-9D63-C9AB1A959E0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D66D0E69-852C-4695-9D63-C9AB1A959E0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D66D0E69-852C-4695-9D63-C9AB1A959E0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D66D0E69-852C-4695-9D63-C9AB1A959E0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D7D1E0-A4F9-45C3-8100-FC60AC3BF8FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D7D1E0-A4F9-45C3-8100-FC60AC3BF8FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D7D1E0-A4F9-45C3-8100-FC60AC3BF8FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07D7D1E0-A4F9-45C3-8100-FC60AC3BF8FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F26C7DB4-A67C-48A9-8B20-873EE8CFA5E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F26C7DB4-A67C-48A9-8B20-873EE8CFA5E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F26C7DB4-A67C-48A9-8B20-873EE8CFA5E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F26C7DB4-A67C-48A9-8B20-873EE8CFA5E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F5F21DB-FED4-46A9-9E7E-B50B678D12B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F5F21DB-FED4-46A9-9E7E-B50B678D12B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F5F21DB-FED4-46A9-9E7E-B50B678D12B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F5F21DB-FED4-46A9-9E7E-B50B678D12B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -18,6 +18,101 @@ using System.Data;
 namespace OGen.lib.datalayer {
 	public abstract class DBUtils {
 		public abstract DBUtils_convert convert { get; }
+		#region public static bool isBool(...);
+		/// <summary>
+		/// Determines if a specific DbType is a valid Boolean type.
+		/// </summary>
+		/// <param name="dbType_in">the DbType to determine if it is a valid Boolean type</param>
+		/// <returns>True if DbType is a valid Boolean type, False if not</returns>
+		public static bool isBool(DbType dbType_in) {
+			switch (dbType_in) {
+				case DbType.Boolean:
+					return true;
+
+				default:
+					return false;
+			}
+		}
+		#endregion
+		#region public static bool isDateTime(...);
+		/// <summary>
+		/// Determines if a specific DbType is a valid DateTime type.
+		/// </summary>
+		/// <param name="dbType_in">the DbType to determine if it is a valid DateTime type</param>
+		/// <returns>True if DbType is a valid DateTime type, False if not</returns>
+		public static bool isDateTime(DbType dbType_in) {
+			switch (dbType_in) {
+				case DbType.DateTime:
+				case DbType.Date:
+				//case DbType.Time:
+					return true;
+
+				default:
+					return false;
+			}
+		}
+		#endregion
+		#region public static bool isInt(...);
+		/// <summary>
+		/// Determines if a specific DbType is a valid Integer type.
+		/// </summary>
+		/// <param name="dbType_in">the DbType to determine if it is a valid Integer type</param>
+		/// <returns>True if DbType is a valid Integer type, False if not</returns>
+		public static bool isInt(DbType dbType_in) {
+			switch (dbType_in) {
+				case DbType.Byte:
+				case DbType.SByte:
+				case DbType.Int16:
+				case DbType.Int32:
+				case DbType.Int64:
+				case DbType.UInt16:
+				case DbType.UInt32:
+				case DbType.UInt64:
+				case DbType.VarNumeric:
+					return true;
+
+				default:
+					return false;
+			}
+		}
+		#endregion
+		#region public static bool isDecimal(...);
+		/// <summary>
+		/// Determines if a specific DbType is a valid Decimal type.
+		/// </summary>
+		/// <param name="dbType_in">the DbType to determine if it is a valid Decimal type</param>
+		/// <returns>True if DbType is a valid Decimal type, False if not</returns>
+		public static bool isDecimal(DbType dbType_in) {
+			switch (dbType_in) {
+				case DbType.Currency:
+				case DbType.Decimal:
+				case DbType.Double:
+				case DbType.Single:
+					return true;
+
+				default:
+					return false;
+			}
+		}
+		#endregion
+		#region public static bool isText(...);
+		/// <summary>
+		/// Determines if a specific DbType is a valid String type.
+		/// </summary>
+		/// <param name="dbType_in">the DbType to determine if it is a valid String type</param>
+		/// <returns>True if DbType is a valid String type, False if not</returns>
+		public static bool isText(DbType dbType_in) {
+			switch (dbType_in) {
+				case DbType.String:
+				case DbType.AnsiString:
+				case DbType.AnsiStringFixedLength:
+					return true;
+
+				default:
+					return false;
+			}
+		}
+		#endregion
 	}
 	public abstract class DBUtils_convert {
 		/// <summary>
