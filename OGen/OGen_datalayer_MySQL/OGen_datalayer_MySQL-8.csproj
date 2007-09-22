@@ -37,7 +37,9 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <ItemGroup>
+    <Reference Include="MySql.Data" />
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -47,5 +49,11 @@
     <None Include="COPYING.MIT" />
     <None Include="LICENSE.MIT.txt" />
     <None Include="LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OGen_datalayer__base\OGen_datalayer__base-8.csproj">
+      <Project>{D66D0E69-852C-4695-9D63-C9AB1A959E0B}</Project>
+      <Name>OGen_datalayer__base-8</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

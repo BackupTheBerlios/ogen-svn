@@ -12,7 +12,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 */
 #endregion
-#if PostgreSQL
 using System;
 using System.Data;
 using Npgsql;
@@ -486,4 +485,3 @@ ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 		#endregion
 	}
 }
-#endif

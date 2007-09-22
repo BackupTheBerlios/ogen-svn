@@ -12,11 +12,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 */
 #endregion
-#if PostgreSQL
 using System;
 
 namespace OGen.lib.datalayer.PostgreSQL {
 	public sealed class cDBUtils_PostgreSQL : DBUtils {
 	}
 }
-#endif
