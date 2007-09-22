@@ -4,8 +4,8 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <OutputType>Library</OutputType>
-    <RootNamespace>OGen.lib.datalayer.MySQL-2.0</RootNamespace>
-    <AssemblyName>OGen.lib.datalayer.MySQL</AssemblyName>
+    <RootNamespace>OGen.lib.datalayer.MySQL</RootNamespace>
+    <AssemblyName>OGen.lib.datalayer.MySQL-2.0</AssemblyName>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <NoStdLib>False</NoStdLib>
     <WarningLevel>4</WarningLevel>
