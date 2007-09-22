@@ -379,5 +379,12 @@ namespace OGen.lib.datalayer {
 			throw new Exception(string.Format("invalid db type: {0}", value_in));
 		}
 		#endregion
+		#region public abstract int XDbType_Parse(string value_in, bool caseSensitive_in);
+		public int XDbType_Parse(string value_in) {
+			return XDbType_Parse(value_in, true);
+		}
+		public abstract int XDbType_Parse(string value_in, bool caseSensitive_in);
+		#endregion
+		public abstract DbType XDbType2DbType(int xDbType_in);
 	}
 }

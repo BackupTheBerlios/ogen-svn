@@ -13,6 +13,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 #endregion
 using System;
+using System.Data;
 
 namespace OGen.lib.datalayer.SQLServer {
 	public sealed class cDBUtils_SQLServer : DBUtils {
@@ -76,6 +77,102 @@ namespace OGen.lib.datalayer.SQLServer {
 				"not implemented for: {0}",
 				object_in.GetType().ToString()
 			));
+		}
+		#endregion
+
+		#region public override int XDbType_Parse(string value_in, bool caseSensitive_in);
+		public override int XDbType_Parse(string value_in, bool caseSensitive_in) {
+			string _value = (caseSensitive_in) ? value_in : value_in.ToLower();
+
+			switch (_value) {
+				case "numeric":
+					return (int)SqlDbType.Decimal;
+
+				default:
+					for (int i = 0; ((SqlDbType)i).ToString() != i.ToString(); i++) {
+						if (
+							(
+								caseSensitive_in
+								&&
+								(((SqlDbType)i).ToString() == _value)
+							)
+							||
+							(
+								!caseSensitive_in
+								&&
+								(((SqlDbType)i).ToString().ToLower() == _value)
+							)
+						) {
+							//return (SqlDbType)i;
+							return i;
+						}
+					}
+					break;
+			}
+
+			throw new Exception(string.Format("invalid db type: {0}", value_in));
+		}
+		#endregion
+		#region public override DbType XDbType2DbType(int xDbType_in);
+		public override DbType XDbType2DbType(int xDbType_in) {
+			switch ((SqlDbType)xDbType_in) {
+				case SqlDbType.BigInt:
+					return DbType.Int64;
+
+				case SqlDbType.Bit:
+					return DbType.Boolean;
+
+				case SqlDbType.Char:
+				case SqlDbType.NChar:
+				case SqlDbType.NText:
+				case SqlDbType.NVarChar:
+				case SqlDbType.Text:
+				case SqlDbType.VarChar:
+					return DbType.String;
+
+				case SqlDbType.DateTime:
+				case SqlDbType.SmallDateTime:
+					return DbType.DateTime;
+
+				case SqlDbType.Decimal:
+				case SqlDbType.Money:
+				case SqlDbType.SmallMoney:
+					return DbType.Decimal;
+
+				case SqlDbType.Float:
+					return DbType.Double;
+
+				case SqlDbType.Int:
+					return DbType.Int32;
+
+				case SqlDbType.Real:
+					return DbType.Single;
+
+				case SqlDbType.UniqueIdentifier:
+					return DbType.Guid;
+
+				case SqlDbType.SmallInt:
+					return DbType.Int16;
+
+				case SqlDbType.TinyInt:
+					return DbType.Byte;
+
+				case SqlDbType.Variant:
+					return DbType.Object;
+
+				case SqlDbType.Binary:
+					return DbType.Binary;
+
+				case SqlDbType.Image:
+				case SqlDbType.Timestamp:
+				case SqlDbType.VarBinary:
+				default: {
+					throw new Exception(string.Format(
+						"undefined variable type: {0}",
+						((SqlDbType)xDbType_in).ToString()
+					));
+				}
+			}
 		}
 		#endregion
 	}

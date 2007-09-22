@@ -13,6 +13,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 #endregion
 using System;
+using System.Data;
+using NpgsqlTypes;
 
 namespace OGen.lib.datalayer.PostgreSQL {
 	public sealed class cDBUtils_PostgreSQL : DBUtils {
@@ -80,6 +82,131 @@ namespace OGen.lib.datalayer.PostgreSQL {
 				"not implemented for: {0}",
 				object_in.GetType().ToString()
 			));
+		}
+		#endregion
+
+		#region public override int XDbType_Parse(string value_in, bool caseSensitive_in);
+		public override int XDbType_Parse(string value_in, bool caseSensitive_in) {
+			switch (value_in.ToLower()) {
+				case "timestamp with time zone": 
+				case "timestamptz":
+					return (int)NpgsqlDbType.TimestampTZ;
+
+				case "timestamp without time zone": 
+				case "timestamp":
+					return (int)NpgsqlDbType.Timestamp;
+
+				case "boolean": 
+				case "bool":
+					return (int)NpgsqlDbType.Boolean;
+
+				case "bigint": 
+				case "int8":
+					return (int)NpgsqlDbType.Bigint;
+
+				case "integer": 
+				case "int4":
+					return (int)NpgsqlDbType.Integer;
+
+				case "smallint": 
+				case "int2":
+					return (int)NpgsqlDbType.Smallint;
+
+				case "text":
+					return (int)NpgsqlDbType.Text;
+
+				case "character varying": 
+				case "varchar":
+					return (int)NpgsqlDbType.Varchar;
+
+				case "real": 
+				case "float4":
+					return (int)NpgsqlDbType.Real;
+
+				case "double precision": 
+				case "float8":
+					return (int)NpgsqlDbType.Double;
+
+				case "numeric":
+					return (int)NpgsqlDbType.Numeric;
+
+				case "bytea":
+					return (int)NpgsqlDbType.Bytea;
+
+				case "date":
+					return (int)NpgsqlDbType.Date;
+
+				case "time without time zone": 
+				case "time": 
+				case "time with time zone": 
+				case "timetz":
+					return (int)NpgsqlDbType.Time;
+
+				case "money":
+					return (int)NpgsqlDbType.Money;
+
+				//case "bigserial":
+				//case "serial8":
+				//	return ePgsqlDbType.BigSerial;
+				//case "serial":
+				//case "serial4":
+				//	return ePgsqlDbType.Serial;
+
+				default:
+					throw new Exception(string.Format("invalid db type: {0}", value_in));
+			}
+		}
+		#endregion
+		#region public override DbType XDbType2DbType(int xDbType_in);
+		public override DbType XDbType2DbType(int xDbType_in) {
+			switch ((NpgsqlDbType)xDbType_in) {
+				case NpgsqlDbType.Bigint:
+					return DbType.Int64;
+
+				case NpgsqlDbType.Integer:
+					return DbType.Int32;
+
+				case NpgsqlDbType.Smallint:
+					return DbType.Int16;
+
+				case NpgsqlDbType.Boolean:
+					return DbType.Boolean;
+
+				case NpgsqlDbType.Varchar:
+				case NpgsqlDbType.Text:
+					return DbType.String;
+
+				case NpgsqlDbType.TimestampTZ:
+				case NpgsqlDbType.Timestamp:
+					return DbType.DateTime;
+
+				case NpgsqlDbType.Real:
+					return DbType.Single;
+
+				case NpgsqlDbType.Double:
+					return DbType.Double;
+
+				case NpgsqlDbType.Numeric:
+					return DbType.Decimal;
+
+				case NpgsqlDbType.Bytea:
+					return DbType.Binary;
+
+				case NpgsqlDbType.Date:
+					return DbType.Date;
+
+				case NpgsqlDbType.Time:
+					return DbType.Time;
+
+				case NpgsqlDbType.Money:
+					return DbType.Decimal;
+
+				default:
+					throw new Exception(string.Format(
+						"undefined variable type: {0}",
+						((NpgsqlDbType)xDbType_in).ToString()
+					));
+			}
 		}
 		#endregion
 	}

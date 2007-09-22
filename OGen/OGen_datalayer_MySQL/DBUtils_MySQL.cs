@@ -13,6 +13,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 #endregion
 using System;
+using System.Data;
+using MySql.Data.MySqlClient;
 
 namespace OGen.lib.datalayer.MySQL {
 	public sealed class cDBUtils_MySQL : DBUtils {
@@ -74,6 +76,104 @@ namespace OGen.lib.datalayer.MySQL {
 				"not implemented for: {0}",
 				object_in.GetType().ToString()
 			));
+		}
+		#endregion
+
+		#region public override int XDbType_Parse(string value_in, bool caseSensitive_in);
+		public override int XDbType_Parse(string value_in, bool caseSensitive_in) {
+			switch (value_in.ToLower()) {
+				case "float": return (int)MySqlDbType.Float;
+				case "double": return (int)MySqlDbType.Double;
+				case "decimal": return (int)MySqlDbType.Decimal;
+				case "date": return (int)MySqlDbType.Date;
+				case "datetime": return (int)MySqlDbType.Datetime;
+				case "timestamp": return (int)MySqlDbType.Timestamp;
+				case "time": return (int)MySqlDbType.Time;
+				case "year": return (int)MySqlDbType.Year;
+				case "varchar": return (int)MySqlDbType.VarChar;
+				case "tinyblob": return (int)MySqlDbType.TinyBlob;
+				case "blob": return (int)MySqlDbType.Blob;
+				case "mediumblob": return (int)MySqlDbType.MediumBlob;
+				case "longblob": return (int)MySqlDbType.LongBlob;
+				case "geometry": return (int)MySqlDbType.Geometry;
+				case "bit": return (int)MySqlDbType.Bit;
+				case "tinyint": return (int)MySqlDbType.Byte;
+				case "smallint": return (int)MySqlDbType.Int16;
+				case "mediumint": return (int)MySqlDbType.Int24;
+				case "int": return (int)MySqlDbType.Int32;
+				case "bigint": return (int)MySqlDbType.Int64;
+
+				default:
+					throw new Exception(string.Format("invalid db type: {0}", value_in));
+			}
+		}
+		#endregion
+		#region public override DbType XDbType2DbType(int xDbType_in);
+		public override DbType XDbType2DbType(int xDbType_in) {
+			switch ((MySqlDbType)xDbType_in) {
+				case MySqlDbType.Float:
+					return DbType.Double;
+
+				case MySqlDbType.Double:
+					return DbType.Double;
+
+				case MySqlDbType.Decimal:
+					return DbType.Decimal;
+
+				case MySqlDbType.Date:
+					return DbType.Date;
+
+				case MySqlDbType.Datetime:
+					return DbType.DateTime;
+
+				case MySqlDbType.Timestamp:
+					// ToDos: here! check if appropriate
+					return DbType.DateTime;
+
+				case MySqlDbType.Time:
+					return DbType.Time;
+
+				case MySqlDbType.Year:
+					// ToDos: here! check if appropriate
+					return DbType.DateTime;
+
+//				case MySqlDbType.TinyBlob:
+//				case MySqlDbType.Blob:
+//				case MySqlDbType.MediumBlob:
+//				case MySqlDbType.LongBlob:
+				case MySqlDbType.VarChar:
+					// ToDos: here! check if appropriate
+					return DbType.String;
+
+//				case MySqlDbType.Geometry:
+//					return DbType.Geometry;
+
+				case MySqlDbType.Bit:
+					// ToDos: here! check if appropriate
+					return DbType.Boolean;
+
+				case MySqlDbType.Byte:
+					return DbType.Byte;
+
+				case MySqlDbType.Int16:
+					return DbType.Int16;
+
+//				case MySqlDbType.Int24:
+//					return DbType.Int24;
+
+				case MySqlDbType.Int32:
+					return DbType.Int32;
+
+				case MySqlDbType.Int64:
+					return DbType.Int64;
+
+				default: {
+					throw new Exception(string.Format(
+						"undefined variable type: {0}",
+						((MySqlDbType)xDbType_in).ToString()
+					));
+				}
+			}
 		}
 		#endregion
 	}
