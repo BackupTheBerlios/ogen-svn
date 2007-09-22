@@ -9,6 +9,10 @@ OGen is licensed under various different licenses.
 	* OGen.lib.config: MIT
 	* OGen.lib.config.UTs: MIT
 	* OGen.lib.datalayer: MIT
+	* OGen.lib.datalayer: MIT
+	* OGen.lib.datalayer.PostgreSQL: MIT
+	* OGen.lib.datalayer.SQLServer: MIT
+	* OGen.lib.datalayer.MySQL: MIT
 	* OGen.lib.datalayer.UTs: MIT
 	* OGen.lib.collections: MIT
 	* OGen.lib.collections.UTs: MIT
