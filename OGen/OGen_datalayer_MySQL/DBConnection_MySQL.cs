@@ -24,7 +24,7 @@ namespace OGen.lib.datalayer.MySQL {
 		public cDBConnection_MySQL(
 			string connectionstring_in
 		) : base (
-			eDBServerTypes.MySQL, 
+//			eDBServerTypes.MySQL, 
 			connectionstring_in,
 			string.Empty
 		) {
@@ -33,7 +33,7 @@ namespace OGen.lib.datalayer.MySQL {
 			string connectionstring_in,
 			string logfile_in
 		) : base (
-			eDBServerTypes.MySQL, 
+//			eDBServerTypes.MySQL, 
 			connectionstring_in,
 			logfile_in
 		) {

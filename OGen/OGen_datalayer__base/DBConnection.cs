@@ -37,7 +37,7 @@ namespace OGen.lib.datalayer {
 		/// <param name="connectionstring_in">Connection String</param>
 		/// <param name="logfile_in">Log File (null or empty string disables log)</param>
 		public cDBConnection(
-			eDBServerTypes dbServerType_in, 
+//			eDBServerTypes dbServerType_in, 
             string connectionstring_in, 
             string logfile_in
         ) {
@@ -50,7 +50,7 @@ namespace OGen.lib.datalayer {
 //    throw InvalidDBServerTypeException;
 
 
-			dbservertype_ = dbServerType_in;
+//			dbservertype_ = dbServerType_in;
 			connectionstring_ = connectionstring_in;
 			logfile_ 
 				= (logfile_in != null)
@@ -115,15 +115,15 @@ namespace OGen.lib.datalayer {
 		#endregion
 		#endregion
 		#region public properties...
-		#region public eDBServerTypes DBServerType { get; }
-		protected eDBServerTypes dbservertype_;
-
-		/// <summary>
-		/// DataBase Server Type.
-		/// </summary>
-		public eDBServerTypes DBServerType {
-			get { return eDBServerTypes.SQLServer; }
-		}
+		#region //public eDBServerTypes DBServerType { get; }
+//		protected eDBServerTypes dbservertype_;
+//
+//		/// <summary>
+//		/// DataBase Server Type.
+//		/// </summary>
+//		public eDBServerTypes DBServerType {
+//			get { return eDBServerTypes.SQLServer; }
+//		}
 		#endregion
 		#region public string Connectionstring { get; }
 		protected string connectionstring_;

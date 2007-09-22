@@ -23,7 +23,7 @@ namespace OGen.lib.datalayer.SQLServer {
 		public cDBConnection_SQLServer(
 			string connectionstring_in
 		) : base (
-			eDBServerTypes.SQLServer, 
+//			eDBServerTypes.SQLServer, 
 			connectionstring_in, 
 			string.Empty
 		) {
@@ -32,7 +32,7 @@ namespace OGen.lib.datalayer.SQLServer {
 			string connectionstring_in,
 			string logfile_in
 		) : base (
-			eDBServerTypes.SQLServer, 
+//			eDBServerTypes.SQLServer, 
 			connectionstring_in,
 			logfile_in
 		) {

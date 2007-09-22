@@ -24,7 +24,7 @@ namespace OGen.lib.datalayer.PostgreSQL {
 		public cDBConnection_PostgreSQL(
 			string connectionstring_in
 		) : base (
-			eDBServerTypes.PostgreSQL, 
+//			eDBServerTypes.PostgreSQL, 
 			connectionstring_in,
 			string.Empty
 		) {
@@ -33,7 +33,7 @@ namespace OGen.lib.datalayer.PostgreSQL {
 			string connectionstring_in,
 			string logfile_in
 		) : base (
-			eDBServerTypes.PostgreSQL, 
+//			eDBServerTypes.PostgreSQL, 
 			connectionstring_in,
 			logfile_in
 		) {
