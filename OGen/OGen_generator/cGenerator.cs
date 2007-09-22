@@ -150,7 +150,13 @@ namespace OGen.lib.generator {
 
 			switch (this_in) {
 				case "CONFIG.ogenPath": {
-					translate_out = System.Configuration.ConfigurationSettings.AppSettings["ogenPath"];
+					translate_out = 
+						#if NET20
+						System.Configuration.ConfigurationManager.AppSettings["ogenPath"]
+						#else
+						System.Configuration.ConfigurationSettings.AppSettings["ogenPath"]
+						#endif
+					;
 					break;
 				}
 				case "CONFIG.outputPath": {
