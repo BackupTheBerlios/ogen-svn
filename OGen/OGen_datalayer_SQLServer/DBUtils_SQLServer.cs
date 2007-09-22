@@ -17,16 +17,29 @@ using System.Data;
 
 namespace OGen.lib.datalayer.SQLServer {
 	public sealed class cDBUtils_SQLServer : DBUtils {
-		#region public override DBUtils_convert convert { get; }
+		#region public override DBUtils_convert Convert { get; }
 		private static DBUtils_convert_SQLServer convert__;
 
-		public override DBUtils_convert convert {
+		public override DBUtils_convert Convert {
 			get {
 				if (convert__ == null) {
 					convert__ = new DBUtils_convert_SQLServer();
 				}
 
 				return convert__;
+			}
+		}
+		#endregion
+		#region public override DBUtils_connectionString ConnectionString { get; }
+		private static DBUtils_connectionString_SQLServer connectionstring__;
+
+		public override DBUtils_connectionString ConnectionString {
+			get {
+				if (connectionstring__ == null) {
+					connectionstring__ = new DBUtils_connectionString_SQLServer();
+				}
+
+				return connectionstring__;
 			}
 		}
 		#endregion
@@ -173,6 +186,33 @@ namespace OGen.lib.datalayer.SQLServer {
 					));
 				}
 			}
+		}
+		#endregion
+	}
+	public sealed class DBUtils_connectionString_SQLServer : DBUtils_connectionString {
+		#region public override string ParseParameter(...);
+		public override string ParseParameter(
+			string connectionstring_in, 
+			eParameter parameter_in
+		) {
+			switch (parameter_in) {
+				case eParameter.Database:
+					return ParseParameter(connectionstring_in, "database");
+
+				case eParameter.Server:
+					return ParseParameter(connectionstring_in, "server");
+
+				case eParameter.User:
+					return ParseParameter(connectionstring_in, "uid");
+			}
+			throw new Exception(
+				string.Format(
+					"{0}.{1}.ParseParameter(): - error parsing db connectionstring: '{2}'",
+					typeof(DBUtils_connectionString_SQLServer).Namespace,
+					typeof(DBUtils_connectionString_SQLServer).Name,
+					connectionstring_in
+				)
+			);
 		}
 		#endregion
 	}

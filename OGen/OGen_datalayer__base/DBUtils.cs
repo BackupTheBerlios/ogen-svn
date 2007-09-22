@@ -16,8 +16,12 @@ using System;
 using System.Data;
 
 namespace OGen.lib.datalayer {
+	/// <summary>
+	/// Provides a number of classes with static auxiliar methods for the OGen.lib.datalayer namespace.
+	/// </summary>
 	public abstract class DBUtils {
-		public abstract DBUtils_convert convert { get; }
+		public abstract DBUtils_convert Convert { get; }
+		public abstract DBUtils_connectionString ConnectionString { get; }
 		#region public static bool isBool(...);
 		/// <summary>
 		/// Determines if a specific DbType is a valid Boolean type.
@@ -114,6 +118,10 @@ namespace OGen.lib.datalayer {
 		}
 		#endregion
 	}
+
+	/// <summary>
+	/// Provides a number of static methods to play conversions on: - .Net System Types; - System.DbType; - NpgsqlTypes.NpgsqlDbType; - System.Data.SqlTypes.
+	/// </summary>
 	public abstract class DBUtils_convert {
 		#region public abstract string object2SQLobject(...);
 		/// <summary>
@@ -388,5 +396,45 @@ namespace OGen.lib.datalayer {
 		public abstract int XDbType_Parse(string value_in, bool caseSensitive_in);
 		#endregion
 		public abstract DbType XDbType2DbType(int xDbType_in);
+	}
+
+	/// <summary>
+	/// Provides means of manipulating ConnectionsStrings.
+	/// </summary>
+	public abstract class DBUtils_connectionString {
+		public enum eParameter {
+			Server = 0, 
+			User = 1, 
+			Database = 2,
+
+			invalid = 3
+		}
+
+		public static string ParseParameter(
+			string connectionstring_in, 
+			string parameter_in
+		) {
+			System.Text.RegularExpressions.Regex fields_reg = new System.Text.RegularExpressions.Regex(
+				string.Format("^(?<before>.*){0}=(?<param>.*);(?<after>.*)", parameter_in),
+				System.Text.RegularExpressions.RegexOptions.IgnoreCase
+			);
+			System.Text.RegularExpressions.Match matchingfields = fields_reg.Match(connectionstring_in);
+			if (!matchingfields.Success) {
+				throw new Exception(
+					string.Format(
+						"{0}.{1}.ParseParameter(): - error parsing db connectionstring: '{2}'",
+						typeof(DBUtils_connectionString).Namespace,
+						typeof(DBUtils_connectionString).Name,
+						connectionstring_in
+					)
+				);
+			} else {
+				return matchingfields.Groups["param"].Value;
+			}
+		}
+		public abstract string ParseParameter(
+			string connectionstring_in, 
+			eParameter parameter_in
+		);
 	}
 }

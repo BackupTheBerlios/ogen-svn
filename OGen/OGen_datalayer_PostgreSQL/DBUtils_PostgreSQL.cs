@@ -18,16 +18,29 @@ using NpgsqlTypes;
 
 namespace OGen.lib.datalayer.PostgreSQL {
 	public sealed class cDBUtils_PostgreSQL : DBUtils {
-		#region public override DBUtils_convert convert { get; }
+		#region public override DBUtils_convert Convert { get; }
 		private static DBUtils_convert_Postgresql convert__;
 
-		public override DBUtils_convert convert {
+		public override DBUtils_convert Convert {
 			get {
 				if (convert__ == null) {
 					convert__ = new DBUtils_convert_Postgresql();
 				}
 
 				return convert__;
+			}
+		}
+		#endregion
+		#region public override DBUtils_connectionString ConnectionString { get; }
+		private static DBUtils_connectionString_PostgreSQL connectionstring__;
+
+		public override DBUtils_connectionString ConnectionString {
+			get {
+				if (connectionstring__ == null) {
+					connectionstring__ = new DBUtils_connectionString_PostgreSQL();
+				}
+
+				return connectionstring__;
 			}
 		}
 		#endregion
@@ -207,6 +220,33 @@ namespace OGen.lib.datalayer.PostgreSQL {
 						((NpgsqlDbType)xDbType_in).ToString()
 					));
 			}
+		}
+		#endregion
+	}
+	public sealed class DBUtils_connectionString_PostgreSQL : DBUtils_connectionString {
+		#region public override string ParseParameter(...);
+		public override string ParseParameter(
+			string connectionstring_in, 
+			eParameter parameter_in
+		) {
+			switch (parameter_in) {
+				case eParameter.Database:
+					return ParseParameter(connectionstring_in, "database");
+
+				case eParameter.Server:
+					return ParseParameter(connectionstring_in, "server");
+
+				case eParameter.User:
+					return ParseParameter(connectionstring_in, "User ID");
+			}
+			throw new Exception(
+				string.Format(
+					"{0}.{1}.ParseParameter(): - error parsing db connectionstring: '{2}'",
+					typeof(DBUtils_connectionString_PostgreSQL).Namespace,
+					typeof(DBUtils_connectionString_PostgreSQL).Name,
+					connectionstring_in
+				)
+			);
 		}
 		#endregion
 	}
