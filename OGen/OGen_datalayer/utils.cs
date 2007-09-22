@@ -41,7 +41,11 @@ namespace OGen.lib.datalayer {
 				invalid = 3
 			}
 
-			public static string ParseParameter(string connectionstring_in, eDBServerTypes dbServerTypes_in, string parameter_in) {
+			public static string ParseParameter(
+				string connectionstring_in, 
+				eDBServerTypes dbServerTypes_in, 
+				string parameter_in
+			) {
 				System.Text.RegularExpressions.Regex fields_reg = new System.Text.RegularExpressions.Regex(
 					string.Format("^(?<before>.*){0}=(?<param>.*);(?<after>.*)", parameter_in),
 					System.Text.RegularExpressions.RegexOptions.IgnoreCase
@@ -60,7 +64,11 @@ namespace OGen.lib.datalayer {
 					return matchingfields.Groups["param"].Value;
 				}
 			}
-			public static string ParseParameter(string connectionstring_in, eDBServerTypes dbServerTypes_in, eParameter parameter_in) {
+			public static string ParseParameter(
+				string connectionstring_in, 
+				eDBServerTypes dbServerTypes_in, 
+				eParameter parameter_in
+			) {
 				switch (parameter_in) {
 					case eParameter.Database: {
 						return ParseParameter(connectionstring_in, dbServerTypes_in, "database");
@@ -226,7 +234,13 @@ namespace OGen.lib.datalayer {
 				/// <param name="dataBaseName_in">database name</param>
 				/// <param name="dbServerTypes_in">database type</param>
 				/// <returns>ConnectionString</returns>
-				public static string Parameters(string serverName_in, string userName_in, string userPassword_in, string dataBaseName_in, eDBServerTypes dbServerTypes_in) {
+				public static string Parameters(
+					string serverName_in, 
+					string userName_in, 
+					string userPassword_in, 
+					string dataBaseName_in, 
+					eDBServerTypes dbServerTypes_in
+				) {
 					switch (dbServerTypes_in) {
 						case eDBServerTypes.SQLServer:
 							return string.Format(
