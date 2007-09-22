@@ -64,9 +64,12 @@ namespace OGen.lib.datalayer {
 		public static eDBServerTypes GetDBServerType(
 			cDBConnection connection_in
 		) {
+#if PostgreSQL
 			if (connection_in is cDBConnection_PostgreSQL) {
 				return eDBServerTypes.PostgreSQL;
-			} else if (connection_in is cDBConnection_SQLServer) {
+			} else
+#endif
+			if (connection_in is cDBConnection_SQLServer) {
 				return eDBServerTypes.SQLServer;
 			}
 			

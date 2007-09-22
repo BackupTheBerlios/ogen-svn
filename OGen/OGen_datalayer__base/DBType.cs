@@ -36,7 +36,7 @@ namespace OGen.lib.datalayer {
 			get { return value_; }
 			set {
 				value_ = value;
-#if !DEBUG
+#if DEBUG
 // ToDos: here!!!
 				fwtype_ = utils.convert.DbType2NSysType(value);
 				fwemptyvalue_ = utils.convert.DBType2NSysEmptyValue(value);

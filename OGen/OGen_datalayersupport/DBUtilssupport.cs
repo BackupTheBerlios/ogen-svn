@@ -51,8 +51,10 @@ namespace OGen.lib.datalayer {
 			eDBServerTypes dbServerType_in
 		) {
 			switch (dbServerType_in) {
+#if PostgreSQL
 				case eDBServerTypes.PostgreSQL:
 					return dbUtils_PostgreSQL;
+#endif
 				case eDBServerTypes.SQLServer:
 					return dbUtils_SQLServer;
 			}

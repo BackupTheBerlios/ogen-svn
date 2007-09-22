@@ -1,5 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
+# SharpDevelop 2.1.0.2429
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_generator", "..\OGen-NTier\NTier_generator\NTier_generator-8.csproj", "{BC9835E7-8878-479D-BC0F-909FA77344DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_collections", "..\OGen\OGen_collections\OGen_collections-8.csproj", "{A6E837F8-780F-4D05-B3ED-2FF1906B5766}"
@@ -45,6 +47,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc_templates", "..\OGen-Doc\Doc_templates\Doc_templates-8.csproj", "{82FA3D98-C5E7-42EC-A117-21C14D117EFD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc-console", "..\OGen-Doc\Doc-console\Doc-console-8.csproj", "{D4BA7561-1BEB-403C-933C-AE740D4889BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayersupport-8", "..\OGen\OGen_datalayersupport\OGen_datalayersupport-8.csproj", "{88D87481-CC3F-49C7-A013-758387F3452E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -144,6 +148,10 @@ Global
 		{8F5F21DB-FED4-46A9-9E7E-B50B678D12B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8F5F21DB-FED4-46A9-9E7E-B50B678D12B2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8F5F21DB-FED4-46A9-9E7E-B50B678D12B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88D87481-CC3F-49C7-A013-758387F3452E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88D87481-CC3F-49C7-A013-758387F3452E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88D87481-CC3F-49C7-A013-758387F3452E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88D87481-CC3F-49C7-A013-758387F3452E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
