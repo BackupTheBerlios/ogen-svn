@@ -77,7 +77,7 @@ namespace OGen.lib.generator {
 
 		#region internal void Connection_createInstance();
 		internal void Connection_createInstance() {
-			connection_ = new cDBConnection(
+			connection_ = DBConnectionsupport.CreateInstance(
 				dbservertype_, 
 				connectionstring_
 			);
@@ -86,7 +86,10 @@ namespace OGen.lib.generator {
 		#region internal void Connection_clearInstance();
 		internal void Connection_clearInstance() {
 			if (connection_ == null) return;
+#if !DEBUG
+			// ToDos: here!
 			connection_.Dispose();
+#endif
 			connection_ = null;
 		}
 		#endregion

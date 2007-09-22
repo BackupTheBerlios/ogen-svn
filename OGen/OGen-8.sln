@@ -32,13 +32,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_parser_UTs", "OGen_par
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen-test", "OGen-test\OGen-test-8.csproj", "{4445DA1C-CAFF-4555-B468-7F84B87CD98B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer__base-8", "OGen_datalayer__base\OGen_datalayer__base-8.csproj", "{D66D0E69-852C-4695-9D63-C9AB1A959E0B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer__base", "OGen_datalayer__base\OGen_datalayer__base-8.csproj", "{D66D0E69-852C-4695-9D63-C9AB1A959E0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_PostgreSQL-8", "OGen_datalayer_PostgreSQL\OGen_datalayer_PostgreSQL-8.csproj", "{07D7D1E0-A4F9-45C3-8100-FC60AC3BF8FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_PostgreSQL", "OGen_datalayer_PostgreSQL\OGen_datalayer_PostgreSQL-8.csproj", "{07D7D1E0-A4F9-45C3-8100-FC60AC3BF8FA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_SQLServer-8", "OGen_datalayer_SQLServer\OGen_datalayer_SQLServer-8.csproj", "{F26C7DB4-A67C-48A9-8B20-873EE8CFA5E7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_SQLServer", "OGen_datalayer_SQLServer\OGen_datalayer_SQLServer-8.csproj", "{F26C7DB4-A67C-48A9-8B20-873EE8CFA5E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_MySQL-8", "OGen_datalayer_MySQL\OGen_datalayer_MySQL-8.csproj", "{8F5F21DB-FED4-46A9-9E7E-B50B678D12B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_MySQL", "OGen_datalayer_MySQL\OGen_datalayer_MySQL-8.csproj", "{8F5F21DB-FED4-46A9-9E7E-B50B678D12B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayersupport", "OGen_datalayersupport\OGen_datalayersupport-8.csproj", "{88D87481-CC3F-49C7-A013-758387F3452E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -122,6 +124,10 @@ Global
 		{8F5F21DB-FED4-46A9-9E7E-B50B678D12B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8F5F21DB-FED4-46A9-9E7E-B50B678D12B2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8F5F21DB-FED4-46A9-9E7E-B50B678D12B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88D87481-CC3F-49C7-A013-758387F3452E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88D87481-CC3F-49C7-A013-758387F3452E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88D87481-CC3F-49C7-A013-758387F3452E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88D87481-CC3F-49C7-A013-758387F3452E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

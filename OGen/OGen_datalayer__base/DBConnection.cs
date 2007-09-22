@@ -893,27 +893,53 @@ namespace OGen.lib.datalayer {
         /// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
         /// </summary>
         /// <returns>String array, representing a list of Table names</returns>
-        public cDBTable[] getTables() {
-            return getTables(string.Empty);
-        }
+//        public cDBTable[] getTables() {
+//            return getTables(string.Empty);
+//        }
 
         /// <summary>
         /// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
         /// </summary>
         /// <param name="subAppName_in">Table Filter. If your Application is to be hosted at some ASP, which provides you with one DataBase only, and you're using that DataBase for more than one Application. I assume you're using some convention for Table naming like: AP1_Table1, AP1_Table2, AP2_Table1, ... . Or even if you have several modules sharing same data base. If so, you can use this parameter to filter Table names for some specific Application, like: AP1 or AP2</param>
         /// <returns>String array, representing a list of Table names</returns>
-        public cDBTable[] getTables(
-            string subAppName_in
-        ) {
-            cDBTable[] getTables_out;
+//        public cDBTable[] getTables(
+//            string subAppName_in
+//        ) {
+//        }
 
-//			#region getTables_out = base.Execute_SQLQuery_returnDataTable(gettables(subAppName_in));
-			DataTable _dtemp = Execute_SQLQuery_returnDataTable(gettables(subAppName_in));
-            getTables_out = new cDBTable[_dtemp.Rows.Count];
-            for (int r = 0; r < _dtemp.Rows.Count; r++)
-                getTables_out[r] = new cDBTable(
-                    (string)_dtemp.Rows[r]["Name"],
-                    //(dbservertype_ == eDBServerTypes.MySQL) ? 
+		/// <summary>
+		/// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
+		/// </summary>
+		/// <param name="subAppName_in">Table Filter. If your Application is to be hosted at some ASP, which provides you with one DataBase only, and you're using that DataBase for more than one Application. I assume you're using some convention for Table naming like: AP1_Table1, AP1_Table2, AP2_Table1, ... . Or even if you have several modules sharing same data base. If so, you can use this parameter to filter Table names for some specific Application, like: AP1 or AP2</param>
+		/// <returns>String array, representing a list of Table names</returns>
+		public cDBTable[] getTables(
+			string subAppName_in, 
+			string sqlFuncion_in
+		) {
+			cDBTable[] getTables_out;
+
+			#region DataTable _dtemp = base.Execute_SQLQuery_returnDataTable(gettables(subAppName_in));
+			DataTable _dtemp;
+			if (
+				(sqlFuncion_in == null)
+				||
+				(sqlFuncion_in == string.Empty)
+			) {
+				_dtemp = Execute_SQLQuery_returnDataTable(gettables(subAppName_in));
+			} else {
+				_dtemp = Execute_SQLFunction_returnDataTable(
+					sqlFuncion_in,
+					new IDbDataParameter[] {
+						newDBDataParameter("subApp_", DbType.String, ParameterDirection.Input, subAppName_in, subAppName_in.Length)
+					}
+				);
+			}
+			#endregion
+			getTables_out = new cDBTable[_dtemp.Rows.Count];
+			for (int r = 0; r < _dtemp.Rows.Count; r++) {
+				getTables_out[r] = new cDBTable(
+					(string)_dtemp.Rows[r]["Name"],
+					//(dbservertype_ == eDBServerTypes.MySQL) ? 
 					//	((long)_dtemp.Rows[r]["isVT"] == 1L) : 
 						((int)_dtemp.Rows[r]["isVT"] == 1)
 
@@ -921,12 +947,12 @@ namespace OGen.lib.datalayer {
 // ToDos: here!
 string.Empty
 				);
-            _dtemp.Dispose(); _dtemp = null;
-//            #endregion
+			}
+			_dtemp.Dispose(); _dtemp = null;
 
-            return getTables_out;
-        }
-        #endregion
+			return getTables_out;
+		}
+		#endregion
 		#region public cDBTableField[] getTableFields(...);
 		protected abstract string gettablefields(
 			string tableName_in
@@ -937,12 +963,39 @@ string.Empty
 		/// </summary>
 		/// <param name="tableName_in">Table name for which Field names are to be retrieved</param>
 		/// <returns>String array, representing a list of Field names</returns>
+//		public cDBTableField[] getTableFields(
+//			string tableName_in
+//		) {
+//		}
+
+		/// <summary>
+		/// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Field names for some specific Table.
+		/// </summary>
+		/// <param name="tableName_in">Table name for which Field names are to be retrieved</param>
+		/// <returns>String array, representing a list of Field names</returns>
 		public cDBTableField[] getTableFields(
-			string tableName_in
+			string tableName_in,
+			string sqlFuncion_in
 		) {
 			cDBTableField[] getTableFields_out;
 
-			DataTable _dtemp = Execute_SQLQuery_returnDataTable(gettablefields(tableName_in));
+			#region DataTable _dtemp = ...;
+			DataTable _dtemp;
+			if (
+				(sqlFuncion_in == null)
+				||
+				(sqlFuncion_in == string.Empty)
+			) {
+				_dtemp = Execute_SQLQuery_returnDataTable(gettablefields(tableName_in));
+			} else {
+				_dtemp = Execute_SQLFunction_returnDataTable(
+					sqlFuncion_in,
+					new IDbDataParameter[] {
+						newDBDataParameter("tableName_", DbType.String, ParameterDirection.Input, tableName_in, tableName_in.Length)
+					}
+				);
+			}
+			#endregion
 			getTableFields_out = new cDBTableField[_dtemp.Rows.Count];
 			for (int r = 0; r < _dtemp.Rows.Count; r++) {
 				getTableFields_out[r] = new cDBTableField();

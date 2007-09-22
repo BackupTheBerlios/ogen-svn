@@ -19,6 +19,8 @@ using System.Drawing;
 using System.Data;
 using System.Windows.Forms;
 
+using OGen.lib.datalayer;
+
 namespace OGen.NTier.presentationlayer.winforms.UserControls {
 	public class ucPick_DBType : System.Windows.Forms.UserControl {
 		#region Required designer variable...
@@ -75,16 +77,17 @@ namespace OGen.NTier.presentationlayer.winforms.UserControls {
 			InitializeComponent();
 			#endregion
 
-			string[] DBTypes = OGen.lib.datalayer.utils.DBServerTypes.Names_supportedForGeneration();
+			string[] DBTypes = Enum.GetNames(typeof(eDBServerTypes));
 			cbxDBTypes.Items.Clear();
 			for (int d = 0; d < DBTypes.Length; d++) {
 				cbxDBTypes.Items.Add(DBTypes[d]);
 			}
 		}
 
-		public OGen.lib.datalayer.eDBServerTypes DBServerType {
+		public eDBServerTypes DBServerType {
 			get {
-				return OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(
+				return (eDBServerTypes)Enum.Parse(
+					typeof(eDBServerTypes),
 					(string)cbxDBTypes.SelectedItem
 				);
 			}

@@ -17,7 +17,7 @@ using System.Data;
 using MySql.Data.MySqlClient;
 
 namespace OGen.lib.datalayer.MySQL {
-	public sealed class cDBUtils_MySQL : DBUtils {
+	public sealed class DBUtils_MySQL : DBUtils {
 		#region public override DBUtils_convert Convert { get; }
 		private static DBUtils_convert_MySQL convert__;
 

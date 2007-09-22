@@ -335,12 +335,11 @@ namespace OGen.NTier.presentationlayer.winforms {
 			get {
 				return rbtConnectionstring.Checked 
 					? txtConnectionString.Text 
-					: OGen.lib.datalayer.utils.Connectionstring.Buildwith.Parameters(
+					: DBUtilssupport.GetInstance(DBServerType).ConnectionString.Build(
 						txtServer.Text, 
 						txtUserName.Text, 
 						txtPassword.Text, 
-						txtDatabase.Text, 
-						DBServerType
+						txtDatabase.Text
 					);
 			}
 			set {

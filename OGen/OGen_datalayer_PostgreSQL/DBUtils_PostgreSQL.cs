@@ -17,7 +17,7 @@ using System.Data;
 using NpgsqlTypes;
 
 namespace OGen.lib.datalayer.PostgreSQL {
-	public sealed class cDBUtils_PostgreSQL : DBUtils {
+	public sealed class DBUtils_PostgreSQL : DBUtils {
 		#region public override DBUtils_convert Convert { get; }
 		private static DBUtils_convert_Postgresql convert__;
 

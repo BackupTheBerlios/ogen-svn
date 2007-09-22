@@ -101,7 +101,7 @@ namespace OGen.NTier.lib.metadata {
 		[ClaSSPropertyAttribute("dbServerType", ClaSSPropertyAttribute.eType.standard, true)]
 		private string dbservertype_reflection {
 			get { return dbservertype_.ToString(); }
-			set { dbservertype_ = OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(value); }
+			set { dbservertype_ = (eDBServerTypes)Enum.Parse(typeof(eDBServerTypes),value); }
 		}
 		#endregion
 		//#region public int Size { get; set; }
@@ -167,30 +167,7 @@ namespace OGen.NTier.lib.metadata {
 				cDBType DBType_generic_out = new cDBType(
 //					dbservertype_
 				);
-				switch (dbservertype_) {
-					case eDBServerTypes.SQLServer:
-						DBType_generic_out.Value = OGen.lib.datalayer.utils.convert.SqlDbType2DbType((SqlDbType)DBType_inDB);
-						break;
-#if PostgreSQL
-					case eDBServerTypes.PostgreSQL:
-						DBType_generic_out.Value = OGen.lib.datalayer.utils.convert.PgsqlDbType2DbType((NpgsqlDbType)DBType_inDB);
-						break;
-#endif
-#if MySQL
-					case eDBServerTypes.MySQL:
-						DBType_generic_out.Value = OGen.lib.datalayer.utils.convert.MySqlDbType2DbType((MySqlDbType)DBType_inDB);
-						break;
-#endif
-					default:
-						throw new Exception(
-							string.Format(
-								"{0}.{1}.DBType_generic.get(): - unsoported db server: {2}", 
-								this.GetType().Namespace, 
-								this.GetType().Name,
-								dbservertype_
-							)
-						);
-				}
+				DBType_generic_out.Value =  DBUtilssupport.GetInstance(dbservertype_).Convert.XDbType2DbType(DBType_inDB);
 
 				return DBType_generic_out;
 			}
@@ -201,72 +178,45 @@ namespace OGen.NTier.lib.metadata {
 			get {
 				//return int.Parse(base.Property_standard["type"));
 
-				switch (dbservertype_) {
-					case eDBServerTypes.SQLServer:
-						return (int)OGen.lib.datalayer.utils.convert.SqlDbType_Parse(
-							//base.Property_standard["type"], 
-							DBType_inDB_name, 
-							false
-						);
-#if PostgreSQL
-					case eDBServerTypes.PostgreSQL:
-						return (int)OGen.lib.datalayer.utils.convert.PgsqlDbType_Parse(
-							//base.Property_standard["type"], 
-							DBType_inDB_name
-						);
-#endif
-#if MySQL
-					case eDBServerTypes.MySQL:
-						return (int)OGen.lib.datalayer.utils.convert.MySqlDbType_Parse(
-							//base.Property_standard["type"], 
-							DBType_inDB_name
-						);
-#endif
-					default:
-						throw new Exception(
-							string.Format(
-								"{0}.{1}.DBType_inDB.get(): - unsoported db server: {2}", 
-								this.GetType().Namespace, 
-								this.GetType().Name,
-								dbservertype_
-							)
-						);
-				}
+				return DBUtilssupport.GetInstance(dbservertype_).Convert.XDbType_Parse(
+					DBType_inDB_name, 
+					false
+				);
 			}
 		}
 		#endregion
 		#region public bool isBool { get; }
 		public bool isBool {
 			get {
-				return OGen.lib.datalayer.utils.isBool(DBType_generic.Value);
+				return DBUtils.isBool(DBType_generic.Value);
 			}
 		}
 		#endregion
 		#region public bool isDateTime { get; }
 		public bool isDateTime {
 			get {
-				return OGen.lib.datalayer.utils.isDateTime(DBType_generic.Value);
+				return DBUtils.isDateTime(DBType_generic.Value);
 			}
 		}
 		#endregion
 		#region public bool isInt { get; }
 		public bool isInt {
 			get {
-				return OGen.lib.datalayer.utils.isInt(DBType_generic.Value);
+				return DBUtils.isInt(DBType_generic.Value);
 			}
 		}
 		#endregion
 		#region public bool isDecimal { get; }
 		public bool isDecimal {
 			get {
-				return OGen.lib.datalayer.utils.isDecimal(DBType_generic.Value);
+				return DBUtils.isDecimal(DBType_generic.Value);
 			}
 		}
 		#endregion
 		#region public bool isText { get; }
 		public bool isText {
 			get {
-				return OGen.lib.datalayer.utils.isText(DBType_generic.Value);
+				return DBUtils.isText(DBType_generic.Value);
 			}
 		}
 		#endregion
@@ -275,7 +225,9 @@ namespace OGen.NTier.lib.metadata {
 		#region Methods...
 		#region public string DBType_generic_DBEmptyValue();
 		public string DBType_generic_DBEmptyValue() {
-			return OGen.lib.datalayer.utils.convert.DBType2DBEmptyValue(DBType_generic.Value, dbservertype_);
+			return DBUtilssupport.GetInstance(dbservertype_).Convert.DBType2DBEmptyValue(
+				DBType_generic.Value
+			);
 		}
 		#endregion
 		#endregion

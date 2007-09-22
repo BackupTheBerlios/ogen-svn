@@ -393,7 +393,8 @@ namespace OGen.NTier.presentationlayer.winforms {
 					!=
 					string.Empty
 				) {
-					_dbservertype = OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(
+					_dbservertype = (eDBServerTypes)Enum.Parse(
+						typeof(eDBServerTypes),
 						lvwConnections.Items[i].SubItems[
 							(int)eConnectionColumns.DBServerType
 						].Text
@@ -411,7 +412,8 @@ namespace OGen.NTier.presentationlayer.winforms {
 					==
 					string.Empty
 				) {
-					_dbservertype = OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(
+					_dbservertype = (eDBServerTypes)Enum.Parse(
+						typeof(eDBServerTypes),
 						lvwConnections.Items[i].SubItems[
 							(int)eConnectionColumns.DBServerType
 						].Text
@@ -438,7 +440,8 @@ null,
 
 			for (int i = 0; i < lvwConnections.Items.Count; i++) {
 				_dbservertype 
-					= OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(
+					= (eDBServerTypes)Enum.Parse(
+						typeof(eDBServerTypes),
 						lvwConnections.Items[i].SubItems[
 							(int)eConnectionColumns.DBServerType
 						].Text
@@ -554,7 +557,8 @@ true, // ToDos: here!
 		private void btnEdit_Click(object sender, System.EventArgs e) {
 			if (lvwConnections.SelectedItems.Count == 1) {
 				frmConnectionstring connection = new frmConnectionstring();
-				connection.DBServerType = OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(
+				connection.DBServerType = (eDBServerTypes)Enum.Parse(
+					typeof(eDBServerTypes),
 					lvwConnections.SelectedItems[0].SubItems[(int)eConnectionColumns.DBServerType].Text
 				);
 				connection.DBMode = lvwConnections.SelectedItems[0].SubItems[(int)eConnectionColumns.DBMode].Text;

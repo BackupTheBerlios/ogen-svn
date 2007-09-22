@@ -46,7 +46,7 @@ namespace OGen.lib.datalayer.SQLServer {
 		public static DBUtils Utils {
 			get {
 				if (utils__ == null) {
-					utils__ = new cDBUtils_SQLServer();
+					utils__ = new DBUtils_SQLServer();
 				}
 				return utils__;
 			}

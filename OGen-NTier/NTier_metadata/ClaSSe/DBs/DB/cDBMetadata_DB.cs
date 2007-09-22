@@ -88,7 +88,7 @@ namespace OGen.NTier.lib.metadata {
 		[ClaSSPropertyAttribute("dbServerType", ClaSSPropertyAttribute.eType.standard, true)]
 		private string dbservertype_reflection {
 			get { return dbservertype_.ToString(); }
-			set { dbservertype_ = OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(value); }
+			set { dbservertype_ = (eDBServerTypes)Enum.Parse(typeof(eDBServerTypes), value); }
 		}
 		#endregion
 		//---

@@ -530,7 +530,7 @@ parent_ref_.Parent_ref.Parent_ref,
 		#region Methods...
 		#region public string DBType_generic_DBEmptyValue(eDBServerTypes dbServerType_in);
 		public string DBType_generic_DBEmptyValue(eDBServerTypes dbServerType_in) {
-			return OGen.lib.datalayer.utils.convert.DBType2DBEmptyValue(DBs[0].DBType_generic.Value, dbServerType_in);
+			return DBUtilssupport.GetInstance(dbServerType_in).Convert.DBType2DBEmptyValue(DBs[0].DBType_generic.Value);
 		}
 		#endregion
 		#region public override string ToString();

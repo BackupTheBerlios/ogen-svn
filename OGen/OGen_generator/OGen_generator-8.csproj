@@ -95,11 +95,6 @@
       <Project>{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\OGen_datalayer\OGen_datalayer-8.csproj">
-      <Name>OGen_datalayer</Name>
-      <Project>{4AE20414-478E-4859-849E-929741A5936C}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
     <ProjectReference Include="..\OGen_parser\OGen_parser-8.csproj">
       <Name>OGen_parser</Name>
       <Project>{981BC7DE-D93C-446E-861E-60A20E4E3391}</Project>
@@ -128,6 +123,24 @@
     <None Include="COPYING.MIT" />
     <Content Include="LICENSE.MIT.txt" />
     <Content Include="LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OGen_datalayersupport\OGen_datalayersupport-8.csproj">
+      <Project>{88D87481-CC3F-49C7-A013-758387F3452E}</Project>
+      <Name>OGen_datalayersupport</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OGen_datalayer_PostgreSQL\OGen_datalayer_PostgreSQL-8.csproj">
+      <Project>{07D7D1E0-A4F9-45C3-8100-FC60AC3BF8FA}</Project>
+      <Name>OGen_datalayer_PostgreSQL-8</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OGen_datalayer_SQLServer\OGen_datalayer_SQLServer-8.csproj">
+      <Project>{F26C7DB4-A67C-48A9-8B20-873EE8CFA5E7}</Project>
+      <Name>OGen_datalayer_SQLServer-8</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OGen_datalayer__base\OGen_datalayer__base-8.csproj">
+      <Project>{D66D0E69-852C-4695-9D63-C9AB1A959E0B}</Project>
+      <Name>OGen_datalayer__base-8</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

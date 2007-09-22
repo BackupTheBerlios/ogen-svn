@@ -17,7 +17,7 @@ using System.Data;
 
 
 namespace OGen.lib.datalayer.SQLServer {
-	public sealed class cDBUtils_SQLServer : DBUtils {
+	public sealed class DBUtils_SQLServer : DBUtils {
 		#region public override DBUtils_convert Convert { get; }
 		private static DBUtils_convert_SQLServer convert__;
 

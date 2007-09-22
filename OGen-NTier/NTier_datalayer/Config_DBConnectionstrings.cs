@@ -163,7 +163,8 @@ namespace OGen.NTier.lib.datalayer {
 				eDBServerTypes[] _dbservertypes = new eDBServerTypes[_supporteddbservertypes.Length];
 				for (int i = 0; i < _supporteddbservertypes.Length; i++) {
 					_dbservertypes[i] 
-						= OGen.lib.datalayer.utils.DBServerTypes.convert.FromName(
+						= (eDBServerTypes)Enum.Parse(
+							typeof(eDBServerTypes), 
 							_supporteddbservertypes[i]
 						);
 				}

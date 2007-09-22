@@ -469,7 +469,7 @@ if (
 for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 	if (!dbconnectionstrings_[d].enabled_aux__) continue;
 
-	switch (dbconnectionstrings_[d].Connection.DBServerType) {
+	switch (dbconnectionstrings_[d].DBServerType) {
 #if MySQL
 		case eDBServerTypes.MySQL:
 #endif
@@ -488,7 +488,7 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 	if (!dbconnectionstrings_[d].enabled_aux__) continue;
 
-	switch (dbconnectionstrings_[d].Connection.DBServerType) {
+	switch (dbconnectionstrings_[d].DBServerType) {
 #if MySQL
 		case eDBServerTypes.MySQL:
 #endif
@@ -507,7 +507,7 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 	if (!dbconnectionstrings_[d].enabled_aux__) continue;
 
-	switch (dbconnectionstrings_[d].Connection.DBServerType) {
+	switch (dbconnectionstrings_[d].DBServerType) {
 #if MySQL
 		case eDBServerTypes.MySQL:
 #endif

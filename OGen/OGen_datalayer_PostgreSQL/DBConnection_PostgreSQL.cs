@@ -46,7 +46,7 @@ namespace OGen.lib.datalayer.PostgreSQL {
 		public static DBUtils Utils {
 			get {
 				if (utils__ == null) {
-					utils__ = new cDBUtils_PostgreSQL();
+					utils__ = new DBUtils_PostgreSQL();
 				}
 				return utils__;
 			}

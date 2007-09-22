@@ -46,7 +46,7 @@ namespace OGen.lib.datalayer.MySQL {
 		public static DBUtils Utils {
 			get {
 				if (utils__ == null) {
-					utils__ = new cDBUtils_MySQL();
+					utils__ = new DBUtils_MySQL();
 				}
 				return utils__;
 			}

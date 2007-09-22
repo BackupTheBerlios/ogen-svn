@@ -353,7 +353,7 @@ namespace OGen.NTier.lib.metadata {
 
 //			#region for (...) Tables.Add();
 			cDBConnection _connection 
-				= new cDBConnection(
+				= DBConnectionsupport.CreateInstance(
 					DBServerType_in, 
 					Connectionstring_in
 				);
@@ -419,7 +419,7 @@ if (clear_in)
 
 
 					int FD = tables_[T].Fields[F].DBs.Add(
-						_connection.DBServerType, 
+						DBConnectionsupport.GetDBServerType(_connection),
 						true
 					);
 					tables_[T].Fields[F].DBs[FD].DBType_inDB_name	= _fields_aux[f].DBType_inDB_name;

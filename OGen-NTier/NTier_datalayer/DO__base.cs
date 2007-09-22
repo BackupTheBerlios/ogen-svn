@@ -90,7 +90,10 @@ namespace OGen.NTier.lib.datalayer {
 		private void cleanUp() {
 			if (connection_insideinstance_) {
 				if (connection_ != null) {
-					connection_.Dispose(); connection_ = null;
+#if !DEBUG
+					connection_.Dispose();
+#endif
+					connection_ = null;
 				}
 			}
 		}
@@ -119,13 +122,13 @@ namespace OGen.NTier.lib.datalayer {
 					// never instantiated...
 
 					if (logenabled_) {
-						connection_ = new cDBConnection(
+						connection_ =  DBConnectionsupport.CreateInstance(
 							connection_dbservertype_,
 							connection_connectionstring_,
 							logfile_
 						);
 					} else {
-						connection_ = new cDBConnection(
+						connection_ = DBConnectionsupport.CreateInstance(
 							connection_dbservertype_,
 							connection_connectionstring_
 						);
