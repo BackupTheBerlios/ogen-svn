@@ -402,6 +402,7 @@ namespace OGen.lib.datalayer {
 	/// Provides means of manipulating ConnectionsStrings.
 	/// </summary>
 	public abstract class DBUtils_connectionString {
+		#region public abstract string ParseParameter(...);
 		public enum eParameter {
 			Server = 0, 
 			User = 1, 
@@ -436,5 +437,23 @@ namespace OGen.lib.datalayer {
 			string connectionstring_in, 
 			eParameter parameter_in
 		);
+		#endregion
+
+		#region public abstract string Build(...);
+		/// <summary>
+		/// Builds the ConnectionString based on a range of needed parameters.
+		/// </summary>
+		/// <param name="serverName_in">database server name/ip</param>
+		/// <param name="userName_in">database user</param>
+		/// <param name="userPassword_in">database user password</param>
+		/// <param name="dataBaseName_in">database name</param>
+		/// <returns>connection string</returns>
+		public abstract string Build(
+			string serverName_in, 
+			string userName_in, 
+			string userPassword_in, 
+			string dataBaseName_in
+		);
+		#endregion
 	}
 }

@@ -15,6 +15,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 using System;
 using System.Data;
 
+
 namespace OGen.lib.datalayer.SQLServer {
 	public sealed class cDBUtils_SQLServer : DBUtils {
 		#region public override DBUtils_convert Convert { get; }
@@ -212,6 +213,22 @@ namespace OGen.lib.datalayer.SQLServer {
 					typeof(DBUtils_connectionString_SQLServer).Name,
 					connectionstring_in
 				)
+			);
+		}
+		#endregion
+		#region public override string Build(...);
+		public override string Build(
+			string serverName_in, 
+			string userName_in, 
+			string userPassword_in, 
+			string dataBaseName_in
+		) {
+			return string.Format(
+				"server={0};uid={1};pwd={2};database={3};", 
+				serverName_in, 
+				userName_in, 
+				userPassword_in, 
+				dataBaseName_in
 			);
 		}
 		#endregion

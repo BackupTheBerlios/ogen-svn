@@ -216,5 +216,21 @@ namespace OGen.lib.datalayer.MySQL {
 			);
 		}
 		#endregion
+		#region public override string Build(...);
+		public override string Build(
+			string serverName_in, 
+			string userName_in, 
+			string userPassword_in, 
+			string dataBaseName_in
+		) {
+			return string.Format(
+				"Server={0};Uid={1};Pwd={2};Database={3};",
+				serverName_in,
+				userName_in,
+				userPassword_in,
+				dataBaseName_in
+			);
+		}
+		#endregion
 	}
 }
