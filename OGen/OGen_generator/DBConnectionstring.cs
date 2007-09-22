@@ -86,7 +86,7 @@ namespace OGen.lib.generator {
 		#region internal void Connection_clearInstance();
 		internal void Connection_clearInstance() {
 			if (connection_ == null) return;
-#if DEBUG
+#if !DEBUG
 			// ToDos: here!
 			connection_.Dispose();
 #endif

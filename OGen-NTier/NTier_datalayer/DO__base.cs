@@ -90,7 +90,7 @@ namespace OGen.NTier.lib.datalayer {
 		private void cleanUp() {
 			if (connection_insideinstance_) {
 				if (connection_ != null) {
-#if DEBUG
+#if !DEBUG
 					connection_.Dispose();
 #endif
 					connection_ = null;
