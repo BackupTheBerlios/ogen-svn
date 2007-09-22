@@ -16,5 +16,71 @@ using System;
 
 namespace OGen.lib.datalayer.PostgreSQL {
 	public sealed class cDBUtils_PostgreSQL : DBUtils {
+		#region public override DBUtils_convert convert { get; }
+		private static DBUtils_convert_Postgresql convert__;
+
+		public override DBUtils_convert convert {
+			get {
+				if (convert__ == null) {
+					convert__ = new DBUtils_convert_Postgresql();
+				}
+
+				return convert__;
+			}
+		}
+		#endregion
+	}
+	public sealed class DBUtils_convert_Postgresql : DBUtils_convert {
+		#region public override string object2SQLobject(...);
+		public override string object2SQLobject(
+			object object_in
+		) {
+			if (object_in == null) {
+				return "null";
+			} else {
+				switch (object_in.GetType().ToString()) {
+					case "System.Char":
+					case "System.String":
+						// ToDos: here! check if changes made are correct (I need test units for this)
+						//return string.Format("''{0}''", object_in.ToString ().Replace("'", "''"));
+						//return string.Format("'{0}'", object_in.ToString ().Replace("'", "''"));
+						break;
+
+					case "System.DateTime":
+						DateTime _datetime = ((DateTime)object_in);
+						if (DateTime.Compare(_datetime, DateTime.MinValue) == 0) {
+							return object2SQLobject(null);
+						} else {
+							// ToDos: here! check if changes made are correct (I need test units for this)
+							// return string.Format("timestamp ''{0}''", _datetime.ToString("yyyy-MM-dd HH:mm:ss"));
+							return string.Format("timestamp '{0}'", _datetime.ToString("yyyy-MM-dd HH:mm:ss"));
+						}
+
+					case "System.Boolean":
+						return (((bool)object_in) ? "true" : "false");
+
+					case "System.Int16":
+					case "System.Int32":
+					case "System.Int64":
+					case "System.Double":
+					case "System.Decimal":
+					case "System.Single":
+						// ToDos: here!
+						//case eDBServerTypes.PostgreSQL: {
+						//	return object_in.ToString().Replace(",", ".");
+						//}
+						break;
+
+					case "System.DBNull":
+						return object2SQLobject(null);
+				}
+			}
+
+			throw new Exception (string.Format(
+				"not implemented for: {0}",
+				object_in.GetType().ToString()
+			));
+		}
+		#endregion
 	}
 }

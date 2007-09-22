@@ -16,5 +16,67 @@ using System;
 
 namespace OGen.lib.datalayer.SQLServer {
 	public sealed class cDBUtils_SQLServer : DBUtils {
+		#region public override DBUtils_convert convert { get; }
+		private static DBUtils_convert_SQLServer convert__;
+
+		public override DBUtils_convert convert {
+			get {
+				if (convert__ == null) {
+					convert__ = new DBUtils_convert_SQLServer();
+				}
+
+				return convert__;
+			}
+		}
+		#endregion
+	}
+	public sealed class DBUtils_convert_SQLServer : DBUtils_convert {
+		#region public override string object2SQLobject(...);
+		public override string object2SQLobject(
+			object object_in
+		) {
+			if (object_in == null) {
+				return "null";
+			} else {
+				switch (object_in.GetType().ToString()) {
+					case "System.Char":
+					case "System.String":
+						return string.Format("\'{0}\'", object_in.ToString ().Replace("\'", "\'\'"));
+
+					case "System.DateTime":
+						DateTime _datetime = ((DateTime)object_in);
+						if (DateTime.Compare(_datetime, DateTime.MinValue) == 0) {
+							return object2SQLobject(null);
+						} else {
+							return string.Format("CONVERT(DATETIME, \'{0}\', 120)", _datetime.ToString("yyyy-MM-dd HH:mm:ss"));
+						}
+						break;
+
+					case "System.Boolean":
+						return (((bool)object_in) ? "1" : "0");
+
+					case "System.Int16":
+					case "System.Int32":
+					case "System.Int64":
+					case "System.Double":
+					case "System.Decimal":
+					case "System.Single":
+						// ToDos: here! this will likely change accordingly with regional 
+						// settings configurations, I need to come up with a better 
+						// approach to this:
+						return object_in.ToString().Replace(",", ".");
+
+					case "System.DBNull": {
+						return object2SQLobject(null);
+					}
+				}
+			}
+
+			throw new Exception (string.Format(
+				"not implemented for: {0}",
+				object_in.GetType().ToString()
+			));
+		}
+		#endregion
 	}
 }
