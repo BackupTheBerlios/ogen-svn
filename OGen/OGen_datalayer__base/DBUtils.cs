@@ -115,6 +115,7 @@ namespace OGen.lib.datalayer {
 		#endregion
 	}
 	public abstract class DBUtils_convert {
+		#region public abstract string object2SQLobject(...);
 		/// <summary>
 		/// Converts any .net framework object value to a string that can be used to buil an SQL Query.
 		/// </summary>
@@ -123,6 +124,7 @@ namespace OGen.lib.datalayer {
 		public abstract string object2SQLobject(
 			object object_in
 		);
+		#endregion
 
 		// ToDos: here! have a look at: sSqlDbType.cs
 		#region public string DbType2NSysType(...) {
