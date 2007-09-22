@@ -48,7 +48,6 @@
     <Compile Include="DBConnection.cs" />
     <Compile Include="DBConnection__base-temp.cs" />
     <Compile Include="DBTransaction.cs" />
-    <Compile Include="DBType.cs" />
     <Compile Include="DBUtils.cs" />
     <Compile Include="DBServerTypes.cs" />
     <None Include="COPYING.MIT" />

@@ -36,13 +36,10 @@ namespace OGen.lib.datalayer {
 			get { return value_; }
 			set {
 				value_ = value;
-#if DEBUG
-// ToDos: here!!!
-				fwtype_ = utils.convert.DbType2NSysType(value);
-				fwemptyvalue_ = utils.convert.DBType2NSysEmptyValue(value);
-				fwunittestvalue_ = utils.convert.DBType2NUnitTestValue(value);
-//				dbemptyvalue_ = utils.convert.DBType2DBEmptyValue(value, dbservertype_);
-#endif
+				fwtype_ = DBUtils_convert.DbType2NSysType(value);
+				fwemptyvalue_ = DBUtils_convert.DBType2NSysEmptyValue(value);
+				fwunittestvalue_ = DBUtils_convert.DBType2NUnitTestValue(value);
+//				dbemptyvalue_ = DBUtils_convert.DBType2DBEmptyValue(value, dbservertype_);
 			}
 		}
 //		#endregion

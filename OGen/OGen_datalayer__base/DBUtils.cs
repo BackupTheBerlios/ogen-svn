@@ -135,14 +135,14 @@ namespace OGen.lib.datalayer {
 		#endregion
 
 		// ToDos: here! have a look at: sSqlDbType.cs
-		#region public string DbType2NSysType(...) {
+		#region public static string DbType2NSysType(...) {
 		// <summary>
 		// Aimed for code generator, hence returning straight string.
 		// NSysType - .Net System Type
 		// </summary>
 		/// <param name="dbType_in"></param>
 		/// <returns></returns>
-		public string DbType2NSysType(DbType dbType_in) {
+		public static string DbType2NSysType(DbType dbType_in) {
 			switch (dbType_in) {
 				case DbType.Boolean:
 					return "bool"; //typeof(bool).Name;
@@ -218,12 +218,12 @@ namespace OGen.lib.datalayer {
 			));
 		}
 		#endregion
-		#region public string DBType2NSysEmptyValue(...);
+		#region public static string DBType2NSysEmptyValue(...);
 		// <summary>
 		// Aimed for code generator, hence returning straight string.
 		// .Net System (default/) Empty Value
 		// </summary>
-		public string DBType2NSysEmptyValue(DbType dbType_in) {
+		public static string DBType2NSysEmptyValue(DbType dbType_in) {
 			switch (dbType_in) {
 				case DbType.DateTime:
 				case DbType.Date:
@@ -271,11 +271,11 @@ namespace OGen.lib.datalayer {
 			));
 		}
 		#endregion
-		#region public string DBType2NUnitTestValue(...);
+		#region public static string DBType2NUnitTestValue(...);
 		// <summary>
 		// Aimed for NUnit testing.
 		// </summary>
-		public string DBType2NUnitTestValue(DbType dbType_in) {
+		public static string DBType2NUnitTestValue(DbType dbType_in) {
 			switch (dbType_in) {
 				case DbType.DateTime:
 				case DbType.Date:
