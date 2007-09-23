@@ -325,7 +325,6 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="_ForcingToKeepMyReferences.cs" />
     <None Include="COPYING.MIT" />
   </ItemGroup>
   <ItemGroup>
