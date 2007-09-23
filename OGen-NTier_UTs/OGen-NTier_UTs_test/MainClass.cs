@@ -55,32 +55,32 @@ namespace OGen.NTier.UTs.test {
 			//return;
 
 
-			OGen.NTier.UTs.lib.datalayer.UTs.UT_UserGroup
-			    _ut_usergroup = new OGen.NTier.UTs.lib.datalayer.UTs.UT_UserGroup();
-			_ut_usergroup.TestFixtureSetUp();
-			_ut_usergroup.UT_bugPostgreSQL_noFunctionMatchesTheGivenNameAndArgumentTypes();
-			//_ut_usergroup.UT_NullableFields();
-			return;
+			//OGen.NTier.UTs.lib.datalayer.UTs.UT_UserGroup
+			//	_ut_usergroup = new OGen.NTier.UTs.lib.datalayer.UTs.UT_UserGroup();
+			//_ut_usergroup.TestFixtureSetUp();
+			//_ut_usergroup.UT_bugPostgreSQL_noFunctionMatchesTheGivenNameAndArgumentTypes();
+			////_ut_usergroup.UT_NullableFields();
+			//return;
 
 
-			DO_Config _config_test = new DO_Config();
-			_config_test.Connection.Open();
-			_config_test.Connection.Transaction.Begin();
-			_config_test.Fields.Name = "test";
-			_config_test.Fields.Description = "test";
-			_config_test.Fields.Config = "test";
-			_config_test.Fields.Type = 1;
-			try {
-				_config_test.setObject(true);
-				Console.WriteLine("ok");
-			} catch {
-				Console.WriteLine("ko");
-			}
-			_config_test.Connection.Transaction.Rollback();
-			_config_test.Connection.Transaction.Terminate();
-			_config_test.Connection.Close();
-			_config_test.Dispose();
-			return;
+			//DO_Config _config_test = new DO_Config();
+			//_config_test.Connection.Open();
+			//_config_test.Connection.Transaction.Begin();
+			//_config_test.Fields.Name = "test";
+			//_config_test.Fields.Description = "test";
+			//_config_test.Fields.Config = "test";
+			//_config_test.Fields.Type = 1;
+			//try {
+			//	_config_test.setObject(true);
+			//	Console.WriteLine("ok");
+			//} catch {
+			//	Console.WriteLine("ko");
+			//}
+			//_config_test.Connection.Transaction.Rollback();
+			//_config_test.Connection.Transaction.Terminate();
+			//_config_test.Connection.Close();
+			//_config_test.Dispose();
+			//return;
 			
 
 
@@ -247,6 +247,8 @@ namespace OGen.NTier.UTs.test {
 					_cons[_con].Close();
 				}
 			}
+			Console.WriteLine("Press any key to continue...");
+			Console.ReadLine();
 		}
 	}
 }
