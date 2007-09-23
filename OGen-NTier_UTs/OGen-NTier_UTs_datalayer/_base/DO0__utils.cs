@@ -16,6 +16,7 @@ using System;
 using System.Data;
 
 using OGen.lib.datalayer;
+using OGen.lib.datalayer.PostgreSQL;
 using OGen.NTier.lib.datalayer;
 
 namespace OGen.NTier.UTs.lib.datalayer {
@@ -47,7 +48,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			DO0__utils
 #endif
 		() {
-			dbservertype__ = eDBServerTypes.invalid;
+			dbservertype__ = string.Empty;
 			dbconnectionstring__ = null;
 			dblogfile__ = string.Empty;
 		}
@@ -59,14 +60,14 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		public const string ApplicationName = "OGen-NTier_UTs";
 
 		#region public static Properties...
-		#region public static eDBServerTypes DBServerType { get; }
-		private static eDBServerTypes dbservertype__;
+		#region public static string DBServerType { get; }
+		private static string dbservertype__;
 		/// <summary>
 		/// DB Server Type.
 		/// </summary>
-		public static eDBServerTypes DBServerType {
+		public static string DBServerType {
 			get {
-				if (dbservertype__ == eDBServerTypes.invalid) {
+				if (dbservertype__ == string.Empty) {
 					DBServerType_read(false);
 				}
 				return dbservertype__;
@@ -110,6 +111,20 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		#endregion
 
 		#region public static Methods...
+		public static cDBConnection DBConnection_createInstance(
+			string dbServerType_in, 
+			string connectionstring_in, 
+			string logfile_in
+		) {
+			switch (dbServerType_in) {
+				case "PostgreSQL":
+					return new cDBConnection_PostgreSQL(
+						connectionstring_in, 
+						logfile_in
+					);
+			}
+			return null;
+		}
 		#region public static void DBConnectionstring_reset();
 		/// <summary>
 		/// Forces DataBase's ConnectionString to be re-read from config file.
@@ -136,7 +151,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			if (andReset_in) {
 				DBServerType_reset();
 			}
-			dbservertype__ = eDBServerTypes.invalid;
+			dbservertype__ = string.Empty;
 			dbconnectionstring__ = null;
 
 			Config_DBConnectionstring _con;

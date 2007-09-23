@@ -56,8 +56,8 @@ namespace OGen.NTier.lib.datalayer {
 		private System.Collections.Hashtable dbconnections_;
 		#endregion
 		#region public Properties...
-		#region public DBConnection this[eDBServerTypes dbServerType_in, string configMode_in] { get; }
-		public Config_DBConnectionstring this[eDBServerTypes dbServerType_in, string configMode_in] {
+		#region public DBConnection this[string dbServerType_in, string configMode_in] { get; }
+		public Config_DBConnectionstring this[string dbServerType_in, string configMode_in] {
 			get {
 				return (Config_DBConnectionstring)dbconnections_[string.Format(
 					"{0}:{1}",
@@ -94,7 +94,7 @@ namespace OGen.NTier.lib.datalayer {
 		#region private Methods...
 		#region private void Add(...);
 		private void Add(
-			eDBServerTypes dbServerType_in, 
+			string dbServerType_in, 
 			string configMode_in, 
 			Config_DBConnectionstring dbConnection_in
 		) {
@@ -143,12 +143,12 @@ namespace OGen.NTier.lib.datalayer {
 			return (string[])configmodes__[application_in];
 		}
 		#endregion
-		#region public static eDBServerTypes[] DBServerTypes(string application_in);
+		#region public static string[] DBServerTypes(string application_in);
 		private static Hashtable dbservertypes__;
 		/// <summary>
 		/// Supported DB Server Types.
 		/// </summary>
-		public static eDBServerTypes[] DBServerTypes(string application_in) {
+		public static string[] DBServerTypes(string application_in) {
 			if (dbservertypes__ == null) dbservertypes__ = new Hashtable();
 			if (!dbservertypes__.Contains(application_in)) {
 				string[] _supporteddbservertypes 
@@ -160,13 +160,9 @@ namespace OGen.NTier.lib.datalayer {
 						)
 					].Split(':');
 
-				eDBServerTypes[] _dbservertypes = new eDBServerTypes[_supporteddbservertypes.Length];
+				string[] _dbservertypes = new string[_supporteddbservertypes.Length];
 				for (int i = 0; i < _supporteddbservertypes.Length; i++) {
-					_dbservertypes[i] 
-						= (eDBServerTypes)Enum.Parse(
-							typeof(eDBServerTypes), 
-							_supporteddbservertypes[i]
-						);
+					_dbservertypes[i] = _supporteddbservertypes[i];
 				}
 
 				dbservertypes__.Add(
@@ -175,7 +171,7 @@ namespace OGen.NTier.lib.datalayer {
 				);
 			}
 
-			return (eDBServerTypes[])dbservertypes__[application_in];
+			return (string[])dbservertypes__[application_in];
 		}
 		#endregion
 		#region public static Config_DBConnectionstrings DBConnectionstrings(string application_in);

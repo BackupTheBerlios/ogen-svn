@@ -234,6 +234,25 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		#endregion
 
 		#region Methods...
+		public override cDBConnection DBConnection_createInstance(
+			string dbServerType_in, 
+			string connectionstring_in, 
+			string logfile_in
+		) {
+#if NET20
+			return DO__utils.DBConnection_createInstance(
+				dbServerType_in, 
+				connectionstring_in, 
+				logfile_in
+			);
+#else
+			return DO0__utils.DBConnection_createInstance(
+				dbServerType_in, 
+				connectionstring_in, 
+				logfile_in
+			);
+#endif
+		}
 		#region public SC0_<%=_aux_table.Name%> Serialize();
 		public SO0_<%=_aux_table.Name%> Serialize() {
 			return Fields;

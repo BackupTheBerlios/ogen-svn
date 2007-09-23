@@ -25,10 +25,10 @@ namespace OGen.NTier.lib.datalayer {
 //		#region public DO__base(...);
 		/// <param name="connection_in">DB Connection</param>
 		public DO__base(
-			cDBConnection	connection_in
+			cDBConnection connection_in
 		) : this (
 			connection_in, 
-			eDBServerTypes.invalid, 
+			string.Empty, 
 			string.Empty, 
 			false, // connection_insideInstance_in
 			null
@@ -36,8 +36,8 @@ namespace OGen.NTier.lib.datalayer {
 		/// <param name="dbServerType_in">DB Server Type</param>
 		/// <param name="connectionstring_in">Connection String</param>
 		public DO__base(
-			eDBServerTypes	dbServerType_in, 
-			string			connectionstring_in
+			string dbServerType_in, 
+			string connectionstring_in
 		) : this (
 			null, 
 			dbServerType_in, 
@@ -46,9 +46,9 @@ namespace OGen.NTier.lib.datalayer {
 			null
 		) {}
 		public DO__base(
-			eDBServerTypes		dbServerType_in, 
-			string				connectionstring_in, 
-			string				logfile_in
+			string dbServerType_in, 
+			string connectionstring_in, 
+			string logfile_in
 		) : this (
 			null, 
 			dbServerType_in, 
@@ -57,11 +57,11 @@ namespace OGen.NTier.lib.datalayer {
 			logfile_in
 		) {}
 		private DO__base(
-			cDBConnection		connection_in, 
-			eDBServerTypes		dbServerType_in, 
-			string				connectionstring_in, 
-			bool				connection_insideInstance_in,
-			string				logfile_in
+			cDBConnection connection_in, 
+			string dbServerType_in, 
+			string connectionstring_in, 
+			bool connection_insideInstance_in,
+			string logfile_in
 		) {
 			connection_ = connection_in;
 			connection_dbservertype_ = dbServerType_in;
@@ -98,12 +98,12 @@ namespace OGen.NTier.lib.datalayer {
 
 		//#region Properties...
 //		#region public cDBConnection Connection { get; }
-		private bool			connection_insideinstance_;
-		private eDBServerTypes	connection_dbservertype_;
-		private string			connection_connectionstring_;
-		private cDBConnection	connection_;
-		private bool			logenabled_;
-		private string			logfile_;
+		private bool connection_insideinstance_;
+		private string connection_dbservertype_;
+		private string connection_connectionstring_;
+		private cDBConnection connection_;
+		private bool logenabled_;
+		private string logfile_;
 		/// <summary>
 		/// DB Connection.
 		/// </summary>
@@ -119,15 +119,16 @@ namespace OGen.NTier.lib.datalayer {
 					// never instantiated...
 
 					if (logenabled_) {
-						connection_ =  DBConnectionsupport.CreateInstance(
+						connection_ =  DBConnection_createInstance(
 							connection_dbservertype_,
 							connection_connectionstring_,
 							logfile_
 						);
 					} else {
-						connection_ = DBConnectionsupport.CreateInstance(
+						connection_ = DBConnection_createInstance(
 							connection_dbservertype_,
-							connection_connectionstring_
+							connection_connectionstring_, 
+							null
 						);
 					}
 				}
@@ -136,5 +137,13 @@ namespace OGen.NTier.lib.datalayer {
 		}
 //		#endregion
 		//#endregion
+
+		#region Methods...
+		public abstract cDBConnection DBConnection_createInstance(
+			string dbServerType_in, 
+			string connectionstring_in, 
+			string logfile_in
+		);
+		#endregion
 	}
 }

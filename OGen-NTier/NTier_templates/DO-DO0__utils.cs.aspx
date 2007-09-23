@@ -46,7 +46,10 @@ if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTex
 }%>using System;
 using System.Data;
 
-using OGen.lib.datalayer;
+using OGen.lib.datalayer;<%
+for (int d = 0; d < _aux_metadata.DBs.Count; d++) {%>
+using OGen.lib.datalayer.<%=_aux_metadata.DBs[d].DBServerType.ToString()%>;<%
+}%>
 using OGen.NTier.lib.datalayer;
 
 namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
@@ -83,7 +86,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			DO0__utils
 #endif
 		() {
-			dbservertype__ = eDBServerTypes.invalid;
+			dbservertype__ = string.Empty;
 			dbconnectionstring__ = null;
 			dblogfile__ = string.Empty;
 		}
@@ -95,14 +98,14 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		public const string ApplicationName = "<%=_aux_metadata.ApplicationName%>";
 
 		#region public static Properties...
-		#region public static eDBServerTypes DBServerType { get; }
-		private static eDBServerTypes dbservertype__;
+		#region public static string DBServerType { get; }
+		private static string dbservertype__;
 		/// <summary>
 		/// DB Server Type.
 		/// </summary>
-		public static eDBServerTypes DBServerType {
+		public static string DBServerType {
 			get {
-				if (dbservertype__ == eDBServerTypes.invalid) {
+				if (dbservertype__ == string.Empty) {
 					DBServerType_read(false);
 				}
 				return dbservertype__;
@@ -146,6 +149,23 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		#endregion
 
 		#region public static Methods...
+		public static cDBConnection DBConnection_createInstance(
+			string dbServerType_in, 
+			string connectionstring_in, 
+			string logfile_in
+		) {
+			switch (dbServerType_in) {<%
+			for (int d = 0; d < _aux_metadata.DBs.Count; d++) {
+				string _dbservertype = _aux_metadata.DBs[d].DBServerType.ToString();%>
+				case "<%=_dbservertype%>":
+					return new cDBConnection_<%=_dbservertype%>(
+						connectionstring_in, 
+						logfile_in
+					);<%
+			}%>
+			}
+			return null;
+		}
 		#region public static void DBConnectionstring_reset();
 		/// <summary>
 		/// Forces DataBase's ConnectionString to be re-read from config file.
@@ -172,7 +192,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			if (andReset_in) {
 				DBServerType_reset();
 			}
-			dbservertype__ = eDBServerTypes.invalid;
+			dbservertype__ = string.Empty;
 			dbconnectionstring__ = null;
 
 			Config_DBConnectionstring _con;

@@ -62,7 +62,7 @@ int _aux_table_hasidentitykey;
                     CheckForOverflowUnderflow = "false"
                     ConfigurationOverrideFile = ""
                     DefineConstants = "DEBUG;TRACE"
-                    DocumentationFile = "bin\Debug\<%=_aux_metadata.Namespace%>.lib.datalayer.xml"
+                    DocumentationFile = "bin\Debug\<%=_aux_metadata.Namespace%>.lib.datalayer-1.1.xml"
                     DebugSymbols = "true"
                     FileAlignment = "4096"
                     IncrementalBuild = "false"
@@ -116,22 +116,14 @@ int _aux_table_hasidentitykey;
                     Name = "OGen.lib.datalayer-1.1"
                     AssemblyName = "OGen.lib.datalayer-1.1"
                     AssemblyFolderKey = "hklm\dn\ogen"
-                />
+                /><%
+                for (int d = 0; d < _aux_metadata.DBs.Count; d++) {%>
                 <Reference
-                    Name = "OGen.lib.datalayer.PostgreSQL-1.1"
-                    AssemblyName = "OGen.lib.datalayer.PostgreSQL-1.1"
+                    Name = "OGen.lib.datalayer.<%=_aux_metadata.DBs[d].DBServerType.ToString()%>-1.1"
+                    AssemblyName = "OGen.lib.datalayer.<%=_aux_metadata.DBs[d].DBServerType.ToString()%>-1.1"
                     AssemblyFolderKey = "hklm\dn\ogen"
-                />
-                <Reference
-                    Name = "OGen.lib.datalayer.SQLServer-1.1"
-                    AssemblyName = "OGen.lib.datalayer.SQLServer-1.1"
-                    AssemblyFolderKey = "hklm\dn\ogen"
-                />
-                <Reference
-                    Name = "OGen.lib.datalayer.support-1.1"
-                    AssemblyName = "OGen.lib.datalayer.support-1.1"
-                    AssemblyFolderKey = "hklm\dn\ogen"
-                />
+                /><%
+                }%>
                 <Reference
                     Name = "OGen.NTier.lib.datalayer-1.1"
                     AssemblyName = "OGen.NTier.lib.datalayer-1.1"

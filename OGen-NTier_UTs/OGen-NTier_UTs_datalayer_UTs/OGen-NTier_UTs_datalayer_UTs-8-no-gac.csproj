@@ -103,6 +103,8 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UT_UserGroup.cs" />
+    <Compile Include="UT__utils.cs" />
     <Compile Include="_base\UT0__utils.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -152,9 +154,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="_base\UT0_User.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="UT_UserGroup.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="_base\UT0_UserGroup.cs">

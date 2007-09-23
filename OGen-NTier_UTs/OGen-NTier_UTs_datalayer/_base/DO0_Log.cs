@@ -116,6 +116,25 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		#endregion
 
 		#region Methods...
+		public override cDBConnection DBConnection_createInstance(
+			string dbServerType_in, 
+			string connectionstring_in, 
+			string logfile_in
+		) {
+#if NET20
+			return DO__utils.DBConnection_createInstance(
+				dbServerType_in, 
+				connectionstring_in, 
+				logfile_in
+			);
+#else
+			return DO0__utils.DBConnection_createInstance(
+				dbServerType_in, 
+				connectionstring_in, 
+				logfile_in
+			);
+#endif
+		}
 		#region public SC0_Log Serialize();
 		public SO0_Log Serialize() {
 			return Fields;

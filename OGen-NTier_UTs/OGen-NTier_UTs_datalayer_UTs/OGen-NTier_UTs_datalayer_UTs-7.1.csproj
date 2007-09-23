@@ -83,11 +83,16 @@
                     Name = "nunit.framework"
                     AssemblyName = "nunit.framework"
                     HintPath = "C:\Program Files\NUnit 2.2\bin\nunit.framework.dll"
-                    AssemblyFolderKey = "hklm\dn\nunit.framework1.1"
+                    AssemblyFolderKey = "hklm\dn\nunit.framework"
                 />
                 <Reference
                     Name = "OGen.lib.datalayer-1.1"
                     AssemblyName = "OGen.lib.datalayer-1.1"
+                    AssemblyFolderKey = "hklm\dn\ogen"
+                />
+                <Reference
+                    Name = "OGen.lib.datalayer.PostgreSQL-1.1"
+                    AssemblyName = "OGen.lib.datalayer.PostgreSQL-1.1"
                     AssemblyFolderKey = "hklm\dn\ogen"
                 />
                 <Reference

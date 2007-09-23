@@ -68,7 +68,7 @@ int _aux_table_hasidentitykey;
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
     <DefineConstants>TRACE;DEBUG;NET20</DefineConstants>
-    <DocumentationFile>bin\Debug\<%=_aux_metadata.Namespace%>.lib.datalayer.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\<%=_aux_metadata.Namespace%>.lib.datalayer-2.0.xml</DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
     <NoStdLib>false</NoStdLib>
@@ -109,17 +109,15 @@ int _aux_table_hasidentitykey;
     <Reference Include="OGen.lib.datalayer-2.0">
       <Name>OGen.lib.datalayer-2.0</Name>
       <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
-    </Reference>
-    <Reference Include="OGen.lib.datalayer.PostgreSQL-2.0">
-      <Name>OGen.lib.datalayer.PostgreSQL-2.0</Name>
+    </Reference><%
+    for (int d = 0; d < _aux_metadata.DBs.Count; d++) {%>
+    <Reference Include="OGen.lib.datalayer.<%=_aux_metadata.DBs[d].DBServerType.ToString()%>-2.0">
+      <Name>OGen.lib.datalayer.<%=_aux_metadata.DBs[d].DBServerType.ToString()%>-2.0</Name>
       <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
-    </Reference>
+    </Reference><%
+    }%>
     <Reference Include="OGen.lib.datalayer.SQLServer-2.0">
       <Name>OGen.lib.datalayer.SQLServer-2.0</Name>
-      <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
-    </Reference>
-    <Reference Include="OGen.lib.datalayer.support-2.0">
-      <Name>OGen.lib.datalayer.support-2.0</Name>
       <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
     </Reference>
     <Reference Include="OGen.NTier.lib.datalayer-2.0">

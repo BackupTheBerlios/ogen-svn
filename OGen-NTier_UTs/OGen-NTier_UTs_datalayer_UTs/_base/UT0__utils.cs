@@ -55,10 +55,16 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 							"DEBUG"
 						];
 						if (_dbcon.GeneratedSQL) {
-							dbconnections__[_count++] = DBConnectionsupport.CreateInstance(
-								Config_DBConnectionstrings.DBServerTypes(DO__utils.ApplicationName)[_db], 
-								_dbcon.Connectionstring
-							);
+							dbconnections__[_count++]
+#if NET20
+								= DO__utils.DBConnection_createInstance(
+#else
+								= DO0__utils.DBConnection_createInstance(
+#endif
+									Config_DBConnectionstrings.DBServerTypes(DO__utils.ApplicationName)[_db], 
+									_dbcon.Connectionstring, 
+									null
+								);
 						}
 					}
 				}

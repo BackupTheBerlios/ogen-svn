@@ -193,20 +193,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</outputs>
 		<dependencies />
 	</template>
-	<template name="SomeApplication.cmbx.aspx" 
-			parserType="aspx" 
-			iterationType="ROOT">
-		<arguments>
-			<!--argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" /-->
-			<argument name="ApplicationName" value="${ROOT.applicationName}" />
-		</arguments>
-		<conditions />
-		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}.cmbx" 
-				type="File" mode="Create_doNotReplace" />
-		</outputs>
-		<dependencies />
-	</template>
 	<template name="DO-SomeApplication_datalayer-7.1.csproj.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT">
@@ -229,32 +215,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/${ROOT.applicationName}_datalayer-8.csproj" 
-				type="File" mode="Create_doNotReplace" />
-		</outputs>
-		<dependencies />
-	</template>
-	<template name="DO-SomeApplication_datalayer.prjx.aspx" 
-			parserType="aspx" 
-			iterationType="ROOT">
-		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
-		</arguments>
-		<conditions />
-		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/${ROOT.applicationName}_datalayer.prjx" 
-				type="File" mode="Create_doNotReplace" />
-		</outputs>
-		<dependencies />
-	</template>
-	<template name="DO-SomeApplication_datalayer.cmbx.aspx" 
-			parserType="aspx" 
-			iterationType="ROOT">
-		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
-		</arguments>
-		<conditions />
-		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/${ROOT.applicationName}_datalayer.cmbx" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
@@ -285,32 +245,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</outputs>
 		<dependencies />
 	</template>
-	<template name="DO-UT-SomeApplication_datalayer_UTs.prjx.aspx" 
-			parserType="aspx" 
-			iterationType="ROOT">
-		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
-		</arguments>
-		<conditions />
-		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/${ROOT.applicationName}_datalayer_UTs.prjx" 
-				type="File" mode="Create_doNotReplace" />
-		</outputs>
-		<dependencies />
-	</template>
-	<template name="DO-UT-SomeApplication_datalayer_UTs.cmbx.aspx" 
-			parserType="aspx" 
-			iterationType="ROOT">
-		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
-		</arguments>
-		<conditions />
-		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer_UTs/${ROOT.applicationName}_datalayer_UTs.cmbx" 
-				type="File" mode="Create_doNotReplace" />
-		</outputs>
-		<dependencies />
-	</template>
 	<template name="BO-SomeApplication_businesslayer-7.1.csproj.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT">
@@ -337,32 +271,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</outputs>
 		<dependencies />
 	</template>
-	<template name="BO-SomeApplication_businesslayer.prjx.aspx" 
-			parserType="aspx" 
-			iterationType="ROOT">
-		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
-		</arguments>
-		<conditions />
-		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer/${ROOT.applicationName}_businesslayer.prjx" 
-				type="File" mode="Create_doNotReplace" />
-		</outputs>
-		<dependencies />
-	</template>
-	<template name="BO-SomeApplication_businesslayer.cmbx.aspx" 
-			parserType="aspx" 
-			iterationType="ROOT">
-		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
-		</arguments>
-		<conditions />
-		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer/${ROOT.applicationName}_businesslayer.cmbx" 
-				type="File" mode="Create_doNotReplace" />
-		</outputs>
-		<dependencies />
-	</template>
 	<template name="SomeApplication_test-7.1.csproj.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT">
@@ -385,32 +293,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_test/${ROOT.applicationName}_test-8.csproj" 
-				type="File" mode="Create_doNotReplace" />
-		</outputs>
-		<dependencies />
-	</template>
-	<template name="SomeApplication_test.prjx.aspx" 
-			parserType="aspx" 
-			iterationType="ROOT">
-		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
-		</arguments>
-		<conditions />
-		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_test/${ROOT.applicationName}_test.prjx" 
-				type="File" mode="Create_doNotReplace" />
-		</outputs>
-		<dependencies />
-	</template>
-	<template name="SomeApplication_test.cmbx.aspx" 
-			parserType="aspx" 
-			iterationType="ROOT">
-		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
-		</arguments>
-		<conditions />
-		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_test/${ROOT.applicationName}_test.cmbx" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
@@ -525,32 +407,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/${ROOT.applicationName}_businesslayer_UTs-8.csproj" 
-				type="File" mode="Create_doNotReplace" />
-		</outputs>
-		<dependencies />
-	</template>
-	<template name="BO-UT-SomeApplication_businesslayer_UTs.prjx.aspx" 
-			parserType="aspx" 
-			iterationType="ROOT">
-		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
-		</arguments>
-		<conditions />
-		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/${ROOT.applicationName}_businesslayer_UTs.prjx" 
-				type="File" mode="Create_doNotReplace" />
-		</outputs>
-		<dependencies />
-	</template>
-	<template name="BO-UT-SomeApplication_businesslayer_UTs.cmbx.aspx" 
-			parserType="aspx" 
-			iterationType="ROOT">
-		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
-		</arguments>
-		<conditions />
-		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_businesslayer_UTs/${ROOT.applicationName}_businesslayer_UTs.cmbx" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
