@@ -988,23 +988,27 @@ namespace OGen.lib.datalayer {
         #region public cDBTable[] getTables(...);
 		protected abstract string gettables(string subAppName_in);
 
-        /// <summary>
+		/// <summary>
         /// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
         /// </summary>
         /// <returns>String array, representing a list of Table names</returns>
-//        public cDBTable[] getTables() {
-//            return getTables(string.Empty);
-//        }
+        public cDBTable[] getTables() {
+            return getTables(string.Empty);
+        }
 
         /// <summary>
         /// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
         /// </summary>
         /// <param name="subAppName_in">Table Filter. If your Application is to be hosted at some ASP, which provides you with one DataBase only, and you're using that DataBase for more than one Application. I assume you're using some convention for Table naming like: AP1_Table1, AP1_Table2, AP2_Table1, ... . Or even if you have several modules sharing same data base. If so, you can use this parameter to filter Table names for some specific Application, like: AP1 or AP2</param>
         /// <returns>String array, representing a list of Table names</returns>
-//        public cDBTable[] getTables(
-//            string subAppName_in
-//        ) {
-//        }
+        public cDBTable[] getTables(
+            string subAppName_in
+        ) {
+        	return getTables(
+				subAppName_in, 
+				null
+			);
+        }
 
 		/// <summary>
 		/// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
@@ -1062,10 +1066,14 @@ string.Empty
 		/// </summary>
 		/// <param name="tableName_in">Table name for which Field names are to be retrieved</param>
 		/// <returns>String array, representing a list of Field names</returns>
-//		public cDBTableField[] getTableFields(
-//			string tableName_in
-//		) {
-//		}
+		public cDBTableField[] getTableFields(
+			string tableName_in
+		) {
+			return getTableFields(
+				tableName_in,
+				null
+			);
+		}
 
 		/// <summary>
 		/// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Field names for some specific Table.
