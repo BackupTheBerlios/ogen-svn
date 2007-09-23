@@ -115,9 +115,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssemblyInfo-VisualStudio.cs">
+    <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="_ForcingToKeepMyReferences.cs" />
     <None Include="COPYING.MIT" />
     <Content Include="doc.css" />
     <Content Include="FAQ-id.html.aspx" />

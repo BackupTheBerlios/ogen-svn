@@ -136,14 +136,10 @@
     </Content>
     <Content Include="BO-SomeApplication_businesslayer-7.1.csproj.aspx" />
     <Content Include="BO-SomeApplication_businesslayer-8.csproj.aspx" />
-    <Content Include="BO-SomeApplication_businesslayer.cmbx.aspx" />
-    <Content Include="BO-SomeApplication_businesslayer.prjx.aspx" />
     <Content Include="BO-UT-SomeApplication_businesslayer_UTs-7.1.csproj.aspx" />
     <Content Include="BO-UT-SomeApplication_businesslayer_UTs-8.csproj.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
-    <Content Include="BO-UT-SomeApplication_businesslayer_UTs.cmbx.aspx" />
-    <Content Include="BO-UT-SomeApplication_businesslayer_UTs.prjx.aspx" />
     <Content Include="BO-UT-SomeNamespace.lib.businesslayer.UTs-1.1.nunit.aspx" />
     <Content Include="BO-UT-SomeNamespace.lib.businesslayer.UTs-2.0.nunit.aspx" />
     <Content Include="BO-UT-UT0_SomeTable.cs.aspx" />
@@ -295,21 +291,13 @@
     <Content Include="DO-SomeApplication_datalayer-8.csproj.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
-    <Content Include="DO-SomeApplication_datalayer.cmbx.aspx" />
     <Content Include="DO-SomeApplication_datalayer-7.1.csproj.aspx">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
-    <Content Include="DO-SomeApplication_datalayer.prjx.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="DO-UT-SomeApplication_datalayer_UTs-8.csproj.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
-    <Content Include="DO-UT-SomeApplication_datalayer_UTs.cmbx.aspx" />
     <Content Include="DO-UT-SomeApplication_datalayer_UTs-7.1.csproj.aspx">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
-    <Content Include="DO-UT-SomeApplication_datalayer_UTs.prjx.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
     <Content Include="DO-UT-UT0_SomeTable.cs.aspx">
@@ -324,24 +312,20 @@
     <Content Include="SomeApplication-1.1.ndoc.aspx" />
     <Content Include="SomeApplication-2.0.ndoc.aspx" />
     <Content Include="SomeApplication-8.sln.aspx" />
-    <Content Include="SomeApplication.cmbx.aspx" />
     <Content Include="SomeApplication-7.1.sln.aspx" />
     <Content Include="SomeApplication.OGen-NTier-1.1.bat.aspx" />
     <Content Include="SomeApplication.OGen-NTier-2.0.bat.aspx" />
     <Content Include="SomeApplication_AssemblyInfo.cs.txt" />
     <Content Include="SomeApplication_test-8.csproj.aspx" />
-    <Content Include="SomeApplication_test.cmbx.aspx" />
     <Content Include="SomeApplication_test-7.1.csproj.aspx" />
-    <Content Include="SomeApplication_test.prjx.aspx">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
     <Content Include="SomeApplication_test_MainClass.cs.aspx" />
     <Content Include="templates.config.xml" />
     <Content Include="Web.config" />
     <Content Include="__XSLT-TEST.txt.xslt" />
-    <Compile Include="AssemblyInfo-VisualStudio.cs">
+    <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="_ForcingToKeepMyReferences.cs" />
     <None Include="COPYING.MIT" />
   </ItemGroup>
   <ItemGroup>
