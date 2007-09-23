@@ -75,7 +75,7 @@ namespace OGen.lib.datalayer.PostgreSQL {
 		//#endregion
 
 		//#region private Methods...
-#region protected override IDbCommand newDBCommand(string command_in, IDbConnection connection_in);
+		#region protected override IDbCommand newDBCommand(string command_in, IDbConnection connection_in);
 		protected override IDbCommand newDBCommand(string command_in, IDbConnection connection_in) {
 			IDbCommand _newdbcommand_out;
 
@@ -92,18 +92,21 @@ namespace OGen.lib.datalayer.PostgreSQL {
 				);
 			}
 
+			_newdbcommand_out.CommandTimeout = connection_in.ConnectionTimeout;
+
 			return _newdbcommand_out;
 		}
 		#endregion
-#region protected override IDbDataAdapter newDBDataAdapter(string query_in, IDbConnection connection_in, bool isQuery_notProcedure_in);
+		#region protected override IDbDataAdapter newDBDataAdapter(string query_in, IDbConnection connection_in, bool isQuery_notProcedure_in);
 		protected override IDbDataAdapter newDBDataAdapter(string query_in, IDbConnection connection_in, bool isQuery_notProcedure_in) {
 			IDbDataAdapter _newdbdataadapter_out = new NpgsqlDataAdapter(
-				query_in,
+				(isQuery_notProcedure_in) ? query_in : "\"" + query_in + "\"",
 				(NpgsqlConnection)connection_in
 			);
 
 			if ((transaction__ != null) && (transaction__.inTransaction)) {
-				_newdbdataadapter_out.SelectCommand.Transaction = (NpgsqlTransaction)transaction__.exposeTransaction;
+				_newdbdataadapter_out.SelectCommand.Transaction 
+					= (NpgsqlTransaction)transaction__.exposeTransaction;
 			}
 
 			return _newdbdataadapter_out;
@@ -111,7 +114,7 @@ namespace OGen.lib.datalayer.PostgreSQL {
 		#endregion
 		//#endregion
 		//#region public Methods...
-#region public override IDbDataParameter newDBDataParameter(...);
+		#region public override IDbDataParameter newDBDataParameter(...);
 		public override IDbDataParameter newDBDataParameter(
 			string name_in, 
 			DbType dbType_in, 
@@ -126,7 +129,16 @@ namespace OGen.lib.datalayer.PostgreSQL {
 			_newdbdataparameter_out = new NpgsqlParameter();
 			_newdbdataparameter_out.ParameterName = ":\"" + name_in + "\"";
 
-			_newdbdataparameter_out.DbType = dbType_in;
+			// fmonteiro: by default npgsql assumes any datetime 
+			// to be time zoned
+			if (dbType_in == DbType.DateTime) {
+				_newdbdataparameter_out.DbType = dbType_in;
+				// EXPLICITLY assuming datetime without time zone
+				((NpgsqlParameter)_newdbdataparameter_out).NpgsqlDbType = NpgsqlTypes.NpgsqlDbType.Timestamp;
+			} else {
+				_newdbdataparameter_out.DbType = dbType_in;
+			}
+
 			_newdbdataparameter_out.Direction = parameterDirection_in;
 			if ((value_in == null) || (value_in == DBNull.Value)) {
 				_newdbdataparameter_out.Value = DBNull.Value;
@@ -164,56 +176,22 @@ namespace OGen.lib.datalayer.PostgreSQL {
 			}
 
 			object Execute_SQLFunction_out = null;
-#region command_.Parameters = dataParameters_in;
+			#region command_.Parameters = dataParameters_in;
 			for (int i = 0; i < dataParameters_in.Length; i++) {
 				command_in.Parameters.Add(dataParameters_in[i]);
 			}
 			#endregion
-#region command_in.CommandText = function_in;
-			//switch (dbservertype_) {
-			//    case eDBServerTypes.PostgreSQL: {
-						command_in.CommandText =
-							string.Format("\"{0}\"", function_in);
-			//			break;
-			//		}
-			//    case eDBServerTypes.SQLServer:
-			//    case eDBServerTypes.MySQL:
-			//    default: {
-			//            command_in.CommandText = function_in;
-			//            break;
-			//        }
-			//}
-			#endregion
+
+			command_in.CommandText = string.Format(
+				"\"{0}\"", 
+				function_in
+			);
+
 			command_in.CommandType = CommandType.StoredProcedure;
 			try {
 				if (returnValue_Size_in >= 0) {
-					//switch (dbservertype_) {
-					//    case eDBServerTypes.SQLServer:
-					//    case eDBServerTypes.MySQL: {
-					//            command_in.Parameters.Add(
-					//                newDBDataParameter(
-					//                    "SomeOutput",
-					//                    (DbType)returnValue_DbType_in,
-					//                    ParameterDirection.ReturnValue,
-					//                    null,
-					//                    returnValue_Size_in
-					//                )
-					//            );
-					//            command_in.ExecuteNonQuery();
-					//            Execute_SQLFunction_out
-					//                = ((IDbDataParameter)command_in.Parameters[
-					//                    command_in.Parameters.Count - 1
-					//                ]).Value;
-					//            break;
-					//        }
-					//    case eDBServerTypes.PostgreSQL: {
-								Execute_SQLFunction_out =
-									command_in.ExecuteScalar();
-					//            break;
-					//        }
-					//    default:
-					//        throw new Exception("invalid DBServerType");
-					//}
+					Execute_SQLFunction_out =
+						command_in.ExecuteScalar();
 				} else {
 					command_in.ExecuteNonQuery();
 					//Execute_SQLFunction_out = null;

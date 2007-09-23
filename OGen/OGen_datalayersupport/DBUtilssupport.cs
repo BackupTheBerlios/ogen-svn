@@ -46,6 +46,20 @@ namespace OGen.lib.datalayer {
 			}
 		}
 		#endregion
+#if MySQL
+		#region private static DBUtils_MySQL dbUtils_MySQL { get; }
+		private static DBUtils_SQLServer dbutils_mysql__;
+		private static DBUtils_SQLServer dbUtils_MySQL {
+			get{
+				if (dbutils_mysql__ == null) {
+					dbutils_mysql__ = new DBUtils_MySQL();
+				}
+
+				return dbutils_mysql__;
+			}
+		}
+		#endregion
+#endif
 
 		public static DBUtils GetInstance(
 			eDBServerTypes dbServerType_in

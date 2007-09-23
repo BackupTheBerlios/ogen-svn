@@ -18,6 +18,75 @@ using System.Text;
 using System.IO;
 
 namespace OGen.lib.datalayer {
+	#region /// <summary>...</summary>
+	/// <summary>
+	///	Provides access to supported DataBases like PostgreSQL and SQL Server, allowing the execution of SQL Queries and Functions retrieving their existing data if any. It also supports Transactions.
+	/// </summary>
+	/// <threadsafety static="true" instance="false"/>
+	/// <remarks>
+	/// There is no need to Open a Connection in order to execute an SQL Query or Function. Open and Close methods are usually used when working with the Transaction
+	/// </remarks>
+	/// <example>
+	/// This sample shows how to execute an SQL Query and populate a DataTable with it's return Output
+	/// <code>
+	/// cDBConnection _connection = new cDBConnection(
+	///		eDBServerTypes.PostgreSQL, 
+	///		OGen.lib.datalayer.utils.Connectionstring.Buildwith.Parameters(
+	///			"127.0.0.1", 
+	///			"postgres", 
+	///			"password", 
+	///			"TestDB", 
+	///			eDBServerTypes.PostgreSQL
+	///		)
+	///	);
+	///	
+	///	DataTable _datatable 
+	///		= _connection.Execute_SQLQuery_returnDataTable("select * from \"User\"");
+	///	// ...
+	///	
+	///	_connection.Dispose(); _connection = null;
+	///	</code>
+	/// This sample shows how to execute an SQL Function and populate a DataTable with it's return Output
+	///	<code>
+	/// cDBConnection _connection = new cDBConnection(
+	///		eDBServerTypes.PostgreSQL, 
+	///		OGen.lib.datalayer.utils.Connectionstring.Buildwith.Parameters(
+	///			"127.0.0.1", 
+	///			"postgres", 
+	///			"password", 
+	///			"TestDB", 
+	///			eDBServerTypes.PostgreSQL
+	///		)
+	///	);
+	///	
+	///	IDbDataParameter[] _dbdataparameters = new IDbDataParameter[] {
+	///		_connection.newDBDataParameter(
+	///			"SomeParameter_", 
+	///			DbType.String, 
+	///			ParameterDirection.Output, 
+	///			null, 
+	///			50
+	///		), 
+	///		_connection.newDBDataParameter(
+	///			"SomeOtherParameter_", 
+	///			DbType.String, 
+	///			ParameterDirection.Output, 
+	///			null, 
+	///			50
+	///		)
+	///	};
+	///	
+	///	DataTable _datatable 
+	///		= _connection.Execute_SQLFunction_returnDataTable(
+	///			"SomeSQLFunction", 
+	///			_dbdataparameters
+	///		);
+	///	// ...
+	///	
+	///	_connection.Dispose(); _connection = null;
+	///	</code>
+	/// </example>
+	#endregion
 	public abstract class cDBConnection : IDisposable {
 		//#region public cDBConnection(...);
 		/// <param name="connectionstring_in">Connection String</param>
@@ -29,7 +98,6 @@ namespace OGen.lib.datalayer {
 		) {
 		}
 
-		//#region public cDBConnection(...);
 		/// <param name="connectionstring_in">Connection String</param>
 		/// <param name="logfile_in">Log File (null or empty string disables log)</param>
 		public cDBConnection(
@@ -46,8 +114,8 @@ namespace OGen.lib.datalayer {
 
 
 			connectionstring_ = connectionstring_in;
-			logfile_ 
-				= (logfile_in != null)
+
+			logfile_ = (logfile_in != null)
 				? logfile_in
 				: string.Empty;
 			logenabled_ = 
@@ -70,6 +138,8 @@ namespace OGen.lib.datalayer {
 			cleanUp();
 			System.GC.SuppressFinalize(this);
 		}
+		#endregion
+		#region private void cleanUp();
 		private void cleanUp() {
 #if !DEBUG
 // ToDos: here!
@@ -128,6 +198,7 @@ namespace OGen.lib.datalayer {
 			= new Exception("can't close, unterminated transaction initiated");
 		#endregion
 		#endregion
+
 		#region public properties...
 		#region public string Connectionstring { get; }
 		protected string connectionstring_;
@@ -253,8 +324,15 @@ namespace OGen.lib.datalayer {
 		}
 		#endregion
 
-		protected abstract IDbCommand newDBCommand(string command_in, IDbConnection connection_in);
-		protected abstract IDbDataAdapter newDBDataAdapter(string query_in, IDbConnection connection_in, bool isQuery_notProcedure_in);
+		protected abstract IDbCommand newDBCommand(
+			string command_in, 
+			IDbConnection connection_in
+		);
+		protected abstract IDbDataAdapter newDBDataAdapter(
+			string query_in, 
+			IDbConnection connection_in, 
+			bool isQuery_notProcedure_in
+		);
 		#endregion
 		//#region public Methods...
 		#region public void Open();
@@ -393,6 +471,8 @@ namespace OGen.lib.datalayer {
 		/// <param name="parameterDirection_in">Parameter's Direction</param>
 		/// <param name="value_in">Parameter's Value</param>
 		/// <param name="size_in">Parameter's Size (the actual DataBase Parameter Size representation, if such exists for the Parameter)</param>
+		/// <param name="precision_in">Parameter's Precision</param>
+		/// <param name="scale_in">Parameter's Scale</param>
 		/// <returns>new IDbDataParameter</returns>
 		public abstract IDbDataParameter newDBDataParameter(
 			string name_in, 
@@ -440,7 +520,11 @@ namespace OGen.lib.datalayer {
 		/// </exception>
 		public void Execute_SQLQuery(string query_in) {
 			#region Checking...
-			if (query_in.Trim() == string.Empty)
+			if (
+				(query_in == null)
+				||
+				(query_in.Trim() == string.Empty)
+			)
 				throw InvalidSQLQueryException_empty;
 			#endregion
 
@@ -451,7 +535,10 @@ namespace OGen.lib.datalayer {
 #endif
 					if ((bool)isopen_) {
 						#region Using Opened Connection...
-						IDbCommand _command = newDBCommand(query_in, exposeConnection);
+						IDbCommand _command = newDBCommand(
+							query_in, 
+							exposeConnection
+						);
 						Execute_SQLQuery(query_in, _command);
 						_command.Dispose(); _command = null;
 						#endregion
@@ -459,7 +546,10 @@ namespace OGen.lib.datalayer {
 						#region Opening, Using and Closing Connection...
 						exposeConnection.Open();
 
-						IDbCommand _command = newDBCommand(query_in, exposeConnection);
+						IDbCommand _command = newDBCommand(
+							query_in, 
+							exposeConnection
+						);
 						Execute_SQLQuery(query_in, _command);
 						_command.Dispose(); _command = null;
 
@@ -483,7 +573,11 @@ namespace OGen.lib.datalayer {
 				Log("sql query", query_in);
 			}
 
-			IDbDataAdapter _dataadapter = newDBDataAdapter(query_in, connection_in, true);
+			IDbDataAdapter _dataadapter  = newDBDataAdapter(
+				query_in, 
+				connection_in, 
+				true
+			);
 			try {
 				Execute_SQLQuery_returnDataSet_out = new DataSet();
 				_dataadapter.Fill(Execute_SQLQuery_returnDataSet_out);
@@ -510,13 +604,20 @@ namespace OGen.lib.datalayer {
 		/// <summary>
 		/// Executes an SQL Query on DataBase.
 		/// </summary>
+		/// <exception cref="InvalidSQLQueryException_empty">
+		/// Thrown when an empty SQL Query has been supplied
+		/// </exception>
 		/// <param name="query_in">SQL Query</param>
 		/// <returns>populated DataSet with SQL Query's Output</returns>
 		public DataSet Execute_SQLQuery_returnDataSet(string query_in) {
 			DataSet Execute_SQLQuery_returnDataSet_out;
 
 			#region Checking...
-			if (query_in.Trim() == string.Empty)
+			if (
+				(query_in == null)
+				||
+				(query_in.Trim() == string.Empty)
+			)
 				throw InvalidSQLQueryException_empty;
 			#endregion
 
