@@ -36,7 +36,7 @@ OGen is licensed under various different licenses.
 	* OGen.NTier.lib.templates: MIT
 	* OGen.NTier.presentationlayer.winforms: MIT
 	* OGen.NTier.presentationlayer.console: MIT
-	* OGen.NTier.test: MIT
+	* OGen.NTier.presentationlayer.test: MIT
 	* OGen.NTier.UTs.lib.businesslayer: MIT
 	* OGen.NTier.UTs.lib.businesslayer.UTs: MIT
 	* OGen.NTier.UTs.lib.datalayer: MIT
