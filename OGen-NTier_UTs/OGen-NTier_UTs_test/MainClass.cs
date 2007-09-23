@@ -88,26 +88,25 @@ namespace OGen.NTier.UTs.test {
 			const int _cycles = 50;
 			cDBConnection[] _cons = new cDBConnection[] {
 				#region new cDBConnection(eDBServerTypes.SQLServer, ...), 
-				new cDBConnection(
+				DBConnectionsupport.CreateInstance(
 					eDBServerTypes.SQLServer,
-					OGen.lib.datalayer.utils.Connectionstring.Buildwith.Parameters(
+					
+					DBUtilssupport.GetInstance(eDBServerTypes.SQLServer).ConnectionString.Build(
 						"127.0.0.1", 
 						"sa", 
 						"passpub", 
-						"OGen-NTier_UTs", 
-						eDBServerTypes.SQLServer
+						"OGen-NTier_UTs"
 					)
 				), 
 				#endregion
 				#region new cDBConnection(eDBServerTypes.PostgreSQL, ...)
-				new cDBConnection(
+				DBConnectionsupport.CreateInstance(
 					eDBServerTypes.PostgreSQL,
-					OGen.lib.datalayer.utils.Connectionstring.Buildwith.Parameters(
+					DBUtilssupport.GetInstance(eDBServerTypes.PostgreSQL).ConnectionString.Build(
 						"127.0.0.1", 
 						"postgres", 
 						"passpub", 
-						"OGen-NTier_UTs", 
-						eDBServerTypes.PostgreSQL
+						"OGen-NTier_UTs"
 					)
 				)
 				#endregion
@@ -132,7 +131,7 @@ namespace OGen.NTier.UTs.test {
 
 						Console.WriteLine(
 							"setObject()      \t{0}\tcached:{1}\tcompiled:{2}\t{3}",
-							_cons[_con].DBServerType,
+							DBConnectionsupport.GetDBServerType(_cons[_con]),
 							(_cached == 1),
 							(_compiled == 1),
 							(DateTime.Now.Ticks - _conter).ToString()
@@ -147,7 +146,7 @@ namespace OGen.NTier.UTs.test {
 
 						Console.WriteLine(
 							"Record.Open()    \t{0}\tcached:{1}\tcompiled:{2}\t{3}",
-							_cons[_con].DBServerType,
+							DBConnectionsupport.GetDBServerType(_cons[_con]),
 							(_cached == 1),
 							(_compiled == 1),
 							(DateTime.Now.Ticks - _conter).ToString()
@@ -166,7 +165,7 @@ namespace OGen.NTier.UTs.test {
 
 						Console.WriteLine(
 							"delObject()      \t{0}\tcached:{1}\tcompiled:{2}\t{3}",
-							_cons[_con].DBServerType,
+							DBConnectionsupport.GetDBServerType(_cons[_con]),
 							(_cached == 1),
 							(_compiled == 1),
 							(DateTime.Now.Ticks - _conter).ToString()
@@ -186,7 +185,7 @@ namespace OGen.NTier.UTs.test {
 
 						Console.WriteLine(
 							"getObject()      \t{0}\tcached:{1}\tcompiled:{2}\t{3}",
-							_cons[_con].DBServerType,
+							DBConnectionsupport.GetDBServerType(_cons[_con]),
 							(_cached == 1),
 							(_compiled == 1),
 							(DateTime.Now.Ticks - _conter).ToString()
@@ -216,7 +215,7 @@ namespace OGen.NTier.UTs.test {
 
 						Console.WriteLine(
 							"insObject()      \t{0}\tcached:{1}\tcompiled:{2}\t{3}",
-							_cons[_con].DBServerType,
+							DBConnectionsupport.GetDBServerType(_cons[_con]),
 							(_cached == 1),
 							(_compiled == 1),
 							(DateTime.Now.Ticks - _conter).ToString()
@@ -235,7 +234,7 @@ namespace OGen.NTier.UTs.test {
 						}
 						Console.WriteLine(
 							"getObject_by()   \t{0}\tcached:{1}\tcompiled:{2}\t{3}",
-							_cons[_con].DBServerType,
+							DBConnectionsupport.GetDBServerType(_cons[_con]),
 							(_cached == 1),
 							(_compiled == 1),
 							(DateTime.Now.Ticks - _conter).ToString()

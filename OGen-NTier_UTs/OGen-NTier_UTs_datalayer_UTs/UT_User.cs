@@ -47,7 +47,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 			string _testid = DateTime.Now.Ticks.ToString();
 			bool _constraint;
 			for (int c = 0; c < UT0__utils.DBConnections.Length; c++) {
-//Console.WriteLine("UT_Constraints: {0}", UT0__utils.DBConnections[c].DBServerType.ToString());
+//Console.WriteLine("UT_Constraints: {0}", DBConnectionsupport.GetDBServerType(UT0__utils.DBConnections[c]).ToString());
 
 				UT0__utils.DBConnections[c].Open();
 				UT0__utils.DBConnections[c].Transaction.Begin();

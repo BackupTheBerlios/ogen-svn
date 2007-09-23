@@ -55,6 +55,10 @@ namespace OGen.lib.datalayer {
 				case eDBServerTypes.PostgreSQL:
 					return dbUtils_PostgreSQL;
 #endif
+#if MySQL
+				case eDBServerTypes.MySQL:
+					return dbUtils_MySQL;
+#endif
 				case eDBServerTypes.SQLServer:
 					return dbUtils_SQLServer;
 			}

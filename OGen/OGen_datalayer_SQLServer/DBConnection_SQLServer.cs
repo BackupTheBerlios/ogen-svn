@@ -112,7 +112,15 @@ namespace OGen.lib.datalayer.SQLServer {
 		//#endregion
 		//#region public Methods...
 		#region public override IDbDataParameter newDBDataParameter(...);
-		public override IDbDataParameter newDBDataParameter(string name_in, DbType dbType_in, ParameterDirection parameterDirection_in, object value_in, int size_in) {
+		public override IDbDataParameter newDBDataParameter(
+			string name_in, 
+			DbType dbType_in, 
+			ParameterDirection parameterDirection_in, 
+			object value_in, 
+			int size_in, 
+			byte precision_in, 
+			byte scale_in
+		) {
 			IDbDataParameter _newdbdataparameter_out;
 
 			_newdbdataparameter_out = new SqlParameter();
@@ -131,6 +139,12 @@ namespace OGen.lib.datalayer.SQLServer {
 			}
 			if (size_in != 0) {
 				_newdbdataparameter_out.Size = size_in;
+			}
+			if (precision_in != 0) {
+				_newdbdataparameter_out.Precision = precision_in;
+			}
+			if (scale_in != 0) {
+				_newdbdataparameter_out.Scale = scale_in;
 			}
 
 			return _newdbdataparameter_out;

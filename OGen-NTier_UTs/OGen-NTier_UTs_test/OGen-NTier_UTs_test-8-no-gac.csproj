@@ -91,10 +91,6 @@
       <Project>{38BEF535-92F1-4C55-9CEA-8F8D3E82CAFD}</Project>
       <Name>NTier_datalayer-8</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\OGen\OGen_datalayer\OGen_datalayer-8.csproj">
-      <Project>{4AE20414-478E-4859-849E-929741A5936C}</Project>
-      <Name>OGen_datalayer-8</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OGen-NTier_UTs_businesslayer\OGen-NTier_UTs_businesslayer-8.csproj">
       <Name>OGen-NTier_UTs_businesslayer</Name>
       <Project>{B3555514-3A7D-4159-B05D-E8D0C265B649}</Project>
@@ -118,6 +114,24 @@
     <Compile Include="MainClass.cs">
       <SubType>Code</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\OGen\OGen_datalayersupport\OGen_datalayersupport-8.csproj">
+      <Project>{88D87481-CC3F-49C7-A013-758387F3452E}</Project>
+      <Name>OGen_datalayersupport-8</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OGen\OGen_datalayer_PostgreSQL\OGen_datalayer_PostgreSQL-8.csproj">
+      <Project>{07D7D1E0-A4F9-45C3-8100-FC60AC3BF8FA}</Project>
+      <Name>OGen_datalayer_PostgreSQL-8</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OGen\OGen_datalayer_SQLServer\OGen_datalayer_SQLServer-8.csproj">
+      <Project>{F26C7DB4-A67C-48A9-8B20-873EE8CFA5E7}</Project>
+      <Name>OGen_datalayer_SQLServer-8</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OGen\OGen_datalayer__base\OGen_datalayer__base-8.csproj">
+      <Project>{D66D0E69-852C-4695-9D63-C9AB1A959E0B}</Project>
+      <Name>OGen_datalayer__base-8</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

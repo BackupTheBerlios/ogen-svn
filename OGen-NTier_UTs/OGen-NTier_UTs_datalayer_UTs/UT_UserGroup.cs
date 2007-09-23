@@ -46,7 +46,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 			long _idgroup;
 
 			for (int c = 0; c < UT0__utils.DBConnections.Length; c++) {
-//Console.WriteLine("UT_NullableFields: {0}", UT0__utils.DBConnections[c].DBServerType.ToString());
+//Console.WriteLine("UT_NullableFields: {0}", DBConnectionsupport.GetDBServerType(UT0__utils.DBConnections[c]).ToString());
 
 				UT0__utils.DBConnections[c].Open();
 				UT0__utils.DBConnections[c].Transaction.Begin();
@@ -75,8 +75,8 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 				#region test1...
 				_usergroup.clrObject();
 				_usergroup.getObject(_iduser, _idgroup);
-				Assert.IsTrue(_usergroup.Fields.Relationdate_isNull, "DO_UserGroup.Relationdate expected to be nullable ({0})", UT0__utils.DBConnections[c].DBServerType);
-				Assert.IsTrue(_usergroup.Fields.Defaultrelation_isNull, "DO_UserGroup.Defaultrelation expected to be nullable ({0})", UT0__utils.DBConnections[c].DBServerType);
+				Assert.IsTrue(_usergroup.Fields.Relationdate_isNull, "DO_UserGroup.Relationdate expected to be nullable ({0})", DBConnectionsupport.GetDBServerType(UT0__utils.DBConnections[c]));
+				Assert.IsTrue(_usergroup.Fields.Defaultrelation_isNull, "DO_UserGroup.Defaultrelation expected to be nullable ({0})", DBConnectionsupport.GetDBServerType(UT0__utils.DBConnections[c]));
 				#endregion
 				#region test2...
 				for (int i = 0; i < 2; i++) { // test both fullmode and not
@@ -86,8 +86,8 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 						(i == 0) // test both fullmode and not
 					);
 					while (_usergroup.Record.Read()) {
-						Assert.IsTrue(_usergroup.Fields.Relationdate_isNull, "DO_UserGroup.Relationdate expected to be nullable ({0})", UT0__utils.DBConnections[c].DBServerType);
-						Assert.IsTrue(_usergroup.Fields.Defaultrelation_isNull, "DO_UserGroup.Defaultrelation expected to be nullable ({0})", UT0__utils.DBConnections[c].DBServerType);
+						Assert.IsTrue(_usergroup.Fields.Relationdate_isNull, "DO_UserGroup.Relationdate expected to be nullable ({0})", DBConnectionsupport.GetDBServerType(UT0__utils.DBConnections[c]));
+						Assert.IsTrue(_usergroup.Fields.Defaultrelation_isNull, "DO_UserGroup.Defaultrelation expected to be nullable ({0})", DBConnectionsupport.GetDBServerType(UT0__utils.DBConnections[c]));
 					}
 					_usergroup.Record.Close();
 				}
@@ -101,7 +101,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 						null
 					), 
 					"test error: 1 ({0})", 
-					UT0__utils.DBConnections[c].DBServerType
+					DBConnectionsupport.GetDBServerType(UT0__utils.DBConnections[c])
 				);
 				Assert.AreEqual(
 					1L,
@@ -110,7 +110,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 						null
 					), 
 					"test error: 2 ({0})", 
-					UT0__utils.DBConnections[c].DBServerType
+					DBConnectionsupport.GetDBServerType(UT0__utils.DBConnections[c])
 				);
 				#endregion
 				#region test4...
@@ -129,7 +129,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 						_now
 					), 
 					"test error: 3 ({0})", 
-					UT0__utils.DBConnections[c].DBServerType
+					DBConnectionsupport.GetDBServerType(UT0__utils.DBConnections[c])
 				);
 				Assert.AreEqual(
 					1L,
@@ -138,7 +138,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 						_now
 					), 
 					"test error: 4 ({0})", 
-					UT0__utils.DBConnections[c].DBServerType
+					DBConnectionsupport.GetDBServerType(UT0__utils.DBConnections[c])
 				);
 				#endregion
 
@@ -165,7 +165,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 			long _idgroup;
 
 			for (int c = 0; c < UT0__utils.DBConnections.Length; c++) {
-//Console.WriteLine("UT_NullableFields: {0}", UT0__utils.DBConnections[c].DBServerType.ToString());
+//Console.WriteLine("UT_NullableFields: {0}", DBConnectionsupport.GetDBServerType(UT0__utils.DBConnections[c]).ToString());
 
 				UT0__utils.DBConnections[c].Open();
 				UT0__utils.DBConnections[c].Transaction.Begin();
@@ -194,7 +194,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 				} catch {
 					Assert.Fail(
 						"test error: 1 ({0})",
-						UT0__utils.DBConnections[c].DBServerType
+						DBConnectionsupport.GetDBServerType(UT0__utils.DBConnections[c])
 					);
 				}
 				_usergroup.Dispose(); _usergroup = null;

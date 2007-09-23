@@ -391,13 +391,20 @@ namespace OGen.lib.datalayer {
 		/// <param name="parameterDirection_in">Parameter's Direction</param>
 		/// <param name="value_in">Parameter's Value</param>
 		/// <returns>new IDbDataParameter</returns>
-		public IDbDataParameter newDBDataParameter(string name_in, DbType dbType_in, ParameterDirection parameterDirection_in, object value_in) {
+		public IDbDataParameter newDBDataParameter(
+			string name_in, 
+			DbType dbType_in, 
+			ParameterDirection parameterDirection_in, 
+			object value_in
+		) {
 			return newDBDataParameter(
 				name_in,
 				dbType_in,
 				parameterDirection_in,
 				value_in,
-				0
+				0, 
+				(byte)0, 
+				(byte)0
 			);
 		}
 
@@ -410,7 +417,42 @@ namespace OGen.lib.datalayer {
 		/// <param name="value_in">Parameter's Value</param>
 		/// <param name="size_in">Parameter's Size (the actual DataBase Parameter Size representation, if such exists for the Parameter)</param>
 		/// <returns>new IDbDataParameter</returns>
-		public abstract IDbDataParameter newDBDataParameter(string name_in, DbType dbType_in, ParameterDirection parameterDirection_in, object value_in, int size_in);
+		public IDbDataParameter newDBDataParameter(
+			string name_in, 
+			DbType dbType_in, 
+			ParameterDirection parameterDirection_in, 
+			object value_in, 
+			int size_in
+		) {
+			return newDBDataParameter(
+				name_in, 
+				dbType_in, 
+				parameterDirection_in, 
+				value_in, 
+				size_in, 
+				(byte)0, 
+				(byte)0
+			);
+		}
+
+		/// <summary>
+		/// Instantiates a new IDbDataParameter for the Connection's taking in consideration the appropriate DataBase Server Type.
+		/// </summary>
+		/// <param name="name_in">Parameter's Name</param>
+		/// <param name="dbType_in">Parameter's DbType</param>
+		/// <param name="parameterDirection_in">Parameter's Direction</param>
+		/// <param name="value_in">Parameter's Value</param>
+		/// <param name="size_in">Parameter's Size (the actual DataBase Parameter Size representation, if such exists for the Parameter)</param>
+		/// <returns>new IDbDataParameter</returns>
+		public abstract IDbDataParameter newDBDataParameter(
+			string name_in, 
+			DbType dbType_in, 
+			ParameterDirection parameterDirection_in, 
+			object value_in, 
+			int size_in, 
+			byte precision_in, 
+			byte scale_in
+		);
 		#endregion
 		//---
 		#region public void Execute_SQLQuery(...);
