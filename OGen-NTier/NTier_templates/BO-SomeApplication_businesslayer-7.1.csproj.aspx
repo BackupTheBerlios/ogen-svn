@@ -123,6 +123,21 @@ int _aux_table_hasidentitykey;
                     AssemblyFolderKey = "hklm\dn\ogen"
                 />
                 <Reference
+                    Name = "OGen.lib.datalayer.PostgreSQL-1.1"
+                    AssemblyName = "OGen.lib.datalayer.PostgreSQL-1.1"
+                    AssemblyFolderKey = "hklm\dn\ogen"
+                />
+                <Reference
+                    Name = "OGen.lib.datalayer.SQLServer-1.1"
+                    AssemblyName = "OGen.lib.datalayer.SQLServer-1.1"
+                    AssemblyFolderKey = "hklm\dn\ogen"
+                />
+                <Reference
+                    Name = "OGen.lib.datalayer.support-1.1"
+                    AssemblyName = "OGen.lib.datalayer.support-1.1"
+                    AssemblyFolderKey = "hklm\dn\ogen"
+                />
+                <Reference
                     Name = "OGen.NTier.lib.datalayer-1.1"
                     AssemblyName = "OGen.NTier.lib.datalayer-1.1"
                     AssemblyFolderKey = "hklm\dn\ogen"

@@ -74,10 +74,7 @@
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="OGen.lib.datalayer-2.0">
-      <Name>OGen.lib.datalayer-2.0</Name>
-      <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
-    </Reference>
+    <Reference Include="OGen.lib.datalayer-2.0" />
     <Reference Include="OGen.NTier.lib.businesslayer-2.0">
       <Name>OGen.NTier.lib.businesslayer-2.0</Name>
       <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>

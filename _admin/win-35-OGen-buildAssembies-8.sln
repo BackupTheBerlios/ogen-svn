@@ -8,8 +8,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_collections", "..\OGen
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_config", "..\OGen\OGen_config\OGen_config-8.csproj", "{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer", "..\OGen\OGen_datalayer\OGen_datalayer-8.csproj", "{4AE20414-478E-4859-849E-929741A5936C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer__base", "..\OGen\OGen_datalayer__base\OGen_datalayer__base-8.csproj", "{D66D0E69-852C-4695-9D63-C9AB1A959E0B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_PostgreSQL", "..\OGen\OGen_datalayer_PostgreSQL\OGen_datalayer_PostgreSQL-8.csproj", "{07D7D1E0-A4F9-45C3-8100-FC60AC3BF8FA}"
@@ -49,6 +47,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc-console", "..\OGen-Doc\Doc-console\Doc-console-8.csproj", "{D4BA7561-1BEB-403C-933C-AE740D4889BE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayersupport", "..\OGen\OGen_datalayersupport\OGen_datalayersupport-8.csproj", "{88D87481-CC3F-49C7-A013-758387F3452E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer", "..\OGen\OGen_datalayer\OGen_datalayer-8.csproj", "{4AE20414-478E-4859-849E-929741A5936C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

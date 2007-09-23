@@ -1,7 +1,7 @@
 OGen, OGen_config, OGen.lib.config, t, f, f, MIT, f, t
 OGen, OGen_config_UTs, OGen.lib.config.UTs, f, f, f, MIT, f, f
-OGen, OGen_datalayer, OGen.lib.datalayer, t, f, f, MIT, f, t
-OGen, OGen_datalayer__base, OGen.lib.datalayer.newStuff, t, f, f, MIT, f, t
+OGen, OGen_datalayer, OGen.lib.datalayer.depricated, t, f, f, MIT, f, t
+OGen, OGen_datalayer__base, OGen.lib.datalayer, t, f, f, MIT, f, t
 OGen, OGen_datalayer_PostgreSQL, OGen.lib.datalayer.PostgreSQL, t, f, f, MIT, f, t
 OGen, OGen_datalayer_SQLServer, OGen.lib.datalayer.SQLServer, t, f, f, MIT, f, t
 OGen, OGen_datalayer_MySQL, OGen.lib.datalayer.MySQL, t, f, f, MIT, f, t

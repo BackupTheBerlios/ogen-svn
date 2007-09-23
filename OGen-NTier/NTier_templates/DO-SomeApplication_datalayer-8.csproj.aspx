@@ -110,6 +110,18 @@ int _aux_table_hasidentitykey;
       <Name>OGen.lib.datalayer-2.0</Name>
       <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
     </Reference>
+    <Reference Include="OGen.lib.datalayer.PostgreSQL-2.0">
+      <Name>OGen.lib.datalayer.PostgreSQL-2.0</Name>
+      <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="OGen.lib.datalayer.SQLServer-2.0">
+      <Name>OGen.lib.datalayer.SQLServer-2.0</Name>
+      <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
+    </Reference>
+    <Reference Include="OGen.lib.datalayer.support-2.0">
+      <Name>OGen.lib.datalayer.support-2.0</Name>
+      <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
+    </Reference>
     <Reference Include="OGen.NTier.lib.datalayer-2.0">
       <Name>OGen.NTier.lib.datalayer-2.0</Name>
       <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
