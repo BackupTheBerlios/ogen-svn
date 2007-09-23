@@ -33,8 +33,8 @@ namespace OGen.lib.datalayer {
 			cleanUp();
 		}
 		internal void Dispose() {
-			GC.SuppressFinalize(this);
 			cleanUp();
+			GC.SuppressFinalize(this);
 		}
 		private void cleanUp() {
 			if (intransaction_) Terminate();

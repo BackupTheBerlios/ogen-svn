@@ -189,6 +189,33 @@ namespace OGen.lib.datalayer {
 			//}
 		}
 		#endregion
+
+// ToDos: here!
+		#region //public void Save(...);
+		//public void Save(string savePointName_in) {
+		//	#region Checking...
+		//	if (!intransaction_)
+		//		throw InvalidTransactionStateException_uninitiated;
+		//	#endregion
+		//
+		//	transaction_.Save(savePointName_in);
+		//}
+		#endregion
+//		#region public void Rollback(...);
+// ToDos: here!
+		#region //public void Rollback(string savePointName_in);
+		//public void Rollback(string savePointName_in) {
+		//	#region Checking...
+		//	if (!intransaction_)
+		//		throw InvalidTransactionStateException_uninitiated;
+		//	#endregion
+		//
+		//	if (savePointName_in == "")
+		//		transaction_.Rollback();
+		//	else
+		//		transaction_.Rollback(savePointName_in);
+		//}
+		#endregion
 		//#endregion
 	}
 }

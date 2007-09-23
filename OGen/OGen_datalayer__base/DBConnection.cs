@@ -693,7 +693,12 @@ namespace OGen.lib.datalayer {
 		/// <param name="function_in">SQL Function name</param>
 		/// <returns>populated Object with SQL Function's Output</returns>
 		public object Execute_SQLFunction(string function_in) {
-			return Execute_SQLFunction(function_in, new IDbDataParameter[] { }, DbType.Boolean, -1);
+			return Execute_SQLFunction(
+				function_in, 
+				new IDbDataParameter[] { }, 
+				DbType.Boolean, 
+				-1
+			);
 		}
 		#endregion
 		#region public object Execute_SQLFunction(string function_in, DbType returnValue_DbType_in, int returnValue_Size_in);
@@ -704,8 +709,17 @@ namespace OGen.lib.datalayer {
 		/// <param name="returnValue_DbType_in">DbType for return value</param>
 		/// <param name="returnValue_Size_in">Size for return value (the actual DataBase return value Size representation, if such exists)</param>
 		/// <returns>populated Object with SQL Function's Output</returns>
-		public object Execute_SQLFunction(string function_in, DbType returnValue_DbType_in, int returnValue_Size_in) {
-			return Execute_SQLFunction(function_in, new IDbDataParameter[] { }, returnValue_DbType_in, returnValue_Size_in);
+		public object Execute_SQLFunction(
+			string function_in, 
+			DbType returnValue_DbType_in, 
+			int returnValue_Size_in
+		) {
+			return Execute_SQLFunction(
+				function_in, 
+				new IDbDataParameter[] { }, 
+				returnValue_DbType_in, 
+				returnValue_Size_in
+			);
 		}
 		#endregion
 		#region public object Execute_SQLFunction(string function_in, IDbDataParameter[] dataParameters_in);
@@ -715,8 +729,16 @@ namespace OGen.lib.datalayer {
 		/// <param name="function_in">SQL Function name</param>
 		/// <param name="dataParameters_in">SQL Function parameters</param>
 		/// <returns>populated Object with SQL Function's Output</returns>
-		public object Execute_SQLFunction(string function_in, IDbDataParameter[] dataParameters_in) {
-			return Execute_SQLFunction(function_in, dataParameters_in, DbType.Boolean, -1);
+		public object Execute_SQLFunction(
+			string function_in, 
+			IDbDataParameter[] dataParameters_in
+		) {
+			return Execute_SQLFunction(
+				function_in, 
+				dataParameters_in, 
+				DbType.Boolean, 
+				-1
+			);
 		}
 		#endregion
 		#region public object Execute_SQLFunction(string function_in, IDbDataParameter[] dataParameters_in, DbType returnValue_DbType_in, int returnValue_Size_in);
@@ -836,7 +858,10 @@ namespace OGen.lib.datalayer {
 		/// <param name="function_in">SQL Function name</param>
 		/// <returns>populated DataSet with SQL Function's Output</returns>
 		public DataSet Execute_SQLFunction_returnDataSet(string function_in) {
-			return Execute_SQLFunction_returnDataSet(function_in, new IDbDataParameter[] { });
+			return Execute_SQLFunction_returnDataSet(
+				function_in, 
+				new IDbDataParameter[] { }
+			);
 		}
 		#endregion
 		#region public DataSet Execute_SQLFunction_returnDataSet(string function_in, IDbDataParameter[] dataParameters_in);
@@ -846,7 +871,10 @@ namespace OGen.lib.datalayer {
 		/// <param name="function_in">SQL Function name</param>
 		/// <param name="dataParameters_in">SQL Function parameters</param>
 		/// <returns>populated DataSet with SQL Function's Output</returns>
-		public DataSet Execute_SQLFunction_returnDataSet(string function_in, IDbDataParameter[] dataParameters_in) {
+		public DataSet Execute_SQLFunction_returnDataSet(
+			string function_in, 
+			IDbDataParameter[] dataParameters_in
+		) {
 			DataSet Execute_SQLFunction_returnDataSet_out;
 
 #if !DEBUG
@@ -895,7 +923,10 @@ namespace OGen.lib.datalayer {
 		/// <param name="function_in">SQL Function name</param>
 		/// <returns>populated DataTable with SQL Function's Output</returns>
 		public DataTable Execute_SQLFunction_returnDataTable(string function_in) {
-			return Execute_SQLFunction_returnDataTable(function_in, new IDbDataParameter[] { });
+			return Execute_SQLFunction_returnDataTable(
+				function_in, 
+				new IDbDataParameter[] { }
+			);
 		}
 		#endregion
 		#region public DataTable Execute_SQLFunction_returnDataTable(string function_in, IDbDataParameter[] dataParameters_in);
@@ -905,7 +936,10 @@ namespace OGen.lib.datalayer {
 		/// <param name="function_in">SQL Function name</param>
 		/// <param name="dataParameters_in">SQL Function parameters</param>
 		/// <returns>populated DataTable with SQL Function's Output</returns>
-		public DataTable Execute_SQLFunction_returnDataTable(string function_in, IDbDataParameter[] dataParameters_in) {
+		public DataTable Execute_SQLFunction_returnDataTable(
+			string function_in, 
+			IDbDataParameter[] dataParameters_in
+		) {
 			DataTable Execute_SQLFunction_returnDataTable_out;
 
 			#region Execute_SQLFunction_returnDataTable_out = Execute_SQLFunction_returnDataSet(function_in, dataParameters_in).Tables[0];
@@ -1079,7 +1113,9 @@ namespace OGen.lib.datalayer {
 				||
 				(sqlFuncion_in == string.Empty)
 			) {
-				_dtemp = Execute_SQLQuery_returnDataTable(gettables(subAppName_in));
+				_dtemp = Execute_SQLQuery_returnDataTable(
+					gettables(subAppName_in)
+				);
 			} else {
 				_dtemp = Execute_SQLFunction_returnDataTable(
 					sqlFuncion_in,
@@ -1093,6 +1129,7 @@ namespace OGen.lib.datalayer {
 			for (int r = 0; r < _dtemp.Rows.Count; r++) {
 				getTables_out[r] = new cDBTable(
 					(string)_dtemp.Rows[r]["Name"],
+// ToDos: here!
 					//(dbservertype_ == eDBServerTypes.MySQL) ? 
 					//	((long)_dtemp.Rows[r]["isVT"] == 1L) : 
 						((int)_dtemp.Rows[r]["isVT"] == 1)
@@ -1144,7 +1181,9 @@ string.Empty
 				||
 				(sqlFuncion_in == string.Empty)
 			) {
-				_dtemp = Execute_SQLQuery_returnDataTable(gettablefields(tableName_in));
+				_dtemp = Execute_SQLQuery_returnDataTable(
+					gettablefields(tableName_in)
+				);
 			} else {
 				_dtemp = Execute_SQLFunction_returnDataTable(
 					sqlFuncion_in,
@@ -1159,6 +1198,8 @@ string.Empty
 				getTableFields_out[r] = new cDBTableField();
 
 				getTableFields_out[r].Name = (string)_dtemp.Rows[r]["Name"];
+
+// ToDos: here!
 				//switch (dbservertype_) {
 				//	case eDBServerTypes.MySQL:
 				//		getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Size"];
@@ -1169,6 +1210,9 @@ string.Empty
 				//		//---
 				//		getTableFields_out[r].isIdentity = ((long)_dtemp.Rows[r]["isIdentity"] == 1L);
 				//		getTableFields_out[r].isPK = ((long)_dtemp.Rows[r]["isPK"] == 1L);
+				//		//---
+				//		getTableFields_out[r].Numeric_Precision = (_dtemp.Rows[r]["Numeric_Precision"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Numeric_Precision"];
+				//		getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r]["Numeric_Scale"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Numeric_Scale"];
 				//		break;
 				//
 				//	case eDBServerTypes.PostgreSQL:
@@ -1181,20 +1225,21 @@ string.Empty
 						//---
 						getTableFields_out[r].isIdentity = ((int)_dtemp.Rows[r]["isIdentity"] == 1);
 						getTableFields_out[r].isPK = ((int)_dtemp.Rows[r]["isPK"] == 1);
+						//---
+// ToDos: here! SQLServer
+//						getTableFields_out[r].Numeric_Precision = (_dtemp.Rows[r]["Numeric_Precision"] == DBNull.Value) ? 0 : (int)(byte)_dtemp.Rows[r]["Numeric_Precision"];
+//						getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r]["Numeric_Scale"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Numeric_Scale"];
+// ToDos: here! PostgreSQL
+						getTableFields_out[r].Numeric_Precision = (_dtemp.Rows[r]["Numeric_Precision"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Numeric_Precision"];
+						getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r]["Numeric_Scale"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Numeric_Scale"];
 				//		break;
-				//
-				//	default: {
-				//		throw new Exception(
-				//			string.Format(
-				//				"{0}.{1}.getTables: - not implemented",
-				//				this.GetType().Namespace,
-				//				this.GetType().Name
-				//			)
-				//		);
-				//	}
 				//}
 				//---
 				getTableFields_out[r].DBType_inDB_name = (string)_dtemp.Rows[r]["Type"];
+				getTableFields_out[r].DBDefaultValue = (_dtemp.Rows[r]["COLUMN_DEFAULT"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["COLUMN_DEFAULT"];
+				getTableFields_out[r].DBCollationName = (_dtemp.Rows[r]["COLLATION_NAME"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["COLLATION_NAME"];
+// ToDos: here!
+getTableFields_out[r].DBDescription = string.Empty;
 			}
 			_dtemp.Dispose(); _dtemp = null;
 

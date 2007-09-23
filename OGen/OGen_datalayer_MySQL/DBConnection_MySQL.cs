@@ -223,7 +223,7 @@ throw new Exception("not implemented!");
 
 //			string _database = Connectionstring_database();
 //			return string.Format(
-//                #region "SELECT ...", 
+//				#region "SELECT ...", 
 //@"
 //SELECT null
 //FROM INFORMATION_SCHEMA.ROUTINES
@@ -234,14 +234,14 @@ throw new Exception("not implemented!");
 //	AND
 //	(routine_schema = '{1}')
 //", 
-//                #endregion
-//                name_in, 
-//                _database
-//            );
+//					#endregion
+//					name_in, 
+//					_database
+//			);
 		}
 //		#endregion
 //		#region protected override string sqlfunction_delete(...);
-        protected override string sqlfunction_delete(string name_in) {
+		protected override string sqlfunction_delete(string name_in) {
 
 // ToDos: here! i'm half sure database name is needed!
 throw new Exception("not implemented!");

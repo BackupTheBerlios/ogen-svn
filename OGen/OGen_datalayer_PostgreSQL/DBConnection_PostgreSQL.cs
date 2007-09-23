@@ -215,10 +215,10 @@ namespace OGen.lib.datalayer.PostgreSQL {
 
 
 		//---
-#region protected override string sqlfunction_exists(...);
+		#region protected override string sqlfunction_exists(...);
 		protected override string sqlfunction_exists(string name_in) {
 			return string.Format(
-#region "SELECT ...", 
+				#region "SELECT ...", 
 				@"
 SELECT null
 FROM INFORMATION_SCHEMA.ROUTINES
@@ -232,7 +232,7 @@ WHERE
 			);
 		}
 		#endregion
-#region protected override string sqlfunction_delete(...);
+		#region protected override string sqlfunction_delete(...);
 		protected override string sqlfunction_delete(string name_in) {
 			// ToDos: here! not implemented
 			// NOTES: It's not as easy as it is for SQLServer and MySQL. PostgreSQL 
@@ -245,10 +245,10 @@ WHERE
 			throw new Exception("- not implemented!");
 		}
 		#endregion
-#region protected override string sqlstoredprocedure_exists(...);
+		#region protected override string sqlstoredprocedure_exists(...);
 		protected override string sqlstoredprocedure_exists(string name_in) {
 			return string.Format(
-#region "SELECT ...",
+				#region "SELECT ...",
 @"
 SELECT null
 FROM INFORMATION_SCHEMA.ROUTINES
@@ -262,7 +262,7 @@ WHERE
 			);
 		}
 		#endregion
-#region protected override string sqlstoredprocedure_delete(...);
+		#region protected override string sqlstoredprocedure_delete(...);
 		protected override string sqlstoredprocedure_delete(string name_in) {
 			// ToDos: here! not implemented
 			// NOTES: It's not as easy as it is for SQLServer and MySQL. PostgreSQL 
@@ -276,10 +276,10 @@ WHERE
 			throw new Exception("- not implemented!");
 		}
 		#endregion
-#region protected override string sqlview_exists(...);
+		#region protected override string sqlview_exists(...);
 		protected override string sqlview_exists(string name_in) {
 			return string.Format(
-#region "SELECT ...",
+				#region "SELECT ...",
 @"
 SELECT null
 FROM INFORMATION_SCHEMA.TABLES
