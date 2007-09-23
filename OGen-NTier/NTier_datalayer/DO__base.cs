@@ -89,7 +89,7 @@ namespace OGen.NTier.lib.datalayer {
 		}
 		private void cleanUp() {
 			if (connection_insideinstance_ && (connection__ != null)) {
-				connection__.Dispose(); connection__ == null;
+				connection__.Dispose(); connection__ = null;
 			}
 		}
 //		#endregion
