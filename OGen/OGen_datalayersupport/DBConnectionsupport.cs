@@ -50,6 +50,13 @@ namespace OGen.lib.datalayer {
 						connectionString_in, 
 						logFile_in
 					);
+#if MySQL
+				case eDBServerTypes.MySQL:
+					return new cDBConnection_MySQL(
+						connectionString_in, 
+						logFile_in
+					);
+#endif
 			}
 			
 			throw new Exception(
@@ -67,11 +74,18 @@ namespace OGen.lib.datalayer {
 #if PostgreSQL
 			if (connection_in is cDBConnection_PostgreSQL) {
 				return eDBServerTypes.PostgreSQL;
-			} else
+			}
+			else
 #endif
 			if (connection_in is cDBConnection_SQLServer) {
 				return eDBServerTypes.SQLServer;
 			}
+#if MySQL
+			else
+			if (connection_in is cDBConnection_MySQL) {
+				return eDBServerTypes.MySQL;
+			}
+#endif
 			
 			throw new Exception(
 				string.Format(

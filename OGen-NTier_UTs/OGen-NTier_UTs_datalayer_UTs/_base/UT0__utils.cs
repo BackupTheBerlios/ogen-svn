@@ -55,7 +55,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 							"DEBUG"
 						];
 						if (_dbcon.GeneratedSQL) {
-							dbconnections__[_count++] = new cDBConnection(
+							dbconnections__[_count++] = DBConnectionsupport.CreateInstance(
 								Config_DBConnectionstrings.DBServerTypes(DO__utils.ApplicationName)[_db], 
 								_dbcon.Connectionstring
 							);

@@ -50,13 +50,17 @@ namespace OGen.NTier.presentationlayer.test {
 			Console.WriteLine("---");
 		}
 		static void Main(string[] args) {
+			Console.WriteLine();
+			Console.ReadLine();
+			return;
+
 			const string _file1 = 
-				//@"C:\Documents and Settings\fmonteir\My Documents\francisco_cg@assembla\SICABE\SICABE-Principal\OGen-metadatas\MD_SICABE_Principal.OGen-metadata.xml"
-				@"C:\Documents and Settings\fmonteir\My Documents\francisco_cg@assembla\SICABE\SICABE-Principal\OGen-metadatas\xxx_apagar.xml"
+				//@"X:\OGen.berlios.de\OGen-NTier_UTs\OGen-metadatas\MD_OGen-NTier_UTs.OGen-metadata.xml"
+				@"X:\OGen.berlios.de\OGen-NTier_UTs\OGen-metadatas\xxx_apagar.xml"
 			;
 			const string _file2 =
-				//@"C:\Documents and Settings\fmonteir\My Documents\francisco_cg@assembla\SICABE\SICABE-Principal\OGen-metadatas\MD0_SICABE_Principal.OGen-metadata.xml"
-				@"C:\Documents and Settings\fmonteir\My Documents\francisco_cg@assembla\SICABE\SICABE-Principal\OGen-metadatas\xxx0_apagar.xml"
+				//@"X:\OGen.berlios.de\OGen-NTier_UTs\OGen-metadatas\MD0_OGen-NTier_UTs.OGen-metadata.xml"
+				@"X:\OGen.berlios.de\OGen-NTier_UTs\OGen-metadatas\xxx0_apagar.xml"
 			;
 			eDBServerTypes _aux_dbservertype = eDBServerTypes.SQLServer;
 			cDBMetadata _aux_metadata;
@@ -66,7 +70,7 @@ namespace OGen.NTier.presentationlayer.test {
 			//_aux_metadata.LoadState_fromDB(
 			//    null, 
 			//    eDBServerTypes.SQLServer,
-			//    "server=cg-sbdd.dges.mces;uid=sa;pwd=qwertyu;database=SICABE_Principal;", 
+			//    "server=127.0.0.1;uid=sa;pwd=passpub;database=OGen-NTier_UTs;", 
 			//    "", 
 			//    true
 			//);

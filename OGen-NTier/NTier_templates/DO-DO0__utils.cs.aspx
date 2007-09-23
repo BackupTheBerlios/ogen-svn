@@ -226,7 +226,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 							continue;
 						}
 					}
-					cDBConnection connection = new cDBConnection(
+					cDBConnection connection = DBConnectionsupport.CreateInstance(
 						_aux_metadata.DBs.FirstDefaultAvailable_DBServerType(), 
 						_aux_metadata.DBs.FirstDefaultAvailable_Connectionstring()
 					);
