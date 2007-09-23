@@ -30,26 +30,18 @@ namespace OGen.lib.datalayer {
 		}
 
 		~DBTransaction() {
-			Dispose(false);
+			cleanUp();
 		}
 
 		#region public void Dispose();
 		public void Dispose() {
-			Dispose(true);
+			cleanUp();
+			System.GC.SuppressFinalize(this);
 		}
-
-		private bool disposed_ = false;
-		private void Dispose(bool disposing_in) {
-			if (!disposed_) {
-
-				if (intransaction_) Terminate();
-				if (transaction_ != null) transaction_.Dispose();
-
-
-				disposed_ = true;
-				if (disposing_in) {
-					GC.SuppressFinalize(this);
-				}
+		private void cleanUp() {
+			if (intransaction_) Terminate();
+			if (transaction_ != null) {
+				transaction_.Dispose(); transaction_ = null;
 			}
 		}
 		#endregion

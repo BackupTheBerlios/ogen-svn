@@ -62,38 +62,31 @@ namespace OGen.lib.datalayer {
 			isopen_ = false;
 		}
 		~cDBConnection() {
-			Dispose(false);
+			cleanUp();
 		}
 
 		#region public void Dispose();
 		public void Dispose() {
-			Dispose(true);
+			cleanUp();
+			System.GC.SuppressFinalize(this);
 		}
-
-		private bool disposed_ = false;
-		protected virtual void Dispose(bool disposing_in) {
-			if (!disposed_) {
-				// ToDos: here! check transaction
-
+		private void cleanUp() {
 #if !DEBUG
 // ToDos: here!
 			lock (isopen_) {
 #endif
-				if (transaction__ != null) transaction__.Dispose();
+				if (transaction__ != null) {
+					transaction__.Dispose(); transaction__ = null;
+				}
 
 				if ((bool)isopen_) Close();
-				if (connection__ != null) connection__.Dispose();
+				if (connection__ != null) {
+					connection__.Dispose(); connection__ = null;
+				}
 #if !DEBUG
 // ToDos: here!
 			}
 #endif
-
-
-				disposed_ = true;
-				if (disposing_in) {
-					GC.SuppressFinalize(this);
-				}
-			}
 		}
 		#endregion
 		//#endregion

@@ -63,7 +63,7 @@ namespace OGen.NTier.lib.datalayer {
 			bool connection_insideInstance_in,
 			string logfile_in
 		) {
-			connection_ = connection_in;
+			connection__ = connection_in;
 			connection_dbservertype_ = dbServerType_in;
 			connection_connectionstring_ = connectionstring_in;
 			connection_insideinstance_ = connection_insideInstance_in;
@@ -84,26 +84,26 @@ namespace OGen.NTier.lib.datalayer {
 		/// Disposes any instantiated Connection.
 		/// </summary>
 		public void Dispose() {
-			System.GC.SuppressFinalize(this);
 			cleanUp();
+			System.GC.SuppressFinalize(this);
 		}
 		private void cleanUp() {
-			if (connection_insideinstance_) {
-				if (connection_ != null) {
-					connection_.Dispose(); connection_ = null;
-				}
+			if (connection_insideinstance_ && (connection__ != null)) {
+				connection__.Dispose(); connection__ == null;
 			}
 		}
 //		#endregion
 
 		//#region Properties...
 //		#region public cDBConnection Connection { get; }
-		private bool connection_insideinstance_;
 		private string connection_dbservertype_;
 		private string connection_connectionstring_;
-		private cDBConnection connection_;
 		private bool logenabled_;
 		private string logfile_;
+
+		private bool connection_insideinstance_;
+		private cDBConnection connection__;
+
 		/// <summary>
 		/// DB Connection.
 		/// </summary>
@@ -112,27 +112,27 @@ namespace OGen.NTier.lib.datalayer {
 				if (
 					connection_insideinstance_
 					&&
-					(connection_ == null)
+					(connection__ == null)
 				) {
 					// instantiating for the first time and
 					// only because it became needed, otherwise
 					// never instantiated...
 
 					if (logenabled_) {
-						connection_ =  DBConnection_createInstance(
+						connection__ =  DBConnection_createInstance(
 							connection_dbservertype_,
 							connection_connectionstring_,
 							logfile_
 						);
 					} else {
-						connection_ = DBConnection_createInstance(
+						connection__ = DBConnection_createInstance(
 							connection_dbservertype_,
 							connection_connectionstring_, 
 							null
 						);
 					}
 				}
-				return connection_;
+				return connection__;
 			}
 		}
 //		#endregion
