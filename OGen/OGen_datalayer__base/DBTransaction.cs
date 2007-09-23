@@ -22,7 +22,7 @@ namespace OGen.lib.datalayer {
 	///	</summary>
 	/// <threadsafety static="true" instance="false"/>
 	#endregion
-	public sealed class DBTransaction {
+	public sealed class DBTransaction : IDisposable {
 		#region internal DBTransaction(...);
 		internal DBTransaction(cDBConnection parent_in) {
 			parent_ = parent_in;
@@ -30,8 +30,29 @@ namespace OGen.lib.datalayer {
 		}
 
 		~DBTransaction() {
-			if (intransaction_) Terminate();
+			Dispose(false);
 		}
+
+		#region public void Dispose();
+		public void Dispose() {
+			Dispose(true);
+		}
+
+		private bool disposed_ = false;
+		private void Dispose(bool disposing_in) {
+			if (!disposed_) {
+
+				if (intransaction_) Terminate();
+				if (transaction_ != null) transaction_.Dispose();
+
+
+				disposed_ = true;
+				if (disposing_in) {
+					GC.SuppressFinalize(this);
+				}
+			}
+		}
+		#endregion
 		#endregion
 
 		#region private Fields...

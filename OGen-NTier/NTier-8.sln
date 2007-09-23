@@ -46,9 +46,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_MySQL", "..\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayersupport", "..\OGen\OGen_datalayersupport\OGen_datalayersupport-8.csproj", "{88D87481-CC3F-49C7-A013-758387F3452E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier-test-8", "NTier-test\NTier-test-8.csproj", "{2AAFDEA0-0EC3-4757-AEA9-C142BEDAA545}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier-test", "NTier-test\NTier-test-8.csproj", "{2AAFDEA0-0EC3-4757-AEA9-C142BEDAA545}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer-8", "..\OGen\OGen_datalayer\OGen_datalayer-8.csproj", "{4AE20414-478E-4859-849E-929741A5936C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer", "..\OGen\OGen_datalayer\OGen_datalayer-8.csproj", "{4AE20414-478E-4859-849E-929741A5936C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

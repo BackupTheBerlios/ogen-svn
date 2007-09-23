@@ -20,37 +20,31 @@ using System.IO;
 namespace OGen.lib.datalayer {
 	public abstract class cDBConnection : IDisposable {
 		//#region public cDBConnection(...);
-		///// <param name="dbServerType_in">DataBase Server Type</param>
-		///// <param name="connectionstring_in">Connection String</param>
-		//public cDBConnection(
-		//    eDBServerTypes dbServerType_in,
-		//    string connectionstring_in
-		//) :this (
-		//    dbServerType_in,
-		//    connectionstring_in,
-		//    string.Empty
-		//) {
-		//}
+		/// <param name="connectionstring_in">Connection String</param>
+		public cDBConnection(
+			string connectionstring_in
+		) :this (
+			connectionstring_in,
+			string.Empty
+		) {
+		}
 
 		//#region public cDBConnection(...);
-		/// <param name="dbServerType_in">DataBase Server Type</param>
 		/// <param name="connectionstring_in">Connection String</param>
 		/// <param name="logfile_in">Log File (null or empty string disables log)</param>
 		public cDBConnection(
-//			eDBServerTypes dbServerType_in, 
-            string connectionstring_in, 
-            string logfile_in
-        ) {
+			string connectionstring_in, 
+			string logfile_in
+		) {
 
 
 // ToDos: here!
 //if (connectionstring_.Trim() == string.Empty)
-//    throw InvalidConnectionstringException_empty;
+//	throw InvalidConnectionstringException_empty;
 //if (dbServerType_in == eDBServerTypes.invalid)
-//    throw InvalidDBServerTypeException;
+//	throw InvalidDBServerTypeException;
 
 
-//			dbservertype_ = dbServerType_in;
 			connectionstring_ = connectionstring_in;
 			logfile_ 
 				= (logfile_in != null)
@@ -67,24 +61,41 @@ namespace OGen.lib.datalayer {
 			;
 			isopen_ = false;
 		}
-
-		public void Dispose() {
-			// ToDos: here!
+		~cDBConnection() {
+			Dispose(false);
 		}
 
-		~cDBConnection() {
-			// ToDos: here! check transaction
+		#region public void Dispose();
+		public void Dispose() {
+			Dispose(true);
+		}
+
+		private bool disposed_ = false;
+		protected virtual void Dispose(bool disposing_in) {
+			if (!disposed_) {
+				// ToDos: here! check transaction
 
 #if !DEBUG
 // ToDos: here!
 			lock (isopen_) {
 #endif
+				if (transaction__ != null) transaction__.Dispose();
+
 				if ((bool)isopen_) Close();
+				if (connection__ != null) connection__.Dispose();
 #if !DEBUG
 // ToDos: here!
 			}
 #endif
+
+
+				disposed_ = true;
+				if (disposing_in) {
+					GC.SuppressFinalize(this);
+				}
+			}
 		}
+		#endregion
 		//#endregion
 
 		#region Exceptions...
@@ -93,7 +104,7 @@ namespace OGen.lib.datalayer {
 		///// Invalid Connection String Exception (empty).
 		///// </summary>
 		//public static readonly Exception InvalidConnectionstringException_empty
-		//    = new Exception("invalid connection string (empty)");
+		//	= new Exception("invalid connection string (empty)");
 		#endregion
 		#region public static readonly Exception InvalidSQLQueryException_empty;
 		/// <summary>
@@ -125,16 +136,6 @@ namespace OGen.lib.datalayer {
 		#endregion
 		#endregion
 		#region public properties...
-		#region //public eDBServerTypes DBServerType { get; }
-//		protected eDBServerTypes dbservertype_;
-//
-//		/// <summary>
-//		/// DataBase Server Type.
-//		/// </summary>
-//		public eDBServerTypes DBServerType {
-//			get { return eDBServerTypes.SQLServer; }
-//		}
-		#endregion
 		#region public string Connectionstring { get; }
 		protected string connectionstring_;
 
@@ -211,50 +212,6 @@ namespace OGen.lib.datalayer {
 		#endregion
 
 		#region public static Methods...
-		#region //public static cDBConnection newDBConnection(...);
-//		public static cDBConnection newDBConnection(
-//			eDBServerTypes dbServerType_in,
-//			string connectionstring_in
-//		) {
-//			return newDBConnection(
-//				dbServerType_in,
-//				connectionstring_in,
-//				null//string.Empty
-//			);
-//		}
-//		public static cDBConnection newDBConnection(
-//			eDBServerTypes dbServerType_in, 
-//			string connectionstring_in,
-//			string logfile_in
-//		) {
-//			switch (dbServerType_in) {
-//				case eDBServerTypes.PostgreSQL: {
-//					return new cDBConnection_PostgreSQL(connectionstring_in, logfile_in);
-//				}
-//				case eDBServerTypes.SQLServer: {
-//					return new cDBConnection_SQLServer(connectionstring_in, logfile_in);
-//				}
-//				default: {
-//					throw new Exception("not implemented!");
-//				}
-//			}
-//		}
-		#endregion
-		#region //public static DBUtils Utils(eDBServerTypes dbServerType_in);
-		//public static DBUtils Utils(eDBServerTypes dbServerType_in) {
-		//    switch (dbServerType_in) {
-		//        case eDBServerTypes.PostgreSQL: {
-		//            return cDBConnection_PostgreSQL.Utils;
-		//        }
-		//        case eDBServerTypes.SQLServer: {
-		//            return cDBConnection_SQLServer.Utils;
-		//        }
-		//        default: {
-		//            throw new Exception("not implemented!");
-		//        }
-		//    }
-		//}
-		#endregion
 		#endregion
 		#region private Methods...
 		#region protected void Log(...);
@@ -624,7 +581,7 @@ namespace OGen.lib.datalayer {
 			return Execute_SQLQuery_returnDataTable_out;
 		}
 		#endregion
-        //---
+		//---
 		#region public object Execute_SQLFunction(...);
 		#region protected abstract object Execute_SQLFunction(...);
 		protected abstract object Execute_SQLFunction(
@@ -836,7 +793,7 @@ namespace OGen.lib.datalayer {
 		}
 		#endregion
 		#endregion
-        #region public DataTable Execute_SQLFunction_returnDataTable(...);
+		#region public DataTable Execute_SQLFunction_returnDataTable(...);
 		#region public DataTable Execute_SQLFunction_returnDataTable(string function_in);
 		/// <summary>
 		/// Executes an SQL Function on DataBase.
@@ -870,8 +827,8 @@ namespace OGen.lib.datalayer {
 			return Execute_SQLFunction_returnDataTable_out;
 		}
 		#endregion
-        #endregion
-        //---
+		#endregion
+		//---
 		#region public bool SQLFunction_exists(...);
 		protected abstract string sqlfunction_exists(string name_in);
 
@@ -886,7 +843,7 @@ namespace OGen.lib.datalayer {
 			).Rows.Count == 1);
 		}
 		#endregion
-        #region public bool SQLFunction_delete(...);
+		#region public bool SQLFunction_delete(...);
 		protected abstract string sqlfunction_delete(string name_in);
 
 		/// <summary>
@@ -902,7 +859,7 @@ namespace OGen.lib.datalayer {
 				return false;
 			}
 		}
-        #endregion
+		#endregion
 		#region public bool SQLStoredProcedure_exists(...);
 		protected abstract string sqlstoredprocedure_exists(string name_in);
 
@@ -985,30 +942,30 @@ namespace OGen.lib.datalayer {
 			return _getdbs_out;
 		}
 		#endregion
-        #region public cDBTable[] getTables(...);
+		#region public cDBTable[] getTables(...);
 		protected abstract string gettables(string subAppName_in);
 
 		/// <summary>
-        /// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
-        /// </summary>
-        /// <returns>String array, representing a list of Table names</returns>
-        public cDBTable[] getTables() {
-            return getTables(string.Empty);
-        }
+		/// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
+		/// </summary>
+		/// <returns>String array, representing a list of Table names</returns>
+		public cDBTable[] getTables() {
+			return getTables(string.Empty);
+		}
 
-        /// <summary>
-        /// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
-        /// </summary>
-        /// <param name="subAppName_in">Table Filter. If your Application is to be hosted at some ASP, which provides you with one DataBase only, and you're using that DataBase for more than one Application. I assume you're using some convention for Table naming like: AP1_Table1, AP1_Table2, AP2_Table1, ... . Or even if you have several modules sharing same data base. If so, you can use this parameter to filter Table names for some specific Application, like: AP1 or AP2</param>
-        /// <returns>String array, representing a list of Table names</returns>
-        public cDBTable[] getTables(
-            string subAppName_in
-        ) {
-        	return getTables(
+		/// <summary>
+		/// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
+		/// </summary>
+		/// <param name="subAppName_in">Table Filter. If your Application is to be hosted at some ASP, which provides you with one DataBase only, and you're using that DataBase for more than one Application. I assume you're using some convention for Table naming like: AP1_Table1, AP1_Table2, AP2_Table1, ... . Or even if you have several modules sharing same data base. If so, you can use this parameter to filter Table names for some specific Application, like: AP1 or AP2</param>
+		/// <returns>String array, representing a list of Table names</returns>
+		public cDBTable[] getTables(
+			string subAppName_in
+		) {
+			return getTables(
 				subAppName_in, 
 				null
 			);
-        }
+		}
 
 		/// <summary>
 		/// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
@@ -1109,38 +1066,38 @@ string.Empty
 
 				getTableFields_out[r].Name = (string)_dtemp.Rows[r]["Name"];
 				//switch (dbservertype_) {
-				//    case eDBServerTypes.MySQL: {
-				//            getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Size"];
-				//            getTableFields_out[r].isNullable = ((long)_dtemp.Rows[r]["isNullable"] == 1L);
-				//            //---						
-				//            getTableFields_out[r].FK_TableName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_TableName"];
-				//            getTableFields_out[r].FK_FieldName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_FieldName"];
-				//            //---
-				//            getTableFields_out[r].isIdentity = ((long)_dtemp.Rows[r]["isIdentity"] == 1L);
-				//            getTableFields_out[r].isPK = ((long)_dtemp.Rows[r]["isPK"] == 1L);
-				//            break;
-				//        }
-				//    case eDBServerTypes.PostgreSQL:
-				//    case eDBServerTypes.SQLServer: {
-							getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Size"];
-							getTableFields_out[r].isNullable = ((int)_dtemp.Rows[r]["isNullable"] == 1);
-							//---						
-							getTableFields_out[r].FK_TableName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_TableName"];
-							getTableFields_out[r].FK_FieldName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_FieldName"];
-							//---
-							getTableFields_out[r].isIdentity = ((int)_dtemp.Rows[r]["isIdentity"] == 1);
-							getTableFields_out[r].isPK = ((int)_dtemp.Rows[r]["isPK"] == 1);
-				//			break;
-				//        }
-				//    default: {
-				//            throw new Exception(
-				//                string.Format(
-				//                    "{0}.{1}.getTables: - not implemented",
-				//                    this.GetType().Namespace,
-				//                    this.GetType().Name
-				//                )
-				//            );
-				//        }
+				//	case eDBServerTypes.MySQL:
+				//		getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Size"];
+				//		getTableFields_out[r].isNullable = ((long)_dtemp.Rows[r]["isNullable"] == 1L);
+				//		//---						
+				//		getTableFields_out[r].FK_TableName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_TableName"];
+				//		getTableFields_out[r].FK_FieldName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_FieldName"];
+				//		//---
+				//		getTableFields_out[r].isIdentity = ((long)_dtemp.Rows[r]["isIdentity"] == 1L);
+				//		getTableFields_out[r].isPK = ((long)_dtemp.Rows[r]["isPK"] == 1L);
+				//		break;
+				//
+				//	case eDBServerTypes.PostgreSQL:
+				//	case eDBServerTypes.SQLServer:
+						getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Size"];
+						getTableFields_out[r].isNullable = ((int)_dtemp.Rows[r]["isNullable"] == 1);
+						//---						
+						getTableFields_out[r].FK_TableName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_TableName"];
+						getTableFields_out[r].FK_FieldName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_FieldName"];
+						//---
+						getTableFields_out[r].isIdentity = ((int)_dtemp.Rows[r]["isIdentity"] == 1);
+						getTableFields_out[r].isPK = ((int)_dtemp.Rows[r]["isPK"] == 1);
+				//		break;
+				//
+				//	default: {
+				//		throw new Exception(
+				//			string.Format(
+				//				"{0}.{1}.getTables: - not implemented",
+				//				this.GetType().Namespace,
+				//				this.GetType().Name
+				//			)
+				//		);
+				//	}
 				//}
 				//---
 				getTableFields_out[r].DBType_inDB_name = (string)_dtemp.Rows[r]["Type"];
