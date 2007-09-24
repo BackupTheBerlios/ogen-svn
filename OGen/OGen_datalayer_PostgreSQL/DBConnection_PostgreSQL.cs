@@ -293,7 +293,7 @@ WHERE
 			);
 		}
 		#endregion
-#region protected override string sqlview_delete(...);
+		#region protected override string sqlview_delete(...);
 		protected override string sqlview_delete(string name_in) {
 			// ToDos: here! not implemented, needed if droping, 
 			// no need when replacing, you can use:
@@ -380,95 +380,105 @@ WHERE
 			return _query.ToString();
 		}
 		#endregion
-#region protected override string gettablefields(...);
+		#region protected override string gettablefields(...);
 		protected override string gettablefields(
 			string tableName_in
 		) {
-#region return "SELECT ...";
+			#region return "SELECT ...";
 			return string.Format(@"
 SELECT
-	t1.COLUMN_NAME AS ""Name"", 
+	_field.COLUMN_NAME AS ""Name"", 
 	CASE
-		WHEN t1.IS_NULLABLE = 'NO' THEN
+		WHEN _field.IS_NULLABLE = 'NO' THEN
 			CAST(0 AS Int)
 		ELSE
 			CAST(1 AS Int)
-	END
+	END 
 	AS ""isNullable"", 
-	t1.DATA_TYPE AS ""Type"", 
-	t1.CHARACTER_MAXIMUM_LENGTH AS ""Size"", 
+	_field.DATA_TYPE AS ""Type"", 
+	_field.CHARACTER_MAXIMUM_LENGTH AS ""Size"", 
 	CASE
-		WHEN (t6.TABLE_TYPE = 'VIEW') THEN
+		WHEN (_table.TABLE_TYPE = 'VIEW') THEN
 			CAST(0 AS Int)
-		WHEN t7.column_name IS NULL THEN
-			CASE
-				WHEN (t6.TABLE_TYPE != 'VIEW') THEN
-					CASE
-						WHEN (column_default LIKE 'nextval(''%') THEN
-							CAST(1 AS Int)
-						ELSE
-							CAST(0 AS Int)
-					END
-				ELSE
-					CAST(0 AS Int)
-			END
-		ELSE
+		WHEN (_field.COLUMN_NAME = _pk.COLUMN_NAME) THEN
 			CAST(1 AS Int)
-	END AS ""isPK"", 
+		ELSE
+			CAST(0 AS Int)
+	END
+	AS ""isPK"", 
 	CASE
-		WHEN (t6.TABLE_TYPE != 'VIEW') THEN
+		WHEN (_table.TABLE_TYPE = 'VIEW') THEN
+			CAST(0 AS Int)
+		ELSE
 			CASE
-				WHEN (column_default LIKE 'nextval(''%') THEN
+				WHEN (_field.COLUMN_DEFAULT LIKE 'nextval(''%') THEN
 					CAST(1 AS Int)
 				ELSE
 					CAST(0 AS Int)
 			END
-		ELSE
-			CAST(0 AS Int)
-	END AS ""isIdentity"", 
---	CASE
---		WHEN (t6.TABLE_TYPE != 'VIEW') THEN
-----			CASE
-----				WHEN t4.CONSTRAINT_NAME IS NULL THEN
---					NULL
-----				ELSE
-----					t4.table_name
-----			END
---		ELSE
-			NULL
---	END
-	AS ""FK_TableName"", 
---	CASE
---		WHEN (t6.TABLE_TYPE != 'VIEW') THEN
-----			CASE
-----				WHEN t4.CONSTRAINT_NAME IS NULL THEN
---					NULL
-----				ELSE
-----					t4.column_name
-----			END
---		ELSE
-			NULL
---	END
-	AS ""FK_FieldName""
-FROM INFORMATION_SCHEMA.COLUMNS AS t1
-	LEFT JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE t7 ON (
-		(t7.column_name = t1.COLUMN_NAME)
-		AND
-		(t7.constraint_name = t1.table_name || '_pkey')
+	END 
+	AS ""isIdentity"", 
+	_fk.FOREIGN_TABLE_NAME AS ""FK_TableName"", 
+	_fk.FOREIGN_COLUMN_NAME AS ""FK_FieldName"", 
+	_field.COLUMN_DEFAULT AS ""COLUMN_DEFAULT"", 
+	_field.COLLATION_NAME AS ""COLLATION_NAME"", 
+	_field.NUMERIC_PRECISION AS ""NUMERIC_PRECISION"", 
+	_field.NUMERIC_SCALE AS ""NUMERIC_SCALE""
+FROM INFORMATION_SCHEMA.COLUMNS AS _field
+	LEFT JOIN INFORMATION_SCHEMA.TABLES _table ON (
+		(_table.TABLE_NAME = _field.TABLE_NAME)
+		and
+		(_table.TABLE_CATALOG = _field.TABLE_CATALOG)
 	)
---	LEFT JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE t4 ON (
---		(t4.CONSTRAINT_NAME = t1.TABLE_NAME || '_' || t1.COLUMN_NAME || '_fkey')
---		OR
---		(t4.CONSTRAINT_NAME = t1.TABLE_NAME || '__base_' || t1.COLUMN_NAME || '_fkey')
---	)
-	--LEFT JOIN INFORMATION_SCHEMA.View_Column_Usage t5 ON
-	--	(t5.VIEW_NAME = t1.TABLE_NAME)
-	--	AND
-	--	(t5.COLUMN_NAME = t1.COLUMN_NAME)
-	LEFT JOIN INFORMATION_SCHEMA.TABLES t6 ON
-		(t6.TABLE_NAME = t1.TABLE_NAME)
-WHERE (t1.TABLE_NAME = '{0}') 
-ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
+	LEFT JOIN (
+		SELECT
+			_kcu.TABLE_NAME, 
+			_kcu.COLUMN_NAME, 
+			_kcu.TABLE_CATALOG
+		FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE _kcu
+		LEFT JOIN INFORMATION_SCHEMA.TABLE_CONSTRAINTS _tc ON (
+			(_tc.CONSTRAINT_CATALOG = _kcu.CONSTRAINT_CATALOG) 
+			AND 
+			(_tc.CONSTRAINT_SCHEMA = _kcu.CONSTRAINT_SCHEMA) 
+			AND 
+			(_tc.CONSTRAINT_NAME = _kcu.CONSTRAINT_NAME) 
+		)
+		WHERE
+			(_tc.CONSTRAINT_TYPE = 'PRIMARY KEY')
+	) _pk ON (
+		(_pk.TABLE_CATALOG = _field.TABLE_CATALOG)
+		and
+		(_pk.TABLE_NAME = _field.TABLE_NAME)
+		and
+		(_pk.COLUMN_NAME = _field.COLUMN_NAME)
+	)
+	LEFT JOIN (
+		SELECT
+			_tc2.TABLE_NAME,
+			_kcu2.COLUMN_NAME ,
+			_ccu2.TABLE_NAME AS FOREIGN_TABLE_NAME ,
+			_ccu2.COLUMN_NAME AS FOREIGN_COLUMN_NAME, 
+			_tc2.TABLE_CATALOG
+		FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS _tc2
+		JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE _ccu2 ON
+			(_ccu2.CONSTRAINT_CATALOG = _tc2.CONSTRAINT_CATALOG) 
+			AND 
+			(_ccu2.CONSTRAINT_NAME = _tc2.CONSTRAINT_NAME)
+		JOIN  INFORMATION_SCHEMA.KEY_COLUMN_USAGE _kcu2 ON
+			(_kcu2.CONSTRAINT_CATALOG = _ccu2.CONSTRAINT_CATALOG) 
+			AND 
+			(_kcu2.CONSTRAINT_NAME = _ccu2.CONSTRAINT_NAME)
+		WHERE
+			_tc2.CONSTRAINT_TYPE = 'FOREIGN KEY'
+	) _fk ON (
+		(_field.TABLE_CATALOG = _fk.TABLE_CATALOG)
+		and
+		(_field.TABLE_NAME = _fk.TABLE_NAME)
+		and
+		(_field.COLUMN_NAME = _fk.COLUMN_NAME)
+	)
+WHERE (t1.TABLE_NAME = '{0}')
+ORDER BY t1.ORDINAL_POSITION
 ",
 				tableName_in
 			);
