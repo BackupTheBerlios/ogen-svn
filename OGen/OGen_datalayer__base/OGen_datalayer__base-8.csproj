@@ -46,10 +46,8 @@
     <Compile Include="DBTable.cs" />
     <Compile Include="DBTableField.cs" />
     <Compile Include="DBConnection.cs" />
-    <Compile Include="DBConnection__base-temp.cs" />
     <Compile Include="DBTransaction.cs" />
     <Compile Include="DBUtils.cs" />
-    <Compile Include="DBServerTypes.cs" />
     <None Include="COPYING.MIT" />
     <None Include="LICENSE.MIT.txt" />
     <None Include="LICENSE.txt" />
