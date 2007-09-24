@@ -234,7 +234,7 @@ WHERE
 		#endregion
 		#region public override string SQLFunction_delete_query(...);
 		public override string SQLFunction_delete_query(string name_in) {
-			// ToDos: here! not implemented
+			// ToDos: later! not implemented
 			// NOTES: It's not as easy as it is for SQLServer and MySQL. PostgreSQL 
 			// allows you to create diferent signatures for the same function, so in 
 			// order to drop a function we need to know the parameters for such 
@@ -264,7 +264,7 @@ WHERE
 		#endregion
 		#region public override string SQLStoredProcedure_delete_query(...);
 		public override string SQLStoredProcedure_delete_query(string name_in) {
-			// ToDos: here! not implemented
+			// ToDos: later! not implemented
 			// NOTES: It's not as easy as it is for SQLServer and MySQL. PostgreSQL 
 			// allows you to create diferent signatures for the same procedure, so in 
 			// order to drop a procedure we need to know the parameters for such 
@@ -295,7 +295,7 @@ WHERE
 		#endregion
 		#region public override string SQLView_delete_query(...);
 		public override string SQLView_delete_query(string name_in) {
-			// ToDos: here! not implemented, needed if droping, 
+			// ToDos: later! not implemented, needed if droping, 
 			// no need when replacing, you can use:
 			// CREATE OR REPLACE VIEW "some_view"
 

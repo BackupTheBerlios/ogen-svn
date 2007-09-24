@@ -76,7 +76,7 @@ namespace OGen.lib.datalayer.SQLServer {
 					case "System.Double":
 					case "System.Decimal":
 					case "System.Single":
-						// ToDos: here! this will likely change accordingly with regional 
+						// ToDos: later! this will likely change accordingly with regional 
 						// settings configurations, I need to come up with a better 
 						// approach to this:
 						return object_in.ToString().Replace(",", ".");

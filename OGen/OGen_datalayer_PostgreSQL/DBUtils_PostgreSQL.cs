@@ -56,7 +56,7 @@ namespace OGen.lib.datalayer.PostgreSQL {
 				switch (object_in.GetType().ToString()) {
 					case "System.Char":
 					case "System.String":
-						// ToDos: here! check if changes made are correct (I need test units for this)
+						// ToDos: later! check if changes made are correct (I need test units for this)
 						//return string.Format("''{0}''", object_in.ToString ().Replace("'", "''"));
 						//return string.Format("'{0}'", object_in.ToString ().Replace("'", "''"));
 						break;
@@ -66,7 +66,7 @@ namespace OGen.lib.datalayer.PostgreSQL {
 						if (DateTime.Compare(_datetime, DateTime.MinValue) == 0) {
 							return object2SQLobject(null);
 						} else {
-							// ToDos: here! check if changes made are correct (I need test units for this)
+							// ToDos: later! check if changes made are correct (I need test units for this)
 							// return string.Format("timestamp ''{0}''", _datetime.ToString("yyyy-MM-dd HH:mm:ss"));
 							return string.Format("timestamp '{0}'", _datetime.ToString("yyyy-MM-dd HH:mm:ss"));
 						}
@@ -80,7 +80,7 @@ namespace OGen.lib.datalayer.PostgreSQL {
 					case "System.Double":
 					case "System.Decimal":
 					case "System.Single":
-						// ToDos: here!
+						// ToDos: later!
 						//case eDBServerTypes.PostgreSQL: {
 						//	return object_in.ToString().Replace(",", ".");
 						//}
