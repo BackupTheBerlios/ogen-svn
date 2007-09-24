@@ -958,7 +958,7 @@ namespace OGen.lib.datalayer {
 		#endregion
 		//---
 		#region public bool SQLFunction_exists(...);
-		protected abstract string sqlfunction_exists(string name_in);
+		public abstract string SQLFunction_exists_query(string name_in);
 
 		/// <summary>
 		/// Makes use of the DataBase INFORMATION_SCHEMA to determine if an SQL Function exists on DataBase, based on it's name.
@@ -967,12 +967,12 @@ namespace OGen.lib.datalayer {
 		/// <returns>True if SQL Function exists, False if not</returns>
 		public bool SQLFunction_exists(string name_in) {
 			return (Execute_SQLQuery_returnDataTable(
-				sqlfunction_exists(name_in)
+				SQLFunction_exists_query(name_in)
 			).Rows.Count == 1);
 		}
 		#endregion
 		#region public bool SQLFunction_delete(...);
-		protected abstract string sqlfunction_delete(string name_in);
+		public abstract string SQLFunction_delete_query(string name_in);
 
 		/// <summary>
 		/// Deletes a specific SQL Function on DataBase, based on it's name.
@@ -981,7 +981,7 @@ namespace OGen.lib.datalayer {
 		/// <returns>True if SQL Function existed and was deleted, False if not</returns>
 		public bool SQLFunction_delete(string name_in) {
 			if (SQLFunction_exists(name_in)) {
-				Execute_SQLQuery(sqlfunction_delete(name_in));
+				Execute_SQLQuery(SQLFunction_delete_query(name_in));
 				return true;
 			} else {
 				return false;
@@ -989,7 +989,7 @@ namespace OGen.lib.datalayer {
 		}
 		#endregion
 		#region public bool SQLStoredProcedure_exists(...);
-		protected abstract string sqlstoredprocedure_exists(string name_in);
+		public abstract string SQLStoredProcedure_exists_query(string name_in);
 
 		/// <summary>
 		/// Makes use of the DataBase INFORMATION_SCHEMA to determine if an SQL Stored Procedure exists on DataBase, based on it's name.
@@ -998,12 +998,12 @@ namespace OGen.lib.datalayer {
 		/// <returns>True if SQL Stored Procedure exists, False if not</returns>
 		public bool SQLStoredProcedure_exists(string name_in) {
 			return (Execute_SQLQuery_returnDataTable(
-				sqlstoredprocedure_exists(name_in)
+				SQLStoredProcedure_exists_query(name_in)
 			).Rows.Count == 1);
 		}
 		#endregion
 		#region public bool SQLStoredProcedure_delete(...);
-		protected abstract string sqlstoredprocedure_delete(string name_in);
+		public abstract string SQLStoredProcedure_delete_query(string name_in);
 
 		/// <summary>
 		/// Deletes a specific SQL Stored Procedure on DataBase, based on it's name.
@@ -1012,7 +1012,7 @@ namespace OGen.lib.datalayer {
 		/// <returns>True if SQL Stored Procedure existed and was deleted, False if not</returns>
 		public bool SQLStoredProcedure_delete(string name_in) {
 			if (SQLStoredProcedure_exists(name_in)) {
-				Execute_SQLQuery(sqlstoredprocedure_delete(name_in));
+				Execute_SQLQuery(SQLStoredProcedure_delete_query(name_in));
 				return true;
 			} else {
 				return false;
@@ -1020,7 +1020,7 @@ namespace OGen.lib.datalayer {
 		}
 		#endregion
 		#region public bool SQLView_exists(...);
-		protected abstract string sqlview_exists(string name_in);
+		public abstract string SQLView_exists_query(string name_in);
 
 		/// <summary>
 		/// Makes use of the DataBase INFORMATION_SCHEMA to determine if an SQL View exists on DataBase, based on it's name.
@@ -1029,12 +1029,12 @@ namespace OGen.lib.datalayer {
 		/// <returns>True if SQL View exists, False if not</returns>
 		public bool SQLView_exists(string name_in) {
 			return (Execute_SQLQuery_returnDataTable(
-				sqlview_exists(name_in)
+				SQLView_exists_query(name_in)
 			).Rows.Count == 1);
 		}
 		#endregion
 		#region public bool SQLView_delete(...);
-		protected abstract string sqlview_delete(string name_in);
+		public abstract string SQLView_delete_query(string name_in);
 
 		/// <summary>
 		/// Deletes a specific SQL View on DataBase, based on it's name.
@@ -1043,7 +1043,7 @@ namespace OGen.lib.datalayer {
 		/// <returns>True if SQL View existed and was deleted, False if not</returns>
 		public bool SQLView_delete(string name_in) {
 			if (SQLView_exists(name_in)) {
-				Execute_SQLQuery(sqlview_delete(name_in));
+				Execute_SQLQuery(SQLView_delete_query(name_in));
 				return true;
 			} else {
 				return false;
@@ -1052,14 +1052,14 @@ namespace OGen.lib.datalayer {
 		#endregion
 		//---
 		#region public string[] getBDs(...);
-		protected abstract string getdbs();
+		public abstract string getDBs_query();
 
 		/// <summary>
 		/// Makes use of the DataBase INFORMATION_SCHEMA to get a list of available DataBase names.
 		/// </summary>
 		/// <returns>String array, representing a list of available DataBase names</returns>
 		public string[] getDBs() {
-			DataTable _datatable = Execute_SQLQuery_returnDataTable(getdbs());
+			DataTable _datatable = Execute_SQLQuery_returnDataTable(getDBs_query());
 
 			string[] _getdbs_out = new string[_datatable.Rows.Count];
 			for (int i = 0; i < _datatable.Rows.Count; i++)
@@ -1071,7 +1071,7 @@ namespace OGen.lib.datalayer {
 		}
 		#endregion
 		#region public cDBTable[] getTables(...);
-		protected abstract string gettables(string subAppName_in);
+		public abstract string getTables_query(string subAppName_in);
 
 		/// <summary>
 		/// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
@@ -1114,7 +1114,7 @@ namespace OGen.lib.datalayer {
 				(sqlFuncion_in == string.Empty)
 			) {
 				_dtemp = Execute_SQLQuery_returnDataTable(
-					gettables(subAppName_in)
+					getTables_query(subAppName_in)
 				);
 			} else {
 				_dtemp = Execute_SQLFunction_returnDataTable(
@@ -1145,7 +1145,7 @@ string.Empty
 		}
 		#endregion
 		#region public cDBTableField[] getTableFields(...);
-		protected abstract string gettablefields(
+		public abstract string getTableFields_query(
 			string tableName_in
 		);
 
@@ -1182,7 +1182,7 @@ string.Empty
 				(sqlFuncion_in == string.Empty)
 			) {
 				_dtemp = Execute_SQLQuery_returnDataTable(
-					gettablefields(tableName_in)
+					getTableFields_query(tableName_in)
 				);
 			} else {
 				_dtemp = Execute_SQLFunction_returnDataTable(

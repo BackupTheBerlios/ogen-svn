@@ -215,8 +215,8 @@ namespace OGen.lib.datalayer.MySQL {
 
 
 		//---
-//		#region protected override string sqlfunction_exists(...);
-		protected override string sqlfunction_exists(string name_in) {
+//		#region public override string SQLFunction_exists_query(...);
+		public override string SQLFunction_exists_query(string name_in) {
 
 // ToDos: here!
 throw new Exception("not implemented!");
@@ -240,8 +240,8 @@ throw new Exception("not implemented!");
 //			);
 		}
 //		#endregion
-//		#region protected override string sqlfunction_delete(...);
-		protected override string sqlfunction_delete(string name_in) {
+//		#region public override string SQLFunction_delete_query(...);
+		public override string SQLFunction_delete_query(string name_in) {
 
 // ToDos: here! i'm half sure database name is needed!
 throw new Exception("not implemented!");
@@ -252,8 +252,8 @@ throw new Exception("not implemented!");
 			//);
 		}
 //		#endregion
-//		#region protected override string sqlstoredprocedure_exists(...);
-		protected override string sqlstoredprocedure_exists(string name_in) {
+//		#region public override string SQLStoredProcedure_exists_query(...);
+		public override string SQLStoredProcedure_exists_query(string name_in) {
 
 // ToDos: here!
 throw new Exception("not implemented!");
@@ -277,8 +277,8 @@ throw new Exception("not implemented!");
 //            );
 		}
 //		#endregion
-//		#region protected override string sqlstoredprocedure_delete(...);
-		protected override string sqlstoredprocedure_delete(string name_in) {
+//		#region public override string SQLStoredProcedure_delete_query(...);
+		public override string SQLStoredProcedure_delete_query(string name_in) {
 
 // ToDos: here! i'm half sure database name is needed!
 throw new Exception("not implemented!");
@@ -289,8 +289,8 @@ throw new Exception("not implemented!");
 			//);
 		}
 //		#endregion
-//		#region protected override string sqlview_exists(...);
-		protected override string sqlview_exists(string name_in) {
+//		#region public override string SQLView_exists_query(...);
+		public override string SQLView_exists_query(string name_in) {
 
 // ToDos: here!
 throw new Exception("not implemented!");
@@ -314,8 +314,8 @@ throw new Exception("not implemented!");
 //            );
         }
 //		#endregion
-//		#region protected override string sqlview_delete(...);
-		protected override string sqlview_delete(string name_in) {
+//		#region public override string SQLView_delete_query(...);
+		public override string SQLView_delete_query(string name_in) {
 
 // ToDos: here! i'm half sure database name is needed!
 throw new Exception("not implemented!");
@@ -328,8 +328,8 @@ throw new Exception("not implemented!");
 //		#endregion
 		//---
 		//---
-		#region protected override string getdbs();
-		protected override string getdbs() {
+		#region public override string getDBs_query();
+		public override string getDBs_query() {
 			return
 @"
 SELECT SCHEMA_NAME 
@@ -343,8 +343,8 @@ ORDER BY SCHEMA_NAME
 			;
 		}
 		#endregion
-//		#region protected override string gettables(string subAppName_in);
-		protected override string gettables(string subAppName_in) {
+//		#region public override string getTables_query(string subAppName_in);
+		public override string getTables_query(string subAppName_in) {
 
 // ToDos: here! 1 - Connectionstring_database() not supported!
 // ToDos: here! 2 - CAST(1 AS Signed Int) carefull on how provider converts server var to .net var, 
@@ -394,8 +394,8 @@ throw new Exception("not implemented!");
 //            return _query.ToString();
 		}
 //		#endregion
-//		#region protected override string gettablefields(...);
-		protected override string gettablefields(
+//		#region public override string getTableFields_query(...);
+		public override string getTableFields_query(
 			string tableName_in
 		) {
 

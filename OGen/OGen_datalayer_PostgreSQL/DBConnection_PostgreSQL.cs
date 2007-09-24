@@ -215,8 +215,8 @@ namespace OGen.lib.datalayer.PostgreSQL {
 
 
 		//---
-		#region protected override string sqlfunction_exists(...);
-		protected override string sqlfunction_exists(string name_in) {
+		#region public override string sqlfunction_exists(...);
+		public override string SQLFunction_exists_query(string name_in) {
 			return string.Format(
 				#region "SELECT ...", 
 				@"
@@ -232,8 +232,8 @@ WHERE
 			);
 		}
 		#endregion
-		#region protected override string sqlfunction_delete(...);
-		protected override string sqlfunction_delete(string name_in) {
+		#region public override string SQLFunction_delete_query(...);
+		public override string SQLFunction_delete_query(string name_in) {
 			// ToDos: here! not implemented
 			// NOTES: It's not as easy as it is for SQLServer and MySQL. PostgreSQL 
 			// allows you to create diferent signatures for the same function, so in 
@@ -245,8 +245,8 @@ WHERE
 			throw new Exception("- not implemented!");
 		}
 		#endregion
-		#region protected override string sqlstoredprocedure_exists(...);
-		protected override string sqlstoredprocedure_exists(string name_in) {
+		#region public override string SQLStoredProcedure_exists_query(...);
+		public override string SQLStoredProcedure_exists_query(string name_in) {
 			return string.Format(
 				#region "SELECT ...",
 @"
@@ -262,8 +262,8 @@ WHERE
 			);
 		}
 		#endregion
-		#region protected override string sqlstoredprocedure_delete(...);
-		protected override string sqlstoredprocedure_delete(string name_in) {
+		#region public override string SQLStoredProcedure_delete_query(...);
+		public override string SQLStoredProcedure_delete_query(string name_in) {
 			// ToDos: here! not implemented
 			// NOTES: It's not as easy as it is for SQLServer and MySQL. PostgreSQL 
 			// allows you to create diferent signatures for the same procedure, so in 
@@ -276,8 +276,8 @@ WHERE
 			throw new Exception("- not implemented!");
 		}
 		#endregion
-		#region protected override string sqlview_exists(...);
-		protected override string sqlview_exists(string name_in) {
+		#region public override string SQLView_exists_query(...);
+		public override string SQLView_exists_query(string name_in) {
 			return string.Format(
 				#region "SELECT ...",
 @"
@@ -293,8 +293,8 @@ WHERE
 			);
 		}
 		#endregion
-		#region protected override string sqlview_delete(...);
-		protected override string sqlview_delete(string name_in) {
+		#region public override string SQLView_delete_query(...);
+		public override string SQLView_delete_query(string name_in) {
 			// ToDos: here! not implemented, needed if droping, 
 			// no need when replacing, you can use:
 			// CREATE OR REPLACE VIEW "some_view"
@@ -303,8 +303,8 @@ WHERE
 		}
 		#endregion
 		//---
-		#region protected override string getdbs(...);
-		protected override string getdbs() {
+		#region public override string getDBs_query(...);
+		public override string getDBs_query() {
 			return
 @"
 SELECT CATALOG_NAME 
@@ -317,8 +317,8 @@ ORDER BY CATALOG_NAME
 			;
 		}
 		#endregion
-		#region protected override string gettables(...);
-		protected override string gettables(string subAppName_in) {
+		#region public override string getTables_query(...);
+		public override string getTables_query(string subAppName_in) {
 			StringBuilder _query = new StringBuilder(string.Empty);
 			#region _query.Append(@"SELECT ...");
 			_query.Append(@"
@@ -380,8 +380,8 @@ WHERE
 			return _query.ToString();
 		}
 		#endregion
-		#region protected override string gettablefields(...);
-		protected override string gettablefields(
+		#region public override string getTableFields_query(...);
+		public override string getTableFields_query(
 			string tableName_in
 		) {
 			#region return "SELECT ...";
