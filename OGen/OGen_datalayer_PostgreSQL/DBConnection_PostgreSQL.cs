@@ -477,8 +477,8 @@ FROM INFORMATION_SCHEMA.COLUMNS AS _field
 		and
 		(_field.COLUMN_NAME = _fk.COLUMN_NAME)
 	)
-WHERE (t1.TABLE_NAME = '{0}')
-ORDER BY t1.ORDINAL_POSITION
+WHERE (_field.TABLE_NAME = '{0}')
+ORDER BY _field.ORDINAL_POSITION
 ",
 				tableName_in
 			);
