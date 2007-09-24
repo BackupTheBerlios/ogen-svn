@@ -81,10 +81,10 @@ namespace OGen.lib.datalayer.PostgreSQL {
 
 			if ((transaction__ != null) && (transaction__.inTransaction)) {
 				_newdbcommand_out = new NpgsqlCommand(
-			        command_in, 
-			        (NpgsqlConnection)connection_in, 
-			        (NpgsqlTransaction)Transaction.exposeTransaction
-			    );
+					command_in, 
+					(NpgsqlConnection)connection_in, 
+					(NpgsqlTransaction)Transaction.exposeTransaction
+				);
 			} else {
 				_newdbcommand_out = new NpgsqlCommand(
 					command_in, 
@@ -303,7 +303,7 @@ WHERE
 		}
 		#endregion
 		//---
-#region protected override string getdbs(...);
+		#region protected override string getdbs(...);
 		protected override string getdbs() {
 			return
 @"
@@ -317,10 +317,10 @@ ORDER BY CATALOG_NAME
 			;
 		}
 		#endregion
-#region protected override string gettables(...);
+		#region protected override string gettables(...);
 		protected override string gettables(string subAppName_in) {
-            StringBuilder _query = new StringBuilder(string.Empty);
-#region _query.Append(@"SELECT ...");
+			StringBuilder _query = new StringBuilder(string.Empty);
+			#region _query.Append(@"SELECT ...");
 			_query.Append(@"
 SELECT
 	TABLE_NAME AS ""Name"",
@@ -363,19 +363,19 @@ WHERE
 			);
 			#endregion
 			if (subAppName_in != "") {
-                _query.Append("AND (");
-                string[] _subAppNames = subAppName_in.Split('|');
-                for (int i = 0; i < _subAppNames.Length; i++) {
-                    _query.Append(string.Format(
-                        "(TABLE_NAME {0} '{1}'){2}",
-                        (_subAppNames[i].IndexOf('%') >= 0) ? "LIKE" : "=", 
-                        _subAppNames[i],
-                        (i == _subAppNames.Length - 1) ? "" : " OR "
-                    ));
-                }
-                _query.Append(") ");
-            }
-            _query.Append(@"ORDER BY ""Name"" ");
+				_query.Append("AND (");
+				string[] _subAppNames = subAppName_in.Split('|');
+				for (int i = 0; i < _subAppNames.Length; i++) {
+					_query.Append(string.Format(
+						"(TABLE_NAME {0} '{1}'){2}",
+						(_subAppNames[i].IndexOf('%') >= 0) ? "LIKE" : "=", 
+						_subAppNames[i],
+						(i == _subAppNames.Length - 1) ? "" : " OR "
+					));
+				}
+				_query.Append(") ");
+			}
+			_query.Append(@"ORDER BY ""Name"" ");
 
 			return _query.ToString();
 		}

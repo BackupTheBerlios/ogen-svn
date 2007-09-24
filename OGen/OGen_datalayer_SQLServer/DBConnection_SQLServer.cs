@@ -425,82 +425,23 @@ SELECT
 				ELSE
 					CAST(0 AS Int)
 			END
-			--COLUMNPROPERTY(OBJECT_ID(t5.TABLE_NAME), t5.COLUMN_NAME, 'IsIdentity')
 	END AS ""isIdentity"", 
 	CASE
 		WHEN (t6.TABLE_TYPE != 'VIEW') THEN
-			CASE
-				WHEN t4.CONSTRAINT_NAME IS NULL THEN
-					NULL
-				ELSE
-					SUBSTRING(t4.CONSTRAINT_NAME, 5 + LEN(t1.TABLE_NAME), LEN(t4.CONSTRAINT_NAME))
-			END
+			t8.TABLE_NAME
 		ELSE
-			/*
-			CASE
-				WHEN (SUBSTRING(t1.COLUMN_NAME, 3, 1) = ',') THEN
-					SUBSTRING(
-						t1.COLUMN_NAME,
-						dbo.fnc__FIND(
-							',', 
-							t1.COLUMN_NAME, 
-							1
-						) + 1,
-						dbo.fnc__FIND(
-							',', 
-							t1.COLUMN_NAME, 
-							dbo.fnc__FIND(
-								',', 
-								t1.COLUMN_NAME, 
-								1
-							) + 1
-						)
-						- dbo.fnc__FIND(
-							',', 
-							t1.COLUMN_NAME, 
-							1
-						)
-						- 1
-					)
-				ELSE
-					NULL
-			END
-			*/
 			NULL
-			--t5.TABLE_NAME
 	END AS ""FK_TableName"", 
 	CASE
 		WHEN (t6.TABLE_TYPE != 'VIEW') THEN
-			CASE
-				WHEN t4.CONSTRAINT_NAME IS NULL THEN
-					NULL
-				ELSE
-					t1.COLUMN_NAME
-			END
+			t8.COLUMN_NAME
 		ELSE
-			/*
-			CASE
-				WHEN (SUBSTRING(t1.COLUMN_NAME, 3, 1) = ',') THEN
-					SUBSTRING(
-						t1.COLUMN_NAME,
-						dbo.fnc__FIND(
-							',', 
-							t1.COLUMN_NAME, 
-							dbo.fnc__FIND(
-								',', 
-								t1.COLUMN_NAME, 
-								1
-							) + 1
-						) + 1,
-						LEN(t1.COLUMN_NAME)
-					)
-				ELSE
-					NULL
-			END
-			*/
 			NULL
-			--t5.COLUMN_NAME
-	END AS ""FK_FieldName""
+	END AS ""FK_FieldName"", 
+	t1.COLUMN_DEFAULT, 
+	t1.COLLATION_NAME, 
+	t1.NUMERIC_PRECISION, 
+	t1.NUMERIC_SCALE
 FROM INFORMATION_SCHEMA.COLUMNS AS t1
 	LEFT JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE t2 ON
 		(t2.COLUMN_NAME = t1.COLUMN_NAME)
@@ -508,14 +449,10 @@ FROM INFORMATION_SCHEMA.COLUMNS AS t1
 		(t2.TABLE_NAME = t1.TABLE_NAME)
 		AND
 		(
-			--(t2.CONSTRAINT_NAME LIKE 'PK%')
-
 			(t2.CONSTRAINT_NAME = 'PK_' + t2.TABLE_NAME) -- the microsoft sql server way
 			OR
 			(t2.CONSTRAINT_NAME = t2.TABLE_NAME + '_PK') -- the microsoft visio way
 		)
-	--LEFT JOIN INFORMATION_SCHEMA.Referential_Constraints t3 ON
-	--	(t3.UNIQUE_CONSTRAINT_NAME = t2.CONSTRAINT_NAME)
 	LEFT JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE t4 ON
 		(t4.COLUMN_NAME = t1.COLUMN_NAME)
 		AND
@@ -526,16 +463,14 @@ FROM INFORMATION_SCHEMA.COLUMNS AS t1
 			OR
 			(t4.CONSTRAINT_NAME LIKE '%FK_%')
 		)
-	--LEFT JOIN INFORMATION_SCHEMA.View_Column_Usage t5 ON
-	--	(t5.VIEW_NAME = t1.TABLE_NAME)
-	--	AND
-	--	(t5.COLUMN_NAME = t1.COLUMN_NAME)
 	LEFT JOIN INFORMATION_SCHEMA.TABLES t6 ON
 		(t6.TABLE_NAME = t1.TABLE_NAME)
---WHERE (t1.TABLE_NAME LIKE 'vUserGroup%') --OR (t1.TABLE_NAME = 'UserGroup') OR (t1.TABLE_NAME = 'User') OR (t1.TABLE_NAME = 'Group')
---WHERE (t1.TABLE_NAME != 'dtproperties') AND (t1.TABLE_NAME NOT LIKE 'sql_%') AND (t1.TABLE_NAME NOT LIKE 'pg_%') AND (t1.TABLE_NAME NOT LIKE 'sys%')
+	LEFT JOIN INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS t7 ON
+		(t4.CONSTRAINT_NAME = t7.CONSTRAINT_NAME)
+	LEFT JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE t8 ON
+		(t7.UNIQUE_CONSTRAINT_NAME = t8.CONSTRAINT_NAME)
 WHERE (t1.TABLE_NAME = '{0}') 
-ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
+ORDER BY t1.ORDINAL_POSITION
 ",
 				tableName_in
 			);
