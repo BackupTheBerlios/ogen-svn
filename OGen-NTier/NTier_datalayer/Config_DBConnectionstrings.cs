@@ -34,12 +34,17 @@ namespace OGen.NTier.lib.datalayer {
 						DBServerTypes(application_in)[_db], 
 						ConfigModes(application_in)[_cfg], 
 						Config_DBConnectionstring.newConfig_DBConnectionstring(
-							System.Configuration.ConfigurationSettings.AppSettings[string.Format(
-								"{0}:DBConnection:{1}:{2}",
-								application_in, 
-								ConfigModes(application_in)[_cfg],
-								DBServerTypes(application_in)[_db].ToString()
-							)]
+							#if NET20
+							System.Configuration.ConfigurationManager.AppSettings
+							#else
+							System.Configuration.ConfigurationSettings.AppSettings
+							#endif
+								[string.Format(
+									"{0}:DBConnection:{1}:{2}",
+									application_in, 
+									ConfigModes(application_in)[_cfg],
+									DBServerTypes(application_in)[_db].ToString()
+								)]
 						)
 					);
 				}
@@ -80,10 +85,15 @@ namespace OGen.NTier.lib.datalayer {
 		public static string[] Applications {
 			get {
 				if (applications__ == null) {
-					applications__ 
-						= System.Configuration.ConfigurationSettings.AppSettings[
-							"applications"
-						].Split(':');
+					applications__ = 
+						#if NET20
+						System.Configuration.ConfigurationManager.AppSettings
+						#else
+						System.Configuration.ConfigurationSettings.AppSettings
+						#endif
+							[
+								"applications"
+							].Split(':');
 				}
 				return applications__;
 			}
@@ -131,13 +141,18 @@ namespace OGen.NTier.lib.datalayer {
 			if (!configmodes__.Contains(application_in)) {
 				configmodes__.Add(
 					application_in, 
-					System.Configuration.ConfigurationSettings.AppSettings[
-						string.Format(
-							"{0}:ConfigModes", 
-//							ApplicationName
-							application_in
-						)
-					].Split(':')
+					#if NET20
+					System.Configuration.ConfigurationManager.AppSettings
+					#else
+					System.Configuration.ConfigurationSettings.AppSettings
+					#endif
+						[
+							string.Format(
+								"{0}:ConfigModes", 
+//								ApplicationName
+								application_in
+							)
+						].Split(':')
 				);
 			}
 			return (string[])configmodes__[application_in];
@@ -151,14 +166,19 @@ namespace OGen.NTier.lib.datalayer {
 		public static string[] DBServerTypes(string application_in) {
 			if (dbservertypes__ == null) dbservertypes__ = new Hashtable();
 			if (!dbservertypes__.Contains(application_in)) {
-				string[] _supporteddbservertypes 
-					= System.Configuration.ConfigurationSettings.AppSettings[
-						string.Format(
-							"{0}:DBServerTypes", 
-//							ApplicationName
-							application_in
-						)
-					].Split(':');
+				string[] _supporteddbservertypes =
+					#if NET20
+					System.Configuration.ConfigurationManager.AppSettings
+					#else
+					System.Configuration.ConfigurationSettings.AppSettings
+					#endif
+						[
+							string.Format(
+								"{0}:DBServerTypes", 
+//								ApplicationName
+								application_in
+							)
+						].Split(':');
 
 				string[] _dbservertypes = new string[_supporteddbservertypes.Length];
 				for (int i = 0; i < _supporteddbservertypes.Length; i++) {

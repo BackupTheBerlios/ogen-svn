@@ -47,7 +47,18 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 			} else {
 				#if DEBUG
 					try {
-						DoIt(@"X:\OGen.berlios.de\OGen-NTier_UTs\OGen-metadatas\MD_OGen-NTier_UTs.OGen-metadata.xml");
+						DoIt(
+							System.IO.Path.Combine(
+								#if NET20
+								System.Configuration.ConfigurationManager.AppSettings
+								#else
+								System.Configuration.ConfigurationSettings.AppSettings
+								#endif
+									["ogenPath"],
+
+								@"..\OGen-NTier_UTs\OGen-metadatas\MD_OGen-NTier_UTs.OGen-metadata.xml"
+							)
+						);
 					} catch (Exception _ex) {
 						Console.WriteLine(_ex.ToString());
 					}

@@ -135,7 +135,14 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		public static string DBLogfile {
 			get {
 				if (dblogfile__ == string.Empty) {
-					if (System.Configuration.ConfigurationSettings.AppSettings["DBLogfile"] == null) {
+					if (
+						#if NET20
+						System.Configuration.ConfigurationManager.AppSettings
+						#else
+						System.Configuration.ConfigurationSettings.AppSettings
+						#endif
+							["DBLogfile"] == null
+					) {
 						dblogfile__ = null;
 					} else {
 						dblogfile__ = System.Configuration.ConfigurationSettings.AppSettings["DBLogfile"];

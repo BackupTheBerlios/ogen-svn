@@ -180,7 +180,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		) {
 			if (IDPermition_in != 0L) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDPermition_", DbType.Int64, ParameterDirection.InputOutput, IDPermition_in, 0, 0, 0), 
+					base.Connection.newDBDataParameter("IDPermition_", DbType.Int64, ParameterDirection.InputOutput, IDPermition_in, 0, 64, 0), 
 					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Output, null, 50, 0, 0)
 				};
 				base.Connection.Execute_SQLFunction("sp0_Permition_getObject", _dataparameters);
@@ -233,7 +233,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDPermition_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDPermition_", DbType.Int64, ParameterDirection.Input, IDPermition_in, 0, 0, 0)
+				base.Connection.newDBDataParameter("IDPermition_", DbType.Int64, ParameterDirection.Input, IDPermition_in, 0, 64, 0)
 			};
 			base.Connection.Execute_SQLFunction("sp0_Permition_delObject", _dataparameters);
 
@@ -267,7 +267,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDPermition_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDPermition_", DbType.Int64, ParameterDirection.Input, IDPermition_in, 0, 0, 0)
+				base.Connection.newDBDataParameter("IDPermition_", DbType.Int64, ParameterDirection.Input, IDPermition_in, 0, 64, 0)
 			};
 
 			return (bool)base.Connection.Execute_SQLFunction(
@@ -292,7 +292,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			bool selectIdentity_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDPermition_", DbType.Int64, ParameterDirection.Output, null, 0, 0, 0), 
+				base.Connection.newDBDataParameter("IDPermition_", DbType.Int64, ParameterDirection.Output, null, 0, 64, 0), 
 				base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Fields.Name, 50, 0, 0), 
 
 				base.Connection.newDBDataParameter("SelectIdentity_", DbType.Boolean, ParameterDirection.Input, selectIdentity_in, 1)
@@ -321,7 +321,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		void updObject(bool forceUpdate_in) {
 			if (forceUpdate_in || Fields.haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDPermition_", DbType.Int64, ParameterDirection.Input, Fields.IDPermition, 0, 0, 0), 
+					base.Connection.newDBDataParameter("IDPermition_", DbType.Int64, ParameterDirection.Input, Fields.IDPermition, 0, 64, 0), 
 					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Fields.Name, 50, 0, 0)
 				};
 				base.Connection.Execute_SQLFunction(

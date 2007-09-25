@@ -253,7 +253,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDUser_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0, 0, 0)
+				parent_ref_.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0, 64, 0)
 			};
 			return (bool)parent_ref_.Connection.Execute_SQLFunction(
 				"fnc0_vUserDefaultGroup_Record_hasObject_all", 

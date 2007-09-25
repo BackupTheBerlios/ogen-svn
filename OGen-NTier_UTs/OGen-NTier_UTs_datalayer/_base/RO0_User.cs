@@ -246,7 +246,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDUser_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0, 0, 0)
+				parent_ref_.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0, 64, 0)
 			};
 			return (bool)parent_ref_.Connection.Execute_SQLFunction(
 				"fnc0_User_Record_hasObject_all", 
@@ -315,7 +315,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			bool fullmode_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0, 0, 0)
+				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0, 64, 0)
 			};
 			base.Open(
 				string.Format(
@@ -361,7 +361,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			int page_numRecords_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0, 0, 0), 
+				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0, 64, 0), 
 				parent_ref_.Connection.newDBDataParameter("page_", DbType.Int32, ParameterDirection.Input, page_in, 0), 
 				parent_ref_.Connection.newDBDataParameter("page_numRecords_", DbType.Int32, ParameterDirection.Input, page_numRecords_in, 0)
 			};
@@ -386,7 +386,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			string Password_update_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0, 0, 0), 
+				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0, 64, 0), 
 				parent_ref_.Connection.newDBDataParameter("Password_update_", DbType.String, ParameterDirection.Input, Password_update_in, 50, 0, 0)
 			};
 			parent_ref_.Connection.Execute_SQLFunction(
@@ -407,8 +407,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDGroup_search_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0, 0, 0), 
-				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0, 0, 0)
+				parent_ref_.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0, 64, 0), 
+				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0, 64, 0)
 			};
 			return (bool)parent_ref_.Connection.Execute_SQLFunction(
 				"fnc0_User_Record_hasObject_byGroup", 
@@ -428,7 +428,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDGroup_search_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0, 0, 0)
+				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0, 64, 0)
 			};
 
 			return (long)parent_ref_.Connection.Execute_SQLFunction(
@@ -448,7 +448,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDGroup_search_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0, 0, 0)
+				parent_ref_.Connection.newDBDataParameter("IDGroup_search_", DbType.Int64, ParameterDirection.Input, IDGroup_search_in, 0, 64, 0)
 			};
 
 			parent_ref_.Connection.Execute_SQLFunction(

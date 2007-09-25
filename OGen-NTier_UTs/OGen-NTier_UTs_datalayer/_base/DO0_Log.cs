@@ -180,9 +180,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		) {
 			if (IDLog_in != 0L) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDLog_", DbType.Int64, ParameterDirection.InputOutput, IDLog_in, 0, 0, 0), 
-					base.Connection.newDBDataParameter("IDLogcode_", DbType.Int64, ParameterDirection.Output, null, 0, 0, 0), 
-					base.Connection.newDBDataParameter("IDUser_posted_", DbType.Int64, ParameterDirection.Output, null, 0, 0, 0), 
+					base.Connection.newDBDataParameter("IDLog_", DbType.Int64, ParameterDirection.InputOutput, IDLog_in, 0, 64, 0), 
+					base.Connection.newDBDataParameter("IDLogcode_", DbType.Int64, ParameterDirection.Output, null, 0, 64, 0), 
+					base.Connection.newDBDataParameter("IDUser_posted_", DbType.Int64, ParameterDirection.Output, null, 0, 64, 0), 
 					base.Connection.newDBDataParameter("Date_posted_", DbType.DateTime, ParameterDirection.Output, null, 0, 0, 0), 
 					base.Connection.newDBDataParameter("Logdata_", DbType.String, ParameterDirection.Output, null, 1024, 0, 0)
 				};
@@ -251,7 +251,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDLog_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDLog_", DbType.Int64, ParameterDirection.Input, IDLog_in, 0, 0, 0)
+				base.Connection.newDBDataParameter("IDLog_", DbType.Int64, ParameterDirection.Input, IDLog_in, 0, 64, 0)
 			};
 			base.Connection.Execute_SQLFunction("sp0_Log_delObject", _dataparameters);
 
@@ -285,7 +285,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDLog_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDLog_", DbType.Int64, ParameterDirection.Input, IDLog_in, 0, 0, 0)
+				base.Connection.newDBDataParameter("IDLog_", DbType.Int64, ParameterDirection.Input, IDLog_in, 0, 64, 0)
 			};
 
 			return (bool)base.Connection.Execute_SQLFunction(
@@ -310,9 +310,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			bool selectIdentity_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDLog_", DbType.Int64, ParameterDirection.Output, null, 0, 0, 0), 
-				base.Connection.newDBDataParameter("IDLogcode_", DbType.Int64, ParameterDirection.Input, Fields.IDLogcode, 0, 0, 0), 
-				base.Connection.newDBDataParameter("IDUser_posted_", DbType.Int64, ParameterDirection.Input, Fields.IDUser_posted, 0, 0, 0), 
+				base.Connection.newDBDataParameter("IDLog_", DbType.Int64, ParameterDirection.Output, null, 0, 64, 0), 
+				base.Connection.newDBDataParameter("IDLogcode_", DbType.Int64, ParameterDirection.Input, Fields.IDLogcode, 0, 64, 0), 
+				base.Connection.newDBDataParameter("IDUser_posted_", DbType.Int64, ParameterDirection.Input, Fields.IDUser_posted, 0, 64, 0), 
 				base.Connection.newDBDataParameter("Date_posted_", DbType.DateTime, ParameterDirection.Input, Fields.Date_posted, 0, 0, 0), 
 				base.Connection.newDBDataParameter("Logdata_", DbType.String, ParameterDirection.Input, Fields.Logdata, 1024, 0, 0), 
 
@@ -342,9 +342,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		void updObject(bool forceUpdate_in) {
 			if (forceUpdate_in || Fields.haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDLog_", DbType.Int64, ParameterDirection.Input, Fields.IDLog, 0, 0, 0), 
-					base.Connection.newDBDataParameter("IDLogcode_", DbType.Int64, ParameterDirection.Input, Fields.IDLogcode, 0, 0, 0), 
-					base.Connection.newDBDataParameter("IDUser_posted_", DbType.Int64, ParameterDirection.Input, Fields.IDUser_posted, 0, 0, 0), 
+					base.Connection.newDBDataParameter("IDLog_", DbType.Int64, ParameterDirection.Input, Fields.IDLog, 0, 64, 0), 
+					base.Connection.newDBDataParameter("IDLogcode_", DbType.Int64, ParameterDirection.Input, Fields.IDLogcode, 0, 64, 0), 
+					base.Connection.newDBDataParameter("IDUser_posted_", DbType.Int64, ParameterDirection.Input, Fields.IDUser_posted, 0, 64, 0), 
 					base.Connection.newDBDataParameter("Date_posted_", DbType.DateTime, ParameterDirection.Input, Fields.Date_posted, 0, 0, 0), 
 					base.Connection.newDBDataParameter("Logdata_", DbType.String, ParameterDirection.Input, Fields.Logdata, 1024, 0, 0)
 				};
