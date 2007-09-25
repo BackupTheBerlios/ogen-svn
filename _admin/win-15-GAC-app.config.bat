@@ -22,7 +22,7 @@ IF "%parentdir%" == "" GOTO error1
 if not exist "%parentdir%\bin" mkdir "%parentdir%\bin"
 
 
-::---
+::--- <OGen.Doc.presentationlayer.console>
 set configfilename=OGen.Doc.presentationlayer.console
 set configfile=%configfilename%-1.1.exe
 type "%parentdir%\_admin\config-templates\%configfilename%.exe-1.config">"%parentdir%\bin\%configfile%.config"
@@ -31,7 +31,9 @@ type "%parentdir%\_admin\config-templates\%configfilename%.exe-2.config">>"%pare
 COPY "%parentdir%\bin\%configfile%.config" "%parentdir%\bin\%configfilename%-2.0.exe.config"
 COPY "%parentdir%\bin\%configfile%.config" "%parentdir%\OGen-Doc\Doc-console\app.config"
 echo %configfile%.config
-::---
+::--- </OGen.Doc.presentationlayer.console>
+
+::--- <OGen.NTier.presentationlayer.console>
 set configfilename=OGen.NTier.presentationlayer.console
 set configfile=%configfilename%-1.1.exe
 type "%parentdir%\_admin\config-templates\%configfilename%.exe-1.config">"%parentdir%\bin\%configfile%.config"
@@ -41,7 +43,9 @@ type "%parentdir%\_admin\config-templates\%configfilename%.exe-2.config">>"%pare
 COPY "%parentdir%\bin\%configfile%.config" "%parentdir%\bin\%configfilename%-2.0.exe.config"
 COPY "%parentdir%\bin\%configfile%.config" "%parentdir%\OGen-NTier\NTier-console\app.config"
 echo %configfile%.config
-::---
+::--- </OGen.NTier.presentationlayer.console>
+
+::--- <OGen.NTier.presentationlayer.winforms>
 set configfilename=OGen.NTier.presentationlayer.winforms
 set configfile=%configfilename%-1.1.exe
 type "%parentdir%\_admin\config-templates\%configfilename%.exe-1.config">"%parentdir%\bin\%configfile%.config"
@@ -51,7 +55,8 @@ type "%parentdir%\_admin\config-templates\%configfilename%.exe-2.config">>"%pare
 COPY "%parentdir%\bin\%configfile%.config" "%parentdir%\bin\%configfilename%-2.0.exe.config"
 COPY "%parentdir%\bin\%configfile%.config" "%parentdir%\OGen-NTier\NTier\app.config"
 echo %configfile%.config
-::---
+::--- </OGen.NTier.presentationlayer.winforms>
+
 goto eof
 
 
