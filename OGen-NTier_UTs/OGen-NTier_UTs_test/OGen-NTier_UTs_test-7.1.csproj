@@ -109,6 +109,18 @@
                     Project = "{4F18877D-A981-426B-8A09-5EDF95E9AE2B}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
+                <Reference
+                    Name = "OGen.lib.datalayer.PostgreSQL-1.1"
+                    AssemblyName = "OGen.lib.datalayer.PostgreSQL-1.1"
+                    HintPath = "..\..\bin\OGen.lib.datalayer.PostgreSQL-1.1.dll"
+                    AssemblyFolderKey = "hklm\dn\ogen"
+                />
+                <Reference
+                    Name = "OGen.lib.datalayer.support-1.1"
+                    AssemblyName = "OGen.lib.datalayer.support-1.1"
+                    HintPath = "..\..\bin\OGen.lib.datalayer.support-1.1.dll"
+                    AssemblyFolderKey = "hklm\dn\ogen"
+                />
             </References>
         </Build>
         <Files>
