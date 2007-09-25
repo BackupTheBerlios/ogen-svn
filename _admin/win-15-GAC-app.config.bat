@@ -36,6 +36,7 @@ type config-templates\%configfilename%.exe-1.config>..\bin\%configfile%.config
 echo     ^<add key="Templates" value="%parentdir%\OGen-Doc\Doc_templates\templates.config.xml" /^>>>..\bin\%configfile%.config
 type config-templates\%configfilename%.exe-2.config>>..\bin\%configfile%.config
 COPY ..\bin\%configfile%.config ..\bin\%configfilename%-2.0.exe.config
+COPY ..\bin\%configfile%.config ..\OGen-Doc\Doc-console\app.config
 echo %configfile%.config
 ::---
 set configfilename=OGen.NTier.presentationlayer.console
@@ -45,6 +46,7 @@ echo     ^<add key="Templates" value="%parentdir%\OGen-NTier\NTier_templates\tem
 echo     ^<add key="ogenPath" value="%parentdir%\bin" /^>>>..\bin\%configfile%.config
 type config-templates\%configfilename%.exe-2.config>>..\bin\%configfile%.config
 COPY ..\bin\%configfile%.config ..\bin\%configfilename%-2.0.exe.config
+COPY ..\bin\%configfile%.config ..\OGen-NTier\NTier-console\app.config
 echo %configfile%.config
 ::---
 set configfilename=OGen.NTier.presentationlayer.winforms
@@ -54,6 +56,7 @@ echo     ^<add key="Templates" value="%parentdir%\OGen-NTier\NTier_templates\tem
 echo     ^<add key="ogenPath" value="%parentdir%\bin" /^>>>..\bin\%configfile%.config
 type config-templates\%configfilename%.exe-2.config>>..\bin\%configfile%.config
 COPY ..\bin\%configfile%.config ..\bin\%configfilename%-2.0.exe.config
+COPY ..\bin\%configfile%.config ..\OGen-NTier\NTier\app.config
 echo %configfile%.config
 ::---
 goto eof
