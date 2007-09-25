@@ -18,21 +18,21 @@ using System.Data.SqlClient;
 using System.Text;
 
 namespace OGen.lib.datalayer.SQLServer {
-	public sealed class cDBConnection_SQLServer : cDBConnection {
-		//#region public cDBConnection_SQLServer(...);
-		public cDBConnection_SQLServer(
+	public sealed class DBConnection_SQLServer : DBConnection {
+		//#region public DBConnection_SQLServer(...);
+		public DBConnection_SQLServer(
 			string connectionstring_in
 		) : base (
-//			eDBServerTypes.SQLServer, 
+//			DBServerTypes.SQLServer, 
 			connectionstring_in, 
 			string.Empty
 		) {
 		}
-		public cDBConnection_SQLServer(
+		public DBConnection_SQLServer(
 			string connectionstring_in,
 			string logfile_in
 		) : base (
-//			eDBServerTypes.SQLServer, 
+//			DBServerTypes.SQLServer, 
 			connectionstring_in,
 			logfile_in
 		) {

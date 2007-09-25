@@ -62,14 +62,14 @@ namespace OGen.NTier.presentationlayer.test {
 				//@"X:\OGen.berlios.de\OGen-NTier_UTs\OGen-metadatas\MD0_OGen-NTier_UTs.OGen-metadata.xml"
 				@"X:\OGen.berlios.de\OGen-NTier_UTs\OGen-metadatas\xxx0_apagar.xml"
 			;
-			eDBServerTypes _aux_dbservertype = eDBServerTypes.SQLServer;
+			DBServerTypes _aux_dbservertype = DBServerTypes.SQLServer;
 			cDBMetadata _aux_metadata;
 
 			_aux_metadata = new cDBMetadata();
 			#region //testings...
 			//_aux_metadata.LoadState_fromDB(
 			//    null, 
-			//    eDBServerTypes.SQLServer,
+			//    DBServerTypes.SQLServer,
 			//    "server=127.0.0.1;uid=sa;pwd=passpub;database=OGen-NTier_UTs;", 
 			//    "", 
 			//    true

@@ -62,18 +62,18 @@ namespace OGen.lib.datalayer {
 #endif
 
 		public static DBUtils GetInstance(
-			eDBServerTypes dbServerType_in
+			DBServerTypes dbServerType_in
 		) {
 			switch (dbServerType_in) {
 #if PostgreSQL
-				case eDBServerTypes.PostgreSQL:
+				case DBServerTypes.PostgreSQL:
 					return dbUtils_PostgreSQL;
 #endif
 #if MySQL
-				case eDBServerTypes.MySQL:
+				case DBServerTypes.MySQL:
 					return dbUtils_MySQL;
 #endif
-				case eDBServerTypes.SQLServer:
+				case DBServerTypes.SQLServer:
 					return dbUtils_SQLServer;
 			}
 			

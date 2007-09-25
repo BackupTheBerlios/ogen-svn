@@ -77,17 +77,17 @@ namespace OGen.NTier.presentationlayer.winforms.UserControls {
 			InitializeComponent();
 			#endregion
 
-			string[] DBTypes = Enum.GetNames(typeof(eDBServerTypes));
+			string[] DBTypes = Enum.GetNames(typeof(DBServerTypes));
 			cbxDBTypes.Items.Clear();
 			for (int d = 0; d < DBTypes.Length; d++) {
 				cbxDBTypes.Items.Add(DBTypes[d]);
 			}
 		}
 
-		public eDBServerTypes DBServerType {
+		public DBServerTypes DBServerType {
 			get {
-				return (eDBServerTypes)Enum.Parse(
-					typeof(eDBServerTypes),
+				return (DBServerTypes)Enum.Parse(
+					typeof(DBServerTypes),
 					(string)cbxDBTypes.SelectedItem
 				);
 			}

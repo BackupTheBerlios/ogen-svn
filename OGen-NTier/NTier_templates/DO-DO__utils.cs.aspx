@@ -58,7 +58,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		///
 		public DO__utils() : base() {
 		}<%
-//		public DO__utils(cDBConnection Connection_) : base(Connection_) {
+//		public DO__utils(DBConnection Connection_) : base(Connection_) {
 //		}
 //		~DO__utils() {
 //			cleanUp();

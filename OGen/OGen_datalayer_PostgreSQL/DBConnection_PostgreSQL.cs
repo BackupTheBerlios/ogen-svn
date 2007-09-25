@@ -18,21 +18,21 @@ using Npgsql;
 using System.Text;
 
 namespace OGen.lib.datalayer.PostgreSQL {
-	public sealed class cDBConnection_PostgreSQL : cDBConnection {
-		//#region public cDBConnection_PostgreSQL(...);
-		public cDBConnection_PostgreSQL(
+	public sealed class DBConnection_PostgreSQL : DBConnection {
+		//#region public DBConnection_PostgreSQL(...);
+		public DBConnection_PostgreSQL(
 			string connectionstring_in
 		) : base (
-//			eDBServerTypes.PostgreSQL, 
+//			DBServerTypes.PostgreSQL, 
 			connectionstring_in,
 			string.Empty
 		) {
 		}
-		public cDBConnection_PostgreSQL(
+		public DBConnection_PostgreSQL(
 			string connectionstring_in,
 			string logfile_in
 		) : base (
-//			eDBServerTypes.PostgreSQL, 
+//			DBServerTypes.PostgreSQL, 
 			connectionstring_in,
 			logfile_in
 		) {

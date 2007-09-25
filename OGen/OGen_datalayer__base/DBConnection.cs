@@ -29,14 +29,14 @@ namespace OGen.lib.datalayer {
 	/// <example>
 	/// This sample shows how to execute an SQL Query and populate a DataTable with it's return Output
 	/// <code>
-	/// cDBConnection _connection = new cDBConnection(
-	///		eDBServerTypes.PostgreSQL, 
+	/// DBConnection _connection = new DBConnection(
+	///		DBServerTypes.PostgreSQL, 
 	///		OGen.lib.datalayer.utils.Connectionstring.Buildwith.Parameters(
 	///			"127.0.0.1", 
 	///			"postgres", 
 	///			"password", 
 	///			"TestDB", 
-	///			eDBServerTypes.PostgreSQL
+	///			DBServerTypes.PostgreSQL
 	///		)
 	///	);
 	///	
@@ -48,14 +48,14 @@ namespace OGen.lib.datalayer {
 	///	</code>
 	/// This sample shows how to execute an SQL Function and populate a DataTable with it's return Output
 	///	<code>
-	/// cDBConnection _connection = new cDBConnection(
-	///		eDBServerTypes.PostgreSQL, 
+	/// DBConnection _connection = new DBConnection(
+	///		DBServerTypes.PostgreSQL, 
 	///		OGen.lib.datalayer.utils.Connectionstring.Buildwith.Parameters(
 	///			"127.0.0.1", 
 	///			"postgres", 
 	///			"password", 
 	///			"TestDB", 
-	///			eDBServerTypes.PostgreSQL
+	///			DBServerTypes.PostgreSQL
 	///		)
 	///	);
 	///	
@@ -87,10 +87,10 @@ namespace OGen.lib.datalayer {
 	///	</code>
 	/// </example>
 	#endregion
-	public abstract class cDBConnection : IDisposable {
-		//#region public cDBConnection(...);
+	public abstract class DBConnection : IDisposable {
+		//#region public DBConnection(...);
 		/// <param name="connectionstring_in">Connection String</param>
-		public cDBConnection(
+		public DBConnection(
 			string connectionstring_in
 		) :this (
 			connectionstring_in,
@@ -100,7 +100,7 @@ namespace OGen.lib.datalayer {
 
 		/// <param name="connectionstring_in">Connection String</param>
 		/// <param name="logfile_in">Log File (null or empty string disables log)</param>
-		public cDBConnection(
+		public DBConnection(
 			string connectionstring_in, 
 			string logfile_in
 		) {
@@ -109,7 +109,7 @@ namespace OGen.lib.datalayer {
 // ToDos: here!
 //if (connectionstring_.Trim() == string.Empty)
 //	throw InvalidConnectionstringException_empty;
-//if (dbServerType_in == eDBServerTypes.invalid)
+//if (dbServerType_in == DBServerTypes.invalid)
 //	throw InvalidDBServerTypeException;
 
 
@@ -129,7 +129,7 @@ namespace OGen.lib.datalayer {
 			;
 			isopen_ = false;
 		}
-		~cDBConnection() {
+		~DBConnection() {
 			cleanUp();
 		}
 
@@ -1130,7 +1130,7 @@ namespace OGen.lib.datalayer {
 				getTables_out[r] = new cDBTable(
 					(string)_dtemp.Rows[r]["Name"],
 // ToDos: here!
-					//(dbservertype_ == eDBServerTypes.MySQL) ? 
+					//(dbservertype_ == DBServerTypes.MySQL) ? 
 					//	((long)_dtemp.Rows[r]["isVT"] == 1L) : 
 						((int)_dtemp.Rows[r]["isVT"] == 1)
 
@@ -1201,7 +1201,7 @@ string.Empty
 
 // ToDos: here!
 				//switch (dbservertype_) {
-				//	case eDBServerTypes.MySQL:
+				//	case DBServerTypes.MySQL:
 				//		getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Size"];
 				//		getTableFields_out[r].isNullable = ((long)_dtemp.Rows[r]["isNullable"] == 1L);
 				//		//---						
@@ -1215,8 +1215,8 @@ string.Empty
 				//		getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r]["Numeric_Scale"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Numeric_Scale"];
 				//		break;
 				//
-				//	case eDBServerTypes.PostgreSQL:
-				//	case eDBServerTypes.SQLServer:
+				//	case DBServerTypes.PostgreSQL:
+				//	case DBServerTypes.SQLServer:
 						getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Size"];
 						getTableFields_out[r].isNullable = ((int)_dtemp.Rows[r]["isNullable"] == 1);
 						//---						

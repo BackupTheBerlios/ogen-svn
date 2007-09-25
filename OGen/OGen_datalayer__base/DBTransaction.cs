@@ -24,7 +24,7 @@ namespace OGen.lib.datalayer {
 	#endregion
 	public sealed class DBTransaction : IDisposable {
 		#region internal DBTransaction(...);
-		internal DBTransaction(cDBConnection parent_in) {
+		internal DBTransaction(DBConnection parent_in) {
 			parent_ = parent_in;
 			intransaction_ = false;
 		}
@@ -48,7 +48,7 @@ namespace OGen.lib.datalayer {
 		#endregion
 
 		#region private Fields...
-		private cDBConnection parent_;
+		private DBConnection parent_;
 		#endregion
 
 		#region Exceptions...

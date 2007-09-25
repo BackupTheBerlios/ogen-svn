@@ -40,7 +40,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Making the use of Database Transactions possible on a sequence of operations across multiple DataObjects.
 		/// </summary>
 		/// <param name="connection_in">opened Database connection with an initiated Transaction</param>
-		public DO_Config(cDBConnection connection_in) : base(connection_in) {
+		public DO_Config(DBConnection connection_in) : base(connection_in) {
 		}
 		#endregion
 #endif

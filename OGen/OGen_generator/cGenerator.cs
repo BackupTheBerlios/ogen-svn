@@ -235,14 +235,14 @@ namespace OGen.lib.generator {
 				}
 				#endregion
 				for (int o = 0; o < templates_[template_].Outputs.Count; o++) {
-//					#region if (!dbconnectionstrings_.Contains(eDBServerTypes. ...)) continue;
+//					#region if (!dbconnectionstrings_.Contains(DBServerTypes. ...)) continue;
 					switch (templates_[template_].Outputs[o].Type) {
 #if PostgreSQL
 						case cOutput.eType.PostgreSQL_Function: 
 						case cOutput.eType.PostgreSQL_StoredProcedure: 
 						case cOutput.eType.PostgreSQL_View: {
-							if (!dbconnectionstrings_.Contains_disableIfNot(eDBServerTypes.PostgreSQL)) continue;
-//							_con = (cDBConnection)connection_[eDBServerTypes.PostgreSQL];
+							if (!dbconnectionstrings_.Contains_disableIfNot(DBServerTypes.PostgreSQL)) continue;
+//							_con = (cDBConnection)connection_[DBServerTypes.PostgreSQL];
 							break;
 						}
 #endif
@@ -250,16 +250,16 @@ namespace OGen.lib.generator {
 						case cOutput.eType.MySQL_Function: 
 						case cOutput.eType.MySQL_StoredProcedure: 
 						case cOutput.eType.MySQL_View: {
-							if (!dbconnectionstrings_.Contains_disableIfNot(eDBServerTypes.MySQL)) continue;
-//							_con = (cDBConnection)connection_[eDBServerTypes.MySQL];
+							if (!dbconnectionstrings_.Contains_disableIfNot(DBServerTypes.MySQL)) continue;
+//							_con = (cDBConnection)connection_[DBServerTypes.MySQL];
 							break;
 						}
 #endif
 						case cOutput.eType.SQLServer_Function: 
 						case cOutput.eType.SQLServer_StoredProcedure: 
 						case cOutput.eType.SQLServer_View: {
-							if (!dbconnectionstrings_.Contains_disableIfNot(eDBServerTypes.SQLServer)) continue;
-//							_con = (cDBConnection)connection_[eDBServerTypes.SQLServer];
+							if (!dbconnectionstrings_.Contains_disableIfNot(DBServerTypes.SQLServer)) continue;
+//							_con = (cDBConnection)connection_[DBServerTypes.SQLServer];
 							break;
 						}
 					}
@@ -471,9 +471,9 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 
 	switch (dbconnectionstrings_[d].DBServerType) {
 #if MySQL
-		case eDBServerTypes.MySQL:
+		case DBServerTypes.MySQL:
 #endif
-		case eDBServerTypes.SQLServer: {
+		case DBServerTypes.SQLServer: {
 			if (dbconnectionstrings_[d].exists_aux__) 
 				dbconnectionstrings_[d].Connection.SQLFunction_delete(_ouputTo);
 			break;
@@ -490,9 +490,9 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 
 	switch (dbconnectionstrings_[d].DBServerType) {
 #if MySQL
-		case eDBServerTypes.MySQL:
+		case DBServerTypes.MySQL:
 #endif
-		case eDBServerTypes.SQLServer: {
+		case DBServerTypes.SQLServer: {
 			if (dbconnectionstrings_[d].exists_aux__) 
 				dbconnectionstrings_[d].Connection.SQLStoredProcedure_delete(_ouputTo);
 			break;
@@ -509,9 +509,9 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 
 	switch (dbconnectionstrings_[d].DBServerType) {
 #if MySQL
-		case eDBServerTypes.MySQL:
+		case DBServerTypes.MySQL:
 #endif
-		case eDBServerTypes.SQLServer: {
+		case DBServerTypes.SQLServer: {
 			if (dbconnectionstrings_[d].exists_aux__) 
 				dbconnectionstrings_[d].Connection.SQLView_delete(_ouputTo);
 			break;

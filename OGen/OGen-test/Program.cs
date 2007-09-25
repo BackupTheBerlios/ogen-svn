@@ -21,7 +21,7 @@ namespace OGen.test {
 	class Program {
 		public static void Main(string[] args) {
 			
-			cDBConnection _con = new cDBConnection_PostgreSQL(
+			DBConnection _con = new DBConnection_PostgreSQL(
 				"Server=127.0.0.1;Port=5432;User ID=postgres;Password=passpub;Database=OGen-NTier_UTs;", 
 				#if NET20
 				System.Configuration.ConfigurationManager.AppSettings["DBLogfile"]

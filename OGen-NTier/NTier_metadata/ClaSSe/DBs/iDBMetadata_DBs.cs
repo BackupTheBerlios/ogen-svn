@@ -22,14 +22,14 @@ namespace OGen.NTier.lib.metadata {
 		cDBMetadata Root_ref { get; }
 
 		cDBMetadata_DB this[int index_in] { get; }
-		cDBMetadata_DB this[eDBServerTypes dbservertype_in] { get; }
+		cDBMetadata_DB this[DBServerTypes dbservertype_in] { get; }
 		int Count { get; }
 
-		eDBServerTypes FirstDefaultAvailable_DBServerType();
+		DBServerTypes FirstDefaultAvailable_DBServerType();
 		string FirstDefaultAvailable_Connectionstring();
 
-		int Add(eDBServerTypes dbservertype_in, bool verifyExistenz_in);
-		int Search(eDBServerTypes dbservertype_in);
+		int Add(DBServerTypes dbservertype_in, bool verifyExistenz_in);
+		int Search(DBServerTypes dbservertype_in);
 		void Clear();
 
 		void CopyFrom(iDBMetadata_DBs dbMetadata_DBs_in);

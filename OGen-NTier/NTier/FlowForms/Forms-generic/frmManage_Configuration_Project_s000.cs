@@ -382,7 +382,7 @@ namespace OGen.NTier.presentationlayer.winforms {
 		public OGen.NTier.lib.metadata.cDBMetadata_DB[] UnBind_DBConnections() {
 			OGen.NTier.lib.metadata.cDBMetadata_DB[] DBConnections_out;
 			ArrayList _dbservertypes;
-			eDBServerTypes _dbservertype;
+			DBServerTypes _dbservertype;
 			int _dbindex;
 			int _justadded;
 
@@ -393,8 +393,8 @@ namespace OGen.NTier.presentationlayer.winforms {
 					!=
 					string.Empty
 				) {
-					_dbservertype = (eDBServerTypes)Enum.Parse(
-						typeof(eDBServerTypes),
+					_dbservertype = (DBServerTypes)Enum.Parse(
+						typeof(DBServerTypes),
 						lvwConnections.Items[i].SubItems[
 							(int)eConnectionColumns.DBServerType
 						].Text
@@ -412,8 +412,8 @@ namespace OGen.NTier.presentationlayer.winforms {
 					==
 					string.Empty
 				) {
-					_dbservertype = (eDBServerTypes)Enum.Parse(
-						typeof(eDBServerTypes),
+					_dbservertype = (DBServerTypes)Enum.Parse(
+						typeof(DBServerTypes),
 						lvwConnections.Items[i].SubItems[
 							(int)eConnectionColumns.DBServerType
 						].Text
@@ -433,15 +433,15 @@ namespace OGen.NTier.presentationlayer.winforms {
 				DBConnections_out[i] = new OGen.NTier.lib.metadata.cDBMetadata_DB(
 // ToDos: here! check this...
 null, 
-					(eDBServerTypes)_dbservertypes[i]
+					(DBServerTypes)_dbservertypes[i]
 				);
 			}
 
 
 			for (int i = 0; i < lvwConnections.Items.Count; i++) {
 				_dbservertype 
-					= (eDBServerTypes)Enum.Parse(
-						typeof(eDBServerTypes),
+					= (DBServerTypes)Enum.Parse(
+						typeof(DBServerTypes),
 						lvwConnections.Items[i].SubItems[
 							(int)eConnectionColumns.DBServerType
 						].Text
@@ -475,7 +475,7 @@ true, // ToDos: here!
 		}
 		public void Bind_DBConnections(
 			OGen.NTier.lib.metadata.cDBMetadata_DB[] dbMetadata_DB_in
-			//, OGen.lib.datalayer.eDBServerTypes default_DBServerType_in,
+			//, OGen.lib.datalayer.DBServerTypes default_DBServerType_in,
 			//string default_Mode_in
 		) {
 			lvwConnections.Items.Clear();
@@ -557,8 +557,8 @@ true, // ToDos: here!
 		private void btnEdit_Click(object sender, System.EventArgs e) {
 			if (lvwConnections.SelectedItems.Count == 1) {
 				frmConnectionstring connection = new frmConnectionstring();
-				connection.DBServerType = (eDBServerTypes)Enum.Parse(
-					typeof(eDBServerTypes),
+				connection.DBServerType = (DBServerTypes)Enum.Parse(
+					typeof(DBServerTypes),
 					lvwConnections.SelectedItems[0].SubItems[(int)eConnectionColumns.DBServerType].Text
 				);
 				connection.DBMode = lvwConnections.SelectedItems[0].SubItems[(int)eConnectionColumns.DBMode].Text;

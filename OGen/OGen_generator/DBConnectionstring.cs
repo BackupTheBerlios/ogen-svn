@@ -20,7 +20,7 @@ namespace OGen.lib.generator {
 	public class DBConnectionstring : IDisposable {
 		#region public DBConnectionstring(...);
 		public DBConnectionstring(
-			eDBServerTypes dbServerType_in, 
+			DBServerTypes dbServerType_in, 
 			string connectionstring_in
 		) {
 			dbservertype_ = dbServerType_in;
@@ -42,9 +42,9 @@ namespace OGen.lib.generator {
 		}
 		#endregion
 
-		#region internal cDBConnection Connection { get; set; }
-		private cDBConnection connection_;
-		internal cDBConnection Connection {
+		#region internal DBConnection Connection { get; set; }
+		private DBConnection connection_;
+		internal DBConnection Connection {
 			get { return connection_; }
 			set { connection_ = value; }
 		}
@@ -60,9 +60,9 @@ namespace OGen.lib.generator {
 		/// </summary>
 		internal bool exists_aux__;
 
-		#region public eDBServerTypes DBServerType { get; set; }
-		private eDBServerTypes dbservertype_;
-		public eDBServerTypes DBServerType {
+		#region public DBServerTypes DBServerType { get; set; }
+		private DBServerTypes dbservertype_;
+		public DBServerTypes DBServerType {
 			get { return dbservertype_; }
 			set { dbservertype_ = value; }
 		}

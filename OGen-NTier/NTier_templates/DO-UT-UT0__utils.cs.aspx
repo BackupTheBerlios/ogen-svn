@@ -52,9 +52,9 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer.UTs {
 		}
 		#endregion
 
-		#region public static cDBConnection[] DBConnections { get; }
-		private static cDBConnection[] dbconnections__;
-		public static cDBConnection[] DBConnections {
+		#region public static DBConnection[] DBConnections { get; }
+		private static DBConnection[] dbconnections__;
+		public static DBConnection[] DBConnections {
 			get {
 				if (dbconnections__ == null) {
 					Config_DBConnectionstring _dbcon;
@@ -70,7 +70,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer.UTs {
 						}
 					}
 
-					dbconnections__ = new cDBConnection[_count];
+					dbconnections__ = new DBConnection[_count];
 					_count = 0;
 					for (int _db = 0; _db < Config_DBConnectionstrings.DBServerTypes(DO__utils.ApplicationName).Length; _db++) {
 						_dbcon = Config_DBConnectionstrings.DBConnectionstrings(DO__utils.ApplicationName)[

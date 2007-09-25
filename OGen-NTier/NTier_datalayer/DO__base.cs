@@ -25,7 +25,7 @@ namespace OGen.NTier.lib.datalayer {
 //		#region public DO__base(...);
 		/// <param name="connection_in">DB Connection</param>
 		public DO__base(
-			cDBConnection connection_in
+			DBConnection connection_in
 		) : this (
 			connection_in, 
 			string.Empty, 
@@ -57,7 +57,7 @@ namespace OGen.NTier.lib.datalayer {
 			logfile_in
 		) {}
 		private DO__base(
-			cDBConnection connection_in, 
+			DBConnection connection_in, 
 			string dbServerType_in, 
 			string connectionstring_in, 
 			bool connection_insideInstance_in,
@@ -95,19 +95,19 @@ namespace OGen.NTier.lib.datalayer {
 //		#endregion
 
 		//#region Properties...
-//		#region public cDBConnection Connection { get; }
+//		#region public DBConnection Connection { get; }
 		private string connection_dbservertype_;
 		private string connection_connectionstring_;
 		private bool logenabled_;
 		private string logfile_;
 
 		private bool connection_insideinstance_;
-		private cDBConnection connection__;
+		private DBConnection connection__;
 
 		/// <summary>
 		/// DB Connection.
 		/// </summary>
-		public cDBConnection Connection {
+		public DBConnection Connection {
 			get {
 				if (
 					connection_insideinstance_
@@ -139,7 +139,7 @@ namespace OGen.NTier.lib.datalayer {
 		//#endregion
 
 		#region Methods...
-		public abstract cDBConnection DBConnection_createInstance(
+		public abstract DBConnection DBConnection_createInstance(
 			string dbServerType_in, 
 			string connectionstring_in, 
 			string logfile_in

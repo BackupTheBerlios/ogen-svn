@@ -77,7 +77,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			internal DO0_vUserDefaultGroup
 #endif
 		(
-			cDBConnection connection_in
+			DBConnection connection_in
 		) : base(
 			connection_in
 		) {
@@ -116,7 +116,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		#endregion
 
 		#region Methods...
-		public override cDBConnection DBConnection_createInstance(
+		public override DBConnection DBConnection_createInstance(
 			string dbServerType_in, 
 			string connectionstring_in, 
 			string logfile_in

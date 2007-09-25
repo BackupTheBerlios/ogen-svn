@@ -258,7 +258,7 @@ namespace OGen.NTier.presentationlayer.winforms {
 			// Pick_DBType
 			// 
 			this.Pick_DBType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-			this.Pick_DBType.DBServerType = OGen.lib.datalayer.eDBServerTypes.invalid;
+			this.Pick_DBType.DBServerType = OGen.lib.datalayer.DBServerTypes.invalid;
 			this.Pick_DBType.Location = new System.Drawing.Point(104, 8);
 			this.Pick_DBType.Name = "Pick_DBType";
 			this.Pick_DBType.Size = new System.Drawing.Size(256, 24);
@@ -318,8 +318,8 @@ namespace OGen.NTier.presentationlayer.winforms {
 		}
 
 		//#region Properties...
-		#region public OGen.lib.datalayer.eDBServerTypes DBServerType { get; set; }
-		public OGen.lib.datalayer.eDBServerTypes DBServerType {
+		#region public OGen.lib.datalayer.DBServerTypes DBServerType { get; set; }
+		public OGen.lib.datalayer.DBServerTypes DBServerType {
 			get { return Pick_DBType.DBServerType; }
 			set { Pick_DBType.DBServerType = value; }
 		}
@@ -376,7 +376,7 @@ namespace OGen.NTier.presentationlayer.winforms {
 		#endregion
 		#region private void btnOK_Click(object sender, System.EventArgs e);
 		private void btnOK_Click(object sender, System.EventArgs e) {
-			if (DBServerType == OGen.lib.datalayer.eDBServerTypes.invalid) {
+			if (DBServerType == OGen.lib.datalayer.DBServerTypes.invalid) {
 				System.Windows.Forms.MessageBox.Show(
 					"a valid 'DB Type' must be provided",
 					"Warning",

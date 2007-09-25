@@ -40,7 +40,7 @@ namespace OGen.NTier.lib.metadata {
 		public override object Property_new(string name_in) {
 			switch (name_in) {
 				case "db":
-					return new cDBMetadata_DB(this, eDBServerTypes.invalid);
+					return new cDBMetadata_DB(this, DBServerTypes.invalid);
 				default:
 					throw new Exception(string.Format(
 						"{0}.{1}.Property_new(): - invalid Name: {2}", 
@@ -95,21 +95,21 @@ namespace OGen.NTier.lib.metadata {
 //		#region private string supports_postgresql__ { get; }
 		[ClaSSPropertyAttribute("supports_PostgreSQL", ClaSSPropertyAttribute.eType.standard, false)]
 		private string supports_postgresql__ {
-			get { return (Search(eDBServerTypes.PostgreSQL) != -1).ToString(); }
+			get { return (Search(DBServerTypes.PostgreSQL) != -1).ToString(); }
 		}
 //		#endregion
 #endif
 //		#region private string supports_sqlserver__ { get; }
 		[ClaSSPropertyAttribute("supports_SQLServer", ClaSSPropertyAttribute.eType.standard, false)]
 		private string supports_sqlserver__ {
-			get { return (Search(eDBServerTypes.SQLServer) != -1).ToString(); }
+			get { return (Search(DBServerTypes.SQLServer) != -1).ToString(); }
 		}
 //		#endregion
 #if MySQL
 //		#region private string supports_mysql__ { get; }
 		[ClaSSPropertyAttribute("supports_MySQL", ClaSSPropertyAttribute.eType.standard, false)]
 		private string supports_mysql__ {
-			get { return (Search(eDBServerTypes.MySQL) != -1).ToString(); }
+			get { return (Search(DBServerTypes.MySQL) != -1).ToString(); }
 		}
 //		#endregion
 #endif
@@ -133,7 +133,7 @@ namespace OGen.NTier.lib.metadata {
 				return (cDBMetadata_DB)dbs_[index_in];
 			}
 		}
-		public cDBMetadata_DB this[eDBServerTypes dbservertype_in] {
+		public cDBMetadata_DB this[DBServerTypes dbservertype_in] {
 			get {
 				int _ti = Search(dbservertype_in);
 				return (_ti >= 0) ?
@@ -145,8 +145,8 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 
 		#region Methods...
-		#region public eDBServerTypes FirstDefaultAvailable_DBServerType();
-		public eDBServerTypes FirstDefaultAvailable_DBServerType() {
+		#region public DBServerTypes FirstDefaultAvailable_DBServerType();
+		public DBServerTypes FirstDefaultAvailable_DBServerType() {
 			for (int _db = 0; _db < dbs_.Count; _db++) {
 				for (int _con = 0; _con < ((cDBMetadata_DB)dbs_[_db]).Connections.Count; _con++) {
 					if (
@@ -182,7 +182,7 @@ namespace OGen.NTier.lib.metadata {
 		}
 		#endregion
 		#region public int Add(...)
-		public int Add(eDBServerTypes dbservertype_in, bool verifyExistenz_in) {
+		public int Add(DBServerTypes dbservertype_in, bool verifyExistenz_in) {
 			int _ti;
 
 			if (verifyExistenz_in) {
@@ -201,7 +201,7 @@ namespace OGen.NTier.lib.metadata {
 		}
 		#endregion
 		#region public int Search(...)
-		public int Search(eDBServerTypes dbservertype_in) {
+		public int Search(DBServerTypes dbservertype_in) {
 			for (int t = 0; t < dbs_.Count; t++)
 				if (((cDBMetadata_DB)dbs_[t]).DBServerType == dbservertype_in) // already exists!
 					return t; // returns it's position

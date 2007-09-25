@@ -18,21 +18,21 @@ using MySql.Data.MySqlClient;
 using System.Text;
 
 namespace OGen.lib.datalayer.MySQL {
-	public sealed class cDBConnection_MySQL : cDBConnection {
-		//#region public cDBConnection_MySQL(...);
-		public cDBConnection_MySQL(
+	public sealed class DBConnection_MySQL : DBConnection {
+		//#region public DBConnection_MySQL(...);
+		public DBConnection_MySQL(
 			string connectionstring_in
 		) : base (
-//			eDBServerTypes.MySQL, 
+//			DBServerTypes.MySQL, 
 			connectionstring_in,
 			string.Empty
 		) {
 		}
-		public cDBConnection_MySQL(
+		public DBConnection_MySQL(
 			string connectionstring_in,
 			string logfile_in
 		) : base (
-//			eDBServerTypes.MySQL, 
+//			DBServerTypes.MySQL, 
 			connectionstring_in,
 			logfile_in
 		) {

@@ -370,13 +370,13 @@ namespace OGen.NTier.lib.metadata {
 				#region //oldstuff...
 //				cDBType dbtype_generic_out = new cDBType(parent_ref_.Parent_ref.Parent_ref.Parent_ref.default_dbservertype_);
 //				switch (parent_ref_.Parent_ref.Parent_ref.Parent_ref.default_dbservertype_) {
-//					case eDBServerTypes.SQLServer:
+//					case DBServerTypes.SQLServer:
 //						dbtype_generic_out.Value = OGen.lib.datalayer.utils.convert.SqlDbType2DbType((SqlDbType)DBType_inDB);
 //						break;
-//					case eDBServerTypes.PostgreSQL:
+//					case DBServerTypes.PostgreSQL:
 //						dbtype_generic_out.Value = OGen.lib.datalayer.utils.convert.PgsqlDbType2DbType((NpgsqlDbType)DBType_inDB);
 //						break;
-//					case eDBServerTypes.MySQL:
+//					case DBServerTypes.MySQL:
 //						dbtype_generic_out.Value = OGen.lib.datalayer.utils.convert.MySqlDbType2DbType((MySqlDbType)DBType_inDB);
 //						break;
 //					default:
@@ -401,18 +401,18 @@ namespace OGen.NTier.lib.metadata {
 //				//return int.Parse(base.Property_standard["type"));
 //
 //				switch (parent_ref_.Parent_ref.Parent_ref.Parent_ref.default_dbservertype_) {
-//					case eDBServerTypes.SQLServer:
+//					case DBServerTypes.SQLServer:
 //						return (int)OGen.lib.datalayer.utils.convert.SqlDbType_Parse(
 //							//base.Property_standard["type"], 
 //							DBType_inDB_name, 
 //							false
 //						);
-//					case eDBServerTypes.PostgreSQL:
+//					case DBServerTypes.PostgreSQL:
 //						return (int)OGen.lib.datalayer.utils.convert.PgsqlDbType_Parse(
 //							//base.Property_standard["type"], 
 //							DBType_inDB_name
 //						);
-//					case eDBServerTypes.MySQL:
+//					case DBServerTypes.MySQL:
 //						return (int)OGen.lib.datalayer.utils.convert.MySqlDbType_Parse(
 //							//base.Property_standard["type"], 
 //							DBType_inDB_name
@@ -510,8 +510,8 @@ parent_ref_.Parent_ref.Parent_ref,
 //		#endregion
 
 		#region Methods...
-		#region public string DBType_generic_DBEmptyValue(eDBServerTypes dbServerType_in);
-		public string DBType_generic_DBEmptyValue(eDBServerTypes dbServerType_in) {
+		#region public string DBType_generic_DBEmptyValue(DBServerTypes dbServerType_in);
+		public string DBType_generic_DBEmptyValue(DBServerTypes dbServerType_in) {
 			return DBUtilssupport.GetInstance(dbServerType_in).Convert.DBType2DBEmptyValue(DBs[0].DBType_generic.Value);
 		}
 		#endregion

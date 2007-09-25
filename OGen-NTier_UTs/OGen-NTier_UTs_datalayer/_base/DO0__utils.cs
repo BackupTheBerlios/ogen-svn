@@ -118,14 +118,14 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		#endregion
 
 		#region public static Methods...
-		public static cDBConnection DBConnection_createInstance(
+		public static DBConnection DBConnection_createInstance(
 			string dbServerType_in, 
 			string connectionstring_in, 
 			string logfile_in
 		) {
 			switch (dbServerType_in) {
 				case "PostgreSQL":
-					return new cDBConnection_PostgreSQL(
+					return new DBConnection_PostgreSQL(
 						connectionstring_in, 
 						logfile_in
 					);

@@ -31,8 +31,8 @@ namespace OGen.NTier.UTs.test {
 		[STAThread]
 		static void Main(string[] args) {
 			//DO_UserGroup _usergroup_test = new DO_UserGroup(
-			//    //new cDBConnection(
-			//    //    eDBServerTypes.SQLServer,
+			//    //new DBConnection(
+			//    //    DBServerTypes.SQLServer,
 			//    //    "server=127.0.0.1;uid=sa;pwd=passpub;database=OGen-NTier_UTs;"
 			//    //)
 			//);
@@ -86,12 +86,12 @@ namespace OGen.NTier.UTs.test {
 
 
 			const int _cycles = 50;
-			cDBConnection[] _cons = new cDBConnection[] {
-				#region new cDBConnection(eDBServerTypes.SQLServer, ...), 
+			DBConnection[] _cons = new DBConnection[] {
+				#region new DBConnection(DBServerTypes.SQLServer, ...), 
 				DBConnectionsupport.CreateInstance(
-					eDBServerTypes.SQLServer,
+					DBServerTypes.SQLServer,
 					
-					DBUtilssupport.GetInstance(eDBServerTypes.SQLServer).ConnectionString.Build(
+					DBUtilssupport.GetInstance(DBServerTypes.SQLServer).ConnectionString.Build(
 						"127.0.0.1", 
 						"sa", 
 						"passpub", 
@@ -99,10 +99,10 @@ namespace OGen.NTier.UTs.test {
 					)
 				), 
 				#endregion
-				#region new cDBConnection(eDBServerTypes.PostgreSQL, ...)
+				#region new DBConnection(DBServerTypes.PostgreSQL, ...)
 				DBConnectionsupport.CreateInstance(
-					eDBServerTypes.PostgreSQL,
-					DBUtilssupport.GetInstance(eDBServerTypes.PostgreSQL).ConnectionString.Build(
+					DBServerTypes.PostgreSQL,
+					DBUtilssupport.GetInstance(DBServerTypes.PostgreSQL).ConnectionString.Build(
 						"127.0.0.1", 
 						"postgres", 
 						"passpub", 

@@ -68,7 +68,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// Making the use of Database Transactions possible on a sequence of operations across multiple DataObjects.
 		/// </summary>
 		/// <param name="connection_in">opened Database connection with an initiated Transaction</param>
-		public DO_<%=_aux_table.Name%>(cDBConnection connection_in) : base(connection_in) {
+		public DO_<%=_aux_table.Name%>(DBConnection connection_in) : base(connection_in) {
 		}<%
 		//~DO_< %=_aux_table.Name% >() {
 		//	cleanUp();

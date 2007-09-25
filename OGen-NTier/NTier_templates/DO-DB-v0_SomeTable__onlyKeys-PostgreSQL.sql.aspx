@@ -18,7 +18,7 @@ string _arg_TableName = System.Web.HttpUtility.UrlDecode(Request.QueryString["Ta
 #endregion
 
 #region varaux...
-eDBServerTypes _aux_dbservertype = eDBServerTypes.PostgreSQL;
+DBServerTypes _aux_dbservertype = DBServerTypes.PostgreSQL;
 
 cDBMetadata _aux_metadata;
 if (cDBMetadata.Metacache.Contains(_arg_MetadataFilepath)) {

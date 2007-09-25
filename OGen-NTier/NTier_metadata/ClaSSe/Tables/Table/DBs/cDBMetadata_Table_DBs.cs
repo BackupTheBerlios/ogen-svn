@@ -43,7 +43,7 @@ namespace OGen.NTier.lib.metadata {
 					return new cDBMetadata_Table_DB(
 						this, 
 						this, 
-						eDBServerTypes.invalid, 
+						DBServerTypes.invalid, 
 						string.Empty
 					);
 				default:
@@ -115,8 +115,8 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public cDBMetadata_Table_DB this[eDBServerTypes dbServerType_in] { get; }
-		public cDBMetadata_Table_DB this[eDBServerTypes dbServerType_in] {
+		#region public cDBMetadata_Table_DB this[DBServerTypes dbServerType_in] { get; }
+		public cDBMetadata_Table_DB this[DBServerTypes dbServerType_in] {
 			get {
 				int _fi = Search(dbServerType_in);
 				return (_fi >= 0) ? 
@@ -134,7 +134,7 @@ namespace OGen.NTier.lib.metadata {
 		}
 		#endregion
 		#region public int Add(...);
-		public int Add(eDBServerTypes dbServerType_in, string tableName_in, bool verifyExistenz_in) {
+		public int Add(DBServerTypes dbServerType_in, string tableName_in, bool verifyExistenz_in) {
 			int _fi;
 
 			if (verifyExistenz_in) {
@@ -155,7 +155,7 @@ namespace OGen.NTier.lib.metadata {
 		}
 		#endregion
 		#region public int Search(...)
-		public int Search(eDBServerTypes dbServerType_in) {
+		public int Search(DBServerTypes dbServerType_in) {
 			for (int f = 0; f < db_.Count; f++)
 				if (((cDBMetadata_Table_DB)db_[f]).DBServerType == dbServerType_in) // already exists!
 					return f; // returns it's position

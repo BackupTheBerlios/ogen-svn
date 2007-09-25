@@ -21,9 +21,9 @@ namespace OGen.lib.datalayer {
 	public class DBConnectionsupport {
 		private DBConnectionsupport() {}
 
-		#region public static cDBConnection CreateInstance();
-		public static cDBConnection CreateInstance(
-			eDBServerTypes dbServerType_in, 
+		#region public static DBConnection CreateInstance();
+		public static DBConnection CreateInstance(
+			DBServerTypes dbServerType_in, 
 			string connectionString_in
 		) {
 			return CreateInstance(
@@ -32,27 +32,27 @@ namespace OGen.lib.datalayer {
 				null
 			);
 		}
-		public static cDBConnection CreateInstance(
-			eDBServerTypes dbServerType_in, 
+		public static DBConnection CreateInstance(
+			DBServerTypes dbServerType_in, 
 			string connectionString_in, 
 			string logFile_in
 		) {
 			switch (dbServerType_in) {
 #if PostgreSQL
-				case eDBServerTypes.PostgreSQL:
-					return new cDBConnection_PostgreSQL(
+				case DBServerTypes.PostgreSQL:
+					return new DBConnection_PostgreSQL(
 						connectionString_in, 
 						logFile_in
 					);
 #endif
-				case eDBServerTypes.SQLServer:
-					return new cDBConnection_SQLServer(
+				case DBServerTypes.SQLServer:
+					return new DBConnection_SQLServer(
 						connectionString_in, 
 						logFile_in
 					);
 #if MySQL
-				case eDBServerTypes.MySQL:
-					return new cDBConnection_MySQL(
+				case DBServerTypes.MySQL:
+					return new DBConnection_MySQL(
 						connectionString_in, 
 						logFile_in
 					);
@@ -67,23 +67,23 @@ namespace OGen.lib.datalayer {
 			);
 		}
 		#endregion
-		#region public static eDBServerTypes GetDBServerType(...);
-		public static eDBServerTypes GetDBServerType(
-			cDBConnection connection_in
+		#region public static DBServerTypes GetDBServerType(...);
+		public static DBServerTypes GetDBServerType(
+			DBConnection connection_in
 		) {
 #if PostgreSQL
-			if (connection_in is cDBConnection_PostgreSQL) {
-				return eDBServerTypes.PostgreSQL;
+			if (connection_in is DBConnection_PostgreSQL) {
+				return DBServerTypes.PostgreSQL;
 			}
 			else
 #endif
-			if (connection_in is cDBConnection_SQLServer) {
-				return eDBServerTypes.SQLServer;
+			if (connection_in is DBConnection_SQLServer) {
+				return DBServerTypes.SQLServer;
 			}
 #if MySQL
 			else
-			if (connection_in is cDBConnection_MySQL) {
-				return eDBServerTypes.MySQL;
+			if (connection_in is DBConnection_MySQL) {
+				return DBServerTypes.MySQL;
 			}
 #endif
 			

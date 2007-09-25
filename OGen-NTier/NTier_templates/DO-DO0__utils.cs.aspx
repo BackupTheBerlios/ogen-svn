@@ -156,7 +156,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		#endregion
 
 		#region public static Methods...
-		public static cDBConnection DBConnection_createInstance(
+		public static DBConnection DBConnection_createInstance(
 			string dbServerType_in, 
 			string connectionstring_in, 
 			string logfile_in
@@ -165,7 +165,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			for (int d = 0; d < _aux_metadata.DBs.Count; d++) {
 				string _dbservertype = _aux_metadata.DBs[d].DBServerType.ToString();%>
 				case "<%=_dbservertype%>":
-					return new cDBConnection_<%=_dbservertype%>(
+					return new DBConnection_<%=_dbservertype%>(
 						connectionstring_in, 
 						logfile_in
 					);<%
@@ -253,7 +253,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 							continue;
 						}
 					}
-					cDBConnection connection = DBConnectionsupport.CreateInstance(
+					DBConnection connection = DBConnectionsupport.CreateInstance(
 						_aux_metadata.DBs.FirstDefaultAvailable_DBServerType(), 
 						_aux_metadata.DBs.FirstDefaultAvailable_Connectionstring()
 					);
@@ -265,7 +265,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 							/*02*/ DatatypeField,
 							/*03*/ _aux_table.Name, 
 #if MySQL
-							/*04*/ (_aux_metadata.DBs.FirstDefaultAvailable_DBServerType() == eDBServerTypes.MySQL) ? "`" :"\""
+							/*04*/ (_aux_metadata.DBs.FirstDefaultAvailable_DBServerType() == DBServerTypes.MySQL) ? "`" :"\""
 #else
 							/*04*/ "\""
 #endif

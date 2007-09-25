@@ -37,8 +37,8 @@ namespace OGen.lib.generator {
 		}
 		#endregion
 
-		#region internal bool Contains_disableIfNot(eDBServerTypes dbServerTypes_in);
-		internal bool Contains_disableIfNot(eDBServerTypes dbServerTypes_in) {
+		#region internal bool Contains_disableIfNot(DBServerTypes dbServerTypes_in);
+		internal bool Contains_disableIfNot(DBServerTypes dbServerTypes_in) {
 			bool contains_disableifnot_out = false;
 			for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 				if (((DBConnectionstring)dbconnectionstrings_[d]).DBServerType == dbServerTypes_in) {
@@ -52,8 +52,8 @@ namespace OGen.lib.generator {
 		}
 		#endregion
 
-		#region public bool Contains(eDBServerTypes dbServerTypes_in);
-		public bool Contains(eDBServerTypes dbServerTypes_in) {
+		#region public bool Contains(DBServerTypes dbServerTypes_in);
+		public bool Contains(DBServerTypes dbServerTypes_in) {
 			for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 				if (((DBConnectionstring)dbconnectionstrings_[d]).DBServerType == dbServerTypes_in) {
 					return true;
@@ -69,7 +69,7 @@ namespace OGen.lib.generator {
 		#endregion
 		#region public int Add(...);
 		public int Add(
-			eDBServerTypes dbServerType_in, 
+			DBServerTypes dbServerType_in, 
 			string connectionstring_in
 		) {
 			return dbconnectionstrings_.Add(

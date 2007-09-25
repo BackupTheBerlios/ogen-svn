@@ -46,7 +46,7 @@ namespace OGen.NTier.lib.metadata {
 			//#region ClaSSe...
 			applicationname_ = string.Empty;
 			namespace_ = string.Empty;
-			//default_dbservertype_ = eDBServerTypes.invalid;
+			//default_dbservertype_ = DBServerTypes.invalid;
 			//default_configmode_ = string.Empty;
 			subappname_ = string.Empty;
 			pseudoreflectionable_ = false;
@@ -153,9 +153,9 @@ namespace OGen.NTier.lib.metadata {
 			set { namespace_ = value; }
 		}
 		#endregion
-		//#region internal eDBServerTypes default_dbservertype_ { get; set; }
-		//internal eDBServerTypes default_dbservertype_;
-		//public  eDBServerTypes Default_DBServerType {
+		//#region internal DBServerTypes default_dbservertype_ { get; set; }
+		//internal DBServerTypes default_dbservertype_;
+		//public  DBServerTypes Default_DBServerType {
 		//    get { return default_dbservertype_; }
 		//    set { default_dbservertype_ = value; }
 		//}
@@ -341,7 +341,7 @@ namespace OGen.NTier.lib.metadata {
 		public delegate void dLoadState_fromDB(string message_in, bool onANewLine_in);
 		public void LoadState_fromDB(
 			dLoadState_fromDB	notifyBack_in, 
-			eDBServerTypes		DBServerType_in, 
+			DBServerTypes		DBServerType_in, 
 			string				Connectionstring_in, 
 			string				subAppName_in, 
 			bool				clear_in
@@ -352,7 +352,7 @@ namespace OGen.NTier.lib.metadata {
 			bool _exits_getTableFields = false;
 
 //			#region for (...) Tables.Add();
-			cDBConnection _connection 
+			DBConnection _connection 
 				= DBConnectionsupport.CreateInstance(
 					DBServerType_in, 
 					Connectionstring_in

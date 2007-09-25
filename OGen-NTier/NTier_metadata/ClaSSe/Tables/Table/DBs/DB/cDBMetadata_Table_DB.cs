@@ -31,7 +31,7 @@ namespace OGen.NTier.lib.metadata {
 		public cDBMetadata_Table_DB(
 			iClaSSe aggregateloopback_ref_in, 
 			cDBMetadata_Table_DBs parent_ref_in, 
-			eDBServerTypes dbServerType_in, 
+			DBServerTypes dbServerType_in, 
 			string tableName_in
 		) : base (
 			aggregateloopback_ref_in
@@ -88,9 +88,9 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 
 		#region Properties - ClaSSe...
-		#region public eDBServerTypes DBServerType { get; set; }
-		private eDBServerTypes dbservertype_;
-		public eDBServerTypes DBServerType {
+		#region public DBServerTypes DBServerType { get; set; }
+		private DBServerTypes dbservertype_;
+		public DBServerTypes DBServerType {
 			get { return dbservertype_; }
 			set { dbservertype_ = value; }
 		}
@@ -98,7 +98,7 @@ namespace OGen.NTier.lib.metadata {
 		[ClaSSPropertyAttribute("dbServerType", ClaSSPropertyAttribute.eType.standard, true)]
 		private string dbservertype_reflection {
 			get { return dbservertype_.ToString(); }
-			set { dbservertype_ = (eDBServerTypes)Enum.Parse(typeof(eDBServerTypes),value); }
+			set { dbservertype_ = (DBServerTypes)Enum.Parse(typeof(DBServerTypes),value); }
 		}
 		#endregion
 		#region public string TableName { get; }

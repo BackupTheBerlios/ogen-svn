@@ -19,14 +19,14 @@ namespace OGen.lib.datalayer {
 	public class cDBType {
 //		#region public cDBType(...);
 		public cDBType(
-//eDBServerTypes dbServerType_in
+//DBServerTypes dbServerType_in
 		) {
 //			dbservertype_ = dbServerType_in;
 		}
 //		#endregion
 
 //		#region private Fields...
-//		private eDBServerTypes dbservertype_;
+//		private DBServerTypes dbservertype_;
 //		#endregion
 
 //		#region public Properties...

@@ -19,7 +19,7 @@ string _arg_SearchName = System.Web.HttpUtility.UrlDecode(Request.QueryString["S
 #endregion
 
 #region varaux...
-eDBServerTypes _aux_dbservertype = eDBServerTypes.MySQL;
+DBServerTypes _aux_dbservertype = DBServerTypes.MySQL;
 
 cDBMetadata _aux_metadata;
 if (cDBMetadata.Metacache.Contains(_arg_MetadataFilepath)) {
