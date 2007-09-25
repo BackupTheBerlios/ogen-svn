@@ -27,9 +27,10 @@ namespace OGen.NTier.UTs.howtos {
 			long _idgroup;
 
 			// we need a shared connection between Data Objects
-			cDBConnection _con = new cDBConnection(
+			DBConnection _con = DO__utils.DBConnection_createInstance(
 				DO__utils.DBServerType, 
-				DO__utils.DBConnectionstring
+				DO__utils.DBConnectionstring, 
+				string.Empty
 			);
 
 			// before beginning a transaction we need to open the connection

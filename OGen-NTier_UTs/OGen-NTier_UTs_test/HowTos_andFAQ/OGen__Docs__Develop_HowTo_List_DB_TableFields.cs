@@ -21,9 +21,9 @@ namespace OGen.UTs.howtos {
 		public HowTo_List_DB_TableFields() {
 
 
-			cDBConnection _con = new cDBConnection(
+			DBConnection _con = DBConnectionsupport.CreateInstance(
 				// set your db server type here
-				eDBServerTypes.PostgreSQL, 
+				DBServerTypes.PostgreSQL, 
 				// and connectionstring
 				"Server=127.0.0.1;Port=5432;User ID=postgres;Password=passpub;Database=OGen-NTier_UTs;"
 			);
