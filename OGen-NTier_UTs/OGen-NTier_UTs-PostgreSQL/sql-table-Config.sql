@@ -1,12 +1,14 @@
+
 -- Table: "Config"
 
 -- DROP TABLE "Config";
 
 CREATE TABLE "Config"
 (
-  "Name" varchar(50) NOT NULL,
-  "Config" varchar(50) NOT NULL,
-  "Type" int4 NOT NULL,
+  "Name" character varying(50) NOT NULL,
+  "Config" character varying(50) NOT NULL,
+  "Type" integer NOT NULL,
+  "Description" character varying(50) NOT NULL,
   CONSTRAINT "Config_pkey" PRIMARY KEY ("Name")
 ) 
 WITHOUT OIDS;

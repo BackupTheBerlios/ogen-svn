@@ -1,3 +1,4 @@
+
 -- Sequence: "User_IDUser_seq"
 
 -- DROP SEQUENCE "User_IDUser_seq";
@@ -17,15 +18,12 @@ ALTER TABLE "User_IDUser_seq" OWNER TO postgres;
 
 CREATE TABLE "User"
 (
-  "IDUser" int8 NOT NULL DEFAULT nextval('"User_IDUser_seq"'::regclass),
-  "Login" varchar(50) NOT NULL,
-  "Password" varchar(50) NOT NULL,
+  "IDUser" bigint NOT NULL DEFAULT nextval('"User_IDUser_seq"'::regclass),
+  "Login" character varying(50) NOT NULL,
+  "Password" character varying(50) NOT NULL,
+  "SomeNullValue" integer,
   CONSTRAINT "User_pkey" PRIMARY KEY ("IDUser"),
   CONSTRAINT "User_Login_key" UNIQUE ("Login")
 ) 
 WITHOUT OIDS;
 ALTER TABLE "User" OWNER TO postgres;
-
-
-
-
