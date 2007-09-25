@@ -75,6 +75,26 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc-console", "..\OGen-Doc\
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer__base", "..\OGen\OGen_datalayer__base\OGen_datalayer__base-7.1.csproj", "{0BE6274C-5536-4690-9597-8FCD8459C2A3}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_PostgreSQL", "..\OGen\OGen_datalayer_PostgreSQL\OGen_datalayer_PostgreSQL-7.1.csproj", "{2BBB8F6D-B85C-4939-B781-5768DE287455}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_SQLServer", "..\OGen\OGen_datalayer_SQLServer\OGen_datalayer_SQLServer-7.1.csproj", "{1B07A59E-56C1-49C5-B3A5-C6B5EED72F5D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayersupport", "..\OGen\OGen_datalayersupport\OGen_datalayersupport-7.1.csproj", "{C982B439-F21D-469A-8077-F01D29B6C003}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_MySQL", "..\OGen\OGen_datalayer_MySQL\OGen_datalayer_MySQL-7.1.csproj", "{CD40001B-B19B-44CA-9F8A-8FB4F75DB1F9}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug
@@ -157,6 +177,26 @@ Global
 		{D4BA7561-1BEB-403C-933C-AE740D4889BE}.Debug.Build.0 = Debug|.NET
 		{D4BA7561-1BEB-403C-933C-AE740D4889BE}.Release.ActiveCfg = Release|.NET
 		{D4BA7561-1BEB-403C-933C-AE740D4889BE}.Release.Build.0 = Release|.NET
+		{0BE6274C-5536-4690-9597-8FCD8459C2A3}.Debug.ActiveCfg = Debug|.NET
+		{0BE6274C-5536-4690-9597-8FCD8459C2A3}.Debug.Build.0 = Debug|.NET
+		{0BE6274C-5536-4690-9597-8FCD8459C2A3}.Release.ActiveCfg = Release|.NET
+		{0BE6274C-5536-4690-9597-8FCD8459C2A3}.Release.Build.0 = Release|.NET
+		{2BBB8F6D-B85C-4939-B781-5768DE287455}.Debug.ActiveCfg = Debug|.NET
+		{2BBB8F6D-B85C-4939-B781-5768DE287455}.Debug.Build.0 = Debug|.NET
+		{2BBB8F6D-B85C-4939-B781-5768DE287455}.Release.ActiveCfg = Release|.NET
+		{2BBB8F6D-B85C-4939-B781-5768DE287455}.Release.Build.0 = Release|.NET
+		{1B07A59E-56C1-49C5-B3A5-C6B5EED72F5D}.Debug.ActiveCfg = Debug|.NET
+		{1B07A59E-56C1-49C5-B3A5-C6B5EED72F5D}.Debug.Build.0 = Debug|.NET
+		{1B07A59E-56C1-49C5-B3A5-C6B5EED72F5D}.Release.ActiveCfg = Release|.NET
+		{1B07A59E-56C1-49C5-B3A5-C6B5EED72F5D}.Release.Build.0 = Release|.NET
+		{C982B439-F21D-469A-8077-F01D29B6C003}.Debug.ActiveCfg = Debug|.NET
+		{C982B439-F21D-469A-8077-F01D29B6C003}.Debug.Build.0 = Debug|.NET
+		{C982B439-F21D-469A-8077-F01D29B6C003}.Release.ActiveCfg = Release|.NET
+		{C982B439-F21D-469A-8077-F01D29B6C003}.Release.Build.0 = Release|.NET
+		{CD40001B-B19B-44CA-9F8A-8FB4F75DB1F9}.Debug.ActiveCfg = Debug|.NET
+		{CD40001B-B19B-44CA-9F8A-8FB4F75DB1F9}.Debug.Build.0 = Debug|.NET
+		{CD40001B-B19B-44CA-9F8A-8FB4F75DB1F9}.Release.ActiveCfg = Release|.NET
+		{CD40001B-B19B-44CA-9F8A-8FB4F75DB1F9}.Release.Build.0 = Release|.NET
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

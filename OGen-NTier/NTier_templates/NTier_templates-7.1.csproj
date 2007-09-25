@@ -100,11 +100,6 @@
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
                 <Reference
-                    Name = "OGen_datalayer"
-                    Project = "{4AE20414-478E-4859-849E-929741A5936C}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
                     Name = "NTier_metadata"
                     Project = "{0E77A4DB-AF8B-4290-BB33-F9EC97655433}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
@@ -135,6 +130,26 @@
                     Project = "{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
+                <Reference
+                    Name = "OGen_datalayer__base"
+                    Project = "{0BE6274C-5536-4690-9597-8FCD8459C2A3}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "OGen_datalayer_PostgreSQL"
+                    Project = "{2BBB8F6D-B85C-4939-B781-5768DE287455}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "OGen_datalayer_SQLServer"
+                    Project = "{1B07A59E-56C1-49C5-B3A5-C6B5EED72F5D}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "OGen_datalayersupport"
+                    Project = "{C982B439-F21D-469A-8077-F01D29B6C003}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
             </References>
         </Build>
         <Files>
@@ -148,7 +163,7 @@
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "AssemblyInfo-VisualStudio.cs"
+                    RelPath = "AssemblyInfo.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -161,27 +176,11 @@
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "BO-SomeApplication_businesslayer.cmbx.aspx"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "BO-SomeApplication_businesslayer.prjx.aspx"
-                    BuildAction = "Content"
-                />
-                <File
                     RelPath = "BO-SomeApplication_businesslayer-7.1.csproj.aspx"
                     BuildAction = "Content"
                 />
                 <File
                     RelPath = "BO-SomeApplication_businesslayer-8.csproj.aspx"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "BO-UT-SomeApplication_businesslayer_UTs.cmbx.aspx"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "BO-UT-SomeApplication_businesslayer_UTs.prjx.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -513,27 +512,11 @@
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "DO-SomeApplication_datalayer.cmbx.aspx"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "DO-SomeApplication_datalayer.prjx.aspx"
-                    BuildAction = "Content"
-                />
-                <File
                     RelPath = "DO-SomeApplication_datalayer-7.1.csproj.aspx"
                     BuildAction = "Content"
                 />
                 <File
                     RelPath = "DO-SomeApplication_datalayer-8.csproj.aspx"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "DO-UT-SomeApplication_datalayer_UTs.cmbx.aspx"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "DO-UT-SomeApplication_datalayer_UTs.prjx.aspx"
                     BuildAction = "Content"
                 />
                 <File
@@ -581,10 +564,6 @@
                     BuildAction = "Content"
                 />
                 <File
-                    RelPath = "SomeApplication.cmbx.aspx"
-                    BuildAction = "Content"
-                />
-                <File
                     RelPath = "SomeApplication.OGen-NTier-1.1.bat.aspx"
                     BuildAction = "Content"
                 />
@@ -594,14 +573,6 @@
                 />
                 <File
                     RelPath = "SomeApplication_AssemblyInfo.cs.txt"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "SomeApplication_test.cmbx.aspx"
-                    BuildAction = "Content"
-                />
-                <File
-                    RelPath = "SomeApplication_test.prjx.aspx"
                     BuildAction = "Content"
                 />
                 <File

@@ -100,11 +100,6 @@
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
                 <Reference
-                    Name = "OGen_datalayer"
-                    Project = "{4AE20414-478E-4859-849E-929741A5936C}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
                     Name = "Doc_metadata"
                     Project = "{9DF6791A-1771-4EB6-8FEB-7F54AC2D9078}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
@@ -125,12 +120,32 @@
                     Project = "{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
+                <Reference
+                    Name = "OGen_datalayer__base"
+                    Project = "{0BE6274C-5536-4690-9597-8FCD8459C2A3}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "OGen_datalayer_PostgreSQL"
+                    Project = "{2BBB8F6D-B85C-4939-B781-5768DE287455}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "OGen_datalayer_SQLServer"
+                    Project = "{1B07A59E-56C1-49C5-B3A5-C6B5EED72F5D}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
+                <Reference
+                    Name = "OGen_datalayersupport"
+                    Project = "{C982B439-F21D-469A-8077-F01D29B6C003}"
+                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
+                />
             </References>
         </Build>
         <Files>
             <Include>
                 <File
-                    RelPath = "AssemblyInfo-VisualStudio.cs"
+                    RelPath = "AssemblyInfo.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />

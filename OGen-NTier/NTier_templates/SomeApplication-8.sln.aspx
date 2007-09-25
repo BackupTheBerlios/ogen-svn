@@ -33,15 +33,15 @@ if (cDBMetadata.Metacache.Contains(_arg_MetadataFilepath)) {
 //-----------------------------------------------------------------------------------------
 %>Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=_aux_metadata.ApplicationName%>_datalayer-8", "<%=_aux_metadata.ApplicationName%>_datalayer\<%=_aux_metadata.ApplicationName%>_datalayer-8.csproj", "{<%=_aux_metadata.GUIDDatalayer%>}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=_aux_metadata.ApplicationName%>_datalayer", "<%=_aux_metadata.ApplicationName%>_datalayer\<%=_aux_metadata.ApplicationName%>_datalayer-8.csproj", "{<%=_aux_metadata.GUIDDatalayer%>}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=_aux_metadata.ApplicationName%>_datalayer_UTs-8", "<%=_aux_metadata.ApplicationName%>_datalayer_UTs\<%=_aux_metadata.ApplicationName%>_datalayer_UTs-8.csproj", "{<%=_aux_metadata.GUIDDatalayer_UTs%>}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=_aux_metadata.ApplicationName%>_datalayer_UTs", "<%=_aux_metadata.ApplicationName%>_datalayer_UTs\<%=_aux_metadata.ApplicationName%>_datalayer_UTs-8.csproj", "{<%=_aux_metadata.GUIDDatalayer_UTs%>}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=_aux_metadata.ApplicationName%>_businesslayer-8", "<%=_aux_metadata.ApplicationName%>_businesslayer\<%=_aux_metadata.ApplicationName%>_businesslayer-8.csproj", "{<%=_aux_metadata.GUIDBusinesslayer%>}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=_aux_metadata.ApplicationName%>_businesslayer", "<%=_aux_metadata.ApplicationName%>_businesslayer\<%=_aux_metadata.ApplicationName%>_businesslayer-8.csproj", "{<%=_aux_metadata.GUIDBusinesslayer%>}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=_aux_metadata.ApplicationName%>_businesslayer_UTs-8", "<%=_aux_metadata.ApplicationName%>_businesslayer_UTs\<%=_aux_metadata.ApplicationName%>_businesslayer_UTs-8.csproj", "{<%=_aux_metadata.GUIDBusinesslayer_UTs%>}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=_aux_metadata.ApplicationName%>_businesslayer_UTs", "<%=_aux_metadata.ApplicationName%>_businesslayer_UTs\<%=_aux_metadata.ApplicationName%>_businesslayer_UTs-8.csproj", "{<%=_aux_metadata.GUIDBusinesslayer_UTs%>}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=_aux_metadata.ApplicationName%>_test-8", "<%=_aux_metadata.ApplicationName%>_test\<%=_aux_metadata.ApplicationName%>_test-8.csproj", "{<%=_aux_metadata.GUIDTest%>}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "<%=_aux_metadata.ApplicationName%>_test", "<%=_aux_metadata.ApplicationName%>_test\<%=_aux_metadata.ApplicationName%>_test-8.csproj", "{<%=_aux_metadata.GUIDTest%>}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
