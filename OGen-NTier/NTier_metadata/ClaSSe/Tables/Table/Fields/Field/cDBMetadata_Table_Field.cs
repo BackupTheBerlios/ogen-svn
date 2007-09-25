@@ -41,7 +41,6 @@ namespace OGen.NTier.lib.metadata {
 			Name = name_in;
 			isPK = false;
 			isIdentity = false;
-			isPseudoIdentity = false;
 			FriendlyName = string.Empty;
 			ExtendedDescription = string.Empty;
 			AditionalInfo = string.Empty;
@@ -133,11 +132,7 @@ namespace OGen.NTier.lib.metadata {
 		private bool isidentity_;
 		public bool isIdentity {
 			get { 
-				return 
-					ispseudoidentity_ 
-					|| 
-					isidentity_
-				;
+				return isidentity_;
 			}
 			set { isidentity_ = value; }
 		}
@@ -146,19 +141,6 @@ namespace OGen.NTier.lib.metadata {
 		private string isIdentity_reflection {
 			get { return isidentity_.ToString(); }
 			set { isidentity_ = bool.Parse(value); }
-		}
-//		#endregion
-//		#region public bool isPseudoIdentity { get; set; }
-		private bool ispseudoidentity_;
-		public bool isPseudoIdentity {
-			get { return ispseudoidentity_; }
-			set { ispseudoidentity_ = value; }
-		}
-
-		[ClaSSPropertyAttribute("isPseudoIdentity", ClaSSPropertyAttribute.eType.standard, true)]
-		private string isPseudoIdentity_reflection {
-			get { return ispseudoidentity_.ToString(); }
-			set { ispseudoidentity_ = bool.Parse(value); }
 		}
 //		#endregion
 		#region public string DefaultValue { get; set; }
