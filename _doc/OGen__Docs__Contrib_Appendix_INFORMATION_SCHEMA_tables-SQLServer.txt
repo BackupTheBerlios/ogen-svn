@@ -12,136 +12,162 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 SELECT
---	_field.TABLE_CATALOG, 
---	_field.TABLE_NAME, 
+--	_field.table_catalog,
+--	_field.table_name,
 
 
-	_field.COLUMN_NAME AS Name, 
+	_field.column_name,
 
 	CASE
-		WHEN _field.IS_NULLABLE = 'No' THEN
-			CAST(0 AS Int)
+		WHEN _field.is_nullable = 'No' THEN
+			CAST(0 AS INT)
 		ELSE
-			CAST(1 AS Int)
+			CAST(1 AS INT)
 	END
-	AS isNullable, 
+	AS is_nullable,
 
-	_field.DATA_TYPE
-	AS Type, 
+	_field.data_type
+	AS data_type,
 
-	_field.CHARACTER_MAXIMUM_LENGTH
-	AS Size, 
 
-	CASE
-		WHEN (_table.TABLE_TYPE = 'VIEW') THEN
-			CAST(0 AS Int)
-		WHEN (PK.PK_COLUMN_NAME = _field.COLUMN_NAME) THEN
-			CAST(1 AS Int)
-		ELSE
-			CAST(0 AS Int)
-	END 
-	AS isPK, 
+
+
+	_field.character_maximum_length
+	AS character_maximum_length,
 
 	CASE
-		WHEN (_table.TABLE_TYPE != 'VIEW') THEN
-			CAST(COLUMNPROPERTY(OBJECT_ID(_field.TABLE_NAME), _field.COLUMN_NAME, 'IsIdentity') AS Int)
+		WHEN (_table.table_type = 'VIEW') THEN
+			CAST(0 AS INT)
+		WHEN (_field.column_name = _pk.column_name) THEN
+			CAST(1 AS INT)
 		ELSE
-			CASE
-				WHEN (
-					(SUBSTRING(_field.COLUMN_NAME, 3, 1) = ',') AND 
-					(SUBSTRING(_field.COLUMN_NAME, 1, 1) = 'I')
-				) THEN
-					CAST(1 AS Int)
-				ELSE
-					CAST(0 AS Int)
-			END
-			--COLUMNPROPERTY(OBJECT_ID(t5.TABLE_NAME), t5.COLUMN_NAME, 'IsIdentity')
-	END 
-	AS isIdentity, 
+			CAST(0 AS INT)
+	END
+	AS is_pk,
 
-	FK.PK_TABLE_NAME AS FK_TableName, 
+	CASE
+		WHEN (_table.table_type = 'VIEW') THEN
+			CAST(0 AS INT)
+		ELSE
+			CAST(COLUMNPROPERTY(OBJECT_ID(_field.table_name), _field.column_name, 'IsIdentity') AS INT)
 
-	FK.PK_COLUMN_NAME AS FK_FieldName, 
 
-	_field.COLUMN_DEFAULT, 
 
-	_field.COLLATION_NAME, 
 
-	_field.NUMERIC_PRECISION, 
 
-	_field.NUMERIC_SCALE
+	END
+	AS is_identity,
 
-FROM INFORMATION_SCHEMA.COLUMNS AS _field
+	_fk.fk_table_name AS fk_table_name,
 
-	LEFT JOIN INFORMATION_SCHEMA.TABLES _table ON
-		(_table.TABLE_CATALOG = _field.TABLE_CATALOG)
-		and
-		(_table.TABLE_SCHEMA = _field.TABLE_SCHEMA)
-		and
-		(_table.TABLE_NAME = _field.TABLE_NAME)
+	_fk.fk_column_name AS fk_column_name,
 
-	left join (
-		select
-			PK_TABLE_NAME = _pks.TABLE_NAME, 
-			PK_COLUMN_NAME = _pks.COLUMN_NAME, 
-			PK_CONSTRAINT_CATALOG = _tc.CONSTRAINT_CATALOG, 
-			PK_CONSTRAINT_SCHEMA = _tc.CONSTRAINT_SCHEMA
-		from INFORMATION_SCHEMA.TABLE_CONSTRAINTS _tc
-		inner join INFORMATION_SCHEMA.KEY_COLUMN_USAGE _pks on
-			(_pks.CONSTRAINT_CATALOG = _tc.CONSTRAINT_CATALOG)
-			and
-			(_pks.CONSTRAINT_SCHEMA = _tc.CONSTRAINT_SCHEMA)
-			and
-			(_pks.CONSTRAINT_NAME = _tc.CONSTRAINT_NAME)
-			and 
-			(_tc.CONSTRAINT_TYPE = 'PRIMARY KEY')
-	) PK on
-		(PK.PK_CONSTRAINT_CATALOG = _field.TABLE_CATALOG)
-		and
-		(PK.PK_CONSTRAINT_SCHEMA = _field.TABLE_SCHEMA)
-		and
-		PK.PK_TABLE_NAME = _field.TABLE_NAME
-		and
-		PK.PK_COLUMN_NAME = _field.COLUMN_NAME
+	_field.column_default,
 
-	left join (
-		select
-			FK_TABLE_NAME = _fks.TABLE_NAME, 
-			FK_COLUMN_NAME = _fks.COLUMN_NAME, 
-			PK_TABLE_NAME = _pk.TABLE_NAME, 
-			PK_COLUMN_NAME = _pk.COLUMN_NAME, 
-			FK_CONSTRAINT_CATALOG = _rc.CONSTRAINT_CATALOG, 
-			FK_CONSTRAINT_SCHEMA = _rc.CONSTRAINT_SCHEMA
-		from INFORMATION_SCHEMA.REFERENTIAL_CONSTRAINTS _rc
-		inner join INFORMATION_SCHEMA.KEY_COLUMN_USAGE _fks on 
-			(_fks.CONSTRAINT_CATALOG = _rc.CONSTRAINT_CATALOG)
-			and
-			(_fks.CONSTRAINT_SCHEMA = _rc.CONSTRAINT_SCHEMA)
-			and
-			(_fks.CONSTRAINT_NAME = _rc.CONSTRAINT_NAME)
-		inner join INFORMATION_SCHEMA.KEY_COLUMN_USAGE _pk on
-			(_pk.CONSTRAINT_CATALOG = _rc.CONSTRAINT_CATALOG)
-			and
-			(_pk.CONSTRAINT_SCHEMA = _rc.CONSTRAINT_SCHEMA)
-			and
-			(_pk.CONSTRAINT_NAME = _rc.UNIQUE_CONSTRAINT_NAME)
+	_field.collation_name,
 
-	) FK on 
-		(FK.FK_CONSTRAINT_CATALOG = _field.TABLE_CATALOG)
-		and
-		(FK.FK_CONSTRAINT_SCHEMA = _field.TABLE_SCHEMA)
-		and
-		(FK.FK_TABLE_NAME = _field.TABLE_NAME)
-		and
-		(FK.FK_COLUMN_NAME = _field.COLUMN_NAME)
+	_field.numeric_precision,
+
+	_field.numeric_scale
+
+FROM information_schema.columns AS _field
+
+	LEFT JOIN information_schema.tables _table ON (
+		(_table.table_catalog = _field.table_catalog)
+		AND
+		(_table.table_schema = _field.table_schema)
+		AND
+		(_table.table_name = _field.table_name)
+	)
+
+	LEFT JOIN (
+		SELECT
+			_kcu.table_name,
+			_kcu.column_name,
+			_kcu.table_catalog,
+			_kcu.table_schema
+		FROM information_schema.table_constraints _tc
+		INNER JOIN information_schema.key_column_usage _kcu ON
+			(_kcu.constraint_catalog = _tc.constraint_catalog)
+			AND
+			(_kcu.constraint_schema = _tc.constraint_schema)
+			AND
+			(_kcu.constraint_name = _tc.constraint_name)
+			AND
+			(_tc.constraint_type = 'PRIMARY KEY')
+	) _pk ON
+		(_pk.table_catalog = _field.table_catalog)
+		AND
+		(_pk.table_schema = _field.table_schema)
+		AND
+		(_pk.table_name = _field.table_name)
+		AND
+		(_pk.column_name = _field.column_name)
+
+	LEFT JOIN (
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		SELECT
+			_pk.table_name AS fk_table_name,
+			_pk.column_name AS fk_column_name,
+
+			_fks.table_name,
+			_fks.column_name,
+			_fks.table_catalog,
+			_fks.table_schema
+		FROM information_schema.referential_constraints _rc
+		INNER JOIN information_schema.key_column_usage _fks ON
+			(_fks.constraint_catalog = _rc.constraint_catalog)
+			AND
+			(_fks.constraint_schema = _rc.constraint_schema)
+			AND
+			(_fks.constraint_name = _rc.constraint_name)
+		INNER JOIN information_schema.key_column_usage _pk ON
+			(_pk.constraint_catalog = _rc.constraint_catalog)
+			AND
+			(_pk.constraint_schema = _rc.constraint_schema)
+			AND
+			(_pk.constraint_name = _rc.unique_constraint_name)
+	) _fk ON
+		(_fk.table_catalog = _field.table_catalog)
+		AND
+		(_fk.table_schema = _field.table_schema)
+		AND
+		(_fk.table_name = _field.table_name)
+		AND
+		(_fk.column_name = _field.column_name)
 
 WHERE
---	(_field.TABLE_CATALOG = '{0}')
+--	(_field.table_catalog = '{0}')
 --	AND
---	(_field.TABLE_NAME = '{1}') 
+--	(_field.table_name = '{1}')
 --	AND
-	(_field.TABLE_NAME = 'UserGroup') OR (_field.TABLE_NAME = 'User') OR (_field.TABLE_NAME = 'Group')
+	(_field.table_name = 'UserGroup') OR (_field.table_name = 'User') OR (_field.table_name = 'Group')
 
-ORDER BY 
-	_field.TABLE_NAME, 
-	_field.ORDINAL_POSITION
+ORDER BY
+	_field.table_name,
+	_field.ordinal_position
