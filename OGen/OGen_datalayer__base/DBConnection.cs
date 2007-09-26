@@ -104,14 +104,8 @@ namespace OGen.lib.datalayer {
 			string connectionstring_in, 
 			string logfile_in
 		) {
-
-
-// ToDos: here!
-//if (connectionstring_.Trim() == string.Empty)
-//	throw InvalidConnectionstringException_empty;
-//if (dbServerType_in == DBServerTypes.invalid)
-//	throw InvalidDBServerTypeException;
-
+			if (connectionstring_in.Trim() == string.Empty)
+				throw InvalidConnectionstringException_empty;
 
 			connectionstring_ = connectionstring_in;
 
@@ -141,10 +135,8 @@ namespace OGen.lib.datalayer {
 		#endregion
 		#region private void cleanUp();
 		private void cleanUp() {
-#if !DEBUG
 // ToDos: here!
-			lock (isopen_) {
-#endif
+//			lock (isopen_) {
 				if (transaction__ != null) {
 					transaction__.Dispose(); transaction__ = null;
 				}
@@ -153,21 +145,19 @@ namespace OGen.lib.datalayer {
 				if (connection__ != null) {
 					connection__.Dispose(); connection__ = null;
 				}
-#if !DEBUG
 // ToDos: here!
-			}
-#endif
+//			}
 		}
 		#endregion
 		//#endregion
 
 		#region Exceptions...
-		#region //public static readonly Exception InvalidConnectionstringException_empty;
-		///// <summary>
-		///// Invalid Connection String Exception (empty).
-		///// </summary>
-		//public static readonly Exception InvalidConnectionstringException_empty
-		//	= new Exception("invalid connection string (empty)");
+		#region public static readonly Exception InvalidConnectionstringException_empty;
+		/// <summary>
+		/// Invalid Connection String Exception (empty).
+		/// </summary>
+		public static readonly Exception InvalidConnectionstringException_empty
+			= new Exception("invalid connection string (empty)");
 		#endregion
 		#region public static readonly Exception InvalidSQLQueryException_empty;
 		/// <summary>
@@ -347,29 +337,21 @@ namespace OGen.lib.datalayer {
 		/// There is no need to Open a Connection in order to execute an SQL Query or Function. Open and Close methods are usually used when working with the Transaction
 		/// </remarks>
 		public void Open() {
-#if !DEBUG
 // ToDos: here!
-			lock (isopen_) {
-#endif
+//			lock (isopen_) {
 				if ((bool)isopen_) {
 					throw OpenException_alreadyOpened;
 				} else {
-#if !DEBUG
 // ToDos: here!
-					lock (exposeConnection) {
-#endif
+//					lock (exposeConnection) {
 						exposeConnection.Open();
 
 						isopen_ = true;
-#if !DEBUG
 // ToDos: here!
-					}
-#endif
+//					}
 				}
-#if !DEBUG
 // ToDos: here!
-			}
-#endif
+//			}
 		}
 		#endregion
 		#region public void Close();
@@ -383,31 +365,23 @@ namespace OGen.lib.datalayer {
 		/// Thrown when the Connection has an unterminated Transaction initiated
 		/// </exception>
 		public void Close() {
-#if !DEBUG
 // ToDos: here!
-			lock (isopen_) {
-#endif
+//			lock (isopen_) {
 				if (!(bool)isopen_) {
 					throw CloseException_alreadyClosed;
 				} else if ((transaction__ != null) && transaction__.inTransaction) {
 					throw CloseException_unterminatedTransaction;
 				} else {
-#if !DEBUG
 // ToDos: here!
-					lock (exposeConnection) {
-#endif
+//					lock (exposeConnection) {
 						exposeConnection.Close();
 
 						isopen_ = false;
-#if !DEBUG
 // ToDos: here!
-					}
-#endif
+//					}
 				}
-#if !DEBUG
 // ToDos: here!
-			}
-#endif
+//			}
 		}
 		#endregion
 		//---
@@ -529,11 +503,9 @@ namespace OGen.lib.datalayer {
 				throw InvalidSQLQueryException_empty;
 			#endregion
 
-#if !DEBUG
 // ToDos: here!
-			lock (connection__) {
-				lock (isopen_) {
-#endif
+//			lock (connection__) {
+//				lock (isopen_) {
 					if ((bool)isopen_) {
 						#region Using Opened Connection...
 						IDbCommand _command = newDBCommand(
@@ -557,11 +529,9 @@ namespace OGen.lib.datalayer {
 						exposeConnection.Close();
 						#endregion
 					}
-#if !DEBUG
 // ToDos: here!
-				}
-			}
-#endif
+//				}
+//			}
 		}
 		#endregion
 		#endregion
@@ -622,11 +592,9 @@ namespace OGen.lib.datalayer {
 				throw InvalidSQLQueryException_empty;
 			#endregion
 
-#if !DEBUG
 // ToDos: here!
-			lock (connection__) {
-				lock (isopen_) {
-#endif
+//			lock (connection__) {
+//				lock (isopen_) {
 					if ((bool)isopen_) {
 						#region Using Opened Connection...
 						Execute_SQLQuery_returnDataSet_out
@@ -648,11 +616,9 @@ namespace OGen.lib.datalayer {
 						exposeConnection.Close();
 						#endregion
 					}
-#if !DEBUG
 // ToDos: here!
-				}
-			}
-#endif
+//				}
+//			}
 
 			return Execute_SQLQuery_returnDataSet_out;
 		}
@@ -759,11 +725,9 @@ namespace OGen.lib.datalayer {
 		) {
 			object Execute_SQLFunction_out;
 
-#if !DEBUG
 // ToDos: here!
-			lock (connection__) {
-				lock (isopen_) {
-#endif
+//			lock (connection__) {
+//				lock (isopen_) {
 					if ((bool)isopen_) {
 						#region Using Opened Connection...
 						IDbCommand _command = newDBCommand(
@@ -803,11 +767,10 @@ namespace OGen.lib.datalayer {
 						_command.Dispose(); _command = null;
 						#endregion
 					}
-#if !DEBUG
 // ToDos: here!
-				}
-			}
-#endif
+//				}
+//			}
+
 			return Execute_SQLFunction_out;
 		}
 		#endregion
@@ -878,11 +841,9 @@ namespace OGen.lib.datalayer {
 		) {
 			DataSet Execute_SQLFunction_returnDataSet_out;
 
-#if !DEBUG
 // ToDos: here!
-			lock (connection__) {
-				lock (isopen_) {
-#endif
+//			lock (connection__) {
+//				lock (isopen_) {
 					if ((bool)isopen_) {
 						#region Using Opened Connection...
 						Execute_SQLFunction_returnDataSet_out
@@ -906,11 +867,9 @@ namespace OGen.lib.datalayer {
 						exposeConnection.Close();
 						#endregion
 					}
-#if !DEBUG
 // ToDos: here!
-				}
-			}
-#endif
+//				}
+//			}
 
 			return Execute_SQLFunction_returnDataSet_out;
 		}

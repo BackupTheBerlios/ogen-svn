@@ -126,7 +126,7 @@ GOTO eof
 	::IF NOT EXIST ..\%1\%2\%binDir%\%3-%fw%.dll GOTO tryinstall
 
 	IF '%6' == 'f' IF EXIST ..\%1\%2\%binDir%\%3-%fw%.dll COPY ..\%1\%2\%binDir%\%3-%fw%.dll ..\bin
-	IF EXIST ..\%1\%2\%binDir%\%3-%fw%.xml COPY ..\%1\%2\%binDir%\%3-%fw%.xml ..\bin
+	::IF EXIST ..\%1\%2\%binDir%\%3-%fw%.xml COPY ..\%1\%2\%binDir%\%3-%fw%.xml ..\bin
 
 	IF '%6' == 't' IF EXIST ..\%1\%2\%binDir%\%3-%fw%.exe COPY ..\%1\%2\%binDir%\%3-%fw%.exe ..\bin
 	::IF '%6' == 't' IF EXIST ..\%1\%2\%binDir%\%3-%fw%.exe.config IF NOT EXIST ..\bin\%3-%fw%.exe.config COPY ..\%1\%2\%binDir%\%3-%fw%.exe.config ..\bin

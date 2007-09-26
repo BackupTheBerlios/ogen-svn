@@ -35,7 +35,7 @@ namespace OGen.NTier.lib.datalayer.UTs {
 
 		[Test]
 		public void UT_SomeTest() {
-			// ToDos: here!
+			// ToDos: later!
 			Assert.IsTrue(true, "some test");
 		}
 	}
