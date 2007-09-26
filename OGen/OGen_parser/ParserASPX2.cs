@@ -19,11 +19,12 @@ using System.IO;
 using System.Collections;
 
 namespace OGen.lib.parser {
-	public class ParserASPX {
-		private ParserASPX() {}
+	public class ParserASPX { private ParserASPX() {}
+		#region static ParserASPX();
 		static ParserASPX() {
 			myhost_ = new Hashtable();
 		}
+		#endregion
 
 		private static Hashtable myhost_;
 
