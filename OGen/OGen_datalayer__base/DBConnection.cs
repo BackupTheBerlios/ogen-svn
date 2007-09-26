@@ -200,6 +200,22 @@ namespace OGen.lib.datalayer {
 			get { return connectionstring_; }
 		}
 		#endregion
+		#region public string Connectionstring_DBName { get; }
+		private string connectionstring_dbname__ = string.Empty;
+
+		public string Connectionstring_DBName {
+			get {
+				if (connectionstring_dbname__ == string.Empty) {
+					connectionstring_dbname__ = utils.ConnectionString.ParseParameter(
+						Connectionstring,
+						DBUtils_connectionString.eParameter.DBName
+					);
+				}
+
+				return connectionstring_dbname__;
+			}
+		}
+		#endregion
 		public abstract string DBServerType { get; }
 		#region public string Logfile { get; }
 		protected string logfile_;
@@ -1105,6 +1121,19 @@ string.Empty
 		}
 		#endregion
 		#region public cDBTableField[] getTableFields(...);
+		public const string INFORMATION_SCHEMA_COLUMNS_COLUMN_NAME = "column_name";
+		public const string INFORMATION_SCHEMA_COLUMNS_CHARACTER_MAXIMUM_LENGTH = "character_maximum_length";
+		public const string INFORMATION_SCHEMA_COLUMNS_IS_NULLABLE = "is_nullable";
+		public const string INFORMATION_SCHEMA_COLUMNS_IS_IDENTITY = "is_identity";
+		public const string INFORMATION_SCHEMA_COLUMNS_IS_PK = "is_pk";
+		public const string INFORMATION_SCHEMA_COLUMNS_FK_TABLE_NAME = "fk_table_name";
+		public const string INFORMATION_SCHEMA_COLUMNS_FK_COLUMN_NAME = "fk_column_name";
+		public const string INFORMATION_SCHEMA_COLUMNS_NUMERIC_PRECISION = "numeric_precision";
+		public const string INFORMATION_SCHEMA_COLUMNS_NUMERIC_SCALE = "numeric_scale";
+		public const string INFORMATION_SCHEMA_COLUMNS_DATA_TYPE = "data_type";
+		public const string INFORMATION_SCHEMA_COLUMNS_COLUMN_DEFAULT = "column_default";
+		public const string INFORMATION_SCHEMA_COLUMNS_COLLATION_NAME = "collation_name";
+
 		public abstract string getTableFields_query(
 			string tableName_in
 		);
@@ -1142,12 +1171,15 @@ string.Empty
 				(sqlFuncion_in == string.Empty)
 			) {
 				_dtemp = Execute_SQLQuery_returnDataTable(
-					getTableFields_query(tableName_in)
+					getTableFields_query(
+						tableName_in
+					)
 				);
 			} else {
 				_dtemp = Execute_SQLFunction_returnDataTable(
 					sqlFuncion_in,
 					new IDbDataParameter[] {
+						newDBDataParameter("dbName_", DbType.String, ParameterDirection.Input, Connectionstring_DBName, Connectionstring_DBName.Length), 
 						newDBDataParameter("tableName_", DbType.String, ParameterDirection.Input, tableName_in, tableName_in.Length)
 					}
 				);
@@ -1157,9 +1189,9 @@ string.Empty
 			for (int r = 0; r < _dtemp.Rows.Count; r++) {
 				getTableFields_out[r] = new cDBTableField();
 
-				getTableFields_out[r].Name = (string)_dtemp.Rows[r]["Name"];
+				getTableFields_out[r].Name = (string)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_COLUMN_NAME];
 
-// ToDos: here!
+#region // ToDos: here!
 				//switch (dbservertype_) {
 				//	case DBServerTypes.MySQL:
 				//		getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Size"];
@@ -1177,27 +1209,32 @@ string.Empty
 				//
 				//	case DBServerTypes.PostgreSQL:
 				//	case DBServerTypes.SQLServer:
-						getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Size"];
-						getTableFields_out[r].isNullable = ((int)_dtemp.Rows[r]["isNullable"] == 1);
-						//---						
-						getTableFields_out[r].FK_TableName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_TableName"];
-						getTableFields_out[r].FK_FieldName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_FieldName"];
-						//---
-						getTableFields_out[r].isIdentity = ((int)_dtemp.Rows[r]["isIdentity"] == 1);
-						getTableFields_out[r].isPK = ((int)_dtemp.Rows[r]["isPK"] == 1);
-						//---
-// ToDos: here! SQLServer
-//						getTableFields_out[r].Numeric_Precision = (_dtemp.Rows[r]["Numeric_Precision"] == DBNull.Value) ? 0 : (int)(byte)_dtemp.Rows[r]["Numeric_Precision"];
-//						getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r]["Numeric_Scale"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Numeric_Scale"];
+#endregion
+				getTableFields_out[r].Size = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_CHARACTER_MAXIMUM_LENGTH] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_CHARACTER_MAXIMUM_LENGTH];
+				getTableFields_out[r].isNullable = ((int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_IS_NULLABLE] == 1);
+				//---						
+				getTableFields_out[r].FK_TableName = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_FK_COLUMN_NAME] == DBNull.Value) ? "" : (string)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_FK_TABLE_NAME];
+				getTableFields_out[r].FK_FieldName = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_FK_COLUMN_NAME] == DBNull.Value) ? "" : (string)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_FK_COLUMN_NAME];
+				//---
+				getTableFields_out[r].isIdentity = ((int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_IS_IDENTITY] == 1);
+				getTableFields_out[r].isPK = ((int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_IS_PK] == 1);
+				//---
+#region // ToDos: here! SQLServer
+//						getTableFields_out[r].Numeric_Precision = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_PRECISION] == DBNull.Value) ? 0 : (int)(byte)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_PRECISION];
+//						getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_SCALE] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_SCALE];
+#endregion
 // ToDos: here! PostgreSQL
-						getTableFields_out[r].Numeric_Precision = (_dtemp.Rows[r]["Numeric_Precision"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Numeric_Precision"];
-						getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r]["Numeric_Scale"] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r]["Numeric_Scale"];
+				getTableFields_out[r].Numeric_Precision = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_PRECISION] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_PRECISION];
+				getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_SCALE] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_SCALE];
+#region // ToDos: here!
 				//		break;
 				//}
 				//---
-				getTableFields_out[r].DBType_inDB_name = (string)_dtemp.Rows[r]["Type"];
-				getTableFields_out[r].DBDefaultValue = (_dtemp.Rows[r]["COLUMN_DEFAULT"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["COLUMN_DEFAULT"];
-				getTableFields_out[r].DBCollationName = (_dtemp.Rows[r]["COLLATION_NAME"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["COLLATION_NAME"];
+#endregion
+				getTableFields_out[r].DBType_inDB_name = (string)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_DATA_TYPE];
+				getTableFields_out[r].DBDefaultValue = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_COLUMN_DEFAULT] == DBNull.Value) ? "" : (string)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_COLUMN_DEFAULT];
+				getTableFields_out[r].DBCollationName = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_COLLATION_NAME] == DBNull.Value) ? "" : (string)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_COLLATION_NAME];
+
 // ToDos: here!
 getTableFields_out[r].DBDescription = string.Empty;
 			}

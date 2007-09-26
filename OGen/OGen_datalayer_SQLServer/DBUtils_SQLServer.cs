@@ -197,7 +197,7 @@ namespace OGen.lib.datalayer.SQLServer {
 			eParameter parameter_in
 		) {
 			switch (parameter_in) {
-				case eParameter.Database:
+				case eParameter.DBName:
 					return ParseParameter(connectionstring_in, "database");
 
 				case eParameter.Server:

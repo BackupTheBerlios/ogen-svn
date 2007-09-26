@@ -406,7 +406,7 @@ namespace OGen.lib.datalayer {
 		public enum eParameter {
 			Server = 0, 
 			User = 1, 
-			Database = 2,
+			DBName = 2,
 
 			invalid = 3
 		}

@@ -450,7 +450,7 @@ throw new Exception("not implemented!");
 //ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
 //",
 //                tableName_in,
-//                _database
+//                Connectionstring_DBName
 //            );
 //            #endregion
 		}

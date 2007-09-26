@@ -396,99 +396,130 @@ WHERE
 			#region return "SELECT ...";
 			return string.Format(@"
 SELECT
-	_field.COLUMN_NAME AS ""Name"", 
+	_field.column_name,
+
 	CASE
-		WHEN _field.IS_NULLABLE = 'NO' THEN
-			CAST(0 AS Int)
+		WHEN _field.is_nullable = 'NO' THEN
+			CAST(0 AS INT)
 		ELSE
-			CAST(1 AS Int)
-	END 
-	AS ""isNullable"", 
-	_field.DATA_TYPE AS ""Type"", 
-	_field.CHARACTER_MAXIMUM_LENGTH AS ""Size"", 
-	CASE
-		WHEN (_table.TABLE_TYPE = 'VIEW') THEN
-			CAST(0 AS Int)
-		WHEN (_field.COLUMN_NAME = _pk.COLUMN_NAME) THEN
-			CAST(1 AS Int)
-		ELSE
-			CAST(0 AS Int)
+			CAST(1 AS INT)
 	END
-	AS ""isPK"", 
+	AS is_nullable,
+
+	_field.data_type
+	AS data_type,
+
+	_field.character_maximum_length
+	AS character_maximum_length,
+
 	CASE
-		WHEN (_table.TABLE_TYPE = 'VIEW') THEN
-			CAST(0 AS Int)
+		WHEN (_table.table_type = 'VIEW') THEN
+			CAST(0 AS INT)
+		WHEN (_field.column_name = _pk.column_name) THEN
+			CAST(1 AS INT)
+		ELSE
+			CAST(0 AS INT)
+	END
+	AS is_pk,
+
+	CASE
+		WHEN (_table.table_type = 'VIEW') THEN
+			CAST(0 AS INT)
 		ELSE
 			CASE
-				WHEN (_field.COLUMN_DEFAULT LIKE 'nextval(''%') THEN
-					CAST(1 AS Int)
+				WHEN (_field.column_default LIKE 'nextval(''%') THEN
+					CAST(1 AS INT)
 				ELSE
-					CAST(0 AS Int)
+					CAST(0 AS INT)
 			END
-	END 
-	AS ""isIdentity"", 
-	_fk.FOREIGN_TABLE_NAME AS ""FK_TableName"", 
-	_fk.FOREIGN_COLUMN_NAME AS ""FK_FieldName"", 
-	_field.COLUMN_DEFAULT AS ""COLUMN_DEFAULT"", 
-	_field.COLLATION_NAME AS ""COLLATION_NAME"", 
-	_field.NUMERIC_PRECISION AS ""NUMERIC_PRECISION"", 
-	_field.NUMERIC_SCALE AS ""NUMERIC_SCALE""
-FROM INFORMATION_SCHEMA.COLUMNS AS _field
-	LEFT JOIN INFORMATION_SCHEMA.TABLES _table ON (
-		(_table.TABLE_NAME = _field.TABLE_NAME)
-		and
-		(_table.TABLE_CATALOG = _field.TABLE_CATALOG)
+	END
+	AS is_identity,
+
+	_fk.fk_table_name AS fk_table_name,
+
+	_fk.fk_column_name AS fk_column_name,
+
+	_field.column_default,
+
+	_field.collation_name,
+
+	_field.numeric_precision,
+
+	_field.numeric_scale
+
+FROM information_schema.columns AS _field
+
+	LEFT JOIN information_schema.tables _table ON (
+		(_table.table_catalog = _field.table_catalog)
+		AND
+		(_table.table_schema = _field.table_schema)
+		AND
+		(_table.table_name = _field.table_name)
 	)
+
 	LEFT JOIN (
 		SELECT
-			_kcu.TABLE_NAME, 
-			_kcu.COLUMN_NAME, 
-			_kcu.TABLE_CATALOG
-		FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE _kcu
-		LEFT JOIN INFORMATION_SCHEMA.TABLE_CONSTRAINTS _tc ON (
-			(_tc.CONSTRAINT_CATALOG = _kcu.CONSTRAINT_CATALOG) 
-			AND 
-			(_tc.CONSTRAINT_SCHEMA = _kcu.CONSTRAINT_SCHEMA) 
-			AND 
-			(_tc.CONSTRAINT_NAME = _kcu.CONSTRAINT_NAME) 
-		)
-		WHERE
-			(_tc.CONSTRAINT_TYPE = 'PRIMARY KEY')
-	) _pk ON (
-		(_pk.TABLE_CATALOG = _field.TABLE_CATALOG)
-		and
-		(_pk.TABLE_NAME = _field.TABLE_NAME)
-		and
-		(_pk.COLUMN_NAME = _field.COLUMN_NAME)
-	)
+			_kcu.table_name,
+			_kcu.column_name,
+			_kcu.table_catalog,
+			_kcu.table_schema
+		FROM information_schema.table_constraints _tc
+		INNER JOIN information_schema.key_column_usage _kcu ON
+			(_kcu.constraint_catalog = _tc.constraint_catalog)
+			AND
+			(_kcu.constraint_schema = _tc.constraint_schema)
+			AND
+			(_kcu.constraint_name = _tc.constraint_name)
+			AND
+			(_tc.constraint_type = 'PRIMARY KEY')
+	) _pk ON
+		(_pk.table_catalog = _field.table_catalog)
+		AND
+		(_pk.table_schema = _field.table_schema)
+		AND
+		(_pk.table_name = _field.table_name)
+		AND
+		(_pk.column_name = _field.column_name)
+
 	LEFT JOIN (
 		SELECT
-			_tc2.TABLE_NAME,
-			_kcu2.COLUMN_NAME ,
-			_ccu2.TABLE_NAME AS FOREIGN_TABLE_NAME ,
-			_ccu2.COLUMN_NAME AS FOREIGN_COLUMN_NAME, 
-			_tc2.TABLE_CATALOG
-		FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS _tc2
-		JOIN INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE _ccu2 ON
-			(_ccu2.CONSTRAINT_CATALOG = _tc2.CONSTRAINT_CATALOG) 
-			AND 
-			(_ccu2.CONSTRAINT_NAME = _tc2.CONSTRAINT_NAME)
-		JOIN  INFORMATION_SCHEMA.KEY_COLUMN_USAGE _kcu2 ON
-			(_kcu2.CONSTRAINT_CATALOG = _ccu2.CONSTRAINT_CATALOG) 
-			AND 
-			(_kcu2.CONSTRAINT_NAME = _ccu2.CONSTRAINT_NAME)
-		WHERE
-			_tc2.CONSTRAINT_TYPE = 'FOREIGN KEY'
-	) _fk ON (
-		(_field.TABLE_CATALOG = _fk.TABLE_CATALOG)
-		and
-		(_field.TABLE_NAME = _fk.TABLE_NAME)
-		and
-		(_field.COLUMN_NAME = _fk.COLUMN_NAME)
-	)
-WHERE (_field.TABLE_NAME = '{0}')
-ORDER BY _field.ORDINAL_POSITION
+			_pk.table_name AS fk_table_name,
+			_pk.column_name AS fk_column_name,
+
+			_fks.table_name,
+			_fks.column_name,
+			_fks.table_catalog,
+			_fks.table_schema
+		FROM information_schema.referential_constraints _rc
+		INNER JOIN information_schema.key_column_usage _fks ON
+			(_fks.constraint_catalog = _rc.constraint_catalog)
+			AND
+			(_fks.constraint_schema = _rc.constraint_schema)
+			AND
+			(_fks.constraint_name = _rc.constraint_name)
+		INNER JOIN information_schema.key_column_usage _pk ON
+			(_pk.constraint_catalog = _rc.constraint_catalog)
+			AND
+			(_pk.constraint_schema = _rc.constraint_schema)
+			AND
+			(_pk.constraint_name = _rc.unique_constraint_name)
+	) _fk ON
+		(_fk.table_catalog = _field.table_catalog)
+		AND
+		(_fk.table_schema = _field.table_schema)
+		AND
+		(_fk.table_name = _field.table_name)
+		AND
+		(_fk.column_name = _field.column_name)
+
+WHERE
+	(_field.table_catalog = '{0}')
+	AND
+	(_field.table_name = '{1}')
+ORDER BY
+	_field.ordinal_position
 ",
+				Connectionstring_DBName, 
 				tableName_in
 			);
 			#endregion

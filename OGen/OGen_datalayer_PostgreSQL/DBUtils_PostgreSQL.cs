@@ -230,7 +230,7 @@ namespace OGen.lib.datalayer.PostgreSQL {
 			eParameter parameter_in
 		) {
 			switch (parameter_in) {
-				case eParameter.Database:
+				case eParameter.DBName:
 					return ParseParameter(connectionstring_in, "database");
 
 				case eParameter.Server:
