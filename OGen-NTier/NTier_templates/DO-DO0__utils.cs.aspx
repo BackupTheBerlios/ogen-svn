@@ -162,16 +162,31 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			string logfile_in
 		) {
 			switch (dbServerType_in) {<%
-			for (int d = 0; d < _aux_metadata.DBs.Count; d++) {
-				string _dbservertype = _aux_metadata.DBs[d].DBServerType.ToString();%>
+
+			//for (int d = 0; d < _aux_metadata.DBs.Count; d++) {
+			//	string _dbservertype = _aux_metadata.DBs[d].DBServerType.ToString();
+
+			string[] _dbservertypes = Enum.GetNames(typeof(DBServerTypes));
+			for (int i = 0; i < 
+
+				// skipping invalid, hence - 1
+				_dbservertypes.Length - 1; 
+
+				i++) {
+				string _dbservertype = _dbservertypes[i];%>
+#if <%=_dbservertype%>
 				case "<%=_dbservertype%>":
 					return new DBConnection_<%=_dbservertype%>(
 						connectionstring_in, 
 						logfile_in
-					);<%
+					);
+#endif<%
 			}%>
 			}
-			return null;
+
+			throw new Exception(
+				"unsuported db server type"
+			);
 		}
 		#region public static void DBConnectionstring_reset();
 		/// <summary>

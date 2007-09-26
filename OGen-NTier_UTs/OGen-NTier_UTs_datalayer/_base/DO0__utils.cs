@@ -124,13 +124,25 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			string logfile_in
 		) {
 			switch (dbServerType_in) {
+#if PostgreSQL
 				case "PostgreSQL":
 					return new DBConnection_PostgreSQL(
 						connectionstring_in, 
 						logfile_in
 					);
+#endif
+#if SQLServer
+				case "SQLServer":
+					return new DBConnection_SQLServer(
+						connectionstring_in, 
+						logfile_in
+					);
+#endif
 			}
-			return null;
+
+			throw new Exception(
+				"unsuported db server type"
+			);
 		}
 		#region public static void DBConnectionstring_reset();
 		/// <summary>

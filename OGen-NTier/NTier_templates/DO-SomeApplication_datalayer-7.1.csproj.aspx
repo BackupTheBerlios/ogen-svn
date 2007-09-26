@@ -61,7 +61,11 @@ int _aux_table_hasidentitykey;
                     BaseAddress = "285212672"
                     CheckForOverflowUnderflow = "false"
                     ConfigurationOverrideFile = ""
-                    DefineConstants = "DEBUG;TRACE"
+                    DefineConstants = "DEBUG;TRACE<%
+					for (int d = 0; d < _aux_metadata.DBs.Count; d++) {
+						string _dbservertype = _aux_metadata.DBs[d].DBServerType.ToString();
+						%>;<%=_dbservertype%><%
+					}%>"
                     DocumentationFile = "bin\Debug\<%=_aux_metadata.Namespace%>.lib.datalayer-1.1.xml"
                     DebugSymbols = "true"
                     FileAlignment = "4096"
@@ -81,7 +85,11 @@ int _aux_table_hasidentitykey;
                     BaseAddress = "285212672"
                     CheckForOverflowUnderflow = "false"
                     ConfigurationOverrideFile = ""
-                    DefineConstants = "TRACE"
+                    DefineConstants = "TRACE<%
+					for (int d = 0; d < _aux_metadata.DBs.Count; d++) {
+						string _dbservertype = _aux_metadata.DBs[d].DBServerType.ToString();
+						%>;<%=_dbservertype%><%
+					}%>"
                     DocumentationFile = ""
                     DebugSymbols = "false"
                     FileAlignment = "4096"

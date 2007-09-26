@@ -67,7 +67,11 @@ int _aux_table_hasidentitykey;
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>TRACE;DEBUG;NET20</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NET20<%
+	for (int d = 0; d < _aux_metadata.DBs.Count; d++) {
+		string _dbservertype = _aux_metadata.DBs[d].DBServerType.ToString();
+		%>;<%=_dbservertype%><%
+	}%></DefineConstants>
     <DocumentationFile>bin\Debug\<%=_aux_metadata.Namespace%>.lib.datalayer-2.0.xml</DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
@@ -89,7 +93,11 @@ int _aux_table_hasidentitykey;
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>TRACE;NET20</DefineConstants>
+    <DefineConstants>TRACE;NET20<%
+	for (int d = 0; d < _aux_metadata.DBs.Count; d++) {
+		string _dbservertype = _aux_metadata.DBs[d].DBServerType.ToString();
+		%>;<%=_dbservertype%><%
+	}%></DefineConstants>
     <DocumentationFile>
     </DocumentationFile>
     <DebugSymbols>false</DebugSymbols>
