@@ -79,7 +79,10 @@ namespace OGen.NTier.presentationlayer.winforms.UserControls {
 
 			string[] DBTypes = Enum.GetNames(typeof(DBServerTypes));
 			cbxDBTypes.Items.Clear();
-			for (int d = 0; d < DBTypes.Length; d++) {
+			for (int d = 0; d < 
+				// skipping invalid, hence -1
+				DBTypes.Length - 1; 
+			d++) {
 				cbxDBTypes.Items.Add(DBTypes[d]);
 			}
 		}
