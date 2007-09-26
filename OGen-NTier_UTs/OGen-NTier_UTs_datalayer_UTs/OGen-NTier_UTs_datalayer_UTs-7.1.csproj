@@ -111,6 +111,12 @@
                     HintPath = "..\..\bin\OGen.lib.datalayer.support-1.1.dll"
                     AssemblyFolderKey = "hklm\dn\ogen"
                 />
+                <Reference
+                    Name = "OGen.lib.datalayer.SQLServer-1.1"
+                    AssemblyName = "OGen.lib.datalayer.SQLServer-1.1"
+                    HintPath = "..\..\bin\OGen.lib.datalayer.SQLServer-1.1.dll"
+                    AssemblyFolderKey = "hklm\dn\ogen"
+                />
             </References>
         </Build>
         <Files>
@@ -121,6 +127,23 @@
                 />
                 <File
                     RelPath = "AssemblyInfo.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "COPYING.MIT"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "LICENSE.MIT.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "LICENSE.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "UT__utils.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />

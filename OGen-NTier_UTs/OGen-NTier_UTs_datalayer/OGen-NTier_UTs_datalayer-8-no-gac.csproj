@@ -288,6 +288,9 @@
     <Compile Include="_base\SC0_vUserGroup.cs">
       <SubType>Code</SubType>
     </Compile>
+    <None Include="COPYING.MIT" />
+    <None Include="LICENSE.MIT.txt" />
+    <None Include="LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\OGen-NTier\NTier_datalayer\NTier_datalayer-8.csproj">

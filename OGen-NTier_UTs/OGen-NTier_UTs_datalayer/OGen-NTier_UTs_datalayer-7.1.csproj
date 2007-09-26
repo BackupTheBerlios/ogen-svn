@@ -93,6 +93,11 @@
                     Name = "OGen.lib.datalayer.PostgreSQL-1.1"
                     AssemblyName = "OGen.lib.datalayer.PostgreSQL-1.1"
                     HintPath = "..\..\bin\OGen.lib.datalayer.PostgreSQL-1.1.dll"
+                />
+                <Reference
+                    Name = "OGen.lib.datalayer.SQLServer-1.1"
+                    AssemblyName = "OGen.lib.datalayer.SQLServer-1.1"
+                    HintPath = "..\..\bin\OGen.lib.datalayer.SQLServer-1.1.dll"
                     AssemblyFolderKey = "hklm\dn\ogen"
                 />
             </References>
@@ -103,6 +108,10 @@
                     RelPath = "AssemblyInfo.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "COPYING.MIT"
+                    BuildAction = "None"
                 />
                 <File
                     RelPath = "DO__utils.cs"
@@ -173,6 +182,14 @@
                     RelPath = "DO_WordLanguage.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "LICENSE.MIT.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "LICENSE.txt"
+                    BuildAction = "Content"
                 />
                 <File
                     RelPath = "_base\DO0__utils.cs"

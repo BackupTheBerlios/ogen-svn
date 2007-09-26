@@ -121,6 +121,12 @@
                     HintPath = "..\..\bin\OGen.lib.datalayer.support-1.1.dll"
                     AssemblyFolderKey = "hklm\dn\ogen"
                 />
+                <Reference
+                    Name = "OGen.lib.datalayer.SQLServer-1.1"
+                    AssemblyName = "OGen.lib.datalayer.SQLServer-1.1"
+                    HintPath = "..\..\bin\OGen.lib.datalayer.SQLServer-1.1.dll"
+                    AssemblyFolderKey = "hklm\dn\ogen"
+                />
             </References>
         </Build>
         <Files>
@@ -135,7 +141,94 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "COPYING.MIT"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "LICENSE.MIT.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "LICENSE.txt"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "MainClass.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HowTos_andFAQ\OGen__Docs__Contrib_Considerations-CSharpCodingStyle.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HowTos_andFAQ\OGen__Docs__Develop_HowTo_Execute_SQLFunction.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HowTos_andFAQ\OGen__Docs__Develop_HowTo_Execute_SQLFunction_returnDataTable.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HowTos_andFAQ\OGen__Docs__Develop_HowTo_Execute_SQLFunction_returnSomevalue.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HowTos_andFAQ\OGen__Docs__Develop_HowTo_Execute_SQLQuery.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HowTos_andFAQ\OGen__Docs__Develop_HowTo_Execute_SQLQuery_returnDataTable.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HowTos_andFAQ\OGen__Docs__Develop_HowTo_List_DB_TableFields.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HowTos_andFAQ\OGen__Docs__Develop_HowTo_List_DB_Tables.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HowTos_andFAQ\OGen__Docs__Develop_HowTo_List_DBs.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HowTos_andFAQ\OGen__Docs__Develop_HowTo_UseTransactions.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HowTos_andFAQ\OGen-NTier__Docs__Develop_HowTo_List_DataObjects.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HowTos_andFAQ\OGen-NTier__Docs__Develop_HowTo_Read_and_Write_to_DataObject_Properties.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HowTos_andFAQ\OGen-NTier__Docs__Develop_HowTo_Read_DataObject_Property_Attributes.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HowTos_andFAQ\OGen-NTier__Docs__Develop_HowTo_UseTransactions_betweenDOs_operations.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "HowTos_andFAQ\OGen-NTier__Docs__Develop_HowTo_UseTransactions_inDOs.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />

@@ -75,6 +75,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="OGen.lib.datalayer-2.0" />
+    <Reference Include="OGen.lib.datalayer-2.0" />
+    <Reference Include="OGen.lib.datalayer.PostgreSQL-2.0" />
+    <Reference Include="OGen.lib.datalayer.SQLServer-2.0" />
+    <Reference Include="OGen.lib.datalayer.support-2.0" />
     <Reference Include="OGen.NTier.lib.businesslayer-2.0">
       <Name>OGen.NTier.lib.businesslayer-2.0</Name>
       <AssemblyFolderKey>hklm\dn\ogen</AssemblyFolderKey>
@@ -110,6 +114,9 @@
   <ItemGroup>
     <Folder Include="HowTos_andFAQ" />
     <None Include="app.config" />
+    <None Include="COPYING.MIT" />
+    <None Include="LICENSE.MIT.txt" />
+    <None Include="LICENSE.txt" />
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

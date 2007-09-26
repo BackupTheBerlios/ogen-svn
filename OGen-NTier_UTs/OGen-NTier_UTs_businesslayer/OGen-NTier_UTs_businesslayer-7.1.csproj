@@ -76,7 +76,7 @@
                 />
                 <Reference
                     Name = "System.XML"
-                    AssemblyName = "System.XML"
+                    AssemblyName = "System.Xml"
                     HintPath = "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
@@ -104,6 +104,12 @@
                     AssemblyName = "OGen.NTier.lib.businesslayer-1.1"
                     AssemblyFolderKey = "hklm\dn\ogen"
                 />
+                <Reference
+                    Name = "OGen.lib.datalayer.SQLServer-1.1"
+                    AssemblyName = "OGen.lib.datalayer.SQLServer-1.1"
+                    HintPath = "..\..\bin\OGen.lib.datalayer.SQLServer-1.1.dll"
+                    AssemblyFolderKey = "hklm\dn\ogen"
+                />
             </References>
         </Build>
         <Files>
@@ -119,17 +125,7 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base\BO0_Config.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
                     RelPath = "BO_Group.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "_base\BO0_Group.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -139,17 +135,7 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base\BO0_GroupPermition.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
                     RelPath = "BO_Language.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "_base\BO0_Language.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -159,17 +145,7 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base\BO0_Log.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
                     RelPath = "BO_Logcode.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "_base\BO0_Logcode.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -179,17 +155,7 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base\BO0_Permition.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
                     RelPath = "BO_User.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "_base\BO0_User.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -199,37 +165,7 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "_base\BO0_UserGroup.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "BO_Word.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "_base\BO0_Word.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "BO_WordLanguage.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "_base\BO0_WordLanguage.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
                     RelPath = "BO_vUserDefaultGroup.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
-                    RelPath = "_base\BO0_vUserDefaultGroup.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -239,7 +175,89 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "BO_Word.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "BO_WordLanguage.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "COPYING.MIT"
+                    BuildAction = "None"
+                />
+                <File
+                    RelPath = "LICENSE.MIT.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "LICENSE.txt"
+                    BuildAction = "Content"
+                />
+                <File
+                    RelPath = "_base\BO0_Config.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\BO0_Group.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\BO0_GroupPermition.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\BO0_Language.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\BO0_Log.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\BO0_Logcode.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\BO0_Permition.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\BO0_User.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\BO0_UserGroup.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\BO0_vUserDefaultGroup.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "_base\BO0_vUserGroup.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\BO0_Word.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "_base\BO0_WordLanguage.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -247,3 +265,4 @@
         </Files>
     </CSHARP>
 </VisualStudioProject>
+

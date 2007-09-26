@@ -177,6 +177,9 @@
     <Compile Include="_base\BO0_vUserGroup.cs">
       <SubType>Code</SubType>
     </Compile>
+    <None Include="COPYING.MIT" />
+    <None Include="LICENSE.MIT.txt" />
+    <None Include="LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\OGen\OGen_datalayer_PostgreSQL\OGen_datalayer_PostgreSQL-8.csproj">

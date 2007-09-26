@@ -181,6 +181,9 @@
     <Compile Include="_base\BO0_vUserGroup.cs">
       <SubType>Code</SubType>
     </Compile>
+    <None Include="COPYING.MIT" />
+    <None Include="LICENSE.MIT.txt" />
+    <None Include="LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

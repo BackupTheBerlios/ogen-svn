@@ -104,9 +104,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="COPYING.MIT" />
+    <None Include="LICENSE.MIT.txt" />
+    <None Include="LICENSE.txt" />
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="UT__utils.cs" />
     <Compile Include="_base\UT0__utils.cs">
       <SubType>Code</SubType>
     </Compile>
