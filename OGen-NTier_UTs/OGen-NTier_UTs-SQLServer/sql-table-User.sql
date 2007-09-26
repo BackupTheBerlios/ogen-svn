@@ -1,0 +1,7 @@
+CREATE TABLE [dbo].[User] (
+	[IDUser] [bigint] IDENTITY (1, 1) NOT NULL,
+	[Login] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[Password] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+	[SomeNullValue] [int] NULL
+) ON [PRIMARY]
+GO
