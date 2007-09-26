@@ -3,6 +3,9 @@ CREATE TABLE [dbo].[Logcode] (
 	[Warning] [bit] NOT NULL,
 	[Error] [bit] NOT NULL,
 	[Code] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
-	[Description] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL 
+	[Description] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NULL,
+	CONSTRAINT [PK_Logcode] PRIMARY KEY CLUSTERED (
+		[IDLogcode]
+	) ON [PRIMARY] 
 ) ON [PRIMARY]
 GO

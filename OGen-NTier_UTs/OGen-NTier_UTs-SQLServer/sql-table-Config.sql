@@ -1,9 +1,11 @@
-
 CREATE TABLE [dbo].[Config] (
 	[Name] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[Config] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
 	[Type] [int] NOT NULL,
-	[Description] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL 
+	[Description] [varchar] (50) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL, 
+	CONSTRAINT [PK_Config] PRIMARY KEY  CLUSTERED (
+		[Name]
+	) ON [PRIMARY] 
 ) ON [PRIMARY]
 GO
 
