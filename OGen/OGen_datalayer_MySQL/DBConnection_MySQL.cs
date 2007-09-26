@@ -54,6 +54,15 @@ namespace OGen.lib.datalayer.MySQL {
 		#endregion
 		//#endregion
 		//#region public properties...
+		#region public abstract string DBServerType { get; }
+		public const string DBSERVERTYPE = "MySQL";
+
+		public override string DBServerType {
+			get {
+				return DBSERVERTYPE;
+			}
+		}
+		#endregion
 		#region public override DBUtils utils { get; }
 		public override DBUtils utils {
 			get {

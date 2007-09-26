@@ -210,6 +210,7 @@ namespace OGen.lib.datalayer {
 			get { return connectionstring_; }
 		}
 		#endregion
+		public abstract string DBServerType { get; }
 		#region public string Logfile { get; }
 		protected string logfile_;
 

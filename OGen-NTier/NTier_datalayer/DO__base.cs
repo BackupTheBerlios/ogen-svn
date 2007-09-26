@@ -28,8 +28,8 @@ namespace OGen.NTier.lib.datalayer {
 			DBConnection connection_in
 		) : this (
 			connection_in, 
-			string.Empty, 
-			string.Empty, 
+			connection_in.DBServerType, 
+			connection_in.Connectionstring, 
 			false, // connection_insideInstance_in
 			null
 		) {}
