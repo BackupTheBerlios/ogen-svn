@@ -121,19 +121,17 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			string connectionstring_in, 
 			string logfile_in
 		) {
-#if NET20
-			return DO__utils.DBConnection_createInstance(
-				dbServerType_in, 
-				connectionstring_in, 
-				logfile_in
-			);
-#else
-			return DO0__utils.DBConnection_createInstance(
-				dbServerType_in, 
-				connectionstring_in, 
-				logfile_in
-			);
-#endif
+			return 
+				#if NET20
+				DO__utils
+				#else
+				DO0__utils
+				#endif
+					.DBConnection_createInstance(
+						dbServerType_in, 
+						connectionstring_in, 
+						logfile_in
+					);
 		}
 		#region public SC0_Logcode Serialize();
 		public SO0_Logcode Serialize() {
