@@ -195,7 +195,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 						Fields.IDUser = (long)_dataparameters[0].Value;
 					}
 					if (_dataparameters[1].Value == System.DBNull.Value) {
-						Fields.Login_isNull = true;
+						Fields.Login = string.Empty;
 					} else {
 						Fields.Login = (string)_dataparameters[1].Value;
 					}
@@ -205,12 +205,12 @@ namespace OGen.NTier.UTs.lib.datalayer {
 						Fields.IDGroup = (long)_dataparameters[2].Value;
 					}
 					if (_dataparameters[3].Value == System.DBNull.Value) {
-						Fields.Name_isNull = true;
+						Fields.Name = string.Empty;
 					} else {
 						Fields.Name = (string)_dataparameters[3].Value;
 					}
 					if (_dataparameters[4].Value == System.DBNull.Value) {
-						Fields.Relationdate_isNull = true;
+						Fields.Relationdate = new DateTime(1900, 1, 1);
 					} else {
 						Fields.Relationdate = (DateTime)_dataparameters[4].Value;
 					}

@@ -132,22 +132,22 @@ namespace OGen.NTier.UTs.lib.datalayer {
 						parent_ref_.Fields.iduser_ = (long)base.Record.Rows[Current]["IDUser"];
 					}
 					if (base.Record.Rows[Current]["Login"] == System.DBNull.Value) {
-						parent_ref_.Fields.Login_isNull = true;
+						parent_ref_.Fields.login_ = string.Empty;
 					} else {
 						parent_ref_.Fields.login_ = (string)base.Record.Rows[Current]["Login"];
 					}
 					if (base.Record.Rows[Current]["IDGroup"] == System.DBNull.Value) {
-						parent_ref_.Fields.IDGroup_isNull = true;
+						parent_ref_.Fields.idgroup_ = 0L;
 					} else {
 						parent_ref_.Fields.idgroup_ = (long)base.Record.Rows[Current]["IDGroup"];
 					}
 					if (base.Record.Rows[Current]["Name"] == System.DBNull.Value) {
-						parent_ref_.Fields.Name_isNull = true;
+						parent_ref_.Fields.name_ = string.Empty;
 					} else {
 						parent_ref_.Fields.name_ = (string)base.Record.Rows[Current]["Name"];
 					}
 					if (base.Record.Rows[Current]["Relationdate"] == System.DBNull.Value) {
-						parent_ref_.Fields.Relationdate_isNull = true;
+						parent_ref_.Fields.relationdate_ = new DateTime(1900, 1, 1);
 					} else {
 						parent_ref_.Fields.relationdate_ = (DateTime)base.Record.Rows[Current]["Relationdate"];
 					}

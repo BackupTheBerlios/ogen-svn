@@ -78,7 +78,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			"", 
 			true, 
 			false, 
-			true, 
+			false, 
 			"", 
 			"", 
 			"", 
@@ -113,29 +113,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
-		#region public bool Login_isNull { get; set; }
-		/// <summary>
-		/// Allows assignement of null and check if null at vUserDefaultGroup's Login.
-		/// </summary>
-		[XmlIgnore]
-		public 
-#if !NET20
-			virtual 
-#endif
-		bool Login_isNull {
-			get { return (login_ == null); }
-			set {
-				//if (value) login_ = null;
-
-				if ((value) && (login_ != null)) {
-					login_ = null;
-					haschanges_ = true;
-				}
-			}
-		}
-		#endregion
 		#region public string Login { get; set; }
-		internal object login_;// = string.Empty;
+		internal string login_;// = string.Empty;
 		
 		/// <summary>
 		/// vUserDefaultGroup's Login.
@@ -147,7 +126,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			"", 
 			false, 
 			false, 
-			true, 
+			false, 
 			"", 
 			"", 
 			"", 
@@ -170,7 +149,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #endif
 		string Login {
 			get {
-				return (string)((login_ == null) ? string.Empty : login_);
+				return login_;
 			}
 			set {
 				if (
@@ -184,29 +163,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
-		#region public bool IDGroup_isNull { get; set; }
-		/// <summary>
-		/// Allows assignement of null and check if null at vUserDefaultGroup's IDGroup.
-		/// </summary>
-		[XmlIgnore]
-		public 
-#if !NET20
-			virtual 
-#endif
-		bool IDGroup_isNull {
-			get { return (idgroup_ == null); }
-			set {
-				//if (value) idgroup_ = null;
-
-				if ((value) && (idgroup_ != null)) {
-					idgroup_ = null;
-					haschanges_ = true;
-				}
-			}
-		}
-		#endregion
 		#region public long IDGroup { get; set; }
-		internal object idgroup_;// = 0L;
+		internal long idgroup_;// = 0L;
 		
 		/// <summary>
 		/// vUserDefaultGroup's IDGroup.
@@ -218,7 +176,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			"", 
 			false, 
 			false, 
-			true, 
+			false, 
 			"", 
 			"", 
 			"", 
@@ -241,7 +199,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #endif
 		long IDGroup {
 			get {
-				return (long)((idgroup_ == null) ? 0L : idgroup_);
+				return idgroup_;
 			}
 			set {
 				if (
@@ -253,29 +211,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
-		#region public bool Name_isNull { get; set; }
-		/// <summary>
-		/// Allows assignement of null and check if null at vUserDefaultGroup's Name.
-		/// </summary>
-		[XmlIgnore]
-		public 
-#if !NET20
-			virtual 
-#endif
-		bool Name_isNull {
-			get { return (name_ == null); }
-			set {
-				//if (value) name_ = null;
-
-				if ((value) && (name_ != null)) {
-					name_ = null;
-					haschanges_ = true;
-				}
-			}
-		}
-		#endregion
 		#region public string Name { get; set; }
-		internal object name_;// = string.Empty;
+		internal string name_;// = string.Empty;
 		
 		/// <summary>
 		/// vUserDefaultGroup's Name.
@@ -287,7 +224,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			"", 
 			false, 
 			false, 
-			true, 
+			false, 
 			"", 
 			"", 
 			"", 
@@ -310,7 +247,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #endif
 		string Name {
 			get {
-				return (string)((name_ == null) ? string.Empty : name_);
+				return name_;
 			}
 			set {
 				if (
@@ -324,29 +261,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			}
 		}
 		#endregion
-		#region public bool Relationdate_isNull { get; set; }
-		/// <summary>
-		/// Allows assignement of null and check if null at vUserDefaultGroup's Relationdate.
-		/// </summary>
-		[XmlIgnore]
-		public 
-#if !NET20
-			virtual 
-#endif
-		bool Relationdate_isNull {
-			get { return (relationdate_ == null); }
-			set {
-				//if (value) relationdate_ = null;
-
-				if ((value) && (relationdate_ != null)) {
-					relationdate_ = null;
-					haschanges_ = true;
-				}
-			}
-		}
-		#endregion
 		#region public DateTime Relationdate { get; set; }
-		internal object relationdate_;// = new DateTime(1900, 1, 1);
+		internal DateTime relationdate_;// = new DateTime(1900, 1, 1);
 		
 		/// <summary>
 		/// vUserDefaultGroup's Relationdate.
@@ -358,7 +274,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			"", 
 			false, 
 			false, 
-			true, 
+			false, 
 			"", 
 			"", 
 			"", 
@@ -381,7 +297,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 #endif
 		DateTime Relationdate {
 			get {
-				return (DateTime)((relationdate_ == null) ? new DateTime(1900, 1, 1) : relationdate_);
+				return relationdate_;
 			}
 			set {
 				if (

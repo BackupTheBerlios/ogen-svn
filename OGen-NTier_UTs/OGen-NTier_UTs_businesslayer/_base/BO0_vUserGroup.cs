@@ -98,7 +98,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			"", 
 			true, 
 			false, 
-			true, 
+			false, 
 			"", 
 			"", 
 			"", 
@@ -124,19 +124,6 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			set { mainAggregate.Fields.IDUser = value; }
 		}
 		#endregion
-		#region public bool Login_isNull { get; set; }
-		/// <summary>
-		/// Allows assignement of null and check if null at vUserGroup's Login.
-		/// </summary>
-		public 
-#if !NET20
-			virtual 
-#endif
-		bool Login_isNull {
-			get { return mainAggregate.Fields.Login_isNull; }
-			set { mainAggregate.Fields.Login_isNull = value; }
-		}
-		#endregion
 		#region public string Login { get; set; }
 		/// <summary>
 		/// vUserGroup's Login.
@@ -147,7 +134,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			"", 
 			false, 
 			false, 
-			true, 
+			false, 
 			"", 
 			"", 
 			"", 
@@ -183,7 +170,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			"", 
 			true, 
 			false, 
-			true, 
+			false, 
 			"", 
 			"", 
 			"", 
@@ -209,19 +196,6 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			set { mainAggregate.Fields.IDGroup = value; }
 		}
 		#endregion
-		#region public bool Name_isNull { get; set; }
-		/// <summary>
-		/// Allows assignement of null and check if null at vUserGroup's Name.
-		/// </summary>
-		public 
-#if !NET20
-			virtual 
-#endif
-		bool Name_isNull {
-			get { return mainAggregate.Fields.Name_isNull; }
-			set { mainAggregate.Fields.Name_isNull = value; }
-		}
-		#endregion
 		#region public string Name { get; set; }
 		/// <summary>
 		/// vUserGroup's Name.
@@ -232,7 +206,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			"", 
 			false, 
 			false, 
-			true, 
+			false, 
 			"", 
 			"", 
 			"", 
@@ -258,19 +232,6 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			set { mainAggregate.Fields.Name = value; }
 		}
 		#endregion
-		#region public bool Relationdate_isNull { get; set; }
-		/// <summary>
-		/// Allows assignement of null and check if null at vUserGroup's Relationdate.
-		/// </summary>
-		public 
-#if !NET20
-			virtual 
-#endif
-		bool Relationdate_isNull {
-			get { return mainAggregate.Fields.Relationdate_isNull; }
-			set { mainAggregate.Fields.Relationdate_isNull = value; }
-		}
-		#endregion
 		#region public DateTime Relationdate { get; set; }
 		/// <summary>
 		/// vUserGroup's Relationdate.
@@ -281,7 +242,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			"", 
 			false, 
 			false, 
-			true, 
+			false, 
 			"", 
 			"", 
 			"", 

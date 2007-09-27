@@ -98,7 +98,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			"", 
 			true, 
 			false, 
-			true, 
+			false, 
 			"", 
 			"", 
 			"", 
@@ -124,19 +124,6 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			set { mainAggregate.Fields.IDUser = value; }
 		}
 		#endregion
-		#region public bool Login_isNull { get; set; }
-		/// <summary>
-		/// Allows assignement of null and check if null at vUserDefaultGroup's Login.
-		/// </summary>
-		public 
-#if !NET20
-			virtual 
-#endif
-		bool Login_isNull {
-			get { return mainAggregate.Fields.Login_isNull; }
-			set { mainAggregate.Fields.Login_isNull = value; }
-		}
-		#endregion
 		#region public string Login { get; set; }
 		/// <summary>
 		/// vUserDefaultGroup's Login.
@@ -147,7 +134,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			"", 
 			false, 
 			false, 
-			true, 
+			false, 
 			"", 
 			"", 
 			"", 
@@ -173,19 +160,6 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			set { mainAggregate.Fields.Login = value; }
 		}
 		#endregion
-		#region public bool IDGroup_isNull { get; set; }
-		/// <summary>
-		/// Allows assignement of null and check if null at vUserDefaultGroup's IDGroup.
-		/// </summary>
-		public 
-#if !NET20
-			virtual 
-#endif
-		bool IDGroup_isNull {
-			get { return mainAggregate.Fields.IDGroup_isNull; }
-			set { mainAggregate.Fields.IDGroup_isNull = value; }
-		}
-		#endregion
 		#region public long IDGroup { get; set; }
 		/// <summary>
 		/// vUserDefaultGroup's IDGroup.
@@ -196,7 +170,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			"", 
 			false, 
 			false, 
-			true, 
+			false, 
 			"", 
 			"", 
 			"", 
@@ -222,19 +196,6 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			set { mainAggregate.Fields.IDGroup = value; }
 		}
 		#endregion
-		#region public bool Name_isNull { get; set; }
-		/// <summary>
-		/// Allows assignement of null and check if null at vUserDefaultGroup's Name.
-		/// </summary>
-		public 
-#if !NET20
-			virtual 
-#endif
-		bool Name_isNull {
-			get { return mainAggregate.Fields.Name_isNull; }
-			set { mainAggregate.Fields.Name_isNull = value; }
-		}
-		#endregion
 		#region public string Name { get; set; }
 		/// <summary>
 		/// vUserDefaultGroup's Name.
@@ -245,7 +206,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			"", 
 			false, 
 			false, 
-			true, 
+			false, 
 			"", 
 			"", 
 			"", 
@@ -271,19 +232,6 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			set { mainAggregate.Fields.Name = value; }
 		}
 		#endregion
-		#region public bool Relationdate_isNull { get; set; }
-		/// <summary>
-		/// Allows assignement of null and check if null at vUserDefaultGroup's Relationdate.
-		/// </summary>
-		public 
-#if !NET20
-			virtual 
-#endif
-		bool Relationdate_isNull {
-			get { return mainAggregate.Fields.Relationdate_isNull; }
-			set { mainAggregate.Fields.Relationdate_isNull = value; }
-		}
-		#endregion
 		#region public DateTime Relationdate { get; set; }
 		/// <summary>
 		/// vUserDefaultGroup's Relationdate.
@@ -294,7 +242,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			"", 
 			false, 
 			false, 
-			true, 
+			false, 
 			"", 
 			"", 
 			"", 
