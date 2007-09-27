@@ -180,8 +180,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDPermition_in
 		) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.InputOutput, IDGroup_in, 0, 64, 0), 
-					base.Connection.newDBDataParameter("IDPermition_", DbType.Int64, ParameterDirection.InputOutput, IDPermition_in, 0, 64, 0)
+					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.InputOutput, IDGroup_in, 0), 
+					base.Connection.newDBDataParameter("IDPermition_", DbType.Int64, ParameterDirection.InputOutput, IDPermition_in, 0)
 				};
 				base.Connection.Execute_SQLFunction("sp0_GroupPermition_getObject", _dataparameters);
 
@@ -235,8 +235,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDPermition_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0, 64, 0), 
-				base.Connection.newDBDataParameter("IDPermition_", DbType.Int64, ParameterDirection.Input, IDPermition_in, 0, 64, 0)
+				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0), 
+				base.Connection.newDBDataParameter("IDPermition_", DbType.Int64, ParameterDirection.Input, IDPermition_in, 0)
 			};
 			base.Connection.Execute_SQLFunction("sp0_GroupPermition_delObject", _dataparameters);
 
@@ -273,8 +273,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDPermition_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0, 64, 0), 
-				base.Connection.newDBDataParameter("IDPermition_", DbType.Int64, ParameterDirection.Input, IDPermition_in, 0, 64, 0)
+				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0), 
+				base.Connection.newDBDataParameter("IDPermition_", DbType.Int64, ParameterDirection.Input, IDPermition_in, 0)
 			};
 
 			return (bool)base.Connection.Execute_SQLFunction(
@@ -299,8 +299,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			bool ConstraintExist_out;
 			if (forceUpdate_in || Fields.haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, Fields.IDGroup, 0, 64, 0), 
-					base.Connection.newDBDataParameter("IDPermition_", DbType.Int64, ParameterDirection.Input, Fields.IDPermition, 0, 64, 0), 
+					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, Fields.IDGroup, 0), 
+					base.Connection.newDBDataParameter("IDPermition_", DbType.Int64, ParameterDirection.Input, Fields.IDPermition, 0), 
 
 					//base.Connection.newDBDataParameter("Exists", DbType.Boolean, ParameterDirection.Output, 0, 1)
 					base.Connection.newDBDataParameter("Output_", DbType.Int32, ParameterDirection.Output, null, 0)

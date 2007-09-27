@@ -318,7 +318,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {<%
 					for (int f = 0; f < _aux_table.Fields.Count; f++) {
 						_aux_field = _aux_table.Fields[f];%>
-					base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.<%=(_aux_field.isPK) ? "Input" : ""%>Output, <%=(_aux_field.isPK) ? _aux_field.Name + "_in" : "null"%>, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>)<%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
+					base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.<%=(_aux_field.isPK) ? "Input" : ""%>Output, <%=(_aux_field.isPK) ? _aux_field.Name + "_in" : "null"%>, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>)<%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
 					}%>
 				};
 				base.Connection.Execute_SQLFunction("sp0_<%=_aux_table.Name%>_getObject", _dataparameters);
@@ -387,7 +387,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {<%
 				for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 					_aux_field = _aux_table.Fields_onlyPK[k];%>
-				base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field.Name%>_in, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>)<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
+				base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field.Name%>_in, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>)<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
 				}%>
 			};
 			base.Connection.Execute_SQLFunction("sp0_<%=_aux_table.Name%>_delObject", _dataparameters);
@@ -434,7 +434,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {<%
 				for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 					_aux_field = _aux_table.Fields_onlyPK[k];%>
-				base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field.Name%>_in, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>)<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : "" %><%
+				base.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field.Name%>_in, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>)<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : "" %><%
 				}%>
 			};
 
@@ -472,7 +472,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 	: ((_aux_field.isNullable) 
 		? "Fields." + _aux_field.Name + "_isNull ? null : (object)Fields." + _aux_field.Name 
 		: "Fields." + _aux_field.Name
-	)%>, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>), <%
+	)%>, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>), <%
 					}%>
 
 					//base.Connection.newDBDataParameter("Exists", DbType.Boolean, ParameterDirection.Output, 0, 1)<%
@@ -597,7 +597,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 	: ((_aux_field.isNullable) 
 		? "Fields." + _aux_field.Name + "_isNull ? null : (object)Fields." + _aux_field.Name 
 		: "Fields." + _aux_field.Name
-	)%>, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>), <%
+	)%>, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>), <%
 				}%>
 
 				base.Connection.newDBDataParameter("SelectIdentity_", DbType.Boolean, ParameterDirection.Input, selectIdentity_in, 1)
@@ -642,7 +642,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 ((_aux_field.isNullable) 
 	? "Fields." + _aux_field.Name + "_isNull ? null : (object)Fields." + _aux_field.Name 
 	: "Fields." + _aux_field.Name
-)%>, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>)<%=((f != _aux_table.Fields.Count - 1) || (_aux_table_searches_hasexplicituniqueindex)) ? ", " : ""%><%
+)%>, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>)<%=((f != _aux_table.Fields.Count - 1) || (_aux_table_searches_hasexplicituniqueindex)) ? ", " : ""%><%
 					}%><%
 					if (_aux_table_searches_hasexplicituniqueindex) {%>
 
@@ -705,11 +705,11 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				for (int f = 0; f < _aux_table.Searches[s].SearchParameters.Count; f++) {
 					_aux_field = _aux_table.Searches[s].SearchParameters[f].Field;
 					_aux_field_name = _aux_table.Searches[s].SearchParameters[f].ParamName;%>
-				base.Connection.newDBDataParameter("<%=_aux_field_name%>_search_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field_name%>_search_in, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>), <%
+				base.Connection.newDBDataParameter("<%=_aux_field_name%>_search_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field_name%>_search_in, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>), <%
 				}
 				for (int f = 0; f < _aux_table.Fields.Count; f++) {
 					_aux_field = _aux_table.Fields[f];%>
-				base.Connection.newDBDataParameter("<%=_aux_field.Name%>", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Output, null, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>)<%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
+				base.Connection.newDBDataParameter("<%=_aux_field.Name%>", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Output, null, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>)<%=(f != _aux_table.Fields.Count - 1) ? ", " : ""%><%
 				}%>
 			};
 			base.Connection.Execute_SQLFunction(
@@ -763,7 +763,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				for (int f = 0; f < _aux_table.Searches[s].SearchParameters.Count; f++) {
 					_aux_field = _aux_table.Searches[s].SearchParameters[f].Field;
 					_aux_field_name = _aux_table.Searches[s].SearchParameters[f].ParamName;%>
-				base.Connection.newDBDataParameter("<%=_aux_field_name%>_search_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field_name%>_search_in, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>), <%
+				base.Connection.newDBDataParameter("<%=_aux_field_name%>_search_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field_name%>_search_in, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>), <%
 				}%>
 
 				base.Connection.newDBDataParameter("Exists_", DbType.Boolean, ParameterDirection.Output, null, 1)
@@ -795,7 +795,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				for (int f = 0; f < _aux_table.Searches[s].SearchParameters.Count; f++) {
 					_aux_field = _aux_table.Searches[s].SearchParameters[f].Field;
 					_aux_field_name = _aux_table.Searches[s].SearchParameters[f].ParamName;%>
-				base.Connection.newDBDataParameter("<%=_aux_field_name%>_search_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field_name%>_search_in, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>)<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
+				base.Connection.newDBDataParameter("<%=_aux_field_name%>_search_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field_name%>_search_in, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>)<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
 				}%>
 			};
 			return (bool)base.Connection.Execute_SQLFunction(
@@ -839,10 +839,10 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			if (forceUpdate_in || Fields.haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {<%
 					for (int f = 0; f < _aux_table.Fields_onlyPK.Count; f++) { _aux_field = _aux_table.Fields_onlyPK[f];%>
-					base.Connection.newDBDataParameter("<%=_aux_field.Name%>", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%="Fields." + _aux_field.Name%>, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>), <%
+					base.Connection.newDBDataParameter("<%=_aux_field.Name%>", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%="Fields." + _aux_field.Name%>, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>), <%
 					}
 					for (int f = 0; f < _aux_update.UpdateParameters.Count; f++) { _aux_field = _aux_update.UpdateParameters[f].Field;%>
-					base.Connection.newDBDataParameter("<%=_aux_field.Name%>_update", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%="Fields." + _aux_field.Name%>, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>)<%=((f != _aux_update.UpdateParameters.Count - 1) || (_aux_table_searches_hasexplicituniqueindex)) ? ", " : ""%><%
+					base.Connection.newDBDataParameter("<%=_aux_field.Name%>_update", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%="Fields." + _aux_field.Name%>, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>)<%=((f != _aux_update.UpdateParameters.Count - 1) || (_aux_table_searches_hasexplicituniqueindex)) ? ", " : ""%><%
 					}
 					if (_aux_table_searches_hasexplicituniqueindex) {%>
 

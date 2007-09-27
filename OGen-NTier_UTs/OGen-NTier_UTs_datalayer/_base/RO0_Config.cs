@@ -246,7 +246,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			string Name_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Name_in, 50, 0, 0)
+				parent_ref_.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Name_in, 50)
 			};
 			return (bool)parent_ref_.Connection.Execute_SQLFunction(
 				"fnc0_Config_Record_hasObject_all", 

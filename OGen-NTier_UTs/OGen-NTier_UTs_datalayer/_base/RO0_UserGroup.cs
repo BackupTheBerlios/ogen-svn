@@ -194,8 +194,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			bool fullmode_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDUser_search_", DbType.Int64, ParameterDirection.Input, IDUser_search_in, 0, 64, 0), 
-				parent_ref_.Connection.newDBDataParameter("Relationdate_search_", DbType.DateTime, ParameterDirection.Input, Relationdate_search_in, 0, 0, 0)
+				parent_ref_.Connection.newDBDataParameter("IDUser_search_", DbType.Int64, ParameterDirection.Input, IDUser_search_in, 0), 
+				parent_ref_.Connection.newDBDataParameter("Relationdate_search_", DbType.DateTime, ParameterDirection.Input, Relationdate_search_in, 0)
 			};
 			base.Open(
 				string.Format(
@@ -246,8 +246,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			int page_numRecords_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDUser_search_", DbType.Int64, ParameterDirection.Input, IDUser_search_in, 0, 64, 0), 
-				parent_ref_.Connection.newDBDataParameter("Relationdate_search_", DbType.DateTime, ParameterDirection.Input, Relationdate_search_in, 0, 0, 0), 
+				parent_ref_.Connection.newDBDataParameter("IDUser_search_", DbType.Int64, ParameterDirection.Input, IDUser_search_in, 0), 
+				parent_ref_.Connection.newDBDataParameter("Relationdate_search_", DbType.DateTime, ParameterDirection.Input, Relationdate_search_in, 0), 
 				parent_ref_.Connection.newDBDataParameter("page_", DbType.Int32, ParameterDirection.Input, page_in, 0), 
 				parent_ref_.Connection.newDBDataParameter("page_numRecords_", DbType.Int32, ParameterDirection.Input, page_numRecords_in, 0)
 			};
@@ -274,9 +274,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			object Relationdate_update_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDUser_search_", DbType.Int64, ParameterDirection.Input, IDUser_search_in, 0, 64, 0), 
-				parent_ref_.Connection.newDBDataParameter("Relationdate_search_", DbType.DateTime, ParameterDirection.Input, Relationdate_search_in, 0, 0, 0), 
-				parent_ref_.Connection.newDBDataParameter("Relationdate_update_", DbType.DateTime, ParameterDirection.Input, Relationdate_update_in, 0, 0, 0)
+				parent_ref_.Connection.newDBDataParameter("IDUser_search_", DbType.Int64, ParameterDirection.Input, IDUser_search_in, 0), 
+				parent_ref_.Connection.newDBDataParameter("Relationdate_search_", DbType.DateTime, ParameterDirection.Input, Relationdate_search_in, 0), 
+				parent_ref_.Connection.newDBDataParameter("Relationdate_update_", DbType.DateTime, ParameterDirection.Input, Relationdate_update_in, 0)
 			};
 			parent_ref_.Connection.Execute_SQLFunction(
 				"sp0_UserGroup_Record_update_SomeUpdateTest_byUser_Defaultrelation", 
@@ -300,10 +300,10 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			object Relationdate_search_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0, 64, 0), 
-				parent_ref_.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0, 64, 0), 
-				parent_ref_.Connection.newDBDataParameter("IDUser_search_", DbType.Int64, ParameterDirection.Input, IDUser_search_in, 0, 64, 0), 
-				parent_ref_.Connection.newDBDataParameter("Relationdate_search_", DbType.DateTime, ParameterDirection.Input, Relationdate_search_in, 0, 0, 0)
+				parent_ref_.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0), 
+				parent_ref_.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0), 
+				parent_ref_.Connection.newDBDataParameter("IDUser_search_", DbType.Int64, ParameterDirection.Input, IDUser_search_in, 0), 
+				parent_ref_.Connection.newDBDataParameter("Relationdate_search_", DbType.DateTime, ParameterDirection.Input, Relationdate_search_in, 0)
 			};
 			return (bool)parent_ref_.Connection.Execute_SQLFunction(
 				"fnc0_UserGroup_Record_hasObject_byUser_Defaultrelation", 
@@ -325,8 +325,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			object Relationdate_search_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDUser_search_", DbType.Int64, ParameterDirection.Input, IDUser_search_in, 0, 64, 0), 
-				parent_ref_.Connection.newDBDataParameter("Relationdate_search_", DbType.DateTime, ParameterDirection.Input, Relationdate_search_in, 0, 0, 0)
+				parent_ref_.Connection.newDBDataParameter("IDUser_search_", DbType.Int64, ParameterDirection.Input, IDUser_search_in, 0), 
+				parent_ref_.Connection.newDBDataParameter("Relationdate_search_", DbType.DateTime, ParameterDirection.Input, Relationdate_search_in, 0)
 			};
 
 			return (long)parent_ref_.Connection.Execute_SQLFunction(
@@ -348,8 +348,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			object Relationdate_search_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				parent_ref_.Connection.newDBDataParameter("IDUser_search_", DbType.Int64, ParameterDirection.Input, IDUser_search_in, 0, 64, 0), 
-				parent_ref_.Connection.newDBDataParameter("Relationdate_search_", DbType.DateTime, ParameterDirection.Input, Relationdate_search_in, 0, 0, 0)
+				parent_ref_.Connection.newDBDataParameter("IDUser_search_", DbType.Int64, ParameterDirection.Input, IDUser_search_in, 0), 
+				parent_ref_.Connection.newDBDataParameter("Relationdate_search_", DbType.DateTime, ParameterDirection.Input, Relationdate_search_in, 0)
 			};
 
 			parent_ref_.Connection.Execute_SQLFunction(

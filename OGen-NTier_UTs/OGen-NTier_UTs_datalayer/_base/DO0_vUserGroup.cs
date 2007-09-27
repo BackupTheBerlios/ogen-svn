@@ -180,11 +180,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDGroup_in
 		) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.InputOutput, IDUser_in, 0, 64, 0), 
-					base.Connection.newDBDataParameter("Login_", DbType.String, ParameterDirection.Output, null, 50, 0, 0), 
-					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.InputOutput, IDGroup_in, 0, 64, 0), 
-					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Output, null, 50, 0, 0), 
-					base.Connection.newDBDataParameter("Relationdate_", DbType.DateTime, ParameterDirection.Output, null, 0, 0, 0)
+					base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.InputOutput, IDUser_in, 0), 
+					base.Connection.newDBDataParameter("Login_", DbType.String, ParameterDirection.Output, null, 50), 
+					base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.InputOutput, IDGroup_in, 0), 
+					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Output, null, 50), 
+					base.Connection.newDBDataParameter("Relationdate_", DbType.DateTime, ParameterDirection.Output, null, 0)
 				};
 				base.Connection.Execute_SQLFunction("sp0_vUserGroup_getObject", _dataparameters);
 
@@ -255,8 +255,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDGroup_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0, 64, 0), 
-				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0, 64, 0)
+				base.Connection.newDBDataParameter("IDUser_", DbType.Int64, ParameterDirection.Input, IDUser_in, 0), 
+				base.Connection.newDBDataParameter("IDGroup_", DbType.Int64, ParameterDirection.Input, IDGroup_in, 0)
 			};
 
 			return (bool)base.Connection.Execute_SQLFunction(

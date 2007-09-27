@@ -178,11 +178,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		) {
 			if (IDLogcode_in != 0L) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDLogcode_", DbType.Int64, ParameterDirection.InputOutput, IDLogcode_in, 0, 64, 0), 
-					base.Connection.newDBDataParameter("Warning_", DbType.Boolean, ParameterDirection.Output, null, 0, 0, 0), 
-					base.Connection.newDBDataParameter("Error_", DbType.Boolean, ParameterDirection.Output, null, 0, 0, 0), 
-					base.Connection.newDBDataParameter("Code_", DbType.String, ParameterDirection.Output, null, 50, 0, 0), 
-					base.Connection.newDBDataParameter("Description_", DbType.String, ParameterDirection.Output, null, 50, 0, 0)
+					base.Connection.newDBDataParameter("IDLogcode_", DbType.Int64, ParameterDirection.InputOutput, IDLogcode_in, 0), 
+					base.Connection.newDBDataParameter("Warning_", DbType.Boolean, ParameterDirection.Output, null, 0), 
+					base.Connection.newDBDataParameter("Error_", DbType.Boolean, ParameterDirection.Output, null, 0), 
+					base.Connection.newDBDataParameter("Code_", DbType.String, ParameterDirection.Output, null, 50), 
+					base.Connection.newDBDataParameter("Description_", DbType.String, ParameterDirection.Output, null, 50)
 				};
 				base.Connection.Execute_SQLFunction("sp0_Logcode_getObject", _dataparameters);
 
@@ -249,7 +249,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDLogcode_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDLogcode_", DbType.Int64, ParameterDirection.Input, IDLogcode_in, 0, 64, 0)
+				base.Connection.newDBDataParameter("IDLogcode_", DbType.Int64, ParameterDirection.Input, IDLogcode_in, 0)
 			};
 			base.Connection.Execute_SQLFunction("sp0_Logcode_delObject", _dataparameters);
 
@@ -283,7 +283,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDLogcode_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDLogcode_", DbType.Int64, ParameterDirection.Input, IDLogcode_in, 0, 64, 0)
+				base.Connection.newDBDataParameter("IDLogcode_", DbType.Int64, ParameterDirection.Input, IDLogcode_in, 0)
 			};
 
 			return (bool)base.Connection.Execute_SQLFunction(
@@ -308,11 +308,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			bool selectIdentity_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDLogcode_", DbType.Int64, ParameterDirection.Output, null, 0, 64, 0), 
-				base.Connection.newDBDataParameter("Warning_", DbType.Boolean, ParameterDirection.Input, Fields.Warning, 0, 0, 0), 
-				base.Connection.newDBDataParameter("Error_", DbType.Boolean, ParameterDirection.Input, Fields.Error, 0, 0, 0), 
-				base.Connection.newDBDataParameter("Code_", DbType.String, ParameterDirection.Input, Fields.Code, 50, 0, 0), 
-				base.Connection.newDBDataParameter("Description_", DbType.String, ParameterDirection.Input, Fields.Description_isNull ? null : (object)Fields.Description, 50, 0, 0), 
+				base.Connection.newDBDataParameter("IDLogcode_", DbType.Int64, ParameterDirection.Output, null, 0), 
+				base.Connection.newDBDataParameter("Warning_", DbType.Boolean, ParameterDirection.Input, Fields.Warning, 0), 
+				base.Connection.newDBDataParameter("Error_", DbType.Boolean, ParameterDirection.Input, Fields.Error, 0), 
+				base.Connection.newDBDataParameter("Code_", DbType.String, ParameterDirection.Input, Fields.Code, 50), 
+				base.Connection.newDBDataParameter("Description_", DbType.String, ParameterDirection.Input, Fields.Description_isNull ? null : (object)Fields.Description, 50), 
 
 				base.Connection.newDBDataParameter("SelectIdentity_", DbType.Boolean, ParameterDirection.Input, selectIdentity_in, 1)
 			};
@@ -340,11 +340,11 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		void updObject(bool forceUpdate_in) {
 			if (forceUpdate_in || Fields.haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDLogcode_", DbType.Int64, ParameterDirection.Input, Fields.IDLogcode, 0, 64, 0), 
-					base.Connection.newDBDataParameter("Warning_", DbType.Boolean, ParameterDirection.Input, Fields.Warning, 0, 0, 0), 
-					base.Connection.newDBDataParameter("Error_", DbType.Boolean, ParameterDirection.Input, Fields.Error, 0, 0, 0), 
-					base.Connection.newDBDataParameter("Code_", DbType.String, ParameterDirection.Input, Fields.Code, 50, 0, 0), 
-					base.Connection.newDBDataParameter("Description_", DbType.String, ParameterDirection.Input, Fields.Description_isNull ? null : (object)Fields.Description, 50, 0, 0)
+					base.Connection.newDBDataParameter("IDLogcode_", DbType.Int64, ParameterDirection.Input, Fields.IDLogcode, 0), 
+					base.Connection.newDBDataParameter("Warning_", DbType.Boolean, ParameterDirection.Input, Fields.Warning, 0), 
+					base.Connection.newDBDataParameter("Error_", DbType.Boolean, ParameterDirection.Input, Fields.Error, 0), 
+					base.Connection.newDBDataParameter("Code_", DbType.String, ParameterDirection.Input, Fields.Code, 50), 
+					base.Connection.newDBDataParameter("Description_", DbType.String, ParameterDirection.Input, Fields.Description_isNull ? null : (object)Fields.Description, 50)
 				};
 				base.Connection.Execute_SQLFunction(
 					"sp0_Logcode_updObject", 

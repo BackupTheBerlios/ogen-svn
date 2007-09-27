@@ -180,9 +180,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDLanguage_in
 		) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDWord_", DbType.Int64, ParameterDirection.InputOutput, IDWord_in, 0, 64, 0), 
-					base.Connection.newDBDataParameter("IDLanguage_", DbType.Int64, ParameterDirection.InputOutput, IDLanguage_in, 0, 64, 0), 
-					base.Connection.newDBDataParameter("Translation_", DbType.String, ParameterDirection.Output, null, 2048, 0, 0)
+					base.Connection.newDBDataParameter("IDWord_", DbType.Int64, ParameterDirection.InputOutput, IDWord_in, 0), 
+					base.Connection.newDBDataParameter("IDLanguage_", DbType.Int64, ParameterDirection.InputOutput, IDLanguage_in, 0), 
+					base.Connection.newDBDataParameter("Translation_", DbType.String, ParameterDirection.Output, null, 2048)
 				};
 				base.Connection.Execute_SQLFunction("sp0_WordLanguage_getObject", _dataparameters);
 
@@ -241,8 +241,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDLanguage_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDWord_", DbType.Int64, ParameterDirection.Input, IDWord_in, 0, 64, 0), 
-				base.Connection.newDBDataParameter("IDLanguage_", DbType.Int64, ParameterDirection.Input, IDLanguage_in, 0, 64, 0)
+				base.Connection.newDBDataParameter("IDWord_", DbType.Int64, ParameterDirection.Input, IDWord_in, 0), 
+				base.Connection.newDBDataParameter("IDLanguage_", DbType.Int64, ParameterDirection.Input, IDLanguage_in, 0)
 			};
 			base.Connection.Execute_SQLFunction("sp0_WordLanguage_delObject", _dataparameters);
 
@@ -279,8 +279,8 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			long IDLanguage_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("IDWord_", DbType.Int64, ParameterDirection.Input, IDWord_in, 0, 64, 0), 
-				base.Connection.newDBDataParameter("IDLanguage_", DbType.Int64, ParameterDirection.Input, IDLanguage_in, 0, 64, 0)
+				base.Connection.newDBDataParameter("IDWord_", DbType.Int64, ParameterDirection.Input, IDWord_in, 0), 
+				base.Connection.newDBDataParameter("IDLanguage_", DbType.Int64, ParameterDirection.Input, IDLanguage_in, 0)
 			};
 
 			return (bool)base.Connection.Execute_SQLFunction(
@@ -305,9 +305,9 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			bool ConstraintExist_out;
 			if (forceUpdate_in || Fields.haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("IDWord_", DbType.Int64, ParameterDirection.Input, Fields.IDWord, 0, 64, 0), 
-					base.Connection.newDBDataParameter("IDLanguage_", DbType.Int64, ParameterDirection.Input, Fields.IDLanguage, 0, 64, 0), 
-					base.Connection.newDBDataParameter("Translation_", DbType.String, ParameterDirection.Input, Fields.Translation_isNull ? null : (object)Fields.Translation, 2048, 0, 0), 
+					base.Connection.newDBDataParameter("IDWord_", DbType.Int64, ParameterDirection.Input, Fields.IDWord, 0), 
+					base.Connection.newDBDataParameter("IDLanguage_", DbType.Int64, ParameterDirection.Input, Fields.IDLanguage, 0), 
+					base.Connection.newDBDataParameter("Translation_", DbType.String, ParameterDirection.Input, Fields.Translation_isNull ? null : (object)Fields.Translation, 2048), 
 
 					//base.Connection.newDBDataParameter("Exists", DbType.Boolean, ParameterDirection.Output, 0, 1)
 					base.Connection.newDBDataParameter("Output_", DbType.Int32, ParameterDirection.Output, null, 0)

@@ -177,10 +177,10 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			string Name_in
 		) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.InputOutput, Name_in, 50, 0, 0), 
-					base.Connection.newDBDataParameter("Config_", DbType.String, ParameterDirection.Output, null, 50, 0, 0), 
-					base.Connection.newDBDataParameter("Type_", DbType.Int32, ParameterDirection.Output, null, 0, 32, 0), 
-					base.Connection.newDBDataParameter("Description_", DbType.String, ParameterDirection.Output, null, 50, 0, 0)
+					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.InputOutput, Name_in, 50), 
+					base.Connection.newDBDataParameter("Config_", DbType.String, ParameterDirection.Output, null, 50), 
+					base.Connection.newDBDataParameter("Type_", DbType.Int32, ParameterDirection.Output, null, 0), 
+					base.Connection.newDBDataParameter("Description_", DbType.String, ParameterDirection.Output, null, 50)
 				};
 				base.Connection.Execute_SQLFunction("sp0_Config_getObject", _dataparameters);
 
@@ -241,7 +241,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			string Name_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Name_in, 50, 0, 0)
+				base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Name_in, 50)
 			};
 			base.Connection.Execute_SQLFunction("sp0_Config_delObject", _dataparameters);
 
@@ -275,7 +275,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			string Name_in
 		) {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-				base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Name_in, 50, 0, 0)
+				base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Name_in, 50)
 			};
 
 			return (bool)base.Connection.Execute_SQLFunction(
@@ -300,10 +300,10 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			bool ConstraintExist_out;
 			if (forceUpdate_in || Fields.haschanges_) {
 				IDbDataParameter[] _dataparameters = new IDbDataParameter[] {
-					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Fields.Name, 50, 0, 0), 
-					base.Connection.newDBDataParameter("Config_", DbType.String, ParameterDirection.Input, Fields.Config, 50, 0, 0), 
-					base.Connection.newDBDataParameter("Type_", DbType.Int32, ParameterDirection.Input, Fields.Type, 0, 32, 0), 
-					base.Connection.newDBDataParameter("Description_", DbType.String, ParameterDirection.Input, Fields.Description, 50, 0, 0), 
+					base.Connection.newDBDataParameter("Name_", DbType.String, ParameterDirection.Input, Fields.Name, 50), 
+					base.Connection.newDBDataParameter("Config_", DbType.String, ParameterDirection.Input, Fields.Config, 50), 
+					base.Connection.newDBDataParameter("Type_", DbType.Int32, ParameterDirection.Input, Fields.Type, 0), 
+					base.Connection.newDBDataParameter("Description_", DbType.String, ParameterDirection.Input, Fields.Description, 50), 
 
 					//base.Connection.newDBDataParameter("Exists", DbType.Boolean, ParameterDirection.Output, 0, 1)
 					base.Connection.newDBDataParameter("Output_", DbType.Int32, ParameterDirection.Output, null, 0)

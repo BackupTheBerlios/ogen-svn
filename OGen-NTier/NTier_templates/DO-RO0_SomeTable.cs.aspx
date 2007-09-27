@@ -246,7 +246,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				for (int f = 0; f < _aux_table.Searches[s].SearchParameters.Count; f++) {
 					_aux_field = _aux_table.Searches[s].SearchParameters[f].Field;
 					_aux_field_name = _aux_table.Searches[s].SearchParameters[f].ParamName;%><%=""%>
-				parent_ref_.Connection.newDBDataParameter("<%=_aux_field_name%>_search_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field_name%>_search_in, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>)<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
+				parent_ref_.Connection.newDBDataParameter("<%=_aux_field_name%>_search_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field_name%>_search_in, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>)<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
 				}%>
 			};
 			base.Open(
@@ -319,7 +319,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				for (int f = 0; f < _aux_table.Searches[s].SearchParameters.Count; f++) {
 					_aux_field = _aux_table.Searches[s].SearchParameters[f].Field;
 					_aux_field_name = _aux_table.Searches[s].SearchParameters[f].ParamName;%><%=""%>
-				parent_ref_.Connection.newDBDataParameter("<%=_aux_field_name%>_search_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field_name%>_search_in, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>), <%
+				parent_ref_.Connection.newDBDataParameter("<%=_aux_field_name%>_search_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field_name%>_search_in, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>), <%
 				}%>
 				parent_ref_.Connection.newDBDataParameter("page_", DbType.Int32, ParameterDirection.Input, page_in, 0), 
 				parent_ref_.Connection.newDBDataParameter("page_numRecords_", DbType.Int32, ParameterDirection.Input, page_numRecords_in, 0)
@@ -365,11 +365,11 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				for (int f = 0; f < _aux_table.Searches[s].SearchParameters.Count; f++) {
 					_aux_field = _aux_table.Searches[s].SearchParameters[f].Field;
 					_aux_field_name = _aux_table.Searches[s].SearchParameters[f].ParamName;%>
-				parent_ref_.Connection.newDBDataParameter("<%=_aux_field_name%>_search_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field_name%>_search_in, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>), <%
+				parent_ref_.Connection.newDBDataParameter("<%=_aux_field_name%>_search_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field_name%>_search_in, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>), <%
 				}
 				for (int f = 0; f < _aux_table.Searches[s].Updates[u].UpdateParameters.Count; f++) {
 					_aux_field = _aux_table.Searches[s].Updates[u].UpdateParameters[f].Field;%>
-				parent_ref_.Connection.newDBDataParameter("<%=_aux_field.Name%>_update_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field.Name%>_update_in, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>)<%=(f != _aux_table.Searches[s].Updates[u].UpdateParameters.Count - 1) ? ", " : ""%><%
+				parent_ref_.Connection.newDBDataParameter("<%=_aux_field.Name%>_update_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field.Name%>_update_in, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>)<%=(f != _aux_table.Searches[s].Updates[u].UpdateParameters.Count - 1) ? ", " : ""%><%
 				}%>
 			};
 			parent_ref_.Connection.Execute_SQLFunction(
@@ -410,13 +410,13 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			IDbDataParameter[] _dataparameters = new IDbDataParameter[] {<%
 			for (int k = 0; k < _aux_table.Fields_onlyPK.Count; k++) {
 				_aux_field = _aux_table.Fields_onlyPK[k];%><%=""%>
-				parent_ref_.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field.Name%>_in, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>)<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
+				parent_ref_.Connection.newDBDataParameter("<%=_aux_field.Name%>_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field.Name%>_in, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>)<%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
 			}
 			for (int f = 0; f < _aux_table.Searches[s].SearchParameters.Count; f++) {
 				_aux_field = _aux_table.Searches[s].SearchParameters[f].Field;
 				_aux_field_name = _aux_table.Searches[s].SearchParameters[f].ParamName;
 				%>, 
-				parent_ref_.Connection.newDBDataParameter("<%=_aux_field_name%>_search_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field_name%>_search_in, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>)<%
+				parent_ref_.Connection.newDBDataParameter("<%=_aux_field_name%>_search_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field_name%>_search_in, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>)<%
 			}%>
 			};
 			return (bool)parent_ref_.Connection.Execute_SQLFunction(
@@ -448,7 +448,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				for (int f = 0; f < _aux_table.Searches[s].SearchParameters.Count; f++) {
 					_aux_field = _aux_table.Searches[s].SearchParameters[f].Field;
 					_aux_field_name = _aux_table.Searches[s].SearchParameters[f].ParamName;%>
-				parent_ref_.Connection.newDBDataParameter("<%=_aux_field_name%>_search_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field_name%>_search_in, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>)<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
+				parent_ref_.Connection.newDBDataParameter("<%=_aux_field_name%>_search_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field_name%>_search_in, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>)<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
 				}%>
 			};
 
@@ -481,7 +481,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 				for (int f = 0; f < _aux_table.Searches[s].SearchParameters.Count; f++) {
 					_aux_field = _aux_table.Searches[s].SearchParameters[f].Field;
 					_aux_field_name = _aux_table.Searches[s].SearchParameters[f].ParamName;%>
-				parent_ref_.Connection.newDBDataParameter("<%=_aux_field_name%>_search_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field_name%>_search_in, <%=_aux_field.Size%>, <%=_aux_field.Numeric_Precision%>, <%=_aux_field.Numeric_Scale%>)<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
+				parent_ref_.Connection.newDBDataParameter("<%=_aux_field_name%>_search_", DbType.<%=_aux_field.DBType_generic.Value.ToString()%>, ParameterDirection.Input, <%=_aux_field_name%>_search_in, <%=_aux_field.Size%><%=(_aux_field.isDecimal) ? ", " + _aux_field.Numeric_Precision + ", " + _aux_field.Numeric_Scale : ""%>)<%=(f != _aux_table.Searches[s].SearchParameters.Count - 1) ? ", " : ""%><%
 				}%>
 			};
 
