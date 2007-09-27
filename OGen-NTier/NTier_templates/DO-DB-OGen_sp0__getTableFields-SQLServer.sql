@@ -1,6 +1,6 @@
 CREATE PROCEDURE [dbo].[OGen_sp0__getTableFields]
-	@dbName_ NVarChar (138), 
-	@tableName_ NVarChar (138), 
+	@dbName_ NVarChar (138),
+	@tableName_ NVarChar (138)
 AS
 /*
 
