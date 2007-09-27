@@ -1191,49 +1191,39 @@ string.Empty
 
 				getTableFields_out[r].Name = (string)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_COLUMN_NAME];
 
-#region // ToDos: here!
-				//switch (dbservertype_) {
-				//	case DBServerTypes.MySQL:
-				//		getTableFields_out[r].Size = (_dtemp.Rows[r]["Size"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Size"];
-				//		getTableFields_out[r].isNullable = ((long)_dtemp.Rows[r]["isNullable"] == 1L);
-				//		//---						
-				//		getTableFields_out[r].FK_TableName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_TableName"];
-				//		getTableFields_out[r].FK_FieldName = (_dtemp.Rows[r]["FK_FieldName"] == DBNull.Value) ? "" : (string)_dtemp.Rows[r]["FK_FieldName"];
-				//		//---
-				//		getTableFields_out[r].isIdentity = ((long)_dtemp.Rows[r]["isIdentity"] == 1L);
-				//		getTableFields_out[r].isPK = ((long)_dtemp.Rows[r]["isPK"] == 1L);
-				//		//---
-				//		getTableFields_out[r].Numeric_Precision = (_dtemp.Rows[r]["Numeric_Precision"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Numeric_Precision"];
-				//		getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r]["Numeric_Scale"] == DBNull.Value) ? 0 : (int)(long)_dtemp.Rows[r]["Numeric_Scale"];
-				//		break;
-				//
-				//	case DBServerTypes.PostgreSQL:
-				//	case DBServerTypes.SQLServer:
-#endregion
-				getTableFields_out[r].Size = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_CHARACTER_MAXIMUM_LENGTH] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_CHARACTER_MAXIMUM_LENGTH];
-				getTableFields_out[r].isNullable = ((int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_IS_NULLABLE] == 1);
-				//---						
-				getTableFields_out[r].FK_TableName = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_FK_COLUMN_NAME] == DBNull.Value) ? "" : (string)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_FK_TABLE_NAME];
-				getTableFields_out[r].FK_FieldName = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_FK_COLUMN_NAME] == DBNull.Value) ? "" : (string)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_FK_COLUMN_NAME];
-				//---
-				getTableFields_out[r].isIdentity = ((int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_IS_IDENTITY] == 1);
-				getTableFields_out[r].isPK = ((int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_IS_PK] == 1);
-				//---
-#region // ToDos: here! SQLServer
-//						getTableFields_out[r].Numeric_Precision = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_PRECISION] == DBNull.Value) ? 0 : (int)(byte)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_PRECISION];
-//						getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_SCALE] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_SCALE];
-#endregion
-// ToDos: here! PostgreSQL
-				getTableFields_out[r].Numeric_Precision = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_PRECISION] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_PRECISION];
-				getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_SCALE] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_SCALE];
-#region // ToDos: here!
-				//		break;
-				//}
-				//---
-#endregion
+				// comment: some providers send int, other long, hence using convert change type:
+				//getTableFields_out[r].Size = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_CHARACTER_MAXIMUM_LENGTH] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_CHARACTER_MAXIMUM_LENGTH];
+				getTableFields_out[r].Size = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_CHARACTER_MAXIMUM_LENGTH] == DBNull.Value) ? 0 : (int)Convert.ChangeType(_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_CHARACTER_MAXIMUM_LENGTH], typeof(int));
+
+				// comment: some providers send int, other long, hence using convert change type:
+				//getTableFields_out[r].isNullable = ((int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_IS_NULLABLE] == 1);
+				getTableFields_out[r].isNullable = 1 == (int)Convert.ChangeType(_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_IS_NULLABLE], typeof(int));
+
+				getTableFields_out[r].FK_TableName = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_FK_COLUMN_NAME] == DBNull.Value) ? string.Empty : (string)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_FK_TABLE_NAME];
+
+				getTableFields_out[r].FK_FieldName = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_FK_COLUMN_NAME] == DBNull.Value) ? string.Empty : (string)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_FK_COLUMN_NAME];
+
+				// comment: some providers send int, other long, hence using convert change type:
+				//getTableFields_out[r].isIdentity = ((int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_IS_IDENTITY] == 1);
+				getTableFields_out[r].isIdentity = 1 == (int)Convert.ChangeType(_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_IS_IDENTITY], typeof(int));
+
+				// comment: some providers send int, other long, hence using convert change type:
+				//getTableFields_out[r].isPK = ((int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_IS_PK] == 1);
+				getTableFields_out[r].isPK = 1 == (int)Convert.ChangeType(_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_IS_PK], typeof(int));
+
+				// comment: some providers send int, other long, hence using convert change type:
+				//getTableFields_out[r].Numeric_Precision = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_PRECISION] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_PRECISION];
+				getTableFields_out[r].Numeric_Precision = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_PRECISION] == DBNull.Value) ? 0 : (int)Convert.ChangeType(_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_PRECISION], typeof(int));
+
+				// comment: some providers send int, other long, hence using convert change type:
+				//getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_SCALE] == DBNull.Value) ? 0 : (int)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_SCALE];
+				getTableFields_out[r].Numeric_Scale = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_SCALE] == DBNull.Value) ? 0 : (int)Convert.ChangeType(_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_NUMERIC_SCALE], typeof(int));
+
 				getTableFields_out[r].DBType_inDB_name = (string)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_DATA_TYPE];
-				getTableFields_out[r].DBDefaultValue = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_COLUMN_DEFAULT] == DBNull.Value) ? "" : (string)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_COLUMN_DEFAULT];
-				getTableFields_out[r].DBCollationName = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_COLLATION_NAME] == DBNull.Value) ? "" : (string)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_COLLATION_NAME];
+
+				getTableFields_out[r].DBDefaultValue = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_COLUMN_DEFAULT] == DBNull.Value) ? string.Empty : (string)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_COLUMN_DEFAULT];
+
+				getTableFields_out[r].DBCollationName = (_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_COLLATION_NAME] == DBNull.Value) ? string.Empty : (string)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_COLLATION_NAME];
 
 // ToDos: here!
 getTableFields_out[r].DBDescription = string.Empty;
