@@ -16,6 +16,7 @@ using System;
 using System.Data;
 
 using OGen.lib.datalayer;
+using OGen.lib.datalayer.SQLServer;
 using OGen.lib.datalayer.PostgreSQL;
 using OGen.NTier.lib.datalayer;
 

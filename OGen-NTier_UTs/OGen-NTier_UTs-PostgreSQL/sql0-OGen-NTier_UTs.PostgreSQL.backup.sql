@@ -72,23 +72,6 @@ AS
 ;
 
 
-CREATE OR REPLACE VIEW "v0_Word__onlyKeys"
-AS
-	SELECT
-		"IDWord"
-	FROM "Word"
-;
-
-
-CREATE OR REPLACE VIEW "v0_WordLanguage__onlyKeys"
-AS
-	SELECT
-		"IDWord", 
-		"IDLanguage"
-	FROM "WordLanguage"
-;
-
-
 CREATE OR REPLACE VIEW "v0_vUserDefaultGroup__onlyKeys"
 AS
 	SELECT
@@ -103,6 +86,23 @@ AS
 		"IDUser", 
 		"IDGroup"
 	FROM "vUserGroup"
+;
+
+
+CREATE OR REPLACE VIEW "v0_Word__onlyKeys"
+AS
+	SELECT
+		"IDWord"
+	FROM "Word"
+;
+
+
+CREATE OR REPLACE VIEW "v0_WordLanguage__onlyKeys"
+AS
+	SELECT
+		"IDWord", 
+		"IDLanguage"
+	FROM "WordLanguage"
 ;
 
 
@@ -234,35 +234,6 @@ AS '
 	END;
 ' LANGUAGE 'plpgsql' STABLE;
 
-CREATE OR REPLACE FUNCTION "fnc0_Word_isObject"("IDWord_" bigint)
-RETURNS boolean
-AS '
-	BEGIN
-		RETURN EXISTS(
-			SELECT
-				true -- whatever, just checking existence
-			FROM "Word"
-			WHERE
-				("IDWord" = "IDWord_")
-		);
-	END;
-' LANGUAGE 'plpgsql' STABLE;
-
-CREATE OR REPLACE FUNCTION "fnc0_WordLanguage_isObject"("IDWord_" bigint, "IDLanguage_" bigint)
-RETURNS boolean
-AS '
-	BEGIN
-		RETURN EXISTS(
-			SELECT
-				true -- whatever, just checking existence
-			FROM "WordLanguage"
-			WHERE
-				("IDWord" = "IDWord_") AND
-				("IDLanguage" = "IDLanguage_")
-		);
-	END;
-' LANGUAGE 'plpgsql' STABLE;
-
 CREATE OR REPLACE FUNCTION "fnc0_vUserDefaultGroup_isObject"("IDUser_" bigint)
 RETURNS boolean
 AS '
@@ -288,6 +259,35 @@ AS '
 			WHERE
 				("IDUser" = "IDUser_") AND
 				("IDGroup" = "IDGroup_")
+		);
+	END;
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_Word_isObject"("IDWord_" bigint)
+RETURNS boolean
+AS '
+	BEGIN
+		RETURN EXISTS(
+			SELECT
+				true -- whatever, just checking existence
+			FROM "Word"
+			WHERE
+				("IDWord" = "IDWord_")
+		);
+	END;
+' LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "fnc0_WordLanguage_isObject"("IDWord_" bigint, "IDLanguage_" bigint)
+RETURNS boolean
+AS '
+	BEGIN
+		RETURN EXISTS(
+			SELECT
+				true -- whatever, just checking existence
+			FROM "WordLanguage"
+			WHERE
+				("IDWord" = "IDWord_") AND
+				("IDLanguage" = "IDLanguage_")
 		);
 	END;
 ' LANGUAGE 'plpgsql' STABLE;
@@ -1298,70 +1298,6 @@ AS '
 '
 LANGUAGE 'plpgsql' STABLE;
 
-CREATE OR REPLACE FUNCTION "sp0_Word_getObject"("IDWord_" bigint)
-RETURNS "Word"
-AS '
-	DECLARE
-		_Output "Word"%ROWTYPE;
-		_Exists boolean = false;
-	BEGIN
-
-		SELECT
-			"IDWord", 
-			"DeleteThisTestField", 
-			true
-		INTO
-			_Output."IDWord", 
-			_Output."DeleteThisTestField", 
-			_Exists
-		FROM "Word"
-		WHERE
-			("IDWord" = "IDWord_");
-
-		IF NOT (_Exists) THEN
-			_Output."IDWord" := NULL;
-			_Output."DeleteThisTestField" := NULL;
-		END IF;
-
-		RETURN _Output;
-	END;
-'
-LANGUAGE 'plpgsql' STABLE;
-
-CREATE OR REPLACE FUNCTION "sp0_WordLanguage_getObject"("IDWord_" bigint, "IDLanguage_" bigint)
-RETURNS "WordLanguage"
-AS '
-	DECLARE
-		_Output "WordLanguage"%ROWTYPE;
-		_Exists boolean = false;
-	BEGIN
-
-		SELECT
-			"IDWord", 
-			"IDLanguage", 
-			"Translation", 
-			true
-		INTO
-			_Output."IDWord", 
-			_Output."IDLanguage", 
-			_Output."Translation", 
-			_Exists
-		FROM "WordLanguage"
-		WHERE
-			("IDWord" = "IDWord_") AND
-			("IDLanguage" = "IDLanguage_");
-
-		IF NOT (_Exists) THEN
-			_Output."IDWord" := NULL;
-			_Output."IDLanguage" := NULL;
-			_Output."Translation" := NULL;
-		END IF;
-
-		RETURN _Output;
-	END;
-'
-LANGUAGE 'plpgsql' STABLE;
-
 CREATE OR REPLACE FUNCTION "sp0_vUserDefaultGroup_getObject"("IDUser_" bigint)
 RETURNS "vUserDefaultGroup"
 AS '
@@ -1434,6 +1370,70 @@ AS '
 			_Output."IDGroup" := NULL;
 			_Output."Name" := NULL;
 			_Output."Relationdate" := NULL;
+		END IF;
+
+		RETURN _Output;
+	END;
+'
+LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_Word_getObject"("IDWord_" bigint)
+RETURNS "Word"
+AS '
+	DECLARE
+		_Output "Word"%ROWTYPE;
+		_Exists boolean = false;
+	BEGIN
+
+		SELECT
+			"IDWord", 
+			"DeleteThisTestField", 
+			true
+		INTO
+			_Output."IDWord", 
+			_Output."DeleteThisTestField", 
+			_Exists
+		FROM "Word"
+		WHERE
+			("IDWord" = "IDWord_");
+
+		IF NOT (_Exists) THEN
+			_Output."IDWord" := NULL;
+			_Output."DeleteThisTestField" := NULL;
+		END IF;
+
+		RETURN _Output;
+	END;
+'
+LANGUAGE 'plpgsql' STABLE;
+
+CREATE OR REPLACE FUNCTION "sp0_WordLanguage_getObject"("IDWord_" bigint, "IDLanguage_" bigint)
+RETURNS "WordLanguage"
+AS '
+	DECLARE
+		_Output "WordLanguage"%ROWTYPE;
+		_Exists boolean = false;
+	BEGIN
+
+		SELECT
+			"IDWord", 
+			"IDLanguage", 
+			"Translation", 
+			true
+		INTO
+			_Output."IDWord", 
+			_Output."IDLanguage", 
+			_Output."Translation", 
+			_Exists
+		FROM "WordLanguage"
+		WHERE
+			("IDWord" = "IDWord_") AND
+			("IDLanguage" = "IDLanguage_");
+
+		IF NOT (_Exists) THEN
+			_Output."IDWord" := NULL;
+			_Output."IDLanguage" := NULL;
+			_Output."Translation" := NULL;
 		END IF;
 
 		RETURN _Output;
