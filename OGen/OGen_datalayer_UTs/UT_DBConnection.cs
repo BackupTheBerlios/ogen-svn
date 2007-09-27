@@ -171,7 +171,7 @@ namespace OGen.lib.datalayer.UTs {
 							}
 					}
 				}
-				Assert.AreEqual(2, _tablesnum, "2 tables expected, could only find {0}", _tablesnum);
+				Assert.GreaterOrEqual(2, _tablesnum, "at least 2 tables expected, could only find {0}", _tablesnum);
 				#endregion
 				#region dbconnections_[c].getTables();
 				_tables = dbconnections_[c].getTables();
@@ -507,7 +507,8 @@ namespace OGen.lib.datalayer.UTs {
 					dbconnections_[c].newDBDataParameter("Login_search_", DbType.String, ParameterDirection.Input, string.Format("test-{0}", testid_), 50), 
 					dbconnections_[c].newDBDataParameter("IDUser", DbType.Int64, ParameterDirection.Output, null, 0), 
 					dbconnections_[c].newDBDataParameter("Login", DbType.String, ParameterDirection.Output, null, 50), 
-					dbconnections_[c].newDBDataParameter("Password", DbType.String, ParameterDirection.Output, null, 50)
+					dbconnections_[c].newDBDataParameter("Password", DbType.String, ParameterDirection.Output, null, 50), 
+					dbconnections_[c].newDBDataParameter("SomeNullValue", DbType.Int32, ParameterDirection.Output, null, 0)
 				};
 				dbconnections_[c].Execute_SQLFunction(
 					"sp0_User_getObject_byLogin", 
@@ -542,7 +543,8 @@ namespace OGen.lib.datalayer.UTs {
 					dbconnections_[c].newDBDataParameter("Login_search_", DbType.String, ParameterDirection.Input, string.Format("test-{0}", testid_), 50), 
 					dbconnections_[c].newDBDataParameter("IDUser", DbType.Int64, ParameterDirection.Output, null, 0), 
 					dbconnections_[c].newDBDataParameter("Login", DbType.String, ParameterDirection.Output, null, 50), 
-					dbconnections_[c].newDBDataParameter("Password", DbType.String, ParameterDirection.Output, null, 50)
+					dbconnections_[c].newDBDataParameter("Password", DbType.String, ParameterDirection.Output, null, 50), 
+					dbconnections_[c].newDBDataParameter("SomeNullValue", DbType.Int32, ParameterDirection.Output, null, 0)
 				};
 				dbconnections_[c].Execute_SQLFunction(
 					"sp0_User_getObject_byLogin", 
