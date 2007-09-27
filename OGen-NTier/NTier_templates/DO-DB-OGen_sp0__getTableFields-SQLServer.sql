@@ -18,10 +18,12 @@ SELECT
 	_field.column_name,
 
 	CASE
-		WHEN _field.is_nullable = 'No' THEN
+		WHEN (_table.table_type = 'VIEW') THEN
 			CAST(0 AS INT)
-		ELSE
+		WHEN _field.is_nullable = 'YES' THEN
 			CAST(1 AS INT)
+		ELSE
+			CAST(0 AS INT)
 	END
 	AS is_nullable,
 
