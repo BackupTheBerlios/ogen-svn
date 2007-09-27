@@ -1,5 +1,6 @@
-CREATE FUNCTION [dbo].[fnc_User_Record_open_byGroup](
-	@IDGroup_search_ bigint
+CREATE FUNCTION [dbo].[fnc_UserGroup_Record_open_byUser_Defaultrelation](
+	@IDUser_search_ bigint, 
+	@Relationdate_search_ datetime
 )
 /*
 
@@ -16,8 +17,26 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 RETURNS TABLE
 AS
 RETURN
-	SELECT
-		[IDUser]
-	FROM [UserGroup]
-	WHERE
-		([IDGroup] = @IDGroup_search_)
+		SELECT
+			[IDUser], 
+			[IDGroup]
+		FROM [UserGroup]
+		WHERE
+			((
+				(@IDUser_search_ IS NULL)
+				AND
+				([IDUser] IS NULL)
+			) OR (
+				NOT (@IDUser_search_ IS NULL)
+				AND
+				([IDUser] = @IDUser_search_)
+			)) AND
+			((
+				(@Relationdate_search_ IS NULL)
+				AND
+				([Relationdate] IS NULL)
+			) OR (
+				NOT (@Relationdate_search_ IS NULL)
+				AND
+				([Relationdate] = @Relationdate_search_)
+			))
