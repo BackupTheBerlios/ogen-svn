@@ -39,10 +39,7 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can use the default the Revision and 
 // Build Numbers by using the '*' as shown below:
 [assembly: AssemblyVersion("0.1.1000.20000")]
-#if !DEBUG
+#if !NET20
 [assembly: AssemblyDelaySign(false)]
-[assembly: AssemblyKeyFile("..\\..\\..\\..\\_admin\\OGen.no-svn.snk")]
-#else
-[assembly: AssemblyDelaySign(false)]
-[assembly: AssemblyKeyFile("..\\..\\..\\OGen-shared.snk")]
+[assembly: AssemblyKeyFile("..\\..\\..\\..\\_admin\\OGen.snk")]
 #endif

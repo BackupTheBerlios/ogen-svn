@@ -171,7 +171,7 @@ namespace OGen.lib.datalayer.UTs {
 							}
 					}
 				}
-				Assert.GreaterOrEqual(2, _tablesnum, "at least 2 tables expected, could only find {0}", _tablesnum);
+				Assert.IsTrue((_tablesnum >= 2), "at least 2 tables expected, could only find {0}", _tablesnum);
 				#endregion
 				#region dbconnections_[c].getTables();
 				_tables = dbconnections_[c].getTables();

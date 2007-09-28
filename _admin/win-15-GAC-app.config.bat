@@ -9,55 +9,51 @@
 :: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 :: 
 @ECHO OFF
-set parentdir=
-
-set parentdir=%~d0%~p0..
-for /f "usebackq tokens=1* delims=^|" %%a in (`echo %parentdir%`) do (
-	set parentdir=%%~fa
+SET parentdir=%~d0%~p0..
+FOR /f "usebackq tokens=1* delims=^|" %%a IN (`ECHO %parentdir%`) DO (
+	SET parentdir=%%~fa
 )
-
-
 IF "%parentdir%" == "" GOTO error1
 
-if not exist "%parentdir%\bin" mkdir "%parentdir%\bin"
+IF NOT EXIST "%parentdir%\bin" MKDIR "%parentdir%\bin"
 
 
 ::--- <OGen.Doc.presentationlayer.console>
-set configfilename=OGen.Doc.presentationlayer.console
-set configfile=%configfilename%-1.1.exe
-type "%parentdir%\_admin\config-templates\%configfilename%.exe-1.config">"%parentdir%\bin\%configfile%.config"
-echo     ^<add key="Templates" value="%parentdir%\OGen-Doc\Doc_templates\templates.config.xml" /^>>>"%parentdir%\bin\%configfile%.config"
-type "%parentdir%\_admin\config-templates\%configfilename%.exe-2.config">>"%parentdir%\bin\%configfile%.config"
+SET configfilename=OGen.Doc.presentationlayer.console
+SET configfile=%configfilename%-1.1.exe
+TYPE "%parentdir%\_admin\config-templates\%configfilename%.exe-1.config">"%parentdir%\bin\%configfile%.config"
+ECHO     ^<add key="Templates" value="%parentdir%\OGen-Doc\Doc_templates\templates.config.xml" /^>>>"%parentdir%\bin\%configfile%.config"
+TYPE "%parentdir%\_admin\config-templates\%configfilename%.exe-2.config">>"%parentdir%\bin\%configfile%.config"
 COPY "%parentdir%\bin\%configfile%.config" "%parentdir%\bin\%configfilename%-2.0.exe.config"
 COPY "%parentdir%\bin\%configfile%.config" "%parentdir%\OGen-Doc\Doc-console\app.config"
-echo %configfile%.config
+ECHO %configfile%.config
 ::--- </OGen.Doc.presentationlayer.console>
 
 ::--- <OGen.NTier.presentationlayer.console>
-set configfilename=OGen.NTier.presentationlayer.console
-set configfile=%configfilename%-1.1.exe
-type "%parentdir%\_admin\config-templates\%configfilename%.exe-1.config">"%parentdir%\bin\%configfile%.config"
-echo     ^<add key="Templates" value="%parentdir%\OGen-NTier\NTier_templates\templates.config.xml" /^>>>"%parentdir%\bin\%configfile%.config"
-echo     ^<add key="ogenPath" value="%parentdir%\bin" /^>>>"%parentdir%\bin\%configfile%.config"
-type "%parentdir%\_admin\config-templates\%configfilename%.exe-2.config">>"%parentdir%\bin\%configfile%.config"
+SET configfilename=OGen.NTier.presentationlayer.console
+SET configfile=%configfilename%-1.1.exe
+TYPE "%parentdir%\_admin\config-templates\%configfilename%.exe-1.config">"%parentdir%\bin\%configfile%.config"
+ECHO     ^<add key="Templates" value="%parentdir%\OGen-NTier\NTier_templates\templates.config.xml" /^>>>"%parentdir%\bin\%configfile%.config"
+ECHO     ^<add key="ogenPath" value="%parentdir%\bin" /^>>>"%parentdir%\bin\%configfile%.config"
+TYPE "%parentdir%\_admin\config-templates\%configfilename%.exe-2.config">>"%parentdir%\bin\%configfile%.config"
 COPY "%parentdir%\bin\%configfile%.config" "%parentdir%\bin\%configfilename%-2.0.exe.config"
 COPY "%parentdir%\bin\%configfile%.config" "%parentdir%\OGen-NTier\NTier-console\app.config"
-echo %configfile%.config
+ECHO %configfile%.config
 ::--- </OGen.NTier.presentationlayer.console>
 
 ::--- <OGen.NTier.presentationlayer.winforms>
-set configfilename=OGen.NTier.presentationlayer.winforms
-set configfile=%configfilename%-1.1.exe
-type "%parentdir%\_admin\config-templates\%configfilename%.exe-1.config">"%parentdir%\bin\%configfile%.config"
-echo     ^<add key="Templates" value="%parentdir%\OGen-NTier\NTier_templates\templates.config.xml" /^>>>"%parentdir%\bin\%configfile%.config"
-echo     ^<add key="ogenPath" value="%parentdir%\bin" /^>>>"%parentdir%\bin\%configfile%.config"
-type "%parentdir%\_admin\config-templates\%configfilename%.exe-2.config">>"%parentdir%\bin\%configfile%.config"
+SET configfilename=OGen.NTier.presentationlayer.winforms
+SET configfile=%configfilename%-1.1.exe
+TYPE "%parentdir%\_admin\config-templates\%configfilename%.exe-1.config">"%parentdir%\bin\%configfile%.config"
+ECHO     ^<add key="Templates" value="%parentdir%\OGen-NTier\NTier_templates\templates.config.xml" /^>>>"%parentdir%\bin\%configfile%.config"
+ECHO     ^<add key="ogenPath" value="%parentdir%\bin" /^>>>"%parentdir%\bin\%configfile%.config"
+TYPE "%parentdir%\_admin\config-templates\%configfilename%.exe-2.config">>"%parentdir%\bin\%configfile%.config"
 COPY "%parentdir%\bin\%configfile%.config" "%parentdir%\bin\%configfilename%-2.0.exe.config"
 COPY "%parentdir%\bin\%configfile%.config" "%parentdir%\OGen-NTier\NTier\app.config"
-echo %configfile%.config
+ECHO %configfile%.config
 ::--- </OGen.NTier.presentationlayer.winforms>
 
-goto eof
+GOTO eof
 
 
 :error1
@@ -69,7 +65,7 @@ GOTO eof
 
 
 :eof
-set currentdir=
-set parentdir=
-set configfile=
-pause
+SET currentdir=
+SET parentdir=
+SET configfile=
+PAUSE

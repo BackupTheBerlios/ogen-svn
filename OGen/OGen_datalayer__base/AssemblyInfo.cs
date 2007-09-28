@@ -43,10 +43,7 @@ using System.Runtime.CompilerServices;
 // .NET Framework documentation for more information about signing.
 // This is not required, if you don't want signing let these attributes like they're.
 //
-#if !DEBUG
+#if !NET20
 [assembly: AssemblyDelaySign(false)]
-[assembly: AssemblyKeyFile("..\\..\\..\\..\\_admin\\OGen.no-svn.snk")]
-#else
-[assembly: AssemblyDelaySign(false)]
-[assembly: AssemblyKeyFile("..\\..\\..\\OGen-shared.snk")]
+[assembly: AssemblyKeyFile("..\\..\\..\\..\\_admin\\OGen.snk")]
 #endif
