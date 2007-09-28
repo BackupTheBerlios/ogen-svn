@@ -219,11 +219,9 @@ OGen at BerliOS:
 					&lt;li&gt;
 						build the solution using any of the provided solutions:
 						&lt;br&gt;
-						OGen-buildAssembies.cmbx (&lt;a href=&quot;http://www.icsharpcode.net/OpenSource/SD/&quot;&gt;SharpDevelop&lt;/a&gt;)
-						&lt;br&gt;
 						OGen-buildAssembies-7.1.sln (Visual Studio 2003)
 						&lt;br&gt;
-						OGen-buildAssembies-8.sln (&lt;a href=&quot;http://msdn.microsoft.com/vstudio/express/visualcsharp/&quot;&gt;Visual C# 2005 Express Edition&lt;/a&gt; or Visual Studio 2005)
+						OGen-buildAssembies-8.sln (&lt;a href=&quot;http://www.icsharpcode.net/OpenSource/SD/&quot;&gt;SharpDevelop&lt;/a&gt;, &lt;a href=&quot;http://msdn.microsoft.com/vstudio/express/visualcsharp/&quot;&gt;Visual C# 2005 Express Edition&lt;/a&gt; or Visual Studio 2005)
 						&lt;br&gt;
 						OGen-buildAssembies.build (&lt;a href=&quot;http://nant.sourceforge.net/&quot;&gt;NAnt&lt;/a&gt;, not supported yet)
 						&lt;br&gt;
