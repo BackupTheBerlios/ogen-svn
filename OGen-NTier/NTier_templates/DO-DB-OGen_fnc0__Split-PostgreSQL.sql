@@ -1,6 +1,6 @@
 CREATE OR REPLACE FUNCTION "OGen_fnc0__Split"(
 --	someString_ CHARACTER VARYING
-	_someArray anyarray
+	_someArray ANYARRAY
 )
 /*
 
@@ -21,7 +21,7 @@ RETURNS SETOF ANYELEMENT AS $BODY$
         _ii INT;
     BEGIN
         FOR _ii IN 1.._length LOOP
-            RETURN NEXT _someArray[_ii] AS "xxx";
+            RETURN NEXT _someArray[_ii];
         END LOOP;
         RETURN;
     END;

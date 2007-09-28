@@ -2030,6 +2030,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</outputs>
 		<dependencies>
 			<dependency name="DO-DB-OGen_fnc0__Split-PostgreSQL.sql" />
+			<dependency name="DO-DB-OGen_v0__getTables-PostgreSQL.sql" />
 		</dependencies>
 	</template>
 	<template name="DO-DB-OGen_sp0__getTables-SQLServer.sql" 
@@ -2066,7 +2067,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<output to="OGen_sp0__getTableFields" 
 				type="PostgreSQL_StoredProcedure" mode="Replace" />
 		</outputs>
-		<dependencies />
+		<dependencies>
+			<dependency name="DO-DB-OGen_v0__getTableFields-PostgreSQL.sql" />
+		</dependencies>
 	</template>
 	<template name="DO-DB-OGen_sp0__getTableFields-SQLServer.sql" 
 			parserType="none" 
