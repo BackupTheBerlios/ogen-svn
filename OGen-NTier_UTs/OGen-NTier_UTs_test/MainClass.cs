@@ -24,6 +24,7 @@ using System.Text.RegularExpressions;
 using OGen.lib.datalayer;
 
 using OGen.NTier.UTs.lib.datalayer;
+using OGen.NTier.UTs.lib.datalayer.UTs;
 using OGen.NTier.UTs.lib.businesslayer;
 
 namespace OGen.NTier.UTs.test {
