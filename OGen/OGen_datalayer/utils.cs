@@ -220,7 +220,13 @@ namespace OGen.lib.datalayer {
 				/// <returns>ConnectionString</returns>
 				public static string AppSettings(string appSettings_in) {
 					//return ConfigurationSettingsBinder.Read(appSettings_in);
-					return System.Configuration.ConfigurationSettings.AppSettings[appSettings_in];
+					return 
+						#if NET20
+						System.Configuration.ConfigurationManager.AppSettings
+						#else
+						System.Configuration.ConfigurationSettings.AppSettings
+						#endif
+							[appSettings_in];
 				}
 				#endregion
 				//---

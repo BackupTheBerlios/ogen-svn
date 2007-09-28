@@ -31,17 +31,34 @@ namespace OGen.lib.config {
 		#region static ConfigurationSettingsBinder();
 		static ConfigurationSettingsBinder() {
 			#region configurationsettingsbind_ = ...;
-			string[] _keys
-				= System.Configuration.ConfigurationSettings.AppSettings.AllKeys;
+			string[] _keys = 
+				#if NET20
+				System.Configuration.ConfigurationManager.AppSettings
+				#else
+				System.Configuration.ConfigurationSettings.AppSettings
+				#endif
+			.AllKeys;
 
 			// more items will/can be added, hence commented code:
 			configurationsettingsbind_ = new Hashtable(/*_keys.Length*/);
 
 			for (int k = 0; k < _keys.Length; k++) {
-				if (System.Configuration.ConfigurationSettings.AppSettings[_keys[k]].Trim() != string.Empty) {
+				if (
+					#if NET20
+					System.Configuration.ConfigurationManager.AppSettings
+					#else
+					System.Configuration.ConfigurationSettings.AppSettings
+					#endif
+						[_keys[k]].Trim() != string.Empty
+				) {
 					configurationsettingsbind_.Add(
 						_keys[k], 
-						System.Configuration.ConfigurationSettings.AppSettings[_keys[k]]
+						#if NET20
+						System.Configuration.ConfigurationManager.AppSettings
+						#else
+						System.Configuration.ConfigurationSettings.AppSettings
+						#endif
+							[_keys[k]]
 					);
 				}
 			}

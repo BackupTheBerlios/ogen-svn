@@ -65,7 +65,6 @@ namespace OGen.lib.datalayer.SQLServer {
 						} else {
 							return string.Format("CONVERT(DATETIME, \'{0}\', 120)", _datetime.ToString("yyyy-MM-dd HH:mm:ss"));
 						}
-						break;
 
 					case "System.Boolean":
 						return (((bool)object_in) ? "1" : "0");
