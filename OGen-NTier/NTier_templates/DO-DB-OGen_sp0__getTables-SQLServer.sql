@@ -1,4 +1,5 @@
 CREATE PROCEDURE [dbo].[OGen_sp0__getTables]
+	@dbName_ NVarChar (138), 
 	@subApp_ NVarChar (4000)
 AS
 /*
@@ -15,45 +16,58 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 IF (@subApp_ = '') SET @subApp_ = '%'
 SELECT
-	t1.TABLE_NAME AS [Name],
+	_table.table_name,
 	CASE
-		WHEN (t1.TABLE_TYPE = 'VIEW') THEN
-			CAST(1 AS Int)
+		WHEN (_table.table_type = 'VIEW') THEN
+			CAST(1 AS INT)
 		ELSE
-			CAST(0 AS Int)
-	END AS [isVT]
-FROM INFORMATION_SCHEMA.TABLES t1
+			CAST(0 AS INT)
+	END
+	AS is_view
+FROM information_schema.tables _table
 INNER JOIN [dbo].[OGen_fnc0__Split](
 	@subApp_, 
 	'|'
 ) t2 ON (
-	(t1.[TABLE_NAME] LIKE t2.[OutputValue])
+	(_table.table_name LIKE t2.[OutputValue])
 )
 WHERE
 	(
-		(t1.TABLE_TYPE = 'BASE TABLE')
+		(_table.table_type = 'BASE TABLE')
 		OR
-		(t1.TABLE_TYPE = 'VIEW')
+		(_table.table_type = 'VIEW')
 	)
+
+	-- <PostgreSQL>
 	AND
 	(
-		(t1.TABLE_TYPE != 'VIEW')
+		(_table.table_type != 'VIEW')
 		OR
 		(
-			(t1.TABLE_TYPE = 'VIEW')
+			(_table.table_type = 'VIEW')
 			AND
-			(t1.TABLE_NAME NOT LIKE 'v0_%')
+			(_table.table_name NOT LIKE 'v0_%')
 		)
 	)
+	-- </PostgreSQL>
+
+	-- <PostgreSQL>
 	AND
-	(t1.TABLE_NAME != 'dtproperties')
+	(_table.table_schema NOT IN (
+		'information_schema', 
+		'pg_catalog'
+	))
+	-- </PostgreSQL>
+
+	-- <SQLServer>
 	AND
-	(t1.TABLE_NAME NOT LIKE 'sql_%')
+	(_table.table_name NOT IN (
+		'sysconstraints', 
+		'syssegments', 
+		'dtproperties'
+	))
+	-- </SQLServer>
+
 	AND
-	(t1.TABLE_NAME NOT LIKE 'pg_%')
-	AND
-	(t1.TABLE_NAME NOT LIKE 'sys%')
-	AND
-	(t1.TABLE_NAME NOT LIKE '%__base')
-	AND
-	(t1.TABLE_SCHEMA NOT LIKE 'information_schema')
+	(_table.table_catalog = @dbName_)
+ORDER BY _table.table_name
