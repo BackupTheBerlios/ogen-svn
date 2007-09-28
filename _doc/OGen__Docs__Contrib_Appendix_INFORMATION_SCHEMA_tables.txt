@@ -12,42 +12,60 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 SELECT
-t1.TABLE_NAME,
-	t1.COLUMN_NAME AS "Name",
+	_table.table_name,
 	CASE
-		WHEN t1.IS_NULLABLE = 'No' THEN
-			CAST(0 AS unsigned)
+		WHEN (_table.table_type = 'VIEW') THEN
+			CAST(1 AS INT)
 		ELSE
-			CAST(1 AS unsigned)
-		END AS "isNullable",
-	t1.DATA_TYPE AS "Type",
-	t1.CHARACTER_MAXIMUM_LENGTH AS "Size",
-	CASE
-		WHEN ((t6.TABLE_TYPE != 'VIEW') AND (t1.COLUMN_KEY = 'PRI')) THEN
-			CAST(1 AS unsigned)
-		ELSE
-			CAST(0 AS unsigned)
-	END AS "isPK",
-	CASE
-		WHEN ((t6.TABLE_TYPE != 'VIEW') AND (t1.EXTRA = 'auto_increment')) THEN
-			CAST(1 AS unsigned)
-		ELSE
-			CAST(0 AS unsigned)
-	END AS "isIdentity",
-	NULL AS "FK_TableName",
-	NULL AS "FK_FieldName", 
-	t1.COLUMN_DEFAULT, 
-	t1.COLLATION_NAME, 
-	CAST(0 AS unsigned) as "NUMERIC_PRECISION", 
-	CAST(0 AS unsigned) as "NUMERIC_SCALE"
-FROM INFORMATION_SCHEMA.COLUMNS t1
-	LEFT JOIN INFORMATION_SCHEMA.TABLES t6 ON ((t6.TABLE_SCHEMA = t1.TABLE_SCHEMA) AND (t6.TABLE_NAME = t1.TABLE_NAME))
+			CAST(0 AS INT)
+	END
+	AS is_view
+FROM information_schema.tables _table
+/*
+INNER JOIN [dbo].[OGen_fnc0__Split](
+	@subApp_, 
+	'|'
+) t2 ON (
+	(_table.table_name LIKE t2.[OutputValue])
+)
+*/
 WHERE
-	(t1.TABLE_SCHEMA = 'test')
+	(
+		(_table.table_type = 'BASE TABLE')
+		OR
+		(_table.table_type = 'VIEW')
+	)
+
+	-- <PostgreSQL>
 	AND
 	(
-		(t1.TABLE_NAME = 'user')
+		(_table.table_type != 'VIEW')
 		OR
-		(t1.TABLE_NAME = 'UserGroup')
+		(
+			(_table.table_type = 'VIEW')
+			AND
+			(_table.table_name NOT LIKE 'v0_%')
+		)
 	)
-ORDER BY t1.TABLE_NAME, t1.ORDINAL_POSITION
+	-- </PostgreSQL>
+
+	-- <PostgreSQL>
+	AND
+	(_table.table_schema NOT IN (
+		'information_schema', 
+		'pg_catalog'
+	))
+	-- </PostgreSQL>
+
+	-- <SQLServer>
+	AND
+	(_table.table_name NOT IN (
+		'sysconstraints', 
+		'syssegments', 
+		'dtproperties'
+	))
+	-- </SQLServer>
+
+	AND
+	(_table.table_catalog = @dbName_)
+ORDER BY _table.table_name

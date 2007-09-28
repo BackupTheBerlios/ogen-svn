@@ -327,56 +327,72 @@ ORDER BY CATALOG_NAME
 		}
 		#endregion
 		#region public override string getTables_query(string subAppName_in);
-		public override string getTables_query(string subAppName_in) {
+		public override string getTables_query(
+			string dbName_in, 
+			string subAppName_in
+		) {
 			StringBuilder _query = new StringBuilder(string.Empty);
 			#region _query.Append(@"SELECT ...");
-			_query.Append(@"
+			_query.Append(string.Format(@"
 SELECT
-	TABLE_NAME AS ""Name"",
+	_table.table_name,
 	CASE
-		WHEN (TABLE_TYPE = 'VIEW') THEN
-			CAST(1 AS Int)
+		WHEN (_table.table_type = 'VIEW') THEN
+			CAST(1 AS INT)
 		ELSE
-			CAST(0 AS Int)
-	END AS ""isVT""
-FROM INFORMATION_SCHEMA.TABLES
+			CAST(0 AS INT)
+	END
+	AS is_view
+FROM information_schema.tables _table
 WHERE
 	(
-		(TABLE_TYPE = 'BASE TABLE')
+		(_table.table_type = 'BASE TABLE')
 		OR
-		(TABLE_TYPE = 'VIEW')
+		(_table.table_type = 'VIEW')
 	)
+
+	-- <PostgreSQL>
 	AND
 	(
-		(TABLE_TYPE != 'VIEW')
+		(_table.table_type != 'VIEW')
 		OR
 		(
-			(TABLE_TYPE = 'VIEW')
+			(_table.table_type = 'VIEW')
 			AND
-			(TABLE_NAME NOT LIKE 'v0_%')
+			(_table.table_name NOT LIKE 'v0_%')
 		)
 	)
+	-- </PostgreSQL>
+
+	-- <PostgreSQL>
 	AND
-	(TABLE_NAME != 'dtproperties')
+	(_table.table_schema NOT IN (
+		'information_schema', 
+		'pg_catalog'
+	))
+	-- </PostgreSQL>
+
+	-- <SQLServer>
 	AND
-	(TABLE_NAME NOT LIKE 'sql_%')
+	(_table.table_name NOT IN (
+		'sysconstraints', 
+		'syssegments', 
+		'dtproperties'
+	))
+	-- </SQLServer>
+
 	AND
-	(TABLE_NAME NOT LIKE 'pg_%')
-	AND
-	(TABLE_NAME NOT LIKE 'sys%')
-	AND
-	(TABLE_NAME NOT LIKE '%__base')
-	AND
-	(TABLE_SCHEMA NOT LIKE 'information_schema')
-"
-			);
+	(_table.table_catalog = '{0}')
+",
+				dbName_in
+			));
 			#endregion
 			if (subAppName_in != "") {
 				_query.Append("AND (");
 				string[] _subAppNames = subAppName_in.Split('|');
 				for (int i = 0; i < _subAppNames.Length; i++) {
 					_query.Append(string.Format(
-						"(TABLE_NAME {0} '{1}'){2}",
+						"(_table.table_name {0} '{1}'){2}",
 						(_subAppNames[i].IndexOf('%') >= 0) ? "LIKE" : "=",
 						_subAppNames[i],
 						(i == _subAppNames.Length - 1) ? "" : " OR "
@@ -384,7 +400,7 @@ WHERE
 				}
 				_query.Append(") ");
 			}
-			_query.Append(@"ORDER BY ""Name"" ");
+			_query.Append(@"ORDER BY _table.table_name");
 
 			return _query.ToString();
 		}

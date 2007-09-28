@@ -1047,14 +1047,23 @@ namespace OGen.lib.datalayer {
 		}
 		#endregion
 		#region public cDBTable[] getTables(...);
-		public abstract string getTables_query(string subAppName_in);
+		public const string INFORMATION_SCHEMA_TABLES_TABLE_NAME = "table_name";
+		public const string INFORMATION_SCHEMA_TABLES_IS_VIEW = "is_view";
+
+		public abstract string getTables_query(
+			string dbName_in, 
+			string subAppName_in
+		);
 
 		/// <summary>
 		/// Makes use of the DataBase INFORMATION_SCHEMA to get a list of Table names for the current DataBase Connection.
 		/// </summary>
 		/// <returns>String array, representing a list of Table names</returns>
-		public cDBTable[] getTables() {
-			return getTables(string.Empty);
+		public cDBTable[] getTables(
+		) {
+			return getTables(
+				string.Empty
+			);
 		}
 
 		/// <summary>
@@ -1090,12 +1099,16 @@ namespace OGen.lib.datalayer {
 				(sqlFuncion_in == string.Empty)
 			) {
 				_dtemp = Execute_SQLQuery_returnDataTable(
-					getTables_query(subAppName_in)
+					getTables_query(
+						Connectionstring_DBName, 
+						subAppName_in
+					)
 				);
 			} else {
 				_dtemp = Execute_SQLFunction_returnDataTable(
 					sqlFuncion_in,
 					new IDbDataParameter[] {
+						newDBDataParameter("dbName_", DbType.String, ParameterDirection.Input, Connectionstring_DBName, Connectionstring_DBName.Length), 
 						newDBDataParameter("subApp_", DbType.String, ParameterDirection.Input, subAppName_in, subAppName_in.Length)
 					}
 				);
@@ -1104,13 +1117,8 @@ namespace OGen.lib.datalayer {
 			getTables_out = new cDBTable[_dtemp.Rows.Count];
 			for (int r = 0; r < _dtemp.Rows.Count; r++) {
 				getTables_out[r] = new cDBTable(
-					(string)_dtemp.Rows[r]["Name"],
-// ToDos: here!
-					//(dbservertype_ == DBServerTypes.MySQL) ? 
-					//	((long)_dtemp.Rows[r]["isVT"] == 1L) : 
-						((int)_dtemp.Rows[r]["isVT"] == 1)
-
-					,
+					(string)_dtemp.Rows[r][INFORMATION_SCHEMA_TABLES_TABLE_NAME],
+					(1 == (int)Convert.ChangeType(_dtemp.Rows[r][INFORMATION_SCHEMA_TABLES_IS_VIEW], typeof(int))),
 // ToDos: here!
 string.Empty
 				);

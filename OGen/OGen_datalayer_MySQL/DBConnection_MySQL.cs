@@ -353,7 +353,10 @@ ORDER BY SCHEMA_NAME
 		}
 		#endregion
 //		#region public override string getTables_query(string subAppName_in);
-		public override string getTables_query(string subAppName_in) {
+		public override string getTables_query(
+			string dbName_in, 
+			string subAppName_in
+		) {
 
 // ToDos: here! 1 - Connectionstring_database() not supported!
 // ToDos: here! 2 - CAST(1 AS Signed Int) carefull on how provider converts server var to .net var, 
