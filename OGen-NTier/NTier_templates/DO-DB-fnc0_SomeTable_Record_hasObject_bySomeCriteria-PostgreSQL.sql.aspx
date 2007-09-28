@@ -50,7 +50,7 @@ for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
 	"<%=_aux_field_name%>_search_" <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%
 }%>
 )
-RETURNS bool AS '
+RETURNS bool AS $BODY$
 	DECLARE
 	BEGIN
 		IF EXISTS (
@@ -74,7 +74,7 @@ RETURNS bool AS '
 	
 		RETURN false;
 	END;
-' LANGUAGE 'plpgsql' STABLE;
+$BODY$ LANGUAGE 'plpgsql' STABLE;
 
 <%
 //-----------------------------------------------------------------------------------------

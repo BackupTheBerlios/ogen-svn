@@ -44,7 +44,7 @@ for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
 	"<%=_aux_field_name%>_search_" <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(f != _aux_search.SearchParameters.Count - 1) ? ", " : ""%><%
 }%>
 )
-RETURNS bool AS '
+RETURNS bool AS $BODY$
 	DECLARE
 		_Exists bool = false;
 		_<%=_aux_table.Name%> "v0_<%=_aux_table.Name%>__onlyKeys";
@@ -84,7 +84,7 @@ RETURNS bool AS '
 
 		RETURN false AS "Exists_";
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;
+$BODY$ LANGUAGE 'plpgsql' VOLATILE;
 
 <%
 //-----------------------------------------------------------------------------------------

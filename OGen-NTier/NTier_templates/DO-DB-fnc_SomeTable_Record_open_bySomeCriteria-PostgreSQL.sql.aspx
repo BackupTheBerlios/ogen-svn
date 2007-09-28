@@ -49,7 +49,7 @@ bool makeItAComment = false;
 	}%>
 )
 RETURNS SETOF "v0_<%=_aux_table.Name%>__onlyKeys"
-AS '
+AS $BODY$
 	DECLARE
 		_Output "v0_<%=_aux_table.Name%>__onlyKeys";
 	BEGIN
@@ -72,10 +72,10 @@ AS '
 				) OR (
 					NOT ("<%=_aux_field.Name%>_search_" IS NULL)
 					AND
-					("<%=_aux_field.Name%>" <%=(_aux_field.isText) ? "LIKE ''%'' ||" : "="%> "<%=_aux_field.Name%>_search_"<%=(_aux_field.isText) ? " || ''%'' /*COLLATE " + _aux_field.DBs[_aux_dbservertype].DBCollationName + "*/" : ""%>)
+					("<%=_aux_field.Name%>" <%=(_aux_field.isText) ? "LIKE '%' ||" : "="%> "<%=_aux_field.Name%>_search_"<%=(_aux_field.isText) ? " || '%' /*COLLATE " + _aux_field.DBs[_aux_dbservertype].DBCollationName + "*/" : ""%>)
 				))<%=(f != _aux_search.SearchParameters.Count - 1) ? " AND" : ""%><%
 			} else {%>
-				("<%=_aux_field.Name%>" <%=(_aux_field.isText) ? "LIKE ''%'' ||" : "="%> "<%=_aux_field_name%>_search_"<%=(_aux_field.isText) ? " || ''%'' /*COLLATE " + _aux_field.DBs[_aux_dbservertype].DBCollationName + "*/" : ""%>)<%=(f != _aux_search.SearchParameters.Count - 1) ? " AND" : ""%><%
+				("<%=_aux_field.Name%>" <%=(_aux_field.isText) ? "LIKE '%' ||" : "="%> "<%=_aux_field_name%>_search_"<%=(_aux_field.isText) ? " || '%' /*COLLATE " + _aux_field.DBs[_aux_dbservertype].DBCollationName + "*/" : ""%>)<%=(f != _aux_search.SearchParameters.Count - 1) ? " AND" : ""%><%
 			}
 		}%><%=((makeItAComment) || (_aux_search.SearchParameters.Count == 0)) ? "*/" : ""%>
 		LOOP
@@ -84,7 +84,7 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;
+$BODY$ LANGUAGE 'plpgsql' STABLE;
 
 <%
 //-----------------------------------------------------------------------------------------

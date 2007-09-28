@@ -1979,6 +1979,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<dependency name="DO-DB-fnc0_SomeTable__ConstraintExist-SQLServer.sql.aspx" />
 		</dependencies>
 	</template>
+	<template name="DO-DB-OGen_fnc0__Split-PostgreSQL.sql" 
+			parserType="none" 
+			iterationType="ROOT">
+		<arguments />
+		<conditions>
+			<condition eval="ROOT.dbs.supports_PostgreSQL" to="True" />
+		</conditions>
+		<outputs>
+<!--
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" />
+-->
+			<output to="OGen_fnc0__Split" 
+				type="PostgreSQL_Function" mode="Replace" />
+		</outputs>
+		<dependencies />
+	</template>
 	<template name="DO-DB-OGen_fnc0__Split-SQLServer.sql" 
 			parserType="none" 
 			iterationType="ROOT">
@@ -1995,6 +2012,25 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				type="SQLServer_Function" mode="Replace" />
 		</outputs>
 		<dependencies />
+	</template>
+	<template name="DO-DB-OGen_sp0__getTables-PostgreSQL.sql" 
+			parserType="none" 
+			iterationType="ROOT">
+		<arguments />
+		<conditions>
+			<condition eval="ROOT.dbs.supports_PostgreSQL" to="True" />
+		</conditions>
+		<outputs>
+<!--
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" />
+-->
+			<output to="OGen_sp0__getTables" 
+				type="PostgreSQL_StoredProcedure" mode="Replace" />
+		</outputs>
+		<dependencies>
+			<dependency name="DO-DB-OGen_fnc0__Split-PostgreSQL.sql" />
+		</dependencies>
 	</template>
 	<template name="DO-DB-OGen_sp0__getTables-SQLServer.sql" 
 			parserType="none" 
@@ -2014,6 +2050,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<dependencies>
 			<dependency name="DO-DB-OGen_fnc0__Split-SQLServer.sql" />
 		</dependencies>
+	</template>
+	<template name="DO-DB-OGen_sp0__getTableFields-PostgreSQL.sql" 
+			parserType="none" 
+			iterationType="ROOT">
+		<arguments />
+		<conditions>
+			<condition eval="ROOT.dbs.supports_PostgreSQL" to="True" />
+		</conditions>
+		<outputs>
+<!--
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
+				type="File" mode="Append" />
+-->
+			<output to="OGen_sp0__getTableFields" 
+				type="PostgreSQL_StoredProcedure" mode="Replace" />
+		</outputs>
+		<dependencies />
 	</template>
 	<template name="DO-DB-OGen_sp0__getTableFields-SQLServer.sql" 
 			parserType="none" 

@@ -40,7 +40,7 @@ cDBMetadata_Table_Field _aux_field;
 	%>"<%=_aux_field.Name%>_" <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(k != _aux_table.Fields_onlyPK.Count - 1) ? ", " : ""%><%
 	}%>)
 RETURNS boolean
-AS '
+AS $BODY$
 	BEGIN
 		RETURN EXISTS(
 			SELECT
@@ -53,7 +53,7 @@ AS '
 				}%>
 		);
 	END;
-' LANGUAGE 'plpgsql' STABLE;
+$BODY$ LANGUAGE 'plpgsql' STABLE;
 
 <%
 //-----------------------------------------------------------------------------------------

@@ -42,7 +42,7 @@ cDBMetadata_Table_Field _aux_field;
 	}
 %> "SelectIdentity_" boolean)
 RETURNS <%=_aux_table.Fields[_aux_table_hasidentitykey].DBs[_aux_dbservertype].DBType_inDB_name%>
-AS '
+AS $BODY$
 	/**********************************
 	 *  returns                       *
 	 *   -1: constraint exists        *
@@ -91,7 +91,7 @@ AS '
 
 		RETURN IdentityKey AS "<%=_aux_table.Fields[_aux_table_hasidentitykey].Name%>_";
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;
+$BODY$ LANGUAGE 'plpgsql' VOLATILE;
 
 <%
 //-----------------------------------------------------------------------------------------

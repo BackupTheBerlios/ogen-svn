@@ -326,6 +326,11 @@
       <SubType>Code</SubType>
     </Compile>
     <None Include="COPYING.MIT" />
+    <None Include="DO-DB-OGen_fnc0__Split-PostgreSQL.sql" />
+    <None Include="DO-DB-OGen_sp0__getTableFields-PostgreSQL.sql" />
+    <None Include="DO-DB-OGen_sp0__getTables-PostgreSQL.sql" />
+    <None Include="DO-DB-OGen_v0__getTableFields-PostgreSQL.sql" />
+    <None Include="DO-DB-OGen_v0__getTables-PostgreSQL.sql" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\OGen\OGen_datalayersupport\OGen_datalayersupport-8.csproj">

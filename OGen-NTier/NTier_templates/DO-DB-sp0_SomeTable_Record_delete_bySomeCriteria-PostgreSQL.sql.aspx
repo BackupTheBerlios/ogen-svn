@@ -45,7 +45,7 @@ for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
 	"<%=_aux_field_name%>_search_" <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(f != _aux_search.SearchParameters.Count - 1) ? ", " : ""%><%
 }%>
 )
-RETURNS VOID AS '
+RETURNS VOID AS $BODY$
 	DECLARE
 		_<%=_aux_table.Name%> "v0_<%=_aux_table.Name%>__onlyKeys";
 	BEGIN
@@ -95,7 +95,7 @@ RETURNS VOID AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;
+$BODY$ LANGUAGE 'plpgsql' VOLATILE;
 
 <%
 //-----------------------------------------------------------------------------------------

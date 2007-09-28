@@ -41,7 +41,7 @@ cDBMetadata_Table_Field _aux_field;
 	}
 %>)
 RETURNS boolean
-AS '
+AS $BODY$
 	DECLARE
 		-- nothing to declare!
 	BEGIN<%
@@ -69,7 +69,7 @@ AS '
 
 		RETURN false;
 	END;
-'
+$BODY$
 LANGUAGE 'plpgsql' STABLE;
 
 <%

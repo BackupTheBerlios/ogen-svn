@@ -43,7 +43,7 @@ bool isFirst;
 	}
 %>)
 RETURNS bool
-AS '
+AS $BODY$
 	/***********************************************
 	 *  returns                                    *
 	 *    true: constraint exists, update NOT made * 
@@ -79,7 +79,7 @@ AS '
 		END IF;<%
 	}%>
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;
+$BODY$ LANGUAGE 'plpgsql' VOLATILE;
 
 <%
 //-----------------------------------------------------------------------------------------

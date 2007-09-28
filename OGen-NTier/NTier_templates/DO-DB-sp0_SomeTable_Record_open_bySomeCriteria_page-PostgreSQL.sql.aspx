@@ -48,7 +48,7 @@ bool isFirst;
 	"page_numRecords_" Int
 )
 RETURNS SETOF "v0_<%=_aux_table.Name%>__onlyKeys"
-AS '
+AS $BODY$
 	DECLARE
 		_Output "v0_<%=_aux_table.Name%>__onlyKeys";
 	BEGIN
@@ -85,7 +85,7 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;
+$BODY$ LANGUAGE 'plpgsql' STABLE;
 
 <%
 //-----------------------------------------------------------------------------------------

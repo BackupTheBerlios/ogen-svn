@@ -43,8 +43,7 @@ for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
 	"<%=_aux_field_name%>_search_" <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(f != _aux_search.SearchParameters.Count - 1) ? ", " : ""%><%
 }%>
 )
-RETURNS int8 AS
-'
+RETURNS int8 AS $BODY$
 	DECLARE
 		_Output int8 = 0;
 	BEGIN
@@ -62,7 +61,7 @@ RETURNS int8 AS
 	
 		RETURN _Output;
 	END;
-' LANGUAGE 'plpgsql' STABLE;
+$BODY$ LANGUAGE 'plpgsql' STABLE;
 
 <%
 //-----------------------------------------------------------------------------------------

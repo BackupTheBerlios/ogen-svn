@@ -51,7 +51,7 @@ for (int f = 0; f < update.UpdateParameters.Count; f++) {
 	"<%=_aux_field.Name%>_update_" <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(f != update.UpdateParameters.Count - 1) ? ", " : ""%><%
 }%>
 )
-RETURNS VOID AS '
+RETURNS VOID AS $BODY$
 	DECLARE
 	BEGIN
 		UPDATE "<%=_aux_table.Name%>"
@@ -75,7 +75,7 @@ RETURNS VOID AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' VOLATILE;
+$BODY$ LANGUAGE 'plpgsql' VOLATILE;
 
 <%
 //-----------------------------------------------------------------------------------------

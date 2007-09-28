@@ -42,7 +42,7 @@ bool isFirst;
 	}%>
 )
 RETURNS int4 AS
-'
+$BODY$
 	/*************************************
 	 *  returns                          *
 	 *    00 0: not exist, no constraint *
@@ -132,8 +132,7 @@ RETURNS int4 AS
 		IF (_ConstraintExist) THEN _Output := _Output + 2; END IF;
 		RETURN _Output AS "Output_";
 	END;
-'
-LANGUAGE 'plpgsql' VOLATILE;
+$BODY$ LANGUAGE 'plpgsql' VOLATILE;
 
 <%
 //-----------------------------------------------------------------------------------------

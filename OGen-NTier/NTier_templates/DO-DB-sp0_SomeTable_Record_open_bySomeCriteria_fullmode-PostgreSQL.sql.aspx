@@ -46,7 +46,7 @@ bool isFirst;
 	}%>
 )
 RETURNS SETOF "<%=_aux_table.Name%>"
-AS '
+AS $BODY$
 	DECLARE
 		_Output "<%=_aux_table.Name%>";
 	BEGIN
@@ -82,7 +82,7 @@ AS '
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;
+$BODY$ LANGUAGE 'plpgsql' STABLE;
 
 <%
 //-----------------------------------------------------------------------------------------

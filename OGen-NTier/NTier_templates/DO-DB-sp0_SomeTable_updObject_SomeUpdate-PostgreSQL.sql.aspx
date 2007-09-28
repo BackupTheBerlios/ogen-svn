@@ -40,9 +40,9 @@ cDBMetadata_Table_Field _aux_field;
 %>CREATE OR REPLACE FUNCTION "sp0__APAGAR"(
 )
 returns boolean
-as '
+as $BODY$
 	SELECT false;
-' LANGUAGE 'SQL';
+$BODY$ LANGUAGE 'SQL';
 
 
 <%

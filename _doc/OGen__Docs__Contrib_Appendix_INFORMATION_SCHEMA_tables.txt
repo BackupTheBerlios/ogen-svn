@@ -12,6 +12,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 
 SELECT
+	DISTINCT
 	_table.table_name,
 	CASE
 		WHEN (_table.table_type = 'VIEW') THEN
@@ -22,12 +23,22 @@ SELECT
 	AS is_view
 FROM information_schema.tables _table
 /*
+-- <PostgreSQL>
+INNER JOIN "OGen_fnc0__Split"(
+	string_to_array("subApp_", '|')
+) ON (
+	(_table.table_name LIKE "OGen_fnc0__Split")
+)
+-- </PostgreSQL>
+
+-- <SQLServer>
 INNER JOIN [dbo].[OGen_fnc0__Split](
 	@subApp_, 
 	'|'
 ) t2 ON (
 	(_table.table_name LIKE t2.[OutputValue])
 )
+-- </SQLServer>
 */
 WHERE
 	(

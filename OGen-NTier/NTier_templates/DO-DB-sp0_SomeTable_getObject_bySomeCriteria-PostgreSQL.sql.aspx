@@ -44,7 +44,7 @@ for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
 	"<%=_aux_field_name%>_search_" <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(f != _aux_search.SearchParameters.Count - 1) ? ", " : ""%><%
 }%>
 )
-RETURNS "<%=_aux_table.Name%>" AS '
+RETURNS "<%=_aux_table.Name%>" AS $BODY$
 	DECLARE
 		_Output "<%=_aux_table.Name%>"%ROWTYPE;
 		_Exists boolean = false;
@@ -85,7 +85,7 @@ RETURNS "<%=_aux_table.Name%>" AS '
 
 		RETURN _Output;
 	END;
-' LANGUAGE 'plpgsql' STABLE;
+$BODY$ LANGUAGE 'plpgsql' STABLE;
 
 <%
 //-----------------------------------------------------------------------------------------

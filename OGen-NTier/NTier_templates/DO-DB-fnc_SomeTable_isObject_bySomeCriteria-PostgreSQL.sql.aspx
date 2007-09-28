@@ -48,8 +48,7 @@ for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
 	"<%=_aux_field_name%>_search_" <%=_aux_field.DBs[_aux_dbservertype].DBType_inDB_name%><%=(f != _aux_search.SearchParameters.Count - 1) ? ", " : ""%><%
 }%>
 )
-RETURNS SETOF "v0_<%=_aux_table.Name%>__onlyKeys" AS
-'
+RETURNS SETOF "v0_<%=_aux_table.Name%>__onlyKeys" AS $BODY$
 	DECLARE
 		_Output "v0_<%=_aux_table.Name%>__onlyKeys";
 	BEGIN
@@ -64,7 +63,7 @@ RETURNS SETOF "v0_<%=_aux_table.Name%>__onlyKeys" AS
 			for (int f = 0; f < _aux_search.SearchParameters.Count; f++) {
 				_aux_field = _aux_search.SearchParameters[f].Field;
 				_aux_field_name = _aux_search.SearchParameters[f].ParamName;%>
-				("<%=_aux_field.Name%>" <%=(_aux_field.isText) ? "LIKE ''%'' ||" : "="%> "<%=_aux_field_name%>_search_"<%=(_aux_field.isText) ? " || ''%'' /*COLLATE " + _aux_field.DBs[_aux_dbservertype].DBCollationName + "*/" : ""%>)<%=(f != _aux_search.SearchParameters.Count - 1) ? " AND" : ""%><%
+				("<%=_aux_field.Name%>" <%=(_aux_field.isText) ? "LIKE '%' ||" : "="%> "<%=_aux_field_name%>_search_"<%=(_aux_field.isText) ? " || '%' /*COLLATE " + _aux_field.DBs[_aux_dbservertype].DBCollationName + "*/" : ""%>)<%=(f != _aux_search.SearchParameters.Count - 1) ? " AND" : ""%><%
 			}%><%=(makeItAComment) ? "*/" : ""%>
 		LOOP
 			RETURN NEXT _Output;
@@ -72,7 +71,7 @@ RETURNS SETOF "v0_<%=_aux_table.Name%>__onlyKeys" AS
 
 		RETURN;
 	END;
-' LANGUAGE 'plpgsql' STABLE;
+$BODY$ LANGUAGE 'plpgsql' STABLE;
 
 <%
 //-----------------------------------------------------------------------------------------
