@@ -1047,8 +1047,8 @@ namespace OGen.lib.datalayer {
 		}
 		#endregion
 		#region public cDBTable[] getTables(...);
-		public const string INFORMATION_SCHEMA_TABLES_TABLE_NAME = "table_name";
-		public const string INFORMATION_SCHEMA_TABLES_IS_VIEW = "is_view";
+		private const string INFORMATION_SCHEMA_TABLES_TABLE_NAME = "table_name";
+		private const string INFORMATION_SCHEMA_TABLES_IS_VIEW = "is_view";
 
 		public abstract string getTables_query(
 			string dbName_in, 
@@ -1129,18 +1129,18 @@ string.Empty
 		}
 		#endregion
 		#region public cDBTableField[] getTableFields(...);
-		public const string INFORMATION_SCHEMA_COLUMNS_COLUMN_NAME = "column_name";
-		public const string INFORMATION_SCHEMA_COLUMNS_CHARACTER_MAXIMUM_LENGTH = "character_maximum_length";
-		public const string INFORMATION_SCHEMA_COLUMNS_IS_NULLABLE = "is_nullable";
-		public const string INFORMATION_SCHEMA_COLUMNS_IS_IDENTITY = "is_identity";
-		public const string INFORMATION_SCHEMA_COLUMNS_IS_PK = "is_pk";
-		public const string INFORMATION_SCHEMA_COLUMNS_FK_TABLE_NAME = "fk_table_name";
-		public const string INFORMATION_SCHEMA_COLUMNS_FK_COLUMN_NAME = "fk_column_name";
-		public const string INFORMATION_SCHEMA_COLUMNS_NUMERIC_PRECISION = "numeric_precision";
-		public const string INFORMATION_SCHEMA_COLUMNS_NUMERIC_SCALE = "numeric_scale";
-		public const string INFORMATION_SCHEMA_COLUMNS_DATA_TYPE = "data_type";
-		public const string INFORMATION_SCHEMA_COLUMNS_COLUMN_DEFAULT = "column_default";
-		public const string INFORMATION_SCHEMA_COLUMNS_COLLATION_NAME = "collation_name";
+		private const string INFORMATION_SCHEMA_COLUMNS_COLUMN_NAME = "column_name";
+		private const string INFORMATION_SCHEMA_COLUMNS_CHARACTER_MAXIMUM_LENGTH = "character_maximum_length";
+		private const string INFORMATION_SCHEMA_COLUMNS_IS_NULLABLE = "is_nullable";
+		private const string INFORMATION_SCHEMA_COLUMNS_IS_IDENTITY = "is_identity";
+		private const string INFORMATION_SCHEMA_COLUMNS_IS_PK = "is_pk";
+		private const string INFORMATION_SCHEMA_COLUMNS_FK_TABLE_NAME = "fk_table_name";
+		private const string INFORMATION_SCHEMA_COLUMNS_FK_COLUMN_NAME = "fk_column_name";
+		private const string INFORMATION_SCHEMA_COLUMNS_NUMERIC_PRECISION = "numeric_precision";
+		private const string INFORMATION_SCHEMA_COLUMNS_NUMERIC_SCALE = "numeric_scale";
+		private const string INFORMATION_SCHEMA_COLUMNS_DATA_TYPE = "data_type";
+		private const string INFORMATION_SCHEMA_COLUMNS_COLUMN_DEFAULT = "column_default";
+		private const string INFORMATION_SCHEMA_COLUMNS_COLLATION_NAME = "collation_name";
 
 		public abstract string getTableFields_query(
 			string tableName_in

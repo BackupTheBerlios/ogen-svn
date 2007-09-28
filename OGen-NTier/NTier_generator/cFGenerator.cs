@@ -15,7 +15,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 using System;
 using System.Collections;
 using System.IO;
-using OGen.lib.config;
 using OGen.lib.templates;
 using OGen.lib.generator;
 using OGen.NTier.lib.metadata;
@@ -254,7 +253,12 @@ for (int _dbservertype = 0; _dbservertype < metadata_.DBs.Count; _dbservertype++
 			new cGenerator(
 				filename_, 
 				cDBMetadata.root4xml, 
-				ConfigurationSettingsBinder.Read("Templates"), 
+				#if NET20
+				System.Configuration.ConfigurationManager.AppSettings
+				#else
+				System.Configuration.ConfigurationSettings.AppSettings
+				#endif
+					["Templates"],
 				cTemplates.root4xml,
 				_dbconnectionstrings, 
 				_outputDir

@@ -19,7 +19,6 @@ using System.ComponentModel;
 using System.Windows.Forms;
 using System.Data;
 using System.IO;
-using OGen.lib.config;
 using OGen.lib.presentationlayer.winforms.Flowforms;
 using OGen.NTier.lib.generator;
 
@@ -393,7 +392,14 @@ namespace OGen.NTier.presentationlayer.winforms {
 			ntierproject = new cFGenerator();
 			this.Form_Refresh();
 
-			if (ConfigurationSettingsBinder.Read("license") == null) {
+			if (
+				#if NET20
+				System.Configuration.ConfigurationManager.AppSettings
+				#else
+				System.Configuration.ConfigurationSettings.AppSettings
+				#endif
+					[frm_about.APPSETTINGS_LICENSE] != frm_about.APPSETTINGS_LICENSE_IHAVEREADLINCENSE
+			) {
 				frm_about about = new frm_about();
 				about.ShowDialog();
 			}

@@ -18,8 +18,6 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 
-using OGen.lib.config;
-
 namespace OGen.NTier.presentationlayer.winforms {
 	public class frm_about : System.Windows.Forms.Form {
 		private System.Windows.Forms.TextBox textBox1;
@@ -107,11 +105,27 @@ namespace OGen.NTier.presentationlayer.winforms {
 			this.ShowInTaskbar = false;
 		}
 
+		public const string APPSETTINGS_LICENSE_IHAVEREADLINCENSE = "I have read lincense";
+		public const string APPSETTINGS_LICENSE = "license";
 		private void btnOK_Click(object sender, System.EventArgs e) {
-			if (ConfigurationSettingsBinder.Read("license") == null) {
-				ConfigurationSettingsBinder.Write("license", "I have read lincense");
-				ConfigurationSettingsBinder.Save();
+			#if NET20
+			if (
+				System.Configuration.ConfigurationManager.AppSettings["license"] != APPSETTINGS_LICENSE_IHAVEREADLINCENSE
+			) {
+				System.Configuration.Configuration _config 
+					= System.Configuration.ConfigurationManager.OpenExeConfiguration(
+						System.Configuration.ConfigurationUserLevel.None
+					);
+				try {
+					_config.AppSettings.Settings.Remove(APPSETTINGS_LICENSE);
+				} catch {
+				}
+				_config.AppSettings.Settings.Add(APPSETTINGS_LICENSE, APPSETTINGS_LICENSE_IHAVEREADLINCENSE);
+				_config.Save();
+				
+				System.Configuration.ConfigurationManager.RefreshSection("appSettings");
 			}
+			#endif
 
 			this.Close();
 		}

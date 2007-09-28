@@ -66,10 +66,6 @@
       <Project>{A6E837F8-780F-4D05-B3ED-2FF1906B5766}</Project>
       <Name>OGen_collections-8</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\OGen\OGen_config\OGen_config-8.csproj">
-      <Project>{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}</Project>
-      <Name>OGen_config-8</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\OGen\OGen_datalayersupport\OGen_datalayersupport-8.csproj">
       <Project>{88D87481-CC3F-49C7-A013-758387F3452E}</Project>
       <Name>OGen_datalayersupport</Name>

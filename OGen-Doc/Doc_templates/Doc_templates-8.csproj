@@ -96,11 +96,6 @@
       <Project>{A6E837F8-780F-4D05-B3ED-2FF1906B5766}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\..\OGen\OGen_config\OGen_config-8.csproj">
-      <Name>OGen_config</Name>
-      <Project>{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
     <ProjectReference Include="..\..\OGen\OGen_parser\OGen_parser-8.csproj">
       <Project>{981BC7DE-D93C-446E-861E-60A20E4E3391}</Project>
       <Name>OGen_parser</Name>

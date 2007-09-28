@@ -17,7 +17,7 @@ using System.IO;
 using System.Collections;
 using System.Xml;
 
-namespace OGen.lib.config {
+namespace OGen.lib.config.deprecated {
 	/// <summary>
 	///	Provides Read/Write access to app.config.
 	/// <note type="implementnotes">
