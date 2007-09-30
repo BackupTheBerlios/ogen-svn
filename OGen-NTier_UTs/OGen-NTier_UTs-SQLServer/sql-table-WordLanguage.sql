@@ -1,3 +1,6 @@
+USE [OGen-NTier_UTs]
+GO
+
 CREATE TABLE [dbo].[WordLanguage] (
 	[IDWord] [bigint] NOT NULL,
 	[IDLanguage] [bigint] NOT NULL,

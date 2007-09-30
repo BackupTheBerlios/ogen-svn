@@ -1,3 +1,6 @@
+USE [OGen-NTier_UTs]
+GO
+
 CREATE TABLE [dbo].[Logcode] (
 	[IDLogcode] [bigint] IDENTITY (1, 1) NOT NULL,
 	[Warning] [bit] NOT NULL,

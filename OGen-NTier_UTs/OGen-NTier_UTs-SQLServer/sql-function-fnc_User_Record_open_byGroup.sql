@@ -1,3 +1,6 @@
+USE [OGen-NTier_UTs]
+GO
+
 CREATE FUNCTION [dbo].[fnc_User_Record_open_byGroup](
 	@IDGroup_search_ bigint
 )

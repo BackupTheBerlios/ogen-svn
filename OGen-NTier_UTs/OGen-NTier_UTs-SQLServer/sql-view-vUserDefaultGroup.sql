@@ -1,3 +1,6 @@
+USE [OGen-NTier_UTs]
+GO
+
 CREATE VIEW "vUserDefaultGroup" AS
 /*
 

@@ -1,3 +1,6 @@
+USE [OGen-NTier_UTs]
+GO
+
 CREATE FUNCTION [dbo].[fnc_UserGroup_Record_open_byUser_Defaultrelation](
 	@IDUser_search_ bigint, 
 	@Relationdate_search_ datetime

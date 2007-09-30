@@ -1,3 +1,6 @@
+USE [OGen-NTier_UTs]
+GO
+
 CREATE FUNCTION [dbo].[fnc_User_isObject_byLogin](
 	@Login_search_ varchar (50)
 )

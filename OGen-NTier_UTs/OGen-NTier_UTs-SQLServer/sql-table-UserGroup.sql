@@ -1,3 +1,6 @@
+USE [OGen-NTier_UTs]
+GO
+
 CREATE TABLE [dbo].[UserGroup] (
 	[IDUser] [bigint] NOT NULL,
 	[IDGroup] [bigint] NOT NULL,

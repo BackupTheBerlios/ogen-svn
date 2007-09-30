@@ -1,3 +1,6 @@
+USE [OGen-NTier_UTs]
+GO
+
 CREATE TABLE [dbo].[GroupPermition] (
 	[IDGroup] bigint NOT NULL,
 	[IDPermition] bigint NOT NULL,
