@@ -1,9 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-# SharpDevelop 2.1.0.2429
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_config", "OGen_config\OGen_config-8.csproj", "{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}"
-EndProject
+# SharpDevelop 2.2.1.2648
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer", "OGen_datalayer\OGen_datalayer-8.csproj", "{4AE20414-478E-4859-849E-929741A5936C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_collections", "OGen_collections\OGen_collections-8.csproj", "{A6E837F8-780F-4D05-B3ED-2FF1906B5766}"
@@ -21,8 +19,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_winforms", "OGen_winforms\OGen_winforms-8.csproj", "{B3835B3F-C899-416F-BA94-625A4B32A4AC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_parser", "OGen_parser\OGen_parser-8.csproj", "{981BC7DE-D93C-446E-861E-60A20E4E3391}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_config_UTs", "OGen_config_UTs\OGen_config_UTs-8.csproj", "{E7913B59-B92D-40D9-A82E-0B38A68472D7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_webforms_UTs", "OGen_webforms_UTs\OGen_webforms_UTs-8.csproj", "{73D08732-CC2D-432D-BF9D-AA669059446A}"
 EndProject

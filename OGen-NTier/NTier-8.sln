@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_generator", "NTier_ge
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_collections", "..\OGen\OGen_collections\OGen_collections-8.csproj", "{A6E837F8-780F-4D05-B3ED-2FF1906B5766}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_config", "..\OGen\OGen_config\OGen_config-8.csproj", "{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_generator", "..\OGen\OGen_generator\OGen_generator-8.csproj", "{668ACF34-6104-4DD9-BB8A-65D9D94B0BB6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_templates", "..\OGen\OGen_templates\OGen_templates-8.csproj", "{8377EF00-063B-451A-8408-FE2F8EAD5C32}"

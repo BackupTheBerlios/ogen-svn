@@ -7,10 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_collections", "..\OGen
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_config", "..\OGen\OGen_config\OGen_config-7.1.csproj", "{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer", "..\OGen\OGen_datalayer\OGen_datalayer-7.1.csproj", "{4AE20414-478E-4859-849E-929741A5936C}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
@@ -109,10 +105,6 @@ Global
 		{A6E837F8-780F-4D05-B3ED-2FF1906B5766}.Debug.Build.0 = Debug|.NET
 		{A6E837F8-780F-4D05-B3ED-2FF1906B5766}.Release.ActiveCfg = Release|.NET
 		{A6E837F8-780F-4D05-B3ED-2FF1906B5766}.Release.Build.0 = Release|.NET
-		{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}.Debug.ActiveCfg = Debug|.NET
-		{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}.Debug.Build.0 = Debug|.NET
-		{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}.Release.ActiveCfg = Release|.NET
-		{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}.Release.Build.0 = Release|.NET
 		{4AE20414-478E-4859-849E-929741A5936C}.Debug.ActiveCfg = Debug|.NET
 		{4AE20414-478E-4859-849E-929741A5936C}.Debug.Build.0 = Debug|.NET
 		{4AE20414-478E-4859-849E-929741A5936C}.Release.ActiveCfg = Release|.NET

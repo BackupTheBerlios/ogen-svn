@@ -95,11 +95,6 @@
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
                 <Reference
-                    Name = "OGen_config"
-                    Project = "{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
                     Name = "Doc_metadata"
                     Project = "{9DF6791A-1771-4EB6-8FEB-7F54AC2D9078}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"

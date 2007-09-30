@@ -95,11 +95,6 @@
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                 />
                 <Reference
-                    Name = "OGen_config"
-                    Project = "{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
                     Name = "NTier_metadata"
                     Project = "{0E77A4DB-AF8B-4290-BB33-F9EC97655433}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"

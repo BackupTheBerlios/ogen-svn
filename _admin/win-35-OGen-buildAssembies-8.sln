@@ -1,12 +1,10 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-# SharpDevelop 2.1.0.2429
+# SharpDevelop 2.2.1.2648
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_generator", "..\OGen-NTier\NTier_generator\NTier_generator-8.csproj", "{BC9835E7-8878-479D-BC0F-909FA77344DD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_collections", "..\OGen\OGen_collections\OGen_collections-8.csproj", "{A6E837F8-780F-4D05-B3ED-2FF1906B5766}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_config", "..\OGen\OGen_config\OGen_config-8.csproj", "{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer__base", "..\OGen\OGen_datalayer__base\OGen_datalayer__base-8.csproj", "{D66D0E69-852C-4695-9D63-C9AB1A959E0B}"
 EndProject

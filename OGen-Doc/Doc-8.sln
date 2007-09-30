@@ -1,7 +1,7 @@
+﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_config", "..\OGen\OGen_config\OGen_config-8.csproj", "{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}"
-EndProject
+# SharpDevelop 2.2.1.2648
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer", "..\OGen\OGen_datalayer\OGen_datalayer-8.csproj", "{4AE20414-478E-4859-849E-929741A5936C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_collections", "..\OGen\OGen_collections\OGen_collections-8.csproj", "{A6E837F8-780F-4D05-B3ED-2FF1906B5766}"

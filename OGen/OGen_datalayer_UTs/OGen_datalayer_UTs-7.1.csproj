@@ -80,11 +80,6 @@
                     HintPath = "..\..\..\..\..\..\..\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
                 />
                 <Reference
-                    Name = "OGen_config"
-                    Project = "{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}"
-                    Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
-                />
-                <Reference
                     Name = "OGen_datalayer"
                     Project = "{4AE20414-478E-4859-849E-929741A5936C}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
