@@ -23,10 +23,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer-7.1", "..\OG
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_config-7.1", "..\OGen\OGen_config\OGen_config-7.1.csproj", "{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_datalayer-7.1", "..\OGen-NTier\NTier_datalayer\NTier_datalayer-7.1.csproj", "{38BEF535-92F1-4C55-9CEA-8F8D3E82CAFD}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
@@ -81,10 +77,6 @@ Global
 		{4AE20414-478E-4859-849E-929741A5936C}.Debug.Build.0 = Debug|.NET
 		{4AE20414-478E-4859-849E-929741A5936C}.Release.ActiveCfg = Release|.NET
 		{4AE20414-478E-4859-849E-929741A5936C}.Release.Build.0 = Release|.NET
-		{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}.Debug.ActiveCfg = Debug|.NET
-		{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}.Debug.Build.0 = Debug|.NET
-		{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}.Release.ActiveCfg = Release|.NET
-		{F59063BE-4135-4A4F-ACBD-5129AB83A4EC}.Release.Build.0 = Release|.NET
 		{38BEF535-92F1-4C55-9CEA-8F8D3E82CAFD}.Debug.ActiveCfg = Debug|.NET
 		{38BEF535-92F1-4C55-9CEA-8F8D3E82CAFD}.Debug.Build.0 = Debug|.NET
 		{38BEF535-92F1-4C55-9CEA-8F8D3E82CAFD}.Release.ActiveCfg = Release|.NET
