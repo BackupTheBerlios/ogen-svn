@@ -348,8 +348,8 @@ namespace OGen.NTier.lib.metadata {
 		) {
 			const string OGEN_SP0__GETTABLEFIELDS = "OGen_sp0__getTableFields";
 			const string OGEN_SP0__GETTABLES = "OGen_sp0__getTables";
-			bool _exits_getTables = false;
-			bool _exits_getTableFields = false;
+			bool _exist_getTables = false;
+			bool _exist_getTableFields = false;
 
 //			#region for (...) Tables.Add();
 			DBConnection _connection 
@@ -357,18 +357,18 @@ namespace OGen.NTier.lib.metadata {
 					DBServerType_in, 
 					Connectionstring_in
 				);
-			_exits_getTables = _connection.SQLStoredProcedure_exists(OGEN_SP0__GETTABLES);
-			_exits_getTableFields = _connection.SQLStoredProcedure_exists(OGEN_SP0__GETTABLEFIELDS);
+			_exist_getTables = _connection.SQLStoredProcedure_exists(OGEN_SP0__GETTABLES);
+			_exist_getTableFields = _connection.SQLStoredProcedure_exists(OGEN_SP0__GETTABLEFIELDS);
 			cDBTable[] _tables_aux = _connection.getTables(
 				subAppName_in,
-				_exits_getTables 
+				_exist_getTables 
 					? OGEN_SP0__GETTABLES
 					: string.Empty
 			);
 			cDBTableField[] _fields_aux = _connection.getTableFields(
 				// _tables_aux[t].Name, // get's specific table fields
 				string.Empty, // get's fields for all tables
-				_exits_getTables 
+				_exist_getTables 
 					? OGEN_SP0__GETTABLEFIELDS
 					: string.Empty
 			);

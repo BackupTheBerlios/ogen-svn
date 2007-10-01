@@ -21,9 +21,9 @@ IF '%fw%' == '' GOTO error4
 IF NOT '%2' == '' GOTO uninstall
 
 
-for /f "usebackq tokens=1* delims=^|" %%a in (`cd`) do (
-	IF NOT "%%~fa\" == "%~d0%~p0" GOTO error5
-)
+::FOR /F "usebackq tokens=1* delims=^|" %%a in (`cd`) do (
+::	IF NOT "%%~fa\" == "%~d0%~p0" GOTO error5
+::)
 
 
 SET SetEnvironmentPath=
@@ -34,11 +34,13 @@ IF '%SetEnvironmentPath%' == '' GOTO error1
   CALL %SetEnvironmentPath% %PROCESSOR_ARCHITECTURE%
 
 
-IF NOT EXIST "OGen-solutions.txt" GOTO error2
-IF NOT EXIST "OGen-projects.txt" GOTO error3
+IF NOT EXIST "%thisdir%OGen-solutions.txt" GOTO error2
+IF NOT EXIST "%thisdir%OGen-projects.txt" GOTO error3
 
 
-FOR /F "tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (OGen-projects.txt) DO CALL %0 %1 %%a %%b %%c %%d %%e %%f %%g %%h %%i
+FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`TYPE "%thisdir%OGen-projects.txt"`) DO (
+	CALL %0 %1 %%a %%b %%c %%d %%e %%f %%g %%h %%i
+)
 PAUSE
 GOTO eof
 

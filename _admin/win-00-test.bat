@@ -15,9 +15,9 @@ IF '%1' == '/test' GOTO test
 IF NOT '%1' == '' GOTO error1
 
 
-for /f "usebackq tokens=1* delims=^|" %%a in (`cd`) do (
-	IF NOT "%%~fa\" == "%~d0%~p0" GOTO error4
-)
+::for /f "usebackq tokens=1* delims=^|" %%a in (`cd`) do (
+::	IF NOT "%%~fa\" == "%~d0%~p0" GOTO error4
+::)
 
 
 IF NOT EXIST "%thisdir%OGen-solutions.txt" GOTO error2
@@ -25,7 +25,7 @@ IF NOT EXIST "%thisdir%OGen-projects.txt" GOTO error3
 
 
 SET errorFound=
-FOR /F "tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (OGen-projects.txt) DO (
+FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`TYPE %thisdir%OGen-projects.txt`) DO (
 	CALL %0 /test %%a %%b %%c %%d %%e %%f %%g %%h %%i %%j
 )
 IF '%errorFound%' == '' ECHO no errors!

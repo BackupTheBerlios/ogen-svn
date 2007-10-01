@@ -27,19 +27,19 @@ ECHO are you sure?
 PAUSE
 
 
-FOR /F "tokens=1,2,3,4,5,6,7,8 delims=, " %%a IN (OGen-projects.txt) DO CALL %0 %%a %%b %%c %%d %%e %%f %%g %%h
-::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO IF EXIST ..\%%a\LICENSE.txt DEL /q ..\%%a\LICENSE.txt
-::FOR /F "tokens=1,2 delims=, " %%a IN (OGen-solutions.txt) DO FOR %%b IN (COPYING, COPYING.DOC, COPYING.LIB, LICENSE.FDL.txt, LICENSE.GPL.txt, LICENSE.LGPL.txt) DO IF EXIST ..\%%a\%%b DEL /q ..\%%a\%%b
+FOR /F "usebackq tokens=1,2,3,4,5,6,7,8 delims=, " %%a IN (`TYPE "%thisdir%OGen-projects.txt"`) DO CALL %0 %%a %%b %%c %%d %%e %%f %%g %%h
+::FOR /F "usebackq tokens=1,2 delims=, " %%a IN (`TYPE "%thisdir%OGen-solutions.txt"`) DO IF EXIST "%thisdir%..\%%a\LICENSE.txt" DEL /q "%thisdir%..\%%a\LICENSE.txt"
+::FOR /F "usebackq tokens=1,2 delims=, " %%a IN (`TYPE "%thisdir%OGen-solutions.txt"`) DO FOR %%b IN (COPYING, COPYING.DOC, COPYING.LIB, LICENSE.FDL.txt, LICENSE.GPL.txt, LICENSE.LGPL.txt) DO IF EXIST "%thisdir%..\%%a\%%b" DEL /q "%thisdir%..\%%a\%%b"
 
 
 ::---\ ToDos: here!
-::	CD "..\OGen-NTier-CaseStudy"
-::	CALL ..\OGen-NTier-CaseStudy\CLEAN_bin.bat /silent
-::	CALL ..\OGen-NTier-CaseStudy\CLEAN_bin.bat /silent
+::	CD "%thisdir%..\OGen-NTier-CaseStudy"
+::	CALL "%thisdir%..\OGen-NTier-CaseStudy\CLEAN_bin.bat" /silent
+::	CALL "%thisdir%..\OGen-NTier-CaseStudy\CLEAN_bin.bat" /silent
 ::
-::	CD "..\OGen-NTier-Tutorial"
-::	CALL ..\OGen-NTier-Tutorial\CLEAN_bin.bat /silent
-::	CALL ..\OGen-NTier-Tutorial\CLEAN_bin.bat /silent
+::	CD "%thisdir%..\OGen-NTier-Tutorial"
+::	CALL "%thisdir%..\OGen-NTier-Tutorial\CLEAN_bin.bat" /silent
+::	CALL "%thisdir%..\OGen-NTier-Tutorial\CLEAN_bin.bat" /silent
 ::---/ ToDos: here!
 
 PAUSE
