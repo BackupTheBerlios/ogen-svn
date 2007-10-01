@@ -120,7 +120,7 @@ GOTO eof
 	IF '%9' == 'f' GOTO eof
 
 	IF '%5' == 'f' SET binDir=bin\Release
-	::IF '%5' == 't' SET binDir=bin
+	IF '%5' == 't' SET binDir=bin
 	IF '%5' == 't' GOTO eof
 
 	IF NOT EXIST "%thisdir%..\bin" MKDIR "%thisdir%..\bin"

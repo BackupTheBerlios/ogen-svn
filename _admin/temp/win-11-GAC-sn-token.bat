@@ -9,4 +9,31 @@
 :: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 :: 
 @ECHO OFF
-CALL "%~d0%~p0win-50-GAC-uninstall.bat" /1_1
+SET thisdir=%~d0%~p0
+SET SetEnvironmentPath=
+IF '%SetEnvironmentPath%' == '' IF EXIST "C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" SET SetEnvironmentPath="C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat"
+IF '%SetEnvironmentPath%' == '' IF EXIST "C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat" SET SetEnvironmentPath="c:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat"
+IF '%SetEnvironmentPath%' == '' GOTO error1
+::CALL %SetEnvironmentPath% x86
+  CALL %SetEnvironmentPath% %PROCESSOR_ARCHITECTURE%
+
+
+FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`sn -t "%thisdir%OGen-public.snk"^|find "Public key token is "`) DO (
+	^:^: ECHO %%a %%b %%c %%d %%e %%f %%g %%h %%i
+	ECHO %%e
+)
+PAUSE
+GOTO eof
+
+
+:error1
+	ECHO.
+	ECHO.
+	ECHO ERROR 1: - Can't set environment for Microsoft Visual Studio .NET tools
+	PAUSE
+GOTO eof
+
+
+:eof
+SET thisdir=
+SET SetEnvironmentPath=
