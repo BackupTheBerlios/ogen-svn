@@ -542,6 +542,8 @@ WHERE
 		(_field.table_name = '{1}')
 	)
 ORDER BY
+	_field.table_name,
+--	_field.column_name,
 	_field.ordinal_position
 ",
 				Connectionstring_DBName, 

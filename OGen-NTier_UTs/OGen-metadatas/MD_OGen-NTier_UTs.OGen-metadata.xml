@@ -54,24 +54,31 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		</table>
 -->
 
-		<table name="Config" isVirtualTable="False" isConfig="True">
+		<table name="Config" friendlyName="" dbDescription="" extendedDescription="" isVirtualTable="False" isConfig="True">
+			<dbs />
 			<fields>
-				<field name="Name" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="True" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50">
+				<field name="Name" isPK="True" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="True" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" aditionalInfo="" numericPrecision="0" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="character varying" />
-						<db dbServerType="SQLServer" dbType="varchar" />
+						<db dbServerType="PostgreSQL" dbType="character varying" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="varchar" dbDescription="" dbDefaultValue="" dbCollationName="SQL_Latin1_General_CP1_CI_AS" />
 					</dbs>
 				</field>
-				<field name="Config" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="True" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50">
+				<field name="Config" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="True" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" aditionalInfo="" numericPrecision="0" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="character varying" />
-						<db dbServerType="SQLServer" dbType="varchar" />
+						<db dbServerType="PostgreSQL" dbType="character varying" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="varchar" dbDescription="" dbDefaultValue="" dbCollationName="SQL_Latin1_General_CP1_CI_AS" />
 					</dbs>
 				</field>
-				<field name="Type" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="True" fkTableName="" fkFieldName="" isNullable="False" size="0">
+				<field name="Type" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="True" fkTableName="" fkFieldName="" isNullable="False" size="0" aditionalInfo="" numericPrecision="10" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="integer" />
-						<db dbServerType="SQLServer" dbType="int" />
+						<db dbServerType="PostgreSQL" dbType="integer" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="int" dbDescription="" dbDefaultValue="" dbCollationName="" />
+					</dbs>
+				</field>
+				<field name="Description" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" aditionalInfo="" numericPrecision="0" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="character varying" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="varchar" dbDescription="" dbDefaultValue="" dbCollationName="SQL_Latin1_General_CP1_CI_AS" />
 					</dbs>
 				</field>
 			</fields>
@@ -83,42 +90,181 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 			</searches>
 			<updates />
 		</table>
-		<table name="Group" isVirtualTable="False" isConfig="False">
+		<table name="Group" friendlyName="" dbDescription="" extendedDescription="" isVirtualTable="False" isConfig="False">
+			<dbs />
 			<fields>
-				<field name="IDGroup" isPK="True" isIdentity="True" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0">
+				<field name="IDGroup" isPK="True" isIdentity="True" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="bigint" />
-						<db dbServerType="SQLServer" dbType="bigint" />
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="nextval('&quot;Group_IDGroup_seq&quot;'::regclass)" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
 					</dbs>
 				</field>
-				<field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50">
+				<field name="Name" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" aditionalInfo="" numericPrecision="0" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="character varying" />
-						<db dbServerType="SQLServer" dbType="varchar" />
+						<db dbServerType="PostgreSQL" dbType="character varying" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="varchar" dbDescription="" dbDefaultValue="" dbCollationName="SQL_Latin1_General_CP1_CI_AS" />
 					</dbs>
 				</field>
 			</fields>
 			<searches />
 			<updates />
 		</table>
-		<table name="User" isVirtualTable="False" isConfig="False">
+		<table name="GroupPermition" friendlyName="" dbDescription="" extendedDescription="" isVirtualTable="False" isConfig="False">
+			<dbs />
 			<fields>
-				<field name="IDUser" isPK="True" isIdentity="True" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0">
+				<field name="IDGroup" isPK="True" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="Group" fkFieldName="IDGroup" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="bigint" />
-						<db dbServerType="SQLServer" dbType="bigint" />
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
 					</dbs>
 				</field>
-				<field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50">
+				<field name="IDPermition" isPK="True" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="Permition" fkFieldName="IDPermition" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="character varying" />
-						<db dbServerType="SQLServer" dbType="varchar" />
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
 					</dbs>
 				</field>
-				<field name="Password" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50">
+			</fields>
+			<searches />
+			<updates />
+		</table>
+		<table name="Language" friendlyName="" dbDescription="" extendedDescription="" isVirtualTable="False" isConfig="False">
+			<dbs />
+			<fields>
+				<field name="IDLanguage" isPK="True" isIdentity="True" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="character varying" />
-						<db dbServerType="SQLServer" dbType="varchar" />
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="nextval('&quot;Language_IDLanguage_seq&quot;'::regclass)" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+					</dbs>
+				</field>
+				<field name="IDWord_name" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="Word" fkFieldName="IDWord" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+					</dbs>
+				</field>
+			</fields>
+			<searches />
+			<updates />
+		</table>
+		<table name="Log" friendlyName="" dbDescription="" extendedDescription="" isVirtualTable="False" isConfig="False">
+			<dbs />
+			<fields>
+				<field name="IDLog" isPK="True" isIdentity="True" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="nextval('&quot;Log_IDLog_seq&quot;'::regclass)" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+					</dbs>
+				</field>
+				<field name="IDLogcode" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="Logcode" fkFieldName="IDLogcode" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+					</dbs>
+				</field>
+				<field name="IDUser_posted" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="User" fkFieldName="IDUser" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+					</dbs>
+				</field>
+				<field name="Date_posted" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" aditionalInfo="" numericPrecision="23" numericScale="3">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="timestamp without time zone" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="datetime" dbDescription="" dbDefaultValue="" dbCollationName="" />
+					</dbs>
+				</field>
+				<field name="Logdata" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="1024" aditionalInfo="" numericPrecision="0" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="character varying" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="varchar" dbDescription="" dbDefaultValue="" dbCollationName="SQL_Latin1_General_CP1_CI_AS" />
+					</dbs>
+				</field>
+			</fields>
+			<searches />
+			<updates />
+		</table>
+		<table name="Logcode" friendlyName="" dbDescription="" extendedDescription="" isVirtualTable="False" isConfig="False">
+			<dbs />
+			<fields>
+				<field name="IDLogcode" isPK="True" isIdentity="True" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="nextval('&quot;Logcode_IDLogcode_seq&quot;'::regclass)" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+					</dbs>
+				</field>
+				<field name="Warning" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" aditionalInfo="" numericPrecision="1" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="boolean" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bit" dbDescription="" dbDefaultValue="" dbCollationName="" />
+					</dbs>
+				</field>
+				<field name="Error" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" aditionalInfo="" numericPrecision="1" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="boolean" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bit" dbDescription="" dbDefaultValue="" dbCollationName="" />
+					</dbs>
+				</field>
+				<field name="Code" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" aditionalInfo="" numericPrecision="0" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="character varying" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="varchar" dbDescription="" dbDefaultValue="" dbCollationName="SQL_Latin1_General_CP1_CI_AS" />
+					</dbs>
+				</field>
+				<field name="Description" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="50" aditionalInfo="" numericPrecision="0" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="character varying" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="varchar" dbDescription="" dbDefaultValue="" dbCollationName="SQL_Latin1_General_CP1_CI_AS" />
+					</dbs>
+				</field>
+			</fields>
+			<searches />
+			<updates />
+		</table>
+		<table name="Permition" friendlyName="" dbDescription="" extendedDescription="" isVirtualTable="False" isConfig="False">
+			<dbs />
+			<fields>
+				<field name="IDPermition" isPK="True" isIdentity="True" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="nextval('&quot;Permition_IDPermition_seq&quot;'::regclass)" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+					</dbs>
+				</field>
+				<field name="Name" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" aditionalInfo="" numericPrecision="0" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="character varying" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="varchar" dbDescription="" dbDefaultValue="" dbCollationName="SQL_Latin1_General_CP1_CI_AS" />
+					</dbs>
+				</field>
+			</fields>
+			<searches />
+			<updates />
+		</table>
+		<table name="User" friendlyName="" dbDescription="" extendedDescription="" isVirtualTable="False" isConfig="False">
+			<dbs />
+			<fields>
+				<field name="IDUser" isPK="True" isIdentity="True" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="nextval('&quot;User_IDUser_seq&quot;'::regclass)" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+					</dbs>
+				</field>
+				<field name="Login" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" aditionalInfo="" numericPrecision="0" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="character varying" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="varchar" dbDescription="" dbDefaultValue="" dbCollationName="SQL_Latin1_General_CP1_CI_AS" />
+					</dbs>
+				</field>
+				<field name="Password" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" aditionalInfo="" numericPrecision="0" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="character varying" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="varchar" dbDescription="" dbDefaultValue="" dbCollationName="SQL_Latin1_General_CP1_CI_AS" />
+					</dbs>
+				</field>
+				<field name="SomeNullValue" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="0" aditionalInfo="" numericPrecision="10" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="integer" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="int" dbDescription="" dbDefaultValue="" dbCollationName="" />
 					</dbs>
 				</field>
 			</fields>
@@ -154,30 +300,31 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 				</update>
 			</updates>
 		</table>
-		<table name="UserGroup" isVirtualTable="False" isConfig="False">
+		<table name="UserGroup" friendlyName="" dbDescription="" extendedDescription="" isVirtualTable="False" isConfig="False">
+			<dbs />
 			<fields>
-				<field name="IDUser" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0">
+				<field name="IDUser" isPK="True" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="User" fkFieldName="IDUser" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="bigint" />
-						<db dbServerType="SQLServer" dbType="bigint" />
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
 					</dbs>
 				</field>
-				<field name="IDGroup" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0">
+				<field name="IDGroup" isPK="True" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="Group" fkFieldName="IDGroup" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="bigint" />
-						<db dbServerType="SQLServer" dbType="bigint" />
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
 					</dbs>
 				</field>
-				<field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="0">
+				<field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="0" aditionalInfo="" numericPrecision="23" numericScale="3">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="timestamp without time zone" />
-						<db dbServerType="SQLServer" dbType="datetime" />
+						<db dbServerType="PostgreSQL" dbType="timestamp without time zone" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="datetime" dbDescription="" dbDefaultValue="" dbCollationName="" />
 					</dbs>
 				</field>
-				<field name="Defaultrelation" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="0">
+				<field name="Defaultrelation" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="0" aditionalInfo="" numericPrecision="1" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="boolean" />
-						<db dbServerType="SQLServer" dbType="bit" />
+						<db dbServerType="PostgreSQL" dbType="boolean" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bit" dbDescription="" dbDefaultValue="" dbCollationName="" />
 					</dbs>
 				</field>
 			</fields>
@@ -198,36 +345,81 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 			</searches>
 			<updates />
 		</table>
-		<table name="vUserDefaultGroup" isVirtualTable="True" isConfig="False">
+		<table name="Word" friendlyName="" dbDescription="" extendedDescription="" isVirtualTable="False" isConfig="False">
+			<dbs />
 			<fields>
-				<field name="IDUser" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0">
+				<field name="IDWord" isPK="True" isIdentity="True" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="bigint" />
-						<db dbServerType="SQLServer" dbType="bigint" />
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="nextval('&quot;Word_IDWord_seq&quot;'::regclass)" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
 					</dbs>
 				</field>
-				<field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50">
+				<field name="DeleteThisTestField" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="0" aditionalInfo="" numericPrecision="1" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="character varying" />
-						<db dbServerType="SQLServer" dbType="varchar" />
+						<db dbServerType="PostgreSQL" dbType="boolean" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bit" dbDescription="" dbDefaultValue="" dbCollationName="" />
 					</dbs>
 				</field>
-				<field name="IDGroup" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0">
+			</fields>
+			<searches />
+			<updates />
+		</table>
+		<table name="WordLanguage" friendlyName="" dbDescription="" extendedDescription="" isVirtualTable="False" isConfig="False">
+			<dbs />
+			<fields>
+				<field name="IDWord" isPK="True" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="Word" fkFieldName="IDWord" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="bigint" />
-						<db dbServerType="SQLServer" dbType="bigint" />
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
 					</dbs>
 				</field>
-				<field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50">
+				<field name="IDLanguage" isPK="True" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="Language" fkFieldName="IDLanguage" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="character varying" />
-						<db dbServerType="SQLServer" dbType="varchar" />
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
 					</dbs>
 				</field>
-				<field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0">
+				<field name="Translation" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="True" size="2048" aditionalInfo="" numericPrecision="0" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="timestamp without time zone" />
-						<db dbServerType="SQLServer" dbType="datetime" />
+						<db dbServerType="PostgreSQL" dbType="character varying" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="varchar" dbDescription="" dbDefaultValue="" dbCollationName="SQL_Latin1_General_CP1_CI_AS" />
+					</dbs>
+				</field>
+			</fields>
+			<searches />
+			<updates />
+		</table>
+		<table name="vUserDefaultGroup" friendlyName="" dbDescription="" extendedDescription="" isVirtualTable="True" isConfig="False">
+			<dbs />
+			<fields>
+				<field name="IDUser" isPK="True" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+					</dbs>
+				</field>
+				<field name="Login" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" aditionalInfo="" numericPrecision="0" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="character varying" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="varchar" dbDescription="" dbDefaultValue="" dbCollationName="SQL_Latin1_General_CP1_CI_AS" />
+					</dbs>
+				</field>
+				<field name="IDGroup" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+					</dbs>
+				</field>
+				<field name="Name" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" aditionalInfo="" numericPrecision="0" numericScale="0">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="character varying" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="varchar" dbDescription="" dbDefaultValue="" dbCollationName="SQL_Latin1_General_CP1_CI_AS" />
+					</dbs>
+				</field>
+				<field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" aditionalInfo="" numericPrecision="23" numericScale="3">
+					<dbs>
+						<db dbServerType="PostgreSQL" dbType="timestamp without time zone" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="datetime" dbDescription="" dbDefaultValue="" dbCollationName="" />
 					</dbs>
 				</field>
 			</fields>
@@ -239,36 +431,37 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 			</searches>
 			<updates />
 		</table>
-		<table name="vUserGroup" isVirtualTable="True" isConfig="False">
+		<table name="vUserGroup" friendlyName="" dbDescription="" extendedDescription="" isVirtualTable="True" isConfig="False">
+			<dbs />
 			<fields>
-				<field name="IDUser" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0">
+				<field name="IDUser" isPK="True" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="bigint" />
-						<db dbServerType="SQLServer" dbType="bigint" />
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
 					</dbs>
 				</field>
-				<field name="Login" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50">
+				<field name="Login" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" aditionalInfo="" numericPrecision="0" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="character varying" />
-						<db dbServerType="SQLServer" dbType="varchar" />
+						<db dbServerType="PostgreSQL" dbType="character varying" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="varchar" dbDescription="" dbDefaultValue="" dbCollationName="SQL_Latin1_General_CP1_CI_AS" />
 					</dbs>
 				</field>
-				<field name="IDGroup" isPK="True" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0">
+				<field name="IDGroup" isPK="True" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" aditionalInfo="" numericPrecision="19" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="bigint" />
-						<db dbServerType="SQLServer" dbType="bigint" />
+						<db dbServerType="PostgreSQL" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="bigint" dbDescription="" dbDefaultValue="" dbCollationName="" />
 					</dbs>
 				</field>
-				<field name="Name" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50">
+				<field name="Name" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" aditionalInfo="" numericPrecision="0" numericScale="0">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="character varying" />
-						<db dbServerType="SQLServer" dbType="varchar" />
+						<db dbServerType="PostgreSQL" dbType="character varying" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="varchar" dbDescription="" dbDefaultValue="" dbCollationName="SQL_Latin1_General_CP1_CI_AS" />
 					</dbs>
 				</field>
-				<field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0">
+				<field name="Relationdate" isPK="False" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="False" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="0" aditionalInfo="" numericPrecision="23" numericScale="3">
 					<dbs>
-						<db dbServerType="PostgreSQL" dbType="timestamp without time zone" />
-						<db dbServerType="SQLServer" dbType="datetime" />
+						<db dbServerType="PostgreSQL" dbType="timestamp without time zone" dbDescription="" dbDefaultValue="" dbCollationName="" />
+						<db dbServerType="SQLServer" dbType="datetime" dbDescription="" dbDefaultValue="" dbCollationName="" />
 					</dbs>
 				</field>
 			</fields>

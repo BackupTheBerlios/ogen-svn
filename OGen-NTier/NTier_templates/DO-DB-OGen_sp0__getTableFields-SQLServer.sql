@@ -138,4 +138,6 @@ WHERE
 		(_field.table_name = @tableName_)
 	)
 ORDER BY
+	_field.table_name,
+--	_field.column_name,
 	_field.ordinal_position

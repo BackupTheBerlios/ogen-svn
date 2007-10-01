@@ -4,8 +4,10 @@
 -- DROP VIEW "v0_vUserGroup__onlyKeys";
 
 CREATE OR REPLACE VIEW "v0_vUserGroup__onlyKeys" AS 
- SELECT "vUserGroup"."IDUser", "vUserGroup"."IDGroup"
-   FROM "vUserGroup";
+	SELECT
+		"vUserGroup"."IDUser",
+		"vUserGroup"."IDGroup"
+	FROM "vUserGroup";
 
 ALTER TABLE "v0_vUserGroup__onlyKeys" OWNER TO postgres;
 
@@ -22,7 +24,7 @@ $BODY$
 	BEGIN
 		FOR _Output IN
 			SELECT
-				"IDUser", 
+				"IDUser",
 				"IDGroup"
 			FROM "UserGroup"
 			WHERE

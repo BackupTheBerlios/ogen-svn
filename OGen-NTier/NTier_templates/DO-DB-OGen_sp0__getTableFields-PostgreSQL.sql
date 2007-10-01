@@ -155,6 +155,7 @@ RETURNS SETOF "v0__getTableFields" AS $BODY$
 				)
 			ORDER BY
 				_field.table_name,
+			--	_field.column_name,
 				_field.ordinal_position
 
 

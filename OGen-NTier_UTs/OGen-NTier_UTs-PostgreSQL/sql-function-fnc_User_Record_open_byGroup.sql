@@ -4,8 +4,9 @@
 -- DROP VIEW "v0_User__onlyKeys";
 
 CREATE OR REPLACE VIEW "v0_User__onlyKeys" AS 
- SELECT "User"."IDUser"
-   FROM "User";
+	SELECT
+		"User"."IDUser"
+	FROM "User";
 
 ALTER TABLE "v0_User__onlyKeys" OWNER TO postgres;
 
