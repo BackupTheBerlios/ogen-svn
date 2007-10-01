@@ -232,7 +232,7 @@ namespace OGen.lib.datalayer.SQLServer {
 		public override string SQLFunction_exists_query(string name_in) {
 			return string.Format(
 				#region "SELECT ...", 
-				@"
+@"
 SELECT null
 FROM INFORMATION_SCHEMA.ROUTINES
 WHERE
@@ -333,7 +333,8 @@ ORDER BY CATALOG_NAME
 		) {
 			StringBuilder _query = new StringBuilder(string.Empty);
 			#region _query.Append(@"SELECT ...");
-			_query.Append(string.Format(@"
+			_query.Append(string.Format(
+@"
 SELECT
 	_table.table_name,
 	CASE
@@ -400,7 +401,7 @@ WHERE
 				}
 				_query.Append(") ");
 			}
-			_query.Append(@"ORDER BY _table.table_name");
+			_query.Append("ORDER BY _table.table_name");
 
 			return _query.ToString();
 		}
@@ -410,8 +411,10 @@ WHERE
 			string tableName_in
 		) {
 			#region return "SELECT ...";
-			return string.Format(@"
+			return string.Format(
+@"
 SELECT
+	_field.table_name,
 	_field.column_name,
 
 	CASE
@@ -528,7 +531,11 @@ FROM information_schema.columns AS _field
 WHERE
 	(_field.table_catalog = '{0}')
 	AND
-	(_field.table_name = '{1}')
+	(
+		('' = '{1}')
+		OR
+		(_field.table_name = '{1}')
+	)
 ORDER BY
 	_field.ordinal_position
 ",

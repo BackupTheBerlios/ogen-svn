@@ -365,6 +365,13 @@ namespace OGen.NTier.lib.metadata {
 					? OGEN_SP0__GETTABLES
 					: string.Empty
 			);
+			cDBTableField[] _fields_aux = _connection.getTableFields(
+				// _tables_aux[t].Name, // get's specific table fields
+				string.Empty, // get's fields for all tables
+				_exits_getTables 
+					? OGEN_SP0__GETTABLEFIELDS
+					: string.Empty
+			);
 
 if (clear_in)
 			tables_.Clear();
@@ -392,15 +399,20 @@ if (notifyBack_in != null) notifyBack_in(string.Format("#{0}/{1} - {2}", t + 1, 
 //);
 
 
-				cDBTableField[] _fields_aux = _connection.getTableFields(
-					_tables_aux[t].Name,
-					_exits_getTables 
-						? OGEN_SP0__GETTABLEFIELDS
-						: string.Empty
-				);
+				//cDBTableField[] _fields_aux = _connection.getTableFields(
+				//	// _tables_aux[t].Name, // get's specific table fields
+				//	string.Empty, // get's fields for all tables
+				//	_exits_getTables 
+				//		? OGEN_SP0__GETTABLEFIELDS
+				//		: string.Empty
+				//);
 if (clear_in)
 				tables_[T].Fields.Clear();
 				for (int f = 0; f < _fields_aux.Length; f++) {
+					if (_tables_aux[t].Name != _fields_aux[f].TableName) {
+						continue;
+					}
+
 					int F = tables_[T].Fields.Add(_fields_aux[f].Name, true);
 
 					tables_[T].Fields[F].Name				= _fields_aux[f].Name;
@@ -426,12 +438,11 @@ if (clear_in)
 					tables_[T].Fields[F].DBs[FD].DBDescription		= _fields_aux[f].DBDescription;
 					tables_[T].Fields[F].DBs[FD].DBDefaultValue		= _fields_aux[f].DBDefaultValue;
 					tables_[T].Fields[F].DBs[FD].DBCollationName	= _fields_aux[f].DBCollationName;
+
 					#region //oldstuff...
 					//tables_[T].Fields[F].DBType_inDB_name	= _fields_aux[f].DBType_inDB_name;
 					//tables_[T].Fields[F].Size				= _fields_aux[f].Size;
 					#endregion
-
-
 				}
 				_fields_aux = null;
 			}

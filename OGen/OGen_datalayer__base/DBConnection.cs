@@ -1129,6 +1129,7 @@ string.Empty
 		}
 		#endregion
 		#region public cDBTableField[] getTableFields(...);
+		private const string INFORMATION_SCHEMA_COLUMNS_TABLE_NAME = "table_name";
 		private const string INFORMATION_SCHEMA_COLUMNS_COLUMN_NAME = "column_name";
 		private const string INFORMATION_SCHEMA_COLUMNS_CHARACTER_MAXIMUM_LENGTH = "character_maximum_length";
 		private const string INFORMATION_SCHEMA_COLUMNS_IS_NULLABLE = "is_nullable";
@@ -1193,9 +1194,15 @@ string.Empty
 				);
 			}
 			#endregion
+			bool _includetablename = _dtemp.Columns.Contains(INFORMATION_SCHEMA_COLUMNS_TABLE_NAME);
 			getTableFields_out = new cDBTableField[_dtemp.Rows.Count];
 			for (int r = 0; r < _dtemp.Rows.Count; r++) {
 				getTableFields_out[r] = new cDBTableField();
+
+				getTableFields_out[r].TableName 
+					= _includetablename
+						? (string)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_TABLE_NAME]
+						: string.Empty;
 
 				getTableFields_out[r].Name = (string)_dtemp.Rows[r][INFORMATION_SCHEMA_COLUMNS_COLUMN_NAME];
 

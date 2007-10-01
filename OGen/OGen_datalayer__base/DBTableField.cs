@@ -20,6 +20,11 @@ namespace OGen.lib.datalayer {
 	/// </summary>
 	public class cDBTableField {
 		/// <summary>
+		/// Table Name.
+		/// </summary>
+		public string TableName;
+
+		/// <summary>
 		/// Indicates if it is a Sequence/Identity Seed. True if it is a Sequence/Identity Seed, False if not.
 		/// </summary>
 		public bool isIdentity;

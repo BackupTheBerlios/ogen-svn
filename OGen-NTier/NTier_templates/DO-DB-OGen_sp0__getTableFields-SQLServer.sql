@@ -15,6 +15,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 */
 SELECT
+	_field.table_name,
 	_field.column_name,
 
 	CASE
@@ -131,6 +132,10 @@ FROM information_schema.columns AS _field
 WHERE
 	(_field.table_catalog = @dbName_)
 	AND
-	(_field.table_name = @tableName_)
+	(
+		('' = @tableName_)
+		OR
+		(_field.table_name = @tableName_)
+	)
 ORDER BY
 	_field.ordinal_position

@@ -13,8 +13,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 SELECT
 --	_field.table_catalog,
---	_field.table_name,
 
+
+	_field.table_name,
 
 	_field.column_name,
 
@@ -166,7 +167,11 @@ FROM information_schema.columns AS _field
 WHERE
 --	(_field.table_catalog = '{0}')
 --	AND
---	(_field.table_name = '{1}')
+--	(
+--		('' = '{1}')
+--		OR
+--		(_field.table_name = '{1}')
+--	)
 --	AND
 	(_field.table_name = 'UserGroup') OR (_field.table_name = 'User') OR (_field.table_name = 'Group')
 

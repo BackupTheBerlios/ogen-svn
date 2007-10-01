@@ -26,6 +26,7 @@ RETURNS SETOF "v0__getTableFields" AS $BODY$
 
 
 			SELECT
+				_field.table_name,
 				_field.column_name,
 
 				CASE
@@ -147,8 +148,11 @@ RETURNS SETOF "v0__getTableFields" AS $BODY$
 			WHERE
 				(_field.table_catalog = "dbName_")
 				AND
-				(_field.table_name = "tableName_")
-
+				(
+					('' = "tableName_")
+					OR
+					(_field.table_name = "tableName_")
+				)
 			ORDER BY
 				_field.table_name,
 				_field.ordinal_position
