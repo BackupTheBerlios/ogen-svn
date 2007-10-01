@@ -399,13 +399,6 @@ if (notifyBack_in != null) notifyBack_in(string.Format("#{0}/{1} - {2}", t + 1, 
 //);
 
 
-				//cDBTableField[] _fields_aux = _connection.getTableFields(
-				//	// _tables_aux[t].Name, // get's specific table fields
-				//	string.Empty, // get's fields for all tables
-				//	_exits_getTables 
-				//		? OGEN_SP0__GETTABLEFIELDS
-				//		: string.Empty
-				//);
 if (clear_in)
 				tables_[T].Fields.Clear();
 				for (int f = 0; f < _fields_aux.Length; f++) {
@@ -444,7 +437,6 @@ if (clear_in)
 					//tables_[T].Fields[F].Size				= _fields_aux[f].Size;
 					#endregion
 				}
-//				_fields_aux = null;
 			}
 			_fields_aux = null;
 			_tables_aux = null;
