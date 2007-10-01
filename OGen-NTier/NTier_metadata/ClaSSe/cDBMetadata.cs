@@ -444,8 +444,9 @@ if (clear_in)
 					//tables_[T].Fields[F].Size				= _fields_aux[f].Size;
 					#endregion
 				}
-				_fields_aux = null;
+//				_fields_aux = null;
 			}
+			_fields_aux = null;
 			_tables_aux = null;
 //			#endregion
 		}
