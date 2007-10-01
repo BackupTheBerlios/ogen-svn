@@ -9,6 +9,7 @@
 :: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 :: 
 @ECHO OFF
+SET thisdir=%~d0%~p0
 SET fw=
 IF '%1' == '/1_1' SET fw=1.1
 IF '%1' == '/2_0' SET fw=2.0
@@ -19,7 +20,7 @@ IF '%2' == '/check' GOTO check
 IF NOT '%2' == '' GOTO error5
 
 
-for /f "usebackq tokens=1* delims=^|" %%a in (`cd`) do (
+FOR /F "usebackq tokens=1* delims=^|" %%a IN (`cd`) DO (
 	IF NOT "%%~fa\" == "%~d0%~p0" GOTO error7
 )
 
@@ -106,8 +107,8 @@ GOTO eof
 	IF '%5' == 'f' SET binDir=bin\Release
 	IF '%5' == 't' SET binDir=bin
 
-	IF '%6' == 'f' IF NOT EXIST ..\%1\%2\%binDir%\%3-%fw%.dll SET hasErrors=%3-%fw%.dll;%hasErrors%
-	IF '%6' == 't' IF NOT EXIST ..\%1\%2\%binDir%\%3-%fw%.exe SET hasErrors=%3-%fw%.exe;%hasErrors%
+	IF '%6' == 'f' IF NOT EXIST "%thisdir%..\%1\%2\%binDir%\%3-%fw%.dll" SET hasErrors=%3-%fw%.dll;%hasErrors%
+	IF '%6' == 't' IF NOT EXIST "%thisdir%..\%1\%2\%binDir%\%3-%fw%.exe" SET hasErrors=%3-%fw%.exe;%hasErrors%
 GOTO eof
 
 
@@ -120,22 +121,22 @@ GOTO eof
 
 	IF '%5' == 'f' SET binDir=bin\Release
 	IF '%5' == 't' SET binDir=bin
-	IF NOT EXIST ..\bin MKDIR ..\bin
+	IF NOT EXIST "%thisdir%..\bin" MKDIR "%thisdir%..\bin"
 
 	:: if file has not been compiled, i'll try to install it if available from bin dir...
 	::IF NOT EXIST ..\%1\%2\%binDir%\%3-%fw%.dll GOTO tryinstall
 
-	IF '%6' == 'f' IF EXIST ..\%1\%2\%binDir%\%3-%fw%.dll COPY ..\%1\%2\%binDir%\%3-%fw%.dll ..\bin
-	::IF EXIST ..\%1\%2\%binDir%\%3-%fw%.xml COPY ..\%1\%2\%binDir%\%3-%fw%.xml ..\bin
+	IF '%6' == 'f' IF EXIST "%thisdir%..\%1\%2\%binDir%\%3-%fw%.dll" COPY "%thisdir%..\%1\%2\%binDir%\%3-%fw%.dll" "%thisdir%..\bin"
+	::IF EXIST "%thisdir%..\%1\%2\%binDir%\%3-%fw%.xml" COPY "%thisdir%..\%1\%2\%binDir%\%3-%fw%.xml" "%thisdir%..\bin"
 
-	IF '%6' == 't' IF EXIST ..\%1\%2\%binDir%\%3-%fw%.exe COPY ..\%1\%2\%binDir%\%3-%fw%.exe ..\bin
-	::IF '%6' == 't' IF EXIST ..\%1\%2\%binDir%\%3-%fw%.exe.config IF NOT EXIST ..\bin\%3-%fw%.exe.config COPY ..\%1\%2\%binDir%\%3-%fw%.exe.config ..\bin
+	IF '%6' == 't' IF EXIST "%thisdir%..\%1\%2\%binDir%\%3-%fw%.exe" COPY "%thisdir%..\%1\%2\%binDir%\%3-%fw%.exe" "%thisdir%..\bin"
+	::IF '%6' == 't' IF EXIST "%thisdir%..\%1\%2\%binDir%\%3-%fw%.exe.config" IF NOT EXIST "%thisdir%..\bin\%3-%fw%.exe.config" COPY "%thisdir%..\%1\%2\%binDir%\%3-%fw%.exe.config" "%thisdir%..\bin"
 
 :tryinstall
 	IF '%4' == 'f' GOTO eof
-	IF NOT EXIST ..\bin\%3-%fw%.dll GOTO eof
+	IF NOT EXIST "%thisdir%..\bin\%3-%fw%.dll" GOTO eof
 	::gacutil /u %3
-	gacutil /i ..\bin\%3-%fw%.dll
+	gacutil /i "%thisdir%..\bin\%3-%fw%.dll"
 GOTO eof
 
 
@@ -143,3 +144,4 @@ GOTO eof
 SET binDir=
 SET SetEnvironmentPath=
 ::SET hasErrors=
+SET thisdir=

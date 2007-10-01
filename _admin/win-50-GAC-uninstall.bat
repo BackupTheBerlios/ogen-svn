@@ -9,6 +9,7 @@
 :: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 :: 
 @ECHO OFF
+SET thisdir=%~d0%~p0
 :: is a doc project, hence:
 IF '%8' == 't' GOTO eof
 
@@ -17,7 +18,7 @@ IF '%1' == '/1_1' SET fw=1.1
 IF '%1' == '/2_0' SET fw=2.0
 IF '%fw%' == '' GOTO error4
 
-IF NOT '%2' == '' GOTO install
+IF NOT '%2' == '' GOTO uninstall
 
 
 for /f "usebackq tokens=1* delims=^|" %%a in (`cd`) do (
@@ -74,7 +75,7 @@ GOTO eof
 GOTO eof
 
 
-:install
+:uninstall
 	SHIFT
 
 	:::: is not a Release, hence:
@@ -88,11 +89,14 @@ GOTO eof
 
 	:: all resumed in one condition, 
 	:: is not on GAC, hence:
-	IF '%4' == 'f' GOTO eof
-
-	gacutil /u %3-%fw%
+	IF NOT '%4' == 'f' (
+		gacutil /u %3-%fw%
+	)
+	IF EXIST "%thisdir%..\bin\%3-%fw%.dll" DEL /q "%thisdir%..\bin\%3-%fw%.dll"
+	IF EXIST "%thisdir%..\bin\%3-%fw%.exe" DEL /q "%thisdir%..\bin\%3-%fw%.exe"
 GOTO eof
 
 
 :eof
 SET SetEnvironmentPath=
+SET thisdir=

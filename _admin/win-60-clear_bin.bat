@@ -9,6 +9,7 @@
 :: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 :: 
 @ECHO OFF
+SET thisdir=%~d0%~p0
 IF NOT '%1' == '' GOTO test
 
 
@@ -17,8 +18,8 @@ for /f "usebackq tokens=1* delims=^|" %%a in (`cd`) do (
 )
 
 
-IF NOT EXIST "OGen-solutions.txt" GOTO error2
-IF NOT EXIST "OGen-projects.txt" GOTO error3
+IF NOT EXIST "%thisdir%OGen-solutions.txt" GOTO error2
+IF NOT EXIST "%thisdir%OGen-projects.txt" GOTO error3
 
 
 ECHO about to delete binaries and objects for present solution
@@ -66,17 +67,18 @@ GOTO eof
 
 
 :test
-	IF EXIST ..\%1\%2\bin RMDIR /S /Q ..\%1\%2\bin
-	IF EXIST ..\%1\%2\obj RMDIR /S /Q ..\%1\%2\obj
-	::FOR %%a IN (COPYING LICENSE.GPL.txt COPYING.DOC LICENSE.FDL.txt COPYING.LIB LICENSE.LGPL.txt LICENSE.txt) DO IF EXIST ..\%1\%2\%%a DEL /q ..\%1\%2\%%a
+	IF EXIST "%thisdir%..\%1\%2\bin" RMDIR /S /Q "%thisdir%..\%1\%2\bin"
+	IF EXIST "%thisdir%..\%1\%2\obj" RMDIR /S /Q "%thisdir%..\%1\%2\obj"
+	::FOR %%a IN (COPYING LICENSE.GPL.txt COPYING.DOC LICENSE.FDL.txt COPYING.LIB LICENSE.LGPL.txt LICENSE.txt) DO IF EXIST "%thisdir%..\%1\%2\%%a" DEL /q "%thisdir%..\%1\%2\%%a"
 
 	IF '%8' == 't' (
-		REM IF EXIST ..\%1\%2\NDoc RMDIR /S /Q ..\%1\%2\NDoc
-		REM IF EXIST ..\%1\%2\_include RMDIR /S /Q ..\%1\%2\_include
-		REM IF EXIST ..\%1\%2\FAQ-*.html DEL /F /Q ..\%1\%2\FAQ-*.html
-		REM IF EXIST ..\%1\%2\Help-*.html DEL /F /Q ..\%1\%2\Help-*.html
-		REM IF EXIST ..\%1\%2\index.html DEL /F /Q ..\%1\%2\index.html
+		REM IF EXIST "%thisdir%..\%1\%2\NDoc"        RMDIR /S /Q "%thisdir%..\%1\%2\NDoc"
+		REM IF EXIST "%thisdir%..\%1\%2\_include"    RMDIR /S /Q "%thisdir%..\%1\%2\_include"
+		REM IF EXIST "%thisdir%..\%1\%2\FAQ-*.html"  DEL /F /Q "%thisdir%..\%1\%2\FAQ-*.html"
+		REM IF EXIST "%thisdir%..\%1\%2\Help-*.html" DEL /F /Q "%thisdir%..\%1\%2\Help-*.html"
+		REM IF EXIST "%thisdir%..\%1\%2\index.html"  DEL /F /Q "%thisdir%..\%1\%2\index.html"
 	)
 
 
 :eof
+SET thisdir=
