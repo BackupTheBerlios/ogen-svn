@@ -9,7 +9,7 @@
 :: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 :: 
 @ECHO OFF
-IF NOT '%2' == '' GOTO install
+IF NOT '%3' == '' GOTO install
 
 
 IF NOT EXIST "%thisdir%OGen-solutions.txt" GOTO error4
@@ -18,7 +18,8 @@ IF NOT EXIST "%thisdir%OGen-public.snk" GOTO error6
 
 
 SET thisdir=%~d0%~p0
-
+SET proj=%2
+IF '%proj%' == '' GOTO error7
 
 SET fw=
 IF '%1' == '/1_1' SET fw=1.1
@@ -42,17 +43,17 @@ IF '%token%' == '' GOTO error2
 
 
 IF NOT EXIST "%thisdir%..\bin" MKDIR "%thisdir%..\bin"
-IF NOT EXIST "%thisdir%..\bin\OGen.Doc.Templates-%fw%" MKDIR "%thisdir%..\bin\OGen.Doc.Templates-%fw%"
-IF NOT EXIST "%thisdir%..\bin\OGen.Doc.Templates-%fw%\bin" MKDIR "%thisdir%..\bin\OGen.Doc.Templates-%fw%\bin"
+IF NOT EXIST "%thisdir%..\bin\OGen.%proj%.Templates-%fw%" MKDIR "%thisdir%..\bin\OGen.%proj%.Templates-%fw%"
+IF NOT EXIST "%thisdir%..\bin\OGen.%proj%.Templates-%fw%\bin" MKDIR "%thisdir%..\bin\OGen.%proj%.Templates-%fw%\bin"
 
-TYPE "%thisdir%config-templates\OGen.Doc.templates-1.Web.config">"%thisdir%..\bin\OGen.Doc.Templates-%fw%\Web.config"
+TYPE "%thisdir%config-templates\OGen.%proj%.templates-1.Web.config">"%thisdir%..\bin\OGen.%proj%.Templates-%fw%\Web.config"
 FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`TYPE "%thisdir%OGen-projects.txt"`) DO (
-	CALL %0 %1 %%a %%b %%c %%d %%e %%f %%g %%h %%i
+	CALL %0 %1 %proj% %%a %%b %%c %%d %%e %%f %%g %%h %%i
 )
-TYPE "%thisdir%config-templates\OGen.Doc.templates-2.Web.config">>"%thisdir%..\bin\OGen.Doc.Templates-%fw%\Web.config"
-FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`dir /a-d /one /b "%thisdir%..\OGen-Doc\Doc_templates\*.*"`) DO (
-	IF NOT '%%a' == 'AssemblyInfo.cs' IF NOT '%%a' == 'Doc_templates-7.1.csproj' IF NOT '%%a' == 'Doc_templates-7.1.csproj.user' IF NOT '%%a' == 'Doc_templates-8.csproj' IF NOT '%%a' == 'Doc_templates-8.csproj.user' IF NOT '%%a' == 'Web.config' (
-		COPY "%thisdir%..\OGen-Doc\Doc_templates\%%a" "%thisdir%..\bin\OGen.Doc.Templates-%fw%"
+TYPE "%thisdir%config-templates\OGen.%proj%.templates-2.Web.config">>"%thisdir%..\bin\OGen.%proj%.Templates-%fw%\Web.config"
+FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`dir /a-d /one /b "%thisdir%..\OGen-%proj%\%proj%_templates\*.*"`) DO (
+	IF NOT '%%a' == 'AssemblyInfo.cs' IF NOT '%%a' == '%proj%_templates-7.1.csproj' IF NOT '%%a' == '%proj%_templates-7.1.csproj.user' IF NOT '%%a' == '%proj%_templates-8.csproj' IF NOT '%%a' == '%proj%_templates-8.csproj.user' IF NOT '%%a' == 'Web.config' (
+		COPY "%thisdir%..\OGen-%proj%\%proj%_templates\%%a" "%thisdir%..\bin\OGen.%proj%.Templates-%fw%"
 	)
 )
 PAUSE
@@ -97,19 +98,26 @@ GOTO eof
 	ECHO ERROR 6: - Can't find file 'OGen-public.snk'
 	PAUSE
 GOTO eof
+:error7
+	ECHO.
+	ECHO.
+	ECHO ERROR 7: - must specify project
+	PAUSE
+GOTO eof
 
 
 :install
 	SHIFT
+	SHIFT
 
-	IF NOT '%1' == 'OGen' IF NOT '%1' == 'OGen-Doc' GOTO eof
+	IF NOT '%1' == 'OGen' IF NOT '%1' == 'OGen-%proj%' GOTO eof
 
 	IF '%5' == 'f' SET binDir=bin\Release
 	IF '%5' == 't' SET binDir=bin
 
 	:: is web app
 	IF '%5' == 't' (
-		COPY "%thisdir%..\%1\%2\%binDir%\%3-%fw%.dll" "%thisdir%..\bin\OGen.Doc.Templates-%fw%\bin"
+		COPY "%thisdir%..\%1\%2\%binDir%\%3-%fw%.dll" "%thisdir%..\bin\OGen.%proj%.Templates-%fw%\bin"
 	) ELSE (
 		:: is not a Release, hence:
 		IF '%9' == 'f' GOTO eof
@@ -117,7 +125,7 @@ GOTO eof
 		:: not on GAC, hence:
 		IF '%4' == 'f' GOTO eof
 
-		ECHO 				^<add assembly="%3-%fw%, Version=0.1.1000.20000, Culture=neutral, PublicKeyToken=%token%" /^>>>"%thisdir%..\bin\OGen.Doc.Templates-%fw%\Web.config"
+		ECHO 				^<add assembly="%3-%fw%, Version=0.1.1000.20000, Culture=neutral, PublicKeyToken=%token%" /^>>>"%thisdir%..\bin\OGen.%proj%.Templates-%fw%\Web.config"
 	)
 GOTO eof
 
