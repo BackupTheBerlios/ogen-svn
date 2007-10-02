@@ -10,13 +10,13 @@ Scripts should be run in the order they are numbered, you should read the fallow
 Instalation Scripts Description
 =================================
 
-win-100-GAC-sn.bat
+win-100-generate-keys.bat
 	- generates keys needed to compile assemblies with strong name so they can be added to GAC
 
-win-110-GAC-app.config.bat
+win-110-generate-app.config.bat
 	- generates app.config with local path to OGen project
 
-win-120-GAC-registry-tweak4visualstudio2003.js
+win-120-registry-tweak4visualstudio2003.js
 	- makes GAC registered assemblies visivle in visual studio 2001 and 2003, by adding a key to the windows registry,
 	if you don't use visual studio 2001 or 2003, then you don't need to run this script
 
@@ -49,7 +49,7 @@ win-140-OGen.NTier.Templates-install-2.0.bat
 	and generates web.config file
 
 
-De-Instalation Scripts Description
+Uninstallation Scripts Description
 ====================================
 
 win-210-GAC-uninstall-1.1.bat

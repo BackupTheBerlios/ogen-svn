@@ -13,10 +13,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 var _shell = WScript.CreateObject("WScript.Shell");
 var _fs = WScript.CreateObject("Scripting.FileSystemObject");
 
-//_shell.Popup(_fs.GetFolder("..\\bin").Name);
-//_shell.Popup(_fs.GetAbsolutepathname("..\\bin"));
+//_shell.Popup(_fs.GetFolder("bin").Name);
+//_shell.Popup(_fs.GetAbsolutepathname("bin"));
 
 _shell.RegWrite(
 	"HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\.NETFramework\\AssemblyFolders\\OGen\\", 
-	_fs.GetAbsolutepathname("..\\bin")
+	_fs.GetAbsolutepathname("bin")
 );
