@@ -16,35 +16,35 @@ win-100-generate-keys.bat
 win-110-generate-app.config.bat
 	- generates app.config with local path to OGen project
 
-win-120-registry-tweak4visualstudio2003.js
+win-120-OGen-buildAssembies-7.1-registry-tweak4visualstudio.js
 	- makes GAC registered assemblies visivle in visual studio 2001 and 2003, by adding a key to the windows registry,
 	if you don't use visual studio 2001 or 2003, then you don't need to run this script
 
-win-125-OGen-buildAssembies-7.1.sln
+win-120-OGen-buildAssembies-7.1.sln
 	- visual studio 2003 solution, you should set build configuration to RELEASE and compile this solution
 
-win-125-OGen-buildAssembies-8.sln
+win-120-OGen-buildAssembies-8.sln
 	- sharp development / visual studio 2005 solution, you should set build configuration to RELEASE and compile this solution
 
-win-130-GAC-install-1.1.bat
+win-140-GAC-install-1.1.bat
 	- copies (visual studio 2003) compiled assemblies (framework 1.1) to bin directory and adds them to the GAC
 
-win-130-GAC-install-2.0.bat
+win-140-GAC-install-2.0.bat
 	- copies (sharp development / visual studio 2005) compiled assemblies (framework 2.0) to bin directory and adds them to the GAC
 
-win-140-OGen.Doc.Templates-install-1.1.bat
+win-150-OGen.Doc.Templates-install-1.1.bat
 	- copies (visual studio 2003) compiled assembly (framework 1.1) for the OGen-Doc Templates to bin directory
 	and generates web.config file
 
-win-140-OGen.Doc.Templates-install-2.0.bat
+win-150-OGen.Doc.Templates-install-2.0.bat
 	- copies (sharp development / visual studio 2005) compiled assembly (framework 2.0) for the OGen-Doc Templates to bin directory
 	and generates web.config file
 
-win-140-OGen.NTier.Templates-install-1.1.bat
+win-150-OGen.NTier.Templates-install-1.1.bat
 	- copies (visual studio 2003) compiled assembly (framework 1.1) for the OGen-NTier Templates to bin directory
 	and generates web.config file
 
-win-140-OGen.NTier.Templates-install-2.0.bat
+win-150-OGen.NTier.Templates-install-2.0.bat
 	- copies (sharp development / visual studio 2005) compiled assembly (framework 2.0) for the OGen-NTier Templates to bin directory
 	and generates web.config file
 
@@ -52,10 +52,10 @@ win-140-OGen.NTier.Templates-install-2.0.bat
 Uninstallation Scripts Description
 ====================================
 
-win-210-GAC-uninstall-1.1.bat
+win-210-uninstallAssemblies-fromGAC-1.1.bat
 	- removes (visual studio 2003) compiled assemblies (framework 1.1) from the GAC and deletes them from the bin directory
 
-win-210-GAC-uninstall-2.0.bat
+win-210-uninstallAssemblies-fromGAC-2.0.bat
 	- removes (sharp development / visual studio 2005) compiled assemblies (framework 2.0) from the GAC and deletes them from the bin directory
 
 win-290-clear_bin.bat
