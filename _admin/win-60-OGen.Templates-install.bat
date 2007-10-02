@@ -12,8 +12,8 @@
 IF NOT '%3' == '' GOTO install
 
 
-IF NOT EXIST "%thisdir%OGen-solutions.txt" GOTO error4
-IF NOT EXIST "%thisdir%OGen-projects.txt" GOTO error5
+IF NOT EXIST "%thisdir%distro-metadatas\OGen-solutions.txt" GOTO error4
+IF NOT EXIST "%thisdir%distro-metadatas\OGen-projects.txt" GOTO error5
 IF NOT EXIST "%thisdir%OGen-public.snk" GOTO error6
 
 
@@ -46,11 +46,11 @@ IF NOT EXIST "%thisdir%..\bin" MKDIR "%thisdir%..\bin"
 IF NOT EXIST "%thisdir%..\bin\OGen.%proj%.Templates-%fw%" MKDIR "%thisdir%..\bin\OGen.%proj%.Templates-%fw%"
 IF NOT EXIST "%thisdir%..\bin\OGen.%proj%.Templates-%fw%\bin" MKDIR "%thisdir%..\bin\OGen.%proj%.Templates-%fw%\bin"
 
-TYPE "%thisdir%config-templates\OGen.%proj%.templates-1.Web.config">"%thisdir%..\bin\OGen.%proj%.Templates-%fw%\Web.config"
-FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`TYPE "%thisdir%OGen-projects.txt"`) DO (
+TYPE "%thisdir%distro-templates\OGen.%proj%.templates-1.Web.config">"%thisdir%..\bin\OGen.%proj%.Templates-%fw%\Web.config"
+FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`TYPE "%thisdir%distro-metadatas\OGen-projects.txt"`) DO (
 	CALL %0 %1 %proj% %%a %%b %%c %%d %%e %%f %%g %%h %%i
 )
-TYPE "%thisdir%config-templates\OGen.%proj%.templates-2.Web.config">>"%thisdir%..\bin\OGen.%proj%.Templates-%fw%\Web.config"
+TYPE "%thisdir%distro-templates\OGen.%proj%.templates-2.Web.config">>"%thisdir%..\bin\OGen.%proj%.Templates-%fw%\Web.config"
 FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`dir /a-d /one /b "%thisdir%..\OGen-%proj%\%proj%_templates\*.*"`) DO (
 	IF NOT '%%a' == 'AssemblyInfo.cs' IF NOT '%%a' == '%proj%_templates-7.1.csproj' IF NOT '%%a' == '%proj%_templates-7.1.csproj.user' IF NOT '%%a' == '%proj%_templates-8.csproj' IF NOT '%%a' == '%proj%_templates-8.csproj.user' IF NOT '%%a' == 'Web.config' (
 		COPY "%thisdir%..\OGen-%proj%\%proj%_templates\%%a" "%thisdir%..\bin\OGen.%proj%.Templates-%fw%"
@@ -83,13 +83,13 @@ GOTO eof
 :error4
 	ECHO.
 	ECHO.
-	ECHO ERROR 4: - Can't find file 'OGen-solutions.txt'
+	ECHO ERROR 4: - Can't find file 'distro-metadatas\OGen-solutions.txt'
 	PAUSE
 GOTO eof
 :error5
 	ECHO.
 	ECHO.
-	ECHO ERROR 5: - Can't find file 'OGen-projects.txt'
+	ECHO ERROR 5: - Can't find file 'distro-metadatas\OGen-projects.txt'
 	PAUSE
 GOTO eof
 :error6

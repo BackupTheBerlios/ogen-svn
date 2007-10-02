@@ -34,11 +34,11 @@ IF '%SetEnvironmentPath%' == '' GOTO error1
   CALL %SetEnvironmentPath% %PROCESSOR_ARCHITECTURE%
 
 
-IF NOT EXIST "%thisdir%OGen-solutions.txt" GOTO error2
-IF NOT EXIST "%thisdir%OGen-projects.txt" GOTO error3
+IF NOT EXIST "%thisdir%distro-metadatas\OGen-solutions.txt" GOTO error2
+IF NOT EXIST "%thisdir%distro-metadatas\OGen-projects.txt" GOTO error3
 
 
-FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`TYPE "%thisdir%OGen-projects.txt"`) DO (
+FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`TYPE "%thisdir%distro-metadatas\OGen-projects.txt"`) DO (
 	CALL %0 %1 %%a %%b %%c %%d %%e %%f %%g %%h %%i
 )
 PAUSE
@@ -54,13 +54,13 @@ GOTO eof
 :error2
 	ECHO.
 	ECHO.
-	ECHO ERROR 2: - Can't find file 'OGen-solutions.txt'
+	ECHO ERROR 2: - Can't find file 'distro-metadatas\OGen-solutions.txt'
 	PAUSE
 GOTO eof
 :error3
 	ECHO.
 	ECHO.
-	ECHO ERROR 3: - Can't find file 'OGen-projects.txt'
+	ECHO ERROR 3: - Can't find file 'distro-metadatas\OGen-projects.txt'
 	PAUSE
 GOTO eof
 :error4

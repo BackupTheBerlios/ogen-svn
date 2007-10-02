@@ -21,15 +21,15 @@ IF '%SetEnvironmentPath%' == '' GOTO error1
 
 
 :makekey
-	IF EXIST "%thisdir%OGen.snk" GOTO eof_makekey
-	sn -k "%thisdir%OGen.snk"
-	ATTRIB +r "%thisdir%OGen.snk"
+	IF EXIST "%thisdir%distro-keys\OGen.snk" GOTO eof_makekey
+	sn -k "%thisdir%distro-keys\OGen.snk"
+	ATTRIB +r "%thisdir%distro-keys\OGen.snk"
 :eof_makekey
 
 :makepublickey
-	IF EXIST "%thisdir%OGen-public.snk" DEL /q /f "%thisdir%OGen-public.snk"
-	sn -p "%thisdir%OGen.snk" "%thisdir%OGen-public.snk"
-	ATTRIB +r "%thisdir%OGen-public.snk"
+	IF EXIST "%thisdir%distro-keys\OGen-public.snk" DEL /q /f "%thisdir%distro-keys\OGen-public.snk"
+	sn -p "%thisdir%distro-keys\OGen.snk" "%thisdir%distro-keys\OGen-public.snk"
+	ATTRIB +r "%thisdir%distro-keys\OGen-public.snk"
 :eof_makepublickey
 
 

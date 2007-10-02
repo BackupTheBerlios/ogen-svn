@@ -18,8 +18,8 @@ for /f "usebackq tokens=1* delims=^|" %%a in (`cd`) do (
 )
 
 
-IF NOT EXIST "%thisdir%OGen-solutions.txt" GOTO error2
-IF NOT EXIST "%thisdir%OGen-projects.txt" GOTO error3
+IF NOT EXIST "%thisdir%distro-metadatas\OGen-solutions.txt" GOTO error2
+IF NOT EXIST "%thisdir%distro-metadatas\OGen-projects.txt" GOTO error3
 
 
 ECHO about to delete binaries and objects for present solution
@@ -27,9 +27,9 @@ ECHO are you sure?
 PAUSE
 
 
-FOR /F "usebackq tokens=1,2,3,4,5,6,7,8 delims=, " %%a IN (`TYPE "%thisdir%OGen-projects.txt"`) DO CALL %0 %%a %%b %%c %%d %%e %%f %%g %%h
-::FOR /F "usebackq tokens=1,2 delims=, " %%a IN (`TYPE "%thisdir%OGen-solutions.txt"`) DO IF EXIST "%thisdir%..\%%a\LICENSE.txt" DEL /q "%thisdir%..\%%a\LICENSE.txt"
-::FOR /F "usebackq tokens=1,2 delims=, " %%a IN (`TYPE "%thisdir%OGen-solutions.txt"`) DO FOR %%b IN (COPYING, COPYING.DOC, COPYING.LIB, LICENSE.FDL.txt, LICENSE.GPL.txt, LICENSE.LGPL.txt) DO IF EXIST "%thisdir%..\%%a\%%b" DEL /q "%thisdir%..\%%a\%%b"
+FOR /F "usebackq tokens=1,2,3,4,5,6,7,8 delims=, " %%a IN (`TYPE "%thisdir%distro-metadatas\OGen-projects.txt"`) DO CALL %0 %%a %%b %%c %%d %%e %%f %%g %%h
+::FOR /F "usebackq tokens=1,2 delims=, " %%a IN (`TYPE "%thisdir%distro-metadatas\OGen-solutions.txt"`) DO IF EXIST "%thisdir%..\%%a\LICENSE.txt" DEL /q "%thisdir%..\%%a\LICENSE.txt"
+::FOR /F "usebackq tokens=1,2 delims=, " %%a IN (`TYPE "%thisdir%distro-metadatas\OGen-solutions.txt"`) DO FOR %%b IN (COPYING, COPYING.DOC, COPYING.LIB, LICENSE.FDL.txt, LICENSE.GPL.txt, LICENSE.LGPL.txt) DO IF EXIST "%thisdir%..\%%a\%%b" DEL /q "%thisdir%..\%%a\%%b"
 
 
 ::---\ ToDos: here!
@@ -49,13 +49,13 @@ GOTO eof
 :error2
 	ECHO.
 	ECHO.
-	ECHO ERROR 2: - Can't find file 'OGen-solutions.txt'
+	ECHO ERROR 2: - Can't find file 'distro-metadatas\OGen-solutions.txt'
 	PAUSE
 GOTO eof
 :error3
 	ECHO.
 	ECHO.
-	ECHO ERROR 3: - Can't find file 'OGen-projects.txt'
+	ECHO ERROR 3: - Can't find file 'distro-metadatas\OGen-projects.txt'
 	PAUSE
 GOTO eof
 :error4
