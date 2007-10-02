@@ -119,7 +119,7 @@ OGen at BerliOS:
 			<li>
 
 				Anonymous Subversion Access via SVN:
-				svn://svn.berlios.de/ogen/trunk
+				svn://svn.berlios.de/ogen/
 				<br>
 				or HTTP: 
 				<a href="http://svn.berlios.de/svnroot/repos/ogen/">
@@ -137,46 +137,116 @@ OGen at BerliOS:
 
 			</li>
 			<li>
-				Once you have the sources, check the '_admin' directory for solution and scripts files.
+				Once you have the sources, check the 'distro' directory for solution and scripts files.
 				<br>
 				<br>
 
 				<ol type="i">
 					<li>
-						generate keys, needed to build solution:
+						win-100-generate-keys.bat
 						<br>
-						win-10-GAC-sn.bat
-						<br>
-						<br>
-					</li>
-					<li>
-						if you're using visual studio, you'll need to define where to find dependant asseblies (even if they're in the GAC):
-						<br>
-						win-20-GAC-registry.reg
+						generates keys needed to compile assemblies with strong name so they can be added to the GAC
 						<br>
 						<br>
 					</li>
 					<li>
-						build the solution using any of the provided solutions:
+						win-110-generate-app.config.bat
 						<br>
-						OGen-buildAssembies-7.1.sln (Visual Studio 2003)
-						<br>
-						OGen-buildAssembies-8.sln (<a href="http://www.icsharpcode.net/OpenSource/SD/">SharpDevelop</a>, <a href="http://msdn.microsoft.com/vstudio/express/visualcsharp/">Visual C# 2005 Express Edition</a> or Visual Studio 2005)
-						<br>
-						OGen-buildAssembies.build (<a href="http://nant.sourceforge.net/">NAnt</a>, not supported yet)
+						generates app.config with your local path to OGen project
 						<br>
 						<br>
 					</li>
-
 					<li>
-						makes copies of release assemblies into a common directory and installs them in the GAC:
+						win-120-buildAssembies-7.1-registry-tweak4visualstudio.js
 						<br>
-						win-40-GAC-install.bat
+						if you're using Visual Studio 2003, you'll need to define where to find dependant asseblies (even if they're in the GAC)
+						<br>
+						<br>
+					</li>
+					<li>
+						win-120-buildAssembies-7.1.sln (Visual Studio 2003)
+						<br>
+						win-120-buildAssembies-8.sln (<a href="http://www.icsharpcode.net/OpenSource/SD/">SharpDevelop</a>, <a href="http://msdn.microsoft.com/vstudio/express/visualcsharp/">Visual C# 2005 Express Edition</a> or Visual Studio 2005)
+						<br>
+						win-120-buildAssembies.build (<a href="http://nant.sourceforge.net/">NAnt</a>, not yet supported)
+						<br>
+						<br>
+						you should set build configuration to RELEASE and compile using any of the provided solutions
+						<br>
+						<br>
+					</li>
+					<li>
+						win-130-copyAssemblies-1.1.bat
+						<br>
+						copies (Visual Studio 2003) compiled assemblies (framework 1.1) to bin directory
+						<br>
+						<br>
+					</li>
+					<li>
+						win-130-copyAssemblies-2.0.bat
+						<br>
+						copies (sharp development / visual studio 2005) compiled assemblies (framework 2.0) to bin directory
+						<br>
+						<br>
+					</li>
+					<li>
+						win-140-installAssemblies-intoGAC-1.1.bat
+						<br>
+						adds (visual studio 2003) compiled assemblies (framework 1.1) to the GAC
+						<br>
+						<br>
+					</li>
+					<li>
+						win-140-installAssemblies-intoGAC-2.0.bat
+						<br>
+						adds (sharp development / visual studio 2005) compiled assemblies (framework 2.0) to the GAC
+						<br>
+						<br>
+					</li>
+					<li>
+						win-150-OGen.Doc.Templates-install-1.1.bat
+						<br>
+						copies (visual studio 2003) compiled assembly (framework 1.1) for the OGen-Doc Templates to bin directory
+						<br>
+						and generates web.config file
+						<br>
+						<br>
+					</li>
+					<li>
+						win-150-OGen.Doc.Templates-install-2.0.bat
+						<br>
+						copies (sharp development / visual studio 2005) compiled assembly (framework 2.0) for the OGen-Doc Templates to bin directory
+						<br>
+						and generates web.config file
+						<br>
+						<br>
+					</li>
+					<li>
+						win-150-OGen.NTier.Templates-install-1.1.bat
+						<br>
+						copies (visual studio 2003) compiled assembly (framework 1.1) for the OGen-NTier Templates to bin directory
+						<br>
+						and generates web.config file
+						<br>
+						<br>
+					</li>
+					<li>
+						win-150-OGen.NTier.Templates-install-2.0.bat
+						<br>
+						copies (sharp development / visual studio 2005) compiled assembly (framework 2.0) for the OGen-NTier Templates to bin directory
+						<br>
+						and generates web.config file
 						<br>
 						<br>
 					</li>
 
 				</ol>
+
+			</li>
+			<li>
+				Once you have the compiled assemblies installed in the GAC, check the 'distro\bin' directory where you'll find OGen binaries and generation templates.
+				<br>
+				<br>
 
 			</li>
 <!--

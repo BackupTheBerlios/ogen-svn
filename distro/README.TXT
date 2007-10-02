@@ -11,10 +11,10 @@ Instalation Scripts Description
 =================================
 
 win-100-generate-keys.bat
-	- generates keys needed to compile assemblies with strong name so they can be added to GAC
+	- generates keys needed to compile assemblies with strong name so they can be added to the GAC
 
 win-110-generate-app.config.bat
-	- generates app.config with local path to OGen project
+	- generates app.config with your local path to OGen project
 
 win-120-buildAssembies-7.1-registry-tweak4visualstudio.js
 	- makes GAC registered assemblies visivle in visual studio 2001 and 2003, by adding a key to the windows registry,
