@@ -9,4 +9,41 @@
 :: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 :: 
 @ECHO OFF
-CALL "%~d0%~p0distro-auxscripts\win-uninstallAssemblies-fromGAC.bat" /2_0
+
+SET thisdir=%~d0%~p0
+SET proj=%2
+IF '%proj%' == '' GOTO error7
+
+SET fw=
+IF '%1' == '/1_1' SET fw=1.1
+IF '%1' == '/2_0' SET fw=2.0
+IF '%fw%' == '' GOTO error3
+
+
+::ECHO "%thisdir%..\bin\OGen.%proj%.Templates-%fw%"
+IF EXIST "%thisdir%..\bin\OGen.%proj%.Templates-%fw%" RMDIR /s /q "%thisdir%..\bin\OGen.%proj%.Templates-%fw%"
+PAUSE
+
+
+GOTO eof
+
+
+:error3
+	ECHO.
+	ECHO.
+	ECHO ERROR 3: - must specify framework version
+	PAUSE
+GOTO eof
+:error7
+	ECHO.
+	ECHO.
+	ECHO ERROR 7: - must specify project
+	PAUSE
+GOTO eof
+
+
+:eof
+::SET thisdir=
+::SET SetEnvironmentPath=
+::SET token=
+::SET fw=
