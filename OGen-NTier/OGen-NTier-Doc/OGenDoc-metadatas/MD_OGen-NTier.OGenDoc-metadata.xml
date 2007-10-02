@@ -245,29 +245,28 @@ OGen at BerliOS:
 					&lt;li&gt;
 						win-130-copyAssemblies-2.0.bat
 						&lt;br&gt;
-						copies (sharp development / visual studio 2005) compiled assemblies (framework 2.0) to bin directory
+						copies (Sharp Development / Visual Studio 2005) compiled assemblies (framework 2.0) to bin directory
 						&lt;br&gt;
 						&lt;br&gt;
 					&lt;/li&gt;
 					&lt;li&gt;
 						win-140-installAssemblies-intoGAC-1.1.bat
 						&lt;br&gt;
-						adds (visual studio 2003) compiled assemblies (framework 1.1) to the GAC
+						adds (Visual Studio 2003) compiled assemblies (framework 1.1) to the GAC
 						&lt;br&gt;
 						&lt;br&gt;
 					&lt;/li&gt;
 					&lt;li&gt;
 						win-140-installAssemblies-intoGAC-2.0.bat
 						&lt;br&gt;
-						adds (sharp development / visual studio 2005) compiled assemblies (framework 2.0) to the GAC
+						adds (Sharp Development / Visual Studio 2005) compiled assemblies (framework 2.0) to the GAC
 						&lt;br&gt;
 						&lt;br&gt;
 					&lt;/li&gt;
 					&lt;li&gt;
 						win-150-OGen.Doc.Templates-install-1.1.bat
 						&lt;br&gt;
-						copies (visual studio 2003) compiled assembly (framework 1.1) for the OGen-Doc Templates to bin directory
-						&lt;br&gt;
+						copies (Visual Studio 2003) compiled assembly (framework 1.1) for the OGen-Doc Templates to bin directory
 						and generates web.config file
 						&lt;br&gt;
 						&lt;br&gt;
@@ -275,8 +274,7 @@ OGen at BerliOS:
 					&lt;li&gt;
 						win-150-OGen.Doc.Templates-install-2.0.bat
 						&lt;br&gt;
-						copies (sharp development / visual studio 2005) compiled assembly (framework 2.0) for the OGen-Doc Templates to bin directory
-						&lt;br&gt;
+						copies (Sharp Development / Visual Studio 2005) compiled assembly (framework 2.0) for the OGen-Doc Templates to bin directory
 						and generates web.config file
 						&lt;br&gt;
 						&lt;br&gt;
@@ -284,8 +282,7 @@ OGen at BerliOS:
 					&lt;li&gt;
 						win-150-OGen.NTier.Templates-install-1.1.bat
 						&lt;br&gt;
-						copies (visual studio 2003) compiled assembly (framework 1.1) for the OGen-NTier Templates to bin directory
-						&lt;br&gt;
+						copies (Visual Studio 2003) compiled assembly (framework 1.1) for the OGen-NTier Templates to bin directory
 						and generates web.config file
 						&lt;br&gt;
 						&lt;br&gt;
@@ -293,8 +290,7 @@ OGen at BerliOS:
 					&lt;li&gt;
 						win-150-OGen.NTier.Templates-install-2.0.bat
 						&lt;br&gt;
-						copies (sharp development / visual studio 2005) compiled assembly (framework 2.0) for the OGen-NTier Templates to bin directory
-						&lt;br&gt;
+						copies (Sharp Development / Visual Studio 2005) compiled assembly (framework 2.0) for the OGen-NTier Templates to bin directory
 						and generates web.config file
 						&lt;br&gt;
 						&lt;br&gt;
