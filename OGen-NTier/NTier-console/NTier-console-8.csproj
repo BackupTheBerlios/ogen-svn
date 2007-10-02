@@ -120,11 +120,6 @@
       <Project>{0E77A4DB-AF8B-4290-BB33-F9EC97655433}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\NTier_templates\NTier_templates-8.csproj">
-      <Name>NTier_templates</Name>
-      <Project>{D5FDB433-994F-404C-B535-FB90B005B6B8}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
