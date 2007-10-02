@@ -20,8 +20,8 @@ IF '%1' == '/2_0' SET fw=2.0
 IF '%fw%' == '' GOTO error3
 
 
-::ECHO "%thisdir%..\bin\OGen.%proj%.Templates-%fw%"
-IF EXIST "%thisdir%..\bin\OGen.%proj%.Templates-%fw%" RMDIR /s /q "%thisdir%..\bin\OGen.%proj%.Templates-%fw%"
+::ECHO "%thisdir%..\bin\OGen-%proj%-Templates-%fw%"
+IF EXIST "%thisdir%..\bin\OGen-%proj%-Templates-%fw%" RMDIR /s /q "%thisdir%..\bin\OGen-%proj%-Templates-%fw%"
 PAUSE
 
 

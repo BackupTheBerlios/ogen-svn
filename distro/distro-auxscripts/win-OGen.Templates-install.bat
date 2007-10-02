@@ -43,17 +43,17 @@ IF '%token%' == '' GOTO error2
 
 
 IF NOT EXIST "%thisdir%..\bin"                                MKDIR "%thisdir%..\bin"
-IF NOT EXIST "%thisdir%..\bin\OGen.%proj%.Templates-%fw%"     MKDIR "%thisdir%..\bin\OGen.%proj%.Templates-%fw%"
-IF NOT EXIST "%thisdir%..\bin\OGen.%proj%.Templates-%fw%\bin" MKDIR "%thisdir%..\bin\OGen.%proj%.Templates-%fw%\bin"
+IF NOT EXIST "%thisdir%..\bin\OGen-%proj%-Templates-%fw%"     MKDIR "%thisdir%..\bin\OGen-%proj%-Templates-%fw%"
+IF NOT EXIST "%thisdir%..\bin\OGen-%proj%-Templates-%fw%\bin" MKDIR "%thisdir%..\bin\OGen-%proj%-Templates-%fw%\bin"
 
-TYPE "%thisdir%..\distro-templates\OGen.%proj%.templates-1.Web.config">"%thisdir%..\bin\OGen.%proj%.Templates-%fw%\Web.config"
+TYPE "%thisdir%..\distro-templates\OGen.%proj%.templates-1.Web.config">"%thisdir%..\bin\OGen-%proj%-Templates-%fw%\Web.config"
 FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`TYPE "%thisdir%..\distro-metadatas\OGen-projects.txt"`) DO (
 	CALL %0 %1 %proj% %%a %%b %%c %%d %%e %%f %%g %%h %%i
 )
-TYPE "%thisdir%..\distro-templates\OGen.%proj%.templates-2.Web.config">>"%thisdir%..\bin\OGen.%proj%.Templates-%fw%\Web.config"
+TYPE "%thisdir%..\distro-templates\OGen.%proj%.templates-2.Web.config">>"%thisdir%..\bin\OGen-%proj%-Templates-%fw%\Web.config"
 FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`dir /a-d /one /b "%thisdir%..\..\OGen-%proj%\%proj%_templates\*.*"`) DO (
 	IF NOT '%%a' == 'AssemblyInfo.cs' IF NOT '%%a' == '%proj%_templates-7.1.csproj' IF NOT '%%a' == '%proj%_templates-7.1.csproj.user' IF NOT '%%a' == '%proj%_templates-8.csproj' IF NOT '%%a' == '%proj%_templates-8.csproj.user' IF NOT '%%a' == 'Web.config' (
-		COPY "%thisdir%..\..\OGen-%proj%\%proj%_templates\%%a" "%thisdir%..\bin\OGen.%proj%.Templates-%fw%"
+		COPY "%thisdir%..\..\OGen-%proj%\%proj%_templates\%%a" "%thisdir%..\bin\OGen-%proj%-Templates-%fw%"
 	)
 )
 PAUSE
@@ -117,7 +117,7 @@ GOTO eof
 
 	:: is web app
 	IF '%5' == 't' (
-		COPY "%thisdir%..\..\%1\%2\%binDir%\%3-%fw%.dll" "%thisdir%..\bin\OGen.%proj%.Templates-%fw%\bin"
+		COPY "%thisdir%..\..\%1\%2\%binDir%\%3-%fw%.dll" "%thisdir%..\bin\OGen-%proj%-Templates-%fw%\bin"
 	) ELSE (
 		:: is not a Release, hence:
 		IF '%9' == 'f' GOTO eof
@@ -125,7 +125,7 @@ GOTO eof
 		:: not on GAC, hence:
 		IF '%4' == 'f' GOTO eof
 
-		ECHO 				^<add assembly="%3-%fw%, Version=0.1.1000.20000, Culture=neutral, PublicKeyToken=%token%" /^>>>"%thisdir%..\bin\OGen.%proj%.Templates-%fw%\Web.config"
+		ECHO 				^<add assembly="%3-%fw%, Version=0.1.1000.20000, Culture=neutral, PublicKeyToken=%token%" /^>>>"%thisdir%..\bin\OGen-%proj%-Templates-%fw%\Web.config"
 	)
 GOTO eof
 
