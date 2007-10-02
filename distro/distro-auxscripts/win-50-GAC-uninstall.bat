@@ -21,11 +21,6 @@ IF '%fw%' == '' GOTO error4
 IF NOT '%2' == '' GOTO uninstall
 
 
-::FOR /F "usebackq tokens=1* delims=^|" %%a in (`cd`) do (
-::	IF NOT "%%~fa\" == "%~d0%~p0" GOTO error5
-::)
-
-
 SET SetEnvironmentPath=
 IF '%1' == '/1_1' IF EXIST "C:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat" SET SetEnvironmentPath="c:\Program Files\Microsoft Visual Studio .NET 2003\Common7\Tools\vsvars32.bat"
 IF '%1' == '/2_0' IF EXIST "C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat" SET SetEnvironmentPath="C:\Program Files\Microsoft Visual Studio 8\VC\vcvarsall.bat"
@@ -34,11 +29,11 @@ IF '%SetEnvironmentPath%' == '' GOTO error1
   CALL %SetEnvironmentPath% %PROCESSOR_ARCHITECTURE%
 
 
-IF NOT EXIST "%thisdir%distro-metadatas\OGen-solutions.txt" GOTO error2
-IF NOT EXIST "%thisdir%distro-metadatas\OGen-projects.txt" GOTO error3
+IF NOT EXIST "%thisdir%..\distro-metadatas\OGen-solutions.txt" GOTO error2
+IF NOT EXIST "%thisdir%..\distro-metadatas\OGen-projects.txt" GOTO error3
 
 
-FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`TYPE "%thisdir%distro-metadatas\OGen-projects.txt"`) DO (
+FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`TYPE "%thisdir%..\distro-metadatas\OGen-projects.txt"`) DO (
 	CALL %0 %1 %%a %%b %%c %%d %%e %%f %%g %%h %%i
 )
 PAUSE
@@ -69,12 +64,6 @@ GOTO eof
 	ECHO ERROR 4: - must specify framework version
 	PAUSE
 GOTO eof
-:error5
-	ECHO.
-	ECHO.
-	ECHO ERROR 5: - %~n0%~x0 must be called from it's own directory: %~f0
-	PAUSE
-GOTO eof
 
 
 :uninstall
@@ -94,8 +83,8 @@ GOTO eof
 	IF NOT '%4' == 'f' (
 		gacutil /u %3-%fw%
 	)
-	IF EXIST "%thisdir%bin\%3-%fw%.dll" DEL /q "%thisdir%bin\%3-%fw%.dll"
-	IF EXIST "%thisdir%bin\%3-%fw%.exe" DEL /q "%thisdir%bin\%3-%fw%.exe"
+	IF EXIST "%thisdir%..\bin\%3-%fw%.dll" DEL /q "%thisdir%..\bin\%3-%fw%.dll"
+	IF EXIST "%thisdir%..\bin\%3-%fw%.exe" DEL /q "%thisdir%..\bin\%3-%fw%.exe"
 GOTO eof
 
 

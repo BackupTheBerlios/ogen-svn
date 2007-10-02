@@ -2,7 +2,7 @@
 Read Me
 =========
 
-Scripts should be run in the order they are numbered, you should read fallowing script description before you run them
+Scripts should be run in the order they are numbered, you should read the fallowing script description before you run them
 
 
 
@@ -32,9 +32,6 @@ win-40-GAC-install-1.1.bat
 win-40-GAC-install-2.0.bat
 	- copies (sharp development / visual studio 2005) compiled assemblies to bin directory and adds them to the GAC
 
-win-40-GAC-install.bat
-	- auxiliar script for the previous two scripts
-
 win-60-OGen.Doc.Templates-install-1.1.bat
 	- copies (visual studio 2003) compiled assembly for the OGen-Doc Templates to bin directory
 	and generates web.config file
@@ -50,9 +47,6 @@ win-60-OGen.NTier.Templates-install-1.1.bat
 win-60-OGen.NTier.Templates-install-2.0.bat
 	- copies (sharp development / visual studio 2005) compiled assembly for the OGen-NTier Templates to bin directory
 	and generates web.config file
-
-win-60-OGen.Templates-install.bat
-	- auxiliar script for the previous four scripts
 
 
 De-Instalation Scripts Description
@@ -79,3 +73,9 @@ win-00-test.bat
 
 win-30-license-apply.bat
 	- only usefull for OGen developers, you don't need to run this script
+
+win-40-GAC-install.bat
+	- auxiliar script for the previous two scripts
+
+win-60-OGen.Templates-install.bat
+	- auxiliar script for the previous four scripts
