@@ -9,12 +9,12 @@
 :: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 :: 
 @ECHO OFF
-IF "%~d0%~p0..\bin" == "" GOTO error1
-IF NOT EXIST "%~d0%~p0..\bin\OGen.NTier.presentationlayer.console-2.0.exe" GOTO error2
+IF "%~d0%~p0..\distro\bin" == "" GOTO error1
+IF NOT EXIST "%~d0%~p0..\distro\bin\OGen.NTier.presentationlayer.console-2.0.exe" GOTO error2
 IF NOT EXIST "%~d0%~p0OGen-metadatas\MD_OGen-NTier_UTs.OGen-metadata.xml" GOTO error3
 
 
-"%~d0%~p0..\bin\OGen.NTier.presentationlayer.console-2.0.exe" "%~d0%~p0OGen-metadatas\MD_OGen-NTier_UTs.OGen-metadata.xml"
+"%~d0%~p0..\distro\bin\OGen.NTier.presentationlayer.console-2.0.exe" "%~d0%~p0OGen-metadatas\MD_OGen-NTier_UTs.OGen-metadata.xml"
 PAUSE
 GOTO eof
 
@@ -24,7 +24,7 @@ GOTO eof
 	PAUSE
 GOTO eof
 :error2
-	ECHO Can't find: "%~d0%~p0..\bin\OGen.NTier.presentationlayer.console-2.0.exe", 
+	ECHO Can't find: "%~d0%~p0..\distro\bin\OGen.NTier.presentationlayer.console-2.0.exe", 
 	ECHO %~n0%~x0 needs some tweaking
 	PAUSE
 GOTO eof

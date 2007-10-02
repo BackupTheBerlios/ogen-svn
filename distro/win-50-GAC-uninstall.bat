@@ -94,8 +94,8 @@ GOTO eof
 	IF NOT '%4' == 'f' (
 		gacutil /u %3-%fw%
 	)
-	IF EXIST "%thisdir%..\bin\%3-%fw%.dll" DEL /q "%thisdir%..\bin\%3-%fw%.dll"
-	IF EXIST "%thisdir%..\bin\%3-%fw%.exe" DEL /q "%thisdir%..\bin\%3-%fw%.exe"
+	IF EXIST "%thisdir%bin\%3-%fw%.dll" DEL /q "%thisdir%bin\%3-%fw%.dll"
+	IF EXIST "%thisdir%bin\%3-%fw%.exe" DEL /q "%thisdir%bin\%3-%fw%.exe"
 GOTO eof
 
 

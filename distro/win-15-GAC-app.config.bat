@@ -16,7 +16,7 @@ FOR /f "usebackq tokens=1* delims=^|" %%a IN (`ECHO %parentdir%`) DO (
 )
 IF "%parentdir%" == "" GOTO error1
 
-IF NOT EXIST "%parentdir%\bin" MKDIR "%parentdir%\bin"
+IF NOT EXIST "%thisdir%bin" MKDIR "%thisdir%bin"
 
 
 ::--- <OGen.Doc.presentationlayer.console>
@@ -31,19 +31,19 @@ ECHO     ^<add key="Templates" value="%templatefile%" /^>>>"%configfile%"
 TYPE "%thisdir%distro-templates\%configtemplate%.exe-2.config">>"%configfile%"
 ECHO %configfile%
 
-SET configdir=%parentdir%\bin
+SET configdir=%thisdir%bin
 SET configfilename=%configtemplate%
 SET configfile=%configdir%\%configfilename%-1.1.exe.config
-SET templatefile=%parentdir%\bin\OGen.Doc.templates-1.1\templates.config.xml
+SET templatefile=%thisdir%bin\OGen.Doc.templates-1.1\templates.config.xml
 TYPE "%thisdir%distro-templates\%configtemplate%.exe-1.config">"%configfile%"
 ECHO     ^<add key="Templates" value="%templatefile%" /^>>>"%configfile%"
 TYPE "%thisdir%distro-templates\%configtemplate%.exe-2.config">>"%configfile%"
 ECHO %configfile%
 
-SET configdir=%parentdir%\bin
+SET configdir=%thisdir%bin
 SET configfilename=%configtemplate%
 SET configfile=%configdir%\%configfilename%-2.0.exe.config
-SET templatefile=%parentdir%\bin\OGen.Doc.templates-2.0\templates.config.xml
+SET templatefile=%thisdir%bin\OGen.Doc.templates-2.0\templates.config.xml
 TYPE "%thisdir%distro-templates\%configtemplate%.exe-1.config">"%configfile%"
 ECHO     ^<add key="Templates" value="%templatefile%" /^>>>"%configfile%"
 TYPE "%thisdir%distro-templates\%configtemplate%.exe-2.config">>"%configfile%"
@@ -59,27 +59,27 @@ SET configfile=%configdir%\%configfilename%.config
 SET templatefile=%parentdir%\OGen-NTier\NTier_templates\templates.config.xml
 TYPE "%thisdir%distro-templates\%configtemplate%.exe-1.config">"%configfile%"
 ECHO     ^<add key="Templates" value="%templatefile%" /^>>>"%configfile%"
-ECHO     ^<add key="ogenPath" value="%parentdir%\bin" /^>>>"%configfile%"
+ECHO     ^<add key="ogenPath" value="%thisdir%bin" /^>>>"%configfile%"
 TYPE "%thisdir%distro-templates\%configtemplate%.exe-2.config">>"%configfile%"
 ECHO %configfile%
 
-SET configdir=%parentdir%\bin
+SET configdir=%thisdir%bin
 SET configfilename=%configtemplate%
 SET configfile=%configdir%\%configfilename%-1.1.exe.config
-SET templatefile=%parentdir%\bin\OGen.NTier.templates-1.1\templates.config.xml
+SET templatefile=%thisdir%bin\OGen.NTier.templates-1.1\templates.config.xml
 TYPE "%thisdir%distro-templates\%configtemplate%.exe-1.config">"%configfile%"
 ECHO     ^<add key="Templates" value="%templatefile%" /^>>>"%configfile%"
-ECHO     ^<add key="ogenPath" value="%parentdir%\bin" /^>>>"%configfile%"
+ECHO     ^<add key="ogenPath" value="%thisdir%bin" /^>>>"%configfile%"
 TYPE "%thisdir%distro-templates\%configtemplate%.exe-2.config">>"%configfile%"
 ECHO %configfile%
 
-SET configdir=%parentdir%\bin
+SET configdir=%thisdir%bin
 SET configfilename=%configtemplate%
 SET configfile=%configdir%\%configfilename%-2.0.exe.config
-SET templatefile=%parentdir%\bin\OGen.NTier.templates-2.0\templates.config.xml
+SET templatefile=%thisdir%bin\OGen.NTier.templates-2.0\templates.config.xml
 TYPE "%thisdir%distro-templates\%configtemplate%.exe-1.config">"%configfile%"
 ECHO     ^<add key="Templates" value="%templatefile%" /^>>>"%configfile%"
-ECHO     ^<add key="ogenPath" value="%parentdir%\bin" /^>>>"%configfile%"
+ECHO     ^<add key="ogenPath" value="%thisdir%bin" /^>>>"%configfile%"
 TYPE "%thisdir%distro-templates\%configtemplate%.exe-2.config">>"%configfile%"
 ECHO %configfile%
 ::--- </OGen.NTier.presentationlayer.console>
@@ -93,27 +93,27 @@ SET configfile=%configdir%\%configfilename%.config
 SET templatefile=%parentdir%\OGen-NTier\NTier_templates\templates.config.xml
 TYPE "%thisdir%distro-templates\%configtemplate%.exe-1.config">"%configfile%"
 ECHO     ^<add key="Templates" value="%templatefile%" /^>>>"%configfile%"
-ECHO     ^<add key="ogenPath" value="%parentdir%\bin" /^>>>"%configfile%"
+ECHO     ^<add key="ogenPath" value="%thisdir%bin" /^>>>"%configfile%"
 TYPE "%thisdir%distro-templates\%configtemplate%.exe-2.config">>"%configfile%"
 ECHO %configfile%
 
-SET configdir=%parentdir%\bin
+SET configdir=%thisdir%bin
 SET configfilename=%configtemplate%
 SET configfile=%configdir%\%configfilename%-1.1.exe.config
-SET templatefile=%parentdir%\bin\OGen.NTier.templates-1.1\templates.config.xml
+SET templatefile=%thisdir%bin\OGen.NTier.templates-1.1\templates.config.xml
 TYPE "%thisdir%distro-templates\%configtemplate%.exe-1.config">"%configfile%"
 ECHO     ^<add key="Templates" value="%templatefile%" /^>>>"%configfile%"
-ECHO     ^<add key="ogenPath" value="%parentdir%\bin" /^>>>"%configfile%"
+ECHO     ^<add key="ogenPath" value="%thisdir%bin" /^>>>"%configfile%"
 TYPE "%thisdir%distro-templates\%configtemplate%.exe-2.config">>"%configfile%"
 ECHO %configfile%
 
-SET configdir=%parentdir%\bin
+SET configdir=%thisdir%bin
 SET configfilename=%configtemplate%
 SET configfile=%configdir%\%configfilename%-2.0.exe.config
-SET templatefile=%parentdir%\bin\OGen.NTier.templates-2.0\templates.config.xml
+SET templatefile=%thisdir%bin\OGen.NTier.templates-2.0\templates.config.xml
 TYPE "%thisdir%distro-templates\%configtemplate%.exe-1.config">"%configfile%"
 ECHO     ^<add key="Templates" value="%templatefile%" /^>>>"%configfile%"
-ECHO     ^<add key="ogenPath" value="%parentdir%\bin" /^>>>"%configfile%"
+ECHO     ^<add key="ogenPath" value="%thisdir%bin" /^>>>"%configfile%"
 TYPE "%thisdir%distro-templates\%configtemplate%.exe-2.config">>"%configfile%"
 ECHO %configfile%
 ::--- </OGen.NTier.presentationlayer.winforms>

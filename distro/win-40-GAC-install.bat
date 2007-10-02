@@ -123,22 +123,22 @@ GOTO eof
 	IF '%5' == 't' SET binDir=bin
 	IF '%5' == 't' GOTO eof
 
-	IF NOT EXIST "%thisdir%..\bin" MKDIR "%thisdir%..\bin"
+	IF NOT EXIST "%thisdir%bin" MKDIR "%thisdir%bin"
 
 	:: if file has not been compiled, i'll try to install it if available from bin dir...
 	::IF NOT EXIST ..\%1\%2\%binDir%\%3-%fw%.dll GOTO tryinstall
 
-	IF '%6' == 'f' IF EXIST "%thisdir%..\%1\%2\%binDir%\%3-%fw%.dll" COPY "%thisdir%..\%1\%2\%binDir%\%3-%fw%.dll" "%thisdir%..\bin"
-	::IF EXIST "%thisdir%..\%1\%2\%binDir%\%3-%fw%.xml" COPY "%thisdir%..\%1\%2\%binDir%\%3-%fw%.xml" "%thisdir%..\bin"
+	IF '%6' == 'f' IF EXIST "%thisdir%..\%1\%2\%binDir%\%3-%fw%.dll" COPY "%thisdir%..\%1\%2\%binDir%\%3-%fw%.dll" "%thisdir%bin"
+	::IF EXIST "%thisdir%..\%1\%2\%binDir%\%3-%fw%.xml" COPY "%thisdir%..\%1\%2\%binDir%\%3-%fw%.xml" "%thisdir%bin"
 
-	IF '%6' == 't' IF EXIST "%thisdir%..\%1\%2\%binDir%\%3-%fw%.exe" COPY "%thisdir%..\%1\%2\%binDir%\%3-%fw%.exe" "%thisdir%..\bin"
-	::IF '%6' == 't' IF EXIST "%thisdir%..\%1\%2\%binDir%\%3-%fw%.exe.config" IF NOT EXIST "%thisdir%..\bin\%3-%fw%.exe.config" COPY "%thisdir%..\%1\%2\%binDir%\%3-%fw%.exe.config" "%thisdir%..\bin"
+	IF '%6' == 't' IF EXIST "%thisdir%..\%1\%2\%binDir%\%3-%fw%.exe" COPY "%thisdir%..\%1\%2\%binDir%\%3-%fw%.exe" "%thisdir%bin"
+	::IF '%6' == 't' IF EXIST "%thisdir%..\%1\%2\%binDir%\%3-%fw%.exe.config" IF NOT EXIST "%thisdir%..\bin\%3-%fw%.exe.config" COPY "%thisdir%..\%1\%2\%binDir%\%3-%fw%.exe.config" "%thisdir%bin"
 
 :tryinstall
 	IF '%4' == 'f' GOTO eof
-	IF NOT EXIST "%thisdir%..\bin\%3-%fw%.dll" GOTO eof
+	IF NOT EXIST "%thisdir%bin\%3-%fw%.dll" GOTO eof
 	::gacutil /u %3
-	gacutil /i "%thisdir%..\bin\%3-%fw%.dll"
+	gacutil /i "%thisdir%bin\%3-%fw%.dll"
 GOTO eof
 
 
