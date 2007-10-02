@@ -66,8 +66,8 @@ GOTO eof
 :error4
 	ECHO.
 	ECHO.
-	ECHO ERROR 3: - must specify framework version
-	PAUSE4
+	ECHO ERROR 4: - must specify framework version
+	PAUSE
 GOTO eof
 :error5
 	ECHO.
