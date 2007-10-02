@@ -14,6 +14,7 @@ IF NOT '%2' == '' GOTO install
 
 IF NOT EXIST "%thisdir%OGen-solutions.txt" GOTO error4
 IF NOT EXIST "%thisdir%OGen-projects.txt" GOTO error5
+IF NOT EXIST "%thisdir%OGen-public.snk" GOTO error6
 
 
 SET thisdir=%~d0%~p0
@@ -88,6 +89,12 @@ GOTO eof
 	ECHO.
 	ECHO.
 	ECHO ERROR 5: - Can't find file 'OGen-projects.txt'
+	PAUSE
+GOTO eof
+:error6
+	ECHO.
+	ECHO.
+	ECHO ERROR 6: - Can't find file 'OGen-public.snk'
 	PAUSE
 GOTO eof
 
