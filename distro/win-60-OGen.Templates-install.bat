@@ -14,7 +14,7 @@ IF NOT '%3' == '' GOTO install
 
 IF NOT EXIST "%thisdir%distro-metadatas\OGen-solutions.txt" GOTO error4
 IF NOT EXIST "%thisdir%distro-metadatas\OGen-projects.txt" GOTO error5
-IF NOT EXIST "%thisdir%OGen-public.snk" GOTO error6
+IF NOT EXIST "%thisdir%distro-keys\OGen-public.snk" GOTO error6
 
 
 SET thisdir=%~d0%~p0
@@ -36,7 +36,7 @@ IF '%SetEnvironmentPath%' == '' GOTO error1
 
 
 SET token=
-FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`sn -t "%thisdir%OGen-public.snk"^|find "Public key token is "`) DO (
+FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`sn -t "%thisdir%distro-keys\OGen-public.snk"^|find "Public key token is "`) DO (
 	SET token=%%e
 )
 IF '%token%' == '' GOTO error2
@@ -95,7 +95,7 @@ GOTO eof
 :error6
 	ECHO.
 	ECHO.
-	ECHO ERROR 6: - Can't find file 'OGen-public.snk'
+	ECHO ERROR 6: - Can't find file 'distro-keys\OGen-public.snk'
 	PAUSE
 GOTO eof
 :error7

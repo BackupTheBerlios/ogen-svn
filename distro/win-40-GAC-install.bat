@@ -143,7 +143,7 @@ GOTO eof
 
 
 :eof
-SET binDir=
-SET SetEnvironmentPath=
+::SET binDir=
+::SET SetEnvironmentPath=
 ::SET hasErrors=
-SET thisdir=
+::SET thisdir=

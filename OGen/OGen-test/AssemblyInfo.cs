@@ -41,5 +41,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyVersion("0.1.1000.20000")]
 #if !NET20
 [assembly: AssemblyDelaySign(false)]
-[assembly: AssemblyKeyFile("..\\..\\..\\..\\_admin\\OGen.snk")]
+[assembly: AssemblyKeyFile("..\\..\\..\\..\\distro\\distro-keys\\OGen.snk")]
 #endif

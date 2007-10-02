@@ -45,5 +45,5 @@ using System.Runtime.CompilerServices;
 //
 #if !NET20
 [assembly: AssemblyDelaySign(false)]
-[assembly: AssemblyKeyFile("..\\..\\..\\..\\_admin\\OGen.snk")]
+[assembly: AssemblyKeyFile("..\\..\\..\\..\\distro\\distro-keys\\OGen.snk")]
 #endif

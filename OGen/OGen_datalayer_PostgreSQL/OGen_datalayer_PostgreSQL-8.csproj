@@ -12,7 +12,7 @@
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <DocumentationFile>bin\Debug\OGen.lib.datalayer.PostgreSQL-2.0.xml</DocumentationFile>
     <SignAssembly>True</SignAssembly>
-    <AssemblyOriginatorKeyFile>..\..\_admin\OGen.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\distro\distro-keys\OGen.snk</AssemblyOriginatorKeyFile>
     <DelaySign>False</DelaySign>
     <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
   </PropertyGroup>

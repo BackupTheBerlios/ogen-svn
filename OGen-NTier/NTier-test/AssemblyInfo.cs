@@ -44,4 +44,4 @@ using System.Runtime.CompilerServices;
 // This is not required, if you don't want signing let these attributes like they're.
 //
 [assembly: AssemblyDelaySign(false)]
-[assembly: AssemblyKeyFile("..\\..\\..\\..\\_admin\\OGen.snk")]
+[assembly: AssemblyKeyFile("..\\..\\..\\..\\distro\\distro-keys\\OGen.snk")]

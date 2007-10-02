@@ -19,6 +19,8 @@ IF '%SetEnvironmentPath%' == '' GOTO error1
 ::CALL %SetEnvironmentPath% x86
   CALL %SetEnvironmentPath% %PROCESSOR_ARCHITECTURE%
 
+IF NOT EXIST "%thisdir%distro-keys" MKDIR "%thisdir%distro-keys"
+
 
 :makekey
 	IF EXIST "%thisdir%distro-keys\OGen.snk" GOTO eof_makekey

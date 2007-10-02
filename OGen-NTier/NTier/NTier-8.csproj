@@ -10,7 +10,7 @@
     <AssemblyKeyContainerName>
     </AssemblyKeyContainerName>
     <AssemblyName>OGen.NTier.presentationlayer.winforms-2.0</AssemblyName>
-    <AssemblyOriginatorKeyFile>..\..\_admin\OGen.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>..\..\distro\distro-keys\OGen.snk</AssemblyOriginatorKeyFile>
     <DefaultClientScript>JScript</DefaultClientScript>
     <DefaultHTMLPageLayout>Grid</DefaultHTMLPageLayout>
     <DefaultTargetSchema>IE50</DefaultTargetSchema>
