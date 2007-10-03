@@ -2,4 +2,5 @@ OGen
 OGen-NTier
 OGen-NTier_UTs
 OGen-Doc
+OGen-XSD
 doc
