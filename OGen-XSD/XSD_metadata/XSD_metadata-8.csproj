@@ -41,7 +41,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="XS_Attribute.cs" />
+    <Compile Include="XS_ComplexType.cs" />
+    <Compile Include="XS_Element.cs" />
+    <Compile Include="XS_Enumeration.cs" />
+    <Compile Include="XS_Restriction.cs" />
     <Compile Include="XS_Schema.cs" />
+    <Compile Include="XS_Sequence.cs" />
+    <Compile Include="XS_SimpleType.cs" />
     <None Include="COPYING.MIT" />
     <None Include="LICENSE.MIT.txt" />
     <None Include="LICENSE.txt" />

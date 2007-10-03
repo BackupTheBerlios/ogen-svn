@@ -16,12 +16,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 using System;
 
 namespace OGen.XSD.lib.metadata {
-	public class XS_Schema {
-		public XS_Schema() {
+	public class XS_Enumeration {
+		public XS_Enumeration() {
 		}
-
-		// XS_SimpleType
-		// XS_ComplexType
-		// XS_Element
 	}
 }
