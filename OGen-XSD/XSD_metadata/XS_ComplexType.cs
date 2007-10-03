@@ -14,10 +14,25 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #endregion
 
 using System;
+using System.Xml.Serialization;
 
 namespace OGen.XSD.lib.metadata {
 	public class XS_ComplexType {
 		public XS_ComplexType() {
 		}
+
+		#region public string Name { get; set; }
+		public string name_;
+
+		[XmlElement("name")]
+		public string Name {
+			get {
+				return name_;
+			}
+			set {
+				name_ = value;
+			}
+		}
+		#endregion
 	}
 }

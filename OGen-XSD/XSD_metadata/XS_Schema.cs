@@ -14,14 +14,93 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #endregion
 
 using System;
+using System.Xml.Serialization;
 
 namespace OGen.XSD.lib.metadata {
+	[XmlRoot("xs:schema")]
 	public class XS_Schema {
 		public XS_Schema() {
 		}
 
-		// XS_SimpleType
-		// XS_ComplexType
-		// XS_Element
+		#region public string xmlNS_xs { get; set; }
+		public string xmlns_xs_;
+
+		[XmlElement("xmlns:xs")]
+		public string xmlNS_xs {
+			get {
+				return xmlns_xs_;
+			}
+			set {
+				xmlns_xs_ = value;
+			}
+		}
+		#endregion
+		#region public string TargetNamespace { get; set; }
+		public string targetnamespace_;
+
+		[XmlElement("targetNamespace")]
+		public string targetNamespace {
+			get {
+				return targetnamespace_;
+			}
+			set {
+				targetnamespace_ = value;
+			}
+		}
+		#endregion
+		#region public string xmlNS { get; set; }
+		public string xmlns_;
+
+		[XmlElement("xmlns")]
+		public string xmlNS {
+			get {
+				return xmlns_;
+			}
+			set {
+				xmlns_ = value;
+			}
+		}
+		#endregion
+		#region public string ElementFormDefault { get; set; }
+		public string elementformdefault_;
+
+		[XmlElement("elementFormDefault")]
+		public string ElementFormDefault {
+			get {
+				return elementformdefault_;
+			}
+			set {
+				elementformdefault_ = value;
+			}
+		}
+		#endregion
+
+		#region public XS_SimpleType[] XS_SimpleType { get; set; }
+		private XS_SimpleType[] xs_simpletype_;
+
+		[XmlElement("xs:simpleType")]
+		public XS_SimpleType[] XS_SimpleType {
+			get { return xs_simpletype_; }
+			set { xs_simpletype_ = value; }
+		}
+		#endregion
+		#region public XS_ComplexType[] XS_ComplexType { get; set; }
+		private XS_ComplexType[] xs_complextype_;
+
+		[XmlElement("xs:complexType")]
+		public XS_ComplexType[] XS_ComplexType {
+			get { return xs_complextype_; }
+			set { xs_complextype_ = value; }
+		}
+		#endregion
+		#region public XS_Element[] XS_Element { get; set; }
+		private XS_Element[] xs_element_;
+
+		[XmlElement("xs:element")]
+		public XS_Element[] XS_Element {
+			get { return xs_element_; }
+			set { xs_element_ = value; }
+		}
+		#endregion
 	}
 }

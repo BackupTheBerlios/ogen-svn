@@ -1,11 +1,11 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <ProjectGuid>{4DF3D49D-AE3E-47F9-A33F-EB335D7B418E}</ProjectGuid>
+    <ProjectGuid>{E91AFBB5-F6BE-47D1-90B1-811EEB9D42DC}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <OutputType>Library</OutputType>
-    <RootNamespace>OGen.XSD.lib.metadata</RootNamespace>
-    <AssemblyName>OGen.XSD.lib.metadata-2.0</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>OGen.XSD.presentationlayer.test</RootNamespace>
+    <AssemblyName>OGen.XSD.presentationlayer.test-2.0</AssemblyName>
     <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
     <NoStdLib>False</NoStdLib>
     <WarningLevel>4</WarningLevel>
@@ -37,20 +37,20 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="XS_Attribute.cs" />
-    <Compile Include="XS_ComplexType.cs" />
-    <Compile Include="XS_Element.cs" />
-    <Compile Include="XS_Enumeration.cs" />
-    <Compile Include="XS_Restriction.cs" />
-    <Compile Include="XS_Schema.cs" />
-    <Compile Include="XS_Sequence.cs" />
-    <Compile Include="XS_SimpleType.cs" />
+    <Compile Include="Program.cs" />
     <None Include="COPYING.MIT" />
     <None Include="LICENSE.MIT.txt" />
     <None Include="LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XSD_metadata\XSD_metadata-8.csproj">
+      <Project>{4DF3D49D-AE3E-47F9-A33F-EB335D7B418E}</Project>
+      <Name>XSD_metadata</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

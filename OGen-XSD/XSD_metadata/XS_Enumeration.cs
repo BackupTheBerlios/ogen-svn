@@ -14,10 +14,25 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #endregion
 
 using System;
+using System.Xml.Serialization;
 
 namespace OGen.XSD.lib.metadata {
 	public class XS_Enumeration {
 		public XS_Enumeration() {
 		}
+
+		#region public string Value { get; set; }
+		public string value_;
+
+		[XmlElement("value")]
+		public string Value {
+			get {
+				return value_;
+			}
+			set {
+				value_ = value;
+			}
+		}
+		#endregion
 	}
 }
