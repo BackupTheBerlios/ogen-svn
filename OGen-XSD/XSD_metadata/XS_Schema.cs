@@ -23,7 +23,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 
 		#region public string xmlNS_xs { get; set; }
-		public string xmlns_xs_;
+		private string xmlns_xs_;
 
 		[XmlElement("xmlns:xs")]
 		public string xmlNS_xs {
@@ -36,7 +36,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 		#region public string TargetNamespace { get; set; }
-		public string targetnamespace_;
+		private string targetnamespace_;
 
 		[XmlElement("targetNamespace")]
 		public string targetNamespace {
@@ -49,7 +49,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 		#region public string xmlNS { get; set; }
-		public string xmlns_;
+		private string xmlns_;
 
 		[XmlElement("xmlns")]
 		public string xmlNS {
@@ -62,7 +62,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 		#region public string ElementFormDefault { get; set; }
-		public string elementformdefault_;
+		private string elementformdefault_;
 
 		[XmlElement("elementFormDefault")]
 		public string ElementFormDefault {

@@ -22,7 +22,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 
 		#region public string Name { get; set; }
-		public string name_;
+		private string name_;
 
 		[XmlElement("name")]
 		public string Name {
@@ -35,7 +35,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 		#region public string Type { get; set; }
-		public string type_;
+		private string type_;
 
 		[XmlElement("type")]
 		public string Type {
