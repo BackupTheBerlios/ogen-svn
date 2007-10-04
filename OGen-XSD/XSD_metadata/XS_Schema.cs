@@ -17,7 +17,7 @@ using System;
 using System.Xml.Serialization;
 
 namespace OGen.XSD.lib.metadata {
-	[XmlRoot("xs:schema")]
+	[XmlRoot("xs___schema")]
 	public class XS_Schema {
 		public XS_Schema() {
 		}
@@ -25,7 +25,13 @@ namespace OGen.XSD.lib.metadata {
 		#region public string xmlNS_xs { get; set; }
 		private string xmlns_xs_;
 
-		[XmlElement("xmlns:xs")]
+		//[XmlElement("xmlns:xs")]
+		[XmlAttribute("xmlns___xs")]
+		//[XmlAttribute(
+		//	AttributeName="xs", 
+		//	Namespace="http://www.w3.org/2001/XMLSchema-instance"
+		//	//Namespace="xs"
+		//)]
 		public string xmlNS_xs {
 			get {
 				return xmlns_xs_;
@@ -38,7 +44,8 @@ namespace OGen.XSD.lib.metadata {
 		#region public string TargetNamespace { get; set; }
 		private string targetnamespace_;
 
-		[XmlElement("targetNamespace")]
+		//[XmlElement("targetNamespace")]
+		[XmlAttribute("targetNamespace")]
 		public string targetNamespace {
 			get {
 				return targetnamespace_;
@@ -51,7 +58,8 @@ namespace OGen.XSD.lib.metadata {
 		#region public string xmlNS { get; set; }
 		private string xmlns_;
 
-		[XmlElement("xmlns")]
+		//[XmlElement("xmlns")]
+		[XmlAttribute("xmlns")]
 		public string xmlNS {
 			get {
 				return xmlns_;
@@ -64,7 +72,8 @@ namespace OGen.XSD.lib.metadata {
 		#region public string ElementFormDefault { get; set; }
 		private string elementformdefault_;
 
-		[XmlElement("elementFormDefault")]
+		//[XmlElement("elementFormDefault")]
+		[XmlAttribute("elementFormDefault")]
 		public string ElementFormDefault {
 			get {
 				return elementformdefault_;
@@ -78,7 +87,9 @@ namespace OGen.XSD.lib.metadata {
 		#region public XS_SimpleType[] XS_SimpleType { get; set; }
 		private XS_SimpleType[] xs_simpletype_;
 
-		[XmlElement("xs:simpleType")]
+		[XmlElement("xs___simpleType")]
+		//[XmlArray("xs___simpleType")]
+		//[XmlArrayItem(typeof(XS_SimpleType))]
 		public XS_SimpleType[] XS_SimpleType {
 			get { return xs_simpletype_; }
 			set { xs_simpletype_ = value; }
@@ -87,17 +98,20 @@ namespace OGen.XSD.lib.metadata {
 		#region public XS_ComplexType[] XS_ComplexType { get; set; }
 		private XS_ComplexType[] xs_complextype_;
 
-		[XmlElement("xs:complexType")]
+		[XmlElement("xs___complexType")]
+		//[XmlArray("xs___complexType")]
+		//[XmlArrayItem(typeof(XS_ComplexType))]
 		public XS_ComplexType[] XS_ComplexType {
 			get { return xs_complextype_; }
 			set { xs_complextype_ = value; }
 		}
 		#endregion
-		#region public XS_Element[] XS_Element { get; set; }
-		private XS_Element[] xs_element_;
+		
+		#region public XS_Element XS_Element { get; set; }
+		private XS_Element xs_element_;
 
-		[XmlElement("xs:element")]
-		public XS_Element[] XS_Element {
+		[XmlElement("xs___element")]
+		public XS_Element XS_Element {
 			get { return xs_element_; }
 			set { xs_element_ = value; }
 		}

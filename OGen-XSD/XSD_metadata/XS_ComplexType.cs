@@ -24,7 +24,8 @@ namespace OGen.XSD.lib.metadata {
 		#region public string Name { get; set; }
 		private string name_;
 
-		[XmlElement("name")]
+		//[XmlElement("name")]
+		[XmlAttribute("name")]
 		public string Name {
 			get {
 				return name_;
@@ -32,6 +33,25 @@ namespace OGen.XSD.lib.metadata {
 			set {
 				name_ = value;
 			}
+		}
+		#endregion
+		#region public XS_Sequence XS_Sequence { get; set; }
+		private XS_Sequence xs_sequence_;
+
+		[XmlElement("xs___sequence")]
+		public XS_Sequence XS_Sequence {
+			get { return xs_sequence_; }
+			set { xs_sequence_ = value; }
+		}
+		#endregion
+
+		#region public XS_Attribute[] XS_Attribute { get; set; }
+		private XS_Attribute[] xs_attribute_;
+
+		[XmlElement("xs___attribute")]
+		public XS_Attribute[] XS_Attribute {
+			get { return xs_attribute_; }
+			set { xs_attribute_ = value; }
 		}
 		#endregion
 	}

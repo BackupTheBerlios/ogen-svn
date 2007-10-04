@@ -24,7 +24,8 @@ namespace OGen.XSD.lib.metadata {
 		#region public string Value { get; set; }
 		private string value_;
 
-		[XmlElement("value")]
+		//[XmlElement("value")]
+		[XmlAttribute("value")]
 		public string Value {
 			get {
 				return value_;

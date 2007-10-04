@@ -24,7 +24,8 @@ namespace OGen.XSD.lib.metadata {
 		#region public string Name { get; set; }
 		private string name_;
 
-		[XmlElement("name")]
+		//[XmlElement("name")]
+		[XmlAttribute("name")]
 		public string Name {
 			get {
 				return name_;
@@ -32,6 +33,15 @@ namespace OGen.XSD.lib.metadata {
 			set {
 				name_ = value;
 			}
+		}
+		#endregion
+		#region public XS_Restriction XS_Restriction { get; set; }
+		private XS_Restriction xs_restriction_;
+
+		[XmlElement("xs___restriction")]
+		public XS_Restriction XS_Restriction {
+			get { return xs_restriction_; }
+			set { xs_restriction_ = value; }
 		}
 		#endregion
 	}

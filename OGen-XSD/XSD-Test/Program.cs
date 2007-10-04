@@ -16,15 +16,46 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 using System;
 //using System.Collections;
 using System.Xml;
+using System.Xml.Schema;
 using System.Xml.Serialization;
 using System.IO;
+using System.Text;
 
 using OGen.XSD.lib.metadata;
 
 namespace OGen.XSD.presentationlayer.test {
 	class Program {
 		public static void Main(string[] args) {
-			Console.WriteLine("Hello World!");
+//			string _filepath = @"c:\test.xml";
+//
+//			FileStream _file = new FileStream(
+//				_filepath,
+//				FileMode.Create,
+//				FileAccess.Write,
+//				FileShare.ReadWrite
+//			);
+//
+//			//ValidationEventHandler _eventHandler 
+//			//	= new ValidationEventHandler(Program.ShowCompileErrors);
+//
+//			XmlSerializerNamespaces _xmlserializernamespaces 
+//				= new XmlSerializerNamespaces();
+//			_xmlserializernamespaces.Add("PREFIX1", "NAMESPACE111");
+//			//_xmlserializernamespaces.Add("PREFIX2", "NAMESPACE222");
+//
+//			XmlSchema _xmlschema = new XmlSchema();
+//			//XmlSchema.Read(
+//			//	_file2, 
+//			//	_eventHandler
+//			//);
+//			_xmlschema.ElementFormDefault = XmlSchemaForm.Qualified;
+//			_xmlschema.Namespaces = _xmlserializernamespaces;
+//			//_xmlschema.Elements;
+//
+//			_xmlschema.Write(_file);
+//			_file.Flush();
+//			_file.Close();
+
 
 			XS_Schema _schema = new XS_Schema();
 			_schema.xmlNS_xs = "http://www.w3.org/2001/XMLSchema";
@@ -64,7 +95,7 @@ namespace OGen.XSD.presentationlayer.test {
 			_file.Close();
 
 			Console.Write("Press any key to continue . . . ");
-			Console.ReadKey(true);
+			Console.ReadKey(true); Console.WriteLine();
 
 			FileStream _stream = new FileStream(
 				_filepath,
@@ -77,7 +108,7 @@ namespace OGen.XSD.presentationlayer.test {
 			);
 
 			Console.Write("Press any key to continue . . . ");
-			Console.ReadKey(true);
+			Console.ReadKey(true); Console.WriteLine();
 		}
 	}
 }

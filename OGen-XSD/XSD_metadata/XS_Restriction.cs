@@ -24,7 +24,8 @@ namespace OGen.XSD.lib.metadata {
 		#region public string Base { get; set; }
 		private string base_;
 
-		[XmlElement("base")]
+		//[XmlElement("base")]
+		[XmlAttribute("base")]
 		public string Base {
 			get {
 				return base_;
@@ -32,6 +33,16 @@ namespace OGen.XSD.lib.metadata {
 			set {
 				base_ = value;
 			}
+		}
+		#endregion
+
+		#region public XS_Enumeration[] XS_Enumeration { get; set; }
+		private XS_Enumeration[] xs_enumeration_;
+
+		[XmlElement("xs___enumeration")]
+		public XS_Enumeration[] XS_Enumeration {
+			get { return xs_enumeration_; }
+			set { xs_enumeration_ = value; }
 		}
 		#endregion
 	}

@@ -24,7 +24,8 @@ namespace OGen.XSD.lib.metadata {
 		#region public string Name { get; set; }
 		private string name_;
 
-		[XmlElement("name")]
+		//[XmlElement("name")]
+		[XmlAttribute("name")]
 		public string Name {
 			get {
 				return name_;
@@ -37,7 +38,8 @@ namespace OGen.XSD.lib.metadata {
 		#region public string Type { get; set; }
 		private string type_;
 
-		[XmlElement("type")]
+		//[XmlElement("type")]
+		[XmlAttribute("type")]
 		public string Type {
 			get {
 				return type_;
@@ -50,7 +52,8 @@ namespace OGen.XSD.lib.metadata {
 		#region public string MaxOccurs { get; set; }
 		private string maxoccurs_;
 
-		[XmlElement("maxOccurs")]
+		//[XmlElement("maxOccurs")]
+		[XmlAttribute("maxOccurs")]
 		public string MaxOccurs {
 			get {
 				return maxoccurs_;
