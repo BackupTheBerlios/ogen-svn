@@ -46,5 +46,8 @@ OGen-Doc, Doc, OGen.Doc.presentationlayer.winforms, f, f, t, MIT, f, f
 OGen-Doc, Doc-console, OGen.Doc.presentationlayer.console, f, f, t, MIT, f, t
 OGen-Doc, Doc-test, OGen.Doc.test, f, f, t, MIT, f, f
 OGen-Doc, OGen-Doc-Doc, OGen-Doc-Doc, f, f, f, GNU_FDL, t, f
+OGen-XSD, XSD_generator, OGen.XSD.lib.generator, t, f, f, MIT, f, t
 OGen-XSD, XSD_metadata, OGen.XSD.lib.metadata, t, f, f, MIT, f, t
+OGen-XSD, XSD_templates, OGen.XSD.lib.templates, f, t, f, MIT, f, t
+OGen-XSD, XSD-console, OGen.XSD.presentationlayer.console, f, f, t, MIT, f, t
 OGen-XSD, XSD-test, OGen.XSD.presentationlayer.test, f, f, t, MIT, f, f

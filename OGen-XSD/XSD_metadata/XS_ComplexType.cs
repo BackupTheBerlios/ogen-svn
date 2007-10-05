@@ -35,23 +35,44 @@ namespace OGen.XSD.lib.metadata {
 			}
 		}
 		#endregion
-		#region public XS_Sequence XS_Sequence { get; set; }
-		private XS_Sequence xs_sequence_;
 
-		[XmlElement("sequence")]
-		public XS_Sequence XS_Sequence {
-			get { return xs_sequence_; }
-			set { xs_sequence_ = value; }
+		#region public xs__collection<XS_Attribute> XS_Attribute { get; }
+		private xs__collection<XS_Attribute> xs_attribute_ 
+			= new xs__collection<XS_Attribute>();
+
+		[XmlElement("attribute")]
+		//[XmlArray("attribute")]
+		//[XmlArrayItem(typeof(XS_Attribute))]
+		public XS_Attribute[] xs_attribute__xml {
+			get { return xs_attribute_.cols__; }
+			set { xs_attribute_.cols__ = value; }
+		}
+
+		public xs__collection<XS_Attribute> XS_Attribute {
+			get { return xs_attribute_; }
 		}
 		#endregion
 
-		#region public XS_Attribute[] XS_Attribute { get; set; }
-		private XS_Attribute[] xs_attribute_;
+		#region public XS_Sequence XS_Sequence { get; set; }
+		private XS_Sequence xs_sequence__;
 
-		[XmlElement("attribute")]
-		public XS_Attribute[] XS_Attribute {
-			get { return xs_attribute_; }
-			set { xs_attribute_ = value; }
+		[XmlIgnore()]
+		public XS_Sequence XS_Sequence {
+			get {
+				if (xs_sequence__ == null) {
+					xs_sequence__ = new XS_Sequence();
+				}
+				return xs_sequence__;
+			}
+			set {
+				xs_sequence__ = value;
+			}
+		}
+
+		[XmlElement("sequence")]
+		public XS_Sequence xs_sequence__xml {
+			get { return xs_sequence__; }
+			set { xs_sequence__ = value; }
 		}
 		#endregion
 	}

@@ -20,6 +20,11 @@ namespace OGen.XSD.lib.metadata {
 	public class XS_Enumeration {
 		public XS_Enumeration() {
 		}
+		public XS_Enumeration(
+			string value_in
+		) {
+			value_ = value_in;
+		}
 
 		#region public string Value { get; set; }
 		private string value_;

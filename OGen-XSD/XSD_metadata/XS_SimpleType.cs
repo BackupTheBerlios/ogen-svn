@@ -37,12 +37,25 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 		#region public XS_Restriction XS_Restriction { get; set; }
-		private XS_Restriction xs_restriction_;
+		private XS_Restriction xs_restriction__;
+
+		[XmlIgnore()]
+		public XS_Restriction XS_Restriction {
+			get {
+				if (xs_restriction__ == null) {
+					xs_restriction__ = new XS_Restriction();
+				}
+				return xs_restriction__;
+			}
+			set {
+				xs_restriction__ = value;
+			}
+		}
 
 		[XmlElement("restriction")]
-		public XS_Restriction XS_Restriction {
-			get { return xs_restriction_; }
-			set { xs_restriction_ = value; }
+		public XS_Restriction xs_restriction__xml {
+			get { return xs_restriction__; }
+			set { xs_restriction__ = value; }
 		}
 		#endregion
 	}

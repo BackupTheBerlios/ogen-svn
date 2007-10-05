@@ -95,7 +95,7 @@ namespace OGen.XSD.lib.metadata {
 		[XmlElement("simpleType")]
 		//[XmlArray("simpleType")]
 		//[XmlArrayItem(typeof(XS_SimpleType))]
-		public XS_SimpleType[] xs_simpletype__ {
+		public XS_SimpleType[] xs_simpletype__xml {
 			get { return xs_simpletype_.cols__; }
 			set { xs_simpletype_.cols__ = value; }
 		}
@@ -104,14 +104,14 @@ namespace OGen.XSD.lib.metadata {
 			get { return xs_simpletype_; }
 		}
 		#endregion
-		#region public XS_ComplexType[] XS_ComplexType { get; set; }
+		#region public xs__collection<XS_ComplexType> XS_ComplexType { get; }
 		private xs__collection<XS_ComplexType> xs_complextype_ 
 			= new xs__collection<XS_ComplexType>();
 
 		[XmlElement("complexType")]
 		//[XmlArray("complexType")]
 		//[XmlArrayItem(typeof(XS_ComplexType))]
-		public XS_ComplexType[] XS_ComplexType__ {
+		public XS_ComplexType[] XS_ComplexType__xml {
 			get { return xs_complextype_.cols__; }
 			set { xs_complextype_.cols__ = value; }
 		}

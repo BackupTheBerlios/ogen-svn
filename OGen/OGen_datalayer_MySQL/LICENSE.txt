@@ -50,7 +50,10 @@ OGen is licensed under various different licenses.
 	* OGen.Doc.presentationlayer.winforms: MIT
 	* OGen.Doc.presentationlayer.console: MIT
 	* OGen.Doc.test: MIT
+	* OGen.XSD.lib.generator: MIT
 	* OGen.XSD.lib.metadata: MIT
+	* OGen.XSD.lib.templates: MIT
+	* OGen.XSD.presentationlayer.console: MIT
 	* OGen.XSD.presentationlayer.test: MIT
 	* OGen-Doc: GNU FDL
 	* OGen-NTier-Doc: GNU FDL

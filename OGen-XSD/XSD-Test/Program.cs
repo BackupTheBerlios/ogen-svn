@@ -65,16 +65,52 @@ namespace OGen.XSD.presentationlayer.test {
 			_schema.xmlNS = "http://ogen.berlios.de";
 			_schema.ElementFormDefault = "qualified";
 			
-			XS_SimpleType _someEnum = new XS_SimpleType();
-			_someEnum.Name = "someEnum";
+			XS_SimpleType _simpletype = new XS_SimpleType();
+			_simpletype.Name = "someEnum";
+			_simpletype.XS_Restriction.Base = "xs:string";
+			_simpletype.XS_Restriction.XS_Enumeration.Add(
+				new XS_Enumeration("someenum1"), 
+				new XS_Enumeration("someenum2"), 
+				new XS_Enumeration("someenum3")
+			);
 			_schema.XS_SimpleType.Add(
-				_someEnum
+				_simpletype
 			);
 
+			XS_Attribute _attrib1 = new XS_Attribute();
+			_attrib1.Name = "someAttrib1";
+			_attrib1.Type = "xs:string";
 			XS_ComplexType _someType1 = new XS_ComplexType();
 			_someType1.Name = "someType1";
+			_someType1.XS_Attribute.Add(
+				_attrib1
+			);
+
+			XS_Attribute _attrib2 = new XS_Attribute();
+			_attrib2.Name = "someAttrib2";
+			_attrib2.Type = "xs:string";
+			XS_Attribute _attrib3 = new XS_Attribute();
+			_attrib3.Name = "someAttrib3";
+			_attrib3.Type = "xs:string";
 			XS_ComplexType _someType2 = new XS_ComplexType();
 			_someType2.Name = "someType2";
+			_someType2.XS_Attribute.Add(
+				_attrib2, 
+				_attrib3
+			);
+
+			XS_Element _element1 = new XS_Element();
+			_element1.Name = "someCollection";
+			_element1.Type = "someType1";
+			_element1.MaxOccurs = "unbounded";
+			XS_Element _element2 = new XS_Element();
+			_element2.Name = "someItem";
+			_element2.Type = "someType1";
+			_someType2.XS_Sequence.XS_Element.Add(
+				_element1, 
+				_element2
+			);
+
 			_schema.XS_ComplexType.Add(
 				_someType1, 
 				_someType2
@@ -86,12 +122,10 @@ namespace OGen.XSD.presentationlayer.test {
 			_schema.XS_Element = _someElement;
 
 			string _filepath = @"c:\test.xml";
-
 			_schema.Save(_filepath);
 			Output(_schema);
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true); Console.WriteLine();
-
 			_schema = XS_Schema.Load(_filepath);
 			Output(_schema);
 			Console.Write("Press any key to continue . . . ");

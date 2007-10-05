@@ -36,13 +36,20 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public XS_Enumeration[] XS_Enumeration { get; set; }
-		private XS_Enumeration[] xs_enumeration_;
+		#region public xs__collection<XS_Enumeration> XS_Enumeration { get; }
+		private xs__collection<XS_Enumeration> xs_enumeration_ 
+			= new xs__collection<XS_Enumeration>();
 
 		[XmlElement("enumeration")]
-		public XS_Enumeration[] XS_Enumeration {
+		//[XmlArray("enumeration")]
+		//[XmlArrayItem(typeof(XS_Enumeration))]
+		public XS_Enumeration[] xs_enumeration__xml {
+			get { return xs_enumeration_.cols__; }
+			set { xs_enumeration_.cols__ = value; }
+		}
+
+		public xs__collection<XS_Enumeration> XS_Enumeration {
 			get { return xs_enumeration_; }
-			set { xs_enumeration_ = value; }
 		}
 		#endregion
 	}

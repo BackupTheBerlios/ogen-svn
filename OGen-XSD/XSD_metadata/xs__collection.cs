@@ -15,7 +15,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 using System;
 using System.Collections;
-using System.Xml.Serialization;
 
 namespace OGen.XSD.lib.metadata {
 	public class xs__collection<C> {
@@ -26,8 +25,6 @@ namespace OGen.XSD.lib.metadata {
 		#region public C[] cols__ { get; set; }
 		private ArrayList cols_;
 
-		//[XmlElement("simpleType", typeof(XS_SimpleType))]
-		//[XmlElement("simpleType", typeof(XS_SimpleType))]
 		public C[] cols__ {
 			get {
 				C[] _output = new C[cols_.Count];
@@ -36,8 +33,10 @@ namespace OGen.XSD.lib.metadata {
 			}
 			set {
 				cols_.Clear();
-				for (int i = 0; i < value.Length; i++) {
-					cols_.Add(value[i]);
+				if (value != null) {
+					for (int i = 0; i < value.Length; i++) {
+						cols_.Add(value[i]);
+					}
 				}
 			}
 		}

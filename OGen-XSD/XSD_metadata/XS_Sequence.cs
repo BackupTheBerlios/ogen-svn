@@ -21,13 +21,20 @@ namespace OGen.XSD.lib.metadata {
 		public XS_Sequence() {
 		}
 
-		#region public XS_Element[] XS_Element { get; set; }
-		private XS_Element[] xs_element_;
+		#region public xs__collection<XS_Element> XS_Element { get; }
+		private xs__collection<XS_Element> xs_element_ 
+			= new xs__collection<XS_Element>();
 
 		[XmlElement("element")]
-		public XS_Element[] XS_Element {
+		//[XmlArray("element")]
+		//[XmlArrayItem(typeof(XS_Element))]
+		public XS_Element[] xs_element__xml {
+			get { return xs_element_.cols__; }
+			set { xs_element_.cols__ = value; }
+		}
+
+		public xs__collection<XS_Element> XS_Element {
 			get { return xs_element_; }
-			set { xs_element_ = value; }
 		}
 		#endregion
 	}
