@@ -44,5 +44,7 @@
     <None Include="COPYING.MIT" />
     <None Include="LICENSE.MIT.txt" />
     <None Include="LICENSE.txt" />
+    <None Include="templates.config.xml" />
+    <None Include="Web.config" />
   </ItemGroup>
 </Project>
