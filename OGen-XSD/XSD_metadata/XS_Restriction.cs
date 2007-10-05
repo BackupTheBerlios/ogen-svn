@@ -39,7 +39,7 @@ namespace OGen.XSD.lib.metadata {
 		#region public XS_Enumeration[] XS_Enumeration { get; set; }
 		private XS_Enumeration[] xs_enumeration_;
 
-		[XmlElement("xs___enumeration")]
+		[XmlElement("enumeration")]
 		public XS_Enumeration[] XS_Enumeration {
 			get { return xs_enumeration_; }
 			set { xs_enumeration_ = value; }

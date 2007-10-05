@@ -14,36 +14,47 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #endregion
 
 using System;
+using System.Collections;
 using System.Xml.Serialization;
 
 namespace OGen.XSD.lib.metadata {
-	public class XS_SimpleType {
-		public XS_SimpleType(
-		) {
+	public class xs__collection<C> {
+		public xs__collection() {
+			cols_ = new ArrayList();
 		}
+	
+		#region public C[] cols__ { get; set; }
+		private ArrayList cols_;
 
-		#region public string Name { get; set; }
-		private string name_;
-
-		//[XmlElement("name")]
-		[XmlAttribute("name")]
-		public string Name {
+		//[XmlElement("simpleType", typeof(XS_SimpleType))]
+		//[XmlElement("simpleType", typeof(XS_SimpleType))]
+		public C[] cols__ {
 			get {
-				return name_;
+				C[] _output = new C[cols_.Count];
+				cols_.CopyTo(_output);
+				return _output;
 			}
 			set {
-				name_ = value;
+				cols_.Clear();
+				for (int i = 0; i < value.Length; i++) {
+					cols_.Add(value[i]);
+				}
 			}
 		}
 		#endregion
-		#region public XS_Restriction XS_Restriction { get; set; }
-		private XS_Restriction xs_restriction_;
 
-		[XmlElement("restriction")]
-		public XS_Restriction XS_Restriction {
-			get { return xs_restriction_; }
-			set { xs_restriction_ = value; }
+		public C this[int index_in] {
+			get { return (C)cols_[index_in]; }
 		}
-		#endregion
+		public int Add(params C[] col_in) {
+			int _output = -1;
+			for (int c = 0; c < col_in.Length; c++) {
+				_output = cols_.Add(col_in[c]);
+			}
+			return _output;
+		}
+		public int Count {
+			get { return cols_.Count; }
+		}
 	}
 }

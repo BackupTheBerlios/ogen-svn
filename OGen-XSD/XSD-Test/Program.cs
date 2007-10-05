@@ -26,6 +26,7 @@ using OGen.XSD.lib.metadata;
 namespace OGen.XSD.presentationlayer.test {
 	class Program {
 		public static void Main(string[] args) {
+			#region XmlSchema...
 //			string _filepath = @"c:\test.xml";
 //
 //			FileStream _file = new FileStream(
@@ -55,60 +56,72 @@ namespace OGen.XSD.presentationlayer.test {
 //			_xmlschema.Write(_file);
 //			_file.Flush();
 //			_file.Close();
+			#endregion
 
 
 			XS_Schema _schema = new XS_Schema();
-			_schema.xmlNS_xs = "http://www.w3.org/2001/XMLSchema";
-			_schema.targetNamespace = "http://ogen.berlios.de";
+//			_schema.xmlNS_xs = "http://www.w3.org/2001/XMLSchema";
+			_schema.TargetNamespace = "http://ogen.berlios.de";
 			_schema.xmlNS = "http://ogen.berlios.de";
 			_schema.ElementFormDefault = "qualified";
 			
 			XS_SimpleType _someEnum = new XS_SimpleType();
 			_someEnum.Name = "someEnum";
-
-			_schema.XS_SimpleType = new XS_SimpleType[] {
+			_schema.XS_SimpleType.Add(
 				_someEnum
-			};
+			);
 
 			XS_ComplexType _someType1 = new XS_ComplexType();
 			_someType1.Name = "someType1";
-
 			XS_ComplexType _someType2 = new XS_ComplexType();
 			_someType2.Name = "someType2";
-			_schema.XS_ComplexType = new XS_ComplexType[] {
+			_schema.XS_ComplexType.Add(
 				_someType1, 
 				_someType2
-			};
+			);
+			
+			XS_Element _someElement = new XS_Element();
+			_someElement.Name = "someElement";
+			_someElement.Type = "someType2";
+			_schema.XS_Element = _someElement;
 
 			string _filepath = @"c:\test.xml";
-			FileStream _file = new FileStream(
-				_filepath,
-				FileMode.Create,
-				FileAccess.Write,
-				FileShare.ReadWrite
-			);
-			new XmlSerializer(typeof(XS_Schema)).Serialize(
-				_file,
-				_schema
-			);
-			_file.Flush();
-			_file.Close();
 
+			_schema.Save(_filepath);
+			Output(_schema);
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true); Console.WriteLine();
 
-			FileStream _stream = new FileStream(
-				_filepath,
-				FileMode.Open,
-				FileAccess.Read,
-				FileShare.Read
-			);
-			_schema = (XS_Schema)new XmlSerializer(typeof(XS_Schema)).Deserialize(
-				_stream
-			);
-
+			_schema = XS_Schema.Load(_filepath);
+			Output(_schema);
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true); Console.WriteLine();
+		}
+
+		public static void Output(XS_Schema schema_in) {
+			Console.WriteLine(
+				"<xs:schema targetNamespace=\"{0}\" elementFormDefault=\"{1}\">", 
+				schema_in.TargetNamespace, 
+				schema_in.ElementFormDefault
+			);
+			for (int i = 0; i < schema_in.XS_SimpleType.Count; i++) {
+				Console.WriteLine(
+					"\t<xs:simpleType name=\"{0}\" />", 
+					schema_in.XS_SimpleType[i].Name
+				);
+			}
+			for (int i = 0; i < schema_in.XS_ComplexType.Count; i++) {
+				Console.WriteLine(
+					"\t<xs:complexType name=\"{0}\" />", 
+					schema_in.XS_ComplexType[i].Name
+				);
+			}
+			Console.WriteLine(
+				"\t<xs:element name=\"{0}\" type=\"{1}\" />", 
+				schema_in.XS_Element.Name, 
+				schema_in.XS_Element.Type
+			);
+			Console.WriteLine("</xs:schema>");
 		}
 	}
 }

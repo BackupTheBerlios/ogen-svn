@@ -20,5 +20,15 @@ namespace OGen.XSD.lib.metadata {
 	public class XS_Sequence {
 		public XS_Sequence() {
 		}
+
+		#region public XS_Element[] XS_Element { get; set; }
+		private XS_Element[] xs_element_;
+
+		[XmlElement("element")]
+		public XS_Element[] XS_Element {
+			get { return xs_element_; }
+			set { xs_element_ = value; }
+		}
+		#endregion
 	}
 }

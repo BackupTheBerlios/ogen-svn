@@ -14,39 +14,43 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #endregion
 
 using System;
+using System.IO;
 using System.Xml.Serialization;
 
 namespace OGen.XSD.lib.metadata {
-	[XmlRoot("xs___schema")]
+	//[XmlRoot("xs___schema")]
+	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
+	[System.Xml.Serialization.XmlRootAttribute("schema", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
 	public class XS_Schema {
 		public XS_Schema() {
 		}
 
-		#region public string xmlNS_xs { get; set; }
-		private string xmlns_xs_;
-
-		//[XmlElement("xmlns:xs")]
-		[XmlAttribute("xmlns___xs")]
-		//[XmlAttribute(
-		//	AttributeName="xs", 
-		//	Namespace="http://www.w3.org/2001/XMLSchema-instance"
-		//	//Namespace="xs"
-		//)]
-		public string xmlNS_xs {
-			get {
-				return xmlns_xs_;
-			}
-			set {
-				xmlns_xs_ = value;
-			}
-		}
+		#region //public string xmlNS_xs { get; set; }
+//		private string xmlns_xs_;
+//
+//		//[System.Xml.Serialization.XmlElementAttribute("xmlns")]
+//		//[XmlElement("xmlns:xs")]
+//		[XmlAttribute("xmlns")]
+//		//[XmlAttribute(
+//		//	AttributeName="xs", 
+//		//	//Namespace="http://www.w3.org/2001/XMLSchema-instance"
+//		//	Namespace="xs"
+//		//)]
+//		public string xmlNS_xs {
+//			get {
+//				return xmlns_xs_;
+//			}
+//			set {
+//				xmlns_xs_ = value;
+//			}
+//		}
 		#endregion
 		#region public string TargetNamespace { get; set; }
 		private string targetnamespace_;
 
 		//[XmlElement("targetNamespace")]
 		[XmlAttribute("targetNamespace")]
-		public string targetNamespace {
+		public string TargetNamespace {
 			get {
 				return targetnamespace_;
 			}
@@ -84,36 +88,76 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public XS_SimpleType[] XS_SimpleType { get; set; }
-		private XS_SimpleType[] xs_simpletype_;
+		#region public xs__collection<XS_SimpleType> XS_SimpleType { get; }
+		private xs__collection<XS_SimpleType> xs_simpletype_ 
+			= new xs__collection<XS_SimpleType>();
 
-		[XmlElement("xs___simpleType")]
-		//[XmlArray("xs___simpleType")]
+		[XmlElement("simpleType")]
+		//[XmlArray("simpleType")]
 		//[XmlArrayItem(typeof(XS_SimpleType))]
-		public XS_SimpleType[] XS_SimpleType {
+		public XS_SimpleType[] xs_simpletype__ {
+			get { return xs_simpletype_.cols__; }
+			set { xs_simpletype_.cols__ = value; }
+		}
+
+		public xs__collection<XS_SimpleType> XS_SimpleType {
 			get { return xs_simpletype_; }
-			set { xs_simpletype_ = value; }
 		}
 		#endregion
 		#region public XS_ComplexType[] XS_ComplexType { get; set; }
-		private XS_ComplexType[] xs_complextype_;
+		private xs__collection<XS_ComplexType> xs_complextype_ 
+			= new xs__collection<XS_ComplexType>();
 
-		[XmlElement("xs___complexType")]
-		//[XmlArray("xs___complexType")]
+		[XmlElement("complexType")]
+		//[XmlArray("complexType")]
 		//[XmlArrayItem(typeof(XS_ComplexType))]
-		public XS_ComplexType[] XS_ComplexType {
+		public XS_ComplexType[] XS_ComplexType__ {
+			get { return xs_complextype_.cols__; }
+			set { xs_complextype_.cols__ = value; }
+		}
+
+		public xs__collection<XS_ComplexType> XS_ComplexType {
 			get { return xs_complextype_; }
-			set { xs_complextype_ = value; }
 		}
 		#endregion
 		
 		#region public XS_Element XS_Element { get; set; }
 		private XS_Element xs_element_;
 
-		[XmlElement("xs___element")]
+		[XmlElement("element")]
 		public XS_Element XS_Element {
 			get { return xs_element_; }
 			set { xs_element_ = value; }
+		}
+		#endregion
+
+		#region public static XS_Schema Load(string filePath_in);
+		public static XS_Schema Load(string filePath_in) {
+			FileStream _stream = new FileStream(
+				filePath_in,
+				FileMode.Open,
+				FileAccess.Read,
+				FileShare.Read
+			);
+			return (XS_Schema)new XmlSerializer(typeof(XS_Schema)).Deserialize(
+				_stream
+			);
+		}
+		#endregion
+		#region public void Save(string filePath_in);
+		public void Save(string filePath_in) {
+			FileStream _file = new FileStream(
+				filePath_in,
+				FileMode.Create,
+				FileAccess.Write,
+				FileShare.ReadWrite
+			);
+			new XmlSerializer(typeof(XS_Schema)).Serialize(
+				_file,
+				this
+			);
+			_file.Flush();
+			_file.Close();
 		}
 		#endregion
 	}
