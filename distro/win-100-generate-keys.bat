@@ -49,5 +49,4 @@ GOTO eof
 
 :eof
 SET SetEnvironmentPath=
-SET errorFound=
 SET thisdir=

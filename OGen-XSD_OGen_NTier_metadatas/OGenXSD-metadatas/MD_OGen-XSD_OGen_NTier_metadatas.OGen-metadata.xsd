@@ -188,6 +188,53 @@
 		</xs:sequence>
 	</xs:complexType>
 
+	<!--
+	tableSearches
+		[]tableSearch
+			tableSearchParameters
+				[]tableFieldRef
+			tableSearchUpdates
+				[]tableSearchUpdate
+					tableSearchUpdateParameters
+						[]tableFieldRef
+	-->
+	<xs:complexType name="tableSearchParametersType">
+		<xs:sequence>
+			<xs:element name="tableFieldRef" type="tableFieldRefType" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="tableSearchUpdateParametersType">
+		<xs:sequence>
+			<xs:element name="tableFieldRef" type="tableFieldRefType" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tableSearchUpdateType">
+		<xs:attribute name="name" type="xs:string" />
+		<xs:sequence>
+			<xs:element name="tableUpdateParameters" type="tableSearchUpdateParametersType" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tableSearchUpdatesType">
+		<xs:sequence>
+			<xs:element name="tableSearchUpdate" type="tableSearchUpdateType" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="tableSearchType">
+		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="isRange" type="xs:boolean" />
+		<xs:attribute name="isExplicitUniqueIndex" type="xs:boolean" />
+		<xs:sequence>
+			<xs:element name="tableSearchParameters" type="tableSearchParametersType" maxOccurs="unbounded" />
+			<xs:element name="tableSearchUpdates" type="tableSearchUpdatesType" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="tableSearchesType">
+		<xs:sequence>
+			<xs:element name="tableSearch" type="tableSearchType" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
 
 	<!--
 		<table name="Config" friendlyName="" dbDescription="" extendedDescription="" isVirtualTable="False" isConfig="True">
@@ -207,25 +254,7 @@
 		<xs:sequence>
 			<xs:element name="tableDBs" type="tableDBsType" maxOccurs="unbounded" />
 			<xs:element name="tableFields" type="tableFieldsType" maxOccurs="unbounded" />
-<!--
-
-
-
-
-
-
-
-
-			<xs:element name="tableSearches" type="searchesType" maxOccurs="unbounded" />
-
-
-
-
-
-
-
-
--->
+			<xs:element name="tableSearches" type="tableSearchesType" maxOccurs="unbounded" />
 			<xs:element name="tableUpdates" type="tableUpdatesType" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
@@ -241,7 +270,6 @@
 			<xs:element name="table" type="tableType" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
-
 
 	<xs:complexType name="metadataType">
 		<xs:attribute name="applicationName" type="xs:string" />
