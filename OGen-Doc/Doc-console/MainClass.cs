@@ -57,7 +57,7 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 						#endif
 							["ogenPath"],
 
-						@"OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen-NTier.OGenDoc-metadata.xml"
+						@"..\..\OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen-NTier.OGenDoc-metadata.xml"
 					)
 				);
 #else

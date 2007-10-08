@@ -56,13 +56,13 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 								#endif
 									["ogenPath"],
 
-								@"..\OGen-NTier_UTs\OGen-metadatas\MD_OGen-NTier_UTs.OGen-metadata.xml"
+								@"..\..\OGen-NTier_UTs\OGen-metadatas\MD_OGen-NTier_UTs.OGen-metadata.xml"
 							)
 						);
 					} catch (Exception _ex) {
 						Console.WriteLine(_ex.ToString());
 					}
-	
+
 					Console.WriteLine("Press any key to continue...");
 					#if NET20
 						Console.ReadKey();
