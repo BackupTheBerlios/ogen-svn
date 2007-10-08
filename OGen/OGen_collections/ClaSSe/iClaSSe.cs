@@ -17,13 +17,27 @@ using System.Reflection;
 using System.Xml;
 
 namespace OGen.lib.collections {
-	public interface iClaSSe {
+	public interface iClaSSe_XXX {
+		void LoadState_fromFile(
+			string fileName_in, 
+			string objectName_in
+		);
+
+		string Read_fromRoot(string what_in);
+
+		void IterateThrough_fromRoot(
+			string iteration_in, 
+			cClaSSe.dIteration_found iteration_found_in
+		);
+	}
+
+	public interface iClaSSe : iClaSSe_XXX {
 		object Property_new(string name_in);
 
 		void SaveState_toFile(string fileName_in, string objectName_in);
 		XmlElement SaveState_toFile(XmlDocument xmlDoc_in, string name_in);
 
-		void LoadState_fromFile(string fileName_in, string objectName_in);
+//		void LoadState_fromFile(string fileName_in, string objectName_in);
 		void LoadState_fromFile(XmlNode node_in);
 
 		iClaSSe InheritLoopback_ref { get; }
@@ -38,13 +52,13 @@ namespace OGen.lib.collections {
 		PropertyInfo Property_find(string name_in, ClaSSPropertyAttribute.eType type_in);
 
 		iClaSSe root();
-		string Read_fromRoot(string what_in);
+//		string Read_fromRoot(string what_in);
 		string Read_fromHere(string what_in);
 
-//		string XMLName { get; set; }
-//		string XMLPath { get; }
+////		string XMLName { get; set; }
+////		string XMLPath { get; }
 		string Path { get; }
-		void IterateThrough_fromRoot(string iteration_in, cClaSSe.dIteration_found iteration_found_in);
+//		void IterateThrough_fromRoot(string iteration_in, cClaSSe.dIteration_found iteration_found_in);
 		void IterateThrough_fromHere(string iteration_in, string path_in, cClaSSe.dIteration_found iteration_found_in);
 	}
 }

@@ -102,21 +102,26 @@ namespace OGen.lib.collections {
 		}
 		#endregion
 //		#region public void IterateThrough_fromHere(string iteration_in, string test_in, string path_in);
+		#region public static Exception IterateThrough_fromHere_Exception(...);
+		public static Exception IterateThrough_fromHere_Exception(
+			string iteration_in
+		) {
+			return new Exception(
+				string.Format(
+					"{0}.{1}.IterateThrough_fromHere(): - something wrong with iteration: '{2}'", 
+					typeof(cClaSSe).Namespace, 
+					typeof(cClaSSe).Name, 
+					iteration_in
+				)
+			);
+		}
+		#endregion
+
 		public void IterateThrough_fromHere(
 			string iteration_in, 
 			string path_in, 
 			dIteration_found iteration_found_in
 		) {
-			#region Exception IterateThrough_fromHere_Exception = new Exception("...");
-			Exception IterateThrough_fromHere_Exception = new Exception(
-				string.Format(
-					"{0}.{1}.IterateThrough_fromHere(): - something wrong with iteration: '{2}'", 
-					this.GetType().Namespace, 
-					this.GetType().Name, 
-					iteration_in
-				)
-			);
-			#endregion
 			path_ = path_in;
 
 //Console.WriteLine(
@@ -156,7 +161,7 @@ if (iteration_in == "ROOT") {
 			if (_property_index != -1) {
 				switch (Attributes[_property_index].Type) {
 					case ClaSSPropertyAttribute.eType.aggregate: {
-						if (_iteration_hasIndex) throw IterateThrough_fromHere_Exception;
+						if (_iteration_hasIndex) throw IterateThrough_fromHere_Exception(iteration_in);
 
 						if (_iteration_next != string.Empty) {
 							((iClaSSe)
@@ -175,7 +180,7 @@ if (iteration_in == "ROOT") {
 						break;
 					}
 					case ClaSSPropertyAttribute.eType.aggregate_collection: {
-						if (!_iteration_hasIndex) throw IterateThrough_fromHere_Exception;
+						if (!_iteration_hasIndex) throw IterateThrough_fromHere_Exception(iteration_in);
 
 						ArrayList _aggregate_collection 
 							= (ArrayList)Properties[_property_index].GetValue(this, null);
@@ -211,11 +216,11 @@ if (iteration_found_in != null) iteration_found_in(_doit);
 					}
 					case ClaSSPropertyAttribute.eType.standard:
 					default: {
-						throw IterateThrough_fromHere_Exception;
+						throw IterateThrough_fromHere_Exception(iteration_in);
 					}
 				}
 			} else {
-				throw IterateThrough_fromHere_Exception;
+				throw IterateThrough_fromHere_Exception(iteration_in);
 			}
 		}
 //		#endregion

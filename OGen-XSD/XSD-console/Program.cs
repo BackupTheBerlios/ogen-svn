@@ -16,7 +16,7 @@ using System;
 using System.IO;
 using OGen.lib.generator;
 using OGen.XSD.lib.metadata;
-using OGen.XSD.lib.generator;
+//using OGen.XSD.lib.generator;
 
 namespace OGen.XSD.presentationlayer.console {
 	class MainClass {
@@ -38,62 +38,62 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 "
 			);
 			#endregion
-			if (args_in.Length == 1) {
-				if (File.Exists(args_in[0])) {
-					DoIt(args_in[0]);
-				} else {
-					Console.WriteLine("file doesn't exist");
-				}
-			} else {
-				#if DEBUG
-					try {
-						DoIt(
-							System.IO.Path.Combine(
-								#if NET20
-								System.Configuration.ConfigurationManager.AppSettings
-								#else
-								System.Configuration.ConfigurationSettings.AppSettings
-								#endif
-									["ogenPath"],
-
-								@"..\OGen-NTier_UTs\OGen-metadatas\MD_OGen-NTier_UTs.OGen-metadata.xml"
-							)
-						);
-					} catch (Exception _ex) {
-						Console.WriteLine(_ex.ToString());
-					}
-	
-					Console.WriteLine("Press any key to continue...");
-					#if NET20
-						Console.ReadKey();
-					#else
-						Console.ReadLine();
-					#endif
-				#else
-					Console.WriteLine("must provide xml file");
-				#endif
-			}
+//			if (args_in.Length == 1) {
+//				if (File.Exists(args_in[0])) {
+//					DoIt(args_in[0]);
+//				} else {
+//					Console.WriteLine("file doesn't exist");
+//				}
+//			} else {
+//				#if DEBUG
+//					try {
+//						DoIt(
+//							System.IO.Path.Combine(
+//								#if NET20
+//								System.Configuration.ConfigurationManager.AppSettings
+//								#else
+//								System.Configuration.ConfigurationSettings.AppSettings
+//								#endif
+//									["ogenPath"],
+//
+//								@"..\OGen-NTier_UTs\OGen-metadatas\MD_OGen-NTier_UTs.OGen-metadata.xml"
+//							)
+//						);
+//					} catch (Exception _ex) {
+//						Console.WriteLine(_ex.ToString());
+//					}
+//	
+//					Console.WriteLine("Press any key to continue...");
+//					#if NET20
+//						Console.ReadKey();
+//					#else
+//						Console.ReadLine();
+//					#endif
+//				#else
+//					Console.WriteLine("must provide xml file");
+//				#endif
+//			}
 		}
 
-		static void DoIt(string filePath_in) {
-			cFGenerator _generator = new cFGenerator();
-			_generator.Open(
-				filePath_in, 
-				true, 
-				new cDBMetadata.dLoadState_fromDB(
-					Notify
-				)
-			);
-			_generator.Build(new cGenerator.dBuild(Notify));
-		}
-		#region private static void Notify(string message_in, bool onANewLine_in);
-		private static void Notify(string message_in, bool onANewLine_in) {
-			if (onANewLine_in) {
-				Console.WriteLine(message_in);
-			} else {
-				Console.Write(message_in);
-			}
-		}
-		#endregion
+//		static void DoIt(string filePath_in) {
+//			cFGenerator _generator = new cFGenerator();
+//			_generator.Open(
+//				filePath_in, 
+//				true, 
+//				new cDBMetadata.dLoadState_fromDB(
+//					Notify
+//				)
+//			);
+//			_generator.Build(new cGenerator.dBuild(Notify));
+//		}
+//		#region private static void Notify(string message_in, bool onANewLine_in);
+//		private static void Notify(string message_in, bool onANewLine_in) {
+//			if (onANewLine_in) {
+//				Console.WriteLine(message_in);
+//			} else {
+//				Console.Write(message_in);
+//			}
+//		}
+//		#endregion
 	}
 }

@@ -120,7 +120,7 @@ namespace OGen.XSD.lib.metadata {
 			get { return xs_complextype_; }
 		}
 		#endregion
-		
+
 		#region public XS_Element XS_Element { get; set; }
 		private XS_Element xs_element_;
 

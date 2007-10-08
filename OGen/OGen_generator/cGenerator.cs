@@ -71,7 +71,7 @@ namespace OGen.lib.generator {
 		#region private Fields/Properties...
 		private Uri xmltemplatesfileuri_;
 		private string xmltemplatesdir_;
-		private iClaSSe metadata_;
+		private iClaSSe_XXX metadata_;
 		private cTemplates templates_;
 		private int template_;
 		private dBuild notifyback_;
@@ -111,7 +111,10 @@ namespace OGen.lib.generator {
 
 //		#region private Methods...
 		#region private string translateFully(string this_in, string withThis_in);
-		private string translateFully(string this_in, string withThis_in) {
+		private string translateFully(
+			string this_in, 
+			string withThis_in
+		) {
 			string translateFully_out = this_in;
 
 			int _begin;
@@ -145,11 +148,15 @@ namespace OGen.lib.generator {
 		}
 		#endregion
 //		#region private string translate(string this_in, string withThis_in);
-		private string translate(string this_in, string withThis_in) {
+		private string translate(
+			string this_in, 
+			string withThis_in
+		) {
 			string translate_out;
 
 			switch (this_in) {
-				case "CONFIG.ogenPath": {
+				#region case "CONFIG.ogenPath": translate_out = ...; break;
+				case "CONFIG.ogenPath":
 					translate_out = 
 						#if NET20
 						System.Configuration.ConfigurationManager.AppSettings["ogenPath"]
@@ -158,12 +165,14 @@ namespace OGen.lib.generator {
 						#endif
 					;
 					break;
-				}
-				case "CONFIG.outputPath": {
+				#endregion
+				#region case "CONFIG.outputPath": translate_out = ...; break;
+				case "CONFIG.outputPath":
 					translate_out = outputdir_;
 					break;
-				}
-				default: {
+				#endregion
+				#region default: translate_out = ...; break;
+				default:
 //					#region translate_out = metadata_.Read_fromRoot(...);
 					translate_out = this_in;
 
@@ -197,16 +206,16 @@ namespace OGen.lib.generator {
 					translate_out = metadata_.Read_fromRoot(translate_out);
 //					#endregion
 					break;
-				}
+				#endregion
 			}
 
 			return translate_out;
 		}
 //		#endregion
 //		#region private void notifyme(string message_in);
+		private static Exception notifyme_Exception = new Exception("ToDos: here!");
 		private void notifyme(string message_in) {
 			// ToDos: here!
-			Exception notifyme_Exception = new Exception("ToDos: here!");
 //			cDBConnection _con = null;
 
 			#region int _verifiedConditions = ...;
@@ -235,8 +244,9 @@ namespace OGen.lib.generator {
 				}
 				#endregion
 				for (int o = 0; o < templates_[template_].Outputs.Count; o++) {
-//					#region if (!dbconnectionstrings_.Contains(DBServerTypes. ...)) continue;
+					#region if (!dbconnectionstrings_.Contains(DBServerTypes. ...)) continue;
 					switch (templates_[template_].Outputs[o].Type) {
+						#region case cOutput.eType.someDBServer_whatever: ... break;
 #if PostgreSQL
 						case cOutput.eType.PostgreSQL_Function: 
 						case cOutput.eType.PostgreSQL_StoredProcedure: 
@@ -262,8 +272,9 @@ namespace OGen.lib.generator {
 //							_con = (cDBConnection)connection_[DBServerTypes.SQLServer];
 							break;
 						}
+						#endregion
 					}
-//					#endregion
+					#endregion
 					string _ouputTo = translateFully(
 						templates_[template_].Outputs[o].To, 
 						message_in
@@ -278,6 +289,8 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 							_exists_aux = File.Exists(_ouputTo);
 							break;
 						}
+
+						#region case cOutput.eType.someDBServer_whatever: ... break;
 						case cOutput.eType.MySQL_Function: 
 						case cOutput.eType.PostgreSQL_Function: 
 						case cOutput.eType.SQLServer_Function: {
@@ -321,6 +334,8 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 }
 							break;
 						}
+						#endregion
+
 						default: {
 							throw notifyme_Exception;
 						}
@@ -448,6 +463,7 @@ if (
 								}
 								break;
 							}
+							#region case cOutput.eType.someDBServer_whatever: ... break;
 							case cOutput.eType.MySQL_Function: 
 							case cOutput.eType.MySQL_StoredProcedure: 
 							case cOutput.eType.MySQL_View: 
@@ -540,6 +556,7 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 }
 								break;
 							}
+							#endregion
 							default: {
 								throw notifyme_Exception;
 							}
@@ -556,7 +573,7 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 		#region private void Build(...);
 		private void Build(
 			dBuild notifyBack_in, 
-			iClaSSe metadata_in, 
+			iClaSSe_XXX metadata_in, 
 			bool loadMetadate_in
 		) {
 			notifyback_ = notifyBack_in;
@@ -687,7 +704,7 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 			Type[] _interfaces = typeofClaSSe_in.GetInterfaces();
 			bool _found = false;
 			for (int i = 0; i < _interfaces.Length; i++) {
-				if (_interfaces[i] == typeof(iClaSSe)) {
+				if (_interfaces[i] == typeof(iClaSSe_XXX)) {
 					_found = true;
 					break;
 				}
@@ -703,13 +720,13 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 			#endregion
 			Build(
 				notifyBack_in, 
-				(iClaSSe)Activator.CreateInstance(typeofClaSSe_in), 
+				(iClaSSe_XXX)Activator.CreateInstance(typeofClaSSe_in), 
 				true
 			);
 		}
 		public void Build(
 			dBuild notifyBack_in, 
-			iClaSSe metadata_in
+			iClaSSe_XXX metadata_in
 		) {
 			Build(
 				notifyBack_in, 
