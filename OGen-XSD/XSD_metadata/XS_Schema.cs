@@ -16,12 +16,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 using System;
 using System.IO;
 using System.Xml.Serialization;
+using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
 	//[XmlRoot("xs___schema")]
 	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
 	[System.Xml.Serialization.XmlRootAttribute("schema", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
-	public class XS_Schema {
+	public class XS_Schema : iClaSSe_XXX {
 		public XS_Schema() {
 		}
 
@@ -160,5 +161,54 @@ namespace OGen.XSD.lib.metadata {
 			_file.Close();
 		}
 		#endregion
+
+
+
+
+		public void SaveState_toFile(
+			string fileName_in
+		) {
+			Save(fileName_in);
+		}
+		public void LoadState_fromFile(
+			string fileName_in
+		) {
+			Load(fileName_in);
+		}
+		public void LoadState_fromFile(
+			string fileName_in, 
+			string objectName_in
+		) {
+			Load(fileName_in);
+		}
+
+
+		public static string root4xml {
+			get {
+				//return "schema";
+
+				throw new Exception("//ToDos: here! not implemented");
+			}
+		}
+		public string DocumentationName {
+			get {
+				throw new Exception("//ToDos: here! not implemented");
+			}
+			set {
+				throw new Exception("//ToDos: here! not implemented");
+			}
+		}
+
+
+		public string Read_fromRoot(string what_in) {
+			throw new Exception("//ToDos: here! not implemented");
+		}
+
+		public void IterateThrough_fromRoot(
+			string iteration_in, 
+			cClaSSe.dIteration_found iteration_found_in
+		) {
+			throw new Exception("//ToDos: here! not implemented");
+		}
 	}
 }
