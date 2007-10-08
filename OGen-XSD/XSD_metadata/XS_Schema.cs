@@ -171,13 +171,13 @@ namespace OGen.XSD.lib.metadata {
 			Save(fileName_in);
 		}
 		public void LoadState_fromFile(
-			string fileName_in
-		) {
-			Load(fileName_in);
-		}
-		public void LoadState_fromFile(
 			string fileName_in, 
 			string objectName_in
+		) {
+			LoadState_fromFile(fileName_in);
+		}
+		public void LoadState_fromFile(
+			string fileName_in
 		) {
 			Load(fileName_in);
 		}
@@ -185,16 +185,17 @@ namespace OGen.XSD.lib.metadata {
 
 		public static string root4xml {
 			get {
-				//return "schema";
-
-				throw new Exception("//ToDos: here! not implemented");
+				// no need!
+				return string.Empty;
 			}
 		}
 		public string DocumentationName {
 			get {
+return string.Empty;
 				throw new Exception("//ToDos: here! not implemented");
 			}
 			set {
+return;
 				throw new Exception("//ToDos: here! not implemented");
 			}
 		}
