@@ -78,6 +78,12 @@ namespace OGen.lib.collections {
 			string iteration_in, 
 			dIteration_found iteration_found_in
 		) {
+
+//// ToDos: now!
+//#if DEBUG
+//Console.WriteLine("IterateThrough_fromRoot({0}, ...)", iteration_in);
+//#endif
+
 			#region Exception IterateThrough_fromRoot_Exception = new Exception("...");
 			Exception IterateThrough_fromRoot_Exception = new Exception(
 				string.Format(
@@ -237,6 +243,12 @@ if (iteration_found_in != null) iteration_found_in(_doit);
 		#endregion
 		#region public string Read_fromRoot(string what_in);
 		public string Read_fromRoot(string what_in) {
+
+//// ToDos: now!
+//#if DEBUG
+//Console.WriteLine("Read_fromRoot({0})", what_in);
+//#endif
+
 			//return root().Read_fromHere(what_in); // oldstuff
 			return root().Read_fromHere(
 				what_in.Substring(
@@ -246,23 +258,25 @@ if (iteration_found_in != null) iteration_found_in(_doit);
 		}
 		#endregion
 		#region public string Read_fromHere(string what_in);
-		public string Read_fromHere(string what_in) {
-			#region Exception Read_fromHere_Exception = new Exception("...");
-			Exception Read_fromHere_Exception = new Exception(
+		#region private Exception Read_fromHere_Exception(string what_in);
+		private Exception Read_fromHere_Exception(string what_in) {
+			return new Exception(
 				string.Format(
 					"{0}.{1}.Read_fromHere(): - can't read: '{2}'", 
-					this.GetType().Namespace, 
-					this.GetType().Name, 
+					typeof(cClaSSe).Namespace,
+					typeof(cClaSSe).Name, 
 					what_in
 				)
 			);
-			#endregion
+		}
+		#endregion
 
+		public string Read_fromHere(string what_in) {
 			// ToDos: here! consider using regular expressions instead...
 			string[] _whatSplit = what_in.Split('.');
 			switch (_whatSplit.Length) {
 				case 0: {
-					//throw Read_fromHere_Exception;
+					//throw Read_fromHere_Exception(what_in);
 					return null;
 				}
 				case 1: {
@@ -301,7 +315,7 @@ if (iteration_found_in != null) iteration_found_in(_doit);
 						}
 						case ClaSSPropertyAttribute.eType.aggregate: {
 							#region return ...;
-							if (_end >= 0) throw Read_fromHere_Exception;
+							if (_end >= 0) throw Read_fromHere_Exception(what_in);
 							return 
 								((cClaSSe)Property_get(
 									_name, 
@@ -318,7 +332,7 @@ if (iteration_found_in != null) iteration_found_in(_doit);
 						}
 						case ClaSSPropertyAttribute.eType.aggregate_collection: {
 							#region return ...;
-							if (_end < 0) throw Read_fromHere_Exception;
+							if (_end < 0) throw Read_fromHere_Exception(what_in);
 							int _endForReal = _whatSplit[0].IndexOf("]");
 							int _index = int.Parse(_whatSplit[0].Substring(
 								_end + 1, 

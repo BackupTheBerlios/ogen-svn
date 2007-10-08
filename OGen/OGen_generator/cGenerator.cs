@@ -215,6 +215,12 @@ namespace OGen.lib.generator {
 //		#region private void notifyme(string message_in);
 		private static Exception notifyme_Exception = new Exception("ToDos: here!");
 		private void notifyme(string message_in) {
+
+//// ToDos: now!
+//#if DEBUG
+//Console.WriteLine("notifyme({0})", message_in);
+//#endif
+
 			// ToDos: here!
 //			cDBConnection _con = null;
 
