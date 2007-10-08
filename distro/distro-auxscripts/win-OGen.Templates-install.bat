@@ -11,10 +11,11 @@
 @ECHO OFF
 IF NOT '%3' == '' GOTO install
 
-
 SET thisdir=%~d0%~p0
 SET proj=%2
 IF '%proj%' == '' GOTO error7
+
+ECHO installing %proj%...
 
 SET fw=
 IF '%1' == '/1_1' SET fw=1.1
