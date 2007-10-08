@@ -132,7 +132,8 @@ GOTO eof
 	IF '%4' == 'f' GOTO eof
 	IF NOT EXIST "%thisdir%..\bin\%3-%fw%.dll" GOTO eof
 	::gacutil /u %3
-	gacutil /i "%thisdir%..\bin\%3-%fw%.dll"
+	gacutil /i "%thisdir%..\bin\%3-%fw%.dll"|find "Failure"
+	IF NOT ERRORLEVEL 1 ECHO %3-%fw%.dll
 GOTO eof
 
 
