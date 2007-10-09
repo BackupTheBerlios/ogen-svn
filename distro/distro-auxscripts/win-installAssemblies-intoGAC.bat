@@ -16,7 +16,6 @@ IF '%1' == '/2_0' SET fw=2.0
 IF '%fw%' == '' GOTO error6
 
 IF '%2' == '/install' GOTO install
-IF '%2' == '/check' GOTO check
 IF NOT '%2' == '' GOTO error5
 
 
@@ -35,13 +34,6 @@ IF '%SetEnvironmentPath%' == '' GOTO error1
 
 IF NOT EXIST "%thisdir%..\distro-metadatas\OGen-solutions.txt" GOTO error2
 IF NOT EXIST "%thisdir%..\distro-metadatas\OGen-projects.txt" GOTO error3
-
-
-SET hasErrors=
-FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`TYPE "%thisdir%..\distro-metadatas\OGen-projects.txt"`) DO (
-	CALL %0 %1 /check %%a %%b %%c %%d %%e %%f %%g %%h %%i
-)
-IF NOT "%hasErrors%" == "" GOTO error4
 
 
 FOR /F "usebackq tokens=1,2,3,4,5,6,7,8,9 delims=, " %%a IN (`TYPE "%thisdir%..\distro-metadatas\OGen-projects.txt"`) DO (
@@ -69,14 +61,6 @@ GOTO eof
 	ECHO ERROR 3: - Can't find file 'distro-metadatas\OGen-projects.txt'
 	PAUSE
 GOTO eof
-:error4
-	ECHO.
-	ECHO.
-	ECHO ERROR 4: - Can't find files:
-	ECHO %hasErrors%
-	SET hasErrors=
-	PAUSE
-GOTO eof
 :error5
 	ECHO.
 	ECHO.
@@ -97,21 +81,6 @@ GOTO eof
 GOTO eof
 
 
-:check
-	SHIFT
-	SHIFT
-
-	:: is not a Release, hence:
-	IF '%9' == 'f' GOTO eof
-
-	IF '%5' == 'f' SET binDir=bin\Release
-	IF '%5' == 't' SET binDir=bin
-
-	IF '%6' == 'f' IF NOT EXIST "%thisdir%..\..\%1\%2\%binDir%\%3-%fw%.dll" SET hasErrors=%3-%fw%.dll;%hasErrors%
-	IF '%6' == 't' IF NOT EXIST "%thisdir%..\..\%1\%2\%binDir%\%3-%fw%.exe" SET hasErrors=%3-%fw%.exe;%hasErrors%
-GOTO eof
-
-
 :install
 	SHIFT
 	SHIFT
@@ -123,12 +92,6 @@ GOTO eof
 	IF '%5' == 't' SET binDir=bin
 	IF '%5' == 't' GOTO eof
 
-	IF NOT EXIST "%thisdir%..\bin" MKDIR "%thisdir%..\bin"
-
-	:: if file has not been compiled, i'll try to install it if available from bin dir...
-	::IF NOT EXIST ..\%1\%2\%binDir%\%3-%fw%.dll GOTO tryinstall
-
-:tryinstall
 	IF '%4' == 'f' GOTO eof
 	IF NOT EXIST "%thisdir%..\bin\%3-%fw%.dll" GOTO eof
 	::gacutil /u %3
