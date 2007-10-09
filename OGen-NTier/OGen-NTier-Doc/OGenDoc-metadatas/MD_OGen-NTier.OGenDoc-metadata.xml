@@ -320,6 +320,7 @@ ToDos: here!&lt;br&gt;
 " />
 			</documents>
 		</subject>
+<!-- ToDos: here!
 		<subject idSubject="37" idSubject_parent="2" 
 			name="configurations"
 			description="ToDos: here!">
@@ -355,6 +356,7 @@ ToDos: here!&lt;br&gt;
 ..." />
 			</documents>
 		</subject>
+-->
 		<subject idSubject="19" idSubject_parent="2" 
 			name="generating a new project"
 			description="ToDos: here!">
@@ -1332,7 +1334,7 @@ ToDos: here!&lt;br&gt;
 
 
 
-
+<!-- ToDos: here!
 		<subject idSubject="40" idSubject_parent="0" 
 			name="advanced help"
 			description="extensive and detailed documentation">
@@ -1373,8 +1375,8 @@ ToDos: here!&lt;br&gt;
 ..." />
 			</documents>
 		</subject>
+-->
 	</subjects>
-
 
 
 
