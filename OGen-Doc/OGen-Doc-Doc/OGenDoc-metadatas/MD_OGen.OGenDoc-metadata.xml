@@ -26,7 +26,7 @@ along with OGen; if not, write to the
 	documentationName="OGen"
 	projectURL="http://ogen-project.org"
 	copyrightText="Copyright (C) 2002 Francisco Monteiro"
-	feedbackEmailAddress="francisco.r.monteiro@gmail.com"
+	feedbackEmailAddress="fmonteiro@users.berlios.de"
 	version="v0.1"
 	date="2005.07.19 21:46">
 
@@ -296,8 +296,8 @@ ToDos: here!&lt;br&gt;
 
 
 	<authors>
-		<author idAuthor="1" name="Francisco Monteiro" copyrightText="Copyright (C) 2002 Francisco Monteiro" feedbackEmailAddress="francisco.r.monteiro@gmail.com" />
-		<author idAuthor="2" name="xico" copyrightText="Copyright (C) 2002 Francisco Monteiro" feedbackEmailAddress="francisco.r.monteiro@gmail.com" />
+		<author idAuthor="1" name="Francisco Monteiro" copyrightText="Copyright (C) 2002 Francisco Monteiro" feedbackEmailAddress="fmonteiro@users.berlios.de" />
+		<author idAuthor="2" name="xico" copyrightText="Copyright (C) 2002 Francisco Monteiro" feedbackEmailAddress="fmonteiro@users.berlios.de" />
 	</authors>
 	<codeSamples>
 		<codeSample idCodeSample="1" 

@@ -19,7 +19,7 @@ projectURL            ="http://ogen.berlios.de/"
 
 
 	copyrightText="Copyright (C) 2002 Francisco Monteiro"
-	feedbackEmailAddress="	fmonteiro@users.berlios.de"
+	feedbackEmailAddress="fmonteiro@users.berlios.de"
 	version="v0.1"
 	date="2005.07.19 21:46">
 
@@ -108,7 +108,7 @@ ToDos: here!&lt;br&gt;
 
 		<subject idSubject="2" idSubject_parent="0" 
 			name="introduction"
-			description="a more proper introduction to OGen">
+			description="ToDos: here! a more proper introduction to OGen">
 		</subject>
 		<subject idSubject="18" idSubject_parent="2" 
 			name="installing OGen"
@@ -1406,9 +1406,9 @@ ToDos: here!&lt;br&gt;
 
 
 	<authors>
-		<author idAuthor="1" name="Francisco Monteiro" copyrightText="Copyright (C) 2002 Francisco Monteiro" feedbackEmailAddress="	fmonteiro@users.berlios.de" />
+		<author idAuthor="1" name="Francisco Monteiro" copyrightText="Copyright (C) 2002 Francisco Monteiro" feedbackEmailAddress="fmonteiro@users.berlios.de" />
 <!--
-		<author idAuthor="2" name="Francisco Monteiro" copyrightText="Copyright (C) 2002 Francisco Monteiro" feedbackEmailAddress="	fmonteiro@users.berlios.de" />
+		<author idAuthor="2" name="Francisco Monteiro" copyrightText="Copyright (C) 2002 Francisco Monteiro" feedbackEmailAddress="fmonteiro@users.berlios.de" />
 -->
 	</authors>
 
