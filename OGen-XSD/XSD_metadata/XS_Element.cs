@@ -76,6 +76,7 @@ namespace OGen.XSD.lib.metadata {
 //			set { xs_simpletype_.cols__ = value; }
 //		}
 //
+//		[XmlIgnore()]
 //		public xs__collection<XS_SimpleType> XS_SimpleType {
 //			get { return xs_simpletype_; }
 //		}
@@ -92,6 +93,7 @@ namespace OGen.XSD.lib.metadata {
 //			set { xs_complextype_.cols__ = value; }
 //		}
 //
+//		[XmlIgnore()]
 //		public xs__collection<XS_ComplexType> XS_ComplexType {
 //			get { return xs_complextype_; }
 //		}

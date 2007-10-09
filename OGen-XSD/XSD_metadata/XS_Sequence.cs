@@ -33,6 +33,7 @@ namespace OGen.XSD.lib.metadata {
 			set { xs_element_.cols__ = value; }
 		}
 
+		[XmlIgnore()]
 		public xs__collection<XS_Element> XS_Element {
 			get { return xs_element_; }
 		}

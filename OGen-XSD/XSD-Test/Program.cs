@@ -121,6 +121,17 @@ namespace OGen.XSD.presentationlayer.test {
 			_someElement.Type = "someType2";
 			_schema.XS_Element = _someElement;
 
+utils.ReflectThrough(
+	_schema
+);
+
+_schema.IterateThrough_fromRoot(
+	"schema.complexType.attribute[n]", 
+	notifyme//cClaSSe.dIteration_found
+);
+Console.Write("Press any key to continue . . . ");
+Console.ReadKey(true); Console.WriteLine();
+
 			string _filepath = @"c:\test.xml";
 			_schema.Save(_filepath);
 			Output(_schema);
@@ -131,6 +142,10 @@ namespace OGen.XSD.presentationlayer.test {
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true); Console.WriteLine();
 		}
+
+public static void notifyme(string message_in) {
+	Console.WriteLine(message_in);
+}
 
 		public static void Output(XS_Schema schema_in) {
 			Console.WriteLine(

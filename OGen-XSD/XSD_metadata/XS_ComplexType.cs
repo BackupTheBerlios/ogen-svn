@@ -48,6 +48,7 @@ namespace OGen.XSD.lib.metadata {
 			set { xs_attribute_.cols__ = value; }
 		}
 
+		[XmlIgnore()]
 		public xs__collection<XS_Attribute> XS_Attribute {
 			get { return xs_attribute_; }
 		}

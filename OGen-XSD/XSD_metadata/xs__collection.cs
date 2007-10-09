@@ -14,9 +14,49 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #endregion
 
 using System;
+using System.Reflection;
 using System.Collections;
 
 namespace OGen.XSD.lib.metadata {
+	public class utils {
+		private utils() {
+		}
+
+		public static void ReflectThrough(object someClass_in) {
+			PropertyInfo[] _properties = someClass_in.GetType().GetProperties(
+				BindingFlags.Public | 
+				BindingFlags.Instance
+			);
+			for (int _prop = 0; _prop < _properties.Length; _prop++) {
+				if (Attribute.IsDefined(
+					_properties[_prop], 
+					typeof(System.Xml.Serialization.XmlAttributeAttribute)
+				)) {
+					Console.WriteLine(
+						"XmlAttribute::{0}", 
+						_properties[_prop].Name
+					);
+				} else if (Attribute.IsDefined(
+					_properties[_prop], 
+					typeof(System.Xml.Serialization.XmlElementAttribute)
+				)) {
+					object _value = _properties[_prop].GetValue(someClass_in, null);
+
+					if (_value == null) return;
+
+					if (_value.GetType().IsArray) {
+						Array _array = (Array)_value;
+						for (int i = 0; i < _array.Length; i++) {
+							ReflectThrough(_array.GetValue(i));
+						}
+					} else {
+						ReflectThrough(_value);
+					}
+				}
+			}
+		}
+	}
+
 	public class xs__collection<C> {
 		public xs__collection() {
 			cols_ = new ArrayList();

@@ -101,6 +101,7 @@ namespace OGen.XSD.lib.metadata {
 			set { xs_simpletype_.cols__ = value; }
 		}
 
+		[XmlIgnore()]
 		public xs__collection<XS_SimpleType> XS_SimpleType {
 			get { return xs_simpletype_; }
 		}
@@ -111,12 +112,14 @@ namespace OGen.XSD.lib.metadata {
 
 		[XmlElement("complexType")]
 		//[XmlArray("complexType")]
-		//[XmlArrayItem(typeof(XS_ComplexType))]
+		//[XmlArrayItem("complexType", typeof(XS_ComplexType))]
+		//[XmlArrayItem("complexType")]
 		public XS_ComplexType[] XS_ComplexType__xml {
 			get { return xs_complextype_.cols__; }
 			set { xs_complextype_.cols__ = value; }
 		}
 
+		[XmlIgnore()]
 		public xs__collection<XS_ComplexType> XS_ComplexType {
 			get { return xs_complextype_; }
 		}
@@ -189,6 +192,7 @@ namespace OGen.XSD.lib.metadata {
 				return string.Empty;
 			}
 		}
+		[XmlIgnore()]
 		public string DocumentationName {
 			get {
 return string.Empty;
@@ -209,7 +213,9 @@ return;
 			string iteration_in, 
 			cClaSSe.dIteration_found iteration_found_in
 		) {
-			throw new Exception("//ToDos: here! not implemented");
+			iteration_found_in("hello world");
+
+//			throw new Exception("//ToDos: here! not implemented");
 		}
 	}
 }

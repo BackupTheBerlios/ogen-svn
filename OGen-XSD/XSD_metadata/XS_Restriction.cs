@@ -48,6 +48,7 @@ namespace OGen.XSD.lib.metadata {
 			set { xs_enumeration_.cols__ = value; }
 		}
 
+		[XmlIgnore()]
 		public xs__collection<XS_Enumeration> XS_Enumeration {
 			get { return xs_enumeration_; }
 		}
