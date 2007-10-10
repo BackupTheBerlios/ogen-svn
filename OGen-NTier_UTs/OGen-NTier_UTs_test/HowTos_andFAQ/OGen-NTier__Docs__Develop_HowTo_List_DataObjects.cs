@@ -63,21 +63,25 @@ namespace OGen.NTier.UTs.howtos {
 									);
 									Attribute[] _attributes = Attribute.GetCustomAttributes(
 										_properties[_prop]
+										//, typeof(DOPropertyAttribute)
+										//, true
 									);
 									//Console.WriteLine("Name \t isPK \t isIdentity \t DefaultValue \t \t \t \t isBool");
 									for (int _att = 0; _att < _attributes.Length; _att++) {
-										DOPropertyAttribute _propertyattribute = (DOPropertyAttribute)_attributes[_att];
-										Console.Write(
-											"name:{0};  isPK:{1};  isIdentity:{2};  isText:{3};",
-											_propertyattribute.Name,
-											_propertyattribute.isPK,
-											_propertyattribute.isIdentity,
-											//att3.DefaultValue,
-											//att3.isConfig_Name, 
-											//att3.isConfig_Config, 
-											//att3.isConfig_Datatype, 
-											_propertyattribute.isText
-										);
+										//if (_attributes[_att].GetType() == typeof(DOPropertyAttribute)) {
+											DOPropertyAttribute _propertyattribute = (DOPropertyAttribute)_attributes[_att];
+											Console.Write(
+												"name:{0};  isPK:{1};  isIdentity:{2};  isText:{3};",
+												_propertyattribute.Name,
+												_propertyattribute.isPK,
+												_propertyattribute.isIdentity,
+												//att3.DefaultValue,
+												//att3.isConfig_Name, 
+												//att3.isConfig_Config, 
+												//att3.isConfig_Datatype, 
+												_propertyattribute.isText
+											);
+										//}
 									}
 									Console.WriteLine();
 								}
