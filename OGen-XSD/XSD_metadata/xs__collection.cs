@@ -17,11 +17,24 @@ using System;
 using System.Reflection;
 using System.Collections;
 
+using OGen.lib.collections;
+
 namespace OGen.XSD.lib.metadata {
 	public class utils {
 		private utils() {}
 
-		public static void ReflectThrough(object someClass_in) {
+		public static void ReflectThrough(
+			object someClass_in, 
+			string path_in, 
+			cClaSSe.dIteration_found iteration_found_in, 
+			string iteration_in, 
+			string pathTranslated_in
+		) {
+			if (iteration_in == pathTranslated_in) {
+				iteration_found_in(path_in);
+			}
+			//Console.Write("{{{0}}}", path_in.ToUpper());
+
 			PropertyInfo[] _properties;
 			System.Xml.Serialization.XmlElementAttribute _elementAttribute;
 			System.Xml.Serialization.XmlAttributeAttribute _attribute;
@@ -52,11 +65,11 @@ namespace OGen.XSD.lib.metadata {
 							typeof(System.Xml.Serialization.XmlAttributeAttribute), 
 							true
 						)[0];
-					Console.Write(
-						"{0}=\"{1}\" ",
-						_attribute.AttributeName, 
-						_value.ToString()
-					);
+//Console.Write(
+//	"{0}=\"{1}\" ",
+//	_attribute.AttributeName, 
+//	_value.ToString()
+//);
 				} else if (Attribute.IsDefined(
 					_properties[_prop], 
 					typeof(System.Xml.Serialization.XmlElementAttribute)
@@ -80,30 +93,59 @@ namespace OGen.XSD.lib.metadata {
 					if (_value.GetType().IsArray) {
 						_array = (Array)_value;
 						for (int i = 0; i < _array.Length; i++) {
-							Console.Write(
-								"\n<xs:{0} ",
-								_elementAttribute.ElementName
+//Console.Write(
+//	"\n<xs:{0} ",
+//	_elementAttribute.ElementName
+//);
+
+							ReflectThrough(
+								_array.GetValue(i), 
+								string.Format(
+									"{0}.{1}[{2}]", 
+									path_in, 
+									_elementAttribute.ElementName, 
+									i
+								), 
+								iteration_found_in, 
+								iteration_in, 
+								string.Format(
+									"{0}.{1}[n]", 
+									pathTranslated_in, 
+									_elementAttribute.ElementName
+								)
 							);
 
-							ReflectThrough(_array.GetValue(i));
-
-							Console.Write(
-								"\n</xs:{0}>",
-								_elementAttribute.ElementName
-							);
+//Console.Write(
+//	"\n</xs:{0}>",
+//	_elementAttribute.ElementName
+//);
 						}
 					} else {
-						Console.Write(
-							"\n<xs:{0} ",
-							_elementAttribute.ElementName
+//Console.Write(
+//	"\n<xs:{0} ",
+//	_elementAttribute.ElementName
+//);
+
+						ReflectThrough(
+							_value, 
+							string.Format(
+								"{0}.{1}", 
+								path_in, 
+								_elementAttribute.ElementName
+							), 
+							iteration_found_in, 
+							iteration_in, 
+							string.Format(
+								"{0}.{1}", 
+								pathTranslated_in, 
+								_elementAttribute.ElementName
+							)
 						);
 
-						ReflectThrough(_value);
-
-						Console.Write(
-							"\n</xs:{0}>",
-							_elementAttribute.ElementName
-						);
+//Console.Write(
+//	"\n</xs:{0}>",
+//	_elementAttribute.ElementName
+//);
 					}
 				}
 			}

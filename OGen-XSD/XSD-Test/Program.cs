@@ -121,12 +121,8 @@ namespace OGen.XSD.presentationlayer.test {
 			_someElement.Type = "someType2";
 			_schema.XS_Element = _someElement;
 
-utils.ReflectThrough(
-	_schema
-);
-
 _schema.IterateThrough_fromRoot(
-	"schema.complexType.attribute[n]", 
+	"ROOT.simpleType[n].restriction.enumeration[n]", 
 	notifyme//cClaSSe.dIteration_found
 );
 Console.Write("Press any key to continue . . . ");
@@ -144,7 +140,7 @@ Console.ReadKey(true); Console.WriteLine();
 		}
 
 public static void notifyme(string message_in) {
-	Console.WriteLine(message_in);
+	Console.WriteLine("{{{0}}}", message_in);
 }
 
 		public static void Output(XS_Schema schema_in) {

@@ -213,7 +213,13 @@ return;
 			string iteration_in, 
 			cClaSSe.dIteration_found iteration_found_in
 		) {
-			iteration_found_in("hello world");
+			utils.ReflectThrough(
+				this, 
+				"ROOT", 
+				iteration_found_in, 
+				iteration_in, 
+				"ROOT"
+			);
 
 //			throw new Exception("//ToDos: here! not implemented");
 		}
