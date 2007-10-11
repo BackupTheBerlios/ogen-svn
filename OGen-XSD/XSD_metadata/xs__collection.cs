@@ -68,11 +68,22 @@ namespace OGen.XSD.lib.metadata {
 							typeof(System.Xml.Serialization.XmlAttributeAttribute), 
 							true
 						)[0];
+
 //Console.Write(
 //	"{0}=\"{1}\" ",
 //	_attribute.AttributeName, 
 //	_value.ToString()
 //);
+if (string.Format("{0}.{1}", path_in, _attribute.AttributeName) == iteration_in) {
+	//Console.WriteLine(
+	//	"{0}\n{1}\n{2}\n---", 
+	//	iteration_in, 
+	//	path_in, // pathTranslated_in, 
+	//	_attribute.AttributeName
+	//);
+	return _value.ToString();
+}
+
 				} else if (Attribute.IsDefined(
 					_properties[_prop], 
 					typeof(System.Xml.Serialization.XmlElementAttribute)

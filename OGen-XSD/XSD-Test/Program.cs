@@ -121,6 +121,11 @@ namespace OGen.XSD.presentationlayer.test {
 			_someElement.Type = "someType2";
 			_schema.XS_Element = _someElement;
 
+Console.WriteLine(
+	_schema.Read_fromRoot("ROOT.simpleType[0].restriction.enumeration[2].value")
+);
+Console.Write("Press any key to continue . . . ");
+Console.ReadKey(true); Console.WriteLine();
 _schema.IterateThrough_fromRoot(
 	"ROOT.simpleType[n].restriction.enumeration[n]", 
 	notifyme//cClaSSe.dIteration_found
