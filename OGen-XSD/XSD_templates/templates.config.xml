@@ -2043,17 +2043,40 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			iterationType="ROOT.simpleType[n].restriction.enumeration[n]">
 		<arguments>
 <!--
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD0_.OGenXSD-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD0_${ROOT.applicationName}.OGenXSD-metadata.xml" />
 -->
-			<argument name="MetadataFilepath" value="file:///D:/Documents and Settings/cgm0195/My Documents/OGen/OGen-XSD_OGen_NTier_metadatas/OGenXSD-metadatas/OGenXSD-metadatas/MD0_.OGenXSD-metadata.xml" />
-			<argument name="TableName" value="${ROOT.simpleType[n].restriction.enumeration[n].value}" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD0_.OGenXSD-metadata.xml" />
+			<argument name="EnumerationValue" value="${ROOT.simpleType[n].restriction.enumeration[n].value}" />
 		</arguments>
 		<conditions />
 		<outputs>
-			<output to="file:///C:/_whatever/XS0_${ROOT.simpleType[n].restriction.enumeration[n].value}.cs" 
+<!--
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_enumerations/_base/XS0_${ROOT.simpleType[n].restriction.enumeration[n].value}.cs" 
 				type="File" mode="Replace" />
-			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}_whatever/_base/XS0_${ROOT.simpleType[n].restriction.enumeration[n].value}.cs" 
-				type="File" mode="Replace" /-->
+-->
+			<output to="${CONFIG.outputPath}/ENUMERATIONS.no-svn/_base/XS0_${ROOT.simpleType[n].restriction.enumeration[n].value}.cs" 
+				type="File" mode="Replace" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="TEST2.CS.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.complexType[n]">
+		<arguments>
+<!--
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD0_${ROOT.applicationName}.OGenXSD-metadata.xml" />
+-->
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD0_.OGenXSD-metadata.xml" />
+			<argument name="ComplexTypeName" value="${ROOT.complexType[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+<!--
+			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_complextypes/_base/XS0_${ROOT.complexType[n].name}.cs" 
+				type="File" mode="Replace" />
+-->
+			<output to="${CONFIG.outputPath}/COMPLEXTYPES.no-svn/_base/XS0_${ROOT.complexType[n].name}.cs" 
+				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>

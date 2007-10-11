@@ -172,8 +172,11 @@ if (string.Format("{0}.{1}", path_in, _attribute.AttributeName) == iteration_in)
 		}
 	}
 
-	public class xs__collection<C> {
-		public xs__collection() {
+	public interface OGenCollectionInterface {
+		string CollectionName { get; }
+	}
+	public class OGenCollection<C> where C : class, OGenCollectionInterface {
+		public OGenCollection() {
 			cols_ = new ArrayList();
 		}
 	
@@ -198,12 +201,29 @@ if (string.Format("{0}.{1}", path_in, _attribute.AttributeName) == iteration_in)
 		#endregion
 
 		public C this[int index_in] {
-			get { return (C)cols_[index_in]; }
+			get {
+				if (cols_ == null) return null;
+
+				return (C)cols_[index_in];
+			}
+		}
+		public C this[string memberName_in] {
+			get {
+				if (cols_ == null) return null;
+
+				for (int i = 0; i < cols_.Count; i++) {
+					if (((C)cols_[i]).CollectionName == memberName_in) {
+						return (C)cols_[i];
+					}
+				}
+
+				return null;
+			}
 		}
 		public int Add(params C[] col_in) {
 			int _output = -1;
-			for (int c = 0; c < col_in.Length; c++) {
-				_output = cols_.Add(col_in[c]);
+			for (int i = 0; i < col_in.Length; i++) {
+				_output = cols_.Add(col_in[i]);
 			}
 			return _output;
 		}

@@ -17,7 +17,7 @@ using System;
 using System.Xml.Serialization;
 
 namespace OGen.XSD.lib.metadata {
-	public class XS_SimpleType {
+	public class XS_SimpleType : OGenCollectionInterface {
 		public XS_SimpleType(
 		) {
 		}
@@ -36,6 +36,14 @@ namespace OGen.XSD.lib.metadata {
 			}
 		}
 		#endregion
+
+		#region public string CollectionName { get; }
+		[XmlIgnore()]
+		public string CollectionName {
+			get { return Name; }
+		}
+		#endregion
+
 		#region public XS_Restriction XS_Restriction { get; set; }
 		private XS_Restriction xs_restriction__;
 

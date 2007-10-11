@@ -31,12 +31,14 @@ namespace OGen.XSD.lib.generator {
 		//#region public Properties...
 		#region public string Filename { get; }
 		private string filename_;
+
 		public string Filename {
 			get { return filename_; }
 		}
 		#endregion
 		#region public bool hasChanges { get; }
 		private bool haschanges_;
+
 		public bool hasChanges {
 			get { return haschanges_; }
 			set { haschanges_ = value; }
@@ -49,6 +51,7 @@ namespace OGen.XSD.lib.generator {
 		#endregion
 		#region public XS_Schema Metadata { get ; }
 		private XS_Schema metadata_;
+
 		public XS_Schema Metadata {
 			get { return metadata_; }
 		}
@@ -112,10 +115,11 @@ namespace OGen.XSD.lib.generator {
 
 			if (notifyBack_in != null) notifyBack_in("opening...", true);
 			if (notifyBack_in != null) notifyBack_in("- reading metadata from xml file", true);
-			metadata_ = new XS_Schema();
-			metadata_.LoadState_fromFile(
-				filename_
-			);
+			//metadata_ = new XS_Schema();
+			//metadata_.LoadState_fromFile(
+			//	filename_
+			//);
+			metadata_ = XS_Schema.Load(filename_);
 			if (notifyBack_in != null) notifyBack_in("... finished", true);
 		}
 		#endregion

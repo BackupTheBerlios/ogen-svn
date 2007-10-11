@@ -37,8 +37,8 @@ namespace OGen.XSD.lib.metadata {
 		#endregion
 
 		#region public xs__collection<XS_Enumeration> XS_Enumeration { get; }
-		private xs__collection<XS_Enumeration> xs_enumeration_ 
-			= new xs__collection<XS_Enumeration>();
+		private OGenCollection<XS_Enumeration> xs_enumeration_ 
+			= new OGenCollection<XS_Enumeration>();
 
 		[XmlElement("enumeration")]
 		//[XmlArray("enumeration")]
@@ -49,7 +49,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public xs__collection<XS_Enumeration> XS_Enumeration {
+		public OGenCollection<XS_Enumeration> XS_Enumeration {
 			get { return xs_enumeration_; }
 		}
 		#endregion

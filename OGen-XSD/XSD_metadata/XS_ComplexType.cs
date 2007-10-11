@@ -17,7 +17,7 @@ using System;
 using System.Xml.Serialization;
 
 namespace OGen.XSD.lib.metadata {
-	public class XS_ComplexType {
+	public class XS_ComplexType : OGenCollectionInterface {
 		public XS_ComplexType() {
 		}
 
@@ -36,9 +36,16 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
+		#region public string CollectionName { get; }
+		[XmlIgnore()]
+		public string CollectionName {
+			get { return Name; }
+		}
+		#endregion
+
 		#region public xs__collection<XS_Attribute> XS_Attribute { get; }
-		private xs__collection<XS_Attribute> xs_attribute_ 
-			= new xs__collection<XS_Attribute>();
+		private OGenCollection<XS_Attribute> xs_attribute_ 
+			= new OGenCollection<XS_Attribute>();
 
 		[XmlElement("attribute")]
 		//[XmlArray("attribute")]
@@ -49,7 +56,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public xs__collection<XS_Attribute> XS_Attribute {
+		public OGenCollection<XS_Attribute> XS_Attribute {
 			get { return xs_attribute_; }
 		}
 		#endregion

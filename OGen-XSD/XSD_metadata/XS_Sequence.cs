@@ -22,8 +22,8 @@ namespace OGen.XSD.lib.metadata {
 		}
 
 		#region public xs__collection<XS_Element> XS_Element { get; }
-		private xs__collection<XS_Element> xs_element_ 
-			= new xs__collection<XS_Element>();
+		private OGenCollection<XS_Element> xs_element_ 
+			= new OGenCollection<XS_Element>();
 
 		[XmlElement("element")]
 		//[XmlArray("element")]
@@ -34,7 +34,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public xs__collection<XS_Element> XS_Element {
+		public OGenCollection<XS_Element> XS_Element {
 			get { return xs_element_; }
 		}
 		#endregion

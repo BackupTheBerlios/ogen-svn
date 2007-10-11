@@ -17,7 +17,7 @@ using System;
 using System.Xml.Serialization;
 
 namespace OGen.XSD.lib.metadata {
-	public class XS_Element {
+	public class XS_Element : OGenCollectionInterface {
 		public XS_Element() {
 		}
 
@@ -61,6 +61,13 @@ namespace OGen.XSD.lib.metadata {
 			set {
 				maxoccurs_ = value;
 			}
+		}
+		#endregion
+
+		#region public string CollectionName { get; }
+		[XmlIgnore()]
+		public string CollectionName {
+			get { return Name; }
 		}
 		#endregion
 

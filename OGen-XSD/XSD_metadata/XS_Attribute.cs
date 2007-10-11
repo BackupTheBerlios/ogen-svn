@@ -17,7 +17,7 @@ using System;
 using System.Xml.Serialization;
 
 namespace OGen.XSD.lib.metadata {
-	public class XS_Attribute {
+	public class XS_Attribute : OGenCollectionInterface {
 		public XS_Attribute() {
 		}
 
@@ -47,6 +47,13 @@ namespace OGen.XSD.lib.metadata {
 			set {
 				type_ = value;
 			}
+		}
+		#endregion
+
+		#region public string CollectionName { get; }
+		[XmlIgnore()]
+		public string CollectionName {
+			get { return Name; }
 		}
 		#endregion
 

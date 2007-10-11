@@ -17,7 +17,7 @@ using System;
 using System.Xml.Serialization;
 
 namespace OGen.XSD.lib.metadata {
-	public class XS_Enumeration {
+	public class XS_Enumeration : OGenCollectionInterface {
 		public XS_Enumeration() {
 		}
 		public XS_Enumeration(
@@ -38,6 +38,13 @@ namespace OGen.XSD.lib.metadata {
 			set {
 				value_ = value;
 			}
+		}
+		#endregion
+
+		#region public string CollectionName { get; }
+		[XmlIgnore()]
+		public string CollectionName {
+			get { return Value; }
 		}
 		#endregion
 	}

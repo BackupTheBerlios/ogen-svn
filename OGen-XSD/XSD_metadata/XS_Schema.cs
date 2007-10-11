@@ -90,8 +90,8 @@ namespace OGen.XSD.lib.metadata {
 		#endregion
 
 		#region public xs__collection<XS_SimpleType> XS_SimpleType { get; }
-		private xs__collection<XS_SimpleType> xs_simpletype_ 
-			= new xs__collection<XS_SimpleType>();
+		private OGenCollection<XS_SimpleType> xs_simpletype_ 
+			= new OGenCollection<XS_SimpleType>();
 
 		[XmlElement("simpleType")]
 		//[XmlArray("simpleType")]
@@ -102,13 +102,13 @@ namespace OGen.XSD.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public xs__collection<XS_SimpleType> XS_SimpleType {
+		public OGenCollection<XS_SimpleType> XS_SimpleType {
 			get { return xs_simpletype_; }
 		}
 		#endregion
 		#region public xs__collection<XS_ComplexType> XS_ComplexType { get; }
-		private xs__collection<XS_ComplexType> xs_complextype_ 
-			= new xs__collection<XS_ComplexType>();
+		private OGenCollection<XS_ComplexType> xs_complextype_ 
+			= new OGenCollection<XS_ComplexType>();
 
 		[XmlElement("complexType")]
 		//[XmlArray("complexType")]
@@ -120,7 +120,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public xs__collection<XS_ComplexType> XS_ComplexType {
+		public OGenCollection<XS_ComplexType> XS_ComplexType {
 			get { return xs_complextype_; }
 		}
 		#endregion
@@ -177,12 +177,12 @@ namespace OGen.XSD.lib.metadata {
 			string fileName_in, 
 			string objectName_in
 		) {
-			Load(fileName_in);
+			throw new Exception("// ToDos: here! not implemented");
 		}
 		public void LoadState_fromFile(
 			string fileName_in
 		) {
-			Load(fileName_in);
+			throw new Exception("// ToDos: here! not implemented");
 		}
 
 

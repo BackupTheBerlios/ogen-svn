@@ -605,7 +605,10 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 			//metadata_ = new cDBMetadata(xmlmetadatafile_, xmlmetadataroot_);
 			metadata_ = metadata_in;
 			if (loadMetadate_in) {
-				metadata_.LoadState_fromFile(xmlmetadatafile_, xmlmetadataroot_);
+				metadata_.LoadState_fromFile(
+					xmlmetadatafile_, 
+					xmlmetadataroot_
+				);
 			}
 
 			templates_ = new cTemplates(
