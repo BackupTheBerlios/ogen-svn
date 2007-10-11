@@ -14,7 +14,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <%@ import namespace="OGen.XSD.lib.metadata" %><%
 #region arguments...
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
-string _arg_SimpleTypeName = System.Web.HttpUtility.UrlDecode(Request.QueryString["SimpleTypeName"]);
+string _arg_EnumerationValue = System.Web.HttpUtility.UrlDecode(Request.QueryString["EnumerationValue"]);
 #endregion
 
 #region varaux...
@@ -44,7 +44,7 @@ using System.Xml.Serialization;
 
 
 namespace <%="_aux_metadata.Namespace"%>.lib.datalayer {
-	public XS_<%=_arg_SimpleTypeName%>();
+	public XS_<%=_arg_EnumerationValue%>();
 }
 
 

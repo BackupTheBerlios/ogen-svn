@@ -13,22 +13,37 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <templates>
 	<template name="XS-XS0_SomeEnumeration.cs.aspx" 
 			parserType="aspx" 
-			iterationType="ROOT.simpleType[n].restriction.enumeration[n]">
+			iterationType="ROOT.simpleType[n]">
 		<arguments>
 <!--
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD0_${ROOT.applicationName}.OGenXSD-metadata.xml" />
 -->
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD0_.OGenXSD-metadata.xml" />
-			<argument name="EnumerationValue" value="${ROOT.simpleType[n].restriction.enumeration[n].value}" />
+			<argument name="SimpleTypeName" value="${ROOT.simpleType[n].name}" />
 		</arguments>
 		<conditions />
 		<outputs>
+			<!-- ${ROOT.applicationName} -->
+			<output to="${CONFIG.outputPath}/_base/XS0_${ROOT.simpleType[n].name}Enumeration.cs" 
+				type="File" mode="Replace" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="XS-XS_SomeEnumeration.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.simpleType[n]">
+		<arguments>
 <!--
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_enumerations/_base/XS0_${ROOT.simpleType[n].restriction.enumeration[n].value}.cs" 
-				type="File" mode="Replace" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD0_${ROOT.applicationName}.OGenXSD-metadata.xml" />
 -->
-			<output to="${CONFIG.outputPath}/ENUMERATIONS.no-svn/_base/XS0_${ROOT.simpleType[n].restriction.enumeration[n].value}.cs" 
-				type="File" mode="Replace" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD0_.OGenXSD-metadata.xml" />
+			<argument name="SimpleTypeName" value="${ROOT.simpleType[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<!-- ${ROOT.applicationName} -->
+			<output to="${CONFIG.outputPath}/XS_${ROOT.simpleType[n].name}Enumeration.cs" 
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>
@@ -44,12 +59,27 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</arguments>
 		<conditions />
 		<outputs>
+			<!-- ${ROOT.applicationName} -->
+			<output to="${CONFIG.outputPath}/_base/XS0_${ROOT.complexType[n].name}.cs" 
+				type="File" mode="Replace" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="XS-XS_SomeClass.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.complexType[n]">
+		<arguments>
 <!--
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_complextypes/_base/XS0_${ROOT.complexType[n].name}.cs" 
-				type="File" mode="Replace" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD0_${ROOT.applicationName}.OGenXSD-metadata.xml" />
 -->
-			<output to="${CONFIG.outputPath}/COMPLEXTYPES.no-svn/_base/XS0_${ROOT.complexType[n].name}.cs" 
-				type="File" mode="Replace" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD0_.OGenXSD-metadata.xml" />
+			<argument name="ComplexTypeName" value="${ROOT.complexType[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<!-- ${ROOT.applicationName} -->
+			<output to="${CONFIG.outputPath}/XS_${ROOT.complexType[n].name}.cs" 
+				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies />
 	</template>

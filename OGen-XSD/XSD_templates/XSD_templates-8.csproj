@@ -52,6 +52,8 @@
     <None Include="XS-XS0_SomeEnumeration.cs.aspx" />
     <None Include="XS-XS0_SomeClass.cs.aspx" />
     <None Include="Web.config" />
+    <None Include="XS-XS_SomeClass.cs.aspx" />
+    <None Include="XS-XS_SomeEnumeration.cs.aspx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\OGen\OGen_collections\OGen_collections-8.csproj">

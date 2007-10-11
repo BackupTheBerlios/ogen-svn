@@ -14,7 +14,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <%@ import namespace="OGen.XSD.lib.metadata" %><%
 #region arguments...
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
-string _arg_SimpleTypeName = System.Web.HttpUtility.UrlDecode(Request.QueryString["SimpleTypeName"]);
+string _arg_ComplexTypeName = System.Web.HttpUtility.UrlDecode(Request.QueryString["ComplexTypeName"]);
 #endregion
 
 #region varaux...
@@ -27,6 +27,8 @@ XS_Schema _aux_metadata;
 //	XS_Schema.Metacache.Add(_arg_MetadataFilepath, _aux_metadata);
 _aux_metadata = XS_Schema.Load(_arg_MetadataFilepath);
 //}
+
+XS_ComplexType _aux_complextype = _aux_metadata.XS_ComplexType[_arg_ComplexTypeName];
 #endregion
 //-----------------------------------------------------------------------------------------
 if (true) { // (_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTextLong != string.Empty)) {
@@ -44,7 +46,14 @@ using System.Xml.Serialization;
 
 
 namespace <%="_aux_metadata.Namespace"%>.lib.datalayer {
-	public XS_<%=_arg_SimpleTypeName%>();
+	public class XS_<%=_aux_complextype.Name%> : XS0_<%=_aux_complextype.Name%> {
+
+	<%for (int a = 0; a < _aux_complextype.XS_Attribute.Count; a++) {
+		%><%=_aux_complextype.XS_Attribute[a].Name%>
+	<%
+	}%>
+
+	}
 }
 
 

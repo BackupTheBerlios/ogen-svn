@@ -46,13 +46,14 @@ using System.Xml.Serialization;
 
 
 namespace <%="_aux_metadata.Namespace"%>.lib.datalayer {
-	public XS_<%=_aux_complextype.Name%>();
+	public class XS0_<%=_aux_complextype.Name%> {
 
 	<%for (int a = 0; a < _aux_complextype.XS_Attribute.Count; a++) {
 		%><%=_aux_complextype.XS_Attribute[a].Name%>
 	<%
+	}%>
+
 	}
-%>
 }
 
 
