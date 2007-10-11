@@ -177,7 +177,7 @@ namespace OGen.XSD.lib.metadata {
 			string fileName_in, 
 			string objectName_in
 		) {
-			LoadState_fromFile(fileName_in);
+			Load(fileName_in);
 		}
 		public void LoadState_fromFile(
 			string fileName_in

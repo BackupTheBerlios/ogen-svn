@@ -11,39 +11,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 -->
 <templates>
-	<!--template name="__XSLT-TEST.txt.xslt" 
-			parserType="xslt"
-			iterationType="ROOT.tables.table[n]">
-		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
-			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
-		</arguments>
-		<conditions />
-		<outputs>
-			<output to="${CONFIG.outputPath}/__XSLT-TEST-${ROOT.tables.table[n].name}.txt" 
-				type="File" mode="Replace" />
-		</outputs>
-		<dependencies />
-	</template-->
-	<template name="emptyfile.txt" 
-			parserType="none"
-			iterationType="ROOT">
-		<arguments />
-		<conditions>
-			<!--condition eval="ROOT.dbs.supports_PostgreSQL" to="True" /-->
-			<!--condition eval="ROOT.dbs.supports_SQLServer" to="True" /-->
-			<!--condition eval="ROOT.dbs.supports_MySQL" to="True" /-->
-		</conditions>
-		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-SQLServer/sql0-${ROOT.applicationName}.SQLServer.backup.sql"
-				type="File" mode="Replace" />
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-MySQL/sql0-${ROOT.applicationName}.MySQL.backup.sql"
-				type="File" mode="Replace" />
-		</outputs>
-		<dependencies />
-	</template>
+<!--
 	<template name="DO-DB-v0_SomeTable__onlyKeys-PostgreSQL.sql.aspx" 
 			parserType="aspx"
 			iterationType="ROOT.tables.table[n]">
@@ -359,7 +327,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<!--argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" /-->
 			<argument name="ApplicationName" value="${ROOT.applicationName}" />
 			<argument name="Namespace" value="${ROOT.namespace}" />
 		</arguments>
@@ -374,7 +341,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<!--argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" /-->
 			<argument name="ApplicationName" value="${ROOT.applicationName}" />
 			<argument name="Namespace" value="${ROOT.namespace}" />
 		</arguments>
@@ -460,7 +426,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<!--argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" /-->
 			<argument name="ApplicationName" value="${ROOT.applicationName}" />
 			<argument name="Namespace" value="${ROOT.namespace}" />
 		</arguments>
@@ -475,7 +440,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			parserType="aspx" 
 			iterationType="ROOT">
 		<arguments>
-			<!--argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}-${ROOT.default_DBServerType}.OGen-metadata.xml" /-->
 			<argument name="ApplicationName" value="${ROOT.applicationName}" />
 			<argument name="Namespace" value="${ROOT.namespace}" />
 		</arguments>
@@ -522,20 +486,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<conditions />
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/_base/RO0_${ROOT.tables.table[n].name}.cs" 
-				type="File" mode="Replace" />
-		</outputs>
-		<dependencies />
-	</template>
-	<template name="DO-DO0_SomeTable.cs.aspx" 
-			parserType="aspx" 
-			iterationType="ROOT.tables.table[n]">
-		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGen-metadatas/MD0_${ROOT.applicationName}.OGen-metadata.xml" />
-			<argument name="TableName" value="${ROOT.tables.table[n].name}" />
-		</arguments>
-		<conditions />
-		<outputs>
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}_datalayer/_base/DO0_${ROOT.tables.table[n].name}.cs" 
 				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
@@ -1136,7 +1086,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</arguments>
 		<conditions>
 			<condition eval="ROOT.dbs.supports_MySQL" to="True" />
-			<!-- condition eval="ROOT.tables.table[n].searches.hasExplicitUniqueIndex" to="False" / -->
 			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
 		</conditions>
 		<outputs>
@@ -1156,7 +1105,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</arguments>
 		<conditions>
 			<condition eval="ROOT.dbs.supports_PostgreSQL" to="True" />
-			<!-- condition eval="ROOT.tables.table[n].searches.hasExplicitUniqueIndex" to="False" / -->
 			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
 		</conditions>
 		<outputs>
@@ -1178,7 +1126,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</arguments>
 		<conditions>
 			<condition eval="ROOT.dbs.supports_SQLServer" to="True" />
-			<!-- condition eval="ROOT.tables.table[n].searches.hasExplicitUniqueIndex" to="False" / -->
 			<condition eval="ROOT.tables.table[n].isVirtualTable" to="False" />
 		</conditions>
 		<outputs>
@@ -1987,10 +1934,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<condition eval="ROOT.dbs.supports_PostgreSQL" to="True" />
 		</conditions>
 		<outputs>
-<!--
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
--->
 			<output to="OGen_fnc0__Split" 
 				type="PostgreSQL_Function" mode="Replace" />
 		</outputs>
@@ -2004,10 +1947,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<condition eval="ROOT.dbs.supports_SQLServer" to="True" />
 		</conditions>
 		<outputs>
-<!--
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-SQLServer/sql0-${ROOT.applicationName}.SQLServer.backup.sql"
-				type="File" mode="Append" />
--->
 			<output to="OGen_fnc0__Split" 
 				type="SQLServer_Function" mode="Replace" />
 		</outputs>
@@ -2021,10 +1960,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<condition eval="ROOT.dbs.supports_PostgreSQL" to="True" />
 		</conditions>
 		<outputs>
-<!--
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
--->
 			<output to="v0__getTables" 
 				type="PostgreSQL_View" mode="Replace" />
 		</outputs>
@@ -2038,10 +1973,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<condition eval="ROOT.dbs.supports_PostgreSQL" to="True" />
 		</conditions>
 		<outputs>
-<!--
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
--->
 			<output to="OGen_sp0__getTables" 
 				type="PostgreSQL_StoredProcedure" mode="Replace" />
 		</outputs>
@@ -2058,10 +1989,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<condition eval="ROOT.dbs.supports_SQLServer" to="True" />
 		</conditions>
 		<outputs>
-<!--
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-SQLServer/sql0-${ROOT.applicationName}.SQLServer.backup.sql"
-				type="File" mode="Append" />
--->
 			<output to="OGen_sp0__getTables" 
 				type="SQLServer_StoredProcedure" mode="Replace" />
 		</outputs>
@@ -2077,10 +2004,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<condition eval="ROOT.dbs.supports_PostgreSQL" to="True" />
 		</conditions>
 		<outputs>
-<!--
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
--->
 			<output to="v0__getTables" 
 				type="PostgreSQL_View" mode="Replace" />
 		</outputs>
@@ -2094,10 +2017,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<condition eval="ROOT.dbs.supports_PostgreSQL" to="True" />
 		</conditions>
 		<outputs>
-<!--
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-PostgreSQL/sql0-${ROOT.applicationName}.PostgreSQL.backup.sql"
-				type="File" mode="Append" />
--->
 			<output to="OGen_sp0__getTableFields" 
 				type="PostgreSQL_StoredProcedure" mode="Replace" />
 		</outputs>
@@ -2113,12 +2032,28 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<condition eval="ROOT.dbs.supports_SQLServer" to="True" />
 		</conditions>
 		<outputs>
-<!--
-			<output to="${CONFIG.outputPath}/${ROOT.applicationName}-SQLServer/sql0-${ROOT.applicationName}.SQLServer.backup.sql"
-				type="File" mode="Append" />
--->
 			<output to="OGen_sp0__getTableFields" 
 				type="SQLServer_StoredProcedure" mode="Replace" />
+		</outputs>
+		<dependencies />
+	</template>
+-->
+	<template name="TEST.CS.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.simpleType[n].restriction.enumeration[n]">
+		<arguments>
+<!--
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD0_.OGenXSD-metadata.xml" />
+-->
+			<argument name="MetadataFilepath" value="file:///D:/Documents and Settings/cgm0195/My Documents/OGen/OGen-XSD_OGen_NTier_metadatas/OGenXSD-metadatas/OGenXSD-metadatas/MD0_.OGenXSD-metadata.xml" />
+			<argument name="TableName" value="${ROOT.simpleType[n].restriction.enumeration[n].value}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<output to="file:///C:/_whatever/XS0_${ROOT.simpleType[n].restriction.enumeration[n].value}.cs" 
+				type="File" mode="Replace" />
+			<!--output to="${CONFIG.outputPath}/${ROOT.applicationName}_whatever/_base/XS0_${ROOT.simpleType[n].restriction.enumeration[n].value}.cs" 
+				type="File" mode="Replace" /-->
 		</outputs>
 		<dependencies />
 	</template>

@@ -152,7 +152,7 @@ namespace OGen.XSD.lib.generator {
 			#endregion
 			#region string _metadataFilePath = ...;
 			string _metadata0 = string.Format(
-				"{0}{1}OGenDoc-metadatas{1}MD0_{2}.OGenDoc-metadata.xml", 
+				"{0}{1}OGenXSD-metadatas{1}MD0_{2}.OGenXSD-metadata.xml", 
 				/*00*/ _outputDir, 
 				/*01*/ Path.DirectorySeparatorChar, 
 				/*02*/ metadata_.DocumentationName
