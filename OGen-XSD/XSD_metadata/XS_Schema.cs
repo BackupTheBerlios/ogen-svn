@@ -206,7 +206,14 @@ return;
 
 
 		public string Read_fromRoot(string what_in) {
-			throw new Exception("//ToDos: here! not implemented");
+			return utils.ReflectThrough(
+				this, 
+				"ROOT", 
+				null, 
+				what_in, 
+				"ROOT", 
+				true
+			);
 		}
 
 		public void IterateThrough_fromRoot(
@@ -218,7 +225,8 @@ return;
 				"ROOT", 
 				iteration_found_in, 
 				iteration_in, 
-				"ROOT"
+				"ROOT", 
+				false
 			);
 
 //			throw new Exception("//ToDos: here! not implemented");

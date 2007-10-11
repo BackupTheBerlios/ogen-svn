@@ -23,23 +23,26 @@ namespace OGen.XSD.lib.metadata {
 	public class utils {
 		private utils() {}
 
-		public static void ReflectThrough(
+		public static string ReflectThrough(
 			object someClass_in, 
 			string path_in, 
 			cClaSSe.dIteration_found iteration_found_in, 
 			string iteration_in, 
-			string pathTranslated_in
+			string pathTranslated_in, 
+			bool returnValue_in
 		) {
 			if (iteration_in == pathTranslated_in) {
-				iteration_found_in(path_in);
+				if (iteration_found_in != null) iteration_found_in(path_in);
 			}
-			//Console.Write("{{{0}}}", path_in.ToUpper());
+
+//Console.Write("{{{0}}}", path_in.ToUpper());
 
 			PropertyInfo[] _properties;
 			System.Xml.Serialization.XmlElementAttribute _elementAttribute;
 			System.Xml.Serialization.XmlAttributeAttribute _attribute;
 			object _value;
 			Array _array;
+			string _output = string.Empty;
 
 			_properties = someClass_in.GetType().GetProperties(
 				BindingFlags.Public | 
@@ -52,12 +55,12 @@ namespace OGen.XSD.lib.metadata {
 				)) {
 					_value = _properties[_prop].GetValue(someClass_in, null);
 
-					if (_value == null) return;
+					if (_value == null) continue;
 
-					//Console.Write(
-					//	"XmlAttribute::{0}", 
-					//	_properties[_prop].Name
-					//);
+//Console.Write(
+//	"XmlAttribute::{0}", 
+//	_properties[_prop].Name
+//);
 
 					_attribute 
 						= (System.Xml.Serialization.XmlAttributeAttribute)Attribute.GetCustomAttributes(
@@ -76,12 +79,12 @@ namespace OGen.XSD.lib.metadata {
 				)) {
 					_value = _properties[_prop].GetValue(someClass_in, null);
 
-					if (_value == null) return;
+					if (_value == null) continue;
 
-					//Console.Write(
-					//	"XmlElementAttribute::{0}", 
-					//	_properties[_prop].Name
-					//);
+//Console.Write(
+//	"XmlElementAttribute::{0}", 
+//	_properties[_prop].Name
+//);
 
 					_elementAttribute 
 						= (System.Xml.Serialization.XmlElementAttribute)Attribute.GetCustomAttributes(
@@ -98,7 +101,7 @@ namespace OGen.XSD.lib.metadata {
 //	_elementAttribute.ElementName
 //);
 
-							ReflectThrough(
+							_output = ReflectThrough(
 								_array.GetValue(i), 
 								string.Format(
 									"{0}.{1}[{2}]", 
@@ -112,8 +115,10 @@ namespace OGen.XSD.lib.metadata {
 									"{0}.{1}[n]", 
 									pathTranslated_in, 
 									_elementAttribute.ElementName
-								)
+								), 
+								returnValue_in
 							);
+							if (returnValue_in && (_output != string.Empty)) return _output;
 
 //Console.Write(
 //	"\n</xs:{0}>",
@@ -126,7 +131,7 @@ namespace OGen.XSD.lib.metadata {
 //	_elementAttribute.ElementName
 //);
 
-						ReflectThrough(
+						_output = ReflectThrough(
 							_value, 
 							string.Format(
 								"{0}.{1}", 
@@ -139,8 +144,10 @@ namespace OGen.XSD.lib.metadata {
 								"{0}.{1}", 
 								pathTranslated_in, 
 								_elementAttribute.ElementName
-							)
+							), 
+							returnValue_in
 						);
+						if (returnValue_in && (_output != string.Empty)) return _output;
 
 //Console.Write(
 //	"\n</xs:{0}>",
@@ -149,6 +156,8 @@ namespace OGen.XSD.lib.metadata {
 					}
 				}
 			}
+
+			return _output;
 		}
 	}
 
