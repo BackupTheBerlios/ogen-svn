@@ -11,7 +11,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 -->
 <templates>
-	<template name="TEST.CS.aspx" 
+	<template name="XS-XS0_SomeEnumeration.cs.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT.simpleType[n].restriction.enumeration[n]">
 		<arguments>
@@ -32,7 +32,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</outputs>
 		<dependencies />
 	</template>
-	<template name="TEST2.CS.aspx" 
+	<template name="XS-XS0_SomeClass.cs.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT.complexType[n]">
 		<arguments>

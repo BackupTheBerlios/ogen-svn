@@ -49,8 +49,8 @@
     <None Include="LICENSE.MIT.txt" />
     <None Include="LICENSE.txt" />
     <None Include="templates.config.xml" />
-    <None Include="TEST.CS.aspx" />
-    <None Include="TEST2.CS.aspx" />
+    <None Include="XS-XS0_SomeEnumeration.cs.aspx" />
+    <None Include="XS-XS0_SomeClass.cs.aspx" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
