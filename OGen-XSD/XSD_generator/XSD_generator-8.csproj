@@ -60,9 +60,17 @@
       <Project>{668ACF34-6104-4DD9-BB8A-65D9D94B0BB6}</Project>
       <Name>OGen_generator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\OGen\OGen_parser\OGen_parser-8.csproj">
+      <Project>{981BC7DE-D93C-446E-861E-60A20E4E3391}</Project>
+      <Name>OGen_parser</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\OGen\OGen_templates\OGen_templates-8.csproj">
       <Project>{8377EF00-063B-451A-8408-FE2F8EAD5C32}</Project>
       <Name>OGen_templates</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OGen\OGen_webforms\OGen_webforms-8.csproj">
+      <Project>{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}</Project>
+      <Name>OGen_webforms</Name>
     </ProjectReference>
     <ProjectReference Include="..\XSD_metadata\XSD_metadata-8.csproj">
       <Project>{4DF3D49D-AE3E-47F9-A33F-EB335D7B418E}</Project>
