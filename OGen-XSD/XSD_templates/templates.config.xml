@@ -45,7 +45,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<output to="${CONFIG.outputPath}/XS_${ROOT.simpleType[n].name}Enumeration.cs" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
-		<dependencies />
+		<dependencies>
+			<dependency name="XS-XS0_SomeEnumeration.cs.aspx" />
+		</dependencies>
 	</template>
 	<template name="XS-XS0_SomeClass.cs.aspx" 
 			parserType="aspx" 
@@ -81,6 +83,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<output to="${CONFIG.outputPath}/XS_${ROOT.complexType[n].name}.cs" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
-		<dependencies />
+		<dependencies>
+			<dependency name="XS-XS0_SomeClass.cs.aspx" />
+		</dependencies>
 	</template>
 </templates>
