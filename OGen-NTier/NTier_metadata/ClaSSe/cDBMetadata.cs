@@ -135,6 +135,12 @@ namespace OGen.NTier.lib.metadata {
 
 
 //		#region Properties - ClaSSe...
+		public const string ROOT = "metadata";
+		public override string root4xml {
+			get {
+				return cDBMetadata.ROOT;
+			}
+		}
 		#region public string ApplicationName { get; set; }
 		private string applicationname_;
 
@@ -449,7 +455,6 @@ if (clear_in)
 		}
 		#endregion
 		//#region public void LoadState_fromFile(...);
-		public const string root4xml = "metadata";
 		public void LoadState_fromFile(string fileName_in) {
 			base.LoadState_fromFile(fileName_in, root4xml);
 		}

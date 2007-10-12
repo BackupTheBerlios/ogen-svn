@@ -78,6 +78,11 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 
 		#region Properties - ClaSSe...
+		public override string root4xml {
+			get {
+				return cDBMetadata.ROOT;
+			}
+		}
 		#region public DBServerTypes DBServerType { get; set; }
 		private DBServerTypes dbservertype_;
 		public DBServerTypes DBServerType {

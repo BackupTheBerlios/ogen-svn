@@ -65,6 +65,7 @@ namespace OGen.lib.collections {
 		}
 		#endregion
 		//===
+		public abstract string root4xml { get; }
 		#region public string Path { get; }
 		private string path_;
 		public string Path {
@@ -102,7 +103,7 @@ namespace OGen.lib.collections {
 					? iteration_in
 					: iteration_in.Substring(_dot + 1)
 				, 
-				"ROOT", 
+				"ROOT:" + root4xml, 
 				runthrough_found_
 			);
 		}
@@ -138,7 +139,7 @@ namespace OGen.lib.collections {
 //);
 
 
-if (iteration_in == "ROOT") {
+if (iteration_in == "ROOT:" + root4xml) {
 	if (iteration_found_in != null) iteration_found_in(iteration_in);
 	return;
 }

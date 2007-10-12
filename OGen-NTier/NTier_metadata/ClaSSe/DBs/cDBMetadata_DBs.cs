@@ -82,6 +82,11 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 
 //		#region Properties - ClaSSe...
+		public override string root4xml {
+			get {
+				return cDBMetadata.ROOT;
+			}
+		}
 		#region private ArrayList dbs_ { get; set; }
 		private ArrayList dbs_;
 

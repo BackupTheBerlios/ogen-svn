@@ -32,6 +32,11 @@ namespace OGen.Doc.lib.metadata {
 			url_ = string.Empty;
 			//#endregion
 		}
+		public override string root4xml {
+			get {
+				return DocMetadata.ROOT;
+			}
+		}
 
 		#region Implementing - iClaSSe...
 		#region public override object Property_new(string name_in);

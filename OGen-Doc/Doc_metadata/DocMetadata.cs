@@ -196,7 +196,12 @@ namespace OGen.Doc.lib.metadata {
 		#endregion
 		#endregion
 		#region public Properties...
-		public const string root4xml = "documentation";
+		public const string ROOT = "documentation";
+		public override string root4xml {
+			get {
+				return DocMetadata.ROOT;
+			}
+		}
 		#endregion
 
 		#region public Methods...

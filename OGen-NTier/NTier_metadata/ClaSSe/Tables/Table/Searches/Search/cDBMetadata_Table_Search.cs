@@ -47,6 +47,11 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 
 		#region Implementing - iClaSSe...
+		public override string root4xml {
+			get {
+				return cDBMetadata.ROOT;
+			}
+		}
 		public override object Property_new(string Name_) {
 			switch (Name_) {
 				default:

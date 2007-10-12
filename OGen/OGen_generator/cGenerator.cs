@@ -37,20 +37,20 @@ namespace OGen.lib.generator {
 	public class utils {
 		private utils() {}
 
-		public static 
-			//MetaFile 
-			int
-			MetaFile_find(
+		public static int MetaFile_find(
 			MetaFile[] metaFiles_in, 
 			string root_in
 		) {
 			for (int i = 0; i < metaFiles_in.Length; i++) {
 				if (metaFiles_in[i].Root == root_in) {
-					return i;//metaFiles_in[i];
+					return i;
 				}
 			}
 
-			return -1;//new MetaFile();
+			throw new Exception(string.Format(
+				"can't find: {0}", 
+				root_in
+			));
 		}
 	}
 

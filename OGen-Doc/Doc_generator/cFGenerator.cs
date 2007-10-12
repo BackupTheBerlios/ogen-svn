@@ -162,8 +162,6 @@ namespace OGen.Doc.lib.generator {
 			metadata_.SaveState_toFile(_metadata0);
 
 			new cGenerator(
-				filename_, 
-				DocMetadata.root4xml, 
 				#if NET20
 				System.Configuration.ConfigurationManager.AppSettings
 				#else
@@ -171,7 +169,11 @@ namespace OGen.Doc.lib.generator {
 				#endif
 					["Templates"],
 				cTemplates.root4xml, 
-				_outputDir
+				_outputDir, 
+				new MetaFile(
+					filename_, 
+					DocMetadata.ROOT
+				)
 			).Build(
 				notifyBase_in, 
 				metadata_

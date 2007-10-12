@@ -251,8 +251,6 @@ for (int _dbservertype = 0; _dbservertype < metadata_.DBs.Count; _dbservertype++
 
 
 			new cGenerator(
-				filename_, 
-				cDBMetadata.root4xml, 
 				#if NET20
 				System.Configuration.ConfigurationManager.AppSettings
 				#else
@@ -261,7 +259,11 @@ for (int _dbservertype = 0; _dbservertype < metadata_.DBs.Count; _dbservertype++
 					["Templates"],
 				cTemplates.root4xml,
 				_dbconnectionstrings, 
-				_outputDir
+				_outputDir, 
+				new MetaFile(
+					filename_, 
+					cDBMetadata.ROOT
+				)
 			).Build(
 				notifyBase_in, 
 				metadata_
