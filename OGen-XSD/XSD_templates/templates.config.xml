@@ -22,7 +22,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<conditions />
 		<outputs>
 			<!-- ${ROOT:metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/_base/XS0_${ROOT:schema.simpleType[n].name}Enumeration.no-svn.cs" 
+			<output to="${CONFIG.outputPath}/_base/XS0_${ROOT:schema.simpleType[n].name}.cs" 
 				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
@@ -38,7 +38,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<conditions />
 		<outputs>
 			<!-- ${ROOT:metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/XS_${ROOT:schema.simpleType[n].name}Enumeration.no-svn.cs" 
+			<output to="${CONFIG.outputPath}/XS_${ROOT:schema.simpleType[n].name}.cs" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies>
@@ -56,7 +56,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<conditions />
 		<outputs>
 			<!-- ${ROOT:metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/_base/XS0_${ROOT:schema.complexType[n].name}.no-svn.cs" 
+			<output to="${CONFIG.outputPath}/_base/XS0_${ROOT:schema.complexType[n].name}.cs" 
 				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
@@ -72,7 +72,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<conditions />
 		<outputs>
 			<!-- ${ROOT:metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/XS_${ROOT:schema.complexType[n].name}.no-svn.cs" 
+			<output to="${CONFIG.outputPath}/XS_${ROOT:schema.complexType[n].name}.cs" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies>

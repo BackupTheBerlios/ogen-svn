@@ -17,7 +17,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	xmlns="http://ogen.berlios.de"
 	elementFormDefault="qualified">
 
-	<xs:simpleType name="sqlScriptOption">
+	<xs:simpleType name="sqlScriptOptionEnumeration">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="RunImmediately" />
 		</xs:restriction>
@@ -288,7 +288,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<xs:attribute name="applicationNamespace" type="xs:string" />
 		<xs:attribute name="subAppName" type="xs:string" />
 		<xs:attribute name="pseudoReflectionable" type="xs:string" />
-		<xs:attribute name="sqlScriptOption" type="sqlScriptOption" />
+		<xs:attribute name="sqlScriptOption" type="sqlScriptOptionEnumeration" />
 		<xs:attribute name="guidDatalayer" type="xs:string" />
 		<xs:attribute name="guidDatalayer_UTs" type="xs:string" />
 		<xs:attribute name="guidBusinesslayer" type="xs:string" />

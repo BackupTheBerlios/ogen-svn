@@ -4,7 +4,7 @@ OGen-NTier_UTs
 OGen-Doc
 OGen-XSD
 doc
-OGen-NTier_UTs\OGen-metadatas
+OGen-NTier\NTier_metadata\OGenXSD-metadatas
 OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas
+OGen-NTier_UTs\OGen-metadatas
 OGen-Doc\OGen-Doc-Doc\OGenDoc-metadatas
-OGen-XSD_OGen_NTier_metadatas\OGenXSD-metadatas

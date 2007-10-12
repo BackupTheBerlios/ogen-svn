@@ -78,7 +78,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-//		#region public xs__collection<XS_SimpleType> XS_SimpleType { get; }
+		#region //public xs__collection<XS_SimpleType> XS_SimpleType { get; }
 //		private xs__collection<XS_SimpleType> xs_simpletype_ 
 //			= new xs__collection<XS_SimpleType>();
 //
@@ -94,8 +94,8 @@ namespace OGen.XSD.lib.metadata {
 //		public xs__collection<XS_SimpleType> XS_SimpleType {
 //			get { return xs_simpletype_; }
 //		}
-//		#endregion
-//		#region public xs__collection<XS_ComplexType> XS_ComplexType { get; }
+		#endregion
+		#region //public xs__collection<XS_ComplexType> XS_ComplexType { get; }
 //		private xs__collection<XS_ComplexType> xs_complextype_ 
 //			= new xs__collection<XS_ComplexType>();
 //
@@ -111,6 +111,6 @@ namespace OGen.XSD.lib.metadata {
 //		public xs__collection<XS_ComplexType> XS_ComplexType {
 //			get { return xs_complextype_; }
 //		}
-//		#endregion
+		#endregion
 	}
 }

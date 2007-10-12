@@ -50,11 +50,21 @@ if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTex
 #endregion
 <%
 }%>using System;
-using System.Data;
 using System.Xml.Serialization;
 
+using OGen.lib.collections;
+
 namespace <%=_aux_metadata.Namespace%> {
-	public class XS0_<%=_aux_complextype.Name%> {<%
+	public class XS0_<%=_aux_complextype.Name%> : OGenCollectionInterface {
+		#region public string CollectionName { get; }
+		[XmlIgnore()]
+		public string CollectionName {
+			get { return 
+// ToDos: now!
+string.Empty
+			; }
+		}
+		#endregion<%
 
 	for (int a = 0; a < _aux_complextype.XS_Attribute.Count; a++) {%>
 		#region public <%=_aux_complextype.XS_Attribute[a].NType%> <%=_aux_complextype.XS_Attribute[a].Name%> { get; set; }
@@ -75,31 +85,31 @@ namespace <%=_aux_metadata.Namespace%> {
 <%
 	for (int e = 0; e < _aux_elements.Count; e++) {
 		if (_aux_elements[e].MaxOccurs == XS_Element.MAXOCCURSENUM_UNBOUNDED) {%>
-		#region public xs__collection<XS_<%=_aux_elements[e].Name%>> XS_<%=_aux_elements[e].Name%> { get; }
-		private OGenCollection<XS_<%=_aux_elements[e].Name%>> xs_<%=_aux_elements[e].Name.ToLower()%>_ 
-			= new OGenCollection<XS_<%=_aux_elements[e].Name%>>();
+		#region public OGenCollection<XS_<%=_aux_elements[e].Type%>> XS_<%=_aux_elements[e].Name%> { get; }
+		private OGenCollection<XS_<%=_aux_elements[e].Type%>> xs_<%=_aux_elements[e].Name.ToLower()%>_ 
+			= new OGenCollection<XS_<%=_aux_elements[e].Type%>>();
 
 		[XmlElement("<%=_aux_elements[e].Name%>")]
-		public XS_<%=_aux_elements[e].Name%>[] xs_<%=_aux_elements[e].Name.ToLower()%>__xml {
+		public XS_<%=_aux_elements[e].Type%>[] xs_<%=_aux_elements[e].Name.ToLower()%>__xml {
 			get { return xs_<%=_aux_elements[e].Name.ToLower()%>_.cols__; }
 			set { xs_<%=_aux_elements[e].Name.ToLower()%>_.cols__ = value; }
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_<%=_aux_elements[e].Name%>> XS_<%=_aux_elements[e].Name%> {
+		public OGenCollection<XS_<%=_aux_elements[e].Type%>> XS_<%=_aux_elements[e].Name%> {
 			get { return xs_<%=_aux_elements[e].Name.ToLower()%>_; }
 		}
 		#endregion<%
 
 		} else {%>
-		#region public XS_<%=_aux_elements[e].Name%> XS_<%=_aux_elements[e].Name%> { get; set; }
-		private XS_<%=_aux_elements[e].Name%> xs_<%=_aux_elements[e].Name.ToLower()%>__;
+		#region public XS_<%=_aux_elements[e].Type%> XS_<%=_aux_elements[e].Name%> { get; set; }
+		private XS_<%=_aux_elements[e].Type%> xs_<%=_aux_elements[e].Name.ToLower()%>__;
 
 		[XmlIgnore()]
-		public XS_<%=_aux_elements[e].Name%> XS_<%=_aux_elements[e].Name%> {
+		public XS_<%=_aux_elements[e].Type%> XS_<%=_aux_elements[e].Name%> {
 			get {
 				if (xs_<%=_aux_elements[e].Name.ToLower()%>__ == null) {
-					xs_<%=_aux_elements[e].Name.ToLower()%>__ = new XS_<%=_aux_elements[e].Name%>();
+					xs_<%=_aux_elements[e].Name.ToLower()%>__ = new XS_<%=_aux_elements[e].Type%>();
 				}
 				return xs_<%=_aux_elements[e].Name.ToLower()%>__;
 			}
@@ -109,7 +119,7 @@ namespace <%=_aux_metadata.Namespace%> {
 		}
 
 		[XmlElement("<%=_aux_elements[e].Name.ToLower()%>")]
-		public XS_<%=_aux_elements[e].Name%> xs_<%=_aux_elements[e].Name.ToLower()%>__xml {
+		public XS_<%=_aux_elements[e].Type%> xs_<%=_aux_elements[e].Name.ToLower()%>__xml {
 			get { return xs_<%=_aux_elements[e].Name.ToLower()%>__; }
 			set { xs_<%=_aux_elements[e].Name.ToLower()%>__ = value; }
 		}

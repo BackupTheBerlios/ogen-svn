@@ -48,14 +48,15 @@ if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTex
 #endregion
 <%
 }%>using System;
-using System.Data;
 using System.Xml.Serialization;
+
+using OGen.lib.collections;
 
 namespace <%=_aux_metadata.Namespace%> {
 	public class XS_<%=_aux_complextype.Name%> : XS0_<%=_aux_complextype.Name%> {
 
 	<%for (int a = 0; a < _aux_complextype.XS_Attribute.Count; a++) {
-		%><%=_aux_complextype.XS_Attribute[a].Name%>
+		%>//<%=_aux_complextype.XS_Attribute[a].Name%>
 	<%
 	}%>
 

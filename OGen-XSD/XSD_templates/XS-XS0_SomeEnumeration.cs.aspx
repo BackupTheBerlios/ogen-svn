@@ -46,15 +46,13 @@ if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTex
 #endregion
 <%
 }%>using System;
-using System.Data;
 using System.Xml.Serialization;
 
+using OGen.lib.collections;
 
 namespace <%=_aux_metadata.Namespace%> {
-	public XS_<%=_arg_SimpleTypeName%>();
-}
-
-
-<%
+	public class XS0_<%=_arg_SimpleTypeName%> {
+	}
+}<%
 //-----------------------------------------------------------------------------------------
 %>

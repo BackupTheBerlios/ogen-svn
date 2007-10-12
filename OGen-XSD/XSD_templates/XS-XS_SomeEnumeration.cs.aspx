@@ -15,7 +15,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #region arguments...
 string _arg_SchemaFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaFilepath"]);
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
-string _arg_EnumerationValue = System.Web.HttpUtility.UrlDecode(Request.QueryString["EnumerationValue"]);
+string _arg_SimpleTypeName = System.Web.HttpUtility.UrlDecode(Request.QueryString["SimpleTypeName"]);
 #endregion
 
 #region varaux...
@@ -46,15 +46,13 @@ if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTex
 #endregion
 <%
 }%>using System;
-using System.Data;
 using System.Xml.Serialization;
 
+using OGen.lib.collections;
 
 namespace <%=_aux_metadata.Namespace%> {
-	public XS_<%=_arg_EnumerationValue%>();
-}
-
-
-<%
+	public class XS_<%=_arg_SimpleTypeName%> : XS0_<%=_arg_SimpleTypeName%> {
+	}
+}<%
 //-----------------------------------------------------------------------------------------
 %>

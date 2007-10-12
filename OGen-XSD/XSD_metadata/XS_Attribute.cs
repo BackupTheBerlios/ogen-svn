@@ -78,7 +78,10 @@ namespace OGen.XSD.lib.metadata {
 						return "bool";
 
 					default:
-						return type_;
+						return string.Format(
+							"XS_{0}", 
+							type_
+						);
 				}
 			}
 		}

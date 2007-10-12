@@ -49,13 +49,17 @@
     <None Include="LICENSE.MIT.txt" />
     <None Include="LICENSE.txt" />
     <None Include="templates.config.xml" />
-    <None Include="XS-XS0_SomeEnumeration.cs.aspx" />
+    <None Include="XS-XS0_SomeEnumeration.cs.aspx">
+    </None>
     <None Include="XS-XS0_SomeClass.cs.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </None>
     <None Include="Web.config" />
-    <None Include="XS-XS_SomeClass.cs.aspx" />
-    <None Include="XS-XS_SomeEnumeration.cs.aspx" />
+    <None Include="XS-XS_SomeClass.cs.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </None>
+    <None Include="XS-XS_SomeEnumeration.cs.aspx">
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\OGen\OGen_collections\OGen_collections-8.csproj">

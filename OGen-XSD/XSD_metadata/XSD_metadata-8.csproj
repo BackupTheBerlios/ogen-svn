@@ -46,10 +46,8 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="extendedMetadatas\ExtendedMetadata.cs" />
-    <Compile Include="OGenCollection.cs" />
-    <Compile Include="OGenCollectionInterface.cs" />
     <Compile Include="XS_Attribute.cs" />
-    <Compile Include="xs__collection.cs" />
+    <Compile Include="utils.cs" />
     <Compile Include="XS_ComplexType.cs" />
     <Compile Include="XS_Element.cs" />
     <Compile Include="XS_Enumeration.cs" />
