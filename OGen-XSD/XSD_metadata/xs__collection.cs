@@ -28,7 +28,8 @@ namespace OGen.XSD.lib.metadata {
 			cClaSSe.dIteration_found iteration_found_in, 
 			string iteration_in, 
 			string pathTranslated_in, 
-			bool returnValue_in
+			bool returnValue_in, 
+			bool anyAttribute_notJustXml
 		) {
 			if (iteration_in == pathTranslated_in) {
 				if (iteration_found_in != null) iteration_found_in(path_in);
@@ -41,7 +42,9 @@ namespace OGen.XSD.lib.metadata {
 			System.Xml.Serialization.XmlAttributeAttribute _attribute;
 			object _value;
 			Array _array;
-			string _output = string.Empty;
+			string _output = null;
+			bool _isDefined = false;
+			string _attributename = string.Empty;
 
 			_properties = someClass_in.GetType().GetProperties(
 				BindingFlags.Public | 
@@ -50,51 +53,12 @@ namespace OGen.XSD.lib.metadata {
 			for (int _prop = 0; _prop < _properties.Length; _prop++) {
 				if (Attribute.IsDefined(
 					_properties[_prop], 
-					typeof(System.Xml.Serialization.XmlAttributeAttribute)
-				)) {
-					_value = _properties[_prop].GetValue(someClass_in, null);
-
-					if (_value == null) continue;
-
-//Console.Write(
-//	"XmlAttribute::{0}", 
-//	_properties[_prop].Name
-//);
-
-					_attribute 
-						= (System.Xml.Serialization.XmlAttributeAttribute)Attribute.GetCustomAttributes(
-							_properties[_prop], 
-							typeof(System.Xml.Serialization.XmlAttributeAttribute), 
-							true
-						)[0];
-
-//Console.Write(
-//	"{0}=\"{1}\" ",
-//	_attribute.AttributeName, 
-//	_value.ToString()
-//);
-if (string.Format("{0}.{1}", path_in, _attribute.AttributeName) == iteration_in) {
-	//Console.WriteLine(
-	//	"{0}\n{1}\n{2}\n---", 
-	//	iteration_in, 
-	//	path_in, // pathTranslated_in, 
-	//	_attribute.AttributeName
-	//);
-	return _value.ToString();
-}
-
-				} else if (Attribute.IsDefined(
-					_properties[_prop], 
 					typeof(System.Xml.Serialization.XmlElementAttribute)
 				)) {
+					#region 
 					_value = _properties[_prop].GetValue(someClass_in, null);
 
 					if (_value == null) continue;
-
-//Console.Write(
-//	"XmlElementAttribute::{0}", 
-//	_properties[_prop].Name
-//);
 
 					_elementAttribute 
 						= (System.Xml.Serialization.XmlElementAttribute)Attribute.GetCustomAttributes(
@@ -106,11 +70,6 @@ if (string.Format("{0}.{1}", path_in, _attribute.AttributeName) == iteration_in)
 					if (_value.GetType().IsArray) {
 						_array = (Array)_value;
 						for (int i = 0; i < _array.Length; i++) {
-//Console.Write(
-//	"\n<xs:{0} ",
-//	_elementAttribute.ElementName
-//);
-
 							_output = ReflectThrough(
 								_array.GetValue(i), 
 								string.Format(
@@ -126,21 +85,14 @@ if (string.Format("{0}.{1}", path_in, _attribute.AttributeName) == iteration_in)
 									pathTranslated_in, 
 									_elementAttribute.ElementName
 								), 
-								returnValue_in
+								returnValue_in, 
+								anyAttribute_notJustXml
 							);
-							if (returnValue_in && (_output != string.Empty)) return _output;
-
-//Console.Write(
-//	"\n</xs:{0}>",
-//	_elementAttribute.ElementName
-//);
+// ToDos: now! property may have been found and have empty string
+if (returnValue_in && (_output != null)) 
+								return _output;
 						}
 					} else {
-//Console.Write(
-//	"\n<xs:{0} ",
-//	_elementAttribute.ElementName
-//);
-
 						_output = ReflectThrough(
 							_value, 
 							string.Format(
@@ -155,15 +107,49 @@ if (string.Format("{0}.{1}", path_in, _attribute.AttributeName) == iteration_in)
 								pathTranslated_in, 
 								_elementAttribute.ElementName
 							), 
-							returnValue_in
+							returnValue_in, 
+							anyAttribute_notJustXml
 						);
-						if (returnValue_in && (_output != string.Empty)) return _output;
-
-//Console.Write(
-//	"\n</xs:{0}>",
-//	_elementAttribute.ElementName
-//);
+// ToDos: now! property may have been found and have empty string
+if (returnValue_in && (_output != null)) 
+							return _output;
 					}
+					#endregion
+				} else if (
+					(_isDefined = Attribute.IsDefined(
+						_properties[_prop], 
+						typeof(System.Xml.Serialization.XmlAttributeAttribute)
+					))
+					||
+					anyAttribute_notJustXml
+				) {
+					#region
+					if (
+						anyAttribute_notJustXml 
+						&& 
+						!_properties[_prop].CanRead
+					) continue;
+
+					_value = _properties[_prop].GetValue(someClass_in, null);
+
+					if (_value == null) continue;
+
+					if (_isDefined) {
+						_attribute 
+							= (System.Xml.Serialization.XmlAttributeAttribute)Attribute.GetCustomAttributes(
+								_properties[_prop], 
+								typeof(System.Xml.Serialization.XmlAttributeAttribute), 
+								true
+							)[0];
+						_attributename = _attribute.AttributeName;
+					} else {
+						_attributename = _properties[_prop].Name;
+					}
+
+					if (string.Format("{0}.{1}", path_in, _attributename) == iteration_in) {
+						return _value.ToString();
+					}
+					#endregion
 				}
 			}
 

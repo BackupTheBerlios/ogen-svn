@@ -26,7 +26,7 @@ using OGen.XSD.lib.metadata;
 namespace OGen.XSD.presentationlayer.test {
 	class Program {
 		public static void Main(string[] args) {
-			#region XmlSchema...
+			#region //XmlSchema...
 //			string _filepath = @"c:\test.xml";
 //
 //			FileStream _file = new FileStream(
@@ -122,10 +122,19 @@ namespace OGen.XSD.presentationlayer.test {
 			_schema.XS_Element = _someElement;
 
 Console.WriteLine(
+	"'{0}' == '{1}'", 
+	_schema.XS_SimpleType[0].XS_Restriction.XS_Enumeration[2].Value, 
 	_schema.Read_fromRoot("ROOT.simpleType[0].restriction.enumeration[2].value")
 );
 Console.Write("Press any key to continue . . . ");
 Console.ReadKey(true); Console.WriteLine();
+//Console.WriteLine(
+//	"'{0}' == '{1}'", 
+//	_schema.XS_SimpleType[0].XS_Restriction.XS_Enumeration[2].XXX, 
+//	_schema.Read_fromRoot("ROOT.simpleType[0].restriction.enumeration[2].XXX")
+//);
+//Console.Write("Press any key to continue . . . ");
+//Console.ReadKey(true); Console.WriteLine();
 _schema.IterateThrough_fromRoot(
 	"ROOT.simpleType[n].restriction.enumeration[n]", 
 	notifyme//cClaSSe.dIteration_found

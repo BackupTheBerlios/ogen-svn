@@ -134,6 +134,7 @@ namespace OGen.XSD.lib.metadata {
 				null, 
 				what_in, 
 				"ROOT", 
+				true, 
 				true
 			);
 		}
@@ -148,7 +149,8 @@ namespace OGen.XSD.lib.metadata {
 				iteration_found_in, 
 				iteration_in, 
 				"ROOT", 
-				false
+				false, 
+				true
 			);
 		}
 	}

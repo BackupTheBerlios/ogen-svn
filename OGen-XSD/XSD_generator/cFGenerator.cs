@@ -23,6 +23,7 @@ namespace OGen.XSD.lib.generator {
 		#region	public cFGenerator();
 		public cFGenerator() {
 			filename_ = string.Empty;
+			filenameextendedmetadata_ = string.Empty;
 		}
 		#endregion
 
@@ -34,6 +35,13 @@ namespace OGen.XSD.lib.generator {
 
 		public string Filename {
 			get { return filename_; }
+		}
+		#endregion
+		#region public string FilenameExtendedMetadata { get; }
+		private string filenameextendedmetadata_;
+
+		public string FilenameExtendedMetadata {
+			get { return filenameextendedmetadata_; }
 		}
 		#endregion
 		#region public bool hasChanges { get; }
@@ -56,6 +64,13 @@ namespace OGen.XSD.lib.generator {
 			get { return metadata_; }
 		}
 		#endregion
+		#region public ExtendedMetadata ExtendedMetadata { get ; }
+		private ExtendedMetadata extendedmetadata_;
+
+		public ExtendedMetadata ExtendedMetadata {
+			get { return extendedmetadata_; }
+		}
+		#endregion
 		//#endregion
 
 		#region public Delegates...
@@ -64,43 +79,44 @@ namespace OGen.XSD.lib.generator {
 
 		#region private Methods...
 		#endregion
-		#region public Methods...
-		#region public void New(...);
-		public void New(
-			string applicationPath_in, 
-			string documentationName_in, 
-			dNotifyBack notifyBack_in
-		) {
-			if (notifyBack_in != null) notifyBack_in("creating...", true);
-			#region XS_Schema _metadata_temp = new XS_Schema(); ...;
-			XS_Schema _metadata_temp = new XS_Schema();
-			_metadata_temp.DocumentationName = documentationName_in;
-			#endregion
-
-			if (notifyBack_in != null) notifyBack_in("- generating xml file", true);
-			#region string _xmlfile = ...;
-			string _xmlfile = string.Format(
-				"{0}{1}OGenDoc-metadatas{1}MD_{2}.OGenDoc-metadata.xml", 
-				/*0*/applicationPath_in, 
-				/*1*/System.IO.Path.DirectorySeparatorChar, 
-				/*2*/documentationName_in
-			);
-			#endregion
-			_metadata_temp.SaveState_toFile(_xmlfile);
-
-			if (notifyBack_in != null) notifyBack_in("... finished!", true);
-			if (notifyBack_in != null) notifyBack_in("", true);
-
-			Open(
-				_xmlfile, 
-				true, 
-				notifyBack_in
-			);
-		}
+//		#region public Methods...
+		#region //public void New(...);
+//		public void New(
+//			string applicationPath_in, 
+//string documentationName_in, 
+//			dNotifyBack notifyBack_in
+//		) {
+//			if (notifyBack_in != null) notifyBack_in("creating...", true);
+//			#region XS_Schema _metadata_temp = new XS_Schema(); ...;
+//			XS_Schema _metadata_temp = new XS_Schema();
+//			_metadata_temp.DocumentationName = documentationName_in;
+//			#endregion
+//
+//			if (notifyBack_in != null) notifyBack_in("- generating xml file", true);
+//			#region string _xmlfile = ...;
+//			string _xmlfile = string.Format(
+//				"{0}{1}OGenXSD-metadatas{1}MD_{2}.OGenXSD-metadata.xml", 
+//				/*0*/applicationPath_in, 
+//				/*1*/System.IO.Path.DirectorySeparatorChar, 
+//				/*2*/documentationName_in
+//			);
+//			#endregion
+//			_metadata_temp.SaveState_toFile(_xmlfile);
+//
+//			if (notifyBack_in != null) notifyBack_in("... finished!", true);
+//			if (notifyBack_in != null) notifyBack_in("", true);
+//
+//			Open(
+//				_xmlfile, 
+//				true, 
+//				notifyBack_in
+//			);
+//		}
 		#endregion
-		#region public void Open(...);
+//		#region public void Open(...);
 		public void Open(
 			string filename_in, 
+			string filenameextendedmetadata_in, 
 			bool force_doNOTsave_in, 
 			dNotifyBack notifyBack_in
 		) {
@@ -112,17 +128,19 @@ namespace OGen.XSD.lib.generator {
 			}
 			#endregion
 			filename_ = filename_in;
+			filenameextendedmetadata_ = filenameextendedmetadata_in;
 
 			if (notifyBack_in != null) notifyBack_in("opening...", true);
-			if (notifyBack_in != null) notifyBack_in("- reading metadata from xml file", true);
+			if (notifyBack_in != null) notifyBack_in("- reading metadata from xml files", true);
 			//metadata_ = new XS_Schema();
 			//metadata_.LoadState_fromFile(
 			//	filename_
 			//);
 			metadata_ = XS_Schema.Load_fromFile(filename_);
+			extendedmetadata_ = ExtendedMetadata.Load_fromFile(filenameextendedmetadata_);
 			if (notifyBack_in != null) notifyBack_in("... finished", true);
 		}
-		#endregion
+//		#endregion
 		#region public void Close(...);
 		public void Close(bool force_doNOTsave_in) {
 			if (
@@ -133,6 +151,7 @@ namespace OGen.XSD.lib.generator {
 			}
 
 			filename_ = string.Empty;
+			filenameextendedmetadata_ = string.Empty;
 		}
 		#endregion
 		#region public void Save(...);
@@ -142,12 +161,15 @@ namespace OGen.XSD.lib.generator {
 				metadata_.SaveState_toFile(
 					filename_
 				);
+				extendedmetadata_.SaveState_toFile(
+					filenameextendedmetadata_
+				);
 
 				haschanges_ = false;
 			}
 		}
 		#endregion
-		#region public void Build(cGenerator.dBuild notifyBase_in);
+//		#region public void Build(cGenerator.dBuild notifyBase_in);
 		public void Build(cGenerator.dBuild notifyBase_in) {
 			#region string _outputDir = ...;
 			string _outputDir = System.IO.Directory.GetParent(
@@ -166,7 +188,7 @@ namespace OGen.XSD.lib.generator {
 			metadata_.SaveState_toFile(_metadata0);
 
 			new cGenerator(
-				filename_, 
+filename_, 
 				string.Empty,
 				#if NET20
 				System.Configuration.ConfigurationManager.AppSettings
@@ -182,7 +204,7 @@ namespace OGen.XSD.lib.generator {
 			);
 			if (notifyBase_in != null) notifyBase_in("...finished", true);
 		}
-		#endregion
-		#endregion
+//		#endregion
+//		#endregion
 	}
 }
