@@ -58,6 +58,31 @@ namespace OGen.XSD.lib.metadata {
 			get { return Name; }
 		}
 		#endregion
+		#region public string NType { get; set; }
+
+		[XmlIgnore()]
+		public string NType {
+			get {
+				switch (type_) {
+					case "xs:string":
+						return "string";
+					case "xs:decimal":
+						return "decimal";
+					case "xs:integer":
+						return "int";
+					case "xs:boolean":
+						return "bool";
+					case "xs:time":
+					case "xs:date":
+						return "DateTime";
+						return "bool";
+
+					default:
+						return type_;
+				}
+			}
+		}
+		#endregion
 
 //		#region public xs__collection<XS_SimpleType> XS_SimpleType { get; }
 //		private xs__collection<XS_SimpleType> xs_simpletype_ 

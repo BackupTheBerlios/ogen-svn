@@ -11,7 +11,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --%><%@ Page language="c#" contenttype="text/html" %>
 <%//@ import namespace="OGen.lib.datalayer" %>
-<%@ import namespace="OGen.XSD.lib.metadata" %><%
+<%@ import namespace="OGen.XSD.lib.metadata" %>
+<%@ import namespace="OGen.lib.collections" %><%
 #region arguments...
 string _arg_SchemaFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaFilepath"]);
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
@@ -36,6 +37,7 @@ if (ExtendedMetadata.Metacache.Contains(_arg_MetadataFilepath)) {
 }
 
 XS_ComplexType _aux_complextype = _aux_schema.XS_ComplexType[_arg_ComplexTypeName];
+OGenCollection<XS_Element> _aux_elements = _aux_complextype.XS_Sequence.XS_Element;
 #endregion
 //-----------------------------------------------------------------------------------------
 if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTextLong != string.Empty)) {
@@ -51,19 +53,71 @@ if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTex
 using System.Data;
 using System.Xml.Serialization;
 
+namespace <%=_aux_metadata.Namespace%> {
+	public class XS0_<%=_aux_complextype.Name%> {<%
 
-namespace <%="_aux_schema.Namespace"%>.lib.datalayer {
-	public class XS0_<%=_aux_complextype.Name%> {
+	for (int a = 0; a < _aux_complextype.XS_Attribute.Count; a++) {%>
+		#region public <%=_aux_complextype.XS_Attribute[a].NType%> <%=_aux_complextype.XS_Attribute[a].Name%> { get; set; }
+		private <%=_aux_complextype.XS_Attribute[a].NType%> <%=_aux_complextype.XS_Attribute[a].Name.ToLower()%>_;
 
-	<%for (int a = 0; a < _aux_complextype.XS_Attribute.Count; a++) {
-		%><%=_aux_complextype.XS_Attribute[a].Name%>
-	<%
+		[XmlAttribute("<%=_aux_complextype.XS_Attribute[a].Name%>")]
+		public <%=_aux_complextype.XS_Attribute[a].NType%> <%=_aux_complextype.XS_Attribute[a].Name%> {
+			get {
+				return <%=_aux_complextype.XS_Attribute[a].Name.ToLower()%>_;
+			}
+			set {
+				<%=_aux_complextype.XS_Attribute[a].Name.ToLower()%>_ = value;
+			}
+		}
+		#endregion<%
+	}%>
+
+<%
+	for (int e = 0; e < _aux_elements.Count; e++) {
+		if (_aux_elements[e].MaxOccurs == XS_Element.MAXOCCURSENUM_UNBOUNDED) {%>
+		#region public xs__collection<XS_<%=_aux_elements[e].Name%>> XS_<%=_aux_elements[e].Name%> { get; }
+		private OGenCollection<XS_<%=_aux_elements[e].Name%>> xs_<%=_aux_elements[e].Name.ToLower()%>_ 
+			= new OGenCollection<XS_<%=_aux_elements[e].Name%>>();
+
+		[XmlElement("<%=_aux_elements[e].Name%>")]
+		public XS_<%=_aux_elements[e].Name%>[] xs_<%=_aux_elements[e].Name.ToLower()%>__xml {
+			get { return xs_<%=_aux_elements[e].Name.ToLower()%>_.cols__; }
+			set { xs_<%=_aux_elements[e].Name.ToLower()%>_.cols__ = value; }
+		}
+
+		[XmlIgnore()]
+		public OGenCollection<XS_<%=_aux_elements[e].Name%>> XS_<%=_aux_elements[e].Name%> {
+			get { return xs_<%=_aux_elements[e].Name.ToLower()%>_; }
+		}
+		#endregion<%
+
+		} else {%>
+		#region public XS_<%=_aux_elements[e].Name%> XS_<%=_aux_elements[e].Name%> { get; set; }
+		private XS_<%=_aux_elements[e].Name%> xs_<%=_aux_elements[e].Name.ToLower()%>__;
+
+		[XmlIgnore()]
+		public XS_<%=_aux_elements[e].Name%> XS_<%=_aux_elements[e].Name%> {
+			get {
+				if (xs_<%=_aux_elements[e].Name.ToLower()%>__ == null) {
+					xs_<%=_aux_elements[e].Name.ToLower()%>__ = new XS_<%=_aux_elements[e].Name%>();
+				}
+				return xs_<%=_aux_elements[e].Name.ToLower()%>__;
+			}
+			set {
+				xs_<%=_aux_elements[e].Name.ToLower()%>__ = value;
+			}
+		}
+
+		[XmlElement("<%=_aux_elements[e].Name.ToLower()%>")]
+		public XS_<%=_aux_elements[e].Name%> xs_<%=_aux_elements[e].Name.ToLower()%>__xml {
+			get { return xs_<%=_aux_elements[e].Name.ToLower()%>__; }
+			set { xs_<%=_aux_elements[e].Name.ToLower()%>__ = value; }
+		}
+		#endregion<%
+		}
 	}%>
 
 	}
-}
-
-
-<%
+}<%
 //-----------------------------------------------------------------------------------------
 %>

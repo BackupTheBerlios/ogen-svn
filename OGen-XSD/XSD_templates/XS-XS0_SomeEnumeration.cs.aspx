@@ -50,7 +50,7 @@ using System.Data;
 using System.Xml.Serialization;
 
 
-namespace <%="_aux_schema.Namespace"%>.lib.datalayer {
+namespace <%=_aux_metadata.Namespace%> {
 	public XS_<%=_arg_SimpleTypeName%>();
 }
 

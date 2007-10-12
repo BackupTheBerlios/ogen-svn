@@ -285,7 +285,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 	<xs:complexType name="metadataType">
 		<xs:attribute name="applicationName" type="xs:string" />
-		<xs:attribute name="namespace" type="xs:string" />
+		<xs:attribute name="applicationNamespace" type="xs:string" />
 		<xs:attribute name="subAppName" type="xs:string" />
 		<xs:attribute name="pseudoReflectionable" type="xs:string" />
 		<xs:attribute name="sqlScriptOption" type="sqlScriptOption" />

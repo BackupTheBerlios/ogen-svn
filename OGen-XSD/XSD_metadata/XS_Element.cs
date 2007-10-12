@@ -23,6 +23,11 @@ namespace OGen.XSD.lib.metadata {
 		public XS_Element() {
 		}
 
+		public const string MAXOCCURSENUM_UNBOUNDED = "unbounded";
+		//public enum MaxOccursEnum {
+		//	unbounded = 0
+		//}
+
 		#region public string Name { get; set; }
 		private string name_;
 
