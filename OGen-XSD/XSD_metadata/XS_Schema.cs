@@ -27,6 +27,8 @@ namespace OGen.XSD.lib.metadata {
 		public XS_Schema() {
 		}
 
+		public const string SCHEMA = "schema";
+
 		#region //public string xmlNS_xs { get; set; }
 //		private string xmlns_xs_;
 //
@@ -207,10 +209,10 @@ return;
 		public string Read_fromRoot(string what_in) {
 			return utils.ReflectThrough(
 				this, 
-				"ROOT", 
+				"ROOT:" + SCHEMA, 
 				null, 
 				what_in, 
-				"ROOT", 
+				"ROOT:" + SCHEMA, 
 				true, 
 				true
 			);
@@ -222,10 +224,10 @@ return;
 		) {
 			utils.ReflectThrough(
 				this, 
-				"ROOT", 
+				"ROOT:" + SCHEMA, 
 				iteration_found_in, 
 				iteration_in, 
-				"ROOT", 
+				"ROOT:" + SCHEMA, 
 				false, 
 				true
 			);

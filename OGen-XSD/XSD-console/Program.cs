@@ -63,7 +63,7 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 								#endif
 									["ogenPath"],
 
-								@"..\..\OGen-XSD_OGen_NTier_metadatas\OGenXSD-metadatas\MD_OGen-XSD_OGen_NTier_metadatas.OGen-metadata.xsd"
+								@"..\..\OGen-XSD_OGen_NTier_metadatas\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xsd"
 							), 
 							System.IO.Path.Combine(
 								#if NET20
@@ -73,7 +73,7 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 								#endif
 									["ogenPath"],
 
-								@"..\..\OGen-XSD_OGen_NTier_metadatas\OGenXSD-metadatas\MD_OGen_NTier_metadatas.OGenXSD-metadata.xml"
+								@"..\..\OGen-XSD_OGen_NTier_metadatas\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xml"
 							)
 						);
 					} catch (Exception _ex) {

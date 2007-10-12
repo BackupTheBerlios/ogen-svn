@@ -25,6 +25,8 @@ namespace OGen.XSD.lib.metadata {
 		public ExtendedMetadata() {
 		}
 
+		public const string METADATA = "metadata";
+
 		#region public string ApplicationName { get; set; }
 		private string applicationname_;
 
@@ -130,10 +132,10 @@ namespace OGen.XSD.lib.metadata {
 		public string Read_fromRoot(string what_in) {
 			return utils.ReflectThrough(
 				this, 
-				"ROOT", 
+				"ROOT:" + METADATA, 
 				null, 
 				what_in, 
-				"ROOT", 
+				"ROOT:" + METADATA, 
 				true, 
 				true
 			);
@@ -145,10 +147,10 @@ namespace OGen.XSD.lib.metadata {
 		) {
 			utils.ReflectThrough(
 				this, 
-				"ROOT", 
+				"ROOT:" + METADATA, 
 				iteration_found_in, 
 				iteration_in, 
-				"ROOT", 
+				"ROOT:" + METADATA, 
 				false, 
 				true
 			);

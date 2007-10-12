@@ -22,48 +22,75 @@ using OGen.lib.datalayer;
 using OGen.lib.parser;
 
 namespace OGen.lib.generator {
+	public struct MetaFile {
+		public MetaFile(
+			string path_in, 
+			string root_in
+		) {
+			Path = path_in;
+			Root = root_in;
+		}
+
+		public string Path;
+		public string Root;
+	}
+	public class utils {
+		private utils() {}
+
+		public static 
+			//MetaFile 
+			int
+			MetaFile_find(
+			MetaFile[] metaFiles_in, 
+			string root_in
+		) {
+			for (int i = 0; i < metaFiles_in.Length; i++) {
+				if (metaFiles_in[i].Root == root_in) {
+					return i;//metaFiles_in[i];
+				}
+			}
+
+			return -1;//new MetaFile();
+		}
+	}
+
 	public class cGenerator {
 		#region public cGenerator(...);
 		public cGenerator(
-			string					xmlMetadataFile_in, 
-			string					xmlMetadataRoot_in, 
-			string					xmlTemplatesFile_in, 
-			string					xmlTemplatesRoot_in, 
-			string					outputDir_in
+			string xmlTemplatesFile_in, 
+			string xmlTemplatesRoot_in, 
+			string outputDir_in,
+			params MetaFile[] metaFiles_in
 		) : this (
-			xmlMetadataFile_in, 
-			xmlMetadataRoot_in, 
 			xmlTemplatesFile_in, 
 			xmlTemplatesRoot_in, 
 			new DBConnectionstrings(), 
-			outputDir_in
+			outputDir_in, 
+			metaFiles_in
 		) {}
 
 		/// <summary>
 		/// ToDos: here! (use if you're generating code on a DataBase)
 		/// </summary>
-		/// <param name="xmlMetadataFile_in">ToDos: here!</param>
-		/// <param name="xmlMetadataRoot_in">ToDos: here!</param>
-		/// <param name="xmlTemplatesFile_in">ToDos: here!</param>
-		/// <param name="xmlTemplatesRoot_in">ToDos: here!</param>
+/// <param name="xmlTemplatesFile_in">ToDos: here!</param>
+/// <param name="xmlTemplatesRoot_in">ToDos: here!</param>
 		/// <param name="connectionType_in">DataBase Server Type (use if you're generating code on a DataBase)</param>
 		/// <param name="connectionString_in">DataBase Connectionstring (use if you're generating code on a DataBase)</param>
-		/// <param name="outputDir_in">ToDos: here!</param>
+/// <param name="outputDir_in">ToDos: here!</param>
+/// <param name="metaFiles_in">ToDos: here!</param>
 		public cGenerator(
-			string					xmlMetadataFile_in, 
-			string					xmlMetadataRoot_in, 
-			string					xmlTemplatesFile_in, 
-			string					xmlTemplatesRoot_in, 
-			DBConnectionstrings		dbconnectionstrings_in, 
-			string					outputDir_in
+			string xmlTemplatesFile_in, 
+			string xmlTemplatesRoot_in, 
+			DBConnectionstrings dbconnectionstrings_in, 
+			string outputDir_in, 
+			params MetaFile[] metaFiles_in
 		) {
 			//---
-			xmlmetadatafile_		= xmlMetadataFile_in;
-			xmlmetadataroot_		= xmlMetadataRoot_in;
-			xmltemplatesfileuri_	= new Uri(xmlTemplatesFile_in);
-			xmltemplatesroot_		= xmlTemplatesRoot_in;
-			dbconnectionstrings_	= dbconnectionstrings_in;
-			outputdir_				= outputDir_in;
+			xmltemplatesfileuri_ = new Uri(xmlTemplatesFile_in);
+			xmltemplatesroot_ = xmlTemplatesRoot_in;
+			dbconnectionstrings_ = dbconnectionstrings_in;
+			outputdir_ = outputDir_in;
+			metafiles_ = metaFiles_in;
 			//---
 		}
 		#endregion
@@ -71,22 +98,17 @@ namespace OGen.lib.generator {
 		#region private Fields/Properties...
 		private Uri xmltemplatesfileuri_;
 		private string xmltemplatesdir_;
-		private iClaSSe_metadata metadata_;
+		private iClaSSe_metadata[] metadatas_;
 		private cTemplates templates_;
 		private int template_;
 		private dBuild notifyback_;
 		#endregion
 		#region public Fields/Properties...
-		#region public string XMLMetadataFile { get; }
-		private string xmlmetadatafile_;
-		public string XMLMetadataFile {
-			get { return xmlmetadatafile_; }
-		}
-		#endregion
-		#region string XMLMetadataRoot { get; }
-		private string xmlmetadataroot_; 
-		public string XMLMetadataRoot {
-			get { return xmlmetadataroot_; }
+		#region public MetaFile Metafile { get; set; }
+		private MetaFile[] metafiles_;
+
+		public MetaFile[] Metafiles {
+			get { return metafiles_; }
 		}
 		#endregion
 		#region string XMLTemplatesRoot { get; }
@@ -203,7 +225,29 @@ namespace OGen.lib.generator {
 						}
 					}
 
-					translate_out = metadata_.Read_fromRoot(translate_out);
+// ToDos: now!
+//translate_out = metadata_.Read_fromRoot(
+//	translate_out
+//);
+// ToDos: now! not pretty
+//string _aux;
+translate_out = metadatas_[
+	utils.MetaFile_find(
+		metafiles_, 
+		//_aux = 
+		translate_out.Split('.')[0].Split(':')[1]
+	)
+].Read_fromRoot(
+	translate_out
+//	.Replace(
+//		string.Format(
+//			":{0}.", 
+//			_aux
+//		), 
+//		"."
+//	)
+);
+
 //					#endregion
 					break;
 //				#endregion
@@ -214,7 +258,11 @@ namespace OGen.lib.generator {
 //		#endregion
 //		#region private void notifyme(string message_in);
 		private static Exception notifyme_Exception = new Exception("ToDos: here!");
-		private void notifyme(string message_in) {
+		private void notifyme(
+			string message_in
+// ToDos: now!
+//, string root_in
+		) {
 
 //// ToDos: now!
 //#if DEBUG
@@ -228,7 +276,10 @@ namespace OGen.lib.generator {
 			int _verifiedConditions = 0;
 			for (int c = 0; c < templates_[template_].Conditions.Count; c++) {
 				if (
-					translate(templates_[template_].Conditions[c].Eval, message_in)
+					translate(
+						templates_[template_].Conditions[c].Eval,
+						message_in
+					)
 					==
 					templates_[template_].Conditions[c].To
 				) _verifiedConditions++;
@@ -368,7 +419,13 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 									: "/")
 								+ templates_[template_].Name;
 							ParserXSLT.Parse(
-								xmlmetadatafile_, 
+//xmlmetadatafile_, 
+metafiles_[
+	utils.MetaFile_find(
+		metafiles_, 
+		message_in.Split('.')[0].Split(':')[1]
+	)
+].Path, 
 								_xmltemplatesfile, 
 								_args, 
 								_stringwriter
@@ -579,8 +636,8 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 		#region private void Build(...);
 		private void Build(
 			dBuild notifyBack_in, 
-			iClaSSe_metadata metadata_in, 
-			bool loadMetadate_in
+			bool loadMetadate_in, 
+			iClaSSe_metadata[] metadatas_in
 		) {
 			notifyback_ = notifyBack_in;
 			//notifyback_("- common items", true);
@@ -603,12 +660,17 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 			#endregion
 
 			//metadata_ = new cDBMetadata(xmlmetadatafile_, xmlmetadataroot_);
-			metadata_ = metadata_in;
+			metadatas_ = metadatas_in;
 			if (loadMetadate_in) {
-				metadata_.LoadState_fromFile(
-					xmlmetadatafile_, 
-					xmlmetadataroot_
-				);
+// ToDos: now! index must be sinchronized, not very convenient :(
+				for (int m = 0; m < metadatas_.Length; m++) {
+					metadatas_[m].LoadState_fromFile(
+						//xmlmetadatafile_, 
+						metafiles_[m].Path, 
+						//xmlmetadataroot_
+						metafiles_[m].Root
+					);
+				}
 			}
 
 			templates_ = new cTemplates(
@@ -653,10 +715,32 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 					#endregion
 					if (_finishedDependencies == templates_[template_].Dependencies.Count) {
 						#region RUNNING: templates_[template_] ...
-						metadata_.IterateThrough_fromRoot(
-							templates_[template_].IterationType, 
-							new cClaSSe.dIteration_found(notifyme)
-						);
+//metadata_.IterateThrough_fromRoot(
+//	templates_[template_].IterationType, 
+//	new cClaSSe.dIteration_found(notifyme)
+//);
+// ToDos: now! not pretty
+//string _aux;
+metadatas_[
+	utils.MetaFile_find(
+		metafiles_, 
+//		_aux = 
+		templates_[template_].IterationType.Split('.')[0].Split(':')[1]
+	)
+].IterateThrough_fromRoot(
+	templates_[template_].IterationType
+//	.Replace(
+//		string.Format(
+//			":{0}.", 
+//			_aux
+//		), 
+//		"."
+//	)
+	,
+	new cClaSSe.dIteration_found(notifyme)
+);
+
+
 						#endregion
 
 						// adding template to finished list of templates
@@ -705,42 +789,42 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 			#endregion
 		}
 		#endregion
+//		public void Build(
+//			dBuild notifyBack_in, 
+//			Type[] typeofClaSSe_in
+//		) {
+//			#region Checking...
+//			Type[] _interfaces = typeofClaSSe_in.GetInterfaces();
+//			bool _found = false;
+//			for (int i = 0; i < _interfaces.Length; i++) {
+//				if (_interfaces[i] == typeof(iClaSSe_metadata)) {
+//					_found = true;
+//					break;
+//				}
+//			}
+//			if (!_found)
+//				throw new Exception(
+//					string.Format(
+//						"{0}.{1}.Build(): - invalid type supplied!", 
+//						this.GetType().Namespace, 
+//						this.GetType().Name
+//					)
+//				);
+//			#endregion
+//			Build(
+//				notifyBack_in, 
+//				(iClaSSe_metadata)Activator.CreateInstance(typeofClaSSe_in), 
+//				true
+//			);
+//		}
 		public void Build(
 			dBuild notifyBack_in, 
-			Type typeofClaSSe_in
-		) {
-			#region Checking...
-			Type[] _interfaces = typeofClaSSe_in.GetInterfaces();
-			bool _found = false;
-			for (int i = 0; i < _interfaces.Length; i++) {
-				if (_interfaces[i] == typeof(iClaSSe_metadata)) {
-					_found = true;
-					break;
-				}
-			}
-			if (!_found)
-				throw new Exception(
-					string.Format(
-						"{0}.{1}.Build(): - invalid type supplied!", 
-						this.GetType().Namespace, 
-						this.GetType().Name
-					)
-				);
-			#endregion
-			Build(
-				notifyBack_in, 
-				(iClaSSe_metadata)Activator.CreateInstance(typeofClaSSe_in), 
-				true
-			);
-		}
-		public void Build(
-			dBuild notifyBack_in, 
-			iClaSSe_metadata metadata_in
+			params iClaSSe_metadata[] metadatas_in
 		) {
 			Build(
 				notifyBack_in, 
-				metadata_in, 
-				false
+				false, 
+				metadatas_in
 			);
 		}
 		#endregion

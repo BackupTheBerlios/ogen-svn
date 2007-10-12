@@ -14,6 +14,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #endregion
 using System;
 using System.IO;
+
 using OGen.lib.templates;
 using OGen.lib.generator;
 using OGen.XSD.lib.metadata;
@@ -176,20 +177,18 @@ namespace OGen.XSD.lib.generator {
 				Path.GetDirectoryName(filename_)
 			).FullName;
 			#endregion
-			#region string _metadataFilePath = ...;
-			string _metadata0 = string.Format(
-				"{0}{1}OGenXSD-metadatas{1}MD0_{2}.OGenXSD-metadata.xml", 
-				/*00*/ _outputDir, 
-				/*01*/ Path.DirectorySeparatorChar, 
-				/*02*/ metadata_.DocumentationName
-			);
-			#endregion
+//			#region string _metadataFilePath = ...;
+//			string _metadata0 = string.Format(
+//				"{0}{1}OGenXSD-metadatas{1}MD0_{2}.OGenXSD-metadata.xml", 
+//				/*00*/ _outputDir, 
+//				/*01*/ Path.DirectorySeparatorChar, 
+//				/*02*/ extendedmetadata_.ApplicationName
+//			);
+//			#endregion
 			if (notifyBase_in != null) notifyBase_in("generating...", true);
-			metadata_.SaveState_toFile(_metadata0);
+//			metadata_.SaveState_toFile(_metadata0);
 
 			new cGenerator(
-filename_, 
-				string.Empty,
 				#if NET20
 				System.Configuration.ConfigurationManager.AppSettings
 				#else
@@ -197,10 +196,19 @@ filename_,
 				#endif
 					["Templates"],
 				cTemplates.root4xml, 
-				_outputDir
+				_outputDir, 
+				new MetaFile(
+					filename_, 
+					"schema"
+				),
+				new MetaFile(
+					filenameextendedmetadata_, 
+					"metadata"
+				)
 			).Build(
 				notifyBase_in, 
-				metadata_
+				metadata_, 
+				extendedmetadata_
 			);
 			if (notifyBase_in != null) notifyBase_in("...finished", true);
 		}
