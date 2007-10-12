@@ -16,6 +16,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 using System;
 using System.IO;
 using System.Xml.Serialization;
+using System.Collections;
 
 using OGen.lib.collections;
 
@@ -26,6 +27,18 @@ namespace OGen.XSD.lib.metadata {
 		}
 
 		public const string METADATA = "metadata";
+		#region public static Hashtable Metacache { get; }
+		private static Hashtable metacache__;
+
+		public static Hashtable Metacache {
+			get {
+				if (metacache__ == null) {
+					metacache__ = new Hashtable();
+				}
+				return metacache__;
+			}
+		}
+		#endregion
 
 		#region public string ApplicationName { get; set; }
 		private string applicationname_;

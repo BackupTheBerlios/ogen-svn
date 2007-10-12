@@ -230,22 +230,13 @@ namespace OGen.lib.generator {
 //	translate_out
 //);
 // ToDos: now! not pretty
-//string _aux;
 translate_out = metadatas_[
 	utils.MetaFile_find(
 		metafiles_, 
-		//_aux = 
 		translate_out.Split('.')[0].Split(':')[1]
 	)
 ].Read_fromRoot(
 	translate_out
-//	.Replace(
-//		string.Format(
-//			":{0}.", 
-//			_aux
-//		), 
-//		"."
-//	)
 );
 
 //					#endregion
@@ -260,15 +251,7 @@ translate_out = metadatas_[
 		private static Exception notifyme_Exception = new Exception("ToDos: here!");
 		private void notifyme(
 			string message_in
-// ToDos: now!
-//, string root_in
 		) {
-
-//// ToDos: now!
-//#if DEBUG
-//Console.WriteLine("notifyme({0})", message_in);
-//#endif
-
 			// ToDos: here!
 //			cDBConnection _con = null;
 
@@ -720,23 +703,13 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 //	new cClaSSe.dIteration_found(notifyme)
 //);
 // ToDos: now! not pretty
-//string _aux;
 metadatas_[
 	utils.MetaFile_find(
 		metafiles_, 
-//		_aux = 
 		templates_[template_].IterationType.Split('.')[0].Split(':')[1]
 	)
 ].IterateThrough_fromRoot(
-	templates_[template_].IterationType
-//	.Replace(
-//		string.Format(
-//			":{0}.", 
-//			_aux
-//		), 
-//		"."
-//	)
-	,
+	templates_[template_].IterationType,
 	new cClaSSe.dIteration_found(notifyme)
 );
 

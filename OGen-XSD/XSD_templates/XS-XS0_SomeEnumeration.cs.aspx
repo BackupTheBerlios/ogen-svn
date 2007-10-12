@@ -20,24 +20,20 @@ string _arg_SimpleTypeName = System.Web.HttpUtility.UrlDecode(Request.QueryStrin
 
 #region varaux...
 XS_Schema _aux_schema;
-//if (XS_Schema.Metacache.Contains(_arg_SchemaFilepath)) {
-//	_aux_schema = (XS_Schema)XS_Schema.Metacache[_arg_SchemaFilepath];
-//} else {
-//	_aux_schema = new XS_Schema();
-//	_aux_schema.LoadState_fromFile(_arg_SchemaFilepath);
-//	XS_Schema.Metacache.Add(_arg_SchemaFilepath, _aux_schema);
-_aux_schema = XS_Schema.Load_fromFile(_arg_SchemaFilepath);
-//}
+if (XS_Schema.Metacache.Contains(_arg_SchemaFilepath)) {
+	_aux_schema = (XS_Schema)XS_Schema.Metacache[_arg_SchemaFilepath];
+} else {
+	_aux_schema = XS_Schema.Load_fromFile(_arg_SchemaFilepath);
+	XS_Schema.Metacache.Add(_arg_SchemaFilepath, _aux_schema);
+}
 
 ExtendedMetadata _aux_metadata;
-//if (ExtendedMetadata.Metacache.Contains(_arg_MetadataFilepath)) {
-//	_aux_metadata = (ExtendedMetadata)ExtendedMetadata.Metacache[_arg_MetadataFilepath];
-//} else {
-//	_aux_metadata = new ExtendedMetadata();
-//	_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
-//	ExtendedMetadata.Metacache.Add(_arg_MetadataFilepath, _aux_metadata);
-_aux_metadata = ExtendedMetadata.Load_fromFile(_arg_MetadataFilepath);
-//}
+if (ExtendedMetadata.Metacache.Contains(_arg_MetadataFilepath)) {
+	_aux_metadata = (ExtendedMetadata)ExtendedMetadata.Metacache[_arg_MetadataFilepath];
+} else {
+	_aux_metadata = ExtendedMetadata.Load_fromFile(_arg_MetadataFilepath);
+	ExtendedMetadata.Metacache.Add(_arg_MetadataFilepath, _aux_metadata);
+}
 #endregion
 //-----------------------------------------------------------------------------------------
 if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTextLong != string.Empty)) {

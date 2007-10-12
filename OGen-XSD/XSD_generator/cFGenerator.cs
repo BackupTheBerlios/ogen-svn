@@ -133,12 +133,10 @@ namespace OGen.XSD.lib.generator {
 
 			if (notifyBack_in != null) notifyBack_in("opening...", true);
 			if (notifyBack_in != null) notifyBack_in("- reading metadata from xml files", true);
-			//metadata_ = new XS_Schema();
-			//metadata_.LoadState_fromFile(
-			//	filename_
-			//);
+
 			metadata_ = XS_Schema.Load_fromFile(filename_);
 			extendedmetadata_ = ExtendedMetadata.Load_fromFile(filenameextendedmetadata_);
+
 			if (notifyBack_in != null) notifyBack_in("... finished", true);
 		}
 //		#endregion
@@ -177,16 +175,7 @@ namespace OGen.XSD.lib.generator {
 				Path.GetDirectoryName(filename_)
 			).FullName;
 			#endregion
-//			#region string _metadataFilePath = ...;
-//			string _metadata0 = string.Format(
-//				"{0}{1}OGenXSD-metadatas{1}MD0_{2}.OGenXSD-metadata.xml", 
-//				/*00*/ _outputDir, 
-//				/*01*/ Path.DirectorySeparatorChar, 
-//				/*02*/ extendedmetadata_.ApplicationName
-//			);
-//			#endregion
 			if (notifyBase_in != null) notifyBase_in("generating...", true);
-//			metadata_.SaveState_toFile(_metadata0);
 
 			new cGenerator(
 				#if NET20
@@ -199,11 +188,11 @@ namespace OGen.XSD.lib.generator {
 				_outputDir, 
 				new MetaFile(
 					filename_, 
-					"schema"
+					XS_Schema.SCHEMA
 				),
 				new MetaFile(
 					filenameextendedmetadata_, 
-					"metadata"
+					ExtendedMetadata.METADATA
 				)
 			).Build(
 				notifyBase_in, 
