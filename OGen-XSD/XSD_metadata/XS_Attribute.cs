@@ -16,6 +16,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 using System;
 using System.Xml.Serialization;
 
+using OGen.lib.collections;
+
 namespace OGen.XSD.lib.metadata {
 	public class XS_Attribute : OGenCollectionInterface {
 		public XS_Attribute() {

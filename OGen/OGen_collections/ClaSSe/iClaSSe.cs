@@ -17,7 +17,7 @@ using System.Reflection;
 using System.Xml;
 
 namespace OGen.lib.collections {
-	public interface iClaSSe_XXX {
+	public interface iClaSSe_metadata {
 		void LoadState_fromFile(
 			string fileName_in, 
 			string objectName_in
@@ -31,7 +31,7 @@ namespace OGen.lib.collections {
 		);
 	}
 
-	public interface iClaSSe : iClaSSe_XXX {
+	public interface iClaSSe : iClaSSe_metadata {
 		object Property_new(string name_in);
 
 		void SaveState_toFile(string fileName_in, string objectName_in);

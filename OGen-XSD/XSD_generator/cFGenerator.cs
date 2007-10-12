@@ -119,7 +119,7 @@ namespace OGen.XSD.lib.generator {
 			//metadata_.LoadState_fromFile(
 			//	filename_
 			//);
-			metadata_ = XS_Schema.Load(filename_);
+			metadata_ = XS_Schema.Load_fromFile(filename_);
 			if (notifyBack_in != null) notifyBack_in("... finished", true);
 		}
 		#endregion

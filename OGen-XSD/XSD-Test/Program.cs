@@ -134,11 +134,11 @@ Console.Write("Press any key to continue . . . ");
 Console.ReadKey(true); Console.WriteLine();
 
 			string _filepath = @"c:\test.xml";
-			_schema.Save(_filepath);
+			_schema.SaveState_toFile(_filepath);
 			Output(_schema);
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true); Console.WriteLine();
-			_schema = XS_Schema.Load(_filepath);
+			_schema = XS_Schema.Load_fromFile(_filepath);
 			Output(_schema);
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true); Console.WriteLine();

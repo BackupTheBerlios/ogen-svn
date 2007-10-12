@@ -16,13 +16,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 using System;
 using System.IO;
 using System.Xml.Serialization;
+
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
 	//[XmlRoot("xs___schema")]
 	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
 	[System.Xml.Serialization.XmlRootAttribute("schema", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
-	public class XS_Schema : iClaSSe_XXX {
+	public class XS_Schema : iClaSSe_metadata {
 		public XS_Schema() {
 		}
 
@@ -135,8 +136,8 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public static XS_Schema Load(string filePath_in);
-		public static XS_Schema Load(string filePath_in) {
+		#region public static XS_Schema Load_fromFile(string filePath_in);
+		public static XS_Schema Load_fromFile(string filePath_in) {
 			FileStream _stream = new FileStream(
 				filePath_in,
 				FileMode.Open,
@@ -148,8 +149,8 @@ namespace OGen.XSD.lib.metadata {
 			);
 		}
 		#endregion
-		#region public void Save(string filePath_in);
-		public void Save(string filePath_in) {
+		#region public void SaveState_toFile(string filePath_in);
+		public void SaveState_toFile(string filePath_in) {
 			FileStream _file = new FileStream(
 				filePath_in,
 				FileMode.Create,
@@ -168,21 +169,25 @@ namespace OGen.XSD.lib.metadata {
 
 
 
-		public void SaveState_toFile(
-			string fileName_in
-		) {
-			Save(fileName_in);
-		}
 		public void LoadState_fromFile(
 			string fileName_in, 
 			string objectName_in
 		) {
-			throw new Exception("// ToDos: here! not implemented");
+			LoadState_fromFile(fileName_in);
 		}
 		public void LoadState_fromFile(
 			string fileName_in
 		) {
-			throw new Exception("// ToDos: here! not implemented");
+			// ToDos: now! performance penalties
+			// ToDos: now! harder to maintain
+
+			XS_Schema _schema = XS_Schema.Load_fromFile(fileName_in);
+			targetnamespace_ = _schema.targetnamespace_;
+			xmlns_ = _schema.xmlns_;
+			elementformdefault_ = _schema.elementformdefault_;
+			xs_simpletype_ = _schema.xs_simpletype_;
+			xs_complextype_ = _schema.xs_complextype_;
+			xs_element_ = _schema.xs_element_;
 		}
 
 

@@ -71,7 +71,7 @@ namespace OGen.lib.generator {
 		#region private Fields/Properties...
 		private Uri xmltemplatesfileuri_;
 		private string xmltemplatesdir_;
-		private iClaSSe_XXX metadata_;
+		private iClaSSe_metadata metadata_;
 		private cTemplates templates_;
 		private int template_;
 		private dBuild notifyback_;
@@ -171,7 +171,7 @@ namespace OGen.lib.generator {
 					translate_out = outputdir_;
 					break;
 				#endregion
-				#region default: translate_out = ...; break;
+//				#region default: translate_out = ...; break;
 				default:
 //					#region translate_out = metadata_.Read_fromRoot(...);
 					translate_out = this_in;
@@ -206,7 +206,7 @@ namespace OGen.lib.generator {
 					translate_out = metadata_.Read_fromRoot(translate_out);
 //					#endregion
 					break;
-				#endregion
+//				#endregion
 			}
 
 			return translate_out;
@@ -579,7 +579,7 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 		#region private void Build(...);
 		private void Build(
 			dBuild notifyBack_in, 
-			iClaSSe_XXX metadata_in, 
+			iClaSSe_metadata metadata_in, 
 			bool loadMetadate_in
 		) {
 			notifyback_ = notifyBack_in;
@@ -713,7 +713,7 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 			Type[] _interfaces = typeofClaSSe_in.GetInterfaces();
 			bool _found = false;
 			for (int i = 0; i < _interfaces.Length; i++) {
-				if (_interfaces[i] == typeof(iClaSSe_XXX)) {
+				if (_interfaces[i] == typeof(iClaSSe_metadata)) {
 					_found = true;
 					break;
 				}
@@ -729,13 +729,13 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 			#endregion
 			Build(
 				notifyBack_in, 
-				(iClaSSe_XXX)Activator.CreateInstance(typeofClaSSe_in), 
+				(iClaSSe_metadata)Activator.CreateInstance(typeofClaSSe_in), 
 				true
 			);
 		}
 		public void Build(
 			dBuild notifyBack_in, 
-			iClaSSe_XXX metadata_in
+			iClaSSe_metadata metadata_in
 		) {
 			Build(
 				notifyBack_in, 
