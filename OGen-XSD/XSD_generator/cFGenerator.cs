@@ -167,7 +167,7 @@ namespace OGen.XSD.lib.generator {
 
 			new cGenerator(
 				filename_, 
-				XS_Schema.root4xml, 
+				string.Empty,
 				#if NET20
 				System.Configuration.ConfigurationManager.AppSettings
 				#else

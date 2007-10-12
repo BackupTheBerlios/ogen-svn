@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="extendedMetadatas\ExtendedMetadata.cs" />
     <Compile Include="OGenCollection.cs" />
     <Compile Include="OGenCollectionInterface.cs" />
     <Compile Include="XS_Attribute.cs" />
@@ -65,5 +66,6 @@
       <Project>{A6E837F8-780F-4D05-B3ED-2FF1906B5766}</Project>
       <Name>OGen_collections</Name>
     </ProjectReference>
+    <Folder Include="extendedMetadatas" />
   </ItemGroup>
 </Project>

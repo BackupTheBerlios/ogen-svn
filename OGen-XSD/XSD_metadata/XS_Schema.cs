@@ -191,12 +191,6 @@ namespace OGen.XSD.lib.metadata {
 		}
 
 
-		public static string root4xml {
-			get {
-				// no need!
-				return string.Empty;
-			}
-		}
 		[XmlIgnore()]
 		public string DocumentationName {
 			get {
@@ -233,8 +227,6 @@ return;
 				"ROOT", 
 				false
 			);
-
-//			throw new Exception("//ToDos: here! not implemented");
 		}
 	}
 }
