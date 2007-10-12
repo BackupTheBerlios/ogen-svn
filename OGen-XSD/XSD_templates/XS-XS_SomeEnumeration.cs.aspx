@@ -13,27 +13,38 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <%//@ import namespace="OGen.lib.datalayer" %>
 <%@ import namespace="OGen.XSD.lib.metadata" %><%
 #region arguments...
+string _arg_SchemaFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaFilepath"]);
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
 string _arg_EnumerationValue = System.Web.HttpUtility.UrlDecode(Request.QueryString["EnumerationValue"]);
 #endregion
 
 #region varaux...
-XS_Schema _aux_metadata;
-//if (XS_Schema.Metacache.Contains(_arg_MetadataFilepath)) {
-//	_aux_metadata = (XS_Schema)XS_Schema.Metacache[_arg_MetadataFilepath];
+XS_Schema _aux_schema;
+//if (XS_Schema.Metacache.Contains(_arg_SchemaFilepath)) {
+//	_aux_schema = (XS_Schema)XS_Schema.Metacache[_arg_SchemaFilepath];
 //} else {
-//	_aux_metadata = new XS_Schema();
+//	_aux_schema = new XS_Schema();
+//	_aux_schema.LoadState_fromFile(_arg_SchemaFilepath);
+//	XS_Schema.Metacache.Add(_arg_SchemaFilepath, _aux_schema);
+_aux_schema = XS_Schema.Load_fromFile(_arg_SchemaFilepath);
+//}
+
+ExtendedMetadata _aux_metadata;
+//if (ExtendedMetadata.Metacache.Contains(_arg_MetadataFilepath)) {
+//	_aux_metadata = (ExtendedMetadata)ExtendedMetadata.Metacache[_arg_MetadataFilepath];
+//} else {
+//	_aux_metadata = new ExtendedMetadata();
 //	_aux_metadata.LoadState_fromFile(_arg_MetadataFilepath);
-//	XS_Schema.Metacache.Add(_arg_MetadataFilepath, _aux_metadata);
-_aux_metadata = XS_Schema.Load(_arg_MetadataFilepath);
+//	ExtendedMetadata.Metacache.Add(_arg_MetadataFilepath, _aux_metadata);
+_aux_metadata = ExtendedMetadata.Load_fromFile(_arg_MetadataFilepath);
 //}
 #endregion
 //-----------------------------------------------------------------------------------------
-if (true) { // (_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTextLong != string.Empty)) {
-%>#region <%="_aux_metadata.CopyrightText"%>
+if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTextLong != string.Empty)) {
+%>#region <%=_aux_metadata.CopyrightText%>
 /*
 
-<%="_aux_metadata.CopyrightTextLong"%>
+<%=_aux_metadata.CopyrightTextLong%>
 
 */
 #endregion
@@ -43,7 +54,7 @@ using System.Data;
 using System.Xml.Serialization;
 
 
-namespace <%="_aux_metadata.Namespace"%>.lib.datalayer {
+namespace <%="_aux_schema.Namespace"%>.lib.datalayer {
 	public XS_<%=_arg_EnumerationValue%>();
 }
 
