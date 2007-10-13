@@ -18,11 +18,6 @@ using System.Xml;
 
 namespace OGen.lib.collections {
 	public interface iClaSSe_metadata {
-		void LoadState_fromFile(
-			string fileName_in, 
-			string objectName_in
-		);
-
 		string Read_fromRoot(string what_in);
 
 		void IterateThrough_fromRoot(
@@ -37,7 +32,10 @@ namespace OGen.lib.collections {
 		void SaveState_toFile(string fileName_in, string objectName_in);
 		XmlElement SaveState_toFile(XmlDocument xmlDoc_in, string name_in);
 
-//		void LoadState_fromFile(string fileName_in, string objectName_in);
+		void LoadState_fromFile(
+			string fileName_in, 
+			string objectName_in
+		);
 		void LoadState_fromFile(XmlNode node_in);
 
 		iClaSSe InheritLoopback_ref { get; }

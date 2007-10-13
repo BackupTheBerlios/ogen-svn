@@ -210,28 +210,6 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		public void LoadState_fromFile(
-			string fileName_in, 
-			string objectName_in
-		) {
-			LoadState_fromFile(fileName_in);
-		}
-		public void LoadState_fromFile(
-			string fileName_in
-		) {
-			// ToDos: now! performance penalties
-			// ToDos: now! harder to maintain
-
-			ExtendedMetadata _metadata = ExtendedMetadata.Load_fromFile(fileName_in);
-			casetype_ = _metadata.casetype_;
-			applicationname_ = _metadata.applicationname_;
-			namespace_ = _metadata.namespace_;
-			copyrighttext_ = _metadata.copyrighttext_;
-			copyrighttextlong_ = _metadata.copyrighttextlong_;
-			collections_ = _metadata.collections_;
-			specificcase_ = _metadata.specificcase_;
-		}
-
 		public string Read_fromRoot(string what_in) {
 			return utils.ReflectThrough(
 				this, 

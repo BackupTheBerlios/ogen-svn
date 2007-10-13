@@ -617,9 +617,9 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 		#region public void Build();
 		public delegate void dBuild(string message_in, bool onANewLine_in);
 		#region private void Build(...);
-		private void Build(
+		private void build(
 			dBuild notifyBack_in, 
-			bool loadMetadate_in, 
+//			bool loadMetadata_in, 
 			iClaSSe_metadata[] metadatas_in
 		) {
 			notifyback_ = notifyBack_in;
@@ -644,17 +644,17 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 
 			//metadata_ = new cDBMetadata(xmlmetadatafile_, xmlmetadataroot_);
 			metadatas_ = metadatas_in;
-			if (loadMetadate_in) {
-// ToDos: now! index must be sinchronized, not very convenient :(
-				for (int m = 0; m < metadatas_.Length; m++) {
-					metadatas_[m].LoadState_fromFile(
-						//xmlmetadatafile_, 
-						metafiles_[m].Path, 
-						//xmlmetadataroot_
-						metafiles_[m].Root
-					);
-				}
-			}
+//            if (loadMetadata_in) {
+//// ToDos: now! index must be sinchronized, not very convenient :(
+//                for (int m = 0; m < metadatas_.Length; m++) {
+//                    metadatas_[m].LoadState_fromFile(
+//                        //xmlmetadatafile_, 
+//                        metafiles_[m].Path, 
+//                        //xmlmetadataroot_
+//                        metafiles_[m].Root
+//                    );
+//                }
+//            }
 
 			templates_ = new cTemplates(
 				xmltemplatesfileuri_, 
@@ -784,7 +784,7 @@ metadatas_[
 //					)
 //				);
 //			#endregion
-//			Build(
+//			build(
 //				notifyBack_in, 
 //				(iClaSSe_metadata)Activator.CreateInstance(typeofClaSSe_in), 
 //				true
@@ -794,9 +794,9 @@ metadatas_[
 			dBuild notifyBack_in, 
 			params iClaSSe_metadata[] metadatas_in
 		) {
-			Build(
+			build(
 				notifyBack_in, 
-				false, 
+//				false, 
 				metadatas_in
 			);
 		}

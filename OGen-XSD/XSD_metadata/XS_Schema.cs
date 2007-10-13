@@ -209,44 +209,6 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-
-
-
-		public void LoadState_fromFile(
-			string fileName_in, 
-			string objectName_in
-		) {
-			LoadState_fromFile(fileName_in);
-		}
-		public void LoadState_fromFile(
-			string fileName_in
-		) {
-			// ToDos: now! performance penalties
-			// ToDos: now! harder to maintain
-
-			XS_Schema _schema = XS_Schema.Load_fromFile(fileName_in);
-			targetnamespace_ = _schema.targetnamespace_;
-			xmlns_ = _schema.xmlns_;
-			elementformdefault_ = _schema.elementformdefault_;
-			xs_simpletype_ = _schema.xs_simpletype_;
-			xs_complextype_ = _schema.xs_complextype_;
-			xs_element__ = _schema.xs_element__;
-		}
-
-
-		[XmlIgnore()]
-		public string DocumentationName {
-			get {
-return string.Empty;
-				throw new Exception("//ToDos: here! not implemented");
-			}
-			set {
-return;
-				throw new Exception("//ToDos: here! not implemented");
-			}
-		}
-
-
 		public string Read_fromRoot(string what_in) {
 			return utils.ReflectThrough(
 				this, 
