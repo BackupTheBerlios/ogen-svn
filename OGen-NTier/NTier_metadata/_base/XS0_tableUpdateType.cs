@@ -12,6 +12,15 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
 	public class XS0_tableUpdateType : OGenCollectionInterface {
+		public XS0_tableUpdateType (
+		) {
+		}
+		public XS0_tableUpdateType (
+			string name_in
+		) : this (
+		) {
+			name_ = name_in;
+		}
 		#region public string CollectionName { get; }
 		[XmlIgnore()]
 		public string CollectionName {

@@ -12,6 +12,23 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
 	public class XS0_tableType : OGenCollectionInterface {
+		public XS0_tableType (
+		) {
+			xs_tabledbs_ 
+				= new OGenSimpleCollection<XS_tableDBsType>();
+			xs_tablefields_ 
+				= new OGenSimpleCollection<XS_tableFieldsType>();
+			xs_tablesearches_ 
+				= new OGenSimpleCollection<XS_tableSearchesType>();
+			xs_tableupdates_ 
+				= new OGenSimpleCollection<XS_tableUpdatesType>();
+		}
+		public XS0_tableType (
+			string name_in
+		) : this (
+		) {
+			name_ = name_in;
+		}
 		#region public string CollectionName { get; }
 		[XmlIgnore()]
 		public string CollectionName {
@@ -99,8 +116,8 @@ namespace OGen.NTier.lib.metadata {
 		}
 		#endregion
 		#region public OGenSimpleCollection<XS_tableDBsType> XS_tableDBs { get; }
-		private OGenSimpleCollection<XS_tableDBsType> xs_tabledbs_ 
-			= new OGenSimpleCollection<XS_tableDBsType>();
+		private OGenSimpleCollection<XS_tableDBsType> xs_tabledbs_;
+			//= new OGenSimpleCollection<XS_tableDBsType>();
 
 		[XmlElement("tableDBs")]
 		public XS_tableDBsType[] xs_tabledbs__xml {
@@ -114,8 +131,8 @@ namespace OGen.NTier.lib.metadata {
 		}
 		#endregion
 		#region public OGenSimpleCollection<XS_tableFieldsType> XS_tableFields { get; }
-		private OGenSimpleCollection<XS_tableFieldsType> xs_tablefields_ 
-			= new OGenSimpleCollection<XS_tableFieldsType>();
+		private OGenSimpleCollection<XS_tableFieldsType> xs_tablefields_;
+			//= new OGenSimpleCollection<XS_tableFieldsType>();
 
 		[XmlElement("tableFields")]
 		public XS_tableFieldsType[] xs_tablefields__xml {
@@ -129,8 +146,8 @@ namespace OGen.NTier.lib.metadata {
 		}
 		#endregion
 		#region public OGenSimpleCollection<XS_tableSearchesType> XS_tableSearches { get; }
-		private OGenSimpleCollection<XS_tableSearchesType> xs_tablesearches_ 
-			= new OGenSimpleCollection<XS_tableSearchesType>();
+		private OGenSimpleCollection<XS_tableSearchesType> xs_tablesearches_;
+			//= new OGenSimpleCollection<XS_tableSearchesType>();
 
 		[XmlElement("tableSearches")]
 		public XS_tableSearchesType[] xs_tablesearches__xml {
@@ -144,8 +161,8 @@ namespace OGen.NTier.lib.metadata {
 		}
 		#endregion
 		#region public OGenSimpleCollection<XS_tableUpdatesType> XS_tableUpdates { get; }
-		private OGenSimpleCollection<XS_tableUpdatesType> xs_tableupdates_ 
-			= new OGenSimpleCollection<XS_tableUpdatesType>();
+		private OGenSimpleCollection<XS_tableUpdatesType> xs_tableupdates_;
+			//= new OGenSimpleCollection<XS_tableUpdatesType>();
 
 		[XmlElement("tableUpdates")]
 		public XS_tableUpdatesType[] xs_tableupdates__xml {

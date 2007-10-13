@@ -218,11 +218,6 @@
     <Compile Include="_base\XS0_tableUpdateParametersType.cs" />
     <Compile Include="_base\XS0_tableUpdatesType.cs" />
     <Compile Include="_base\XS0_tableUpdateType.cs" />
-    <Compile Include="_newStuff\eMetadata.cs" />
-    <Compile Include="_newStuff\eSQLScriptOptions.cs" />
-    <Compile Include="_newStuff\Metadata.cs" />
-    <Compile Include="_newStuff\Metadata_DBs.cs" />
-    <Compile Include="_newStuff\Metadata_Tables.cs" />
     <None Include="COPYING.MIT" />
     <Content Include="LICENSE.MIT.txt" />
     <Content Include="LICENSE.txt" />

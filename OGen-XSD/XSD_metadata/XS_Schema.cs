@@ -24,10 +24,25 @@ namespace OGen.XSD.lib.metadata {
 	//[XmlRoot("xs___schema")]
 	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
 	[System.Xml.Serialization.XmlRootAttribute("schema", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
-	public class XS_Schema : iClaSSe_metadata {
+	public class XS_Schema : iClaSSe_metadata, OGenRootrefCollectionInterface<RootMetadata> {
 		public XS_Schema() {
 		}
 
+		#region public RootMetadata root_ref { get; }
+		private RootMetadata root_ref_;
+
+		[XmlIgnore()]
+		public RootMetadata root_ref {
+			set {
+				root_ref_ = value;
+
+				if (xs_element__ != null) xs_element__.root_ref = value;
+				xs_simpletype_.root_ref = value;
+				xs_complextype_.root_ref = value;
+			}
+			get { return root_ref_; }
+		}
+		#endregion
 		public const string SCHEMA = "schema";
 		#region public static Hashtable Metacache { get; }
 		private static Hashtable metacache__;
@@ -106,8 +121,8 @@ namespace OGen.XSD.lib.metadata {
 		#endregion
 
 		#region public xs__collection<XS_SimpleType> XS_SimpleType { get; }
-		private OGenCollection<XS_SimpleType> xs_simpletype_ 
-			= new OGenCollection<XS_SimpleType>();
+		private OGenRootrefCollection<XS_SimpleType, RootMetadata> xs_simpletype_
+			= new OGenRootrefCollection<XS_SimpleType, RootMetadata>();
 
 		[XmlElement("simpleType")]
 		//[XmlArray("simpleType")]
@@ -118,13 +133,13 @@ namespace OGen.XSD.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_SimpleType> XS_SimpleType {
+		public OGenRootrefCollection<XS_SimpleType, RootMetadata> XS_SimpleType {
 			get { return xs_simpletype_; }
 		}
 		#endregion
 		#region public xs__collection<XS_ComplexType> XS_ComplexType { get; }
-		private OGenCollection<XS_ComplexType> xs_complextype_ 
-			= new OGenCollection<XS_ComplexType>();
+		private OGenRootrefCollection<XS_ComplexType, RootMetadata> xs_complextype_
+			= new OGenRootrefCollection<XS_ComplexType, RootMetadata>();
 
 		[XmlElement("complexType")]
 		//[XmlArray("complexType")]
@@ -136,18 +151,31 @@ namespace OGen.XSD.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_ComplexType> XS_ComplexType {
+		public OGenRootrefCollection<XS_ComplexType, RootMetadata> XS_ComplexType {
 			get { return xs_complextype_; }
 		}
 		#endregion
 
 		#region public XS_Element XS_Element { get; set; }
-		private XS_Element xs_element_;
+		private XS_Element xs_element__;
+
+		[XmlIgnore()]
+		public XS_Element XS_Element {
+			get {
+				if (xs_element__ == null) {
+					xs_element__ = new XS_Element();
+				}
+				return xs_element__;
+			}
+			set {
+				xs_element__ = value;
+			}
+		}
 
 		[XmlElement("element")]
-		public XS_Element XS_Element {
-			get { return xs_element_; }
-			set { xs_element_ = value; }
+		public XS_Element xs_element__xml {
+			get { return xs_element__; }
+			set { xs_element__ = value; }
 		}
 		#endregion
 
@@ -202,7 +230,7 @@ namespace OGen.XSD.lib.metadata {
 			elementformdefault_ = _schema.elementformdefault_;
 			xs_simpletype_ = _schema.xs_simpletype_;
 			xs_complextype_ = _schema.xs_complextype_;
-			xs_element_ = _schema.xs_element_;
+			xs_element__ = _schema.xs_element__;
 		}
 
 

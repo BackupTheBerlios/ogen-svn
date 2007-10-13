@@ -12,9 +12,14 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
 	public class XS0_tableFieldsType  {
+		public XS0_tableFieldsType (
+		) {
+			xs_tablefield_ 
+				= new OGenCollection<XS_tableFieldType>();
+		}
 		#region public OGenCollection<XS_tableFieldType> XS_tableField { get; }
-		private OGenCollection<XS_tableFieldType> xs_tablefield_ 
-			= new OGenCollection<XS_tableFieldType>();
+		private OGenCollection<XS_tableFieldType> xs_tablefield_;
+			//= new OGenCollection<XS_tableFieldType>();
 
 		[XmlElement("tableField")]
 		public XS_tableFieldType[] xs_tablefield__xml {

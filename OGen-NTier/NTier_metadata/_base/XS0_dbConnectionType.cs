@@ -12,6 +12,15 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
 	public class XS0_dbConnectionType : OGenCollectionInterface {
+		public XS0_dbConnectionType (
+		) {
+		}
+		public XS0_dbConnectionType (
+			string configmode_in
+		) : this (
+		) {
+			configmode_ = configmode_in;
+		}
 		#region public string CollectionName { get; }
 		[XmlIgnore()]
 		public string CollectionName {

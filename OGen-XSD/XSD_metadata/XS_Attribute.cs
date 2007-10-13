@@ -19,9 +19,65 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
-	public class XS_Attribute : OGenCollectionInterface {
-		public XS_Attribute() {
+	public class XS_Attribute : OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata> {
+		public XS_Attribute(
+		) {
 		}
+		public XS_Attribute(
+			string name_in
+		) : this (
+		) {
+			name_ = name_in;
+		}
+
+		#region public RootMetadata root_ref { get; }
+		private RootMetadata root_ref_;
+
+		[XmlIgnore()]
+		public RootMetadata root_ref {
+			set {
+				root_ref_ = value;
+
+				//xs_simpletype_.root_ref = value;
+				//xs_complextype_.root_ref = value;
+			}
+			get { return root_ref_; }
+		}
+		#endregion
+		#region public string CollectionName { get; }
+		[XmlIgnore()]
+		public string CollectionName {
+			get { return Name; }
+		}
+		#endregion
+		#region public string NType { get; set; }
+
+		[XmlIgnore()]
+		public string NType {
+			get {
+				switch (type_) {
+					case "xs:string":
+						return "string";
+					case "xs:decimal":
+						return "decimal";
+					case "xs:integer":
+						return "int";
+					case "xs:boolean":
+						return "bool";
+					case "xs:time":
+					case "xs:date":
+						return "DateTime";
+						return "bool";
+
+					default:
+						return string.Format(
+							"XS_{0}",
+							type_
+						);
+				}
+			}
+		}
+		#endregion
 
 		#region public string Name { get; set; }
 		private string name_;
@@ -51,75 +107,5 @@ namespace OGen.XSD.lib.metadata {
 			}
 		}
 		#endregion
-
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get { return Name; }
-		}
-		#endregion
-		#region public string NType { get; set; }
-
-		[XmlIgnore()]
-		public string NType {
-			get {
-				switch (type_) {
-					case "xs:string":
-						return "string";
-					case "xs:decimal":
-						return "decimal";
-					case "xs:integer":
-						return "int";
-					case "xs:boolean":
-						return "bool";
-					case "xs:time":
-					case "xs:date":
-						return "DateTime";
-						return "bool";
-
-					default:
-						return string.Format(
-							"XS_{0}", 
-							type_
-						);
-				}
-			}
-		}
-		#endregion
-
-//		#region public xs__collection<XS_SimpleType> XS_SimpleType { get; }
-//		private xs__collection<XS_SimpleType> xs_simpletype_ 
-//			= new xs__collection<XS_SimpleType>();
-//
-//		[XmlElement("simpleType")]
-//		//[XmlArray("simpleType")]
-//		//[XmlArrayItem(typeof(XS_SimpleType))]
-//		public XS_SimpleType[] xs_simpletype__xml {
-//			get { return xs_simpletype_.cols__; }
-//			set { xs_simpletype_.cols__ = value; }
-//		}
-//
-//		[XmlIgnore()]
-//		public xs__collection<XS_SimpleType> XS_SimpleType {
-//			get { return xs_simpletype_; }
-//		}
-//		#endregion
-//		#region public xs__collection<XS_ComplexType> XS_ComplexType { get; }
-//		private xs__collection<XS_ComplexType> xs_complextype_ 
-//			= new xs__collection<XS_ComplexType>();
-//
-//		[XmlElement("complexType")]
-//		//[XmlArray("complexType")]
-//		//[XmlArrayItem(typeof(XS_ComplexType))]
-//		public XS_ComplexType[] XS_ComplexType__xml {
-//			get { return xs_complextype_.cols__; }
-//			set { xs_complextype_.cols__ = value; }
-//		}
-//
-//		[XmlIgnore()]
-//		public xs__collection<XS_ComplexType> XS_ComplexType {
-//			get { return xs_complextype_; }
-//		}
-//		#endregion
 	}
 }

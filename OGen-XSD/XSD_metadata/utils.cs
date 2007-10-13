@@ -19,6 +19,31 @@ using System.Reflection;
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
+	public class RootMetadata {
+		public RootMetadata(
+			XS_Schema schema_in,
+			ExtendedMetadata metadata_in
+		) {
+			schema_ = schema_in;
+			metadata_ = metadata_in;
+		}
+
+		#region public XS_Schema Schema { get; }
+		private XS_Schema schema_;
+
+		public XS_Schema Schema {
+			get { return schema_; }
+		}
+		#endregion
+		#region public ExtendedMetadata Metadata { get; }
+		private ExtendedMetadata metadata_;
+
+		public ExtendedMetadata Metadata {
+			get { return metadata_; }
+		}
+		#endregion
+	}
+
 	public class utils {
 		private utils() {}
 

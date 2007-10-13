@@ -16,6 +16,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 using System;
 
 namespace OGen.lib.collections {
+	public interface OGenRootrefCollectionInterface<R> {
+		R root_ref {
+			get;
+			set;
+		}
+	}
+	//public interface OGenSimpleCollectionInterface<R> {
+	//    R root_ref { get; } 
+	//}
 	public interface OGenCollectionInterface {
 		string CollectionName { get; }
 	}

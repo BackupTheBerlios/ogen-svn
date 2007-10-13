@@ -19,9 +19,23 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
-	public class XS_Restriction {
+	public class XS_Restriction : OGenRootrefCollectionInterface<RootMetadata> {
 		public XS_Restriction() {
 		}
+
+		#region public RootMetadata root_ref { get; }
+		private RootMetadata root_ref_;
+
+		[XmlIgnore()]
+		public RootMetadata root_ref {
+			set {
+				root_ref_ = value;
+
+				xs_enumeration_.root_ref = value;
+			}
+			get { return root_ref_; }
+		}
+		#endregion
 
 		#region public string Base { get; set; }
 		private string base_;
@@ -39,8 +53,8 @@ namespace OGen.XSD.lib.metadata {
 		#endregion
 
 		#region public xs__collection<XS_Enumeration> XS_Enumeration { get; }
-		private OGenCollection<XS_Enumeration> xs_enumeration_ 
-			= new OGenCollection<XS_Enumeration>();
+		private OGenRootrefCollection<XS_Enumeration, RootMetadata> xs_enumeration_
+			= new OGenRootrefCollection<XS_Enumeration, RootMetadata>();
 
 		[XmlElement("enumeration")]
 		//[XmlArray("enumeration")]
@@ -51,7 +65,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_Enumeration> XS_Enumeration {
+		public OGenRootrefCollection<XS_Enumeration, RootMetadata> XS_Enumeration {
 			get { return xs_enumeration_; }
 		}
 		#endregion

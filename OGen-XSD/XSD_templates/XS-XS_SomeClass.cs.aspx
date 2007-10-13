@@ -35,6 +35,10 @@ if (ExtendedMetadata.Metacache.Contains(_arg_MetadataFilepath)) {
 	ExtendedMetadata.Metacache.Add(_arg_MetadataFilepath, _aux_metadata);
 }
 
+RootMetadata _root = new RootMetadata(_aux_schema, _aux_metadata);
+_aux_schema.root_ref = _root;
+_aux_metadata.root_ref = _root;
+
 XS_ComplexType _aux_complextype = _aux_schema.XS_ComplexType[_arg_ComplexTypeName];
 #endregion
 //-----------------------------------------------------------------------------------------

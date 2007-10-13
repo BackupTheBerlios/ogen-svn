@@ -12,6 +12,15 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
 	public class XS0_tableFieldRefType : OGenCollectionInterface {
+		public XS0_tableFieldRefType (
+		) {
+		}
+		public XS0_tableFieldRefType (
+			string paramname_in
+		) : this (
+		) {
+			paramname_ = paramname_in;
+		}
 		#region public string CollectionName { get; }
 		[XmlIgnore()]
 		public string CollectionName {

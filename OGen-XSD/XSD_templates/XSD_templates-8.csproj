@@ -60,6 +60,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </None>
     <None Include="XS-XS_SomeEnumeration.cs.aspx">
+      <SubType>ASPXCodeBehind</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>

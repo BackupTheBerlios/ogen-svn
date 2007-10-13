@@ -19,9 +19,37 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
-	public class XS_ComplexType : OGenCollectionInterface {
-		public XS_ComplexType() {
+	public class XS_ComplexType : OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata> {
+		public XS_ComplexType(
+		) {
 		}
+		public XS_ComplexType(
+			string name_in
+		) : this (
+		) {
+			name_ = name_in;
+		}
+
+		#region public RootMetadata root_ref { get; }
+		private RootMetadata root_ref_;
+
+		[XmlIgnore()]
+		public RootMetadata root_ref {
+			set {
+				root_ref_ = value;
+
+				if (xs_sequence__ != null) xs_sequence__.root_ref = value;
+				xs_attribute_.root_ref = value;
+			}
+			get { return root_ref_; }
+		}
+		#endregion
+		#region public string CollectionName { get; }
+		[XmlIgnore()]
+		public string CollectionName {
+			get { return Name; }
+		}
+		#endregion
 
 		#region public string Name { get; set; }
 		private string name_;
@@ -38,16 +66,9 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get { return Name; }
-		}
-		#endregion
-
 		#region public xs__collection<XS_Attribute> XS_Attribute { get; }
-		private OGenCollection<XS_Attribute> xs_attribute_ 
-			= new OGenCollection<XS_Attribute>();
+		private OGenRootrefCollection<XS_Attribute, RootMetadata> xs_attribute_
+			= new OGenRootrefCollection<XS_Attribute, RootMetadata>();
 
 		[XmlElement("attribute")]
 		//[XmlArray("attribute")]
@@ -58,7 +79,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_Attribute> XS_Attribute {
+		public OGenRootrefCollection<XS_Attribute, RootMetadata> XS_Attribute {
 			get { return xs_attribute_; }
 		}
 		#endregion
@@ -86,20 +107,18 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		public string isCollection_nameIt(
-			XS_Schema schema_in, 
-			ExtendedMetadata metadata_in
-		) {
-			for (int c = 0; c < schema_in.XS_ComplexType.Count; c++) {
-				for (int e = 0; e < schema_in.XS_ComplexType[c].XS_Sequence.XS_Element.Count; e++) {
+		#region public string isCollection_nameIt();
+		public string isCollection_nameIt() {
+			for (int c = 0; c < root_ref_.Schema.XS_ComplexType.Count; c++) {
+				for (int e = 0; e < root_ref_.Schema.XS_ComplexType[c].XS_Sequence.XS_Element.Count; e++) {
 					if (
-						(schema_in.XS_ComplexType[c].XS_Sequence.XS_Element[e].Type == Name)
+						(root_ref_.Schema.XS_ComplexType[c].XS_Sequence.XS_Element[e].Type == Name)
 						&&
-						(schema_in.XS_ComplexType[c].XS_Sequence.XS_Element[e].MaxOccurs 
+						(root_ref_.Schema.XS_ComplexType[c].XS_Sequence.XS_Element[e].MaxOccurs 
 							== XS_Element.MaxOccursEnum.unbounded)
 					) {
-						ExtendedMetadata_collection _collection 
-							= metadata_in.Collections[
+						ExtendedMetadata_collection _collection
+							= root_ref_.Metadata.Collections[
 								Name
 							];
 						return (_collection == null) 
@@ -111,5 +130,6 @@ namespace OGen.XSD.lib.metadata {
 
 			return string.Empty;
 		}
+		#endregion
 	}
 }

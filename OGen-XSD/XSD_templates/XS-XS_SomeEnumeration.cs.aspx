@@ -34,6 +34,10 @@ if (ExtendedMetadata.Metacache.Contains(_arg_MetadataFilepath)) {
 	_aux_metadata = ExtendedMetadata.Load_fromFile(_arg_MetadataFilepath);
 	ExtendedMetadata.Metacache.Add(_arg_MetadataFilepath, _aux_metadata);
 }
+
+RootMetadata _root = new RootMetadata(_aux_schema, _aux_metadata);
+_aux_schema.root_ref = _root;
+_aux_metadata.root_ref = _root;
 #endregion
 //-----------------------------------------------------------------------------------------
 if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTextLong != string.Empty)) {

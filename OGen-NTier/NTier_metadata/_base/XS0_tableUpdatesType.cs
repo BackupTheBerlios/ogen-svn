@@ -12,9 +12,14 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
 	public class XS0_tableUpdatesType  {
+		public XS0_tableUpdatesType (
+		) {
+			xs_tableupdate_ 
+				= new OGenCollection<XS_tableUpdateType>();
+		}
 		#region public OGenCollection<XS_tableUpdateType> XS_tableUpdate { get; }
-		private OGenCollection<XS_tableUpdateType> xs_tableupdate_ 
-			= new OGenCollection<XS_tableUpdateType>();
+		private OGenCollection<XS_tableUpdateType> xs_tableupdate_;
+			//= new OGenCollection<XS_tableUpdateType>();
 
 		[XmlElement("tableUpdate")]
 		public XS_tableUpdateType[] xs_tableupdate__xml {

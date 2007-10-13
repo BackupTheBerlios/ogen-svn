@@ -12,6 +12,15 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
 	public class XS0_tableFieldDBType : OGenCollectionInterface {
+		public XS0_tableFieldDBType (
+		) {
+		}
+		public XS0_tableFieldDBType (
+			string dbservertype_in
+		) : this (
+		) {
+			dbservertype_ = dbservertype_in;
+		}
 		#region public string CollectionName { get; }
 		[XmlIgnore()]
 		public string CollectionName {

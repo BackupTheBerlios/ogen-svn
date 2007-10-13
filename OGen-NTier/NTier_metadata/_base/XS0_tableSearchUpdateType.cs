@@ -12,6 +12,17 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
 	public class XS0_tableSearchUpdateType : OGenCollectionInterface {
+		public XS0_tableSearchUpdateType (
+		) {
+			xs_tableupdateparameters_ 
+				= new OGenSimpleCollection<XS_tableSearchUpdateParametersType>();
+		}
+		public XS0_tableSearchUpdateType (
+			string name_in
+		) : this (
+		) {
+			name_ = name_in;
+		}
 		#region public string CollectionName { get; }
 		[XmlIgnore()]
 		public string CollectionName {
@@ -34,8 +45,8 @@ namespace OGen.NTier.lib.metadata {
 		}
 		#endregion
 		#region public OGenSimpleCollection<XS_tableSearchUpdateParametersType> XS_tableUpdateParameters { get; }
-		private OGenSimpleCollection<XS_tableSearchUpdateParametersType> xs_tableupdateparameters_ 
-			= new OGenSimpleCollection<XS_tableSearchUpdateParametersType>();
+		private OGenSimpleCollection<XS_tableSearchUpdateParametersType> xs_tableupdateparameters_;
+			//= new OGenSimpleCollection<XS_tableSearchUpdateParametersType>();
 
 		[XmlElement("tableUpdateParameters")]
 		public XS_tableSearchUpdateParametersType[] xs_tableupdateparameters__xml {

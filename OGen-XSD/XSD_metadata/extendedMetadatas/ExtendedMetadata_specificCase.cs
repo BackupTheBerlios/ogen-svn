@@ -21,7 +21,7 @@ using System.Collections;
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
-	public class ExtendedMetadata_specificCase : OGenCollectionInterface {
+	public class ExtendedMetadata_specificCase : OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata> {
 		#region public string Word { get; set; }
 		private string word_;
 
@@ -49,6 +49,17 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
+		#region public RootMetadata root_ref { get; }
+		private RootMetadata root_ref_;
+
+		[XmlIgnore()]
+		public RootMetadata root_ref {
+			set {
+				root_ref_ = value;
+			}
+			get { return root_ref_; }
+		}
+		#endregion
 		#region public string CollectionName { get; }
 		[XmlIgnore()]
 		public string CollectionName {

@@ -19,8 +19,15 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
-	public class XS_Element : OGenCollectionInterface {
-		public XS_Element() {
+	public class XS_Element : OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata> {
+		public XS_Element(
+		) {
+		}
+		public XS_Element(
+			string name_in
+		) : this (
+		) {
+			name_ = name_in;
 		}
 
 		//public const string MAXOCCURSENUM_UNBOUNDED = "unbounded";
@@ -28,6 +35,24 @@ namespace OGen.XSD.lib.metadata {
 			_undefined_ = 0, 
 			unbounded = 1
 		}
+
+		#region public RootMetadata root_ref { get; }
+		private RootMetadata root_ref_;
+
+		[XmlIgnore()]
+		public RootMetadata root_ref {
+			set {
+				root_ref_ = value;
+			}
+			get { return root_ref_; }
+		}
+		#endregion
+		#region public string CollectionName { get; }
+		[XmlIgnore()]
+		public string CollectionName {
+			get { return Name; }
+		}
+		#endregion
 
 		#region public string Name { get; set; }
 		private string name_;
@@ -90,54 +115,13 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get { return Name; }
-		}
-		#endregion
-
-		#region //public xs__collection<XS_SimpleType> XS_SimpleType { get; }
-//		private xs__collection<XS_SimpleType> xs_simpletype_ 
-//			= new xs__collection<XS_SimpleType>();
-//
-//		[XmlElement("simpleType")]
-//		//[XmlArray("simpleType")]
-//		//[XmlArrayItem(typeof(XS_SimpleType))]
-//		public XS_SimpleType[] xs_simpletype__xml {
-//			get { return xs_simpletype_.cols__; }
-//			set { xs_simpletype_.cols__ = value; }
-//		}
-//
-//		[XmlIgnore()]
-//		public xs__collection<XS_SimpleType> XS_SimpleType {
-//			get { return xs_simpletype_; }
-//		}
-		#endregion
-		#region //public xs__collection<XS_ComplexType> XS_ComplexType { get; }
-//		private xs__collection<XS_ComplexType> xs_complextype_ 
-//			= new xs__collection<XS_ComplexType>();
-//
-//		[XmlElement("complexType")]
-//		//[XmlArray("complexType")]
-//		//[XmlArrayItem(typeof(XS_ComplexType))]
-//		public XS_ComplexType[] XS_ComplexType__xml {
-//			get { return xs_complextype_.cols__; }
-//			set { xs_complextype_.cols__ = value; }
-//		}
-//
-//		[XmlIgnore()]
-//		public xs__collection<XS_ComplexType> XS_ComplexType {
-//			get { return xs_complextype_; }
-//		}
-		#endregion
-
+		#region public string isCollection_nameIt(...);
 		public string isCollection_nameIt(
-			ExtendedMetadata metadata_in
 		) {
 			ExtendedMetadata_collection _collection 
-				= metadata_in.Collections[Type];
+				= root_ref.Metadata.Collections[Type];
 			return (_collection == null) ? string.Empty : _collection.Name;
 		}
+		#endregion
 	}
 }

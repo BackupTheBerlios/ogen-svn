@@ -17,6 +17,52 @@ using System;
 using System.Collections;
 
 namespace OGen.lib.collections {
+	public class OGenRootrefCollection<C, R> : OGenCollection<C>
+		where R : class
+		where C : 
+			class,
+			OGenCollectionInterface, 
+			OGenRootrefCollectionInterface<R>
+	{
+		#region public R root_ref { get; }
+		private R root_ref_;
+
+		public R root_ref {
+			get {
+				return root_ref_;
+			}
+			set {
+				root_ref_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((C)cols_[i]).root_ref = value;
+				}
+			}
+		}
+		#endregion
+	}
+	public class OGenRootrefSimpleCollection<C, R> : OGenSimpleCollection<C>
+		where R : class
+		where C :
+			class,
+			OGenRootrefCollectionInterface<R> 
+	{
+		#region public R root_ref { get; }
+		private R root_ref_;
+
+		public R root_ref {
+			get {
+				return root_ref_;
+			}
+			set {
+				root_ref_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((C)cols_[i]).root_ref = value;
+				}
+			}
+		}
+		#endregion
+	}
+
 	public class OGenCollection<C> : OGenSimpleCollection<C> 
 		where C : class, OGenCollectionInterface 
 	{
@@ -34,13 +80,14 @@ namespace OGen.lib.collections {
 		}
 		#endregion
 	}
-	public class OGenSimpleCollection<C> 
+	public class OGenSimpleCollection<C>
 		where C : class 
 	{
-		public OGenSimpleCollection() {
+		public OGenSimpleCollection(
+		) {
 			cols_ = new ArrayList();
 		}
-	
+
 		#region public C[] cols__ { get; set; }
 		protected ArrayList cols_;
 
@@ -89,4 +136,47 @@ namespace OGen.lib.collections {
 		}
 		#endregion
 	}
+
+	//public class OGenCollection<C, R> : OGenCollection<C>
+	//    where C : class, OGenCollectionInterface
+	//    where R : class 
+	//{
+	//    public OGenCollection(
+	//        R root_ref_in
+	//    ) : base (
+	//    ) {
+	//        root_ref_ = root_ref_in;
+	//    }
+
+	//    #region public R root_ref { get; }
+	//    private R root_ref_;
+
+	//    public R root_ref {
+	//        get {
+	//            return root_ref_;
+	//        }
+	//    }
+	//    #endregion
+	//}
+	//public class OGenSimpleCollection<C, R> : OGenSimpleCollection<C>
+	//    where C : class
+	//    where R : class
+	//{
+	//    public OGenSimpleCollection(
+	//        R root_ref_in
+	//    ) : base (
+	//    ) {
+	//        root_ref_ = root_ref_in;
+	//    }
+
+	//    #region public R root_ref { get; }
+	//    private R root_ref_;
+
+	//    public R root_ref {
+	//        get {
+	//            return root_ref_;
+	//        }
+	//    }
+	//    #endregion
+	//}
 }

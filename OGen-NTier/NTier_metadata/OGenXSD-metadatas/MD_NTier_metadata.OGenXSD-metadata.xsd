@@ -19,6 +19,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 	<xs:simpleType name="sqlScriptOptionEnumeration">
 		<xs:restriction base="xs:string">
+			<xs:enumeration value="OneScriptFile" />
+			<xs:enumeration value="SeparateScriptFiles" />
 			<xs:enumeration value="RunImmediately" />
 		</xs:restriction>
 	</xs:simpleType>

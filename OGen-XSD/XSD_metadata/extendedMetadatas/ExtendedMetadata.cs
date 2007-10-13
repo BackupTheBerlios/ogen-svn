@@ -33,10 +33,24 @@ namespace OGen.XSD.lib.metadata {
 	}
 
 	[System.Xml.Serialization.XmlRootAttribute("metadata")]
-	public class ExtendedMetadata : iClaSSe_metadata {
+	public class ExtendedMetadata : iClaSSe_metadata, OGenRootrefCollectionInterface<RootMetadata> {
 		public ExtendedMetadata() {
 		}
 
+		#region public RootMetadata root_ref { get; }
+		private RootMetadata root_ref_;
+
+		[XmlIgnore()]
+		public RootMetadata root_ref {
+			set {
+				root_ref_ = value;
+
+				collections_.root_ref = value;
+				specificcase_.root_ref = value;
+			}
+			get { return root_ref_; }
+		}
+		#endregion
 		public const string METADATA = "metadata";
 		#region public static Hashtable Metacache { get; }
 		private static Hashtable metacache__;
@@ -135,9 +149,9 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public OGenCollection<ExtendedMetadata_collection> Collections { get; }
-		private OGenCollection<ExtendedMetadata_collection> collections_
-			= new OGenCollection<ExtendedMetadata_collection>();
+		#region public OGenRootrefCollection<ExtendedMetadata_collection, RootMetadata> Collections { get; }
+		private OGenRootrefCollection<ExtendedMetadata_collection, RootMetadata> collections_
+			= new OGenRootrefCollection<ExtendedMetadata_collection, RootMetadata>();
 
 		[XmlElement("collection")]
 		public ExtendedMetadata_collection[] collections__xml {
@@ -146,13 +160,13 @@ namespace OGen.XSD.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<ExtendedMetadata_collection> Collections {
+		public OGenRootrefCollection<ExtendedMetadata_collection, RootMetadata> Collections {
 			get { return collections_; }
 		}
 		#endregion
-		#region public OGenCollection<ExtendedMetadata_specificCase> SpecificCase { get; }
-		private OGenCollection<ExtendedMetadata_specificCase> specificcase_
-			= new OGenCollection<ExtendedMetadata_specificCase>();
+		#region public OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata> SpecificCase { get; }
+		private OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata> specificcase_
+			= new OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata>();
 
 		[XmlElement("specificCase")]
 		public ExtendedMetadata_specificCase[] specificcase__xml {
@@ -161,7 +175,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<ExtendedMetadata_specificCase> SpecificCase {
+		public OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata> SpecificCase {
 			get { return specificcase_; }
 		}
 		#endregion
@@ -209,10 +223,13 @@ namespace OGen.XSD.lib.metadata {
 			// ToDos: now! harder to maintain
 
 			ExtendedMetadata _metadata = ExtendedMetadata.Load_fromFile(fileName_in);
+			casetype_ = _metadata.casetype_;
 			applicationname_ = _metadata.applicationname_;
 			namespace_ = _metadata.namespace_;
 			copyrighttext_ = _metadata.copyrighttext_;
 			copyrighttextlong_ = _metadata.copyrighttextlong_;
+			collections_ = _metadata.collections_;
+			specificcase_ = _metadata.specificcase_;
 		}
 
 		public string Read_fromRoot(string what_in) {

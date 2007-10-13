@@ -118,10 +118,12 @@ namespace OGen.XSD.presentationlayer.test {
 				_someType2
 			);
 			
-			XS_Element _someElement = new XS_Element();
-			_someElement.Name = "someElement";
-			_someElement.Type = "someType2";
-			_schema.XS_Element = _someElement;
+			//XS_Element _someElement = new XS_Element();
+			//_someElement.Name = "someElement";
+			//_someElement.Type = "someType2";
+			//_schema.XS_Element = _someElement;
+			_schema.XS_Element.Name = "someElement";
+			_schema.XS_Element.Type = "someType2";
 
 Console.WriteLine(
 	"'{0}' == '{1}'", 

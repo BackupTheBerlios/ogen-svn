@@ -19,10 +19,36 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
-	public class XS_SimpleType : OGenCollectionInterface {
+	public class XS_SimpleType : OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata> {
 		public XS_SimpleType(
 		) {
 		}
+		public XS_SimpleType(
+			string name_in
+		) : this (
+		) {
+			name_ = name_in;
+		}
+
+		#region public RootMetadata root_ref { get; }
+		private RootMetadata root_ref_;
+
+		[XmlIgnore()]
+		public RootMetadata root_ref {
+			set {
+				root_ref_ = value;
+
+				if (xs_restriction__ != null) xs_restriction__.root_ref = value;
+			}
+			get { return root_ref_; }
+		}
+		#endregion
+		#region public string CollectionName { get; }
+		[XmlIgnore()]
+		public string CollectionName {
+			get { return Name; }
+		}
+		#endregion
 
 		#region public string Name { get; set; }
 		private string name_;
@@ -36,13 +62,6 @@ namespace OGen.XSD.lib.metadata {
 			set {
 				name_ = value;
 			}
-		}
-		#endregion
-
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get { return Name; }
 		}
 		#endregion
 

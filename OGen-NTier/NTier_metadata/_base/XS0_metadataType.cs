@@ -12,6 +12,9 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
 	public class XS0_metadataType  {
+		public XS0_metadataType (
+		) {
+		}
 		#region public string applicationName { get; set; }
 		private string applicationname_;
 
