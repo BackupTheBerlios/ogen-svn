@@ -85,18 +85,18 @@ namespace <%=_aux_metadata.Namespace%> {
 		[XmlIgnore()]
 		public string CollectionName {
 			get {
-				return <%=_aux_complextype_collectionname%>;
+				return <%=_aux_metadata.CaseTranslate(_aux_complextype_collectionname)%>;
 			}
 		}
 		#endregion<%
 		}
 
 		for (int a = 0; a < _aux_complextype.XS_Attribute.Count; a++) {%>
-		#region public <%=_aux_complextype.XS_Attribute[a].NType%> <%=_aux_complextype.XS_Attribute[a].Name%> { get; set; }
+		#region public <%=_aux_complextype.XS_Attribute[a].NType%> <%=_aux_metadata.CaseTranslate(_aux_complextype.XS_Attribute[a].Name)%> { get; set; }
 		private <%=_aux_complextype.XS_Attribute[a].NType%> <%=_aux_complextype.XS_Attribute[a].Name.ToLower()%>_;
 
 		[XmlAttribute("<%=_aux_complextype.XS_Attribute[a].Name%>")]
-		public <%=_aux_complextype.XS_Attribute[a].NType%> <%=_aux_complextype.XS_Attribute[a].Name%> {
+		public <%=_aux_complextype.XS_Attribute[a].NType%> <%=_aux_metadata.CaseTranslate(_aux_complextype.XS_Attribute[a].Name)%> {
 			get {
 				return <%=_aux_complextype.XS_Attribute[a].Name.ToLower()%>_;
 			}
@@ -110,7 +110,7 @@ namespace <%=_aux_metadata.Namespace%> {
 <%
 		for (int e = 0; e < _aux_elements.Count; e++) {
 			if (_aux_elements[e].MaxOccurs == XS_Element.MaxOccursEnum.unbounded) {%>
-		#region public <%=((__isCollection_nameIt = _aux_elements[e].isCollection_nameIt()) != string.Empty) ? "OGenCollection" : "OGenSimpleCollection"%><XS_<%=_aux_elements[e].Type%>> XS_<%=_aux_elements[e].Name%> { get; }
+		#region public <%=((__isCollection_nameIt = _aux_elements[e].isCollection_nameIt()) != string.Empty) ? "OGenCollection" : "OGenSimpleCollection"%><XS_<%=_aux_elements[e].Type%>> <%=_aux_metadata.CaseTranslate(_aux_elements[e].Name)%> { get; }
 		private <%=(__isCollection_nameIt != string.Empty) ? "OGenCollection" : "OGenSimpleCollection"%><XS_<%=_aux_elements[e].Type%>> xs_<%=_aux_elements[e].Name.ToLower()%>_;
 			//= new <%=(__isCollection_nameIt != string.Empty) ? "OGenCollection" : "OGenSimpleCollection"%><XS_<%=_aux_elements[e].Type%>>();
 
@@ -121,17 +121,17 @@ namespace <%=_aux_metadata.Namespace%> {
 		}
 
 		[XmlIgnore()]
-		public <%=(__isCollection_nameIt != string.Empty) ? "OGenCollection" : "OGenSimpleCollection"%><XS_<%=_aux_elements[e].Type%>> XS_<%=_aux_elements[e].Name%> {
+		public <%=(__isCollection_nameIt != string.Empty) ? "OGenCollection" : "OGenSimpleCollection"%><XS_<%=_aux_elements[e].Type%>> <%=_aux_metadata.CaseTranslate(_aux_elements[e].Name)%> {
 			get { return xs_<%=_aux_elements[e].Name.ToLower()%>_; }
 		}
 		#endregion<%
 
 			} else {%>
-		#region public XS_<%=_aux_elements[e].Type%> XS_<%=_aux_elements[e].Name%> { get; set; }
+		#region public XS_<%=_aux_elements[e].Type%> <%=_aux_metadata.CaseTranslate(_aux_elements[e].Name)%> { get; set; }
 		private XS_<%=_aux_elements[e].Type%> xs_<%=_aux_elements[e].Name.ToLower()%>__;
 
 		[XmlIgnore()]
-		public XS_<%=_aux_elements[e].Type%> XS_<%=_aux_elements[e].Name%> {
+		public XS_<%=_aux_elements[e].Type%> <%=_aux_metadata.CaseTranslate(_aux_elements[e].Name)%> {
 			get {
 				if (xs_<%=_aux_elements[e].Name.ToLower()%>__ == null) {
 					xs_<%=_aux_elements[e].Name.ToLower()%>__ = new XS_<%=_aux_elements[e].Type%>();

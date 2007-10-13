@@ -17,7 +17,7 @@ namespace OGen.NTier.lib.metadata {
 			xs_db_ 
 				= new OGenCollection<XS_dbType>();
 		}
-		#region public OGenCollection<XS_dbType> XS_db { get; }
+		#region public OGenCollection<XS_dbType> DB { get; }
 		private OGenCollection<XS_dbType> xs_db_;
 			//= new OGenCollection<XS_dbType>();
 
@@ -28,7 +28,7 @@ namespace OGen.NTier.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_dbType> XS_db {
+		public OGenCollection<XS_dbType> DB {
 			get { return xs_db_; }
 		}
 		#endregion

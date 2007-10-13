@@ -29,15 +29,15 @@ namespace OGen.NTier.lib.metadata {
 		[XmlIgnore()]
 		public string CollectionName {
 			get {
-				return name;
+				return Name;
 			}
 		}
 		#endregion
-		#region public string name { get; set; }
+		#region public string Name { get; set; }
 		private string name_;
 
 		[XmlAttribute("name")]
-		public string name {
+		public string Name {
 			get {
 				return name_;
 			}
@@ -72,7 +72,7 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public OGenSimpleCollection<XS_tableSearchParametersType> XS_tableSearchParameters { get; }
+		#region public OGenSimpleCollection<XS_tableSearchParametersType> TableSearchParameters { get; }
 		private OGenSimpleCollection<XS_tableSearchParametersType> xs_tablesearchparameters_;
 			//= new OGenSimpleCollection<XS_tableSearchParametersType>();
 
@@ -83,11 +83,11 @@ namespace OGen.NTier.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenSimpleCollection<XS_tableSearchParametersType> XS_tableSearchParameters {
+		public OGenSimpleCollection<XS_tableSearchParametersType> TableSearchParameters {
 			get { return xs_tablesearchparameters_; }
 		}
 		#endregion
-		#region public OGenSimpleCollection<XS_tableSearchUpdatesType> XS_tableSearchUpdates { get; }
+		#region public OGenSimpleCollection<XS_tableSearchUpdatesType> TableSearchUpdates { get; }
 		private OGenSimpleCollection<XS_tableSearchUpdatesType> xs_tablesearchupdates_;
 			//= new OGenSimpleCollection<XS_tableSearchUpdatesType>();
 
@@ -98,7 +98,7 @@ namespace OGen.NTier.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenSimpleCollection<XS_tableSearchUpdatesType> XS_tableSearchUpdates {
+		public OGenSimpleCollection<XS_tableSearchUpdatesType> TableSearchUpdates {
 			get { return xs_tablesearchupdates_; }
 		}
 		#endregion

@@ -17,7 +17,7 @@ namespace OGen.NTier.lib.metadata {
 			xs_tablefielddb_ 
 				= new OGenCollection<XS_tableFieldDBType>();
 		}
-		#region public OGenCollection<XS_tableFieldDBType> XS_tableFieldDB { get; }
+		#region public OGenCollection<XS_tableFieldDBType> TableFieldDB { get; }
 		private OGenCollection<XS_tableFieldDBType> xs_tablefielddb_;
 			//= new OGenCollection<XS_tableFieldDBType>();
 
@@ -28,7 +28,7 @@ namespace OGen.NTier.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_tableFieldDBType> XS_tableFieldDB {
+		public OGenCollection<XS_tableFieldDBType> TableFieldDB {
 			get { return xs_tablefielddb_; }
 		}
 		#endregion

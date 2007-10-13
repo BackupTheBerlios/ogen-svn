@@ -33,15 +33,15 @@ namespace OGen.NTier.lib.metadata {
 		[XmlIgnore()]
 		public string CollectionName {
 			get {
-				return name;
+				return Name;
 			}
 		}
 		#endregion
-		#region public string name { get; set; }
+		#region public string Name { get; set; }
 		private string name_;
 
 		[XmlAttribute("name")]
-		public string name {
+		public string Name {
 			get {
 				return name_;
 			}
@@ -50,11 +50,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string friendlyName { get; set; }
+		#region public string FriendlyName { get; set; }
 		private string friendlyname_;
 
 		[XmlAttribute("friendlyName")]
-		public string friendlyName {
+		public string FriendlyName {
 			get {
 				return friendlyname_;
 			}
@@ -63,11 +63,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string dbDescription { get; set; }
+		#region public string DBDescription { get; set; }
 		private string dbdescription_;
 
 		[XmlAttribute("dbDescription")]
-		public string dbDescription {
+		public string DBDescription {
 			get {
 				return dbdescription_;
 			}
@@ -76,11 +76,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string extendedDescription { get; set; }
+		#region public string ExtendedDescription { get; set; }
 		private string extendeddescription_;
 
 		[XmlAttribute("extendedDescription")]
-		public string extendedDescription {
+		public string ExtendedDescription {
 			get {
 				return extendeddescription_;
 			}
@@ -115,7 +115,7 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public OGenSimpleCollection<XS_tableDBsType> XS_tableDBs { get; }
+		#region public OGenSimpleCollection<XS_tableDBsType> TableDBs { get; }
 		private OGenSimpleCollection<XS_tableDBsType> xs_tabledbs_;
 			//= new OGenSimpleCollection<XS_tableDBsType>();
 
@@ -126,11 +126,11 @@ namespace OGen.NTier.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenSimpleCollection<XS_tableDBsType> XS_tableDBs {
+		public OGenSimpleCollection<XS_tableDBsType> TableDBs {
 			get { return xs_tabledbs_; }
 		}
 		#endregion
-		#region public OGenSimpleCollection<XS_tableFieldsType> XS_tableFields { get; }
+		#region public OGenSimpleCollection<XS_tableFieldsType> TableFields { get; }
 		private OGenSimpleCollection<XS_tableFieldsType> xs_tablefields_;
 			//= new OGenSimpleCollection<XS_tableFieldsType>();
 
@@ -141,11 +141,11 @@ namespace OGen.NTier.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenSimpleCollection<XS_tableFieldsType> XS_tableFields {
+		public OGenSimpleCollection<XS_tableFieldsType> TableFields {
 			get { return xs_tablefields_; }
 		}
 		#endregion
-		#region public OGenSimpleCollection<XS_tableSearchesType> XS_tableSearches { get; }
+		#region public OGenSimpleCollection<XS_tableSearchesType> TableSearches { get; }
 		private OGenSimpleCollection<XS_tableSearchesType> xs_tablesearches_;
 			//= new OGenSimpleCollection<XS_tableSearchesType>();
 
@@ -156,11 +156,11 @@ namespace OGen.NTier.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenSimpleCollection<XS_tableSearchesType> XS_tableSearches {
+		public OGenSimpleCollection<XS_tableSearchesType> TableSearches {
 			get { return xs_tablesearches_; }
 		}
 		#endregion
-		#region public OGenSimpleCollection<XS_tableUpdatesType> XS_tableUpdates { get; }
+		#region public OGenSimpleCollection<XS_tableUpdatesType> TableUpdates { get; }
 		private OGenSimpleCollection<XS_tableUpdatesType> xs_tableupdates_;
 			//= new OGenSimpleCollection<XS_tableUpdatesType>();
 
@@ -171,7 +171,7 @@ namespace OGen.NTier.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenSimpleCollection<XS_tableUpdatesType> XS_tableUpdates {
+		public OGenSimpleCollection<XS_tableUpdatesType> TableUpdates {
 			get { return xs_tableupdates_; }
 		}
 		#endregion

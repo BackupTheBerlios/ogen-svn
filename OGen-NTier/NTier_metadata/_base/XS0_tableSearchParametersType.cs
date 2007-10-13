@@ -17,7 +17,7 @@ namespace OGen.NTier.lib.metadata {
 			xs_tablefieldref_ 
 				= new OGenCollection<XS_tableFieldRefType>();
 		}
-		#region public OGenCollection<XS_tableFieldRefType> XS_tableFieldRef { get; }
+		#region public OGenCollection<XS_tableFieldRefType> TableFieldRef { get; }
 		private OGenCollection<XS_tableFieldRefType> xs_tablefieldref_;
 			//= new OGenCollection<XS_tableFieldRefType>();
 
@@ -28,7 +28,7 @@ namespace OGen.NTier.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_tableFieldRefType> XS_tableFieldRef {
+		public OGenCollection<XS_tableFieldRefType> TableFieldRef {
 			get { return xs_tablefieldref_; }
 		}
 		#endregion

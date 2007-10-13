@@ -17,7 +17,7 @@ namespace OGen.NTier.lib.metadata {
 			xs_tablesearch_ 
 				= new OGenCollection<XS_tableSearchType>();
 		}
-		#region public OGenCollection<XS_tableSearchType> XS_tableSearch { get; }
+		#region public OGenCollection<XS_tableSearchType> TableSearch { get; }
 		private OGenCollection<XS_tableSearchType> xs_tablesearch_;
 			//= new OGenCollection<XS_tableSearchType>();
 
@@ -28,7 +28,7 @@ namespace OGen.NTier.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_tableSearchType> XS_tableSearch {
+		public OGenCollection<XS_tableSearchType> TableSearch {
 			get { return xs_tablesearch_; }
 		}
 		#endregion

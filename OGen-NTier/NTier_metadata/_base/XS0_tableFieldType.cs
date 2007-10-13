@@ -25,15 +25,15 @@ namespace OGen.NTier.lib.metadata {
 		[XmlIgnore()]
 		public string CollectionName {
 			get {
-				return name;
+				return Name;
 			}
 		}
 		#endregion
-		#region public string name { get; set; }
+		#region public string Name { get; set; }
 		private string name_;
 
 		[XmlAttribute("name")]
-		public string name {
+		public string Name {
 			get {
 				return name_;
 			}
@@ -68,11 +68,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string defaultValue { get; set; }
+		#region public string DefaultValue { get; set; }
 		private string defaultvalue_;
 
 		[XmlAttribute("defaultValue")]
-		public string defaultValue {
+		public string DefaultValue {
 			get {
 				return defaultvalue_;
 			}
@@ -81,11 +81,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string friendlyName { get; set; }
+		#region public string FriendlyName { get; set; }
 		private string friendlyname_;
 
 		[XmlAttribute("friendlyName")]
-		public string friendlyName {
+		public string FriendlyName {
 			get {
 				return friendlyname_;
 			}
@@ -94,11 +94,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string extendedDescription { get; set; }
+		#region public string ExtendedDescription { get; set; }
 		private string extendeddescription_;
 
 		[XmlAttribute("extendedDescription")]
-		public string extendedDescription {
+		public string ExtendedDescription {
 			get {
 				return extendeddescription_;
 			}
@@ -172,11 +172,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string fkTableName { get; set; }
+		#region public string FKTableName { get; set; }
 		private string fktablename_;
 
 		[XmlAttribute("fkTableName")]
-		public string fkTableName {
+		public string FKTableName {
 			get {
 				return fktablename_;
 			}
@@ -185,11 +185,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string fkFieldName { get; set; }
+		#region public string FKFieldName { get; set; }
 		private string fkfieldname_;
 
 		[XmlAttribute("fkFieldName")]
-		public string fkFieldName {
+		public string FKFieldName {
 			get {
 				return fkfieldname_;
 			}
@@ -211,11 +211,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public int size { get; set; }
+		#region public int Size { get; set; }
 		private int size_;
 
 		[XmlAttribute("size")]
-		public int size {
+		public int Size {
 			get {
 				return size_;
 			}
@@ -224,11 +224,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string aditionalInfo { get; set; }
+		#region public string AditionalInfo { get; set; }
 		private string aditionalinfo_;
 
 		[XmlAttribute("aditionalInfo")]
-		public string aditionalInfo {
+		public string AditionalInfo {
 			get {
 				return aditionalinfo_;
 			}
@@ -237,11 +237,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public int numericPrecision { get; set; }
+		#region public int NumericPrecision { get; set; }
 		private int numericprecision_;
 
 		[XmlAttribute("numericPrecision")]
-		public int numericPrecision {
+		public int NumericPrecision {
 			get {
 				return numericprecision_;
 			}
@@ -250,11 +250,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public int numericScale { get; set; }
+		#region public int NumericScale { get; set; }
 		private int numericscale_;
 
 		[XmlAttribute("numericScale")]
-		public int numericScale {
+		public int NumericScale {
 			get {
 				return numericscale_;
 			}
@@ -263,11 +263,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public XS_tableFieldDBsType XS_tableFieldDBs { get; set; }
+		#region public XS_tableFieldDBsType TableFieldDBs { get; set; }
 		private XS_tableFieldDBsType xs_tablefielddbs__;
 
 		[XmlIgnore()]
-		public XS_tableFieldDBsType XS_tableFieldDBs {
+		public XS_tableFieldDBsType TableFieldDBs {
 			get {
 				if (xs_tablefielddbs__ == null) {
 					xs_tablefielddbs__ = new XS_tableFieldDBsType();

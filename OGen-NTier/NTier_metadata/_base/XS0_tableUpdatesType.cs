@@ -17,7 +17,7 @@ namespace OGen.NTier.lib.metadata {
 			xs_tableupdate_ 
 				= new OGenCollection<XS_tableUpdateType>();
 		}
-		#region public OGenCollection<XS_tableUpdateType> XS_tableUpdate { get; }
+		#region public OGenCollection<XS_tableUpdateType> TableUpdate { get; }
 		private OGenCollection<XS_tableUpdateType> xs_tableupdate_;
 			//= new OGenCollection<XS_tableUpdateType>();
 
@@ -28,7 +28,7 @@ namespace OGen.NTier.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_tableUpdateType> XS_tableUpdate {
+		public OGenCollection<XS_tableUpdateType> TableUpdate {
 			get { return xs_tableupdate_; }
 		}
 		#endregion

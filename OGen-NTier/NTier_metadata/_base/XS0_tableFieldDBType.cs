@@ -25,15 +25,15 @@ namespace OGen.NTier.lib.metadata {
 		[XmlIgnore()]
 		public string CollectionName {
 			get {
-				return dbServerType;
+				return DBServerType;
 			}
 		}
 		#endregion
-		#region public string dbServerType { get; set; }
+		#region public string DBServerType { get; set; }
 		private string dbservertype_;
 
 		[XmlAttribute("dbServerType")]
-		public string dbServerType {
+		public string DBServerType {
 			get {
 				return dbservertype_;
 			}
@@ -42,11 +42,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string dbType { get; set; }
+		#region public string DBType { get; set; }
 		private string dbtype_;
 
 		[XmlAttribute("dbType")]
-		public string dbType {
+		public string DBType {
 			get {
 				return dbtype_;
 			}
@@ -55,11 +55,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string dbDescription { get; set; }
+		#region public string DBDescription { get; set; }
 		private string dbdescription_;
 
 		[XmlAttribute("dbDescription")]
-		public string dbDescription {
+		public string DBDescription {
 			get {
 				return dbdescription_;
 			}
@@ -68,11 +68,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string dbDefaultValue { get; set; }
+		#region public string DBDefaultValue { get; set; }
 		private string dbdefaultvalue_;
 
 		[XmlAttribute("dbDefaultValue")]
-		public string dbDefaultValue {
+		public string DBDefaultValue {
 			get {
 				return dbdefaultvalue_;
 			}
@@ -81,11 +81,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string dbCollationName { get; set; }
+		#region public string DBCollationName { get; set; }
 		private string dbcollationname_;
 
 		[XmlAttribute("dbCollationName")]
-		public string dbCollationName {
+		public string DBCollationName {
 			get {
 				return dbcollationname_;
 			}
@@ -94,11 +94,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string dbFieldName { get; set; }
+		#region public string DBFieldName { get; set; }
 		private string dbfieldname_;
 
 		[XmlAttribute("dbFieldName")]
-		public string dbFieldName {
+		public string DBFieldName {
 			get {
 				return dbfieldname_;
 			}

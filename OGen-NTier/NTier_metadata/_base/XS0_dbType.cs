@@ -25,15 +25,15 @@ namespace OGen.NTier.lib.metadata {
 		[XmlIgnore()]
 		public string CollectionName {
 			get {
-				return dbServerType;
+				return DBServerType;
 			}
 		}
 		#endregion
-		#region public string dbServerType { get; set; }
+		#region public string DBServerType { get; set; }
 		private string dbservertype_;
 
 		[XmlAttribute("dbServerType")]
-		public string dbServerType {
+		public string DBServerType {
 			get {
 				return dbservertype_;
 			}
@@ -42,11 +42,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public XS_dbConnectionsType XS_dbConnections { get; set; }
+		#region public XS_dbConnectionsType DBConnections { get; set; }
 		private XS_dbConnectionsType xs_dbconnections__;
 
 		[XmlIgnore()]
-		public XS_dbConnectionsType XS_dbConnections {
+		public XS_dbConnectionsType DBConnections {
 			get {
 				if (xs_dbconnections__ == null) {
 					xs_dbconnections__ = new XS_dbConnectionsType();

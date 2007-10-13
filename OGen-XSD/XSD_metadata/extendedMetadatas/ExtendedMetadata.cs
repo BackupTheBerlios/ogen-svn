@@ -21,17 +21,6 @@ using System.Collections;
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
-	public enum CaseTypeEnum {
-		_invalid_,
-
-		none,
-
-		camelCase,
-		PascalCase,
-		UPPERCASE,
-		lowercase,
-	}
-
 	[System.Xml.Serialization.XmlRootAttribute("metadata")]
 	public class ExtendedMetadata : iClaSSe_metadata, OGenRootrefCollectionInterface<RootMetadata> {
 		public ExtendedMetadata() {
@@ -65,7 +54,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public CaseTypeEnum CaseType { get; set; }
+		#region public ExtendedMetadata_caseTypeEnum CaseType { get; set; }
 		private string casetype_;
 
 		[XmlAttribute("caseType")]
@@ -79,16 +68,16 @@ namespace OGen.XSD.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public CaseTypeEnum CaseType {
+		public ExtendedMetadata_caseTypeEnum CaseType {
 			get {
 				if (
 					(casetype_ == null)
 					||
 					(casetype_ == string.Empty)
 				) {
-					return CaseTypeEnum._invalid_;
+					return ExtendedMetadata_caseTypeEnum._invalid_;
 				} else {
-					return (CaseTypeEnum)Enum.Parse(typeof(CaseTypeEnum), casetype_);
+					return (ExtendedMetadata_caseTypeEnum)Enum.Parse(typeof(ExtendedMetadata_caseTypeEnum), casetype_);
 				}
 			}
 			set {
@@ -236,5 +225,50 @@ namespace OGen.XSD.lib.metadata {
 				true
 			);
 		}
+
+		#region public string CaseTranslate(string word_in);
+		private Hashtable casetranslate_;
+
+		public string CaseTranslate(string word_in) {
+			if (casetranslate_ == null) {
+				casetranslate_ = new Hashtable();
+			}
+			if (casetranslate_.Contains(word_in)) {
+				return (string)casetranslate_[word_in];
+			} else {
+				ExtendedMetadata_specificCase _case = SpecificCase[word_in];
+				string _output = (_case == null) 
+					? string.Empty 
+					: _case.Translation;
+				if (_output != string.Empty) {
+					casetranslate_.Add(word_in, _output);
+					return _output;
+				} else {
+					switch (CaseType) {
+						case ExtendedMetadata_caseTypeEnum.PascalCase:
+							if (word_in.Length > 0) {
+								_output
+									= word_in[0].ToString().ToUpper()
+									+ word_in.Substring(1);
+							} else {
+								_output = word_in;
+							}
+							casetranslate_.Add(word_in, _output);
+							return _output;
+						case ExtendedMetadata_caseTypeEnum.camelCase:
+						case ExtendedMetadata_caseTypeEnum.lowercase:
+						case ExtendedMetadata_caseTypeEnum.UPPERCASE:
+						case ExtendedMetadata_caseTypeEnum._invalid_:
+							// ToDos: later!
+							throw new Exception("not implemented!");
+						case ExtendedMetadata_caseTypeEnum.none:
+						default:
+							casetranslate_.Add(word_in, word_in);
+							return word_in;
+					}
+				}
+			}
+		}
+		#endregion
 	}
 }

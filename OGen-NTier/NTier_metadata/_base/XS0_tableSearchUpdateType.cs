@@ -27,15 +27,15 @@ namespace OGen.NTier.lib.metadata {
 		[XmlIgnore()]
 		public string CollectionName {
 			get {
-				return name;
+				return Name;
 			}
 		}
 		#endregion
-		#region public string name { get; set; }
+		#region public string Name { get; set; }
 		private string name_;
 
 		[XmlAttribute("name")]
-		public string name {
+		public string Name {
 			get {
 				return name_;
 			}
@@ -44,7 +44,7 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public OGenSimpleCollection<XS_tableSearchUpdateParametersType> XS_tableUpdateParameters { get; }
+		#region public OGenSimpleCollection<XS_tableSearchUpdateParametersType> TableUpdateParameters { get; }
 		private OGenSimpleCollection<XS_tableSearchUpdateParametersType> xs_tableupdateparameters_;
 			//= new OGenSimpleCollection<XS_tableSearchUpdateParametersType>();
 
@@ -55,7 +55,7 @@ namespace OGen.NTier.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenSimpleCollection<XS_tableSearchUpdateParametersType> XS_tableUpdateParameters {
+		public OGenSimpleCollection<XS_tableSearchUpdateParametersType> TableUpdateParameters {
 			get { return xs_tableupdateparameters_; }
 		}
 		#endregion

@@ -17,7 +17,7 @@ namespace OGen.NTier.lib.metadata {
 			xs_dbconnection_ 
 				= new OGenCollection<XS_dbConnectionType>();
 		}
-		#region public OGenCollection<XS_dbConnectionType> XS_dbConnection { get; }
+		#region public OGenCollection<XS_dbConnectionType> DBConnection { get; }
 		private OGenCollection<XS_dbConnectionType> xs_dbconnection_;
 			//= new OGenCollection<XS_dbConnectionType>();
 
@@ -28,7 +28,7 @@ namespace OGen.NTier.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_dbConnectionType> XS_dbConnection {
+		public OGenCollection<XS_dbConnectionType> DBConnection {
 			get { return xs_dbconnection_; }
 		}
 		#endregion

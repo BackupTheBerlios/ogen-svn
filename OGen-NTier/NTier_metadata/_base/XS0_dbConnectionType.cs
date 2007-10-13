@@ -25,15 +25,15 @@ namespace OGen.NTier.lib.metadata {
 		[XmlIgnore()]
 		public string CollectionName {
 			get {
-				return configMode;
+				return ConfigMode;
 			}
 		}
 		#endregion
-		#region public string configMode { get; set; }
+		#region public string ConfigMode { get; set; }
 		private string configmode_;
 
 		[XmlAttribute("configMode")]
-		public string configMode {
+		public string ConfigMode {
 			get {
 				return configmode_;
 			}
@@ -81,11 +81,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string connectionstring { get; set; }
+		#region public string Connectionstring { get; set; }
 		private string connectionstring_;
 
 		[XmlAttribute("connectionstring")]
-		public string connectionstring {
+		public string Connectionstring {
 			get {
 				return connectionstring_;
 			}

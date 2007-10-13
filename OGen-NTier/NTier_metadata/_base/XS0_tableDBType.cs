@@ -25,15 +25,15 @@ namespace OGen.NTier.lib.metadata {
 		[XmlIgnore()]
 		public string CollectionName {
 			get {
-				return dbServerType;
+				return DBServerType;
 			}
 		}
 		#endregion
-		#region public string dbServerType { get; set; }
+		#region public string DBServerType { get; set; }
 		private string dbservertype_;
 
 		[XmlAttribute("dbServerType")]
-		public string dbServerType {
+		public string DBServerType {
 			get {
 				return dbservertype_;
 			}
@@ -42,11 +42,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string dbTableName { get; set; }
+		#region public string DBTableName { get; set; }
 		private string dbtablename_;
 
 		[XmlAttribute("dbTableName")]
-		public string dbTableName {
+		public string DBTableName {
 			get {
 				return dbtablename_;
 			}

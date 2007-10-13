@@ -25,15 +25,15 @@ namespace OGen.NTier.lib.metadata {
 		[XmlIgnore()]
 		public string CollectionName {
 			get {
-				return paramName;
+				return ParamName;
 			}
 		}
 		#endregion
-		#region public string tableName { get; set; }
+		#region public string TableName { get; set; }
 		private string tablename_;
 
 		[XmlAttribute("tableName")]
-		public string tableName {
+		public string TableName {
 			get {
 				return tablename_;
 			}
@@ -42,11 +42,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string tableFieldName { get; set; }
+		#region public string TableFieldName { get; set; }
 		private string tablefieldname_;
 
 		[XmlAttribute("tableFieldName")]
-		public string tableFieldName {
+		public string TableFieldName {
 			get {
 				return tablefieldname_;
 			}
@@ -55,11 +55,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string paramName { get; set; }
+		#region public string ParamName { get; set; }
 		private string paramname_;
 
 		[XmlAttribute("paramName")]
-		public string paramName {
+		public string ParamName {
 			get {
 				return paramname_;
 			}
