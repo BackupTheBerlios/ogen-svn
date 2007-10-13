@@ -12,9 +12,9 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
 	public class XS0_tableSearchParametersType  {
-		#region public OGenSimpleCollection<XS_tableFieldRefType> XS_tableFieldRef { get; }
-		private OGenSimpleCollection<XS_tableFieldRefType> xs_tablefieldref_ 
-			= new OGenSimpleCollection<XS_tableFieldRefType>();
+		#region public OGenCollection<XS_tableFieldRefType> XS_tableFieldRef { get; }
+		private OGenCollection<XS_tableFieldRefType> xs_tablefieldref_ 
+			= new OGenCollection<XS_tableFieldRefType>();
 
 		[XmlElement("tableFieldRef")]
 		public XS_tableFieldRefType[] xs_tablefieldref__xml {
@@ -23,7 +23,7 @@ namespace OGen.NTier.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenSimpleCollection<XS_tableFieldRefType> XS_tableFieldRef {
+		public OGenCollection<XS_tableFieldRefType> XS_tableFieldRef {
 			get { return xs_tablefieldref_; }
 		}
 		#endregion

@@ -47,8 +47,8 @@
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="extendedMetadatas\ExtendedMetadata.cs" />
+    <Compile Include="extendedMetadatas\ExtendedMetadata_specificCase.cs" />
     <Compile Include="extendedMetadatas\ExtendedMetadata_collection.cs" />
-    <Compile Include="extendedMetadatas\ExtendedMetadata_collections.cs" />
     <Compile Include="XS_Attribute.cs" />
     <Compile Include="utils.cs" />
     <Compile Include="XS_ComplexType.cs" />

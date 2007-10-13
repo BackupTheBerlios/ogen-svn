@@ -11,7 +11,15 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
-	public class XS0_tableFieldRefType  {
+	public class XS0_tableFieldRefType : OGenCollectionInterface {
+		#region public string CollectionName { get; }
+		[XmlIgnore()]
+		public string CollectionName {
+			get {
+				return paramName;
+			}
+		}
+		#endregion
 		#region public string tableName { get; set; }
 		private string tablename_;
 

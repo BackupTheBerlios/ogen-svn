@@ -12,9 +12,9 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
 	public class XS0_tableFieldsType  {
-		#region public OGenSimpleCollection<XS_tableFieldType> XS_tableField { get; }
-		private OGenSimpleCollection<XS_tableFieldType> xs_tablefield_ 
-			= new OGenSimpleCollection<XS_tableFieldType>();
+		#region public OGenCollection<XS_tableFieldType> XS_tableField { get; }
+		private OGenCollection<XS_tableFieldType> xs_tablefield_ 
+			= new OGenCollection<XS_tableFieldType>();
 
 		[XmlElement("tableField")]
 		public XS_tableFieldType[] xs_tablefield__xml {
@@ -23,7 +23,7 @@ namespace OGen.NTier.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenSimpleCollection<XS_tableFieldType> XS_tableField {
+		public OGenCollection<XS_tableFieldType> XS_tableField {
 			get { return xs_tablefield_; }
 		}
 		#endregion

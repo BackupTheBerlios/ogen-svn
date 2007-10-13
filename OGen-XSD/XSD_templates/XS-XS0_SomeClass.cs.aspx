@@ -92,7 +92,7 @@ namespace <%=_aux_metadata.Namespace%> {
 
 <%
 		for (int e = 0; e < _aux_elements.Count; e++) {
-			if (_aux_elements[e].MaxOccurs == XS_Element.MAXOCCURSENUM_UNBOUNDED) {%>
+			if (_aux_elements[e].MaxOccurs == XS_Element.MaxOccursEnum.unbounded) {%>
 		#region public <%=((__isCollection_nameIt = _aux_elements[e].isCollection_nameIt(_aux_metadata)) != string.Empty) ? "OGenCollection" : "OGenSimpleCollection"%><XS_<%=_aux_elements[e].Type%>> XS_<%=_aux_elements[e].Name%> { get; }
 		private <%=(__isCollection_nameIt != string.Empty) ? "OGenCollection" : "OGenSimpleCollection"%><XS_<%=_aux_elements[e].Type%>> xs_<%=_aux_elements[e].Name.ToLower()%>_ 
 			= new <%=(__isCollection_nameIt != string.Empty) ? "OGenCollection" : "OGenSimpleCollection"%><XS_<%=_aux_elements[e].Type%>>();

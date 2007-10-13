@@ -12,9 +12,9 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
 	public class XS0_tableDBsType  {
-		#region public OGenSimpleCollection<XS_tableDBType> XS_tableDB { get; }
-		private OGenSimpleCollection<XS_tableDBType> xs_tabledb_ 
-			= new OGenSimpleCollection<XS_tableDBType>();
+		#region public OGenCollection<XS_tableDBType> XS_tableDB { get; }
+		private OGenCollection<XS_tableDBType> xs_tabledb_ 
+			= new OGenCollection<XS_tableDBType>();
 
 		[XmlElement("tableDB")]
 		public XS_tableDBType[] xs_tabledb__xml {
@@ -23,7 +23,7 @@ namespace OGen.NTier.lib.metadata {
 		}
 
 		[XmlIgnore()]
-		public OGenSimpleCollection<XS_tableDBType> XS_tableDB {
+		public OGenCollection<XS_tableDBType> XS_tableDB {
 			get { return xs_tabledb_; }
 		}
 		#endregion

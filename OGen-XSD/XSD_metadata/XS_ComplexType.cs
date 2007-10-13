@@ -96,10 +96,10 @@ namespace OGen.XSD.lib.metadata {
 						(schema_in.XS_ComplexType[c].XS_Sequence.XS_Element[e].Type == Name)
 						&&
 						(schema_in.XS_ComplexType[c].XS_Sequence.XS_Element[e].MaxOccurs 
-							== XS_Element.MAXOCCURSENUM_UNBOUNDED)
+							== XS_Element.MaxOccursEnum.unbounded)
 					) {
 						ExtendedMetadata_collection _collection 
-							= metadata_in.Collections.Collection[
+							= metadata_in.Collections[
 								Name
 							];
 						return (_collection == null) 

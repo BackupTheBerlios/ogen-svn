@@ -21,6 +21,17 @@ using System.Collections;
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
+	public enum CaseTypeEnum {
+		_invalid_,
+
+		none,
+
+		camelCase,
+		PascalCase,
+		UPPERCASE,
+		lowercase,
+	}
+
 	[System.Xml.Serialization.XmlRootAttribute("metadata")]
 	public class ExtendedMetadata : iClaSSe_metadata {
 		public ExtendedMetadata() {
@@ -40,6 +51,37 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
+		#region public CaseTypeEnum CaseType { get; set; }
+		private string casetype_;
+
+		[XmlAttribute("caseType")]
+		public string casetype__xml {
+			get {
+				return casetype_;
+			}
+			set {
+				casetype_ = value;
+			}
+		}
+
+		[XmlIgnore()]
+		public CaseTypeEnum CaseType {
+			get {
+				if (
+					(casetype_ == null)
+					||
+					(casetype_ == string.Empty)
+				) {
+					return CaseTypeEnum._invalid_;
+				} else {
+					return (CaseTypeEnum)Enum.Parse(typeof(CaseTypeEnum), casetype_);
+				}
+			}
+			set {
+				casetype_ = value.ToString();
+			}
+		}
+		#endregion
 		#region public string ApplicationName { get; set; }
 		private string applicationname_;
 
@@ -93,26 +135,34 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public ExtendedMetadata_collections Collections { get; set; }
-		private ExtendedMetadata_collections collections__;
+		#region public OGenCollection<ExtendedMetadata_collection> Collections { get; }
+		private OGenCollection<ExtendedMetadata_collection> collections_
+			= new OGenCollection<ExtendedMetadata_collection>();
 
-		[XmlIgnore()]
-		public ExtendedMetadata_collections Collections {
-			get {
-				if (collections__ == null) {
-					collections__ = new ExtendedMetadata_collections();
-				}
-				return collections__;
-			}
-			set {
-				collections__ = value;
-			}
+		[XmlElement("collection")]
+		public ExtendedMetadata_collection[] collections__xml {
+			get { return collections_.cols__; }
+			set { collections_.cols__ = value; }
 		}
 
-		[XmlElement("collections")]
-		public ExtendedMetadata_collections collections__xml {
-			get { return collections__; }
-			set { collections__ = value; }
+		[XmlIgnore()]
+		public OGenCollection<ExtendedMetadata_collection> Collections {
+			get { return collections_; }
+		}
+		#endregion
+		#region public OGenCollection<ExtendedMetadata_specificCase> SpecificCase { get; }
+		private OGenCollection<ExtendedMetadata_specificCase> specificcase_
+			= new OGenCollection<ExtendedMetadata_specificCase>();
+
+		[XmlElement("specificCase")]
+		public ExtendedMetadata_specificCase[] specificcase__xml {
+			get { return specificcase_.cols__; }
+			set { specificcase_.cols__ = value; }
+		}
+
+		[XmlIgnore()]
+		public OGenCollection<ExtendedMetadata_specificCase> SpecificCase {
+			get { return specificcase_; }
 		}
 		#endregion
 

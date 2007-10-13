@@ -23,10 +23,11 @@ namespace OGen.XSD.lib.metadata {
 		public XS_Element() {
 		}
 
-		public const string MAXOCCURSENUM_UNBOUNDED = "unbounded";
-		//public enum MaxOccursEnum {
-		//	unbounded = 0
-		//}
+		//public const string MAXOCCURSENUM_UNBOUNDED = "unbounded";
+		public enum MaxOccursEnum {
+			_undefined_ = 0, 
+			unbounded = 1
+		}
 
 		#region public string Name { get; set; }
 		private string name_;
@@ -56,17 +57,35 @@ namespace OGen.XSD.lib.metadata {
 			}
 		}
 		#endregion
-		#region public string MaxOccurs { get; set; }
+		#region public MaxOccursEnum MaxOccurs { get; set; }
 		private string maxoccurs_;
 
 		//[XmlElement("maxOccurs")]
 		[XmlAttribute("maxOccurs")]
-		public string MaxOccurs {
+		public string maxoccurs__xml {
 			get {
 				return maxoccurs_;
 			}
 			set {
 				maxoccurs_ = value;
+			}
+		}
+
+		[XmlIgnore()]
+		public MaxOccursEnum MaxOccurs {
+			get {
+				if (
+					(maxoccurs_ == null)
+					||
+					(maxoccurs_ == string.Empty)
+				) {
+					return MaxOccursEnum._undefined_;
+				} else {
+					return (MaxOccursEnum)Enum.Parse(typeof(MaxOccursEnum), maxoccurs_);
+				}
+			}
+			set {
+				maxoccurs_ = value.ToString();
 			}
 		}
 		#endregion
@@ -117,7 +136,7 @@ namespace OGen.XSD.lib.metadata {
 			ExtendedMetadata metadata_in
 		) {
 			ExtendedMetadata_collection _collection 
-				= metadata_in.Collections.Collection[Type];
+				= metadata_in.Collections[Type];
 			return (_collection == null) ? string.Empty : _collection.Name;
 		}
 	}

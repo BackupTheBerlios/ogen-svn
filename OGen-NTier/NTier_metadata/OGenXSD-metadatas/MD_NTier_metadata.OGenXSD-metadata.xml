@@ -13,6 +13,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <metadata
 	applicationName="NTier_metadata" 
 	namespace="OGen.NTier.lib.metadata" 
+	caseType="PascalCase"
 	copyrightText="Copyright (C) 2002 Francisco Monteiro" 
 	copyrightTextLong="OGen
 Copyright (c) 2002 Francisco Monteiro
@@ -32,48 +33,77 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</copyrightTextLong>
 -->
-<!--
-	<caseDictionary>
-		<entry word="sqlScriptOptionEnumeration" translation="SQLScriptOptionEnumeration" />
-		<entry word="dbConnectionType" translation="DBConnectionType" />
-		<entry word="configMode" translation="ConfigMode" />
-		<entry word="name" translation="Name" />
-		<entry word="tableName" translation="TableName" />
-		<entry word="dbServerType" translation="DBServerType" />
-
-
-		<entry word="tableName" translation="TableName" />
-		<entry word="tableName" translation="TableName" />
-		<entry word="tableName" translation="TableName" />
-		<entry word="tableName" translation="TableName" />
-		<entry word="tableName" translation="TableName" />
-		<entry word="tableName" translation="TableName" />
-		<entry word="tableName" translation="TableName" />
-	</caseDictionary>
--->
-	<collections>
-		<collection type="tableSearchUpdateType" name="name" />
-		<collection type="tableUpdateType" name="name" />
-		<collection type="tableFieldDBType" name="dbServerType" />
-		<collection type="tableType" name="name" />
-		<collection type="dbType" name="dbServerType" />
 		<!--
-		<collection type="tableSearchParametersType" name="???" />
-		<collection type="tableSearchUpdatesType" name="???" />
-		<collection type="tableDBType" name="???" />
-		<collection type="dbConnectionType" name="???" />
-		<collection type="tableFieldRefType" name="???" />
-		<collection type="tableSearchType" name="???" />
-		<collection type="tableDBsType" name="???" />
-		<collection type="tableFieldsType" name="???" />
-		<collection type="tableSearchesType" name="???" />
-		<collection type="tableUpdatesType" name="???" />
-		<collection type="tableFieldType" name="???" />
-
-
-		<collection type="tableFieldRefType" name="" />
-		<collection type="tableSearchUpdateParametersType" name="" />
-		<collection type="tableFieldRefType" name="" />
+		<specificCase word="aditionalInfo" translation="AditionalInfo" />
+		<specificCase word="configMode" translation="ConfigMode" />
+		<specificCase word="connectionstring" translation="Connectionstring" />
+		<specificCase word="defaultValue" translation="DefaultValue" />
+		<specificCase word="extendedDescription" translation="ExtendedDescription" />
+		<specificCase word="friendlyName" translation="FriendlyName" />
+		<specificCase word="name" translation="Name" />
+		<specificCase word="numericPrecision" translation="NumericPrecision" />
+		<specificCase word="numericScale" translation="NumericScale" />
+		<specificCase word="size" translation="Size" />
+		<specificCase word="tableDB" translation="TableDB" />
+		<specificCase word="tableDBsType" translation="TableDBsType" />
+		<specificCase word="tableDBType" translation="TableDBType" />
+		<specificCase word="tableField" translation="TableField" />
+		<specificCase word="tableFieldDBs" translation="TableFieldDBs" />
+		<specificCase word="tableFieldDBsType" translation="TableFieldDBsType" />
+		<specificCase word="tableFieldDBType" translation="TableFieldDBType" />
+		<specificCase word="tableFieldsType" translation="TableFieldsType" />
+		<specificCase word="tableName" translation="TableName" />
 		-->
-	</collections>
+		<specificCase word="db" translation="DB" />
+		<specificCase word="dbCollationName" translation="DBCollationName" />
+		<specificCase word="dbConnection" translation="DBConnection" />
+		<specificCase word="dbConnections" translation="DBConnections" />
+		<specificCase word="dbConnectionType" translation="DBConnectionType" />
+		<specificCase word="dbDefaultValue" translation="DBDefaultValue" />
+		<specificCase word="dbDescription" translation="DBDescription" />
+		<specificCase word="dbDescription" translation="DBDescription" />
+		<specificCase word="dbFieldName" translation="DBFieldName" />
+		<specificCase word="dbs" translation="DBs" />
+		<specificCase word="dbServerType" translation="DBServerType" />
+		<specificCase word="dbTableName" translation="DBTableName" />
+		<specificCase word="dbType" translation="DBType" />
+		<specificCase word="fkFieldName" translation="FKFieldName" />
+		<specificCase word="fkTableName" translation="FKTableName" />
+		<specificCase word="generateSQL" translation="generateSQL" />
+		<specificCase word="isConfig" translation="isConfig" />
+		<specificCase word="isConfig_Config" translation="isConfig_Config" />
+		<specificCase word="isConfig_Datatype" translation="isConfig_Datatype" />
+		<specificCase word="isConfig_Name" translation="isConfig_Name" />
+		<specificCase word="isDefault" translation="isDefault" />
+		<specificCase word="isExplicitUniqueIndex" translation="isExplicitUniqueIndex" />
+		<specificCase word="isIdentity" translation="isIdentity" />
+		<specificCase word="isIndexed_andReadOnly" translation="isIndexed_andReadOnly" />
+		<specificCase word="isListItemText" translation="isListItemText" />
+		<specificCase word="isListItemValue" translation="isListItemValue" />
+		<specificCase word="isNullable" translation="isNullable" />
+		<specificCase word="isPK" translation="isPK" />
+		<specificCase word="isRange" translation="isRange" />
+		<specificCase word="isVirtualTable" translation="isVirtualTable" />
+		<specificCase word="sqlScriptOption" translation="SQLScriptOption" />
+		<specificCase word="sqlScriptOptionEnumeration" translation="SQLScriptOptionEnumeration" />
+
+		<collection type="dbConnectionType" name="configMode" />
+		<collection type="dbType" name="dbServerType" />
+		<collection type="tableDBType" name="dbServerType" />
+		<collection type="tableFieldDBType" name="dbServerType" />
+		<collection type="tableFieldRefType" name="paramName" />
+		<collection type="tableFieldType" name="name" />
+		<collection type="tableSearchType" name="name" />
+		<collection type="tableSearchUpdateType" name="name" />
+		<collection type="tableType" name="name" />
+		<collection type="tableUpdateType" name="name" />
+		<!--
+		<collection type="tableDBsType" name="" />
+		<collection type="tableFieldsType" name="" />
+		<collection type="tableSearchesType" name="" />
+		<collection type="tableSearchParametersType" name="" />
+		<collection type="tableSearchUpdateParametersType" name="" />
+		<collection type="tableSearchUpdatesType" name="" />
+		<collection type="tableUpdatesType" name="" />
+		-->
 </metadata>

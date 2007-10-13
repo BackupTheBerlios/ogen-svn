@@ -11,7 +11,15 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
-	public class XS0_tableDBType  {
+	public class XS0_tableDBType : OGenCollectionInterface {
+		#region public string CollectionName { get; }
+		[XmlIgnore()]
+		public string CollectionName {
+			get {
+				return dbServerType;
+			}
+		}
+		#endregion
 		#region public string dbServerType { get; set; }
 		private string dbservertype_;
 

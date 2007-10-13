@@ -21,20 +21,40 @@ using System.Collections;
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
-	public class ExtendedMetadata_collections {
-		#region public OGenCollection<ExtendedMetadata_collection> Collection { get; }
-		private OGenCollection<ExtendedMetadata_collection> collection_
-			= new OGenCollection<ExtendedMetadata_collection>();
+	public class ExtendedMetadata_specificCase : OGenCollectionInterface {
+		#region public string Word { get; set; }
+		private string word_;
 
-		[XmlElement("collection")]
-		public ExtendedMetadata_collection[] collection__xml {
-			get { return collection_.cols__; }
-			set { collection_.cols__ = value; }
+		[XmlAttribute("word")]
+		public string Word {
+			get {
+				return word_;
+			}
+			set {
+				word_ = value;
+			}
 		}
+		#endregion
+		#region public string Translation { get; set; }
+		private string translation_;
 
+		[XmlAttribute("translation")]
+		public string Translation {
+			get {
+				return translation_;
+			}
+			set {
+				translation_ = value;
+			}
+		}
+		#endregion
+
+		#region public string CollectionName { get; }
 		[XmlIgnore()]
-		public OGenCollection<ExtendedMetadata_collection> Collection {
-			get { return collection_; }
+		public string CollectionName {
+			get {
+				return Word;
+			}
 		}
 		#endregion
 	}

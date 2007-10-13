@@ -104,7 +104,7 @@ namespace OGen.XSD.presentationlayer.test {
 			_element1.Type = "someType1";
 			_element1.MaxOccurs 
 				//= MaxOccursEnum.unbounded;
-				= XS_Element.MAXOCCURSENUM_UNBOUNDED;
+				= XS_Element.MaxOccursEnum.unbounded;
 			XS_Element _element2 = new XS_Element();
 			_element2.Name = "someItem";
 			_element2.Type = "someType1";

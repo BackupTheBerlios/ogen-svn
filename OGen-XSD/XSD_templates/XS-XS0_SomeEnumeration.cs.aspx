@@ -53,11 +53,11 @@ using OGen.lib.collections;
 namespace <%=_aux_metadata.Namespace%> {
 	public class XS0_<%=_arg_SimpleTypeName%> {
 <%
-	for (int c = 0; c < _aux_metadata.Collections.Collection.Count; c++) {
+	for (int c = 0; c < _aux_metadata.Collections.Count; c++) {
 		Response.Write(string.Format(
 			"//{0}:{1}\n",
-			_aux_metadata.Collections.Collection[c].Type,
-			_aux_metadata.Collections.Collection[c].Name
+			_aux_metadata.Collections[c].Type,
+			_aux_metadata.Collections[c].Name
 		));
 	}
 %>
