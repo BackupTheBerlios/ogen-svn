@@ -85,5 +85,31 @@ namespace OGen.XSD.lib.metadata {
 			set { xs_sequence__ = value; }
 		}
 		#endregion
+
+		public string isCollection_nameIt(
+			XS_Schema schema_in, 
+			ExtendedMetadata metadata_in
+		) {
+			for (int c = 0; c < schema_in.XS_ComplexType.Count; c++) {
+				for (int e = 0; e < schema_in.XS_ComplexType[c].XS_Sequence.XS_Element.Count; e++) {
+					if (
+						(schema_in.XS_ComplexType[c].XS_Sequence.XS_Element[e].Type == Name)
+						&&
+						(schema_in.XS_ComplexType[c].XS_Sequence.XS_Element[e].MaxOccurs 
+							== XS_Element.MAXOCCURSENUM_UNBOUNDED)
+					) {
+						ExtendedMetadata_collection _collection 
+							= metadata_in.Collections.Collection[
+								Name
+							];
+						return (_collection == null) 
+							? string.Empty 
+							: _collection.Name;
+					}
+				}
+			}
+
+			return string.Empty;
+		}
 	}
 }

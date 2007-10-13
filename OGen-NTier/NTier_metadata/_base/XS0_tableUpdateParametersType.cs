@@ -11,19 +11,10 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
-	public class XS0_tableUpdateParametersType : OGenCollectionInterface {
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get { return 
-// ToDos: now!
-string.Empty
-			; }
-		}
-		#endregion
-		#region public OGenCollection<XS_tableFieldRefType> XS_tableFieldRef { get; }
-		private OGenCollection<XS_tableFieldRefType> xs_tablefieldref_ 
-			= new OGenCollection<XS_tableFieldRefType>();
+	public class XS0_tableUpdateParametersType  {
+		#region public OGenSimpleCollection<XS_tableFieldRefType> XS_tableFieldRef { get; }
+		private OGenSimpleCollection<XS_tableFieldRefType> xs_tablefieldref_ 
+			= new OGenSimpleCollection<XS_tableFieldRefType>();
 
 		[XmlElement("tableFieldRef")]
 		public XS_tableFieldRefType[] xs_tablefieldref__xml {
@@ -32,10 +23,9 @@ string.Empty
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_tableFieldRefType> XS_tableFieldRef {
+		public OGenSimpleCollection<XS_tableFieldRefType> XS_tableFieldRef {
 			get { return xs_tablefieldref_; }
 		}
 		#endregion
-
 	}
 }

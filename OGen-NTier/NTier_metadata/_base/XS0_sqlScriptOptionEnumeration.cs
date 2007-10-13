@@ -12,5 +12,11 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
 	public class XS0_sqlScriptOptionEnumeration {
+//tableSearchUpdateType:name
+//tableUpdateType:name
+//tableFieldDBType:dbServerType
+//tableType:name
+//dbType:dbServerType
+
 	}
 }

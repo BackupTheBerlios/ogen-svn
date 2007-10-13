@@ -93,6 +93,29 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
+		#region public ExtendedMetadata_collections Collections { get; set; }
+		private ExtendedMetadata_collections collections__;
+
+		[XmlIgnore()]
+		public ExtendedMetadata_collections Collections {
+			get {
+				if (collections__ == null) {
+					collections__ = new ExtendedMetadata_collections();
+				}
+				return collections__;
+			}
+			set {
+				collections__ = value;
+			}
+		}
+
+		[XmlElement("collections")]
+		public ExtendedMetadata_collections collections__xml {
+			get { return collections__; }
+			set { collections__ = value; }
+		}
+		#endregion
+
 		#region public static ExtendedMetadata Load_fromFile(string filePath_in);
 		public static ExtendedMetadata Load_fromFile(string filePath_in) {
 			FileStream _stream = new FileStream(

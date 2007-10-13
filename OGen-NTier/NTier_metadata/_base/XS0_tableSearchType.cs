@@ -11,16 +11,7 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
-	public class XS0_tableSearchType : OGenCollectionInterface {
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get { return 
-// ToDos: now!
-string.Empty
-			; }
-		}
-		#endregion
+	public class XS0_tableSearchType  {
 		#region public string name { get; set; }
 		private string name_;
 
@@ -60,9 +51,9 @@ string.Empty
 			}
 		}
 		#endregion
-		#region public OGenCollection<XS_tableSearchParametersType> XS_tableSearchParameters { get; }
-		private OGenCollection<XS_tableSearchParametersType> xs_tablesearchparameters_ 
-			= new OGenCollection<XS_tableSearchParametersType>();
+		#region public OGenSimpleCollection<XS_tableSearchParametersType> XS_tableSearchParameters { get; }
+		private OGenSimpleCollection<XS_tableSearchParametersType> xs_tablesearchparameters_ 
+			= new OGenSimpleCollection<XS_tableSearchParametersType>();
 
 		[XmlElement("tableSearchParameters")]
 		public XS_tableSearchParametersType[] xs_tablesearchparameters__xml {
@@ -71,13 +62,13 @@ string.Empty
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_tableSearchParametersType> XS_tableSearchParameters {
+		public OGenSimpleCollection<XS_tableSearchParametersType> XS_tableSearchParameters {
 			get { return xs_tablesearchparameters_; }
 		}
 		#endregion
-		#region public OGenCollection<XS_tableSearchUpdatesType> XS_tableSearchUpdates { get; }
-		private OGenCollection<XS_tableSearchUpdatesType> xs_tablesearchupdates_ 
-			= new OGenCollection<XS_tableSearchUpdatesType>();
+		#region public OGenSimpleCollection<XS_tableSearchUpdatesType> XS_tableSearchUpdates { get; }
+		private OGenSimpleCollection<XS_tableSearchUpdatesType> xs_tablesearchupdates_ 
+			= new OGenSimpleCollection<XS_tableSearchUpdatesType>();
 
 		[XmlElement("tableSearchUpdates")]
 		public XS_tableSearchUpdatesType[] xs_tablesearchupdates__xml {
@@ -86,10 +77,9 @@ string.Empty
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_tableSearchUpdatesType> XS_tableSearchUpdates {
+		public OGenSimpleCollection<XS_tableSearchUpdatesType> XS_tableSearchUpdates {
 			get { return xs_tablesearchupdates_; }
 		}
 		#endregion
-
 	}
 }

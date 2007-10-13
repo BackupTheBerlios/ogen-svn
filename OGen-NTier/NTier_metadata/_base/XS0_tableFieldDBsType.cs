@@ -11,16 +11,7 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
-	public class XS0_tableFieldDBsType : OGenCollectionInterface {
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get { return 
-// ToDos: now!
-string.Empty
-			; }
-		}
-		#endregion
+	public class XS0_tableFieldDBsType  {
 		#region public OGenCollection<XS_tableFieldDBType> XS_tableFieldDB { get; }
 		private OGenCollection<XS_tableFieldDBType> xs_tablefielddb_ 
 			= new OGenCollection<XS_tableFieldDBType>();
@@ -36,6 +27,5 @@ string.Empty
 			get { return xs_tablefielddb_; }
 		}
 		#endregion
-
 	}
 }

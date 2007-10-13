@@ -15,10 +15,9 @@ namespace OGen.NTier.lib.metadata {
 		#region public string CollectionName { get; }
 		[XmlIgnore()]
 		public string CollectionName {
-			get { return 
-// ToDos: now!
-string.Empty
-			; }
+			get {
+				return name;
+			}
 		}
 		#endregion
 		#region public string name { get; set; }
@@ -56,6 +55,5 @@ string.Empty
 			set { xs_tableupdateparameters__ = value; }
 		}
 		#endregion
-
 	}
 }

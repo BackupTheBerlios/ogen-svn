@@ -11,16 +11,7 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
-	public class XS0_dbConnectionType : OGenCollectionInterface {
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get { return 
-// ToDos: now!
-string.Empty
-			; }
-		}
-		#endregion
+	public class XS0_dbConnectionType  {
 		#region public string configMode { get; set; }
 		private string configmode_;
 
@@ -86,6 +77,5 @@ string.Empty
 			}
 		}
 		#endregion
-
 	}
 }

@@ -11,16 +11,7 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
-	public class XS0_tableDBType : OGenCollectionInterface {
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get { return 
-// ToDos: now!
-string.Empty
-			; }
-		}
-		#endregion
+	public class XS0_tableDBType  {
 		#region public string dbServerType { get; set; }
 		private string dbservertype_;
 
@@ -47,6 +38,5 @@ string.Empty
 			}
 		}
 		#endregion
-
 	}
 }

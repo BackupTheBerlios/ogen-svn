@@ -11,19 +11,10 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
-	public class XS0_dbConnectionsType : OGenCollectionInterface {
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get { return 
-// ToDos: now!
-string.Empty
-			; }
-		}
-		#endregion
-		#region public OGenCollection<XS_dbConnectionType> XS_dbConnection { get; }
-		private OGenCollection<XS_dbConnectionType> xs_dbconnection_ 
-			= new OGenCollection<XS_dbConnectionType>();
+	public class XS0_dbConnectionsType  {
+		#region public OGenSimpleCollection<XS_dbConnectionType> XS_dbConnection { get; }
+		private OGenSimpleCollection<XS_dbConnectionType> xs_dbconnection_ 
+			= new OGenSimpleCollection<XS_dbConnectionType>();
 
 		[XmlElement("dbConnection")]
 		public XS_dbConnectionType[] xs_dbconnection__xml {
@@ -32,10 +23,9 @@ string.Empty
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_dbConnectionType> XS_dbConnection {
+		public OGenSimpleCollection<XS_dbConnectionType> XS_dbConnection {
 			get { return xs_dbconnection_; }
 		}
 		#endregion
-
 	}
 }

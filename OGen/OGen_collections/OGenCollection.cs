@@ -17,13 +17,32 @@ using System;
 using System.Collections;
 
 namespace OGen.lib.collections {
-	public class OGenCollection<C> where C : class, OGenCollectionInterface {
-		public OGenCollection() {
+	public class OGenCollection<C> : OGenSimpleCollection<C> 
+		where C : class, OGenCollectionInterface 
+	{
+		#region public C this[string memberName_in] { get; }
+		public C this[string memberName_in] {
+			get {
+				for (int i = 0; i < cols_.Count; i++) {
+					if (((C)cols_[i]).CollectionName == memberName_in) {
+						return (C)cols_[i];
+					}
+				}
+
+				return null;
+			}
+		}
+		#endregion
+	}
+	public class OGenSimpleCollection<C> 
+		where C : class 
+	{
+		public OGenSimpleCollection() {
 			cols_ = new ArrayList();
 		}
 	
 		#region public C[] cols__ { get; set; }
-		private ArrayList cols_;
+		protected ArrayList cols_;
 
 		public C[] cols__ {
 			get {
@@ -54,19 +73,6 @@ namespace OGen.lib.collections {
 		public C this[int index_in] {
 			get {
 				return (C)cols_[index_in];
-			}
-		}
-		#endregion
-		#region public C this[string memberName_in] { get; }
-		public C this[string memberName_in] {
-			get {
-				for (int i = 0; i < cols_.Count; i++) {
-					if (((C)cols_[i]).CollectionName == memberName_in) {
-						return (C)cols_[i];
-					}
-				}
-
-				return null;
 			}
 		}
 		#endregion

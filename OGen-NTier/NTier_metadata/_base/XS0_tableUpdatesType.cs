@@ -11,16 +11,7 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
-	public class XS0_tableUpdatesType : OGenCollectionInterface {
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get { return 
-// ToDos: now!
-string.Empty
-			; }
-		}
-		#endregion
+	public class XS0_tableUpdatesType  {
 		#region public OGenCollection<XS_tableUpdateType> XS_tableUpdate { get; }
 		private OGenCollection<XS_tableUpdateType> xs_tableupdate_ 
 			= new OGenCollection<XS_tableUpdateType>();
@@ -36,6 +27,5 @@ string.Empty
 			get { return xs_tableupdate_; }
 		}
 		#endregion
-
 	}
 }

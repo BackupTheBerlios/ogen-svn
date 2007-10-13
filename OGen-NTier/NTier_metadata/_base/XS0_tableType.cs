@@ -15,10 +15,9 @@ namespace OGen.NTier.lib.metadata {
 		#region public string CollectionName { get; }
 		[XmlIgnore()]
 		public string CollectionName {
-			get { return 
-// ToDos: now!
-string.Empty
-			; }
+			get {
+				return name;
+			}
 		}
 		#endregion
 		#region public string name { get; set; }
@@ -99,9 +98,9 @@ string.Empty
 			}
 		}
 		#endregion
-		#region public OGenCollection<XS_tableDBsType> XS_tableDBs { get; }
-		private OGenCollection<XS_tableDBsType> xs_tabledbs_ 
-			= new OGenCollection<XS_tableDBsType>();
+		#region public OGenSimpleCollection<XS_tableDBsType> XS_tableDBs { get; }
+		private OGenSimpleCollection<XS_tableDBsType> xs_tabledbs_ 
+			= new OGenSimpleCollection<XS_tableDBsType>();
 
 		[XmlElement("tableDBs")]
 		public XS_tableDBsType[] xs_tabledbs__xml {
@@ -110,13 +109,13 @@ string.Empty
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_tableDBsType> XS_tableDBs {
+		public OGenSimpleCollection<XS_tableDBsType> XS_tableDBs {
 			get { return xs_tabledbs_; }
 		}
 		#endregion
-		#region public OGenCollection<XS_tableFieldsType> XS_tableFields { get; }
-		private OGenCollection<XS_tableFieldsType> xs_tablefields_ 
-			= new OGenCollection<XS_tableFieldsType>();
+		#region public OGenSimpleCollection<XS_tableFieldsType> XS_tableFields { get; }
+		private OGenSimpleCollection<XS_tableFieldsType> xs_tablefields_ 
+			= new OGenSimpleCollection<XS_tableFieldsType>();
 
 		[XmlElement("tableFields")]
 		public XS_tableFieldsType[] xs_tablefields__xml {
@@ -125,13 +124,13 @@ string.Empty
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_tableFieldsType> XS_tableFields {
+		public OGenSimpleCollection<XS_tableFieldsType> XS_tableFields {
 			get { return xs_tablefields_; }
 		}
 		#endregion
-		#region public OGenCollection<XS_tableSearchesType> XS_tableSearches { get; }
-		private OGenCollection<XS_tableSearchesType> xs_tablesearches_ 
-			= new OGenCollection<XS_tableSearchesType>();
+		#region public OGenSimpleCollection<XS_tableSearchesType> XS_tableSearches { get; }
+		private OGenSimpleCollection<XS_tableSearchesType> xs_tablesearches_ 
+			= new OGenSimpleCollection<XS_tableSearchesType>();
 
 		[XmlElement("tableSearches")]
 		public XS_tableSearchesType[] xs_tablesearches__xml {
@@ -140,13 +139,13 @@ string.Empty
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_tableSearchesType> XS_tableSearches {
+		public OGenSimpleCollection<XS_tableSearchesType> XS_tableSearches {
 			get { return xs_tablesearches_; }
 		}
 		#endregion
-		#region public OGenCollection<XS_tableUpdatesType> XS_tableUpdates { get; }
-		private OGenCollection<XS_tableUpdatesType> xs_tableupdates_ 
-			= new OGenCollection<XS_tableUpdatesType>();
+		#region public OGenSimpleCollection<XS_tableUpdatesType> XS_tableUpdates { get; }
+		private OGenSimpleCollection<XS_tableUpdatesType> xs_tableupdates_ 
+			= new OGenSimpleCollection<XS_tableUpdatesType>();
 
 		[XmlElement("tableUpdates")]
 		public XS_tableUpdatesType[] xs_tableupdates__xml {
@@ -155,10 +154,9 @@ string.Empty
 		}
 
 		[XmlIgnore()]
-		public OGenCollection<XS_tableUpdatesType> XS_tableUpdates {
+		public OGenSimpleCollection<XS_tableUpdatesType> XS_tableUpdates {
 			get { return xs_tableupdates_; }
 		}
 		#endregion
-
 	}
 }

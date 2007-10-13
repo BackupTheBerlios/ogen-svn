@@ -112,5 +112,13 @@ namespace OGen.XSD.lib.metadata {
 //			get { return xs_complextype_; }
 //		}
 		#endregion
+
+		public string isCollection_nameIt(
+			ExtendedMetadata metadata_in
+		) {
+			ExtendedMetadata_collection _collection 
+				= metadata_in.Collections.Collection[Type];
+			return (_collection == null) ? string.Empty : _collection.Name;
+		}
 	}
 }

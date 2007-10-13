@@ -15,10 +15,9 @@ namespace OGen.NTier.lib.metadata {
 		#region public string CollectionName { get; }
 		[XmlIgnore()]
 		public string CollectionName {
-			get { return 
-// ToDos: now!
-string.Empty
-			; }
+			get {
+				return dbServerType;
+			}
 		}
 		#endregion
 		#region public string dbServerType { get; set; }
@@ -99,6 +98,5 @@ string.Empty
 			}
 		}
 		#endregion
-
 	}
 }

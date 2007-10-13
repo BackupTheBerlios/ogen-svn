@@ -32,4 +32,48 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</copyrightTextLong>
 -->
+<!--
+	<caseDictionary>
+		<entry word="sqlScriptOptionEnumeration" translation="SQLScriptOptionEnumeration" />
+		<entry word="dbConnectionType" translation="DBConnectionType" />
+		<entry word="configMode" translation="ConfigMode" />
+		<entry word="name" translation="Name" />
+		<entry word="tableName" translation="TableName" />
+		<entry word="dbServerType" translation="DBServerType" />
+
+
+		<entry word="tableName" translation="TableName" />
+		<entry word="tableName" translation="TableName" />
+		<entry word="tableName" translation="TableName" />
+		<entry word="tableName" translation="TableName" />
+		<entry word="tableName" translation="TableName" />
+		<entry word="tableName" translation="TableName" />
+		<entry word="tableName" translation="TableName" />
+	</caseDictionary>
+-->
+	<collections>
+		<collection type="tableSearchUpdateType" name="name" />
+		<collection type="tableUpdateType" name="name" />
+		<collection type="tableFieldDBType" name="dbServerType" />
+		<collection type="tableType" name="name" />
+		<collection type="dbType" name="dbServerType" />
+		<!--
+		<collection type="tableSearchParametersType" name="???" />
+		<collection type="tableSearchUpdatesType" name="???" />
+		<collection type="tableDBType" name="???" />
+		<collection type="dbConnectionType" name="???" />
+		<collection type="tableFieldRefType" name="???" />
+		<collection type="tableSearchType" name="???" />
+		<collection type="tableDBsType" name="???" />
+		<collection type="tableFieldsType" name="???" />
+		<collection type="tableSearchesType" name="???" />
+		<collection type="tableUpdatesType" name="???" />
+		<collection type="tableFieldType" name="???" />
+
+
+		<collection type="tableFieldRefType" name="" />
+		<collection type="tableSearchUpdateParametersType" name="" />
+		<collection type="tableFieldRefType" name="" />
+		-->
+	</collections>
 </metadata>

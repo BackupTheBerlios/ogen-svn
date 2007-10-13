@@ -11,16 +11,7 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
-	public class XS0_tableFieldRefType : OGenCollectionInterface {
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get { return 
-// ToDos: now!
-string.Empty
-			; }
-		}
-		#endregion
+	public class XS0_tableFieldRefType  {
 		#region public string tableName { get; set; }
 		private string tablename_;
 
@@ -60,6 +51,5 @@ string.Empty
 			}
 		}
 		#endregion
-
 	}
 }
