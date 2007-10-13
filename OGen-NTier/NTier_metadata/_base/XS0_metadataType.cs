@@ -67,11 +67,11 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-		#region public XS_sqlScriptOptionEnumeration SQLScriptOption { get; set; }
-		private XS_sqlScriptOptionEnumeration sqlscriptoption_;
+		#region public XS_SQLScriptOptionEnumeration SQLScriptOption { get; set; }
+		private XS_SQLScriptOptionEnumeration sqlscriptoption_;
 
 		[XmlAttribute("sqlScriptOption")]
-		public XS_sqlScriptOptionEnumeration SQLScriptOption {
+		public XS_SQLScriptOptionEnumeration SQLScriptOption {
 			get {
 				return sqlscriptoption_;
 			}

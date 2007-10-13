@@ -69,6 +69,9 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		<specificCase word="dbType" translation="DBType" />
 		<specificCase word="fkFieldName" translation="FKFieldName" />
 		<specificCase word="fkTableName" translation="FKTableName" />
+		<specificCase word="sqlScriptOption" translation="SQLScriptOption" />
+		<specificCase word="sqlScriptOptionEnumeration" translation="SQLScriptOptionEnumeration" />
+
 		<specificCase word="generateSQL" translation="generateSQL" />
 		<specificCase word="isConfig" translation="isConfig" />
 		<specificCase word="isConfig_Config" translation="isConfig_Config" />
@@ -84,8 +87,7 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		<specificCase word="isPK" translation="isPK" />
 		<specificCase word="isRange" translation="isRange" />
 		<specificCase word="isVirtualTable" translation="isVirtualTable" />
-		<specificCase word="sqlScriptOption" translation="SQLScriptOption" />
-		<specificCase word="sqlScriptOptionEnumeration" translation="SQLScriptOptionEnumeration" />
+
 
 		<collection type="dbConnectionType" name="configMode" />
 		<collection type="dbType" name="dbServerType" />

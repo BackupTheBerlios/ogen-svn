@@ -175,7 +175,6 @@
     <Compile Include="XS_dbsType.cs" />
     <Compile Include="XS_dbType.cs" />
     <Compile Include="XS_metadataType.cs" />
-    <Compile Include="XS_sqlScriptOptionEnumeration.cs" />
     <Compile Include="XS_tableDBsType.cs" />
     <Compile Include="XS_tableDBType.cs" />
     <Compile Include="XS_tableFieldDBsType.cs" />

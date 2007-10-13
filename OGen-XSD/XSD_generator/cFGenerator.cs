@@ -134,8 +134,24 @@ namespace OGen.XSD.lib.generator {
 			if (notifyBack_in != null) notifyBack_in("opening...", true);
 			if (notifyBack_in != null) notifyBack_in("- reading metadata from xml files", true);
 
-			metadata_ = XS_Schema.Load_fromFile(filename_);
-			extendedmetadata_ = ExtendedMetadata.Load_fromFile(filenameextendedmetadata_);
+			try {
+				metadata_ = XS_Schema.Load_fromFile(filename_);
+			} catch (Exception _ex) {
+				throw new Exception(string.Format(
+					"---\nERROR READING XML:\n{0}\n---\n{1}", 
+					filename_, 
+					_ex.Message
+				));
+			}
+			try {
+				extendedmetadata_ = ExtendedMetadata.Load_fromFile(filenameextendedmetadata_);
+			} catch (Exception _ex) {
+				throw new Exception(string.Format(
+					"---\nERROR READING XML:\n{0}\n---\n{1}",
+					filenameextendedmetadata_,
+					_ex.Message
+				));
+			}
 
 			if (notifyBack_in != null) notifyBack_in("... finished", true);
 		}

@@ -59,9 +59,6 @@
     <None Include="XS-XS_SomeClass.cs.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </None>
-    <None Include="XS-XS_SomeEnumeration.cs.aspx">
-      <SubType>ASPXCodeBehind</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\OGen\OGen_collections\OGen_collections-8.csproj">

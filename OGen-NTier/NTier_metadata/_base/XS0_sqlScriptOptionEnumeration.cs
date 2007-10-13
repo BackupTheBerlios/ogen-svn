@@ -11,17 +11,9 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata {
-	public class XS0_sqlScriptOptionEnumeration {
-//dbConnectionType:configMode
-//dbType:dbServerType
-//tableDBType:dbServerType
-//tableFieldDBType:dbServerType
-//tableFieldRefType:paramName
-//tableFieldType:name
-//tableSearchType:name
-//tableSearchUpdateType:name
-//tableType:name
-//tableUpdateType:name
-
+	public enum XS_SQLScriptOptionEnumeration {
+		OneScriptFile = 0, 
+		SeparateScriptFiles = 1, 
+		RunImmediately = 2, 
 	}
 }

@@ -67,12 +67,13 @@ namespace OGen.XSD.lib.metadata {
 					case "xs:time":
 					case "xs:date":
 						return "DateTime";
-						return "bool";
 
 					default:
 						return string.Format(
-							"XS_{0}",
-							type_
+							"XS_{0}", 
+							(root_ref == null) 
+								? type_ 
+								: root_ref.Metadata.CaseTranslate(type_)
 						);
 				}
 			}

@@ -11,7 +11,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --%><%@ Page language="c#" contenttype="text/html" %>
 <%//@ import namespace="OGen.lib.datalayer" %>
-<%@ import namespace="OGen.XSD.lib.metadata" %><%
+<%@ import namespace="OGen.XSD.lib.metadata" %>
+<%@ import namespace="OGen.lib.collections" %><%
 #region arguments...
 string _arg_SchemaFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaFilepath"]);
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
@@ -38,6 +39,9 @@ if (ExtendedMetadata.Metacache.Contains(_arg_MetadataFilepath)) {
 RootMetadata _root = new RootMetadata(_aux_schema, _aux_metadata);
 _aux_schema.root_ref = _root;
 _aux_metadata.root_ref = _root;
+
+OGenRootrefCollection<XS_Enumeration, RootMetadata> _aux_enumeration 
+	= _aux_schema.XS_SimpleType[_arg_SimpleTypeName].XS_Restriction.XS_Enumeration;
 #endregion
 //-----------------------------------------------------------------------------------------
 if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTextLong != string.Empty)) {
@@ -55,16 +59,10 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace <%=_aux_metadata.Namespace%> {
-	public class XS0_<%=_arg_SimpleTypeName%> {
-<%
-	for (int c = 0; c < _aux_metadata.Collections.Count; c++) {
-		Response.Write(string.Format(
-			"//{0}:{1}\n",
-			_aux_metadata.Collections[c].Type,
-			_aux_metadata.Collections[c].Name
-		));
-	}
-%>
+	public enum XS_<%=_aux_metadata.CaseTranslate(_arg_SimpleTypeName)%> {<%
+	for (int e = 0; e < _aux_enumeration.Count; e++) {%><%=""%>
+		<%=_aux_enumeration[e].Value%> = <%=e.ToString()%>, <%
+	}%>
 	}
 }<%
 //-----------------------------------------------------------------------------------------
