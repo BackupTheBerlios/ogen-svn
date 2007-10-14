@@ -98,7 +98,7 @@ namespace OGen.lib.generator {
 		#region private Fields/Properties...
 		private Uri xmltemplatesfileuri_;
 		private string xmltemplatesdir_;
-		private iClaSSe_metadata[] metadatas_;
+		private iClaSSe_metadata metadata_;
 		private cTemplates templates_;
 		private int template_;
 		private dBuild notifyback_;
@@ -225,20 +225,9 @@ namespace OGen.lib.generator {
 						}
 					}
 
-// ToDos: now!
-//translate_out = metadata_.Read_fromRoot(
-//	translate_out
-//);
-// ToDos: now! not pretty
-translate_out = metadatas_[
-	utils.MetaFile_find(
-		metafiles_, 
-		translate_out.Split('.')[0].Split(':')[1]
-	)
-].Read_fromRoot(
-	translate_out
-);
-
+					translate_out = metadata_.Read_fromRoot(
+						translate_out
+					);
 //					#endregion
 					break;
 //				#endregion
@@ -406,7 +395,7 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 metafiles_[
 	utils.MetaFile_find(
 		metafiles_, 
-		message_in.Split('.')[0].Split(':')[1]
+		message_in.Split('.')[1]
 	)
 ].Path, 
 								_xmltemplatesfile, 
@@ -620,7 +609,7 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 		private void build(
 			dBuild notifyBack_in, 
 //			bool loadMetadata_in, 
-			iClaSSe_metadata[] metadatas_in
+			iClaSSe_metadata metadata_in
 		) {
 			notifyback_ = notifyBack_in;
 			//notifyback_("- common items", true);
@@ -643,7 +632,7 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 			#endregion
 
 			//metadata_ = new cDBMetadata(xmlmetadatafile_, xmlmetadataroot_);
-			metadatas_ = metadatas_in;
+			metadata_ = metadata_in;
 //            if (loadMetadata_in) {
 //// ToDos: now! index must be sinchronized, not very convenient :(
 //                for (int m = 0; m < metadatas_.Length; m++) {
@@ -698,22 +687,10 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 					#endregion
 					if (_finishedDependencies == templates_[template_].Dependencies.Count) {
 						#region RUNNING: templates_[template_] ...
-//metadata_.IterateThrough_fromRoot(
-//	templates_[template_].IterationType, 
-//	new cClaSSe.dIteration_found(notifyme)
-//);
-// ToDos: now! not pretty
-metadatas_[
-	utils.MetaFile_find(
-		metafiles_, 
-		templates_[template_].IterationType.Split('.')[0].Split(':')[1]
-	)
-].IterateThrough_fromRoot(
-	templates_[template_].IterationType,
-	new cClaSSe.dIteration_found(notifyme)
-);
-
-
+						metadata_.IterateThrough_fromRoot(
+							templates_[template_].IterationType,
+							new cClaSSe.dIteration_found(notifyme)
+						);
 						#endregion
 
 						// adding template to finished list of templates
@@ -792,12 +769,12 @@ metadatas_[
 //		}
 		public void Build(
 			dBuild notifyBack_in, 
-			params iClaSSe_metadata[] metadatas_in
+			iClaSSe_metadata metadata_in
 		) {
 			build(
 				notifyBack_in, 
 //				false, 
-				metadatas_in
+				metadata_in
 			);
 		}
 		#endregion

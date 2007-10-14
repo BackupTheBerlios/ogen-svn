@@ -41,7 +41,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 		public const string METADATA = "metadata";
-		public const string ROOT_METADATA = "ROOT:" + ExtendedMetadata.METADATA;
+		public const string ROOT_METADATA = "ROOT." + ExtendedMetadata.METADATA;
 
 		#region public ExtendedMetadata_caseTypeEnum CaseType { get; set; }
 		private string casetype_;
@@ -177,9 +177,20 @@ namespace OGen.XSD.lib.metadata {
 				FileAccess.Read,
 				FileShare.Read
 			);
-			ExtendedMetadata _output = (ExtendedMetadata)new XmlSerializer(typeof(ExtendedMetadata)).Deserialize(
-				_stream
-			);
+
+			ExtendedMetadata _output;
+			try {
+				_output = (ExtendedMetadata)new XmlSerializer(typeof(ExtendedMetadata)).Deserialize(
+					_stream
+				);
+			} catch (Exception _ex) {
+				throw new Exception(string.Format(
+					"---\nERROR READING XML:\n{0}\n---\n{1}",
+					filePath_in,
+					_ex.Message
+				));
+			}
+
 			if (root_ref_in != null) _output.root_ref = root_ref_in;
 			return _output;
 		}

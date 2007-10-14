@@ -44,7 +44,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 		public const string SCHEMA = "schema";
-		public const string ROOT_SCHEMA = "ROOT:" + XS_Schema.SCHEMA;
+		public const string ROOT_SCHEMA = "ROOT." + XS_Schema.SCHEMA;
 
 		#region //public string xmlNS_xs { get; set; }
 //		private string xmlns_xs_;
@@ -187,9 +187,20 @@ namespace OGen.XSD.lib.metadata {
 				FileAccess.Read,
 				FileShare.Read
 			);
-			XS_Schema _output = (XS_Schema)new XmlSerializer(typeof(XS_Schema)).Deserialize(
-				_stream
-			);
+
+			XS_Schema _output;
+			try {
+				_output = (XS_Schema)new XmlSerializer(typeof(XS_Schema)).Deserialize(
+					_stream
+				);
+			} catch (Exception _ex) {
+				throw new Exception(string.Format(
+					"---\nERROR READING XML:\n{0}\n---\n{1}",
+					filePath_in,
+					_ex.Message
+				));
+			}
+
 			if (root_ref_in != null) _output.root_ref = root_ref_in;
 			return _output;
 		}

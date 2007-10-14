@@ -28,9 +28,7 @@ namespace OGen.XSD.lib.generator {
 		}
 		#endregion
 
-		#region private Properties...
-		#endregion
-		//#region public Properties...
+		//#region Properties...
 		#region public string Filename { get; }
 		private string filename_;
 
@@ -58,18 +56,11 @@ namespace OGen.XSD.lib.generator {
 			get { return (filename_ != string.Empty); }
 		}
 		#endregion
-		#region public XS_Schema Metadata { get ; }
-		private XS_Schema metadata_;
+		#region public RootMetadata RootMetadata { get ; }
+		private RootMetadata rootmetadata_;
 
-		public XS_Schema Metadata {
-			get { return metadata_; }
-		}
-		#endregion
-		#region public ExtendedMetadata ExtendedMetadata { get ; }
-		private ExtendedMetadata extendedmetadata_;
-
-		public ExtendedMetadata ExtendedMetadata {
-			get { return extendedmetadata_; }
+		public RootMetadata RootMetadata {
+			get { return rootmetadata_; }
 		}
 		#endregion
 		//#endregion
@@ -78,9 +69,7 @@ namespace OGen.XSD.lib.generator {
 		public delegate void dNotifyBack(string message_in, bool onANewLine_in);
 		#endregion
 
-		#region private Methods...
-		#endregion
-//		#region public Methods...
+//		#region Methods...
 		#region //public void New(...);
 //		public void New(
 //			string applicationPath_in, 
@@ -134,24 +123,11 @@ namespace OGen.XSD.lib.generator {
 			if (notifyBack_in != null) notifyBack_in("opening...", true);
 			if (notifyBack_in != null) notifyBack_in("- reading metadata from xml files", true);
 
-			try {
-				metadata_ = XS_Schema.Load_fromFile(filename_);
-			} catch (Exception _ex) {
-				throw new Exception(string.Format(
-					"---\nERROR READING XML:\n{0}\n---\n{1}", 
-					filename_, 
-					_ex.Message
-				));
-			}
-			try {
-				extendedmetadata_ = ExtendedMetadata.Load_fromFile(filenameextendedmetadata_);
-			} catch (Exception _ex) {
-				throw new Exception(string.Format(
-					"---\nERROR READING XML:\n{0}\n---\n{1}",
-					filenameextendedmetadata_,
-					_ex.Message
-				));
-			}
+			rootmetadata_ = RootMetadata.Load_fromFile(
+				filename_,
+				filenameextendedmetadata_,
+				false
+			);
 
 			if (notifyBack_in != null) notifyBack_in("... finished", true);
 		}
@@ -173,10 +149,10 @@ namespace OGen.XSD.lib.generator {
 		public void Save() {
 			if (this.hasChanges) {
 
-				metadata_.SaveState_toFile(
+				rootmetadata_.Schema.SaveState_toFile(
 					filename_
 				);
-				extendedmetadata_.SaveState_toFile(
+				rootmetadata_.ExtendedMetadata.SaveState_toFile(
 					filenameextendedmetadata_
 				);
 
@@ -212,8 +188,7 @@ namespace OGen.XSD.lib.generator {
 				)
 			).Build(
 				notifyBase_in, 
-				metadata_, 
-				extendedmetadata_
+				rootmetadata_
 			);
 			if (notifyBase_in != null) notifyBase_in("...finished", true);
 		}
