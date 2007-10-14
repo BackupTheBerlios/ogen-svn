@@ -17,7 +17,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
 string _arg_SchemaFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaFilepath"]);
 string _arg_Schema2Filepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["Schema2Filepath"]);
-string _arg_SchemaName = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaName"]);
 #endregion
 
 #region varaux...
@@ -27,7 +26,6 @@ RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
 	_arg_SchemaFilepath,
 	_arg_Schema2Filepath
 );
-XS_Schema _aux_schema = _aux_rootmetadata.Schemas[_arg_SchemaName];
 #endregion
 //-----------------------------------------------------------------------------------------
 if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_rootmetadata.ExtendedMetadata.CopyrightTextLong != string.Empty)) {
@@ -43,18 +41,24 @@ if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_
 using System.Xml.Serialization;
 using System.Collections;
 
-using OGen.lib.collections;
-using <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%>;
+using OGen.lib.collections;<%
+for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%>
+using <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>;<%
+}%>
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 	public class XS0__RootMetadata : iClaSSe_metadata {
-		public XS0__RootMetadata(
-			string <%=_aux_schema.XS_Element.Name%>Filepath_in
-		) {
-			<%=_aux_schema.XS_Element.Name.ToLower()%>_ = XS__<%=_aux_schema.XS_Element.Name%>.Load_fromFile(
-				<%=_aux_schema.XS_Element.Name%>Filepath_in,
+		public XS0__RootMetadata(<%
+		for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%>
+			string <%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>Filepath_in<%=(s == _aux_rootmetadata.Schemas.Count - 1) ? "" : ", " %><%
+		}%>
+		) {<%
+		for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%><%=""%>
+			<%=_aux_rootmetadata.Schemas[s].XS_Element.Name.ToLower()%>_ = XS__<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>.Load_fromFile(
+				<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>Filepath_in,
 				(XS__RootMetadata)this
-			);
+			);<%
+		}%>
 		}
 
 		#region public static Hashtable Metacache { get; }
@@ -70,17 +74,18 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 		}
 		#endregion
 		#region public static XS__RootMetadata Load_fromFile(...);
-		public static XS__RootMetadata Load_fromFile(
-			string <%=_aux_schema.XS_Element.Name%>Filepath_in,
+		public static XS__RootMetadata Load_fromFile(<%
+		for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%>
+			string <%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>Filepath_in, <%
+		}%>
 			bool useMetacache_in
 		) {
-			#region string _key = schemaFilepath_in + "|" + metadataFilepath_in;
+			#region string _key = ...;
 			string _key = null;
-			if (useMetacache_in) {
-				_key = string.Format(
-					"{0}", <%-- |{1} --%>
-					<%=_aux_schema.XS_Element.Name%>Filepath_in
-				);
+			if (useMetacache_in) {<%
+			for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%>
+				_key <%=(s == 0) ? "" : "+"%>= <%=(s == 0) ? "" : "\"|\" + "%><%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>Filepath_in;<%
+			}%>
 			}
 			#endregion
 			if (
@@ -92,8 +97,10 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 			) {
 				return (XS__RootMetadata)XS__RootMetadata.Metacache[_key];
 			} else {
-				XS__RootMetadata _rootmetadata = new XS__RootMetadata(
-					<%=_aux_schema.XS_Element.Name%>Filepath_in
+				XS__RootMetadata _rootmetadata = new XS__RootMetadata(<%
+				for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%><%=""%>
+					<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>Filepath_in<%=(s == _aux_rootmetadata.Schemas.Count - 1) ? "" : ", "%><%
+				}%>
 				);
 				if (useMetacache_in) {
 					XS__RootMetadata.Metacache.Add(
@@ -106,27 +113,27 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 		}
 		#endregion
 
-		#region public XS__<%=_aux_schema.XS_Element.Name%> <%=_aux_schema.XS_Element.Name%> { get; }
-		private XS__<%=_aux_schema.XS_Element.Name%> <%=_aux_schema.XS_Element.Name.ToLower()%>_;
+<%
+		for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%>
+		#region public XS__<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_rootmetadata.Schemas[s].XS_Element.Name)%> { get; }
+		private XS__<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%> <%=_aux_rootmetadata.Schemas[s].XS_Element.Name.ToLower()%>_;
 
-		public XS__<%=_aux_schema.XS_Element.Name%> <%=_aux_schema.XS_Element.Name%> {
-			get { return <%=_aux_schema.XS_Element.Name.ToLower()%>_; }
+		public XS__<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_rootmetadata.Schemas[s].XS_Element.Name)%> {
+			get { return <%=_aux_rootmetadata.Schemas[s].XS_Element.Name.ToLower()%>_; }
 		}
-		#endregion
+		#endregion<%
+		}%>
 
 		#region private iClaSSe_metadata getMetadataFor(string forString_in);
-		private iClaSSe_metadata getMetadataFor(string forString_in) {
-			if (
-				forString_in.Substring(0, XS__<%=_aux_schema.XS_Element.Name%>.ROOT_<%=_aux_schema.XS_Element.Name.ToUpper()%>.Length)
-					== XS__<%=_aux_schema.XS_Element.Name%>.ROOT_<%=_aux_schema.XS_Element.Name.ToUpper()%>
+		private iClaSSe_metadata getMetadataFor(string forString_in) {<%
+			for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%><%=""%>
+			<%=(s == 0) ? "" : " else "%>if (
+				forString_in.Substring(0, XS__<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>.ROOT_<%=_aux_rootmetadata.Schemas[s].XS_Element.Name.ToUpper()%>.Length)
+					== XS__<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>.ROOT_<%=_aux_rootmetadata.Schemas[s].XS_Element.Name.ToUpper()%>
 			) {
-				return <%=_aux_schema.XS_Element.Name.ToLower()%>_;
-			}<%-- else if (
-				forString_in.Substring(0, ExtendedMetadata.ROOT_METADATA.Length)
-					== ExtendedMetadata.ROOT_METADATA
-			) {
-				return extendedmetadata_;
-			}--%> else {
+				return <%=_aux_rootmetadata.Schemas[s].XS_Element.Name.ToLower()%>_;
+			}<%
+			}%> else {
 				throw new Exception(string.Format(
 					"can't handle: {0}",
 					forString_in

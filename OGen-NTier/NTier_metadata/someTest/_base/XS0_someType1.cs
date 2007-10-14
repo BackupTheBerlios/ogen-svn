@@ -9,18 +9,36 @@ using System;
 using System.Xml.Serialization;
 
 using OGen.lib.collections;
-using OGen.NTier.lib.metadata.metadata;
-using OGen.NTier.lib.metadata.someTest;
 
-namespace OGen.NTier.lib.metadata {
-	public class XS__RootMetadata : XS0__RootMetadata {
-		public XS__RootMetadata (
-			string metadataFilepath_in, 
-			string someTestFilepath_in
-		) : base (
-			metadataFilepath_in, 
-			someTestFilepath_in
+namespace OGen.NTier.lib.metadata.someTest {
+	public class XS0_someType1 : OGenRootrefCollectionInterface<XS__RootMetadata>  {
+		public XS0_someType1 (
 		) {
 		}
+
+		#region public XS__RootMetadata root_ref { get; }
+		private XS__RootMetadata root_ref_;
+
+		[XmlIgnore()]
+		public XS__RootMetadata root_ref {
+			set {
+				root_ref_ = value;
+			}
+			get { return root_ref_; }
+		}
+		#endregion
+		#region public string SomeAttrib1 { get; set; }
+		private string someattrib1_;
+
+		[XmlAttribute("someAttrib1")]
+		public string SomeAttrib1 {
+			get {
+				return someattrib1_;
+			}
+			set {
+				someattrib1_ = value;
+			}
+		}
+		#endregion
 	}
 }

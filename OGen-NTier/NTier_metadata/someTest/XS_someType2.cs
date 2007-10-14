@@ -9,18 +9,13 @@ using System;
 using System.Xml.Serialization;
 
 using OGen.lib.collections;
-using OGen.NTier.lib.metadata.metadata;
-using OGen.NTier.lib.metadata.someTest;
 
-namespace OGen.NTier.lib.metadata {
-	public class XS__RootMetadata : XS0__RootMetadata {
-		public XS__RootMetadata (
-			string metadataFilepath_in, 
-			string someTestFilepath_in
-		) : base (
-			metadataFilepath_in, 
-			someTestFilepath_in
-		) {
-		}
+namespace OGen.NTier.lib.metadata.someTest {
+	public class XS_someType2 : XS0_someType2 {
+
+	//someAttrib2
+	//someAttrib3
+	
+
 	}
 }

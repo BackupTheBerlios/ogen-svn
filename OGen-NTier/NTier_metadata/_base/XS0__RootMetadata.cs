@@ -10,13 +10,19 @@ using System.Xml.Serialization;
 using System.Collections;
 
 using OGen.lib.collections;
+using OGen.NTier.lib.metadata.metadata;
 using OGen.NTier.lib.metadata.someTest;
 
 namespace OGen.NTier.lib.metadata {
 	public class XS0__RootMetadata : iClaSSe_metadata {
 		public XS0__RootMetadata(
+			string metadataFilepath_in, 
 			string someTestFilepath_in
 		) {
+			metadata_ = XS__metadata.Load_fromFile(
+				metadataFilepath_in,
+				(XS__RootMetadata)this
+			);
 			sometest_ = XS__someTest.Load_fromFile(
 				someTestFilepath_in,
 				(XS__RootMetadata)this
@@ -37,16 +43,15 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 		#region public static XS__RootMetadata Load_fromFile(...);
 		public static XS__RootMetadata Load_fromFile(
-			string someTestFilepath_in,
+			string metadataFilepath_in, 
+			string someTestFilepath_in, 
 			bool useMetacache_in
 		) {
-			#region string _key = schemaFilepath_in + "|" + metadataFilepath_in;
+			#region string _key = ...;
 			string _key = null;
 			if (useMetacache_in) {
-				_key = string.Format(
-					"{0}", 
-					someTestFilepath_in
-				);
+				_key = metadataFilepath_in;
+				_key += "|" + someTestFilepath_in;
 			}
 			#endregion
 			if (
@@ -59,6 +64,7 @@ namespace OGen.NTier.lib.metadata {
 				return (XS__RootMetadata)XS__RootMetadata.Metacache[_key];
 			} else {
 				XS__RootMetadata _rootmetadata = new XS__RootMetadata(
+					metadataFilepath_in, 
 					someTestFilepath_in
 				);
 				if (useMetacache_in) {
@@ -72,10 +78,18 @@ namespace OGen.NTier.lib.metadata {
 		}
 		#endregion
 
-		#region public XS__someTest someTest { get; }
+
+		#region public XS__metadata Metadata { get; }
+		private XS__metadata metadata_;
+
+		public XS__metadata Metadata {
+			get { return metadata_; }
+		}
+		#endregion
+		#region public XS__someTest SomeTest { get; }
 		private XS__someTest sometest_;
 
-		public XS__someTest someTest {
+		public XS__someTest SomeTest {
 			get { return sometest_; }
 		}
 		#endregion
@@ -83,6 +97,12 @@ namespace OGen.NTier.lib.metadata {
 		#region private iClaSSe_metadata getMetadataFor(string forString_in);
 		private iClaSSe_metadata getMetadataFor(string forString_in) {
 			if (
+				forString_in.Substring(0, XS__metadata.ROOT_METADATA.Length)
+					== XS__metadata.ROOT_METADATA
+			) {
+				return metadata_;
+			}
+			 else if (
 				forString_in.Substring(0, XS__someTest.ROOT_SOMETEST.Length)
 					== XS__someTest.ROOT_SOMETEST
 			) {

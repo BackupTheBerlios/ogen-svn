@@ -16,7 +16,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
 string _arg_SchemaFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaFilepath"]);
 string _arg_Schema2Filepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["Schema2Filepath"]);
-string _arg_SchemaName = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaName"]);
 #endregion
 
 #region varaux...
@@ -26,7 +25,6 @@ RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
 	_arg_SchemaFilepath,
 	_arg_Schema2Filepath
 );
-XS_Schema _aux_schema = _aux_rootmetadata.Schemas[_arg_SchemaName];
 #endregion
 //-----------------------------------------------------------------------------------------
 if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_rootmetadata.ExtendedMetadata.CopyrightTextLong != string.Empty)) {
@@ -41,15 +39,21 @@ if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_
 }%>using System;
 using System.Xml.Serialization;
 
-using OGen.lib.collections;
-using <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%>;
+using OGen.lib.collections;<%
+for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%>
+using <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>;<%
+}%>
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 	public class XS__RootMetadata : XS0__RootMetadata {
-		public XS__RootMetadata (
-			string <%=_aux_schema.XS_Element.Name%>Filepath_in
-		) : base (
-			<%=_aux_schema.XS_Element.Name%>Filepath_in
+		public XS__RootMetadata (<%
+		for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%>
+			string <%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>Filepath_in<%=(s == _aux_rootmetadata.Schemas.Count - 1) ? "" : ", " %><%
+		}%>
+		) : base (<%
+		for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%><%=""%>
+			<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>Filepath_in<%=(s == _aux_rootmetadata.Schemas.Count - 1) ? "" : ", " %><%
+		}%>
 		) {
 		}
 	}

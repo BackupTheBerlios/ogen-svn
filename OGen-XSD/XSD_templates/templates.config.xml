@@ -105,12 +105,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	</template>
 	<template name="XS-XS0__RootMetadata.cs.aspx" 
 			parserType="aspx" 
-			iterationType="ROOT.schema[n]">
+
+
+
+
+iterationType="ROOT.schema[0]">
+<!--iterationType="ROOT.schema"-->
+
+
+
+
 		<arguments>
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
 			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
 			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
-			<argument name="SchemaName" value="${ROOT.schema[n].element.name}" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -122,12 +130,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	</template>
 	<template name="XS-XS__RootMetadata.cs.aspx" 
 			parserType="aspx" 
-			iterationType="ROOT.schema[n]">
+
+
+
+
+iterationType="ROOT.schema[1]">
+<!--iterationType="ROOT.schema"-->
+
+
+
+
 		<arguments>
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
 			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
 			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
-			<argument name="SchemaName" value="${ROOT.schema[n].element.name}" />
 		</arguments>
 		<conditions />
 		<outputs>
