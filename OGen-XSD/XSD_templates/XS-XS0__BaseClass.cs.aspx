@@ -14,16 +14,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <%@ import namespace="OGen.XSD.lib.metadata" %>
 <%@ import namespace="OGen.lib.collections" %><%
 #region arguments...
-string _arg_SchemaFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaFilepath"]);
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_SchemaFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaFilepath"]);
+string _arg_Schema2Filepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["Schema2Filepath"]);
+string _arg_SchemaName = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaName"]);
 #endregion
 
 #region varaux...
 RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
-	_arg_SchemaFilepath,
 	_arg_MetadataFilepath,
-	true
+	true, 
+	_arg_SchemaFilepath,
+	_arg_Schema2Filepath
 );
+XS_Schema _aux_schema = _aux_rootmetadata.Schemas[_arg_SchemaName];
 #endregion
 //-----------------------------------------------------------------------------------------
 if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_rootmetadata.ExtendedMetadata.CopyrightTextLong != string.Empty)) {
@@ -41,16 +45,16 @@ using System.Xml.Serialization;
 
 using OGen.lib.collections;
 
-namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.Schema.XS_Element.Name%> {
+namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%> {
 	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
-	[System.Xml.Serialization.XmlRootAttribute("<%=_aux_rootmetadata.Schema.XS_Element.Name%>", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
-	public class XS0__<%=_aux_rootmetadata.Schema.XS_Element.Name%> : XS_<%=_aux_rootmetadata.Schema.XS_Element.Type%>, iClaSSe_metadata {
+	[System.Xml.Serialization.XmlRootAttribute("<%=_aux_schema.XS_Element.Name%>", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
+	public class XS0__<%=_aux_schema.XS_Element.Name%> : XS_<%=_aux_schema.XS_Element.Type%>, iClaSSe_metadata {
 
-		public const string <%=_aux_rootmetadata.Schema.XS_Element.Name.ToUpper()%> = "<%=_aux_rootmetadata.Schema.XS_Element.Name%>";
-		public const string ROOT_<%=_aux_rootmetadata.Schema.XS_Element.Name.ToUpper()%> = "ROOT." + <%=_aux_rootmetadata.Schema.XS_Element.Name.ToUpper()%>;
+		public const string <%=_aux_schema.XS_Element.Name.ToUpper()%> = "<%=_aux_schema.XS_Element.Name%>";
+		public const string ROOT_<%=_aux_schema.XS_Element.Name.ToUpper()%> = "ROOT." + <%=_aux_schema.XS_Element.Name.ToUpper()%>;
 
-		#region public static XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%> Load_fromFile(...);
-		public static XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%> Load_fromFile(
+		#region public static XS__<%=_aux_schema.XS_Element.Name%> Load_fromFile(...);
+		public static XS__<%=_aux_schema.XS_Element.Name%> Load_fromFile(
 			string filePath_in
 		) {
 			return Load_fromFile(
@@ -58,7 +62,7 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata
 				null
 			);
 		}
-		public static XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%> Load_fromFile(
+		public static XS__<%=_aux_schema.XS_Element.Name%> Load_fromFile(
 			string filePath_in,
 			XS__RootMetadata root_ref_in
 		) {
@@ -69,9 +73,9 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata
 				FileShare.Read
 			);
 
-			XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%> _output;
+			XS__<%=_aux_schema.XS_Element.Name%> _output;
 			try {
-				_output = (XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%>)new XmlSerializer(typeof(XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%>)).Deserialize(
+				_output = (XS__<%=_aux_schema.XS_Element.Name%>)new XmlSerializer(typeof(XS__<%=_aux_schema.XS_Element.Name%>)).Deserialize(
 					_stream
 				);
 			} catch (Exception _ex) {
@@ -94,7 +98,7 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata
 				FileAccess.Write,
 				FileShare.ReadWrite
 			);
-			new XmlSerializer(typeof(XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%>)).Serialize(
+			new XmlSerializer(typeof(XS__<%=_aux_schema.XS_Element.Name%>)).Serialize(
 				_file,
 				this
 			);
@@ -106,10 +110,10 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata
 		public string Read_fromRoot(string what_in) {
 			return OGen.lib.generator.utils.ReflectThrough(
 				this,
-				ROOT_<%=_aux_rootmetadata.Schema.XS_Element.Name.ToUpper()%>, 
+				ROOT_<%=_aux_schema.XS_Element.Name.ToUpper()%>, 
 				null, 
 				what_in,
-				ROOT_<%=_aux_rootmetadata.Schema.XS_Element.Name.ToUpper()%>, 
+				ROOT_<%=_aux_schema.XS_Element.Name.ToUpper()%>, 
 				true, 
 				true
 			);
@@ -121,10 +125,10 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata
 		) {
 			OGen.lib.generator.utils.ReflectThrough(
 				this,
-				ROOT_<%=_aux_rootmetadata.Schema.XS_Element.Name.ToUpper()%>, 
+				ROOT_<%=_aux_schema.XS_Element.Name.ToUpper()%>, 
 				iteration_found_in, 
 				iteration_in,
-				ROOT_<%=_aux_rootmetadata.Schema.XS_Element.Name.ToUpper()%>, 
+				ROOT_<%=_aux_schema.XS_Element.Name.ToUpper()%>, 
 				false, 
 				true
 			);

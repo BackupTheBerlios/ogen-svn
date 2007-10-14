@@ -107,22 +107,26 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public string isCollection_nameIt();
-		public string isCollection_nameIt() {
-			for (int c = 0; c < root_ref_.Schema.XS_ComplexType.Count; c++) {
-				for (int e = 0; e < root_ref_.Schema.XS_ComplexType[c].XS_Sequence.XS_Element.Count; e++) {
+		#region public string isCollection_nameIt(...);
+		public string isCollection_nameIt(
+			string schemaName_in
+		) {
+			XS_Schema _schema = root_ref_.Schemas[schemaName_in];
+
+			for (int c = 0; c < _schema.XS_ComplexType.Count; c++) {
+				for (int e = 0; e < _schema.XS_ComplexType[c].XS_Sequence.XS_Element.Count; e++) {
 					if (
-						(root_ref_.Schema.XS_ComplexType[c].XS_Sequence.XS_Element[e].Type == Name)
+						(_schema.XS_ComplexType[c].XS_Sequence.XS_Element[e].Type == Name)
 						&&
-						(root_ref_.Schema.XS_ComplexType[c].XS_Sequence.XS_Element[e].MaxOccurs 
+						(_schema.XS_ComplexType[c].XS_Sequence.XS_Element[e].MaxOccurs
 							== XS_Element.MaxOccursEnum.unbounded)
 					) {
 						ExtendedMetadata_collection _collection
 							= root_ref_.ExtendedMetadata.Collections[
 								Name
 							];
-						return (_collection == null) 
-							? string.Empty 
+						return (_collection == null)
+							? string.Empty
 							: _collection.Name;
 					}
 				}

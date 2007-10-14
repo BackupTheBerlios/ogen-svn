@@ -23,24 +23,24 @@ namespace OGen.XSD.lib.generator {
 	public class cFGenerator {
 		#region	public cFGenerator();
 		public cFGenerator() {
-			filename_ = string.Empty;
 			filenameextendedmetadata_ = string.Empty;
+			filename_ = null;
 		}
 		#endregion
 
 		//#region Properties...
-		#region public string Filename { get; }
-		private string filename_;
-
-		public string Filename {
-			get { return filename_; }
-		}
-		#endregion
 		#region public string FilenameExtendedMetadata { get; }
 		private string filenameextendedmetadata_;
 
 		public string FilenameExtendedMetadata {
 			get { return filenameextendedmetadata_; }
+		}
+		#endregion
+		#region public string[] Filename { get; }
+		private string[] filename_;
+
+		public string[] Filename {
+			get { return filename_; }
 		}
 		#endregion
 		#region public bool hasChanges { get; }
@@ -53,7 +53,7 @@ namespace OGen.XSD.lib.generator {
 		#endregion
 		#region public bool isOpened { get; }
 		public bool isOpened {
-			get { return (filename_ != string.Empty); }
+			get { return (filenameextendedmetadata_ != string.Empty); }
 		}
 		#endregion
 		#region public RootMetadata RootMetadata { get ; }
@@ -105,10 +105,10 @@ namespace OGen.XSD.lib.generator {
 		#endregion
 //		#region public void Open(...);
 		public void Open(
-			string filename_in, 
-			string filenameextendedmetadata_in, 
+			string filenameextendedmetadata_in,
 			bool force_doNOTsave_in, 
-			dNotifyBack notifyBack_in
+			dNotifyBack notifyBack_in, 
+			params string[] filename_in
 		) {
 			#region Checking...
 			if (this.hasChanges) {
@@ -117,16 +117,16 @@ namespace OGen.XSD.lib.generator {
 				}
 			}
 			#endregion
-			filename_ = filename_in;
 			filenameextendedmetadata_ = filenameextendedmetadata_in;
+			filename_ = filename_in;
 
 			if (notifyBack_in != null) notifyBack_in("opening...", true);
 			if (notifyBack_in != null) notifyBack_in("- reading metadata from xml files", true);
 
 			rootmetadata_ = RootMetadata.Load_fromFile(
-				filename_,
 				filenameextendedmetadata_,
-				false
+				false, 
+				filename_
 			);
 
 			if (notifyBack_in != null) notifyBack_in("... finished", true);
@@ -141,20 +141,22 @@ namespace OGen.XSD.lib.generator {
 				throw new Exception(string.Format("{0}.{1}.Open(): - must save before open", this.GetType().Namespace, this.GetType().Name));
 			}
 
-			filename_ = string.Empty;
 			filenameextendedmetadata_ = string.Empty;
+			filename_ = null;
 		}
 		#endregion
 		#region public void Save(...);
 		public void Save() {
 			if (this.hasChanges) {
 
-				rootmetadata_.Schema.SaveState_toFile(
-					filename_
-				);
 				rootmetadata_.ExtendedMetadata.SaveState_toFile(
 					filenameextendedmetadata_
 				);
+				for (int i = 0; i < rootmetadata_.Schemas.Count; i++) {
+					rootmetadata_.Schemas[i].SaveState_toFile(
+						filename_[i]
+					);
+				}
 
 				haschanges_ = false;
 			}
@@ -164,11 +166,22 @@ namespace OGen.XSD.lib.generator {
 		public void Build(cGenerator.dBuild notifyBase_in) {
 			#region string _outputDir = ...;
 			string _outputDir = System.IO.Directory.GetParent(
-				Path.GetDirectoryName(filename_)
+				Path.GetDirectoryName(filenameextendedmetadata_)
 			).FullName;
 			#endregion
 			if (notifyBase_in != null) notifyBase_in("generating...", true);
 
+			MetaFile[] _metafiles = new MetaFile[1 + filename_.Length];
+			_metafiles[0] = new MetaFile(
+				filenameextendedmetadata_,
+				ExtendedMetadata.METADATA
+			);
+			for (int i = 0; i < filename_.Length; i++) {
+				_metafiles[1 + i] = new MetaFile(
+					filename_[i],
+					XS_Schema.SCHEMA
+				);
+			}
 			new cGenerator(
 				#if NET20
 				System.Configuration.ConfigurationManager.AppSettings
@@ -177,15 +190,8 @@ namespace OGen.XSD.lib.generator {
 				#endif
 					["Templates"],
 				cTemplates.root4xml, 
-				_outputDir, 
-				new MetaFile(
-					filename_, 
-					XS_Schema.SCHEMA
-				),
-				new MetaFile(
-					filenameextendedmetadata_, 
-					ExtendedMetadata.METADATA
-				)
+				_outputDir,
+				_metafiles
 			).Build(
 				notifyBase_in, 
 				rootmetadata_

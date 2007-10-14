@@ -13,16 +13,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <%//@ import namespace="OGen.lib.datalayer" %>
 <%@ import namespace="OGen.XSD.lib.metadata" %><%
 #region arguments...
-string _arg_SchemaFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaFilepath"]);
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_SchemaFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaFilepath"]);
+string _arg_Schema2Filepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["Schema2Filepath"]);
+string _arg_SchemaName = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaName"]);
 #endregion
 
 #region varaux...
 RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
-	_arg_SchemaFilepath,
 	_arg_MetadataFilepath,
-	true
+	true,
+	_arg_SchemaFilepath,
+	_arg_Schema2Filepath
 );
+XS_Schema _aux_schema = _aux_rootmetadata.Schemas[_arg_SchemaName];
 #endregion
 //-----------------------------------------------------------------------------------------
 if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_rootmetadata.ExtendedMetadata.CopyrightTextLong != string.Empty)) {
@@ -38,14 +42,14 @@ if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_
 using System.Xml.Serialization;
 
 using OGen.lib.collections;
-using <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.Schema.XS_Element.Name%>;
+using <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%>;
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 	public class XS__RootMetadata : XS0__RootMetadata {
 		public XS__RootMetadata (
-			string <%=_aux_rootmetadata.Schema.XS_Element.Name%>Filepath_in
+			string <%=_aux_schema.XS_Element.Name%>Filepath_in
 		) : base (
-			<%=_aux_rootmetadata.Schema.XS_Element.Name%>Filepath_in
+			<%=_aux_schema.XS_Element.Name%>Filepath_in
 		) {
 		}
 	}

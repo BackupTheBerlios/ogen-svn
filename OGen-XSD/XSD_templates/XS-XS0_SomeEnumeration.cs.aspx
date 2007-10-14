@@ -14,20 +14,24 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <%@ import namespace="OGen.XSD.lib.metadata" %>
 <%@ import namespace="OGen.lib.collections" %><%
 #region arguments...
-string _arg_SchemaFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaFilepath"]);
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_SchemaFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaFilepath"]);
+string _arg_Schema2Filepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["Schema2Filepath"]);
+string _arg_SchemaName = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaName"]);
 string _arg_SimpleTypeName = System.Web.HttpUtility.UrlDecode(Request.QueryString["SimpleTypeName"]);
 #endregion
 
 #region varaux...
 RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
+	_arg_MetadataFilepath,
+	true,
 	_arg_SchemaFilepath,
-	_arg_MetadataFilepath, 
-	true
+	_arg_Schema2Filepath
 );
+XS_Schema _aux_schema = _aux_rootmetadata.Schemas[_arg_SchemaName];
 
 OGenRootrefCollection<XS_Enumeration, RootMetadata> _aux_enumeration 
-	= _aux_rootmetadata.Schema.XS_SimpleType[_arg_SimpleTypeName].XS_Restriction.XS_Enumeration;
+	= _aux_schema.XS_SimpleType[_arg_SimpleTypeName].XS_Restriction.XS_Enumeration;
 #endregion
 //-----------------------------------------------------------------------------------------
 if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_rootmetadata.ExtendedMetadata.CopyrightTextLong != string.Empty)) {
@@ -44,7 +48,7 @@ using System.Xml.Serialization;
 
 using OGen.lib.collections;
 
-namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.Schema.XS_Element.Name%> {
+namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%> {
 	public enum XS_<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_arg_SimpleTypeName)%> {<%
 	for (int e = 0; e < _aux_enumeration.Count; e++) {%><%=""%>
 		<%=_aux_enumeration[e].Value%> = <%=e.ToString()%>, <%

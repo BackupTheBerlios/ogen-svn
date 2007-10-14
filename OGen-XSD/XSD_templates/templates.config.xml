@@ -13,48 +13,54 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <templates>
 	<template name="XS-XS0_SomeEnumeration.cs.aspx" 
 			parserType="aspx" 
-			iterationType="ROOT.schema.simpleType[n]">
+			iterationType="ROOT.schema[n].simpleType[n]">
 		<arguments>
-			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
-			<argument name="SimpleTypeName" value="${ROOT.schema.simpleType[n].name}" />
+			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
+			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
+			<argument name="SchemaName" value="${ROOT.schema[n].element.name}" />
+			<argument name="SimpleTypeName" value="${ROOT.schema[n].simpleType[n].name}" />
 		</arguments>
 		<conditions />
 		<outputs>
 			<!-- ${ROOT.metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/metadata/_base/XS0_${ROOT.schema.simpleType[n].name}.cs" 
+			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/_base/XS0_${ROOT.schema[n].simpleType[n].name}.cs" 
 				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
 	<template name="XS-XS0_SomeClass.cs.aspx" 
 			parserType="aspx" 
-			iterationType="ROOT.schema.complexType[n]">
+			iterationType="ROOT.schema[n].complexType[n]">
 		<arguments>
-			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
-			<argument name="ComplexTypeName" value="${ROOT.schema.complexType[n].name}" />
+			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
+			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
+			<argument name="SchemaName" value="${ROOT.schema[n].element.name}" />
+			<argument name="ComplexTypeName" value="${ROOT.schema[n].complexType[n].name}" />
 		</arguments>
 		<conditions />
 		<outputs>
 			<!-- ${ROOT.metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/metadata/_base/XS0_${ROOT.schema.complexType[n].name}.cs" 
+			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/_base/XS0_${ROOT.schema[n].complexType[n].name}.cs" 
 				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
 	<template name="XS-XS_SomeClass.cs.aspx" 
 			parserType="aspx" 
-			iterationType="ROOT.schema.complexType[n]">
+			iterationType="ROOT.schema[n].complexType[n]">
 		<arguments>
-			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
-			<argument name="ComplexTypeName" value="${ROOT.schema.complexType[n].name}" />
+			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
+			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
+			<argument name="SchemaName" value="${ROOT.schema[n].element.name}" />
+			<argument name="ComplexTypeName" value="${ROOT.schema[n].complexType[n].name}" />
 		</arguments>
 		<conditions />
 		<outputs>
 			<!-- ${ROOT.metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/metadata/XS_${ROOT.schema.complexType[n].name}.cs" 
+			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/XS_${ROOT.schema[n].complexType[n].name}.cs" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies>
@@ -63,30 +69,34 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	</template>
 	<template name="XS-XS0__BaseClass.cs.aspx" 
 			parserType="aspx" 
-			iterationType="ROOT.schema">
+			iterationType="ROOT.schema[n]">
 		<arguments>
-			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
+			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
+			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
+			<argument name="SchemaName" value="${ROOT.schema[n].element.name}" />
 		</arguments>
 		<conditions />
 		<outputs>
 			<!-- ${ROOT.metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/metadata/_base/XS0__${ROOT.schema.element.name}.cs" 
+			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/_base/XS0__${ROOT.schema[n].element.name}.cs" 
 				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
 	<template name="XS-XS__BaseClass.cs.aspx" 
 			parserType="aspx" 
-			iterationType="ROOT.schema">
+			iterationType="ROOT.schema[n]">
 		<arguments>
-			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
+			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
+			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
+			<argument name="SchemaName" value="${ROOT.schema[n].element.name}" />
 		</arguments>
 		<conditions />
 		<outputs>
 			<!-- ${ROOT.metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/metadata/XS__${ROOT.schema.element.name}.cs" 
+			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/XS__${ROOT.schema[n].element.name}.cs" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies>
@@ -95,10 +105,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	</template>
 	<template name="XS-XS0__RootMetadata.cs.aspx" 
 			parserType="aspx" 
-			iterationType="ROOT.schema">
+			iterationType="ROOT.schema[n]">
 		<arguments>
-			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
+			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
+			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
+			<argument name="SchemaName" value="${ROOT.schema[n].element.name}" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -110,10 +122,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	</template>
 	<template name="XS-XS__RootMetadata.cs.aspx" 
 			parserType="aspx" 
-			iterationType="ROOT.schema">
+			iterationType="ROOT.schema[n]">
 		<arguments>
-			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
+			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
+			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
+			<argument name="SchemaName" value="${ROOT.schema[n].element.name}" />
 		</arguments>
 		<conditions />
 		<outputs>

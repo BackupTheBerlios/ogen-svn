@@ -63,6 +63,16 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 								#endif
 									["ogenPath"],
 
+								@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xml"
+							), 
+							System.IO.Path.Combine(
+								#if NET20
+								System.Configuration.ConfigurationManager.AppSettings
+								#else
+								System.Configuration.ConfigurationSettings.AppSettings
+								#endif
+									["ogenPath"],
+
 								@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xsd"
 							), 
 							System.IO.Path.Combine(
@@ -73,7 +83,7 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 								#endif
 									["ogenPath"],
 
-								@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xml"
+								@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_someTest.OGenXSD-metadata.xsd"
 							)
 						);
 					} catch (Exception _ex) {
@@ -93,17 +103,17 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 		}
 
 		static void DoIt(
-			string filePath_in, 
-			string filePathExtendedMetadata_in
+			string filePathExtendedMetadata_in, 
+			params string[] filePath_in
 		) {
 			cFGenerator _generator = new cFGenerator();
 			_generator.Open(
-				filePath_in, 
 				filePathExtendedMetadata_in, 
 				true, 
 				new cFGenerator.dNotifyBack(
 					Notify
-				)
+				), 
+				filePath_in
 			);
 			_generator.Build(new cGenerator.dBuild(Notify));
 		}

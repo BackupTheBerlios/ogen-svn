@@ -14,16 +14,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <%@ import namespace="OGen.XSD.lib.metadata" %>
 <%@ import namespace="OGen.lib.collections" %><%
 #region arguments...
-string _arg_SchemaFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaFilepath"]);
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_SchemaFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaFilepath"]);
+string _arg_Schema2Filepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["Schema2Filepath"]);
+string _arg_SchemaName = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaName"]);
 #endregion
 
 #region varaux...
 RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
-	_arg_SchemaFilepath,
 	_arg_MetadataFilepath,
-	true
+	true,
+	_arg_SchemaFilepath,
+	_arg_Schema2Filepath
 );
+XS_Schema _aux_schema = _aux_rootmetadata.Schemas[_arg_SchemaName];
 #endregion
 //-----------------------------------------------------------------------------------------
 if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_rootmetadata.ExtendedMetadata.CopyrightTextLong != string.Empty)) {
@@ -40,15 +44,15 @@ using System.Xml.Serialization;
 using System.Collections;
 
 using OGen.lib.collections;
-using <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.Schema.XS_Element.Name%>;
+using <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%>;
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 	public class XS0__RootMetadata : iClaSSe_metadata {
 		public XS0__RootMetadata(
-			string <%=_aux_rootmetadata.Schema.XS_Element.Name%>Filepath_in
+			string <%=_aux_schema.XS_Element.Name%>Filepath_in
 		) {
-			<%=_aux_rootmetadata.Schema.XS_Element.Name.ToLower()%>_ = XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%>.Load_fromFile(
-				<%=_aux_rootmetadata.Schema.XS_Element.Name%>Filepath_in,
+			<%=_aux_schema.XS_Element.Name.ToLower()%>_ = XS__<%=_aux_schema.XS_Element.Name%>.Load_fromFile(
+				<%=_aux_schema.XS_Element.Name%>Filepath_in,
 				(XS__RootMetadata)this
 			);
 		}
@@ -67,7 +71,7 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 		#endregion
 		#region public static XS__RootMetadata Load_fromFile(...);
 		public static XS__RootMetadata Load_fromFile(
-			string <%=_aux_rootmetadata.Schema.XS_Element.Name%>Filepath_in,
+			string <%=_aux_schema.XS_Element.Name%>Filepath_in,
 			bool useMetacache_in
 		) {
 			#region string _key = schemaFilepath_in + "|" + metadataFilepath_in;
@@ -75,7 +79,7 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 			if (useMetacache_in) {
 				_key = string.Format(
 					"{0}", <%-- |{1} --%>
-					<%=_aux_rootmetadata.Schema.XS_Element.Name%>Filepath_in
+					<%=_aux_schema.XS_Element.Name%>Filepath_in
 				);
 			}
 			#endregion
@@ -89,7 +93,7 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 				return (XS__RootMetadata)XS__RootMetadata.Metacache[_key];
 			} else {
 				XS__RootMetadata _rootmetadata = new XS__RootMetadata(
-					<%=_aux_rootmetadata.Schema.XS_Element.Name%>Filepath_in
+					<%=_aux_schema.XS_Element.Name%>Filepath_in
 				);
 				if (useMetacache_in) {
 					XS__RootMetadata.Metacache.Add(
@@ -102,21 +106,21 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 		}
 		#endregion
 
-		#region public XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%> <%=_aux_rootmetadata.Schema.XS_Element.Name%> { get; }
-		private XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%> <%=_aux_rootmetadata.Schema.XS_Element.Name.ToLower()%>_;
+		#region public XS__<%=_aux_schema.XS_Element.Name%> <%=_aux_schema.XS_Element.Name%> { get; }
+		private XS__<%=_aux_schema.XS_Element.Name%> <%=_aux_schema.XS_Element.Name.ToLower()%>_;
 
-		public XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%> <%=_aux_rootmetadata.Schema.XS_Element.Name%> {
-			get { return <%=_aux_rootmetadata.Schema.XS_Element.Name.ToLower()%>_; }
+		public XS__<%=_aux_schema.XS_Element.Name%> <%=_aux_schema.XS_Element.Name%> {
+			get { return <%=_aux_schema.XS_Element.Name.ToLower()%>_; }
 		}
 		#endregion
 
 		#region private iClaSSe_metadata getMetadataFor(string forString_in);
 		private iClaSSe_metadata getMetadataFor(string forString_in) {
 			if (
-				forString_in.Substring(0, XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%>.ROOT_<%=_aux_rootmetadata.Schema.XS_Element.Name.ToUpper()%>.Length)
-					== XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%>.ROOT_<%=_aux_rootmetadata.Schema.XS_Element.Name.ToUpper()%>
+				forString_in.Substring(0, XS__<%=_aux_schema.XS_Element.Name%>.ROOT_<%=_aux_schema.XS_Element.Name.ToUpper()%>.Length)
+					== XS__<%=_aux_schema.XS_Element.Name%>.ROOT_<%=_aux_schema.XS_Element.Name.ToUpper()%>
 			) {
-				return <%=_aux_rootmetadata.Schema.XS_Element.Name.ToLower()%>_;
+				return <%=_aux_schema.XS_Element.Name.ToLower()%>_;
 			}<%-- else if (
 				forString_in.Substring(0, ExtendedMetadata.ROOT_METADATA.Length)
 					== ExtendedMetadata.ROOT_METADATA

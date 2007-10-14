@@ -14,22 +14,26 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <%@ import namespace="OGen.XSD.lib.metadata" %>
 <%@ import namespace="OGen.lib.collections" %><%
 #region arguments...
-string _arg_SchemaFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaFilepath"]);
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_SchemaFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaFilepath"]);
+string _arg_Schema2Filepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["Schema2Filepath"]);
+string _arg_SchemaName = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaName"]);
 string _arg_ComplexTypeName = System.Web.HttpUtility.UrlDecode(Request.QueryString["ComplexTypeName"]);
 #endregion
 
 #region varaux...
 RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
-	_arg_SchemaFilepath,
 	_arg_MetadataFilepath,
-	true
+	true,
+	_arg_SchemaFilepath,
+	_arg_Schema2Filepath
 );
+XS_Schema _aux_schema = _aux_rootmetadata.Schemas[_arg_SchemaName];
 
-XS_ComplexType _aux_complextype = _aux_rootmetadata.Schema.XS_ComplexType[_arg_ComplexTypeName];
+XS_ComplexType _aux_complextype = _aux_schema.XS_ComplexType[_arg_ComplexTypeName];
 OGenCollection<XS_Element> _aux_elements = _aux_complextype.XS_Sequence.XS_Element;
 
-string _aux_complextype_collectionname = _aux_complextype.isCollection_nameIt();
+string _aux_complextype_collectionname = _aux_complextype.isCollection_nameIt(_arg_SchemaName);
 
 string __isCollection_nameIt = string.Empty;
 #endregion
@@ -48,7 +52,7 @@ using System.Xml.Serialization;
 
 using OGen.lib.collections;
 
-namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.Schema.XS_Element.Name%> {
+namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%> {
 	public class XS0_<%=_aux_complextype.Name%> : OGenRootrefCollectionInterface<XS__RootMetadata> <%=(_aux_complextype_collectionname != string.Empty) ? ", OGenCollectionInterface" : ""%> {
 		public XS0_<%=_aux_complextype.Name%> (
 		) {<%

@@ -151,7 +151,7 @@ Console.ReadKey(true); Console.WriteLine();
 			Output(_schema);
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true); Console.WriteLine();
-			_schema = XS_Schema.Load_fromFile(_filepath);
+			_schema = XS_Schema.Load_fromFile(_filepath)[0];
 			Output(_schema);
 			Console.Write("Press any key to continue . . . ");
 			Console.ReadKey(true); Console.WriteLine();

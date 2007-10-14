@@ -26,8 +26,8 @@ namespace OGen.XSD.lib.metadata {
 	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
 	[System.Xml.Serialization.XmlRootAttribute("schema", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
 	public class XS_Schema : iClaSSe_metadata, OGenRootrefCollectionInterface<RootMetadata> {
-		//public XS_Schema() {
-		//}
+		public XS_Schema() {
+		}
 
 		#region public RootMetadata root_ref { get; }
 		private RootMetadata root_ref_;
@@ -45,10 +45,18 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 		public const string SCHEMA = "schema";
-		public const string ROOT_SCHEMA = "ROOT." + XS_Schema.SCHEMA;
+		public const string ROOT = "ROOT";
+		#region public string Root_Schema { get; }
+		private string root_schema_ = null;
+
+		[XmlIgnore()]
+		public string Root_Schema {
+			get { return root_schema_; }
+		}
+		#endregion
 
 		#region //public string xmlNS_xs { get; set; }
-//		private string xmlns_xs_;
+		//		private string xmlns_xs_;
 //
 //		//[System.Xml.Serialization.XmlElementAttribute("xmlns")]
 //		//[XmlElement("xmlns:xs")]
@@ -169,40 +177,46 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public static XS_Schema Load_fromFile(...);
-		public static XS_Schema Load_fromFile(
-			string filePath_in
+		#region public static XS_Schema[] Load_fromFile(...);
+		public static XS_Schema[] Load_fromFile(
+			params string[] filePath_in
 		) {
 			return Load_fromFile(
-				filePath_in,
-				null
+				null, 
+				filePath_in
 			);
 		}
-		public static XS_Schema Load_fromFile(
-			string filePath_in,
-			RootMetadata root_ref_in
+		public static XS_Schema[] Load_fromFile(
+			RootMetadata root_ref_in, 
+			params string[] filePath_in
 		) {
-			FileStream _stream = new FileStream(
-				filePath_in,
-				FileMode.Open,
-				FileAccess.Read,
-				FileShare.Read
-			);
+			FileStream _stream;
+			XS_Schema[] _output = new XS_Schema[filePath_in.Length];
 
-			XS_Schema _output;
-			try {
-				_output = (XS_Schema)new XmlSerializer(typeof(XS_Schema)).Deserialize(
-					_stream
+			for (int i = 0; i < filePath_in.Length; i++) {
+				_stream = new FileStream(
+					filePath_in[i],
+					FileMode.Open,
+					FileAccess.Read,
+					FileShare.Read
 				);
-			} catch (Exception _ex) {
-				throw new Exception(string.Format(
-					"---\nERROR READING XML:\n{0}\n---\n{1}",
-					filePath_in,
-					_ex.Message
-				));
+
+				try {
+					_output[i] = (XS_Schema)new XmlSerializer(typeof(XS_Schema)).Deserialize(
+						_stream
+					);
+					_output[i].root_schema_ = ROOT + "." + SCHEMA + "[" + i + "]";
+				} catch (Exception _ex) {
+					throw new Exception(string.Format(
+						"---\nERROR READING XML:\n{0}\n---\n{1}",
+						filePath_in,
+						_ex.Message
+					));
+				}
+
+				if (root_ref_in != null) _output[i].root_ref = root_ref_in;
 			}
 
-			if (root_ref_in != null) _output.root_ref = root_ref_in;
 			return _output;
 		}
 		#endregion
@@ -226,10 +240,10 @@ namespace OGen.XSD.lib.metadata {
 		public string Read_fromRoot(string what_in) {
 			return OGen.lib.generator.utils.ReflectThrough(
 				this,
-				ROOT_SCHEMA, 
+				Root_Schema, 
 				null, 
 				what_in,
-				ROOT_SCHEMA, 
+				Root_Schema, 
 				true, 
 				true
 			);
@@ -241,10 +255,10 @@ namespace OGen.XSD.lib.metadata {
 		) {
 			OGen.lib.generator.utils.ReflectThrough(
 				this,
-				ROOT_SCHEMA, 
+				Root_Schema, 
 				iteration_found_in, 
 				iteration_in,
-				ROOT_SCHEMA, 
+				Root_Schema, 
 				false, 
 				true
 			);

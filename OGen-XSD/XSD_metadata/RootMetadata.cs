@@ -21,18 +21,59 @@ using System.Collections;
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
+	public class XS_Schemas {
+		public XS_Schemas(
+			XS_Schema[] schemas_in
+		) {
+			schemas_ = schemas_in;
+		}
+
+		#region public XS_Schema this[...] { get; }
+		private XS_Schema[] schemas_;
+
+		public XS_Schema this[int index_in] {
+			get {
+				return schemas_[index_in];
+			}
+		}
+		public XS_Schema this[string name_in] {
+			get {
+				// ToDos: later! performance
+
+				for (int i = 0; i < schemas_.Length; i++) {
+					if (schemas_[i].XS_Element.Name == name_in) {
+						return schemas_[i];
+					}
+				}
+				throw new Exception(string.Format(
+					"{0}.{1}[string name_in]: can't find: {2}",
+					typeof(XS_Schemas).Namespace, 
+					typeof(XS_Schemas).Name, 
+					name_in
+				));
+			}
+		}
+		#endregion
+		public int Count { get {
+			return schemas_.Length;
+		} }
+	}
+
 	public class RootMetadata : iClaSSe_metadata {
 		public RootMetadata(
-			string schemaFilepath_in,
-			string metadataFilepath_in
+			string metadataFilepath_in, 
+			params string[] schemaFilepath_in
 		) {
-			schema_ = XS_Schema.Load_fromFile(
-				schemaFilepath_in,
-				this
-			);
 			extendedmetadata_ = ExtendedMetadata.Load_fromFile(
 				metadataFilepath_in,
 				this
+			);
+
+			schemas_ = new XS_Schemas(
+				XS_Schema.Load_fromFile(
+					this, 
+					schemaFilepath_in
+				)
 			);
 		}
 
@@ -50,18 +91,20 @@ namespace OGen.XSD.lib.metadata {
 		#endregion
 		#region public static RootMetadata Load_fromFile(...);
 		public static RootMetadata Load_fromFile(
-			string schemaFilepath_in,
-			string metadataFilepath_in, 
-			bool useMetacache_in
+			string metadataFilepath_in,
+			bool useMetacache_in, 
+			params string[] schemaFilepath_in
 		) {
-			#region string _key = schemaFilepath_in + "|" + metadataFilepath_in;
+			#region string _key = metadataFilepath_in + "|" + schemaFilepath_in[n];
 			string _key = null;
 			if (useMetacache_in) {
-				_key = string.Format(
-					"{0}|{1}", 
-					schemaFilepath_in, 
-					metadataFilepath_in
-				);
+				_key = metadataFilepath_in;
+				for (int i = 0; i < schemaFilepath_in.Length; i++) {
+					_key += string.Format(
+						"|{0}", 
+						schemaFilepath_in[i]
+					);
+				}
 			}
 			#endregion
 			if (
@@ -74,8 +117,8 @@ namespace OGen.XSD.lib.metadata {
 				return (RootMetadata)RootMetadata.Metacache[_key];
 			} else {
 				RootMetadata _rootmetadata = new RootMetadata(
-					schemaFilepath_in,
-					metadataFilepath_in
+					metadataFilepath_in, 
+					schemaFilepath_in
 				);
 				if (useMetacache_in) {
 					RootMetadata.Metacache.Add(
@@ -88,13 +131,6 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public XS_Schema Schema { get; }
-		private XS_Schema schema_;
-
-		public XS_Schema Schema {
-			get { return schema_; }
-		}
-		#endregion
 		#region public ExtendedMetadata ExtendedMetadata { get; }
 		private ExtendedMetadata extendedmetadata_;
 
@@ -102,31 +138,87 @@ namespace OGen.XSD.lib.metadata {
 			get { return extendedmetadata_; }
 		}
 		#endregion
+		#region public XS_Schema[] Schema { get; }
+		private XS_Schemas schemas_;
 
-		#region private iClaSSe_metadata getMetadataFor(string forString_in);
-		private iClaSSe_metadata getMetadataFor(string forString_in) {
+		public XS_Schemas Schemas {
+			get { return schemas_; }
+		}
+		#endregion
+
+		#region private bool Root_Schema_ExpressionTryParse(...);
+		private const string ROOT_SCHEMA = XS_Schema.ROOT + "." + XS_Schema.SCHEMA + "[";
+		private static int ROOT_SCHEMA_LENGTH = ROOT_SCHEMA.Length;
+		private const string ROOT_SCHEMA_N = XS_Schema.ROOT + "." + XS_Schema.SCHEMA + "[n]";
+		private static int ROOT_SCHEMA_N_LENGTH = ROOT_SCHEMA_N.Length;
+
+		private bool Root_Schema_ExpressionTryParse(
+			string root_Schema_Expression_in,
+			out string begin_out,
+			out string index_out,
+			out string end_out
+		) {
 			if (
-				forString_in.Substring(0, XS_Schema.ROOT_SCHEMA.Length)
-					== XS_Schema.ROOT_SCHEMA
+				(begin_out = root_Schema_Expression_in.Substring(0, ROOT_SCHEMA_LENGTH))
+					== ROOT_SCHEMA
 			) {
-				return schema_;
-			} else if (
-				forString_in.Substring(0, ExtendedMetadata.ROOT_METADATA.Length)
-					== ExtendedMetadata.ROOT_METADATA
-			) {
-				return extendedmetadata_;
+				string _end_aux
+					= root_Schema_Expression_in.Substring(ROOT_SCHEMA_LENGTH);
+				int _aux = _end_aux.IndexOf(']');
+				index_out = _end_aux.Substring(0, _aux);
+				end_out = _end_aux.Substring(_aux);
+
+				return true;
 			} else {
-				throw new Exception(string.Format(
-					"can't handle: {0}",
-					forString_in
-				));
+				begin_out = string.Empty;
+				index_out = string.Empty;
+				end_out = string.Empty;
+
+				return false;
 			}
 		}
 		#endregion
 
 		#region public string Read_fromRoot(...);
 		public string Read_fromRoot(string what_in) {
-			return getMetadataFor(what_in).Read_fromRoot(what_in);
+			if (
+				what_in.Substring(0, ExtendedMetadata.ROOT_METADATA.Length)
+					== ExtendedMetadata.ROOT_METADATA
+			) {
+				return extendedmetadata_.Read_fromRoot(what_in);
+			} else {
+				string begin_out;
+				string index_out;
+				string end_out;
+				if (Root_Schema_ExpressionTryParse(
+					what_in, 
+					out begin_out, 
+					out index_out, 
+					out end_out
+				)) {
+					for (int i = 0; i < schemas_.Count; i++) {
+						if (
+							what_in.Substring(0, schemas_[i].Root_Schema.Length)
+								== schemas_[i].Root_Schema
+						) {
+							// ROOT.schema[n].simpleType
+							// ROOT.schema[3].simpleType
+							return schemas_[i].Read_fromRoot(string.Format(
+								"{0}{1}{2}",
+								begin_out,
+								i,
+								end_out
+							));
+						}
+					}
+				}
+			}
+			throw new Exception(string.Format(
+				"\n---\n{0}.{1}.Read_fromRoot(string what_in): can't handle: {2}\n---",
+				typeof(RootMetadata).Namespace,
+				typeof(RootMetadata).Name,
+				what_in
+			));
 		}
 		#endregion
 		#region public void IterateThrough_fromRoot(...);
@@ -134,10 +226,64 @@ namespace OGen.XSD.lib.metadata {
 			string iteration_in, 
 			cClaSSe.dIteration_found iteration_found_in
 		) {
-			getMetadataFor(iteration_in).IterateThrough_fromRoot(
-				iteration_in,
-				iteration_found_in
-			);
+			bool _didit = false;
+			if (
+				iteration_in.Substring(0, ExtendedMetadata.ROOT_METADATA.Length)
+					== ExtendedMetadata.ROOT_METADATA
+			) {
+				extendedmetadata_.IterateThrough_fromRoot(
+					iteration_in,
+					iteration_found_in
+				);
+				_didit = true;
+			} else {
+				string begin_out;
+				string index_out;
+				string end_out;
+				if (Root_Schema_ExpressionTryParse(
+					iteration_in, 
+					out begin_out, 
+					out index_out, 
+					out end_out
+				)) {
+					if (index_out == "n") {
+						for (int i = 0; i < schemas_.Count; i++) {
+							schemas_[i].IterateThrough_fromRoot(
+								string.Format(
+									"{0}{1}{2}",
+									begin_out, 
+									i,
+									end_out
+								), 
+								iteration_found_in
+							);
+						}
+						_didit = true;
+					} else {
+						int _index_int = int.Parse(index_out);
+						schemas_[
+							_index_int
+						].IterateThrough_fromRoot(
+							string.Format(
+								"{0}{1}{2}",
+								begin_out,
+								_index_int,
+								end_out
+							),
+							iteration_found_in
+						);
+						_didit = true;
+					}
+				}
+			}
+			if (!_didit) {
+				throw new Exception(string.Format(
+					"\n---\n{0}.{1}.IterateThrough_fromRoot(...): can't handle: {2}\n---",
+					typeof(RootMetadata).Namespace,
+					typeof(RootMetadata).Name,
+					iteration_in
+				));
+			}
 		}
 		#endregion
 	}
