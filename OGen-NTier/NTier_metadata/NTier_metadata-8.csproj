@@ -170,55 +170,61 @@
     <Compile Include="ClaSSe\utils.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="XS_dbConnectionsType.cs" />
-    <Compile Include="XS_dbConnectionType.cs" />
-    <Compile Include="XS_dbsType.cs" />
-    <Compile Include="XS_dbType.cs" />
-    <Compile Include="XS_metadataType.cs" />
-    <Compile Include="XS_tableDBsType.cs" />
-    <Compile Include="XS_tableDBType.cs" />
-    <Compile Include="XS_tableFieldDBsType.cs" />
-    <Compile Include="XS_tableFieldDBType.cs" />
-    <Compile Include="XS_tableFieldRefType.cs" />
-    <Compile Include="XS_tableFieldsType.cs" />
-    <Compile Include="XS_tableFieldType.cs" />
-    <Compile Include="XS_tableSearchesType.cs" />
-    <Compile Include="XS_tableSearchParametersType.cs" />
-    <Compile Include="XS_tableSearchType.cs" />
-    <Compile Include="XS_tableSearchUpdateParametersType.cs" />
-    <Compile Include="XS_tableSearchUpdatesType.cs" />
-    <Compile Include="XS_tableSearchUpdateType.cs" />
-    <Compile Include="XS_tablesType.cs" />
-    <Compile Include="XS_tableType.cs" />
-    <Compile Include="XS_tableUpdateParametersType.cs" />
-    <Compile Include="XS_tableUpdatesType.cs" />
-    <Compile Include="XS_tableUpdateType.cs" />
-    <Compile Include="XS__metadata.cs" />
-    <Compile Include="_base\XS0_dbConnectionsType.cs" />
-    <Compile Include="_base\XS0_dbConnectionType.cs" />
-    <Compile Include="_base\XS0_dbsType.cs" />
-    <Compile Include="_base\XS0_dbType.cs" />
-    <Compile Include="_base\XS0_metadataType.cs" />
-    <Compile Include="_base\XS0_sqlScriptOptionEnumeration.cs" />
-    <Compile Include="_base\XS0_tableDBsType.cs" />
-    <Compile Include="_base\XS0_tableDBType.cs" />
-    <Compile Include="_base\XS0_tableFieldDBsType.cs" />
-    <Compile Include="_base\XS0_tableFieldDBType.cs" />
-    <Compile Include="_base\XS0_tableFieldRefType.cs" />
-    <Compile Include="_base\XS0_tableFieldsType.cs" />
-    <Compile Include="_base\XS0_tableFieldType.cs" />
-    <Compile Include="_base\XS0_tableSearchesType.cs" />
-    <Compile Include="_base\XS0_tableSearchParametersType.cs" />
-    <Compile Include="_base\XS0_tableSearchType.cs" />
-    <Compile Include="_base\XS0_tableSearchUpdateParametersType.cs" />
-    <Compile Include="_base\XS0_tableSearchUpdatesType.cs" />
-    <Compile Include="_base\XS0_tableSearchUpdateType.cs" />
-    <Compile Include="_base\XS0_tablesType.cs" />
-    <Compile Include="_base\XS0_tableType.cs" />
-    <Compile Include="_base\XS0_tableUpdateParametersType.cs" />
-    <Compile Include="_base\XS0_tableUpdatesType.cs" />
-    <Compile Include="_base\XS0_tableUpdateType.cs" />
-    <Compile Include="_base\XS0__metadata.cs" />
+    <Compile Include="metadata\XS_dbConnectionsType.cs" />
+    <Compile Include="metadata\XS_dbConnectionType.cs" />
+    <Compile Include="metadata\XS_dbsType.cs" />
+    <Compile Include="metadata\XS_dbType.cs" />
+    <Compile Include="metadata\XS_metadataType.cs" />
+    <Compile Include="metadata\XS_tableDBsType.cs" />
+    <Compile Include="metadata\XS_tableDBType.cs" />
+    <Compile Include="metadata\XS_tableFieldDBsType.cs" />
+    <Compile Include="metadata\XS_tableFieldDBType.cs" />
+    <Compile Include="metadata\XS_tableFieldRefType.cs" />
+    <Compile Include="metadata\XS_tableFieldsType.cs" />
+    <Compile Include="metadata\XS_tableFieldType.cs" />
+    <Compile Include="metadata\XS_tableSearchesType.cs" />
+    <Compile Include="metadata\XS_tableSearchParametersType.cs" />
+    <Compile Include="metadata\XS_tableSearchType.cs" />
+    <Compile Include="metadata\XS_tableSearchUpdateParametersType.cs" />
+    <Compile Include="metadata\XS_tableSearchUpdatesType.cs" />
+    <Compile Include="metadata\XS_tableSearchUpdateType.cs" />
+    <Compile Include="metadata\XS_tablesType.cs" />
+    <Compile Include="metadata\XS_tableType.cs" />
+    <Compile Include="metadata\XS_tableUpdateParametersType.cs" />
+    <Compile Include="metadata\XS_tableUpdatesType.cs" />
+    <Compile Include="metadata\XS_tableUpdateType.cs" />
+    <Compile Include="metadata\XS__metadata.cs" />
+    <Compile Include="metadata\_base\XS0_dbConnectionsType.cs" />
+    <Compile Include="metadata\_base\XS0_dbConnectionType.cs" />
+    <Compile Include="metadata\_base\XS0_dbsType.cs" />
+    <Compile Include="metadata\_base\XS0_dbType.cs" />
+    <Compile Include="metadata\_base\XS0_metadataType.cs" />
+    <Compile Include="metadata\_base\XS0_sqlScriptOptionEnumeration.cs" />
+    <Compile Include="metadata\_base\XS0_tableDBsType.cs" />
+    <Compile Include="metadata\_base\XS0_tableDBType.cs" />
+    <Compile Include="metadata\_base\XS0_tableFieldDBsType.cs" />
+    <Compile Include="metadata\_base\XS0_tableFieldDBType.cs" />
+    <Compile Include="metadata\_base\XS0_tableFieldRefType.cs" />
+    <Compile Include="metadata\_base\XS0_tableFieldsType.cs" />
+    <Compile Include="metadata\_base\XS0_tableFieldType.cs" />
+    <Compile Include="metadata\_base\XS0_tableSearchesType.cs" />
+    <Compile Include="metadata\_base\XS0_tableSearchParametersType.cs" />
+    <Compile Include="metadata\_base\XS0_tableSearchType.cs" />
+    <Compile Include="metadata\_base\XS0_tableSearchUpdateParametersType.cs" />
+    <Compile Include="metadata\_base\XS0_tableSearchUpdatesType.cs" />
+    <Compile Include="metadata\_base\XS0_tableSearchUpdateType.cs" />
+    <Compile Include="metadata\_base\XS0_tablesType.cs" />
+    <Compile Include="metadata\_base\XS0_tableType.cs" />
+    <Compile Include="metadata\_base\XS0_tableUpdateParametersType.cs" />
+    <Compile Include="metadata\_base\XS0_tableUpdatesType.cs" />
+    <Compile Include="metadata\_base\XS0_tableUpdateType.cs" />
+    <Compile Include="metadata\_base\XS0__metadata.cs" />
+    <Compile Include="XS__RootMetadata.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="_base\XS0__RootMetadata.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <None Include="COPYING.MIT" />
     <Content Include="LICENSE.MIT.txt" />
     <Content Include="LICENSE.txt" />
@@ -239,6 +245,22 @@
     <ProjectReference Include="..\..\OGen\OGen_datalayer__base\OGen_datalayer__base-8.csproj">
       <Project>{D66D0E69-852C-4695-9D63-C9AB1A959E0B}</Project>
       <Name>OGen_datalayer__base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OGen\OGen_generator\OGen_generator-8.csproj">
+      <Project>{668ACF34-6104-4DD9-BB8A-65D9D94B0BB6}</Project>
+      <Name>OGen_generator-8</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OGen\OGen_parser\OGen_parser-8.csproj">
+      <Project>{981BC7DE-D93C-446E-861E-60A20E4E3391}</Project>
+      <Name>OGen_parser-8</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OGen\OGen_templates\OGen_templates-8.csproj">
+      <Project>{8377EF00-063B-451A-8408-FE2F8EAD5C32}</Project>
+      <Name>OGen_templates-8</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\OGen\OGen_webforms\OGen_webforms-8.csproj">
+      <Project>{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}</Project>
+      <Name>OGen_webforms-8</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

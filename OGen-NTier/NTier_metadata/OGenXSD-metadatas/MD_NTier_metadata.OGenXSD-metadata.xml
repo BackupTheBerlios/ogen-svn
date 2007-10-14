@@ -33,27 +33,6 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</copyrightTextLong>
 -->
-		<!--
-		<specificCase word="aditionalInfo" translation="AditionalInfo" />
-		<specificCase word="configMode" translation="ConfigMode" />
-		<specificCase word="connectionstring" translation="Connectionstring" />
-		<specificCase word="defaultValue" translation="DefaultValue" />
-		<specificCase word="extendedDescription" translation="ExtendedDescription" />
-		<specificCase word="friendlyName" translation="FriendlyName" />
-		<specificCase word="name" translation="Name" />
-		<specificCase word="numericPrecision" translation="NumericPrecision" />
-		<specificCase word="numericScale" translation="NumericScale" />
-		<specificCase word="size" translation="Size" />
-		<specificCase word="tableDB" translation="TableDB" />
-		<specificCase word="tableDBsType" translation="TableDBsType" />
-		<specificCase word="tableDBType" translation="TableDBType" />
-		<specificCase word="tableField" translation="TableField" />
-		<specificCase word="tableFieldDBs" translation="TableFieldDBs" />
-		<specificCase word="tableFieldDBsType" translation="TableFieldDBsType" />
-		<specificCase word="tableFieldDBType" translation="TableFieldDBType" />
-		<specificCase word="tableFieldsType" translation="TableFieldsType" />
-		<specificCase word="tableName" translation="TableName" />
-		-->
 		<specificCase word="db" translation="DB" />
 		<specificCase word="dbCollationName" translation="DBCollationName" />
 		<specificCase word="dbConnection" translation="DBConnection" />

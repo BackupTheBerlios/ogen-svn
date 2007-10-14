@@ -11,23 +11,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 --%><%@ Page language="c#" contenttype="text/html" %>
 <%//@ import namespace="OGen.lib.datalayer" %>
-<%@ import namespace="OGen.XSD.lib.metadata" %>
-<%@ import namespace="OGen.lib.collections" %><%
+<%@ import namespace="OGen.XSD.lib.metadata" %><%
 #region arguments...
 string _arg_SchemaFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaFilepath"]);
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
-string _arg_SimpleTypeName = System.Web.HttpUtility.UrlDecode(Request.QueryString["SimpleTypeName"]);
 #endregion
 
 #region varaux...
 RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
 	_arg_SchemaFilepath,
-	_arg_MetadataFilepath, 
+	_arg_MetadataFilepath,
 	true
 );
-
-OGenRootrefCollection<XS_Enumeration, RootMetadata> _aux_enumeration 
-	= _aux_rootmetadata.Schema.XS_SimpleType[_arg_SimpleTypeName].XS_Restriction.XS_Enumeration;
 #endregion
 //-----------------------------------------------------------------------------------------
 if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_rootmetadata.ExtendedMetadata.CopyrightTextLong != string.Empty)) {
@@ -43,12 +38,16 @@ if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_
 using System.Xml.Serialization;
 
 using OGen.lib.collections;
+using <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.Schema.XS_Element.Name%>;
 
-namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.Schema.XS_Element.Name%> {
-	public enum XS_<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_arg_SimpleTypeName)%> {<%
-	for (int e = 0; e < _aux_enumeration.Count; e++) {%><%=""%>
-		<%=_aux_enumeration[e].Value%> = <%=e.ToString()%>, <%
-	}%>
+namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
+	public class XS__RootMetadata : XS0__RootMetadata {
+		public XS__RootMetadata (
+			string <%=_aux_rootmetadata.Schema.XS_Element.Name%>Filepath_in
+		) : base (
+			<%=_aux_rootmetadata.Schema.XS_Element.Name%>Filepath_in
+		) {
+		}
 	}
 }<%
 //-----------------------------------------------------------------------------------------

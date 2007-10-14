@@ -22,7 +22,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<conditions />
 		<outputs>
 			<!-- ${ROOT.metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/_base/XS0_${ROOT.schema.simpleType[n].name}.cs" 
+			<output to="${CONFIG.outputPath}/metadata/_base/XS0_${ROOT.schema.simpleType[n].name}.cs" 
 				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
@@ -38,7 +38,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<conditions />
 		<outputs>
 			<!-- ${ROOT.metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/_base/XS0_${ROOT.schema.complexType[n].name}.cs" 
+			<output to="${CONFIG.outputPath}/metadata/_base/XS0_${ROOT.schema.complexType[n].name}.cs" 
 				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
@@ -54,7 +54,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<conditions />
 		<outputs>
 			<!-- ${ROOT.metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/XS_${ROOT.schema.complexType[n].name}.cs" 
+			<output to="${CONFIG.outputPath}/metadata/XS_${ROOT.schema.complexType[n].name}.cs" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies>
@@ -71,7 +71,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<conditions />
 		<outputs>
 			<!-- ${ROOT.metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/_base/XS0__${ROOT.schema.element.name}.cs" 
+			<output to="${CONFIG.outputPath}/metadata/_base/XS0__${ROOT.schema.element.name}.cs" 
 				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
@@ -86,11 +86,43 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<conditions />
 		<outputs>
 			<!-- ${ROOT.metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/XS__${ROOT.schema.element.name}.cs" 
+			<output to="${CONFIG.outputPath}/metadata/XS__${ROOT.schema.element.name}.cs" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies>
 			<dependency name="XS-XS0__BaseClass.cs.aspx" />
+		</dependencies>
+	</template>
+	<template name="XS-XS0__RootMetadata.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.schema">
+		<arguments>
+			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<!-- ${ROOT.metadata.applicationName} -->
+			<output to="${CONFIG.outputPath}/_base/XS0__RootMetadata.cs" 
+				type="File" mode="Replace" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="XS-XS__RootMetadata.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.schema">
+		<arguments>
+			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<!-- ${ROOT.metadata.applicationName} -->
+			<output to="${CONFIG.outputPath}/XS__RootMetadata.cs" 
+				type="File" mode="Create_doNotReplace" />
+		</outputs>
+		<dependencies>
+			<dependency name="XS-XS0__RootMetadata.cs.aspx" />
 		</dependencies>
 	</template>
 </templates>

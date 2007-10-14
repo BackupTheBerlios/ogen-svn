@@ -36,12 +36,99 @@ if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_
 #endregion
 <%
 }%>using System;
+using System.IO;
 using System.Xml.Serialization;
 
 using OGen.lib.collections;
 
-namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
-	public class XS0__<%=_aux_rootmetadata.Schema.XS_Element.Name%> {
+namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.Schema.XS_Element.Name%> {
+	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
+	[System.Xml.Serialization.XmlRootAttribute("<%=_aux_rootmetadata.Schema.XS_Element.Name%>", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
+	public class XS0__<%=_aux_rootmetadata.Schema.XS_Element.Name%> : XS_<%=_aux_rootmetadata.Schema.XS_Element.Type%>, iClaSSe_metadata {
+
+		public const string <%=_aux_rootmetadata.Schema.XS_Element.Name.ToUpper()%> = "<%=_aux_rootmetadata.Schema.XS_Element.Name%>";
+		public const string ROOT_<%=_aux_rootmetadata.Schema.XS_Element.Name.ToUpper()%> = "ROOT." + <%=_aux_rootmetadata.Schema.XS_Element.Name.ToUpper()%>;
+
+		#region public static XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%> Load_fromFile(...);
+		public static XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%> Load_fromFile(
+			string filePath_in
+		) {
+			return Load_fromFile(
+				filePath_in,
+				null
+			);
+		}
+		public static XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%> Load_fromFile(
+			string filePath_in,
+			XS__RootMetadata root_ref_in
+		) {
+			FileStream _stream = new FileStream(
+				filePath_in,
+				FileMode.Open,
+				FileAccess.Read,
+				FileShare.Read
+			);
+
+			XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%> _output;
+			try {
+				_output = (XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%>)new XmlSerializer(typeof(XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%>)).Deserialize(
+					_stream
+				);
+			} catch (Exception _ex) {
+				throw new Exception(string.Format(
+					"---\nERROR READING XML:\n{0}\n---\n{1}",
+					filePath_in,
+					_ex.Message
+				));
+			}
+
+			if (root_ref_in != null) _output.root_ref = root_ref_in;
+			return _output;
+		}
+		#endregion
+		#region public void SaveState_toFile(string filePath_in);
+		public void SaveState_toFile(string filePath_in) {
+			FileStream _file = new FileStream(
+				filePath_in,
+				FileMode.Create,
+				FileAccess.Write,
+				FileShare.ReadWrite
+			);
+			new XmlSerializer(typeof(XS__<%=_aux_rootmetadata.Schema.XS_Element.Name%>)).Serialize(
+				_file,
+				this
+			);
+			_file.Flush();
+			_file.Close();
+		}
+		#endregion
+
+		public string Read_fromRoot(string what_in) {
+			return OGen.lib.generator.utils.ReflectThrough(
+				this,
+				ROOT_<%=_aux_rootmetadata.Schema.XS_Element.Name.ToUpper()%>, 
+				null, 
+				what_in,
+				ROOT_<%=_aux_rootmetadata.Schema.XS_Element.Name.ToUpper()%>, 
+				true, 
+				true
+			);
+		}
+
+		public void IterateThrough_fromRoot(
+			string iteration_in, 
+			cClaSSe.dIteration_found iteration_found_in
+		) {
+			OGen.lib.generator.utils.ReflectThrough(
+				this,
+				ROOT_<%=_aux_rootmetadata.Schema.XS_Element.Name.ToUpper()%>, 
+				iteration_found_in, 
+				iteration_in,
+				ROOT_<%=_aux_rootmetadata.Schema.XS_Element.Name.ToUpper()%>, 
+				false, 
+				true
+			);
+		}
 	}
 }<%
 //-----------------------------------------------------------------------------------------
