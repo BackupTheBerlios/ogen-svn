@@ -23,8 +23,8 @@ using OGen.lib.collections;
 namespace OGen.XSD.lib.metadata {
 	[System.Xml.Serialization.XmlRootAttribute("metadata")]
 	public class ExtendedMetadata : iClaSSe_metadata, OGenRootrefCollectionInterface<RootMetadata> {
-		public ExtendedMetadata() {
-		}
+		//public ExtendedMetadata() {
+		//}
 
 		#region public RootMetadata root_ref { get; }
 		private RootMetadata root_ref_;
@@ -41,18 +41,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 		public const string METADATA = "metadata";
-		#region public static Hashtable Metacache { get; }
-		private static Hashtable metacache__;
-
-		public static Hashtable Metacache {
-			get {
-				if (metacache__ == null) {
-					metacache__ = new Hashtable();
-				}
-				return metacache__;
-			}
-		}
-		#endregion
+		public const string ROOT_METADATA = "ROOT:" + ExtendedMetadata.METADATA;
 
 		#region public ExtendedMetadata_caseTypeEnum CaseType { get; set; }
 		private string casetype_;
@@ -169,17 +158,30 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public static ExtendedMetadata Load_fromFile(string filePath_in);
-		public static ExtendedMetadata Load_fromFile(string filePath_in) {
+		#region public static ExtendedMetadata Load_fromFile(...);
+		public static ExtendedMetadata Load_fromFile(
+			string filePath_in
+		) {
+			return Load_fromFile(
+				filePath_in,
+				null
+			);
+		}
+		public static ExtendedMetadata Load_fromFile(
+			string filePath_in,
+			RootMetadata root_ref_in
+		) {
 			FileStream _stream = new FileStream(
 				filePath_in,
 				FileMode.Open,
 				FileAccess.Read,
 				FileShare.Read
 			);
-			return (ExtendedMetadata)new XmlSerializer(typeof(ExtendedMetadata)).Deserialize(
+			ExtendedMetadata _output = (ExtendedMetadata)new XmlSerializer(typeof(ExtendedMetadata)).Deserialize(
 				_stream
 			);
+			if (root_ref_in != null) _output.root_ref = root_ref_in;
+			return _output;
 		}
 		#endregion
 		#region public void SaveState_toFile(string filePath_in);
@@ -202,10 +204,10 @@ namespace OGen.XSD.lib.metadata {
 		public string Read_fromRoot(string what_in) {
 			return utils.ReflectThrough(
 				this, 
-				"ROOT:" + METADATA, 
+				ROOT_METADATA, 
 				null, 
 				what_in, 
-				"ROOT:" + METADATA, 
+				ROOT_METADATA, 
 				true, 
 				true
 			);
@@ -217,10 +219,10 @@ namespace OGen.XSD.lib.metadata {
 		) {
 			utils.ReflectThrough(
 				this, 
-				"ROOT:" + METADATA, 
+				ROOT_METADATA, 
 				iteration_found_in, 
 				iteration_in, 
-				"ROOT:" + METADATA, 
+				ROOT_METADATA, 
 				false, 
 				true
 			);

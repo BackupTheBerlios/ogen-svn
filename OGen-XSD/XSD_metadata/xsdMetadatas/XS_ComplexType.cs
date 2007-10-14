@@ -118,7 +118,7 @@ namespace OGen.XSD.lib.metadata {
 							== XS_Element.MaxOccursEnum.unbounded)
 					) {
 						ExtendedMetadata_collection _collection
-							= root_ref_.Metadata.Collections[
+							= root_ref_.ExtendedMetadata.Collections[
 								Name
 							];
 						return (_collection == null) 

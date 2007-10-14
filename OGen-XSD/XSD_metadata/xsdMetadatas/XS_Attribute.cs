@@ -51,7 +51,6 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 		#region public string NType { get; set; }
-
 		[XmlIgnore()]
 		public string NType {
 			get {
@@ -70,11 +69,12 @@ namespace OGen.XSD.lib.metadata {
 
 					default:
 						return string.Format(
-							"XS_{0}", 
-							(root_ref == null) 
-								? type_ 
+							"XS_{0}",
+							(root_ref == null)
+								? type_
 								: root_ref.Metadata.CaseTranslate(type_)
 						);
+						//return string.Empty;
 				}
 			}
 		}

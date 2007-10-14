@@ -25,8 +25,8 @@ namespace OGen.XSD.lib.metadata {
 	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
 	[System.Xml.Serialization.XmlRootAttribute("schema", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
 	public class XS_Schema : iClaSSe_metadata, OGenRootrefCollectionInterface<RootMetadata> {
-		public XS_Schema() {
-		}
+		//public XS_Schema() {
+		//}
 
 		#region public RootMetadata root_ref { get; }
 		private RootMetadata root_ref_;
@@ -44,18 +44,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 		public const string SCHEMA = "schema";
-		#region public static Hashtable Metacache { get; }
-		private static Hashtable metacache__;
-
-		public static Hashtable Metacache {
-			get {
-				if (metacache__ == null) {
-					metacache__ = new Hashtable();
-				}
-				return metacache__;
-			}
-		}
-		#endregion
+		public const string ROOT_SCHEMA = "ROOT:" + XS_Schema.SCHEMA;
 
 		#region //public string xmlNS_xs { get; set; }
 //		private string xmlns_xs_;
@@ -179,17 +168,30 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public static XS_Schema Load_fromFile(string filePath_in);
-		public static XS_Schema Load_fromFile(string filePath_in) {
+		#region public static XS_Schema Load_fromFile(...);
+		public static XS_Schema Load_fromFile(
+			string filePath_in
+		) {
+			return Load_fromFile(
+				filePath_in,
+				null
+			);
+		}
+		public static XS_Schema Load_fromFile(
+			string filePath_in,
+			RootMetadata root_ref_in
+		) {
 			FileStream _stream = new FileStream(
 				filePath_in,
 				FileMode.Open,
 				FileAccess.Read,
 				FileShare.Read
 			);
-			return (XS_Schema)new XmlSerializer(typeof(XS_Schema)).Deserialize(
+			XS_Schema _output = (XS_Schema)new XmlSerializer(typeof(XS_Schema)).Deserialize(
 				_stream
 			);
+			if (root_ref_in != null) _output.root_ref = root_ref_in;
+			return _output;
 		}
 		#endregion
 		#region public void SaveState_toFile(string filePath_in);
@@ -211,11 +213,11 @@ namespace OGen.XSD.lib.metadata {
 
 		public string Read_fromRoot(string what_in) {
 			return utils.ReflectThrough(
-				this, 
-				"ROOT:" + SCHEMA, 
+				this,
+				ROOT_SCHEMA, 
 				null, 
-				what_in, 
-				"ROOT:" + SCHEMA, 
+				what_in,
+				ROOT_SCHEMA, 
 				true, 
 				true
 			);
@@ -226,11 +228,11 @@ namespace OGen.XSD.lib.metadata {
 			cClaSSe.dIteration_found iteration_found_in
 		) {
 			utils.ReflectThrough(
-				this, 
-				"ROOT:" + SCHEMA, 
+				this,
+				ROOT_SCHEMA, 
 				iteration_found_in, 
-				iteration_in, 
-				"ROOT:" + SCHEMA, 
+				iteration_in,
+				ROOT_SCHEMA, 
 				false, 
 				true
 			);

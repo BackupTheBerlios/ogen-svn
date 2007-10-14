@@ -19,34 +19,20 @@ string _arg_ComplexTypeName = System.Web.HttpUtility.UrlDecode(Request.QueryStri
 #endregion
 
 #region varaux...
-XS_Schema _aux_schema;
-if (XS_Schema.Metacache.Contains(_arg_SchemaFilepath)) {
-	_aux_schema = (XS_Schema)XS_Schema.Metacache[_arg_SchemaFilepath];
-} else {
-	_aux_schema = XS_Schema.Load_fromFile(_arg_SchemaFilepath);
-	XS_Schema.Metacache.Add(_arg_SchemaFilepath, _aux_schema);
-}
+RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
+	_arg_SchemaFilepath,
+	_arg_MetadataFilepath,
+	true
+);
 
-ExtendedMetadata _aux_metadata;
-if (ExtendedMetadata.Metacache.Contains(_arg_MetadataFilepath)) {
-	_aux_metadata = (ExtendedMetadata)ExtendedMetadata.Metacache[_arg_MetadataFilepath];
-} else {
-	_aux_metadata = ExtendedMetadata.Load_fromFile(_arg_MetadataFilepath);
-	ExtendedMetadata.Metacache.Add(_arg_MetadataFilepath, _aux_metadata);
-}
-
-RootMetadata _root = new RootMetadata(_aux_schema, _aux_metadata);
-_aux_schema.root_ref = _root;
-_aux_metadata.root_ref = _root;
-
-XS_ComplexType _aux_complextype = _aux_schema.XS_ComplexType[_arg_ComplexTypeName];
+XS_ComplexType _aux_complextype = _aux_rootmetadata.Schema.XS_ComplexType[_arg_ComplexTypeName];
 #endregion
 //-----------------------------------------------------------------------------------------
-if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTextLong != string.Empty)) {
-%>#region <%=_aux_metadata.CopyrightText%>
+if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_rootmetadata.ExtendedMetadata.CopyrightTextLong != string.Empty)) {
+%>#region <%=_aux_rootmetadata.ExtendedMetadata.CopyrightText%>
 /*
 
-<%=_aux_metadata.CopyrightTextLong%>
+<%=_aux_rootmetadata.ExtendedMetadata.CopyrightTextLong%>
 
 */
 #endregion
@@ -56,7 +42,7 @@ using System.Xml.Serialization;
 
 using OGen.lib.collections;
 
-namespace <%=_aux_metadata.Namespace%> {
+namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 	public class XS_<%=_aux_complextype.Name%> : XS0_<%=_aux_complextype.Name%> {
 
 	<%for (int a = 0; a < _aux_complextype.XS_Attribute.Count; a++) {

@@ -20,35 +20,21 @@ string _arg_SimpleTypeName = System.Web.HttpUtility.UrlDecode(Request.QueryStrin
 #endregion
 
 #region varaux...
-XS_Schema _aux_schema;
-if (XS_Schema.Metacache.Contains(_arg_SchemaFilepath)) {
-	_aux_schema = (XS_Schema)XS_Schema.Metacache[_arg_SchemaFilepath];
-} else {
-	_aux_schema = XS_Schema.Load_fromFile(_arg_SchemaFilepath);
-	XS_Schema.Metacache.Add(_arg_SchemaFilepath, _aux_schema);
-}
-
-ExtendedMetadata _aux_metadata;
-if (ExtendedMetadata.Metacache.Contains(_arg_MetadataFilepath)) {
-	_aux_metadata = (ExtendedMetadata)ExtendedMetadata.Metacache[_arg_MetadataFilepath];
-} else {
-	_aux_metadata = ExtendedMetadata.Load_fromFile(_arg_MetadataFilepath);
-	ExtendedMetadata.Metacache.Add(_arg_MetadataFilepath, _aux_metadata);
-}
-
-RootMetadata _root = new RootMetadata(_aux_schema, _aux_metadata);
-_aux_schema.root_ref = _root;
-_aux_metadata.root_ref = _root;
+RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
+	_arg_SchemaFilepath,
+	_arg_MetadataFilepath, 
+	true
+);
 
 OGenRootrefCollection<XS_Enumeration, RootMetadata> _aux_enumeration 
-	= _aux_schema.XS_SimpleType[_arg_SimpleTypeName].XS_Restriction.XS_Enumeration;
+	= _aux_rootmetadata.Schema.XS_SimpleType[_arg_SimpleTypeName].XS_Restriction.XS_Enumeration;
 #endregion
 //-----------------------------------------------------------------------------------------
-if ((_aux_metadata.CopyrightText != string.Empty) && (_aux_metadata.CopyrightTextLong != string.Empty)) {
-%>#region <%=_aux_metadata.CopyrightText%>
+if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_rootmetadata.ExtendedMetadata.CopyrightTextLong != string.Empty)) {
+%>#region <%=_aux_rootmetadata.ExtendedMetadata.CopyrightText%>
 /*
 
-<%=_aux_metadata.CopyrightTextLong%>
+<%=_aux_rootmetadata.ExtendedMetadata.CopyrightTextLong%>
 
 */
 #endregion
@@ -58,8 +44,8 @@ using System.Xml.Serialization;
 
 using OGen.lib.collections;
 
-namespace <%=_aux_metadata.Namespace%> {
-	public enum XS_<%=_aux_metadata.CaseTranslate(_arg_SimpleTypeName)%> {<%
+namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
+	public enum XS_<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_arg_SimpleTypeName)%> {<%
 	for (int e = 0; e < _aux_enumeration.Count; e++) {%><%=""%>
 		<%=_aux_enumeration[e].Value%> = <%=e.ToString()%>, <%
 	}%>

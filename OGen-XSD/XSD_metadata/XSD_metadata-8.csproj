@@ -50,15 +50,16 @@
     <Compile Include="extendedMetadatas\ExtendedMetadata_caseTypeEnum.cs" />
     <Compile Include="extendedMetadatas\ExtendedMetadata_specificCase.cs" />
     <Compile Include="extendedMetadatas\ExtendedMetadata_collection.cs" />
-    <Compile Include="XS_Attribute.cs" />
+    <Compile Include="RootMetadata.cs" />
     <Compile Include="utils.cs" />
-    <Compile Include="XS_ComplexType.cs" />
-    <Compile Include="XS_Element.cs" />
-    <Compile Include="XS_Enumeration.cs" />
-    <Compile Include="XS_Restriction.cs" />
-    <Compile Include="XS_Schema.cs" />
-    <Compile Include="XS_Sequence.cs" />
-    <Compile Include="XS_SimpleType.cs" />
+    <Compile Include="xsdMetadatas\XS_Attribute.cs" />
+    <Compile Include="xsdMetadatas\XS_ComplexType.cs" />
+    <Compile Include="xsdMetadatas\XS_Element.cs" />
+    <Compile Include="xsdMetadatas\XS_Enumeration.cs" />
+    <Compile Include="xsdMetadatas\XS_Restriction.cs" />
+    <Compile Include="xsdMetadatas\XS_Schema.cs" />
+    <Compile Include="xsdMetadatas\XS_Sequence.cs" />
+    <Compile Include="xsdMetadatas\XS_SimpleType.cs" />
     <None Include="COPYING.MIT" />
     <None Include="LICENSE.MIT.txt" />
     <None Include="LICENSE.txt" />
@@ -68,6 +69,5 @@
       <Project>{A6E837F8-780F-4D05-B3ED-2FF1906B5766}</Project>
       <Name>OGen_collections</Name>
     </ProjectReference>
-    <Folder Include="extendedMetadatas" />
   </ItemGroup>
 </Project>
