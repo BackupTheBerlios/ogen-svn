@@ -68,13 +68,17 @@ namespace OGen.XSD.lib.metadata {
 						return "DateTime";
 
 					default:
+#if DEBUG
 						return string.Format(
 							"XS_{0}",
 							(root_ref == null)
 								? type_
-								: root_ref.Metadata.CaseTranslate(type_)
+								: root_ref.ExtendedMetadata.CaseTranslate(type_)
 						);
-						//return string.Empty;
+#else
+						throw new Exception("XS_Attribute.NType: - not implemented!");
+						return string.Empty;
+#endif
 				}
 			}
 		}

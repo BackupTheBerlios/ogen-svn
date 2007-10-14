@@ -22,38 +22,6 @@ using OGen.lib.datalayer;
 using OGen.lib.parser;
 
 namespace OGen.lib.generator {
-	public struct MetaFile {
-		public MetaFile(
-			string path_in, 
-			string root_in
-		) {
-			Path = path_in;
-			Root = root_in;
-		}
-
-		public string Path;
-		public string Root;
-	}
-	public class utils {
-		private utils() {}
-
-		public static int MetaFile_find(
-			MetaFile[] metaFiles_in, 
-			string root_in
-		) {
-			for (int i = 0; i < metaFiles_in.Length; i++) {
-				if (metaFiles_in[i].Root == root_in) {
-					return i;
-				}
-			}
-
-			throw new Exception(string.Format(
-				"can't find: {0}", 
-				root_in
-			));
-		}
-	}
-
 	public class cGenerator {
 		#region public cGenerator(...);
 		public cGenerator(

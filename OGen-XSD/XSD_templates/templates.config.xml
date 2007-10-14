@@ -61,4 +61,36 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<dependency name="XS-XS0_SomeClass.cs.aspx" />
 		</dependencies>
 	</template>
+	<template name="XS-XS0__BaseClass.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.schema">
+		<arguments>
+			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<!-- ${ROOT.metadata.applicationName} -->
+			<output to="${CONFIG.outputPath}/_base/XS0__${ROOT.schema.element.name}.cs" 
+				type="File" mode="Replace" />
+		</outputs>
+		<dependencies />
+	</template>
+	<template name="XS-XS__BaseClass.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.schema">
+		<arguments>
+			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<!-- ${ROOT.metadata.applicationName} -->
+			<output to="${CONFIG.outputPath}/XS__${ROOT.schema.element.name}.cs" 
+				type="File" mode="Create_doNotReplace" />
+		</outputs>
+		<dependencies>
+			<dependency name="XS-XS0__BaseClass.cs.aspx" />
+		</dependencies>
+	</template>
 </templates>

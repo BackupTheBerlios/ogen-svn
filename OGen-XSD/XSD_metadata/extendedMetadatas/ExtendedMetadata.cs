@@ -19,6 +19,7 @@ using System.Xml.Serialization;
 using System.Collections;
 
 using OGen.lib.collections;
+using OGen.lib.generator;
 
 namespace OGen.XSD.lib.metadata {
 	[System.Xml.Serialization.XmlRootAttribute("metadata")]
@@ -213,7 +214,7 @@ namespace OGen.XSD.lib.metadata {
 		#endregion
 
 		public string Read_fromRoot(string what_in) {
-			return utils.ReflectThrough(
+			return OGen.lib.generator.utils.ReflectThrough(
 				this, 
 				ROOT_METADATA, 
 				null, 
@@ -228,7 +229,7 @@ namespace OGen.XSD.lib.metadata {
 			string iteration_in, 
 			cClaSSe.dIteration_found iteration_found_in
 		) {
-			utils.ReflectThrough(
+			OGen.lib.generator.utils.ReflectThrough(
 				this, 
 				ROOT_METADATA, 
 				iteration_found_in, 

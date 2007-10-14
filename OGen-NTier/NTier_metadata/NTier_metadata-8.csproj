@@ -193,6 +193,7 @@
     <Compile Include="XS_tableUpdateParametersType.cs" />
     <Compile Include="XS_tableUpdatesType.cs" />
     <Compile Include="XS_tableUpdateType.cs" />
+    <Compile Include="XS__metadata.cs" />
     <Compile Include="_base\XS0_dbConnectionsType.cs" />
     <Compile Include="_base\XS0_dbConnectionType.cs" />
     <Compile Include="_base\XS0_dbsType.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="_base\XS0_tableUpdateParametersType.cs" />
     <Compile Include="_base\XS0_tableUpdatesType.cs" />
     <Compile Include="_base\XS0_tableUpdateType.cs" />
+    <Compile Include="_base\XS0__metadata.cs" />
     <None Include="COPYING.MIT" />
     <Content Include="LICENSE.MIT.txt" />
     <Content Include="LICENSE.txt" />
