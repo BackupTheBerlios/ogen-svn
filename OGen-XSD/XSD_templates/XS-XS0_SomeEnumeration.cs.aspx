@@ -28,7 +28,7 @@ RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
 	_arg_SchemaFilepath,
 	_arg_Schema2Filepath
 );
-XS_Schema _aux_schema = _aux_rootmetadata.Schemas[_arg_SchemaName];
+XS_Schema _aux_schema = _aux_rootmetadata.SchemaCollection[_arg_SchemaName];
 
 OGenRootrefCollection<XS_Enumeration, RootMetadata> _aux_enumeration 
 	= _aux_schema.XS_SimpleType[_arg_SimpleTypeName].XS_Restriction.XS_Enumeration;

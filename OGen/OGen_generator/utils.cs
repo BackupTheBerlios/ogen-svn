@@ -33,7 +33,7 @@ namespace OGen.lib.generator {
 	}
 
 	public class utils {
-		private utils() {}
+		private utils() { }
 
 		public static int MetaFile_find(
 			MetaFile[] metaFiles_in,
@@ -50,6 +50,35 @@ namespace OGen.lib.generator {
 				root_in
 			));
 		}
+
+		#region public static bool rootExpression_TryParse(...);
+		public static bool rootExpression_TryParse(
+			string rootExpression_in,
+			string whereRootLike_in,
+			out string begin_out,
+			out string index_out,
+			out string end_out
+		) {
+			if (
+				(begin_out = rootExpression_in.Substring(0, whereRootLike_in.Length))
+					== whereRootLike_in
+			) {
+				string _end_aux
+					= rootExpression_in.Substring(whereRootLike_in.Length);
+				int _aux = _end_aux.IndexOf(']');
+				index_out = _end_aux.Substring(0, _aux);
+				end_out = _end_aux.Substring(_aux);
+
+				return true;
+			} else {
+				begin_out = string.Empty;
+				index_out = string.Empty;
+				end_out = string.Empty;
+
+				return false;
+			}
+		}
+		#endregion
 
 		public static string ReflectThrough(
 			object someClass_in, 

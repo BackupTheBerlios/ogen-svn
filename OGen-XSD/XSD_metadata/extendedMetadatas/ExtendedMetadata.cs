@@ -158,6 +158,21 @@ namespace OGen.XSD.lib.metadata {
 			get { return specificcase_; }
 		}
 		#endregion
+		#region public OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata> MetadataIndex { get; }
+		private OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata> metadataindex_
+			= new OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata>();
+
+		[XmlElement("metadataIndex")]
+		public ExtendedMetadata_metadataIndex[] metadataindex__xml {
+			get { return metadataindex_.cols__; }
+			set { metadataindex_.cols__ = value; }
+		}
+
+		[XmlIgnore()]
+		public OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata> MetadataIndex {
+			get { return metadataindex_; }
+		}
+		#endregion
 
 		#region public static ExtendedMetadata Load_fromFile(...);
 		public static ExtendedMetadata Load_fromFile(

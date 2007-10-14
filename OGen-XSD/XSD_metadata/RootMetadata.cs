@@ -21,44 +21,6 @@ using System.Collections;
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
-	public class XS_Schemas {
-		public XS_Schemas(
-			XS_Schema[] schemas_in
-		) {
-			schemas_ = schemas_in;
-		}
-
-		#region public XS_Schema this[...] { get; }
-		private XS_Schema[] schemas_;
-
-		public XS_Schema this[int index_in] {
-			get {
-				return schemas_[index_in];
-			}
-		}
-		public XS_Schema this[string name_in] {
-			get {
-				// ToDos: later! performance
-
-				for (int i = 0; i < schemas_.Length; i++) {
-					if (schemas_[i].XS_Element.Name == name_in) {
-						return schemas_[i];
-					}
-				}
-				throw new Exception(string.Format(
-					"{0}.{1}[string name_in]: can't find: {2}",
-					typeof(XS_Schemas).Namespace, 
-					typeof(XS_Schemas).Name, 
-					name_in
-				));
-			}
-		}
-		#endregion
-		public int Count { get {
-			return schemas_.Length;
-		} }
-	}
-
 	public class RootMetadata : iClaSSe_metadata {
 		public RootMetadata(
 			string metadataFilepath_in, 
@@ -69,7 +31,7 @@ namespace OGen.XSD.lib.metadata {
 				this
 			);
 
-			schemas_ = new XS_Schemas(
+			schemacollection_ = new XS_SchemaCollection(
 				XS_Schema.Load_fromFile(
 					this, 
 					schemaFilepath_in
@@ -138,46 +100,15 @@ namespace OGen.XSD.lib.metadata {
 			get { return extendedmetadata_; }
 		}
 		#endregion
-		#region public XS_Schema[] Schema { get; }
-		private XS_Schemas schemas_;
+		#region public XS_SchemaCollection SchemaCollection { get; }
+		private XS_SchemaCollection schemacollection_;
 
-		public XS_Schemas Schemas {
-			get { return schemas_; }
+		public XS_SchemaCollection SchemaCollection {
+			get { return schemacollection_; }
 		}
 		#endregion
 
-		#region private bool Root_Schema_ExpressionTryParse(...);
 		private const string ROOT_SCHEMA = XS_Schema.ROOT + "." + XS_Schema.SCHEMA + "[";
-		private static int ROOT_SCHEMA_LENGTH = ROOT_SCHEMA.Length;
-		private const string ROOT_SCHEMA_N = XS_Schema.ROOT + "." + XS_Schema.SCHEMA + "[n]";
-		private static int ROOT_SCHEMA_N_LENGTH = ROOT_SCHEMA_N.Length;
-
-		private bool Root_Schema_ExpressionTryParse(
-			string root_Schema_Expression_in,
-			out string begin_out,
-			out string index_out,
-			out string end_out
-		) {
-			if (
-				(begin_out = root_Schema_Expression_in.Substring(0, ROOT_SCHEMA_LENGTH))
-					== ROOT_SCHEMA
-			) {
-				string _end_aux
-					= root_Schema_Expression_in.Substring(ROOT_SCHEMA_LENGTH);
-				int _aux = _end_aux.IndexOf(']');
-				index_out = _end_aux.Substring(0, _aux);
-				end_out = _end_aux.Substring(_aux);
-
-				return true;
-			} else {
-				begin_out = string.Empty;
-				index_out = string.Empty;
-				end_out = string.Empty;
-
-				return false;
-			}
-		}
-		#endregion
 
 		#region public string Read_fromRoot(...);
 		public string Read_fromRoot(string what_in) {
@@ -187,27 +118,26 @@ namespace OGen.XSD.lib.metadata {
 			) {
 				return extendedmetadata_.Read_fromRoot(what_in);
 			} else {
-				string begin_out;
-				string index_out;
-				string end_out;
-				if (Root_Schema_ExpressionTryParse(
+				string _begin;
+				string _indexstring;
+				string _end;
+				if (OGen.lib.generator.utils.rootExpression_TryParse(
 					what_in, 
-					out begin_out, 
-					out index_out, 
-					out end_out
+					ROOT_SCHEMA, 
+					out _begin, 
+					out _indexstring, 
+					out _end
 				)) {
-					for (int i = 0; i < schemas_.Count; i++) {
+					for (int i = 0; i < schemacollection_.Count; i++) {
 						if (
-							what_in.Substring(0, schemas_[i].Root_Schema.Length)
-								== schemas_[i].Root_Schema
+							what_in.Substring(0, schemacollection_[i].Root_Schema.Length)
+								== schemacollection_[i].Root_Schema
 						) {
-							// ROOT.schema[n].simpleType
-							// ROOT.schema[3].simpleType
-							return schemas_[i].Read_fromRoot(string.Format(
+							return schemacollection_[i].Read_fromRoot(string.Format(
 								"{0}{1}{2}",
-								begin_out,
+								_begin,
 								i,
-								end_out
+								_end
 							));
 						}
 					}
@@ -237,38 +167,39 @@ namespace OGen.XSD.lib.metadata {
 				);
 				_didit = true;
 			} else {
-				string begin_out;
-				string index_out;
-				string end_out;
-				if (Root_Schema_ExpressionTryParse(
-					iteration_in, 
-					out begin_out, 
-					out index_out, 
-					out end_out
+				string _begin;
+				string _indexstring;
+				string _end;
+				if (OGen.lib.generator.utils.rootExpression_TryParse(
+					iteration_in,
+					ROOT_SCHEMA,
+					out _begin, 
+					out _indexstring, 
+					out _end
 				)) {
-					if (index_out == "n") {
-						for (int i = 0; i < schemas_.Count; i++) {
-							schemas_[i].IterateThrough_fromRoot(
+					if (_indexstring == "n") {
+						for (int i = 0; i < schemacollection_.Count; i++) {
+							schemacollection_[i].IterateThrough_fromRoot(
 								string.Format(
 									"{0}{1}{2}",
-									begin_out, 
+									_begin, 
 									i,
-									end_out
+									_end
 								), 
 								iteration_found_in
 							);
 						}
 						_didit = true;
 					} else {
-						int _index_int = int.Parse(index_out);
-						schemas_[
-							_index_int
+						int _indexint = int.Parse(_indexstring);
+						schemacollection_[
+							_indexint
 						].IterateThrough_fromRoot(
 							string.Format(
 								"{0}{1}{2}",
-								begin_out,
-								_index_int,
-								end_out
+								_begin,
+								_indexint,
+								_end
 							),
 							iteration_found_in
 						);

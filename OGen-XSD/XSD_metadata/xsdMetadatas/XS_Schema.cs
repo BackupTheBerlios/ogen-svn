@@ -22,6 +22,46 @@ using OGen.lib.collections;
 using OGen.lib.generator;
 
 namespace OGen.XSD.lib.metadata {
+	public class XS_SchemaCollection {
+		public XS_SchemaCollection(
+			XS_Schema[] schemas_in
+		) {
+			schemas_ = schemas_in;
+		}
+
+		#region public XS_Schema this[...] { get; }
+		private XS_Schema[] schemas_;
+
+		public XS_Schema this[int index_in] {
+			get {
+				return schemas_[index_in];
+			}
+		}
+		public XS_Schema this[string name_in] {
+			get {
+				// ToDos: later! performance
+
+				for (int i = 0; i < schemas_.Length; i++) {
+					if (schemas_[i].XS_Element.Name == name_in) {
+						return schemas_[i];
+					}
+				}
+				throw new Exception(string.Format(
+					"{0}.{1}[string name_in]: can't find: {2}",
+					typeof(XS_SchemaCollection).Namespace,
+					typeof(XS_SchemaCollection).Name,
+					name_in
+				));
+			}
+		}
+		#endregion
+		public int Count {
+			get {
+				return schemas_.Length;
+			}
+		}
+	}
+
 	//[XmlRoot("xs___schema")]
 	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
 	[System.Xml.Serialization.XmlRootAttribute("schema", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
@@ -209,7 +249,7 @@ namespace OGen.XSD.lib.metadata {
 				} catch (Exception _ex) {
 					throw new Exception(string.Format(
 						"---\nERROR READING XML:\n{0}\n---\n{1}",
-						filePath_in,
+						filePath_in[i],
 						_ex.Message
 					));
 				}

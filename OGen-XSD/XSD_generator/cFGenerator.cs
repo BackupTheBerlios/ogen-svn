@@ -152,8 +152,8 @@ namespace OGen.XSD.lib.generator {
 				rootmetadata_.ExtendedMetadata.SaveState_toFile(
 					filenameextendedmetadata_
 				);
-				for (int i = 0; i < rootmetadata_.Schemas.Count; i++) {
-					rootmetadata_.Schemas[i].SaveState_toFile(
+				for (int i = 0; i < rootmetadata_.SchemaCollection.Count; i++) {
+					rootmetadata_.SchemaCollection[i].SaveState_toFile(
 						filename_[i]
 					);
 				}

@@ -42,21 +42,23 @@ using System.Xml.Serialization;
 using System.Collections;
 
 using OGen.lib.collections;<%
-for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%>
-using <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>;<%
+for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
+using <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>;<%
 }%>
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 	public class XS0__RootMetadata : iClaSSe_metadata {
 		public XS0__RootMetadata(<%
-		for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%>
-			string <%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>Filepath_in<%=(s == _aux_rootmetadata.Schemas.Count - 1) ? "" : ", " %><%
+		for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
+			string[] <%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Filepath_in<%=(s == _aux_rootmetadata.SchemaCollection.Count - 1) ? "" : ", " %><%
 		}%>
 		) {<%
-		for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%><%=""%>
-			<%=_aux_rootmetadata.Schemas[s].XS_Element.Name.ToLower()%>_ = XS__<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>.Load_fromFile(
-				<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>Filepath_in,
-				(XS__RootMetadata)this
+		for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%><%=""%>
+			<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToLower()%>collection_ = new XS__<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Collection(
+				XS__<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>.Load_fromFile(
+					(XS__RootMetadata)this, 
+					<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Filepath_in
+				)
 			);<%
 		}%>
 		}
@@ -75,16 +77,22 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 		#endregion
 		#region public static XS__RootMetadata Load_fromFile(...);
 		public static XS__RootMetadata Load_fromFile(<%
-		for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%>
-			string <%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>Filepath_in, <%
+		for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
+			string[] <%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Filepath_in, <%
 		}%>
 			bool useMetacache_in
 		) {
 			#region string _key = ...;
 			string _key = null;
 			if (useMetacache_in) {<%
-			for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%>
-				_key <%=(s == 0) ? "" : "+"%>= <%=(s == 0) ? "" : "\"|\" + "%><%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>Filepath_in;<%
+			for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
+				for (int i = 0; i < <%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Filepath_in.Length; i++) {
+					_key += string.Format(
+						"{0}{1}", 
+						(_key == null) ? "" : "|", 
+						<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Filepath_in[i]
+					);
+				}<%
 			}%>
 			}
 			#endregion
@@ -98,8 +106,8 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 				return (XS__RootMetadata)XS__RootMetadata.Metacache[_key];
 			} else {
 				XS__RootMetadata _rootmetadata = new XS__RootMetadata(<%
-				for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%><%=""%>
-					<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>Filepath_in<%=(s == _aux_rootmetadata.Schemas.Count - 1) ? "" : ", "%><%
+				for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%><%=""%>
+					<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Filepath_in<%=(s == _aux_rootmetadata.SchemaCollection.Count - 1) ? "" : ", "%><%
 				}%>
 				);
 				if (useMetacache_in) {
@@ -114,37 +122,56 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 		#endregion
 
 <%
-		for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%>
-		#region public XS__<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_rootmetadata.Schemas[s].XS_Element.Name)%> { get; }
-		private XS__<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%> <%=_aux_rootmetadata.Schemas[s].XS_Element.Name.ToLower()%>_;
+		for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
+		#region public XS__<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Collection <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_rootmetadata.SchemaCollection[s].XS_Element.Name)%>Collection { get; }
+		private XS__<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Collection <%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToLower()%>collection_;
 
-		public XS__<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_rootmetadata.Schemas[s].XS_Element.Name)%> {
-			get { return <%=_aux_rootmetadata.Schemas[s].XS_Element.Name.ToLower()%>_; }
+		public XS__<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Collection <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_rootmetadata.SchemaCollection[s].XS_Element.Name)%>Collection {
+			get { return <%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToLower()%>collection_; }
 		}
 		#endregion<%
 		}%>
 
-		#region private iClaSSe_metadata getMetadataFor(string forString_in);
-		private iClaSSe_metadata getMetadataFor(string forString_in) {<%
-			for (int s = 0; s < _aux_rootmetadata.Schemas.Count; s++) {%><%=""%>
-			<%=(s == 0) ? "" : " else "%>if (
-				forString_in.Substring(0, XS__<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>.ROOT_<%=_aux_rootmetadata.Schemas[s].XS_Element.Name.ToUpper()%>.Length)
-					== XS__<%=_aux_rootmetadata.Schemas[s].XS_Element.Name%>.ROOT_<%=_aux_rootmetadata.Schemas[s].XS_Element.Name.ToUpper()%>
-			) {
-				return <%=_aux_rootmetadata.Schemas[s].XS_Element.Name.ToLower()%>_;
-			}<%
-			}%> else {
-				throw new Exception(string.Format(
-					"can't handle: {0}",
-					forString_in
-				));
-			}
-		}
-		#endregion
+<%
+		for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
+		private const string ROOT_<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToUpper()%> = XS__<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>.ROOT + "." + XS__<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>.<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToUpper()%> + "[";<%
+		}%>
 
 		#region public string Read_fromRoot(...);
 		public string Read_fromRoot(string what_in) {
-			return getMetadataFor(what_in).Read_fromRoot(what_in);
+			string _begin;
+			string _indexstring;
+			string _end;
+
+			<%for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {
+			%><%=(s == 0) ? "" : " else "%>if (OGen.lib.generator.utils.rootExpression_TryParse(
+				what_in, 
+				ROOT_<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToUpper()%>, 
+				out _begin, 
+				out _indexstring, 
+				out _end
+			)) {
+				for (int i = 0; i < <%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToLower()%>collection_.Count; i++) {
+					if (
+						what_in.Substring(0, <%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToLower()%>collection_[i].Root_<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_rootmetadata.SchemaCollection[s].XS_Element.Name)%>.Length)
+							== <%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToLower()%>collection_[i].Root_<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_rootmetadata.SchemaCollection[s].XS_Element.Name)%>
+					) {
+						return <%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToLower()%>collection_[i].Read_fromRoot(string.Format(
+							"{0}{1}{2}",
+							_begin,
+							i,
+							_end
+						));
+					}
+				}
+			}<%
+			}%>
+			throw new Exception(string.Format(
+				"\n---\n{0}.{1}.Read_fromRoot(string what_in): can't handle: {2}\n---",
+				typeof(XS0__RootMetadata).Namespace,
+				typeof(XS0__RootMetadata).Name,
+				what_in
+			));
 		}
 		#endregion
 		#region public void IterateThrough_fromRoot(...);
@@ -152,12 +179,59 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 			string iteration_in, 
 			cClaSSe.dIteration_found iteration_found_in
 		) {
-			getMetadataFor(iteration_in).IterateThrough_fromRoot(
+			bool _didit = false;
+			string _begin;
+			string _indexstring;
+			string _end;<%
+			for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
+			if (OGen.lib.generator.utils.rootExpression_TryParse(
 				iteration_in,
-				iteration_found_in
-			);
+				ROOT_<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToUpper()%>,
+				out _begin, 
+				out _indexstring, 
+				out _end
+			)) {
+				if (_indexstring == "n") {
+					for (int i = 0; i < <%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToLower()%>collection_.Count; i++) {
+						<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToLower()%>collection_[i].IterateThrough_fromRoot(
+							string.Format(
+								"{0}{1}{2}",
+								_begin, 
+								i,
+								_end
+							), 
+							iteration_found_in
+						);
+					}
+					_didit = true;
+				} else {
+					int _indexint = int.Parse(_indexstring);
+					<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToLower()%>collection_[
+						_indexint
+					].IterateThrough_fromRoot(
+						string.Format(
+							"{0}{1}{2}",
+							_begin,
+							_indexint,
+							_end
+						),
+						iteration_found_in
+					);
+					_didit = true;
+				}
+			}<%
+			}%>
+			if (!_didit) {
+				throw new Exception(string.Format(
+					"\n---\n{0}.{1}.IterateThrough_fromRoot(...): can't handle: {2}\n---",
+					typeof(XS0__RootMetadata).Namespace,
+					typeof(XS0__RootMetadata).Name,
+					iteration_in
+				));
+			}
 		}
 		#endregion
+
 	}
 }<%
 //-----------------------------------------------------------------------------------------

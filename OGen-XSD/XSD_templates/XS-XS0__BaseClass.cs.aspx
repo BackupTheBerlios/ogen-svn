@@ -27,7 +27,7 @@ RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
 	_arg_SchemaFilepath,
 	_arg_Schema2Filepath
 );
-XS_Schema _aux_schema = _aux_rootmetadata.Schemas[_arg_SchemaName];
+XS_Schema _aux_schema = _aux_rootmetadata.SchemaCollection[_arg_SchemaName];
 #endregion
 //-----------------------------------------------------------------------------------------
 if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_rootmetadata.ExtendedMetadata.CopyrightTextLong != string.Empty)) {
@@ -46,47 +46,100 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%> {
+	public class XS__<%=_aux_schema.XS_Element.Name%>Collection {
+		public XS__<%=_aux_schema.XS_Element.Name%>Collection(
+			XS__<%=_aux_schema.XS_Element.Name%>[] <%=_aux_schema.XS_Element.Name.ToLower()%>collection_in
+		) {
+			<%=_aux_schema.XS_Element.Name.ToLower()%>collection_ = <%=_aux_schema.XS_Element.Name.ToLower()%>collection_in;
+		}
+
+		#region public XS__<%=_aux_schema.XS_Element.Name%> this[...] { get; }
+		private XS__<%=_aux_schema.XS_Element.Name%>[] <%=_aux_schema.XS_Element.Name.ToLower()%>collection_;
+
+		public XS__<%=_aux_schema.XS_Element.Name%> this[int index_in] {
+			get {
+				return <%=_aux_schema.XS_Element.Name.ToLower()%>collection_[index_in];
+			}
+		}
+		public XS__<%=_aux_schema.XS_Element.Name%> this[string name_in] {
+			get {
+				// ToDos: later! performance
+
+				for (int i = 0; i < <%=_aux_schema.XS_Element.Name.ToLower()%>collection_.Length; i++) {
+					if (<%=_aux_schema.XS_Element.Name.ToLower()%>collection_[i].<%=_aux_rootmetadata.ExtendedMetadata.MetadataIndex[_aux_schema.XS_Element.Name].Index%> == name_in) {
+						return <%=_aux_schema.XS_Element.Name.ToLower()%>collection_[i];
+					}
+				}
+				throw new Exception(string.Format(
+					"{0}.{1}[string name_in]: can't find: {2}",
+					typeof(XS__<%=_aux_schema.XS_Element.Name%>Collection).Namespace, 
+					typeof(XS__<%=_aux_schema.XS_Element.Name%>Collection).Name, 
+					name_in
+				));
+			}
+		}
+		#endregion
+		public int Count { get {
+			return <%=_aux_schema.XS_Element.Name.ToLower()%>collection_.Length;
+		} }
+	}
+
 	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
 	[System.Xml.Serialization.XmlRootAttribute("<%=_aux_schema.XS_Element.Name%>", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
 	public class XS0__<%=_aux_schema.XS_Element.Name%> : XS_<%=_aux_schema.XS_Element.Type%>, iClaSSe_metadata {
 
 		public const string <%=_aux_schema.XS_Element.Name.ToUpper()%> = "<%=_aux_schema.XS_Element.Name%>";
-		public const string ROOT_<%=_aux_schema.XS_Element.Name.ToUpper()%> = "ROOT." + <%=_aux_schema.XS_Element.Name.ToUpper()%>;
+		public const string ROOT = "ROOT";
+		public const string ROOT_<%=_aux_schema.XS_Element.Name.ToUpper()%> = ROOT + "." + <%=_aux_schema.XS_Element.Name.ToUpper()%>;
+		#region public string Root_<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_schema.XS_Element.Name)%> { get; }
+		private string root_<%=_aux_schema.XS_Element.Name.ToLower()%>_ = null;
 
-		#region public static XS__<%=_aux_schema.XS_Element.Name%> Load_fromFile(...);
-		public static XS__<%=_aux_schema.XS_Element.Name%> Load_fromFile(
-			string filePath_in
+		[XmlIgnore()]
+		public string Root_<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_schema.XS_Element.Name)%> {
+			get { return root_<%=_aux_schema.XS_Element.Name.ToLower()%>_; }
+		}
+		#endregion
+
+		#region public static XS__<%=_aux_schema.XS_Element.Name%>[] Load_fromFile(...);
+		public static XS__<%=_aux_schema.XS_Element.Name%>[] Load_fromFile(
+			params string[] filePath_in
 		) {
 			return Load_fromFile(
-				filePath_in,
-				null
+				null, 
+				filePath_in
 			);
 		}
-		public static XS__<%=_aux_schema.XS_Element.Name%> Load_fromFile(
-			string filePath_in,
-			XS__RootMetadata root_ref_in
+		public static XS__<%=_aux_schema.XS_Element.Name%>[] Load_fromFile(
+			XS__RootMetadata root_ref_in, 
+			params string[] filePath_in
 		) {
-			FileStream _stream = new FileStream(
-				filePath_in,
-				FileMode.Open,
-				FileAccess.Read,
-				FileShare.Read
-			);
+			FileStream _stream;
+			XS__<%=_aux_schema.XS_Element.Name%>[] _output 
+				= new XS__<%=_aux_schema.XS_Element.Name%>[filePath_in.Length];
 
-			XS__<%=_aux_schema.XS_Element.Name%> _output;
-			try {
-				_output = (XS__<%=_aux_schema.XS_Element.Name%>)new XmlSerializer(typeof(XS__<%=_aux_schema.XS_Element.Name%>)).Deserialize(
-					_stream
+			for (int i = 0; i < filePath_in.Length; i++) {
+				_stream = new FileStream(
+					filePath_in[i],
+					FileMode.Open,
+					FileAccess.Read,
+					FileShare.Read
 				);
-			} catch (Exception _ex) {
-				throw new Exception(string.Format(
-					"---\nERROR READING XML:\n{0}\n---\n{1}",
-					filePath_in,
-					_ex.Message
-				));
-			}
 
-			if (root_ref_in != null) _output.root_ref = root_ref_in;
+				try {
+					_output[i] = (XS__<%=_aux_schema.XS_Element.Name%>)new XmlSerializer(typeof(XS__<%=_aux_schema.XS_Element.Name%>)).Deserialize(
+						_stream
+					);
+					_output[i].root_<%=_aux_schema.XS_Element.Name.ToLower()%>_ = ROOT + "." + <%=_aux_schema.XS_Element.Name.ToUpper()%> + "[" + i + "]";
+				} catch (Exception _ex) {
+					throw new Exception(string.Format(
+						"---\nERROR READING XML:\n{0}\n---\n{1}",
+						filePath_in[i],
+						_ex.Message
+					));
+				}
+
+				if (root_ref_in != null) _output[i].root_ref = root_ref_in;
+			}
 			return _output;
 		}
 		#endregion

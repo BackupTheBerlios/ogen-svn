@@ -16,16 +16,20 @@ using OGen.NTier.lib.metadata.someTest;
 namespace OGen.NTier.lib.metadata {
 	public class XS0__RootMetadata : iClaSSe_metadata {
 		public XS0__RootMetadata(
-			string metadataFilepath_in, 
-			string someTestFilepath_in
+			string[] metadataFilepath_in, 
+			string[] someTestFilepath_in
 		) {
-			metadata_ = XS__metadata.Load_fromFile(
-				metadataFilepath_in,
-				(XS__RootMetadata)this
+			metadatacollection_ = new XS__metadataCollection(
+				XS__metadata.Load_fromFile(
+					(XS__RootMetadata)this, 
+					metadataFilepath_in
+				)
 			);
-			sometest_ = XS__someTest.Load_fromFile(
-				someTestFilepath_in,
-				(XS__RootMetadata)this
+			sometestcollection_ = new XS__someTestCollection(
+				XS__someTest.Load_fromFile(
+					(XS__RootMetadata)this, 
+					someTestFilepath_in
+				)
 			);
 		}
 
@@ -43,15 +47,27 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 		#region public static XS__RootMetadata Load_fromFile(...);
 		public static XS__RootMetadata Load_fromFile(
-			string metadataFilepath_in, 
-			string someTestFilepath_in, 
+			string[] metadataFilepath_in, 
+			string[] someTestFilepath_in, 
 			bool useMetacache_in
 		) {
 			#region string _key = ...;
 			string _key = null;
 			if (useMetacache_in) {
-				_key = metadataFilepath_in;
-				_key += "|" + someTestFilepath_in;
+				for (int i = 0; i < metadataFilepath_in.Length; i++) {
+					_key += string.Format(
+						"{0}{1}", 
+						(_key == null) ? "" : "|", 
+						metadataFilepath_in[i]
+					);
+				}
+				for (int i = 0; i < someTestFilepath_in.Length; i++) {
+					_key += string.Format(
+						"{0}{1}", 
+						(_key == null) ? "" : "|", 
+						someTestFilepath_in[i]
+					);
+				}
 			}
 			#endregion
 			if (
@@ -79,46 +95,76 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 
 
-		#region public XS__metadata Metadata { get; }
-		private XS__metadata metadata_;
+		#region public XS__metadataCollection MetadataCollection { get; }
+		private XS__metadataCollection metadatacollection_;
 
-		public XS__metadata Metadata {
-			get { return metadata_; }
+		public XS__metadataCollection MetadataCollection {
+			get { return metadatacollection_; }
 		}
 		#endregion
-		#region public XS__someTest SomeTest { get; }
-		private XS__someTest sometest_;
+		#region public XS__someTestCollection SomeTestCollection { get; }
+		private XS__someTestCollection sometestcollection_;
 
-		public XS__someTest SomeTest {
-			get { return sometest_; }
+		public XS__someTestCollection SomeTestCollection {
+			get { return sometestcollection_; }
 		}
 		#endregion
-
-		#region private iClaSSe_metadata getMetadataFor(string forString_in);
-		private iClaSSe_metadata getMetadataFor(string forString_in) {
-			if (
-				forString_in.Substring(0, XS__metadata.ROOT_METADATA.Length)
-					== XS__metadata.ROOT_METADATA
-			) {
-				return metadata_;
-			}
-			 else if (
-				forString_in.Substring(0, XS__someTest.ROOT_SOMETEST.Length)
-					== XS__someTest.ROOT_SOMETEST
-			) {
-				return sometest_;
-			} else {
-				throw new Exception(string.Format(
-					"can't handle: {0}",
-					forString_in
-				));
-			}
-		}
-		#endregion
+		private const string ROOT_METADATA = XS__metadata.ROOT + "." + XS__metadata.METADATA + "[";
+		private const string ROOT_SOMETEST = XS__someTest.ROOT + "." + XS__someTest.SOMETEST + "[";
 
 		#region public string Read_fromRoot(...);
 		public string Read_fromRoot(string what_in) {
-			return getMetadataFor(what_in).Read_fromRoot(what_in);
+			string _begin;
+			string _indexstring;
+			string _end;
+
+			if (OGen.lib.generator.utils.rootExpression_TryParse(
+				what_in, 
+				ROOT_METADATA, 
+				out _begin, 
+				out _indexstring, 
+				out _end
+			)) {
+				for (int i = 0; i < metadatacollection_.Count; i++) {
+					if (
+						what_in.Substring(0, metadatacollection_[i].Root_Metadata.Length)
+							== metadatacollection_[i].Root_Metadata
+					) {
+						return metadatacollection_[i].Read_fromRoot(string.Format(
+							"{0}{1}{2}",
+							_begin,
+							i,
+							_end
+						));
+					}
+				}
+			} else if (OGen.lib.generator.utils.rootExpression_TryParse(
+				what_in, 
+				ROOT_SOMETEST, 
+				out _begin, 
+				out _indexstring, 
+				out _end
+			)) {
+				for (int i = 0; i < sometestcollection_.Count; i++) {
+					if (
+						what_in.Substring(0, sometestcollection_[i].Root_SomeTest.Length)
+							== sometestcollection_[i].Root_SomeTest
+					) {
+						return sometestcollection_[i].Read_fromRoot(string.Format(
+							"{0}{1}{2}",
+							_begin,
+							i,
+							_end
+						));
+					}
+				}
+			}
+			throw new Exception(string.Format(
+				"\n---\n{0}.{1}.Read_fromRoot(string what_in): can't handle: {2}\n---",
+				typeof(XS0__RootMetadata).Namespace,
+				typeof(XS0__RootMetadata).Name,
+				what_in
+			));
 		}
 		#endregion
 		#region public void IterateThrough_fromRoot(...);
@@ -126,11 +172,92 @@ namespace OGen.NTier.lib.metadata {
 			string iteration_in, 
 			cClaSSe.dIteration_found iteration_found_in
 		) {
-			getMetadataFor(iteration_in).IterateThrough_fromRoot(
+			bool _didit = false;
+			string _begin;
+			string _indexstring;
+			string _end;
+			if (OGen.lib.generator.utils.rootExpression_TryParse(
 				iteration_in,
-				iteration_found_in
-			);
+				ROOT_METADATA,
+				out _begin, 
+				out _indexstring, 
+				out _end
+			)) {
+				if (_indexstring == "n") {
+					for (int i = 0; i < metadatacollection_.Count; i++) {
+						metadatacollection_[i].IterateThrough_fromRoot(
+							string.Format(
+								"{0}{1}{2}",
+								_begin, 
+								i,
+								_end
+							), 
+							iteration_found_in
+						);
+					}
+					_didit = true;
+				} else {
+					int _indexint = int.Parse(_indexstring);
+					metadatacollection_[
+						_indexint
+					].IterateThrough_fromRoot(
+						string.Format(
+							"{0}{1}{2}",
+							_begin,
+							_indexint,
+							_end
+						),
+						iteration_found_in
+					);
+					_didit = true;
+				}
+			}
+			if (OGen.lib.generator.utils.rootExpression_TryParse(
+				iteration_in,
+				ROOT_SOMETEST,
+				out _begin, 
+				out _indexstring, 
+				out _end
+			)) {
+				if (_indexstring == "n") {
+					for (int i = 0; i < sometestcollection_.Count; i++) {
+						sometestcollection_[i].IterateThrough_fromRoot(
+							string.Format(
+								"{0}{1}{2}",
+								_begin, 
+								i,
+								_end
+							), 
+							iteration_found_in
+						);
+					}
+					_didit = true;
+				} else {
+					int _indexint = int.Parse(_indexstring);
+					sometestcollection_[
+						_indexint
+					].IterateThrough_fromRoot(
+						string.Format(
+							"{0}{1}{2}",
+							_begin,
+							_indexint,
+							_end
+						),
+						iteration_found_in
+					);
+					_didit = true;
+				}
+			}
+			if (!_didit) {
+				throw new Exception(string.Format(
+					"\n---\n{0}.{1}.IterateThrough_fromRoot(...): can't handle: {2}\n---",
+					typeof(XS0__RootMetadata).Namespace,
+					typeof(XS0__RootMetadata).Name,
+					iteration_in
+				));
+			}
 		}
 		#endregion
+
 	}
 }

@@ -12,47 +12,100 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadata {
+	public class XS__metadataCollection {
+		public XS__metadataCollection(
+			XS__metadata[] metadatacollection_in
+		) {
+			metadatacollection_ = metadatacollection_in;
+		}
+
+		#region public XS__metadata this[...] { get; }
+		private XS__metadata[] metadatacollection_;
+
+		public XS__metadata this[int index_in] {
+			get {
+				return metadatacollection_[index_in];
+			}
+		}
+		public XS__metadata this[string name_in] {
+			get {
+				// ToDos: later! performance
+
+				for (int i = 0; i < metadatacollection_.Length; i++) {
+					if (metadatacollection_[i].ApplicationName == name_in) {
+						return metadatacollection_[i];
+					}
+				}
+				throw new Exception(string.Format(
+					"{0}.{1}[string name_in]: can't find: {2}",
+					typeof(XS__metadataCollection).Namespace, 
+					typeof(XS__metadataCollection).Name, 
+					name_in
+				));
+			}
+		}
+		#endregion
+		public int Count { get {
+			return metadatacollection_.Length;
+		} }
+	}
+
 	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
 	[System.Xml.Serialization.XmlRootAttribute("metadata", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
 	public class XS0__metadata : XS_metadataType, iClaSSe_metadata {
 
 		public const string METADATA = "metadata";
-		public const string ROOT_METADATA = "ROOT." + METADATA;
+		public const string ROOT = "ROOT";
+		public const string ROOT_METADATA = ROOT + "." + METADATA;
+		#region public string Root_Metadata { get; }
+		private string root_metadata_ = null;
 
-		#region public static XS__metadata Load_fromFile(...);
-		public static XS__metadata Load_fromFile(
-			string filePath_in
+		[XmlIgnore()]
+		public string Root_Metadata {
+			get { return root_metadata_; }
+		}
+		#endregion
+
+		#region public static XS__metadata[] Load_fromFile(...);
+		public static XS__metadata[] Load_fromFile(
+			params string[] filePath_in
 		) {
 			return Load_fromFile(
-				filePath_in,
-				null
+				null, 
+				filePath_in
 			);
 		}
-		public static XS__metadata Load_fromFile(
-			string filePath_in,
-			XS__RootMetadata root_ref_in
+		public static XS__metadata[] Load_fromFile(
+			XS__RootMetadata root_ref_in, 
+			params string[] filePath_in
 		) {
-			FileStream _stream = new FileStream(
-				filePath_in,
-				FileMode.Open,
-				FileAccess.Read,
-				FileShare.Read
-			);
+			FileStream _stream;
+			XS__metadata[] _output 
+				= new XS__metadata[filePath_in.Length];
 
-			XS__metadata _output;
-			try {
-				_output = (XS__metadata)new XmlSerializer(typeof(XS__metadata)).Deserialize(
-					_stream
+			for (int i = 0; i < filePath_in.Length; i++) {
+				_stream = new FileStream(
+					filePath_in[i],
+					FileMode.Open,
+					FileAccess.Read,
+					FileShare.Read
 				);
-			} catch (Exception _ex) {
-				throw new Exception(string.Format(
-					"---\nERROR READING XML:\n{0}\n---\n{1}",
-					filePath_in,
-					_ex.Message
-				));
-			}
 
-			if (root_ref_in != null) _output.root_ref = root_ref_in;
+				try {
+					_output[i] = (XS__metadata)new XmlSerializer(typeof(XS__metadata)).Deserialize(
+						_stream
+					);
+					_output[i].root_metadata_ = ROOT + "." + METADATA + "[" + i + "]";
+				} catch (Exception _ex) {
+					throw new Exception(string.Format(
+						"---\nERROR READING XML:\n{0}\n---\n{1}",
+						filePath_in[i],
+						_ex.Message
+					));
+				}
+
+				if (root_ref_in != null) _output[i].root_ref = root_ref_in;
+			}
 			return _output;
 		}
 		#endregion

@@ -48,6 +48,7 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="extendedMetadatas\ExtendedMetadata.cs" />
     <Compile Include="extendedMetadatas\ExtendedMetadata_caseTypeEnum.cs" />
+    <Compile Include="extendedMetadatas\ExtendedMetadata_metadataIndex.cs" />
     <Compile Include="extendedMetadatas\ExtendedMetadata_specificCase.cs" />
     <Compile Include="extendedMetadatas\ExtendedMetadata_collection.cs" />
     <Compile Include="RootMetadata.cs" />

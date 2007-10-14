@@ -27,7 +27,7 @@ RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
 	_arg_SchemaFilepath,
 	_arg_Schema2Filepath
 );
-XS_Schema _aux_schema = _aux_rootmetadata.Schemas[_arg_SchemaName];
+XS_Schema _aux_schema = _aux_rootmetadata.SchemaCollection[_arg_SchemaName];
 #endregion
 //-----------------------------------------------------------------------------------------
 if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_rootmetadata.ExtendedMetadata.CopyrightTextLong != string.Empty)) {

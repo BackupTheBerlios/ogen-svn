@@ -111,7 +111,7 @@ namespace OGen.XSD.lib.metadata {
 		public string isCollection_nameIt(
 			string schemaName_in
 		) {
-			XS_Schema _schema = root_ref_.Schemas[schemaName_in];
+			XS_Schema _schema = root_ref_.SchemaCollection[schemaName_in];
 
 			for (int c = 0; c < _schema.XS_ComplexType.Count; c++) {
 				for (int e = 0; e < _schema.XS_ComplexType[c].XS_Sequence.XS_Element.Count; e++) {
