@@ -101,6 +101,19 @@ namespace OGen.XSD.lib.metadata {
 			}
 		}
 		#endregion
+		#region public bool AllowSettersOnObjects { get; set; }
+		private bool allowsettersonobjects_;
+
+		[XmlAttribute("allowSettersOnObjects")]
+		public bool AllowSettersOnObjects {
+			get {
+				return allowsettersonobjects_;
+			}
+			set {
+				allowsettersonobjects_ = value;
+			}
+		}
+		#endregion
 		#region public string Prefix { get; set; }
 		private string prefix_;
 
