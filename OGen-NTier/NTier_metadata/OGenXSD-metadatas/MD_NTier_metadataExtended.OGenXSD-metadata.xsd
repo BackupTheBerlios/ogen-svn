@@ -247,7 +247,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="metadataType">
+	<xs:complexType name="metadataExtendedType">
 		<xs:attribute name="applicationName" type="xs:string" />
 		<xs:attribute name="applicationNamespace" type="xs:string" />
 		<xs:attribute name="subAppName" type="xs:string" />
@@ -268,5 +268,5 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:element name="metadataExtended" type="metadataType" />
+	<xs:element name="metadataExtended" type="metadataExtendedType" />
 </xs:schema>

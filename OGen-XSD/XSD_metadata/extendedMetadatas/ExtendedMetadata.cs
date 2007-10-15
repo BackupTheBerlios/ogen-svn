@@ -182,7 +182,7 @@ namespace OGen.XSD.lib.metadata {
 		#region public string CopyrightTextLong { get; set; }
 		private string copyrighttextlong_;
 
-		[XmlAttribute("copyrightTextLong")]
+		[XmlElement("copyrightTextLong")]
 		public string CopyrightTextLong {
 			get {
 				return copyrighttextlong_;

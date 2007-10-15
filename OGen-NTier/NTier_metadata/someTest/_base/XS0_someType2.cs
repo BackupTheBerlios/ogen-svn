@@ -1,7 +1,14 @@
 #region Copyright (C) 2002 Francisco Monteiro
 /*
 
-OGen Copyright (c) 2002 Francisco Monteiro  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+OGen
+Copyright (c) 2002 Francisco Monteiro
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 */
 #endregion
@@ -14,7 +21,7 @@ namespace OGen.NTier.lib.metadata.someTest {
 	public class XS0_someType2 : OGenRootrefCollectionInterface<XS__RootMetadata>  {
 		public XS0_someType2 (
 		) {
-			xs_somecollection_ 
+			somecollection_ 
 				= new OGenRootrefSimpleCollection<XS_someType1, XS__RootMetadata>();
 		}
 
@@ -25,8 +32,8 @@ namespace OGen.NTier.lib.metadata.someTest {
 		public XS__RootMetadata root_ref {
 			set {
 				root_ref_ = value;
-				xs_somecollection_.root_ref = value;
-				if (xs_someitem__ != null) xs_someitem__.root_ref = value;
+				somecollection_.root_ref = value;
+				if (someitem__ != null) someitem__.root_ref = value;
 			}
 			get { return root_ref_; }
 		}
@@ -58,40 +65,40 @@ namespace OGen.NTier.lib.metadata.someTest {
 		}
 		#endregion
 		#region public OGenRootrefSimpleCollection<XS_someType1, XS__RootMetadata> SomeCollection { get; }
-		private OGenRootrefSimpleCollection<XS_someType1, XS__RootMetadata> xs_somecollection_;
+		private OGenRootrefSimpleCollection<XS_someType1, XS__RootMetadata> somecollection_;
 			//= new OGenRootrefSimpleCollection<XS_someType1, XS__RootMetadata>();
 
 		[XmlElement("someCollection")]
-		public XS_someType1[] xs_somecollection__xml {
-			get { return xs_somecollection_.cols__; }
-			set { xs_somecollection_.cols__ = value; }
+		public XS_someType1[] somecollection__xml {
+			get { return somecollection_.cols__; }
+			set { somecollection_.cols__ = value; }
 		}
 
 		[XmlIgnore()]
 		public OGenRootrefSimpleCollection<XS_someType1, XS__RootMetadata> SomeCollection {
-			get { return xs_somecollection_; }
+			get { return somecollection_; }
 		}
 		#endregion
 		#region public XS_someType1 SomeItem { get; set; }
-		private XS_someType1 xs_someitem__;
+		private XS_someType1 someitem__;
 
 		[XmlIgnore()]
 		public XS_someType1 SomeItem {
 			get {
-				if (xs_someitem__ == null) {
-					xs_someitem__ = new XS_someType1();
+				if (someitem__ == null) {
+					someitem__ = new XS_someType1();
 				}
-				return xs_someitem__;
+				return someitem__;
 			}
 			set {
-				xs_someitem__ = value;
+				someitem__ = value;
 			}
 		}
 
-		[XmlElement("someitem")]
-		public XS_someType1 xs_someitem__xml {
-			get { return xs_someitem__; }
-			set { xs_someitem__ = value; }
+		[XmlElement("someItem")]
+		public XS_someType1 someitem__xml {
+			get { return someitem__; }
+			set { someitem__ = value; }
 		}
 		#endregion
 	}

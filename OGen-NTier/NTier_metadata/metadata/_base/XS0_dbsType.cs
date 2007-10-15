@@ -1,7 +1,14 @@
 #region Copyright (C) 2002 Francisco Monteiro
 /*
 
-OGen Copyright (c) 2002 Francisco Monteiro  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+OGen
+Copyright (c) 2002 Francisco Monteiro
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 */
 #endregion
@@ -14,7 +21,7 @@ namespace OGen.NTier.lib.metadata.metadata {
 	public class XS0_dbsType : OGenRootrefCollectionInterface<XS__RootMetadata>  {
 		public XS0_dbsType (
 		) {
-			xs_db_ 
+			db_ 
 				= new OGenRootrefCollection<XS_dbType, XS__RootMetadata>();
 		}
 
@@ -25,24 +32,24 @@ namespace OGen.NTier.lib.metadata.metadata {
 		public XS__RootMetadata root_ref {
 			set {
 				root_ref_ = value;
-				xs_db_.root_ref = value;
+				db_.root_ref = value;
 			}
 			get { return root_ref_; }
 		}
 		#endregion
 		#region public OGenRootrefCollection<XS_dbType, XS__RootMetadata> DB { get; }
-		private OGenRootrefCollection<XS_dbType, XS__RootMetadata> xs_db_;
+		private OGenRootrefCollection<XS_dbType, XS__RootMetadata> db_;
 			//= new OGenRootrefCollection<XS_dbType, XS__RootMetadata>();
 
 		[XmlElement("db")]
-		public XS_dbType[] xs_db__xml {
-			get { return xs_db_.cols__; }
-			set { xs_db_.cols__ = value; }
+		public XS_dbType[] db__xml {
+			get { return db_.cols__; }
+			set { db_.cols__ = value; }
 		}
 
 		[XmlIgnore()]
 		public OGenRootrefCollection<XS_dbType, XS__RootMetadata> DB {
-			get { return xs_db_; }
+			get { return db_; }
 		}
 		#endregion
 	}

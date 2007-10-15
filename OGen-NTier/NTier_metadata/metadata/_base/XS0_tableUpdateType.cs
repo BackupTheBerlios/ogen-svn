@@ -1,7 +1,14 @@
 #region Copyright (C) 2002 Francisco Monteiro
 /*
 
-OGen Copyright (c) 2002 Francisco Monteiro  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+OGen
+Copyright (c) 2002 Francisco Monteiro
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 */
 #endregion
@@ -37,7 +44,7 @@ namespace OGen.NTier.lib.metadata.metadata {
 		public XS__RootMetadata root_ref {
 			set {
 				root_ref_ = value;
-				if (xs_tableupdateparameters__ != null) xs_tableupdateparameters__.root_ref = value;
+				if (tableupdateparameters__ != null) tableupdateparameters__.root_ref = value;
 			}
 			get { return root_ref_; }
 		}
@@ -56,25 +63,25 @@ namespace OGen.NTier.lib.metadata.metadata {
 		}
 		#endregion
 		#region public XS_tableUpdateParametersType TableUpdateParameters { get; set; }
-		private XS_tableUpdateParametersType xs_tableupdateparameters__;
+		private XS_tableUpdateParametersType tableupdateparameters__;
 
 		[XmlIgnore()]
 		public XS_tableUpdateParametersType TableUpdateParameters {
 			get {
-				if (xs_tableupdateparameters__ == null) {
-					xs_tableupdateparameters__ = new XS_tableUpdateParametersType();
+				if (tableupdateparameters__ == null) {
+					tableupdateparameters__ = new XS_tableUpdateParametersType();
 				}
-				return xs_tableupdateparameters__;
+				return tableupdateparameters__;
 			}
 			set {
-				xs_tableupdateparameters__ = value;
+				tableupdateparameters__ = value;
 			}
 		}
 
-		[XmlElement("tableupdateparameters")]
-		public XS_tableUpdateParametersType xs_tableupdateparameters__xml {
-			get { return xs_tableupdateparameters__; }
-			set { xs_tableupdateparameters__ = value; }
+		[XmlElement("tableUpdateParameters")]
+		public XS_tableUpdateParametersType tableupdateparameters__xml {
+			get { return tableupdateparameters__; }
+			set { tableupdateparameters__ = value; }
 		}
 		#endregion
 	}

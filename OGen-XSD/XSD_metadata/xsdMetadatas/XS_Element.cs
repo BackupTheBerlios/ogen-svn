@@ -53,6 +53,17 @@ namespace OGen.XSD.lib.metadata {
 			get { return Name; }
 		}
 		#endregion
+		#region //public string NType { get; set; }
+		//[XmlIgnore()]
+		//public string NType {
+		//    get {
+		//        return utils.Convert_NType(
+		//            root_ref,
+		//            type_
+		//        );
+		//    }
+		//}
+		#endregion
 
 		#region public string Name { get; set; }
 		private string name_;

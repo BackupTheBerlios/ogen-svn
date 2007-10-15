@@ -54,32 +54,10 @@ namespace OGen.XSD.lib.metadata {
 		[XmlIgnore()]
 		public string NType {
 			get {
-				switch (type_) {
-					case "xs:string":
-						return "string";
-					case "xs:decimal":
-						return "decimal";
-					case "xs:integer":
-						return "int";
-					case "xs:boolean":
-						return "bool";
-					case "xs:time":
-					case "xs:date":
-						return "DateTime";
-
-					default:
-#if DEBUG
-						return string.Format(
-							"XS_{0}",
-							(root_ref == null)
-								? type_
-								: root_ref.ExtendedMetadata.CaseTranslate(type_)
-						);
-#else
-						throw new Exception("XS_Attribute.NType: - not implemented!");
-						return string.Empty;
-#endif
-				}
+				return utils.Convert_NType(
+					root_ref,
+					type_
+				);
 			}
 		}
 		#endregion

@@ -52,6 +52,7 @@
     <Compile Include="extendedMetadatas\ExtendedMetadata_specificCase.cs" />
     <Compile Include="extendedMetadatas\ExtendedMetadata_collection.cs" />
     <Compile Include="RootMetadata.cs" />
+    <Compile Include="xsdMetadatas\utils.cs" />
     <Compile Include="xsdMetadatas\XS_Attribute.cs" />
     <Compile Include="xsdMetadatas\XS_ComplexType.cs" />
     <Compile Include="xsdMetadatas\XS_Element.cs" />

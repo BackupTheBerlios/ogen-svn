@@ -179,12 +179,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:complexType name="metadataType">
+	<xs:complexType name="metadataDBType">
 		<xs:sequence>
 			<xs:element name="dbs" type="dbsType" />
 			<xs:element name="tables" type="tablesType" />
 		</xs:sequence>
 	</xs:complexType>
 
-	<xs:element name="metadataDB" type="metadataType" />
+	<xs:element name="metadataDB" type="metadataDBType" />
 </xs:schema>
