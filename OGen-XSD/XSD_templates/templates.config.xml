@@ -24,7 +24,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<conditions />
 		<outputs>
 			<!-- ${ROOT.metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/_base/XS0_${ROOT.schema[n].simpleType[n].name}.cs" 
+			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/_base/${ROOT.metadata.prefixGenerated}${ROOT.schema[n].simpleType[n].name}.cs" 
 				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
@@ -42,7 +42,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<conditions />
 		<outputs>
 			<!-- ${ROOT.metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/_base/XS0_${ROOT.schema[n].complexType[n].name}.cs" 
+			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/_base/${ROOT.metadata.prefixGenerated}${ROOT.schema[n].complexType[n].name}.cs" 
 				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
@@ -60,7 +60,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<conditions />
 		<outputs>
 			<!-- ${ROOT.metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/XS_${ROOT.schema[n].complexType[n].name}.cs" 
+			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/${ROOT.metadata.prefix}${ROOT.schema[n].complexType[n].name}.cs" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies>
@@ -79,7 +79,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<conditions />
 		<outputs>
 			<!-- ${ROOT.metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/_base/XS0__${ROOT.schema[n].element.name}.cs" 
+			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/_base/${ROOT.metadata.prefixGenerated}_${ROOT.schema[n].element.name}.cs" 
 				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
@@ -96,7 +96,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<conditions />
 		<outputs>
 			<!-- ${ROOT.metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/XS__${ROOT.schema[n].element.name}.cs" 
+			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/${ROOT.metadata.prefix}_${ROOT.schema[n].element.name}.cs" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies>
@@ -109,7 +109,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 
-iterationType="ROOT.schema[1]">
+iterationType="ROOT.schema[0]">
 <!--
 iterationType="ROOT.schema">
 -->
@@ -125,7 +125,7 @@ iterationType="ROOT.schema">
 		<conditions />
 		<outputs>
 			<!-- ${ROOT.metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/_base/XS0__RootMetadata.cs" 
+			<output to="${CONFIG.outputPath}/_base/${ROOT.metadata.prefixGenerated}_RootMetadata.cs" 
 				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
@@ -136,7 +136,7 @@ iterationType="ROOT.schema">
 
 
 
-iterationType="ROOT.schema[1]">
+iterationType="ROOT.schema[0]">
 <!--
 iterationType="ROOT.schema">
 -->
@@ -152,7 +152,7 @@ iterationType="ROOT.schema">
 		<conditions />
 		<outputs>
 			<!-- ${ROOT.metadata.applicationName} -->
-			<output to="${CONFIG.outputPath}/XS__RootMetadata.cs" 
+			<output to="${CONFIG.outputPath}/${ROOT.metadata.prefix}_RootMetadata.cs" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
 		<dependencies>

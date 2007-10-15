@@ -49,7 +49,7 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%> {
-	public enum XS_<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_arg_SimpleTypeName)%> {<%
+	public enum <%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_arg_SimpleTypeName)%> {<%
 	for (int e = 0; e < _aux_enumeration.Count; e++) {%><%=""%>
 		<%=_aux_enumeration[e].Value%> = <%=e.ToString()%>, <%
 	}%>

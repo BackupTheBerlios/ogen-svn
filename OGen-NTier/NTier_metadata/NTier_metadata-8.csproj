@@ -269,6 +269,11 @@
       <Project>{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}</Project>
       <Name>OGen_webforms-8</Name>
     </ProjectReference>
+    <Folder Include="metadata" />
+    <Folder Include="metadata\_base" />
+    <Folder Include="someTest" />
+    <Folder Include="someTest\_base" />
+    <Folder Include="_base" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -47,16 +47,16 @@ using <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.Sch
 }%>
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
-	public class XS0__RootMetadata : iClaSSe_metadata {
-		public XS0__RootMetadata(<%
+	public class <%=_aux_rootmetadata.ExtendedMetadata.PrefixGenerated%>_RootMetadata : iClaSSe_metadata {
+		public <%=_aux_rootmetadata.ExtendedMetadata.PrefixGenerated%>_RootMetadata(<%
 		for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
 			string[] <%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Filepath_in<%=(s == _aux_rootmetadata.SchemaCollection.Count - 1) ? "" : ", " %><%
 		}%>
 		) {<%
 		for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%><%=""%>
-			<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToLower()%>collection_ = new XS__<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Collection(
-				XS__<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>.Load_fromFile(
-					(XS__RootMetadata)this, 
+			<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToLower()%>collection_ = new <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Collection(
+				<%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>.Load_fromFile(
+					(<%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata)this, 
 					<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Filepath_in
 				)
 			);<%
@@ -75,8 +75,8 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 			}
 		}
 		#endregion
-		#region public static XS__RootMetadata Load_fromFile(...);
-		public static XS__RootMetadata Load_fromFile(<%
+		#region public static <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata Load_fromFile(...);
+		public static <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata Load_fromFile(<%
 		for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
 			string[] <%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Filepath_in, <%
 		}%>
@@ -103,15 +103,15 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 				&&
 				Metacache.Contains(_key)
 			) {
-				return (XS__RootMetadata)XS__RootMetadata.Metacache[_key];
+				return (<%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata)<%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata.Metacache[_key];
 			} else {
-				XS__RootMetadata _rootmetadata = new XS__RootMetadata(<%
+				<%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata _rootmetadata = new <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata(<%
 				for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%><%=""%>
 					<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Filepath_in<%=(s == _aux_rootmetadata.SchemaCollection.Count - 1) ? "" : ", "%><%
 				}%>
 				);
 				if (useMetacache_in) {
-					XS__RootMetadata.Metacache.Add(
+					<%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata.Metacache.Add(
 						_key, 
 						_rootmetadata
 					);
@@ -123,10 +123,10 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 
 <%
 		for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
-		#region public XS__<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Collection <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_rootmetadata.SchemaCollection[s].XS_Element.Name)%>Collection { get; }
-		private XS__<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Collection <%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToLower()%>collection_;
+		#region public <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Collection <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_rootmetadata.SchemaCollection[s].XS_Element.Name)%>Collection { get; }
+		private <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Collection <%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToLower()%>collection_;
 
-		public XS__<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Collection <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_rootmetadata.SchemaCollection[s].XS_Element.Name)%>Collection {
+		public <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Collection <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_rootmetadata.SchemaCollection[s].XS_Element.Name)%>Collection {
 			get { return <%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToLower()%>collection_; }
 		}
 		#endregion<%
@@ -134,7 +134,7 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 
 <%
 		for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
-		private const string ROOT_<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToUpper()%> = XS__<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>.ROOT + "." + XS__<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>.<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToUpper()%> + "[";<%
+		private const string ROOT_<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToUpper()%> = <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>.ROOT + "." + <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>.<%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name.ToUpper()%> + "[";<%
 		}%>
 
 		#region public string Read_fromRoot(...);
@@ -168,8 +168,8 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 			}%>
 			throw new Exception(string.Format(
 				"\n---\n{0}.{1}.Read_fromRoot(string what_in): can't handle: {2}\n---",
-				typeof(XS0__RootMetadata).Namespace,
-				typeof(XS0__RootMetadata).Name,
+				typeof(<%=_aux_rootmetadata.ExtendedMetadata.PrefixGenerated%>_RootMetadata).Namespace,
+				typeof(<%=_aux_rootmetadata.ExtendedMetadata.PrefixGenerated%>_RootMetadata).Name,
 				what_in
 			));
 		}
@@ -224,8 +224,8 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 			if (!_didit) {
 				throw new Exception(string.Format(
 					"\n---\n{0}.{1}.IterateThrough_fromRoot(...): can't handle: {2}\n---",
-					typeof(XS0__RootMetadata).Namespace,
-					typeof(XS0__RootMetadata).Name,
+					typeof(<%=_aux_rootmetadata.ExtendedMetadata.PrefixGenerated%>_RootMetadata).Namespace,
+					typeof(<%=_aux_rootmetadata.ExtendedMetadata.PrefixGenerated%>_RootMetadata).Name,
 					iteration_in
 				));
 			}

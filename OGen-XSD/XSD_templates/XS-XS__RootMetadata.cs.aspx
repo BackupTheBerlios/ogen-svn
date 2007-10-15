@@ -45,8 +45,8 @@ using <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.Sch
 }%>
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
-	public class XS__RootMetadata : XS0__RootMetadata {
-		public XS__RootMetadata (<%
+	public class <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata : <%=_aux_rootmetadata.ExtendedMetadata.PrefixGenerated%>_RootMetadata {
+		public <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata (<%
 		for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
 			string[] <%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Filepath_in<%=(s == _aux_rootmetadata.SchemaCollection.Count - 1) ? "" : ", "%><%
 		}%>

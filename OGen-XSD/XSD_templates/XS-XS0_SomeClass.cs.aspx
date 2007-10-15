@@ -53,19 +53,19 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%> {
-	public class XS0_<%=_aux_complextype.Name%> : OGenRootrefCollectionInterface<XS__RootMetadata> <%=(_aux_complextype_collectionname != string.Empty) ? ", OGenCollectionInterface" : ""%> {
-		public XS0_<%=_aux_complextype.Name%> (
+	public class <%=_aux_rootmetadata.ExtendedMetadata.PrefixGenerated%><%=_aux_complextype.Name%> : OGenRootrefCollectionInterface<<%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata> <%=(_aux_complextype_collectionname != string.Empty) ? ", OGenCollectionInterface" : ""%> {
+		public <%=_aux_rootmetadata.ExtendedMetadata.PrefixGenerated%><%=_aux_complextype.Name%> (
 		) {<%
 			for (int e = 0; e < _aux_elements.Count; e++) {
 				if (_aux_elements[e].MaxOccurs == XS_Element.MaxOccursEnum.unbounded) {
 					__isCollection_nameIt = _aux_elements[e].isCollection_nameIt();%>
-			xs_<%=_aux_elements[e].Name.ToLower()%>_ 
-				= new <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><XS_<%=_aux_elements[e].Type%>, XS__RootMetadata>();<%
+			<%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>_ 
+				= new <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%>, <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata>();<%
 				}
 			}%>
 		}<%
 		if (_aux_complextype_collectionname != string.Empty) { %>
-		public XS0_<%=_aux_complextype.Name%> (
+		public <%=_aux_rootmetadata.ExtendedMetadata.PrefixGenerated%><%=_aux_complextype.Name%> (
 			string <%=_aux_complextype_collectionname.ToLower()%>_in
 		) : this (
 		) {
@@ -81,20 +81,20 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_El
 		#endregion<%
 		}%>
 
-		#region public XS__RootMetadata root_ref { get; }
-		private XS__RootMetadata root_ref_;
+		#region public <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata root_ref { get; }
+		private <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata root_ref_;
 
 		[XmlIgnore()]
-		public XS__RootMetadata root_ref {
+		public <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata root_ref {
 			set {
 				root_ref_ = value;<%
 
 				for (int e = 0; e < _aux_elements.Count; e++) {
 					if (_aux_elements[e].MaxOccurs == XS_Element.MaxOccursEnum.unbounded) {%>
-				xs_<%=_aux_elements[e].Name.ToLower()%>_.root_ref = value;<%
+				<%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>_.root_ref = value;<%
 
 					} else {%>
-				if (xs_<%=_aux_elements[e].Name.ToLower()%>__ != null) xs_<%=_aux_elements[e].Name.ToLower()%>__.root_ref = value;<%
+				if (<%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>__ != null) <%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>__.root_ref = value;<%
 					}
 				}%>
 			}
@@ -121,43 +121,43 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_El
 <%
 		for (int e = 0; e < _aux_elements.Count; e++) {
 			if (_aux_elements[e].MaxOccurs == XS_Element.MaxOccursEnum.unbounded) {%>
-		#region public <%=((__isCollection_nameIt = _aux_elements[e].isCollection_nameIt()) != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><XS_<%=_aux_elements[e].Type%>, XS__RootMetadata> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%> { get; }
-		private <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><XS_<%=_aux_elements[e].Type%>, XS__RootMetadata> xs_<%=_aux_elements[e].Name.ToLower()%>_;
-			//= new <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><XS_<%=_aux_elements[e].Type%>, XS__RootMetadata>();
+		#region public <%=((__isCollection_nameIt = _aux_elements[e].isCollection_nameIt()) != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%>, <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%> { get; }
+		private <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%>, <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata> <%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>_;
+			//= new <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%>, <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata>();
 
 		[XmlElement("<%=_aux_elements[e].Name%>")]
-		public XS_<%=_aux_elements[e].Type%>[] xs_<%=_aux_elements[e].Name.ToLower()%>__xml {
-			get { return xs_<%=_aux_elements[e].Name.ToLower()%>_.cols__; }
-			set { xs_<%=_aux_elements[e].Name.ToLower()%>_.cols__ = value; }
+		public <%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%>[] <%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>__xml {
+			get { return <%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>_.cols__; }
+			set { <%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>_.cols__ = value; }
 		}
 
 		[XmlIgnore()]
-		public <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><XS_<%=_aux_elements[e].Type%>, XS__RootMetadata> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%> {
-			get { return xs_<%=_aux_elements[e].Name.ToLower()%>_; }
+		public <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%>, <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%> {
+			get { return <%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>_; }
 		}
 		#endregion<%
 
 			} else {%>
-		#region public XS_<%=_aux_elements[e].Type%> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%> { get; set; }
-		private XS_<%=_aux_elements[e].Type%> xs_<%=_aux_elements[e].Name.ToLower()%>__;
+		#region public <%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%> { get; set; }
+		private <%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%> <%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>__;
 
 		[XmlIgnore()]
-		public XS_<%=_aux_elements[e].Type%> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%> {
+		public <%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%> {
 			get {
-				if (xs_<%=_aux_elements[e].Name.ToLower()%>__ == null) {
-					xs_<%=_aux_elements[e].Name.ToLower()%>__ = new XS_<%=_aux_elements[e].Type%>();
+				if (<%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>__ == null) {
+					<%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>__ = new <%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%>();
 				}
-				return xs_<%=_aux_elements[e].Name.ToLower()%>__;
+				return <%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>__;
 			}
 			set {
-				xs_<%=_aux_elements[e].Name.ToLower()%>__ = value;
+				<%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>__ = value;
 			}
 		}
 
 		[XmlElement("<%=_aux_elements[e].Name.ToLower()%>")]
-		public XS_<%=_aux_elements[e].Type%> xs_<%=_aux_elements[e].Name.ToLower()%>__xml {
-			get { return xs_<%=_aux_elements[e].Name.ToLower()%>__; }
-			set { xs_<%=_aux_elements[e].Name.ToLower()%>__ = value; }
+		public <%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%> <%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>__xml {
+			get { return <%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>__; }
+			set { <%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>__ = value; }
 		}
 		#endregion<%
 			}

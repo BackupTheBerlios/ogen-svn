@@ -47,7 +47,7 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%> {
-	public class XS_<%=_aux_complextype.Name%> : XS0_<%=_aux_complextype.Name%> {
+	public class <%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_complextype.Name%> : <%=_aux_rootmetadata.ExtendedMetadata.PrefixGenerated%><%=_aux_complextype.Name%> {
 
 	<%for (int a = 0; a < _aux_complextype.XS_Attribute.Count; a++) {
 		%>//<%=_aux_complextype.XS_Attribute[a].Name%>

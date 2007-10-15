@@ -101,6 +101,32 @@ namespace OGen.XSD.lib.metadata {
 			}
 		}
 		#endregion
+		#region public string Prefix { get; set; }
+		private string prefix_;
+
+		[XmlAttribute("prefix")]
+		public string Prefix {
+			get {
+				return prefix_;
+			}
+			set {
+				prefix_ = value;
+			}
+		}
+		#endregion
+		#region public string PrefixGenerated { get; set; }
+		private string prefixgenerated_;
+
+		[XmlAttribute("prefixGenerated")]
+		public string PrefixGenerated {
+			get {
+				return prefixgenerated_;
+			}
+			set {
+				prefixgenerated_ = value;
+			}
+		}
+		#endregion
 		#region public string CopyrightText { get; set; }
 		private string copyrighttext_;
 
