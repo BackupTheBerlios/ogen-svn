@@ -53,14 +53,14 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%> {
-	public class <%=_aux_rootmetadata.ExtendedMetadata.PrefixGenerated%><%=_aux_complextype.Name%> : OGenRootrefCollectionInterface<<%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata> <%=(_aux_complextype_collectionname != string.Empty) ? ", OGenCollectionInterface" : ""%> {
+	public class <%=_aux_rootmetadata.ExtendedMetadata.PrefixGenerated%><%=_aux_complextype.Name%> : OGenRootrefCollectionInterface<<%=_aux_rootmetadata.ExtendedMetadata.PrefixBase%>RootMetadata> <%=(_aux_complextype_collectionname != string.Empty) ? ", OGenCollectionInterface" : ""%> {
 		public <%=_aux_rootmetadata.ExtendedMetadata.PrefixGenerated%><%=_aux_complextype.Name%> (
 		) {<%
 			for (int e = 0; e < _aux_elements.Count; e++) {
 				if (_aux_elements[e].MaxOccurs == XS_Element.MaxOccursEnum.unbounded) {
-					__isCollection_nameIt = _aux_elements[e].isCollection_nameIt();%>
+					__isCollection_nameIt = _aux_elements[e].isCollection_nameIt();%><%=""%>
 			<%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>_ 
-				= new <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%>, <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata>();<%
+				= new <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%>, <%=_aux_rootmetadata.ExtendedMetadata.PrefixBase%>RootMetadata>();<%
 				}
 			}%>
 		}<%
@@ -81,16 +81,16 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_El
 		#endregion<%
 		}%>
 
-		#region public <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata root_ref { get; }
-		private <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata root_ref_;
+		#region public <%=_aux_rootmetadata.ExtendedMetadata.PrefixBase%>RootMetadata root_ref { get; }
+		private <%=_aux_rootmetadata.ExtendedMetadata.PrefixBase%>RootMetadata root_ref_;
 
 		[XmlIgnore()]
-		public <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata root_ref {
+		public <%=_aux_rootmetadata.ExtendedMetadata.PrefixBase%>RootMetadata root_ref {
 			set {
 				root_ref_ = value;<%
 
 				for (int e = 0; e < _aux_elements.Count; e++) {
-					if (_aux_elements[e].MaxOccurs == XS_Element.MaxOccursEnum.unbounded) {%>
+					if (_aux_elements[e].MaxOccurs == XS_Element.MaxOccursEnum.unbounded) {%><%=""%>
 				<%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>_.root_ref = value;<%
 
 					} else {%>
@@ -121,9 +121,9 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_El
 <%
 		for (int e = 0; e < _aux_elements.Count; e++) {
 			if (_aux_elements[e].MaxOccurs == XS_Element.MaxOccursEnum.unbounded) {%>
-		#region public <%=((__isCollection_nameIt = _aux_elements[e].isCollection_nameIt()) != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%>, <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%> { get; }
-		private <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%>, <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata> <%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>_;
-			//= new <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%>, <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata>();
+		#region public <%=((__isCollection_nameIt = _aux_elements[e].isCollection_nameIt()) != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%>, <%=_aux_rootmetadata.ExtendedMetadata.PrefixBase%>RootMetadata> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%> { get; }
+		private <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%>, <%=_aux_rootmetadata.ExtendedMetadata.PrefixBase%>RootMetadata> <%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>_;
+			//= new <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%>, <%=_aux_rootmetadata.ExtendedMetadata.PrefixBase%>RootMetadata>();
 
 		[XmlElement("<%=_aux_elements[e].Name%>")]
 		public <%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%>[] <%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>__xml {
@@ -132,7 +132,7 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_El
 		}
 
 		[XmlIgnore()]
-		public <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%>, <%=_aux_rootmetadata.ExtendedMetadata.Prefix%>_RootMetadata> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%> {
+		public <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=_aux_rootmetadata.ExtendedMetadata.Prefix%><%=_aux_elements[e].Type%>, <%=_aux_rootmetadata.ExtendedMetadata.PrefixBase%>RootMetadata> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%> {
 			get { return <%=_aux_rootmetadata.ExtendedMetadata.Prefix.ToLower()%><%=_aux_elements[e].Name.ToLower()%>_; }
 		}
 		#endregion<%

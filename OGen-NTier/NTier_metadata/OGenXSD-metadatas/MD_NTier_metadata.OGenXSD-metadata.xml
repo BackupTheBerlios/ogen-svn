@@ -16,12 +16,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	caseType="PascalCase"
 	prefix="XS_"
 	prefixGenerated="XS0_"
-
-
-		prefixBase="XS__"
-		prefixBaseGenerated="XS0__"
-
-
+	prefixBase="XS__"
+	prefixBaseGenerated="XS0__"
 	copyrightText="Copyright (C) 2002 Francisco Monteiro" 
 	copyrightTextLong="OGen
 Copyright (c) 2002 Francisco Monteiro
