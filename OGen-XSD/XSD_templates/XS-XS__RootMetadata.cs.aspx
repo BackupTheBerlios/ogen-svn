@@ -25,6 +25,11 @@ RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
 	_arg_SchemaFilepath,
 	_arg_Schema2Filepath
 );
+
+string XS0_ = _aux_rootmetadata.ExtendedMetadata.PrefixGenerated;
+string XS_ = _aux_rootmetadata.ExtendedMetadata.Prefix;
+string XS0__ = _aux_rootmetadata.ExtendedMetadata.PrefixBaseGenerated;
+string XS__ = _aux_rootmetadata.ExtendedMetadata.PrefixBase;
 #endregion
 //-----------------------------------------------------------------------------------------
 if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_rootmetadata.ExtendedMetadata.CopyrightTextLong != string.Empty)) {
@@ -45,8 +50,8 @@ using <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.Sch
 }%>
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
-	public class <%=_aux_rootmetadata.ExtendedMetadata.PrefixBase%>RootMetadata : <%=_aux_rootmetadata.ExtendedMetadata.PrefixBaseGenerated%>RootMetadata {
-		public <%=_aux_rootmetadata.ExtendedMetadata.PrefixBase%>RootMetadata (<%
+	public class <%=XS__%>RootMetadata : <%=XS0__%>RootMetadata {
+		public <%=XS__%>RootMetadata (<%
 		for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
 			string[] <%=_aux_rootmetadata.SchemaCollection[s].XS_Element.Name%>Filepath_in<%=(s == _aux_rootmetadata.SchemaCollection.Count - 1) ? "" : ", "%><%
 		}%>

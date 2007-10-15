@@ -28,6 +28,11 @@ RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
 	_arg_Schema2Filepath
 );
 XS_Schema _aux_schema = _aux_rootmetadata.SchemaCollection[_arg_SchemaName];
+
+string XS0_ = _aux_rootmetadata.ExtendedMetadata.PrefixGenerated;
+string XS_ = _aux_rootmetadata.ExtendedMetadata.Prefix;
+string XS0__ = _aux_rootmetadata.ExtendedMetadata.PrefixBaseGenerated;
+string XS__ = _aux_rootmetadata.ExtendedMetadata.PrefixBase;
 #endregion
 //-----------------------------------------------------------------------------------------
 if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_rootmetadata.ExtendedMetadata.CopyrightTextLong != string.Empty)) {
@@ -45,7 +50,7 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%> {
-	public class <%=_aux_rootmetadata.ExtendedMetadata.PrefixBase%><%=_aux_schema.XS_Element.Name%> : <%=_aux_rootmetadata.ExtendedMetadata.PrefixBaseGenerated%><%=_aux_schema.XS_Element.Name%> {
+	public class <%=XS__%><%=_aux_schema.XS_Element.Name%> : <%=XS0__%><%=_aux_schema.XS_Element.Name%> {
 	}
 }<%
 //-----------------------------------------------------------------------------------------
