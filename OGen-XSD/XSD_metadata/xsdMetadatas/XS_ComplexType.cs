@@ -226,13 +226,13 @@ namespace OGen.XSD.lib.metadata {
 						(_schema.XS_ComplexType[c].XS_Sequence.XS_Element[e].MaxOccurs
 							== XS_Element.MaxOccursEnum.unbounded)
 					) {
-						ExtendedMetadata_collection _collection
-							= root_ref_.ExtendedMetadata.Collections[
+						ExtendedMetadata_complexTypeKeys _complextypekeys
+							= root_ref_.ExtendedMetadata.ComplexTypeKeys[
 								Name
 							];
-						return (_collection == null)
+						return (_complextypekeys == null)
 							? string.Empty
-							: _collection.Name;
+							: _complextypekeys.Keys;
 					}
 				}
 			}

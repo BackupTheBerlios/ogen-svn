@@ -33,8 +33,8 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		<specificCase word="db" translation="DB" />
 		<specificCase word="dbCollationName" translation="DBCollationName" />
 
-		<collection type="dbConnectionType" name="configMode" />
-		<collection type="dbType" name="dbServerType" />
+		<complexTypeKeys name="dbConnectionType" keys="configMode" />
+		<complexTypeKeys name="dbType" keys="dbServerType" />
 	</metadata>
 	<metadata names="someTest" indexPath="SomeAttrib3">
 		<!-- ... -->
@@ -81,23 +81,23 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		<specificCase word="isVirtualTable" translation="isVirtualTable" />
 
 
-		<collection type="dbConnectionType" name="configMode" />
-		<collection type="dbType" name="dbServerType" />
-		<collection type="tableDBType" name="dbServerType" />
-		<collection type="tableFieldDBType" name="dbServerType" />
-		<collection type="tableFieldRefType" name="paramName" />
-		<collection type="tableFieldType" name="name" />
-		<collection type="tableSearchType" name="name" />
-		<collection type="tableSearchUpdateType" name="name" />
-		<collection type="tableType" name="name" />
-		<collection type="tableUpdateType" name="name" />
+		<complexTypeKeys name="dbConnectionType" keys="configMode" />
+		<complexTypeKeys name="dbType" keys="dbServerType" />
+		<complexTypeKeys name="tableDBType" keys="dbServerType" />
+		<complexTypeKeys name="tableFieldDBType" keys="dbServerType" />
+		<complexTypeKeys name="tableFieldRefType" keys="paramName" />
+		<complexTypeKeys name="tableFieldType" keys="name" />
+		<complexTypeKeys name="tableSearchType" keys="name" />
+		<complexTypeKeys name="tableSearchUpdateType" keys="name" />
+		<complexTypeKeys name="tableType" keys="name" />
+		<complexTypeKeys name="tableUpdateType" keys="name" />
 		<!--
-		<collection type="tableDBsType" name="" />
-		<collection type="tableFieldsType" name="" />
-		<collection type="tableSearchesType" name="" />
-		<collection type="tableSearchParametersType" name="" />
-		<collection type="tableSearchUpdateParametersType" name="" />
-		<collection type="tableSearchUpdatesType" name="" />
-		<collection type="tableUpdatesType" name="" />
+		<complexTypeKeys name="tableDBsType" keys="" />
+		<complexTypeKeys name="tableFieldsType" keys="" />
+		<complexTypeKeys name="tableSearchesType" keys="" />
+		<complexTypeKeys name="tableSearchParametersType" keys="" />
+		<complexTypeKeys name="tableSearchUpdateParametersType" keys="" />
+		<complexTypeKeys name="tableSearchUpdatesType" keys="" />
+		<complexTypeKeys name="tableUpdatesType" keys="" />
 		-->
 </metadata>

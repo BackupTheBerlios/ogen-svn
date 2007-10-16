@@ -14,14 +14,104 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #endregion
 
 using System;
-using System.IO;
 using System.Xml.Serialization;
 using System.Collections;
 
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
-	public class ExtendedMetadata_specificCase : OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata> {
+#if !NET20
+	#region public class ExtendedMetadata_specificCaseCollection { ... }
+	public class ExtendedMetadata_specificCaseCollection {
+		public ExtendedMetadata_specificCaseCollection() {
+			cols_ = new ArrayList();
+		}
+
+		#region public RootMetadata root_ref { get; }
+		private RootMetadata root_ref_;
+
+		public RootMetadata root_ref {
+			get {
+				return root_ref_;
+			}
+			set {
+				root_ref_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((ExtendedMetadata_specificCase)cols_[i]).root_ref = value;
+				}
+			}
+		}
+		#endregion
+
+		#region internal ExtendedMetadata_specificCase[] cols__ { get; set; }
+		private ArrayList cols_;
+
+		internal ExtendedMetadata_specificCase[] cols__ {
+			get {
+				ExtendedMetadata_specificCase[] _output = new ExtendedMetadata_specificCase[cols_.Count];
+				cols_.CopyTo(_output);
+				return _output;
+			}
+			set {
+				cols_.Clear();
+				if (value != null) {
+					for (int i = 0; i < value.Length; i++) {
+						cols_.Add(value[i]);
+					}
+				}
+			}
+		}
+		#endregion
+
+		#region public int Count { get; }
+		public int Count {
+			get {
+				return cols_.Count;
+			}
+		}
+		#endregion
+
+		#region public ExtendedMetadata_specificCase this[int index_in] { get; }
+		public ExtendedMetadata_specificCase this[int index_in] {
+			get {
+				return (ExtendedMetadata_specificCase)cols_[index_in];
+			}
+		}
+		#endregion
+		#region public ExtendedMetadata_specificCase this[string word_in] { get; }
+		public ExtendedMetadata_specificCase this[string word_in] {
+			get {
+				for (int i = 0; i < cols_.Count; i++) {
+					if (((ExtendedMetadata_specificCase)cols_[i]).Word == word_in) {
+						return (ExtendedMetadata_specificCase)cols_[i];
+					}
+				}
+
+				return null;
+			}
+		}
+		#endregion
+
+		#region public int Add(params ExtendedMetadata_specificCase[] col_in);
+		public int Add(params ExtendedMetadata_specificCase[] col_in) {
+			int _output = -1;
+
+			for (int i = 0; i < col_in.Length; i++) {
+				_output = cols_.Add(col_in[i]);
+			}
+
+			return _output;
+		}
+		#endregion
+	}
+	#endregion
+#endif
+
+	public class ExtendedMetadata_specificCase
+#if NET20
+		: OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata>
+#endif
+	{
 		#region public string Word { get; set; }
 		private string word_;
 
@@ -60,6 +150,7 @@ namespace OGen.XSD.lib.metadata {
 			get { return root_ref_; }
 		}
 		#endregion
+#if NET20
 		#region public string CollectionName { get; }
 		[XmlIgnore()]
 		public string CollectionName {
@@ -68,5 +159,6 @@ namespace OGen.XSD.lib.metadata {
 			}
 		}
 		#endregion
+#endif
 	}
 }

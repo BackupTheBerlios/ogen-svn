@@ -223,9 +223,9 @@ namespace OGen.XSD.lib.metadata {
 		#region public string isCollection_nameIt(...);
 		public string isCollection_nameIt(
 		) {
-			ExtendedMetadata_collection _collection
-				= root_ref.ExtendedMetadata.Collections[Type];
-			return (_collection == null) ? string.Empty : _collection.Name;
+			ExtendedMetadata_complexTypeKeys _collection
+				= root_ref.ExtendedMetadata.ComplexTypeKeys[Type];
+			return (_collection == null) ? string.Empty : _collection.Keys;
 		}
 		#endregion
 	}

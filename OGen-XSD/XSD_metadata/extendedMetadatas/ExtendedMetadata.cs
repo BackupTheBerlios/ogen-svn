@@ -35,8 +35,9 @@ namespace OGen.XSD.lib.metadata {
 			set {
 				root_ref_ = value;
 
-				collections_.root_ref = value;
-				specificcase_.root_ref = value;
+				complextypekeyscollection_.root_ref = value;
+				specificcasecollections_.root_ref = value;
+				metadataindexcollection_.root_ref = value;
 			}
 			get { return root_ref_; }
 		}
@@ -222,49 +223,82 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public OGenRootrefCollection<ExtendedMetadata_collection, RootMetadata> Collections { get; }
-		private OGenRootrefCollection<ExtendedMetadata_collection, RootMetadata> collections_
-			= new OGenRootrefCollection<ExtendedMetadata_collection, RootMetadata>();
+		#region public ... ComplexTypeKeys { get; }
+#if NET20
+		private OGenRootrefCollection<ExtendedMetadata_complexTypeKeys, RootMetadata> complextypekeyscollection_
+			= new OGenRootrefCollection<ExtendedMetadata_complexTypeKeys, RootMetadata>();
+#else
+		private ExtendedMetadata_complexTypeKeysCollection complextypekeyscollection_
+			= new ExtendedMetadata_complexTypeKeysCollection();
+#endif
 
-		[XmlElement("collection")]
-		public ExtendedMetadata_collection[] collections__xml {
-			get { return collections_.cols__; }
-			set { collections_.cols__ = value; }
+		[XmlElement("complexTypeKeys")]
+		public ExtendedMetadata_complexTypeKeys[] complextypekeyscollection__xml {
+			get { return complextypekeyscollection_.cols__; }
+			set { complextypekeyscollection_.cols__ = value; }
 		}
 
 		[XmlIgnore()]
-		public OGenRootrefCollection<ExtendedMetadata_collection, RootMetadata> Collections {
-			get { return collections_; }
+		public
+#if NET20
+			OGenRootrefCollection<ExtendedMetadata_complexTypeKeys, RootMetadata>
+#else
+			ExtendedMetadata_complexTypeKeysCollection
+#endif
+		ComplexTypeKeys {
+			get { return complextypekeyscollection_; }
 		}
 		#endregion
-		#region public OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata> SpecificCase { get; }
-		private OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata> specificcase_
+		#region public ... SpecificCase { get; }
+#if NET20
+		private OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata> specificcasecollections_
 			= new OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata>();
+#else
+		private ExtendedMetadata_specificCaseCollection specificcasecollections_
+			= new ExtendedMetadata_specificCaseCollection();
+#endif
 
 		[XmlElement("specificCase")]
 		public ExtendedMetadata_specificCase[] specificcase__xml {
-			get { return specificcase_.cols__; }
-			set { specificcase_.cols__ = value; }
+			get { return specificcasecollections_.cols__; }
+			set { specificcasecollections_.cols__ = value; }
 		}
 
 		[XmlIgnore()]
-		public OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata> SpecificCase {
-			get { return specificcase_; }
+		public
+#if NET20
+			OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata>
+#else
+			ExtendedMetadata_specificCaseCollection
+#endif
+		SpecificCase {
+			get { return specificcasecollections_; }
 		}
 		#endregion
-		#region public OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata> MetadataIndex { get; }
-		private OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata> metadataindex_
+		#region public ... MetadataIndex { get; }
+#if NET20
+		private OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata> metadataindexcollection_
 			= new OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata>();
+#else
+		private ExtendedMetadata_metadataIndexCollection metadataindexcollection_
+			= new ExtendedMetadata_metadataIndexCollection();
+#endif
 
 		[XmlElement("metadataIndex")]
 		public ExtendedMetadata_metadataIndex[] metadataindex__xml {
-			get { return metadataindex_.cols__; }
-			set { metadataindex_.cols__ = value; }
+			get { return metadataindexcollection_.cols__; }
+			set { metadataindexcollection_.cols__ = value; }
 		}
 
 		[XmlIgnore()]
-		public OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata> MetadataIndex {
-			get { return metadataindex_; }
+		public
+#if NET20
+			OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata>
+#else
+			ExtendedMetadata_metadataIndexCollection
+#endif
+		MetadataIndex {
+			get { return metadataindexcollection_; }
 		}
 		#endregion
 
