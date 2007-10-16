@@ -21,11 +21,11 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 	/// Permition BusinessObject which provides access to <see cref="OGen.NTier.UTs.lib.datalayer.DO_Permition">DO_Permition</see> for the Business Layer.
 	/// </summary>
 	public sealed 
-#if NET20
+#if !NET_1_1
 		partial 
 #endif
 		class BO_Permition 
-#if !NET20
+#if NET_1_1
 			: BO0_Permition 
 #endif
 	{

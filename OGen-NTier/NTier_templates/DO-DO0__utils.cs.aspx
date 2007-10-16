@@ -55,21 +55,21 @@ using OGen.NTier.lib.datalayer;
 namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 	/// <summary>
 	/// utils DataObject which works as a repository of useful Properties and Methods for DataObjects at <%=_aux_metadata.Namespace%>.lib.datalayer namespace.<%--
-#if !NET20
+#if NET_1_1
 	/// <note type="implementnotes">
 	/// Access must be made via <see cref="DO__utils">DO__utils</see>.
 	/// </note>
 #endif--%>
 	/// </summary>
 	public 
-#if NET20
+#if !NET_1_1
 		partial class DO__utils 
 #else
 		abstract class DO0__utils 
 #endif
 	{
 		#region public DO__utils(...);
-#if NET20
+#if !NET_1_1
 		///
 		public DO__utils
 #else
@@ -80,7 +80,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		#endregion
 		#region static DO__utils();
 		static 
-#if NET20
+#if !NET_1_1
 			DO__utils
 #else
 			DO0__utils
@@ -136,7 +136,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			get {
 				if (dblogfile__ == string.Empty) {
 					if (
-						#if NET20
+						#if !NET_1_1
 						System.Configuration.ConfigurationManager.AppSettings
 						#else
 						System.Configuration.ConfigurationSettings.AppSettings

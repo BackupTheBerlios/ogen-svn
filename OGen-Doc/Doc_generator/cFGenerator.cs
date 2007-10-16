@@ -162,7 +162,7 @@ namespace OGen.Doc.lib.generator {
 			metadata_.SaveState_toFile(_metadata0);
 
 			new cGenerator(
-				#if NET20
+				#if !NET_1_1
 				System.Configuration.ConfigurationManager.AppSettings
 				#else
 				System.Configuration.ConfigurationSettings.AppSettings

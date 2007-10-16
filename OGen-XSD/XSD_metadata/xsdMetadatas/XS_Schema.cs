@@ -67,7 +67,11 @@ namespace OGen.XSD.lib.metadata {
 	//[XmlRoot("xs___schema")]
 	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
 	[System.Xml.Serialization.XmlRootAttribute("schema", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
-	public class XS_Schema : iClaSSe_metadata, OGenRootrefCollectionInterface<RootMetadata> {
+	public class XS_Schema : iClaSSe_metadata
+#if !NET_1_1
+	 , OGenRootrefCollectionInterface<RootMetadata> 
+#endif
+	{
 		public XS_Schema() {
 		}
 
@@ -161,7 +165,7 @@ namespace OGen.XSD.lib.metadata {
 		#endregion
 
 		#region public ... XS_SimpleType { get; }
-#if NET20
+#if !NET_1_1
 		private OGenRootrefCollection<XS_SimpleType, RootMetadata> xs_simpletypecollection_
 			= new OGenRootrefCollection<XS_SimpleType, RootMetadata>();
 #else
@@ -179,7 +183,7 @@ namespace OGen.XSD.lib.metadata {
 
 		[XmlIgnore()]
 		public
-#if NET20
+#if !NET_1_1
 			OGenRootrefCollection<XS_SimpleType, RootMetadata>
 #else
 			XS_SimpleTypeCollection
@@ -189,7 +193,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 		#region public ... XS_ComplexType { get; }
-#if NET20
+#if !NET_1_1
 		private OGenRootrefCollection<XS_ComplexType, RootMetadata> xs_complextypecollection_
 			= new OGenRootrefCollection<XS_ComplexType, RootMetadata>();
 #else
@@ -208,7 +212,7 @@ namespace OGen.XSD.lib.metadata {
 
 		[XmlIgnore()]
 		public
-#if NET20
+#if !NET_1_1
 			OGenRootrefCollection<XS_ComplexType, RootMetadata>
 #else
 			XS_ComplexTypeCollection

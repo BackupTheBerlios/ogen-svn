@@ -22,15 +22,15 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	/// utils DataObject which works as a repository of useful Properties and Methods for DataObjects at OGen.NTier.UTs.lib.datalayer namespace.
 	/// </summary>
 	public sealed 
-#if NET20
+#if !NET_1_1
 		partial 
 #endif
 		class DO__utils 
-#if !NET20
+#if NET_1_1
 		: DO0__utils
 #endif
 	{
-#if !NET20
+#if NET_1_1
 		#region public DO__utils(...);
 		///
 		public DO__utils() : base() {

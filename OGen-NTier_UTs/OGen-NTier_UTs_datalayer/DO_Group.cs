@@ -23,15 +23,15 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	/// Group DataObject which provides access to Group table at Database.
 	/// </summary>
 	public sealed 
-#if NET20
+#if !NET_1_1
 		partial
 #endif
 		class DO_Group : 
-#if !NET20
+#if NET_1_1
 		DO0_Group, 
 #endif
 		IDisposable {
-#if !NET20
+#if NET_1_1
 		#region public DO_Group();
 		///
 		public DO_Group() : base() {

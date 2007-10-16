@@ -34,7 +34,7 @@
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>TRACE;DEBUG;NET20;PostgreSQL</DefineConstants>
+    <DefineConstants>TRACE;DEBUG;NET_2_0;PostgreSQL</DefineConstants>
     <DocumentationFile>bin\Debug\OGen.NTier.UTs.lib.datalayer-2.0.xml</DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
     <FileAlignment>4096</FileAlignment>
@@ -56,7 +56,7 @@
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>TRACE;NET20;PostgreSQL</DefineConstants>
+    <DefineConstants>TRACE;NET_2_0;PostgreSQL</DefineConstants>
     <DocumentationFile>bin\Release\OGen.NTier.UTs.lib.datalayer-2.0.xml</DocumentationFile>
     <DebugSymbols>false</DebugSymbols>
     <FileAlignment>4096</FileAlignment>

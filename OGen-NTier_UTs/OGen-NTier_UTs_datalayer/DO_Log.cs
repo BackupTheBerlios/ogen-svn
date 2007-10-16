@@ -23,15 +23,15 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	/// Log DataObject which provides access to Log table at Database.
 	/// </summary>
 	public sealed 
-#if NET20
+#if !NET_1_1
 		partial
 #endif
 		class DO_Log : 
-#if !NET20
+#if NET_1_1
 		DO0_Log, 
 #endif
 		IDisposable {
-#if !NET20
+#if NET_1_1
 		#region public DO_Log();
 		///
 		public DO_Log() : base() {

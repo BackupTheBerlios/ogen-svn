@@ -23,15 +23,15 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	/// UserGroup DataObject which provides access to UserGroup table at Database.
 	/// </summary>
 	public sealed 
-#if NET20
+#if !NET_1_1
 		partial
 #endif
 		class DO_UserGroup : 
-#if !NET20
+#if NET_1_1
 		DO0_UserGroup, 
 #endif
 		IDisposable {
-#if !NET20
+#if NET_1_1
 		#region public DO_UserGroup();
 		///
 		public DO_UserGroup() : base() {

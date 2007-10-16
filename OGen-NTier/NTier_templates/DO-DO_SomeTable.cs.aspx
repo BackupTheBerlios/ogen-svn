@@ -51,15 +51,15 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 	/// <%=_aux_table.Name%> DataObject which provides access to <%=_aux_table.Name%> <%=(_aux_table.isVirtualTable) ? "view" : "table"%> at Database.
 	/// </summary>
 	public sealed 
-#if NET20
+#if !NET_1_1
 		partial
 #endif
 		class DO_<%=_aux_table.Name%> : 
-#if !NET20
+#if NET_1_1
 		DO0_<%=_aux_table.Name%>, 
 #endif
 		IDisposable {
-#if !NET20
+#if NET_1_1
 		#region public DO_<%=_aux_table.Name%>();
 		///
 		public DO_<%=_aux_table.Name%>() : base() {

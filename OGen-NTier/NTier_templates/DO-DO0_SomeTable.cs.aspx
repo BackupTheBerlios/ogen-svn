@@ -55,7 +55,7 @@ using OGen.NTier.lib.datalayer;
 namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 	/// <summary>
 	/// <%=_aux_table.Name%> DataObject which provides access to <%=_aux_table.Name%> <%=(_aux_table.isVirtualTable) ? "view" : "table"%> at Database.<%--
-#if !NET20
+#if NET_1_1
 	/// <note type="implementnotes">
 	/// Access must be made via <see cref="DO_<%=_aux_table.Name%>">DO_<%=_aux_table.Name%></see>.
 	/// </note>
@@ -63,39 +63,39 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 	/// </summary>
 	[DOClassAttribute("<%=_aux_table.Name%>", "<%=_aux_table.FriendlyName%>", "<%=_aux_table.DBDescription%>", "<%=_aux_table.ExtendedDescription%>", <%=_aux_table.isVirtualTable.ToString().ToLower()%>, <%=_aux_table.isConfig.ToString().ToLower()%>)]
 	public 
-#if NET20
+#if !NET_1_1
 		partial 
 #else
 		abstract 
 #endif
 		class 
-#if NET20
+#if !NET_1_1
 		DO_<%=_aux_table.Name%> 
 #else
 		DO0_<%=_aux_table.Name%> 
 #endif
 		: DO__base {
 		#region public DO_<%=_aux_table.Name%>();
-#if NET20
+#if !NET_1_1
 		///
 		public DO_<%=_aux_table.Name%>
 #else
 		internal DO0_<%=_aux_table.Name%>
 #endif
 		() : base(
-#if NET20
+#if !NET_1_1
 			DO__utils
 #else
 			DO0__utils
 #endif
 			.DBServerType, 
-#if NET20
+#if !NET_1_1
 			DO__utils
 #else
 			DO0__utils
 #endif
 			.DBConnectionstring,
-#if NET20
+#if !NET_1_1
 			DO__utils
 #else
 			DO0__utils
@@ -105,7 +105,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			clrObject();
 			Fields.haschanges_ = false;
 		}
-#if NET20
+#if !NET_1_1
 			/// <summary>
 			/// Making the use of Database Transactions possible on a sequence of operations across multiple DataObjects.
 			/// </summary>
@@ -160,7 +160,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// Indicates if changes have been made to DO0_<%=_aux_table.Name%> properties since last time getObject method was run.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 			bool hasChanges {
@@ -177,7 +177,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// Allows assignement of null and check if null at <%=_aux_table.Name%>'s <%=_aux_field.Name%>.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 			bool <%=_aux_field.Name%>_isNull {
@@ -205,7 +205,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		[XmlElement("<%=_aux_field.Name%>")]
 		[DOPropertyAttribute("<%=_aux_field.Name%>", <%=_aux_field.isPK.ToString().ToLower()%>, <%=_aux_field.isIdentity.ToString().ToLower()%>, <%=_aux_field.isNullable.ToString().ToLower()%>, <%=(_aux_field.DefaultValue == string.Empty) ? "\"\"" : _aux_field.DefaultValue%>, "<%=_aux_field.FK_TableName%>", "<%=_aux_field.FK_FieldName%>", <%=_aux_field.isConfig_Name.ToString().ToLower()%>, <%=_aux_field.isConfig_Config.ToString().ToLower()%>, <%=_aux_field.isConfig_Datatype.ToString().ToLower()%>, <%=_aux_field.isBool.ToString().ToLower()%>, <%=_aux_field.isDateTime.ToString().ToLower()%>, <%=_aux_field.isInt.ToString().ToLower()%>, <%=_aux_field.isDecimal.ToString().ToLower()%>, <%=_aux_field.isText.ToString().ToLower()%>)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 			<%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%> {
@@ -240,7 +240,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			string logfile_in
 		) {
 			return 
-				#if NET20
+				#if !NET_1_1
 				DO__utils
 				#else
 				DO0__utils
@@ -261,7 +261,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// Clears all DO0_<%=_aux_table.Name%> properties, assigning them with their appropriate default property value.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		void clrObject() {<%--
@@ -282,7 +282,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// </summary>
 		/// <returns>True if <%=_aux_table.Name%> exists at Database, False if not</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool getObject() {
@@ -302,7 +302,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		}%>
 		/// <returns>True if <%=_aux_table.Name%> exists at Database, False if not</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 			bool getObject(<%
@@ -356,7 +356,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// Deletes <%=_aux_table.Name%> from Database.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		void delObject() {
@@ -375,7 +375,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// <param name="<%=_aux_field.Name%>_in"><%=_aux_field.Name%></param><%
 		}%>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		void delObject(<%
@@ -402,7 +402,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// </summary>
 		/// <returns>True if <%=_aux_table.Name%> exists at Database, False if not</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool isObject() {
@@ -422,7 +422,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		}%>
 		/// <returns>True if <%=_aux_table.Name%> exists at Database, False if not</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool isObject(<%
@@ -455,7 +455,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// <param name="forceUpdate_in">assign with True if you wish to force an Update (even if no changes have been made since last time getObject method was run) and False if not</param>
 		/// <returns>True if it didn't exist (INSERT), and False if it did exist (UPDATE)</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 			bool setObject(bool forceUpdate_in<%=(_aux_table_searches_hasexplicituniqueindex) ? ", out bool ConstraintExist_out" : ""%>) {
@@ -541,7 +541,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 					switch (Fields.<%=NameField%>) {<%
 								for (int r = 0; r < ConfigTable.Rows.Count; r++) {%>
 						case "<%=ConfigTable.Rows[r][NameField]%>": {
-#if NET20
+#if !NET_1_1
 							DO__utils
 #else
 							DO0__utils
@@ -579,7 +579,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		}%>
 		/// <returns>insertion sequence/identity seed</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		<%=_aux_table.Fields[_aux_table_hasidentitykey].DBType_generic.FWType%> insObject(
@@ -630,7 +630,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// <param name="constraintExist_out">returns True if constraint exists and Update failed, and False if no constraint and Update was successful</param><%
 		}%>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		void updObject(bool forceUpdate_in<%=(_aux_table_searches_hasexplicituniqueindex) ? ", out bool constraintExist_out" : ""%>) {
@@ -832,7 +832,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// <param name="constraintExist_out">returns True if constraint exists and Update failed, and False if no constraint and Update was successful</param><%
 		} %>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		void updObject_<%=_aux_update.Name%>(bool forceUpdate_in<%=(_aux_table_searches_hasexplicituniqueindex) ? ", out bool constraintExist_out" : ""%>) {

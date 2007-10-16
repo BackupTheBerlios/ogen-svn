@@ -61,7 +61,7 @@ int _aux_table_hasidentitykey;
                     BaseAddress = "285212672"
                     CheckForOverflowUnderflow = "false"
                     ConfigurationOverrideFile = ""
-                    DefineConstants = "DEBUG;TRACE<%
+                    DefineConstants = "DEBUG;TRACE;NET_1_1<%
 					for (int d = 0; d < _aux_metadata.DBs.Count; d++) {
 						string _dbservertype = _aux_metadata.DBs[d].DBServerType.ToString();
 						%>;<%=_dbservertype%><%
@@ -85,7 +85,7 @@ int _aux_table_hasidentitykey;
                     BaseAddress = "285212672"
                     CheckForOverflowUnderflow = "false"
                     ConfigurationOverrideFile = ""
-                    DefineConstants = "TRACE<%
+                    DefineConstants = "TRACE;NET_1_1<%
 					for (int d = 0; d < _aux_metadata.DBs.Count; d++) {
 						string _dbservertype = _aux_metadata.DBs[d].DBServerType.ToString();
 						%>;<%=_dbservertype%><%

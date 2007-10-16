@@ -131,7 +131,12 @@ Console.WriteLine(
 	_schema.Read_fromRoot("ROOT.simpleType[0].restriction.enumeration[2].value")
 );
 Console.Write("Press any key to continue . . . ");
-Console.ReadKey(true); Console.WriteLine();
+#if !NET_1_1
+Console.ReadKey(true);
+#else
+Console.ReadLine();
+#endif
+Console.WriteLine();
 //Console.WriteLine(
 //	"'{0}' == '{1}'", 
 //	_schema.XS_SimpleType[0].XS_Restriction.XS_Enumeration[2].XXX, 
@@ -144,17 +149,32 @@ _schema.IterateThrough_fromRoot(
 	notifyme//cClaSSe.dIteration_found
 );
 Console.Write("Press any key to continue . . . ");
-Console.ReadKey(true); Console.WriteLine();
+#if !NET_1_1
+Console.ReadKey(true);
+#else
+Console.ReadLine();
+#endif
+Console.WriteLine();
 
 			string _filepath = @"c:\test.xml";
 			_schema.SaveState_toFile(_filepath);
 			Output(_schema);
 			Console.Write("Press any key to continue . . . ");
-			Console.ReadKey(true); Console.WriteLine();
+#if !NET_1_1
+			Console.ReadKey(true);
+#else
+			Console.ReadLine();
+#endif
+			Console.WriteLine();
 			_schema = XS_Schema.Load_fromFile(_filepath)[0];
 			Output(_schema);
 			Console.Write("Press any key to continue . . . ");
-			Console.ReadKey(true); Console.WriteLine();
+#if !NET_1_1
+			Console.ReadKey(true);
+#else
+			Console.ReadLine();
+#endif
+			Console.WriteLine();
 		}
 
 public static void notifyme(string message_in) {

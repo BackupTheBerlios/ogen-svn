@@ -56,7 +56,7 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 					try {
 						DoIt(
 							System.IO.Path.Combine(
-								#if NET20
+								#if !NET_1_1
 								System.Configuration.ConfigurationManager.AppSettings
 								#else
 								System.Configuration.ConfigurationSettings.AppSettings
@@ -66,7 +66,7 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 								@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xml"
 							), 
 							System.IO.Path.Combine(
-								#if NET20
+								#if !NET_1_1
 								System.Configuration.ConfigurationManager.AppSettings
 								#else
 								System.Configuration.ConfigurationSettings.AppSettings
@@ -76,7 +76,7 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 								@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xsd"
 							), 
 							System.IO.Path.Combine(
-								#if NET20
+								#if !NET_1_1
 								System.Configuration.ConfigurationManager.AppSettings
 								#else
 								System.Configuration.ConfigurationSettings.AppSettings
@@ -91,7 +91,7 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 					}
 	
 					Console.WriteLine("Press any key to continue...");
-					#if NET20
+					#if !NET_1_1
 						Console.ReadKey();
 					#else
 						Console.ReadLine();

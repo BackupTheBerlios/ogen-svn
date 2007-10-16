@@ -23,15 +23,15 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	/// Config DataObject which provides access to Config table at Database.
 	/// </summary>
 	public sealed 
-#if NET20
+#if !NET_1_1
 		partial
 #endif
 		class DO_Config : 
-#if !NET20
+#if NET_1_1
 		DO0_Config, 
 #endif
 		IDisposable {
-#if !NET20
+#if NET_1_1
 		#region public DO_Config();
 		///
 		public DO_Config() : base() {

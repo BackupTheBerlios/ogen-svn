@@ -23,7 +23,7 @@ namespace OGen.test {
 			
 			DBConnection _con = new DBConnection_PostgreSQL(
 				"Server=127.0.0.1;Port=5432;User ID=postgres;Password=passpub;Database=OGen-NTier_UTs;", 
-				#if NET20
+				#if !NET_1_1
 				System.Configuration.ConfigurationManager.AppSettings["DBLogfile"]
 				#else
 				System.Configuration.ConfigurationSettings.AppSettings["DBLogfile"]
@@ -87,7 +87,7 @@ namespace OGen.test {
 			//_con.Dispose();
 			
 			Console.Write("Press any key to continue . . . ");
-			#if NET20
+			#if !NET_1_1
 			Console.ReadKey(true);
 			#else
 			Console.ReadLine();

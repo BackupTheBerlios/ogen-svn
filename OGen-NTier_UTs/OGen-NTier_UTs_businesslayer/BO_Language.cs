@@ -21,11 +21,11 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 	/// Language BusinessObject which provides access to <see cref="OGen.NTier.UTs.lib.datalayer.DO_Language">DO_Language</see> for the Business Layer.
 	/// </summary>
 	public sealed 
-#if NET20
+#if !NET_1_1
 		partial 
 #endif
 		class BO_Language 
-#if !NET20
+#if NET_1_1
 			: BO0_Language 
 #endif
 	{

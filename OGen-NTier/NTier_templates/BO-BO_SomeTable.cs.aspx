@@ -48,11 +48,11 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 	/// <%=_aux_table.Name%> BusinessObject which provides access to <see cref="<%=_aux_metadata.Namespace%>.lib.datalayer.DO_<%=_aux_table.Name%>">DO_<%=_aux_table.Name%></see> for the Business Layer.
 	/// </summary>
 	public sealed 
-#if NET20
+#if !NET_1_1
 		partial 
 #endif
 		class BO_<%=_aux_table.Name%> 
-#if !NET20
+#if NET_1_1
 			: BO0_<%=_aux_table.Name%> 
 #endif
 	{

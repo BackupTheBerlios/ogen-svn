@@ -251,7 +251,7 @@ for (int _dbservertype = 0; _dbservertype < metadata_.DBs.Count; _dbservertype++
 
 
 			new cGenerator(
-				#if NET20
+				#if !NET_1_1
 				System.Configuration.ConfigurationManager.AppSettings
 				#else
 				System.Configuration.ConfigurationSettings.AppSettings

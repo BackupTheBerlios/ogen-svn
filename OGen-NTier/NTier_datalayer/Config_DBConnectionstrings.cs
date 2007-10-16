@@ -34,7 +34,7 @@ namespace OGen.NTier.lib.datalayer {
 						DBServerTypes(application_in)[_db], 
 						ConfigModes(application_in)[_cfg], 
 						Config_DBConnectionstring.newConfig_DBConnectionstring(
-							#if NET20
+							#if !NET_1_1
 							System.Configuration.ConfigurationManager.AppSettings
 							#else
 							System.Configuration.ConfigurationSettings.AppSettings
@@ -86,7 +86,7 @@ namespace OGen.NTier.lib.datalayer {
 			get {
 				if (applications__ == null) {
 					applications__ = 
-						#if NET20
+						#if !NET_1_1
 						System.Configuration.ConfigurationManager.AppSettings
 						#else
 						System.Configuration.ConfigurationSettings.AppSettings
@@ -141,7 +141,7 @@ namespace OGen.NTier.lib.datalayer {
 			if (!configmodes__.Contains(application_in)) {
 				configmodes__.Add(
 					application_in, 
-					#if NET20
+					#if !NET_1_1
 					System.Configuration.ConfigurationManager.AppSettings
 					#else
 					System.Configuration.ConfigurationSettings.AppSettings
@@ -167,7 +167,7 @@ namespace OGen.NTier.lib.datalayer {
 			if (dbservertypes__ == null) dbservertypes__ = new Hashtable();
 			if (!dbservertypes__.Contains(application_in)) {
 				string[] _supporteddbservertypes =
-					#if NET20
+					#if !NET_1_1
 					System.Configuration.ConfigurationManager.AppSettings
 					#else
 					System.Configuration.ConfigurationSettings.AppSettings

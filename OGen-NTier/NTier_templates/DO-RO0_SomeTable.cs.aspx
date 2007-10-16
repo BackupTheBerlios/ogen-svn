@@ -57,7 +57,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 	public sealed class RO0_<%=_aux_table.Name%> : RO__base {
 		#region internal RO0_<%=_aux_table.Name%>();
 		internal RO0_<%=_aux_table.Name%>(
-#if NET20
+#if !NET_1_1
 			DO_<%=_aux_table.Name%> 
 #else
 			DO0_<%=_aux_table.Name%> 
@@ -72,7 +72,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 
 		#region private Properties...
 		private 
-#if NET20
+#if !NET_1_1
 			DO_<%=_aux_table.Name%> 
 #else
 			DO0_<%=_aux_table.Name%> 

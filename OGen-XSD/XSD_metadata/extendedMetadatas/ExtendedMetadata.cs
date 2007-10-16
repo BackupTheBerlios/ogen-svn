@@ -23,7 +23,11 @@ using OGen.lib.generator;
 
 namespace OGen.XSD.lib.metadata {
 	[System.Xml.Serialization.XmlRootAttribute("metadata")]
-	public class ExtendedMetadata : iClaSSe_metadata, OGenRootrefCollectionInterface<RootMetadata> {
+	public class ExtendedMetadata : iClaSSe_metadata
+#if !NET_1_1
+		, OGenRootrefCollectionInterface<RootMetadata>
+#endif
+	{
 		//public ExtendedMetadata() {
 		//}
 
@@ -224,7 +228,7 @@ namespace OGen.XSD.lib.metadata {
 		#endregion
 
 		#region public ... ComplexTypeKeys { get; }
-#if NET20
+#if !NET_1_1
 		private OGenRootrefCollection<ExtendedMetadata_complexTypeKeys, RootMetadata> complextypekeyscollection_
 			= new OGenRootrefCollection<ExtendedMetadata_complexTypeKeys, RootMetadata>();
 #else
@@ -240,7 +244,7 @@ namespace OGen.XSD.lib.metadata {
 
 		[XmlIgnore()]
 		public
-#if NET20
+#if !NET_1_1
 			OGenRootrefCollection<ExtendedMetadata_complexTypeKeys, RootMetadata>
 #else
 			ExtendedMetadata_complexTypeKeysCollection
@@ -250,7 +254,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 		#region public ... SpecificCase { get; }
-#if NET20
+#if !NET_1_1
 		private OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata> specificcasecollections_
 			= new OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata>();
 #else
@@ -266,7 +270,7 @@ namespace OGen.XSD.lib.metadata {
 
 		[XmlIgnore()]
 		public
-#if NET20
+#if !NET_1_1
 			OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata>
 #else
 			ExtendedMetadata_specificCaseCollection
@@ -276,7 +280,7 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 		#region public ... MetadataIndex { get; }
-#if NET20
+#if !NET_1_1
 		private OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata> metadataindexcollection_
 			= new OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata>();
 #else
@@ -292,7 +296,7 @@ namespace OGen.XSD.lib.metadata {
 
 		[XmlIgnore()]
 		public
-#if NET20
+#if !NET_1_1
 			OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata>
 #else
 			ExtendedMetadata_metadataIndexCollection

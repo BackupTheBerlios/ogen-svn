@@ -23,15 +23,15 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	/// vUserGroup DataObject which provides access to vUserGroup view at Database.
 	/// </summary>
 	public sealed 
-#if NET20
+#if !NET_1_1
 		partial
 #endif
 		class DO_vUserGroup : 
-#if !NET20
+#if NET_1_1
 		DO0_vUserGroup, 
 #endif
 		IDisposable {
-#if !NET20
+#if NET_1_1
 		#region public DO_vUserGroup();
 		///
 		public DO_vUserGroup() : base() {

@@ -52,7 +52,7 @@ using <%=_aux_metadata.Namespace%>.lib.datalayer;
 namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 	/// <summary>
 	/// <%=_aux_table.Name%> BusinessObject which provides access to <see cref="<%=_aux_metadata.Namespace%>.lib.datalayer.DO_<%=_aux_table.Name%>">DO_<%=_aux_table.Name%></see> for the Business Layer.<%--
-#if !NET20
+#if NET_1_1
 	/// <note type="implementnotes">
 	/// Access must be made via <see cref="BO_<%=_aux_table.Name%>">BO_<%=_aux_table.Name%></see>.
 	/// </note>
@@ -60,25 +60,25 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 	/// </summary>
 	[DOClassAttribute("<%=_aux_table.Name%>", "<%=_aux_table.FriendlyName%>", "<%=_aux_table.DBDescription%>", "<%=_aux_table.ExtendedDescription%>", <%=_aux_table.isVirtualTable.ToString().ToLower()%>, <%=_aux_table.isConfig.ToString().ToLower()%>)]
 	public 
-#if NET20
+#if !NET_1_1
 		partial 
 #else
 		abstract 
 #endif
 		class 
-#if NET20
+#if !NET_1_1
 		BO_<%=_aux_table.Name%> 
 #else
 		BO0_<%=_aux_table.Name%> 
 #endif
 		: BO__base<%=(isListItem) ? ", iListItem" : ""%> {
 		#region public BO_<%=_aux_table.Name%>(...);
-#if !NET20
+#if NET_1_1
 		internal BO0_<%=_aux_table.Name%>() {}
 #endif
 
 		///
-#if NET20
+#if !NET_1_1
 		~BO_<%=_aux_table.Name%>
 #else
 		~BO0_<%=_aux_table.Name%>
@@ -94,7 +94,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 		private DO_<%=_aux_table.Name%> mainaggregate__;
 
 		///
-#if NET20
+#if !NET_1_1
 		private 
 #else
 		protected 
@@ -128,7 +128,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 		/// List Item Value.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 			string ListItemValue {
@@ -140,7 +140,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 		/// List Item Text.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 			string ListItemText {
@@ -158,7 +158,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 		/// Allows assignement of null and check if null at <%=_aux_table.Name%>'s <%=_aux_field.Name%>.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool <%=_aux_field.Name%>_isNull {
@@ -197,7 +197,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.businesslayer {
 			"<%=_aux_field.AditionalInfo%>"
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		<%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%> {

@@ -45,15 +45,15 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 	/// utils DataObject which works as a repository of useful Properties and Methods for DataObjects at <%=_aux_metadata.Namespace%>.lib.datalayer namespace.
 	/// </summary>
 	public sealed 
-#if NET20
+#if !NET_1_1
 		partial 
 #endif
 		class DO__utils 
-#if !NET20
+#if NET_1_1
 		: DO0__utils<%/*, IDisposable*/%>
 #endif
 	{
-#if !NET20
+#if NET_1_1
 		#region public DO__utils(...);
 		///
 		public DO__utils() : base() {

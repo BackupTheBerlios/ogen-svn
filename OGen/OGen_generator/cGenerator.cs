@@ -148,7 +148,7 @@ namespace OGen.lib.generator {
 				#region case "CONFIG.ogenPath": translate_out = ...; break;
 				case "CONFIG.ogenPath":
 					translate_out = 
-						#if NET20
+						#if !NET_1_1
 						System.Configuration.ConfigurationManager.AppSettings["ogenPath"]
 						#else
 						System.Configuration.ConfigurationSettings.AppSettings["ogenPath"]

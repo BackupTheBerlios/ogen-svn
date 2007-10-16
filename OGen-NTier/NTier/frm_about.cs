@@ -108,7 +108,7 @@ namespace OGen.NTier.presentationlayer.winforms {
 		public const string APPSETTINGS_LICENSE_IHAVEREADLINCENSE = "I have read lincense";
 		public const string APPSETTINGS_LICENSE = "license";
 		private void btnOK_Click(object sender, System.EventArgs e) {
-			#if NET20
+			#if !NET_1_1
 			if (
 				System.Configuration.ConfigurationManager.AppSettings["license"] != APPSETTINGS_LICENSE_IHAVEREADLINCENSE
 			) {

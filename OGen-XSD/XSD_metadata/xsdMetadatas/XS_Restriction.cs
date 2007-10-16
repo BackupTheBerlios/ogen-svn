@@ -19,7 +19,11 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
-	public class XS_Restriction : OGenRootrefCollectionInterface<RootMetadata> {
+	public class XS_Restriction 
+#if !NET_1_1
+		: OGenRootrefCollectionInterface<RootMetadata> 
+#endif
+	{
 		public XS_Restriction() {
 		}
 
@@ -53,7 +57,7 @@ namespace OGen.XSD.lib.metadata {
 		#endregion
 
 		#region public ... XS_Enumeration { get; }
-#if NET20
+#if !NET_1_1
 		private OGenRootrefCollection<XS_Enumeration, RootMetadata> xs_enumerationcollection_
 			= new OGenRootrefCollection<XS_Enumeration, RootMetadata>();
 #else
@@ -71,7 +75,7 @@ namespace OGen.XSD.lib.metadata {
 
 		[XmlIgnore()]
 		public 
-#if NET20
+#if !NET_1_1
 			OGenRootrefCollection<XS_Enumeration, RootMetadata>
 #else
 			XS_EnumerationCollection

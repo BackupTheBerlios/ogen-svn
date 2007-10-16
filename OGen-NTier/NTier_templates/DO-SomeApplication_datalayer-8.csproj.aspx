@@ -67,7 +67,7 @@ int _aux_table_hasidentitykey;
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>TRACE;DEBUG;NET20<%
+    <DefineConstants>TRACE;DEBUG;NET_2_0<%
 	for (int d = 0; d < _aux_metadata.DBs.Count; d++) {
 		string _dbservertype = _aux_metadata.DBs[d].DBServerType.ToString();
 		%>;<%=_dbservertype%><%
@@ -93,7 +93,7 @@ int _aux_table_hasidentitykey;
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile>
     </ConfigurationOverrideFile>
-    <DefineConstants>TRACE;NET20<%
+    <DefineConstants>TRACE;NET_2_0<%
 	for (int d = 0; d < _aux_metadata.DBs.Count; d++) {
 		string _dbservertype = _aux_metadata.DBs[d].DBServerType.ToString();
 		%>;<%=_dbservertype%><%

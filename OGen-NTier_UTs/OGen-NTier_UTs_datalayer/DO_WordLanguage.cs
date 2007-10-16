@@ -23,15 +23,15 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	/// WordLanguage DataObject which provides access to WordLanguage table at Database.
 	/// </summary>
 	public sealed 
-#if NET20
+#if !NET_1_1
 		partial
 #endif
 		class DO_WordLanguage : 
-#if !NET20
+#if NET_1_1
 		DO0_WordLanguage, 
 #endif
 		IDisposable {
-#if !NET20
+#if NET_1_1
 		#region public DO_WordLanguage();
 		///
 		public DO_WordLanguage() : base() {

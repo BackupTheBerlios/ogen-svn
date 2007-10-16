@@ -183,7 +183,7 @@ namespace OGen.XSD.lib.generator {
 				);
 			}
 			new cGenerator(
-				#if NET20
+				#if !NET_1_1
 				System.Configuration.ConfigurationManager.AppSettings
 				#else
 				System.Configuration.ConfigurationSettings.AppSettings

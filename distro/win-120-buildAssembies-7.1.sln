@@ -1,93 +1,109 @@
 Microsoft Visual Studio Solution File, Format Version 8.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_generator", "..\OGen-NTier\NTier_generator\NTier_generator-7.1.csproj", "{BC9835E7-8878-479D-BC0F-909FA77344DD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_generator-7.1", "..\OGen-NTier\NTier_generator\NTier_generator-7.1.csproj", "{BC9835E7-8878-479D-BC0F-909FA77344DD}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_collections", "..\OGen\OGen_collections\OGen_collections-7.1.csproj", "{A6E837F8-780F-4D05-B3ED-2FF1906B5766}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_collections-7.1", "..\OGen\OGen_collections\OGen_collections-7.1.csproj", "{A6E837F8-780F-4D05-B3ED-2FF1906B5766}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer", "..\OGen\OGen_datalayer\OGen_datalayer-7.1.csproj", "{4AE20414-478E-4859-849E-929741A5936C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer-7.1", "..\OGen\OGen_datalayer\OGen_datalayer-7.1.csproj", "{4AE20414-478E-4859-849E-929741A5936C}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_generator", "..\OGen\OGen_generator\OGen_generator-7.1.csproj", "{668ACF34-6104-4DD9-BB8A-65D9D94B0BB6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_generator-7.1", "..\OGen\OGen_generator\OGen_generator-7.1.csproj", "{668ACF34-6104-4DD9-BB8A-65D9D94B0BB6}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_templates", "..\OGen\OGen_templates\OGen_templates-7.1.csproj", "{8377EF00-063B-451A-8408-FE2F8EAD5C32}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_templates-7.1", "..\OGen\OGen_templates\OGen_templates-7.1.csproj", "{8377EF00-063B-451A-8408-FE2F8EAD5C32}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_webforms", "..\OGen\OGen_webforms\OGen_webforms-7.1.csproj", "{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_webforms-7.1", "..\OGen\OGen_webforms\OGen_webforms-7.1.csproj", "{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_datalayer", "..\OGen-NTier\NTier_datalayer\NTier_datalayer-7.1.csproj", "{38BEF535-92F1-4C55-9CEA-8F8D3E82CAFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_datalayer-7.1", "..\OGen-NTier\NTier_datalayer\NTier_datalayer-7.1.csproj", "{38BEF535-92F1-4C55-9CEA-8F8D3E82CAFD}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_businesslayer", "..\OGen-NTier\NTier_businesslayer\NTier_businesslayer-7.1.csproj", "{8AEBEA64-6FC4-430C-922C-B88D105AE91C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_businesslayer-7.1", "..\OGen-NTier\NTier_businesslayer\NTier_businesslayer-7.1.csproj", "{8AEBEA64-6FC4-430C-922C-B88D105AE91C}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_templates", "..\OGen-NTier\NTier_templates\NTier_templates-7.1.csproj", "{D5FDB433-994F-404C-B535-FB90B005B6B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_templates-7.1", "..\OGen-NTier\NTier_templates\NTier_templates-7.1.csproj", "{D5FDB433-994F-404C-B535-FB90B005B6B8}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier", "..\OGen-NTier\NTier\NTier-7.1.csproj", "{37C5F3D1-D158-4E05-BB2D-CD32553FB993}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier-7.1", "..\OGen-NTier\NTier\NTier-7.1.csproj", "{37C5F3D1-D158-4E05-BB2D-CD32553FB993}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier-console", "..\OGen-NTier\NTier-console\NTier-console-7.1.csproj", "{E853AF0F-1F72-4B4E-946F-2E9C4661C903}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier-console-7.1", "..\OGen-NTier\NTier-console\NTier-console-7.1.csproj", "{E853AF0F-1F72-4B4E-946F-2E9C4661C903}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_winforms", "..\OGen\OGen_winforms\OGen_winforms-7.1.csproj", "{B3835B3F-C899-416F-BA94-625A4B32A4AC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_winforms-7.1", "..\OGen\OGen_winforms\OGen_winforms-7.1.csproj", "{B3835B3F-C899-416F-BA94-625A4B32A4AC}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_metadata", "..\OGen-NTier\NTier_metadata\NTier_metadata-7.1.csproj", "{0E77A4DB-AF8B-4290-BB33-F9EC97655433}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTier_metadata-7.1", "..\OGen-NTier\NTier_metadata\NTier_metadata-7.1.csproj", "{0E77A4DB-AF8B-4290-BB33-F9EC97655433}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_parser", "..\OGen\OGen_parser\OGen_parser-7.1.csproj", "{981BC7DE-D93C-446E-861E-60A20E4E3391}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_parser-7.1", "..\OGen\OGen_parser\OGen_parser-7.1.csproj", "{981BC7DE-D93C-446E-861E-60A20E4E3391}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc_generator", "..\OGen-Doc\Doc_generator\Doc_generator-7.1.csproj", "{0D8CBBD6-841B-4A03-9733-8AFE3B4D5C86}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc_generator-7.1", "..\OGen-Doc\Doc_generator\Doc_generator-7.1.csproj", "{0D8CBBD6-841B-4A03-9733-8AFE3B4D5C86}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc_metadata", "..\OGen-Doc\Doc_metadata\Doc_metadata-7.1.csproj", "{9DF6791A-1771-4EB6-8FEB-7F54AC2D9078}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc_metadata-7.1", "..\OGen-Doc\Doc_metadata\Doc_metadata-7.1.csproj", "{9DF6791A-1771-4EB6-8FEB-7F54AC2D9078}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc_templates", "..\OGen-Doc\Doc_templates\Doc_templates-7.1.csproj", "{D5FDB433-994F-404C-B535-FB90B005B6B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc_templates-7.1", "..\OGen-Doc\Doc_templates\Doc_templates-7.1.csproj", "{D5FDB433-994F-404C-B535-FB90B005B6B8}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc-console", "..\OGen-Doc\Doc-console\Doc-console-7.1.csproj", "{D4BA7561-1BEB-403C-933C-AE740D4889BE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc-console-7.1", "..\OGen-Doc\Doc-console\Doc-console-7.1.csproj", "{D4BA7561-1BEB-403C-933C-AE740D4889BE}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer__base", "..\OGen\OGen_datalayer__base\OGen_datalayer__base-7.1.csproj", "{0BE6274C-5536-4690-9597-8FCD8459C2A3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer__base-7.1", "..\OGen\OGen_datalayer__base\OGen_datalayer__base-7.1.csproj", "{0BE6274C-5536-4690-9597-8FCD8459C2A3}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_PostgreSQL", "..\OGen\OGen_datalayer_PostgreSQL\OGen_datalayer_PostgreSQL-7.1.csproj", "{2BBB8F6D-B85C-4939-B781-5768DE287455}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_PostgreSQL-7.1", "..\OGen\OGen_datalayer_PostgreSQL\OGen_datalayer_PostgreSQL-7.1.csproj", "{2BBB8F6D-B85C-4939-B781-5768DE287455}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_SQLServer", "..\OGen\OGen_datalayer_SQLServer\OGen_datalayer_SQLServer-7.1.csproj", "{1B07A59E-56C1-49C5-B3A5-C6B5EED72F5D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_SQLServer-7.1", "..\OGen\OGen_datalayer_SQLServer\OGen_datalayer_SQLServer-7.1.csproj", "{1B07A59E-56C1-49C5-B3A5-C6B5EED72F5D}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayersupport", "..\OGen\OGen_datalayersupport\OGen_datalayersupport-7.1.csproj", "{C982B439-F21D-469A-8077-F01D29B6C003}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayersupport-7.1", "..\OGen\OGen_datalayersupport\OGen_datalayersupport-7.1.csproj", "{C982B439-F21D-469A-8077-F01D29B6C003}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_MySQL", "..\OGen\OGen_datalayer_MySQL\OGen_datalayer_MySQL-7.1.csproj", "{CD40001B-B19B-44CA-9F8A-8FB4F75DB1F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_MySQL-7.1", "..\OGen\OGen_datalayer_MySQL\OGen_datalayer_MySQL-7.1.csproj", "{CD40001B-B19B-44CA-9F8A-8FB4F75DB1F9}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSD_metadata-7.1", "..\OGen-XSD\XSD_metadata\XSD_metadata-7.1.csproj", "{56DDA30D-0205-4162-82C4-BEA6635DA9CD}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSD_generator-7.1", "..\OGen-XSD\XSD_generator\XSD_generator-7.1.csproj", "{0BBA95D0-6789-4938-8E1E-80E6F6572497}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSD_templates-7.1", "..\OGen-XSD\XSD_templates\XSD_templates-7.1.csproj", "{C2FBF380-923D-4D33-9AAF-1294BCA095E1}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSD-console-7.1", "..\OGen-XSD\XSD-console\XSD-console-7.1.csproj", "{2E199B79-28FC-4B2A-9D44-737CD304E7F1}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
@@ -189,6 +205,22 @@ Global
 		{CD40001B-B19B-44CA-9F8A-8FB4F75DB1F9}.Debug.Build.0 = Debug|.NET
 		{CD40001B-B19B-44CA-9F8A-8FB4F75DB1F9}.Release.ActiveCfg = Release|.NET
 		{CD40001B-B19B-44CA-9F8A-8FB4F75DB1F9}.Release.Build.0 = Release|.NET
+		{56DDA30D-0205-4162-82C4-BEA6635DA9CD}.Debug.ActiveCfg = Debug|.NET
+		{56DDA30D-0205-4162-82C4-BEA6635DA9CD}.Debug.Build.0 = Debug|.NET
+		{56DDA30D-0205-4162-82C4-BEA6635DA9CD}.Release.ActiveCfg = Release|.NET
+		{56DDA30D-0205-4162-82C4-BEA6635DA9CD}.Release.Build.0 = Release|.NET
+		{0BBA95D0-6789-4938-8E1E-80E6F6572497}.Debug.ActiveCfg = Debug|.NET
+		{0BBA95D0-6789-4938-8E1E-80E6F6572497}.Debug.Build.0 = Debug|.NET
+		{0BBA95D0-6789-4938-8E1E-80E6F6572497}.Release.ActiveCfg = Release|.NET
+		{0BBA95D0-6789-4938-8E1E-80E6F6572497}.Release.Build.0 = Release|.NET
+		{C2FBF380-923D-4D33-9AAF-1294BCA095E1}.Debug.ActiveCfg = Debug|.NET
+		{C2FBF380-923D-4D33-9AAF-1294BCA095E1}.Debug.Build.0 = Debug|.NET
+		{C2FBF380-923D-4D33-9AAF-1294BCA095E1}.Release.ActiveCfg = Release|.NET
+		{C2FBF380-923D-4D33-9AAF-1294BCA095E1}.Release.Build.0 = Release|.NET
+		{2E199B79-28FC-4B2A-9D44-737CD304E7F1}.Debug.ActiveCfg = Debug|.NET
+		{2E199B79-28FC-4B2A-9D44-737CD304E7F1}.Debug.Build.0 = Debug|.NET
+		{2E199B79-28FC-4B2A-9D44-737CD304E7F1}.Release.ActiveCfg = Release|.NET
+		{2E199B79-28FC-4B2A-9D44-737CD304E7F1}.Release.Build.0 = Release|.NET
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 	EndGlobalSection

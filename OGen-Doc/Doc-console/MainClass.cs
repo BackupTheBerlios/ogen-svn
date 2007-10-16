@@ -50,7 +50,7 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 					//@"\\127.0.0.1\OGen_source$\OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen-NTier.OGenDoc-metadata.xml"
 
 					System.IO.Path.Combine(
-						#if NET20
+						#if !NET_1_1
 						System.Configuration.ConfigurationManager.AppSettings
 						#else
 						System.Configuration.ConfigurationSettings.AppSettings

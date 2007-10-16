@@ -87,7 +87,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// Indicates if changes have been made to FO0_<%=_aux_table.Name%> properties since last time getObject method was run.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool hasChanges {
@@ -105,7 +105,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 		/// </summary>
 		[XmlIgnore]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool <%=_aux_field.Name%>_isNull {
@@ -157,7 +157,7 @@ namespace <%=_aux_metadata.Namespace%>.lib.datalayer {
 			"<%=_aux_field.AditionalInfo%>"
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		<%=_aux_field.DBType_generic.FWType%> <%=_aux_field.Name%> {

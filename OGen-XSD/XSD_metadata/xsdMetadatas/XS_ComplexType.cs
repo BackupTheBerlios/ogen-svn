@@ -20,7 +20,7 @@ using System.Collections;
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
-#if !NET20
+#if NET_1_1
 	#region public class XS_ComplexTypeCollection { ... }
 	public class XS_ComplexTypeCollection {
 		public XS_ComplexTypeCollection () {
@@ -108,7 +108,7 @@ namespace OGen.XSD.lib.metadata {
 #endif
 
 	public class XS_ComplexType
-#if NET20
+#if !NET_1_1
 		: OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata>
 #endif
 	{
@@ -136,7 +136,7 @@ namespace OGen.XSD.lib.metadata {
 			get { return root_ref_; }
 		}
 		#endregion
-#if NET20
+#if !NET_1_1
 		#region public string CollectionName { get; }
 		[XmlIgnore()]
 		public string CollectionName {
@@ -161,7 +161,7 @@ namespace OGen.XSD.lib.metadata {
 		#endregion
 
 		#region public ... XS_Attribute { get; }
-#if NET20
+#if !NET_1_1
 		private OGenRootrefCollection<XS_Attribute, RootMetadata> xs_attributecollection_
 			= new OGenRootrefCollection<XS_Attribute, RootMetadata>();
 #else
@@ -179,7 +179,7 @@ namespace OGen.XSD.lib.metadata {
 
 		[XmlIgnore()]
 		public
-#if NET20
+#if !NET_1_1
 			OGenRootrefCollection<XS_Attribute, RootMetadata>
 #else
 			XS_AttributeCollection

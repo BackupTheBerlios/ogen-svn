@@ -28,7 +28,7 @@
                     BaseAddress = "285212672"
                     CheckForOverflowUnderflow = "false"
                     ConfigurationOverrideFile = ""
-                    DefineConstants = "DEBUG;TRACE;PostgreSQL"
+                    DefineConstants = "DEBUG;TRACE;PostgreSQL;NET_1_1"
                     DocumentationFile = ""
                     DebugSymbols = "true"
                     FileAlignment = "4096"
@@ -48,7 +48,7 @@
                     BaseAddress = "285212672"
                     CheckForOverflowUnderflow = "false"
                     ConfigurationOverrideFile = ""
-                    DefineConstants = "TRACE;PostgreSQL"
+                    DefineConstants = "TRACE;PostgreSQL;NET_1_1"
                     DocumentationFile = ""
                     DebugSymbols = "false"
                     FileAlignment = "4096"
@@ -140,11 +140,6 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "utils.cs"
-                    SubType = "Code"
-                    BuildAction = "Compile"
-                />
-                <File
                     RelPath = "COPYING.MIT"
                     BuildAction = "None"
                 />
@@ -165,6 +160,11 @@
                 <File
                     RelPath = "LICENSE.txt"
                     BuildAction = "Content"
+                />
+                <File
+                    RelPath = "utils.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
                 />
             </Include>
         </Files>

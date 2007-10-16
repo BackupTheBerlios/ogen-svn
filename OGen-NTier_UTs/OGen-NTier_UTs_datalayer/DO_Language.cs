@@ -23,15 +23,15 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	/// Language DataObject which provides access to Language table at Database.
 	/// </summary>
 	public sealed 
-#if NET20
+#if !NET_1_1
 		partial
 #endif
 		class DO_Language : 
-#if !NET20
+#if NET_1_1
 		DO0_Language, 
 #endif
 		IDisposable {
-#if !NET20
+#if NET_1_1
 		#region public DO_Language();
 		///
 		public DO_Language() : base() {
