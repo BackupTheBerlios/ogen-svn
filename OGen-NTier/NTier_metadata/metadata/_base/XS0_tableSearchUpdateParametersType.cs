@@ -121,7 +121,7 @@ namespace OGen.NTier.lib.metadata.metadata {
 			get { return root_ref_; }
 		}
 		#endregion
-		#region public OGenRootrefCollection<XS_tableFieldRefType, XS__RootMetadata> TableFieldRef { get; }
+		#region public ... TableFieldRefCollection { get; }
 		private 
 #if !NET_1_1
 			OGenRootrefCollection<XS_tableFieldRefType, XS__RootMetadata>
@@ -139,11 +139,11 @@ namespace OGen.NTier.lib.metadata.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefCollection<XS_tableFieldRefType, XS__RootMetadata> TableFieldRef
+			OGenRootrefCollection<XS_tableFieldRefType, XS__RootMetadata>
 #else
 			XS_tableFieldRefTypeCollection
 #endif
-		XS_tableFieldRefTypeCollection
+		TableFieldRefCollection
 		{
 			get { return tablefieldrefcollection_; }
 		}

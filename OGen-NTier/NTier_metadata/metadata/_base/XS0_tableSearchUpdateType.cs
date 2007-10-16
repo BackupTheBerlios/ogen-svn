@@ -164,7 +164,7 @@ namespace OGen.NTier.lib.metadata.metadata {
 			}
 		}
 		#endregion
-		#region public OGenRootrefSimpleCollection<XS_tableSearchUpdateParametersType, XS__RootMetadata> TableUpdateParameters { get; }
+		#region public ... TableUpdateParametersCollection { get; }
 		private 
 #if !NET_1_1
 			OGenRootrefSimpleCollection<XS_tableSearchUpdateParametersType, XS__RootMetadata>
@@ -182,11 +182,11 @@ namespace OGen.NTier.lib.metadata.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefSimpleCollection<XS_tableSearchUpdateParametersType, XS__RootMetadata> TableUpdateParameters
+			OGenRootrefSimpleCollection<XS_tableSearchUpdateParametersType, XS__RootMetadata>
 #else
 			XS_tableSearchUpdateParametersTypeCollection
 #endif
-		XS_tableSearchUpdateParametersTypeCollection
+		TableUpdateParametersCollection
 		{
 			get { return tableupdateparameterscollection_; }
 		}

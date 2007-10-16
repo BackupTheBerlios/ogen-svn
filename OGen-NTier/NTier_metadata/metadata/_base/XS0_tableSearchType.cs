@@ -198,7 +198,7 @@ namespace OGen.NTier.lib.metadata.metadata {
 			}
 		}
 		#endregion
-		#region public OGenRootrefSimpleCollection<XS_tableSearchParametersType, XS__RootMetadata> TableSearchParameters { get; }
+		#region public ... TableSearchParametersCollection { get; }
 		private 
 #if !NET_1_1
 			OGenRootrefSimpleCollection<XS_tableSearchParametersType, XS__RootMetadata>
@@ -216,16 +216,16 @@ namespace OGen.NTier.lib.metadata.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefSimpleCollection<XS_tableSearchParametersType, XS__RootMetadata> TableSearchParameters
+			OGenRootrefSimpleCollection<XS_tableSearchParametersType, XS__RootMetadata>
 #else
 			XS_tableSearchParametersTypeCollection
 #endif
-		XS_tableSearchParametersTypeCollection
+		TableSearchParametersCollection
 		{
 			get { return tablesearchparameterscollection_; }
 		}
 		#endregion
-		#region public OGenRootrefSimpleCollection<XS_tableSearchUpdatesType, XS__RootMetadata> TableSearchUpdates { get; }
+		#region public ... TableSearchUpdatesCollection { get; }
 		private 
 #if !NET_1_1
 			OGenRootrefSimpleCollection<XS_tableSearchUpdatesType, XS__RootMetadata>
@@ -243,11 +243,11 @@ namespace OGen.NTier.lib.metadata.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefSimpleCollection<XS_tableSearchUpdatesType, XS__RootMetadata> TableSearchUpdates
+			OGenRootrefSimpleCollection<XS_tableSearchUpdatesType, XS__RootMetadata>
 #else
 			XS_tableSearchUpdatesTypeCollection
 #endif
-		XS_tableSearchUpdatesTypeCollection
+		TableSearchUpdatesCollection
 		{
 			get { return tablesearchupdatescollection_; }
 		}

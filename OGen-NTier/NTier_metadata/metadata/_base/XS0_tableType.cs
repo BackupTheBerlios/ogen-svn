@@ -253,7 +253,7 @@ namespace OGen.NTier.lib.metadata.metadata {
 			}
 		}
 		#endregion
-		#region public OGenRootrefSimpleCollection<XS_tableDBsType, XS__RootMetadata> TableDBs { get; }
+		#region public ... TableDBsCollection { get; }
 		private 
 #if !NET_1_1
 			OGenRootrefSimpleCollection<XS_tableDBsType, XS__RootMetadata>
@@ -271,16 +271,16 @@ namespace OGen.NTier.lib.metadata.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefSimpleCollection<XS_tableDBsType, XS__RootMetadata> TableDBs
+			OGenRootrefSimpleCollection<XS_tableDBsType, XS__RootMetadata>
 #else
 			XS_tableDBsTypeCollection
 #endif
-		XS_tableDBsTypeCollection
+		TableDBsCollection
 		{
 			get { return tabledbscollection_; }
 		}
 		#endregion
-		#region public OGenRootrefSimpleCollection<XS_tableFieldsType, XS__RootMetadata> TableFields { get; }
+		#region public ... TableFieldsCollection { get; }
 		private 
 #if !NET_1_1
 			OGenRootrefSimpleCollection<XS_tableFieldsType, XS__RootMetadata>
@@ -298,16 +298,16 @@ namespace OGen.NTier.lib.metadata.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefSimpleCollection<XS_tableFieldsType, XS__RootMetadata> TableFields
+			OGenRootrefSimpleCollection<XS_tableFieldsType, XS__RootMetadata>
 #else
 			XS_tableFieldsTypeCollection
 #endif
-		XS_tableFieldsTypeCollection
+		TableFieldsCollection
 		{
 			get { return tablefieldscollection_; }
 		}
 		#endregion
-		#region public OGenRootrefSimpleCollection<XS_tableSearchesType, XS__RootMetadata> TableSearches { get; }
+		#region public ... TableSearchesCollection { get; }
 		private 
 #if !NET_1_1
 			OGenRootrefSimpleCollection<XS_tableSearchesType, XS__RootMetadata>
@@ -325,16 +325,16 @@ namespace OGen.NTier.lib.metadata.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefSimpleCollection<XS_tableSearchesType, XS__RootMetadata> TableSearches
+			OGenRootrefSimpleCollection<XS_tableSearchesType, XS__RootMetadata>
 #else
 			XS_tableSearchesTypeCollection
 #endif
-		XS_tableSearchesTypeCollection
+		TableSearchesCollection
 		{
 			get { return tablesearchescollection_; }
 		}
 		#endregion
-		#region public OGenRootrefSimpleCollection<XS_tableUpdatesType, XS__RootMetadata> TableUpdates { get; }
+		#region public ... TableUpdatesCollection { get; }
 		private 
 #if !NET_1_1
 			OGenRootrefSimpleCollection<XS_tableUpdatesType, XS__RootMetadata>
@@ -352,11 +352,11 @@ namespace OGen.NTier.lib.metadata.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefSimpleCollection<XS_tableUpdatesType, XS__RootMetadata> TableUpdates
+			OGenRootrefSimpleCollection<XS_tableUpdatesType, XS__RootMetadata>
 #else
 			XS_tableUpdatesTypeCollection
 #endif
-		XS_tableUpdatesTypeCollection
+		TableUpdatesCollection
 		{
 			get { return tableupdatescollection_; }
 		}
