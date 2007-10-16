@@ -15,11 +15,103 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 using System;
 using System.Xml.Serialization;
+using System.Collections;
 
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
-	public class XS_ComplexType : OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata> {
+#if !NET20
+	#region public class XS_ComplexTypeCollection { ... }
+	public class XS_ComplexTypeCollection {
+		public XS_ComplexTypeCollection () {
+			cols_ = new ArrayList();
+		}
+
+		#region public RootMetadata root_ref { get; }
+		private RootMetadata root_ref_;
+
+		public RootMetadata root_ref {
+			get {
+				return root_ref_;
+			}
+			set {
+				root_ref_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((XS_ComplexType)cols_[i]).root_ref = value;
+				}
+			}
+		}
+		#endregion
+
+		#region internal XS_ComplexType[] cols__ { get; set; }
+		private ArrayList cols_;
+
+		internal XS_ComplexType[] cols__ {
+			get {
+				XS_ComplexType[] _output = new XS_ComplexType[cols_.Count];
+				cols_.CopyTo(_output);
+				return _output;
+			}
+			set {
+				cols_.Clear();
+				if (value != null) {
+					for (int i = 0; i < value.Length; i++) {
+						cols_.Add(value[i]);
+					}
+				}
+			}
+		}
+		#endregion
+
+		#region public int Count { get; }
+		public int Count {
+			get {
+				return cols_.Count;
+			}
+		}
+		#endregion
+
+		#region public XS_ComplexType this[int index_in] { get; }
+		public XS_ComplexType this[int index_in] {
+			get {
+				return (XS_ComplexType)cols_[index_in];
+			}
+		}
+		#endregion
+		#region public XS_ComplexType this[string name_in] { get; }
+		public XS_ComplexType this[string name_in] {
+			get {
+				for (int i = 0; i < cols_.Count; i++) {
+					if (((XS_ComplexType)cols_[i]).Name == name_in) {
+						return (XS_ComplexType)cols_[i];
+					}
+				}
+
+				return null;
+			}
+		}
+		#endregion
+
+		#region public int Add(params XS_ComplexType[] col_in);
+		public int Add(params XS_ComplexType[] col_in) {
+			int _output = -1;
+
+			for (int i = 0; i < col_in.Length; i++) {
+				_output = cols_.Add(col_in[i]);
+			}
+
+			return _output;
+		}
+		#endregion
+	}
+	#endregion
+#endif
+
+	public class XS_ComplexType
+#if NET20
+		: OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata>
+#endif
+	{
 		public XS_ComplexType(
 		) {
 		}
@@ -39,17 +131,19 @@ namespace OGen.XSD.lib.metadata {
 				root_ref_ = value;
 
 				if (xs_sequence__ != null) xs_sequence__.root_ref = value;
-				xs_attribute_.root_ref = value;
+				xs_attributecollection_.root_ref = value;
 			}
 			get { return root_ref_; }
 		}
 		#endregion
+#if NET20
 		#region public string CollectionName { get; }
 		[XmlIgnore()]
 		public string CollectionName {
 			get { return Name; }
 		}
 		#endregion
+#endif
 
 		#region public string Name { get; set; }
 		private string name_;
@@ -66,21 +160,32 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public xs__collection<XS_Attribute> XS_Attribute { get; }
-		private OGenRootrefCollection<XS_Attribute, RootMetadata> xs_attribute_
+		#region public ... XS_Attribute { get; }
+#if NET20
+		private OGenRootrefCollection<XS_Attribute, RootMetadata> xs_attributecollection_
 			= new OGenRootrefCollection<XS_Attribute, RootMetadata>();
+#else
+		private XS_AttributeCollection xs_attributecollection_
+			= new XS_AttributeCollection();
+#endif
 
 		[XmlElement("attribute")]
 		//[XmlArray("attribute")]
 		//[XmlArrayItem(typeof(XS_Attribute))]
 		public XS_Attribute[] xs_attribute__xml {
-			get { return xs_attribute_.cols__; }
-			set { xs_attribute_.cols__ = value; }
+			get { return xs_attributecollection_.cols__; }
+			set { xs_attributecollection_.cols__ = value; }
 		}
 
 		[XmlIgnore()]
-		public OGenRootrefCollection<XS_Attribute, RootMetadata> XS_Attribute {
-			get { return xs_attribute_; }
+		public
+#if NET20
+			OGenRootrefCollection<XS_Attribute, RootMetadata>
+#else
+			XS_AttributeCollection
+#endif
+		XS_Attribute {
+			get { return xs_attributecollection_; }
 		}
 		#endregion
 

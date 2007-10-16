@@ -22,6 +22,7 @@ using OGen.lib.collections;
 using OGen.lib.generator;
 
 namespace OGen.XSD.lib.metadata {
+	#region public class XS_SchemaCollection { ... }
 	public class XS_SchemaCollection {
 		public XS_SchemaCollection(
 			XS_Schema[] schemas_in
@@ -61,6 +62,7 @@ namespace OGen.XSD.lib.metadata {
 			}
 		}
 	}
+	#endregion
 
 	//[XmlRoot("xs___schema")]
 	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
@@ -78,8 +80,8 @@ namespace OGen.XSD.lib.metadata {
 				root_ref_ = value;
 
 				if (xs_element__ != null) xs_element__.root_ref = value;
-				xs_simpletype_.root_ref = value;
-				xs_complextype_.root_ref = value;
+				xs_simpletypecollection_.root_ref = value;
+				xs_complextypecollection_.root_ref = value;
 			}
 			get { return root_ref_; }
 		}
@@ -158,39 +160,61 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public xs__collection<XS_SimpleType> XS_SimpleType { get; }
-		private OGenRootrefCollection<XS_SimpleType, RootMetadata> xs_simpletype_
+		#region public ... XS_SimpleType { get; }
+#if NET20
+		private OGenRootrefCollection<XS_SimpleType, RootMetadata> xs_simpletypecollection_
 			= new OGenRootrefCollection<XS_SimpleType, RootMetadata>();
+#else
+		private XS_SimpleTypeCollection xs_simpletypecollection_
+			= new XS_SimpleTypeCollection();
+#endif
 
 		[XmlElement("simpleType")]
 		//[XmlArray("simpleType")]
 		//[XmlArrayItem(typeof(XS_SimpleType))]
 		public XS_SimpleType[] xs_simpletype__xml {
-			get { return xs_simpletype_.cols__; }
-			set { xs_simpletype_.cols__ = value; }
+			get { return xs_simpletypecollection_.cols__; }
+			set { xs_simpletypecollection_.cols__ = value; }
 		}
 
 		[XmlIgnore()]
-		public OGenRootrefCollection<XS_SimpleType, RootMetadata> XS_SimpleType {
-			get { return xs_simpletype_; }
+		public
+#if NET20
+			OGenRootrefCollection<XS_SimpleType, RootMetadata>
+#else
+			XS_SimpleTypeCollection
+#endif
+		XS_SimpleType {
+			get { return xs_simpletypecollection_; }
 		}
 		#endregion
-		#region public xs__collection<XS_ComplexType> XS_ComplexType { get; }
-		private OGenRootrefCollection<XS_ComplexType, RootMetadata> xs_complextype_
+		#region public ... XS_ComplexType { get; }
+#if NET20
+		private OGenRootrefCollection<XS_ComplexType, RootMetadata> xs_complextypecollection_
 			= new OGenRootrefCollection<XS_ComplexType, RootMetadata>();
+#else
+		private XS_ComplexTypeCollection xs_complextypecollection_
+			= new XS_ComplexTypeCollection();
+#endif
 
 		[XmlElement("complexType")]
 		//[XmlArray("complexType")]
 		//[XmlArrayItem("complexType", typeof(XS_ComplexType))]
 		//[XmlArrayItem("complexType")]
-		public XS_ComplexType[] XS_ComplexType__xml {
-			get { return xs_complextype_.cols__; }
-			set { xs_complextype_.cols__ = value; }
+		public XS_ComplexType[] xs_complextype__xml {
+			get { return xs_complextypecollection_.cols__; }
+			set { xs_complextypecollection_.cols__ = value; }
 		}
 
 		[XmlIgnore()]
-		public OGenRootrefCollection<XS_ComplexType, RootMetadata> XS_ComplexType {
-			get { return xs_complextype_; }
+		public
+#if NET20
+			OGenRootrefCollection<XS_ComplexType, RootMetadata>
+#else
+			XS_ComplexTypeCollection
+#endif
+		XS_ComplexType {
+			get { return xs_complextypecollection_; }
 		}
 		#endregion
 

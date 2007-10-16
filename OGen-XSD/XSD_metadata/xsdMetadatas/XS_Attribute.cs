@@ -15,11 +15,103 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 using System;
 using System.Xml.Serialization;
+using System.Collections;
 
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
-	public class XS_Attribute : OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata> {
+#if !NET20
+	#region public class XS_AttributeCollection { ... }
+	public class XS_AttributeCollection {
+		public XS_AttributeCollection() {
+			cols_ = new ArrayList();
+		}
+
+		#region public RootMetadata root_ref { get; }
+		private RootMetadata root_ref_;
+
+		public RootMetadata root_ref {
+			get {
+				return root_ref_;
+			}
+			set {
+				root_ref_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((XS_Attribute)cols_[i]).root_ref = value;
+				}
+			}
+		}
+		#endregion
+
+		#region internal XS_Attribute[] cols__ { get; set; }
+		private ArrayList cols_;
+
+		internal XS_Attribute[] cols__ {
+			get {
+				XS_Attribute[] _output = new XS_Attribute[cols_.Count];
+				cols_.CopyTo(_output);
+				return _output;
+			}
+			set {
+				cols_.Clear();
+				if (value != null) {
+					for (int i = 0; i < value.Length; i++) {
+						cols_.Add(value[i]);
+					}
+				}
+			}
+		}
+		#endregion
+
+		#region public int Count { get; }
+		public int Count {
+			get {
+				return cols_.Count;
+			}
+		}
+		#endregion
+
+		#region public XS_Attribute this[int index_in] { get; }
+		public XS_Attribute this[int index_in] {
+			get {
+				return (XS_Attribute)cols_[index_in];
+			}
+		}
+		#endregion
+		#region public XS_Attribute this[string name_in] { get; }
+		public XS_Attribute this[string name_in] {
+			get {
+				for (int i = 0; i < cols_.Count; i++) {
+					if (((XS_Attribute)cols_[i]).Name == name_in) {
+						return (XS_Attribute)cols_[i];
+					}
+				}
+
+				return null;
+			}
+		}
+		#endregion
+
+		#region public int Add(params XS_Attribute[] col_in);
+		public int Add(params XS_Attribute[] col_in) {
+			int _output = -1;
+
+			for (int i = 0; i < col_in.Length; i++) {
+				_output = cols_.Add(col_in[i]);
+			}
+
+			return _output;
+		}
+		#endregion
+	}
+	#endregion
+#endif
+
+	public class XS_Attribute
+#if NET20
+		: OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata>
+#endif
+	{
 		public XS_Attribute(
 		) {
 		}
@@ -44,12 +136,14 @@ namespace OGen.XSD.lib.metadata {
 			get { return root_ref_; }
 		}
 		#endregion
+#if NET20
 		#region public string CollectionName { get; }
 		[XmlIgnore()]
 		public string CollectionName {
 			get { return Name; }
 		}
 		#endregion
+#endif
 		#region public string NType { get; set; }
 		[XmlIgnore()]
 		public string NType {

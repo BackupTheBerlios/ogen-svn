@@ -32,27 +32,38 @@ namespace OGen.XSD.lib.metadata {
 			set {
 				root_ref_ = value;
 
-				xs_element_.root_ref = value;
+				xs_elementcollection_.root_ref = value;
 			}
 			get { return root_ref_; }
 		}
 		#endregion
 
-		#region public xs__collection<XS_Element> XS_Element { get; }
-		private OGenRootrefCollection<XS_Element, RootMetadata> xs_element_
+		#region public ... XS_Element { get; }
+#if NET20
+		private OGenRootrefCollection<XS_Element, RootMetadata> xs_elementcollection_
 			= new OGenRootrefCollection<XS_Element, RootMetadata>();
+#else
+		private XS_ElementCollection xs_elementcollection_
+			= new XS_ElementCollection();
+#endif
 
 		[XmlElement("element")]
 		//[XmlArray("element")]
 		//[XmlArrayItem(typeof(XS_Element))]
 		public XS_Element[] xs_element__xml {
-			get { return xs_element_.cols__; }
-			set { xs_element_.cols__ = value; }
+			get { return xs_elementcollection_.cols__; }
+			set { xs_elementcollection_.cols__ = value; }
 		}
 
 		[XmlIgnore()]
-		public OGenRootrefCollection<XS_Element, RootMetadata> XS_Element {
-			get { return xs_element_; }
+		public 
+#if NET20
+		OGenRootrefCollection<XS_Element, RootMetadata>
+#else
+		XS_ElementCollection
+#endif
+		XS_Element {
+			get { return xs_elementcollection_; }
 		}
 		#endregion
 	}

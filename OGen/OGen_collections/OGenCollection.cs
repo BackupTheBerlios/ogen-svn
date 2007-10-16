@@ -14,7 +14,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #endregion
 
 using System;
-using System.Collections;
+//using System.Collections;
+using System.Collections.Generic;
 
 namespace OGen.lib.collections {
 	public class OGenRootrefCollection<C, R> : OGenCollection<C>
@@ -70,8 +71,8 @@ namespace OGen.lib.collections {
 		public C this[string memberName_in] {
 			get {
 				for (int i = 0; i < cols_.Count; i++) {
-					if (((C)cols_[i]).CollectionName == memberName_in) {
-						return (C)cols_[i];
+					if (cols_[i].CollectionName == memberName_in) {
+						return cols_[i];
 					}
 				}
 
@@ -85,11 +86,11 @@ namespace OGen.lib.collections {
 	{
 		public OGenSimpleCollection(
 		) {
-			cols_ = new ArrayList();
+			cols_ = new List<C>();
 		}
 
 		#region public C[] cols__ { get; set; }
-		protected ArrayList cols_;
+		protected List<C> cols_;
 
 		public C[] cols__ {
 			get {
@@ -119,64 +120,17 @@ namespace OGen.lib.collections {
 		#region public C this[int index_in] { get; }
 		public C this[int index_in] {
 			get {
-				return (C)cols_[index_in];
+				return cols_[index_in];
 			}
 		}
 		#endregion
 
-		#region public int Add(params C[] col_in);
-		public int Add(params C[] col_in) {
-			int _output = -1;
-
+		#region public void Add(params C[] col_in);
+		public void Add(params C[] col_in) {
 			for (int i = 0; i < col_in.Length; i++) {
-				_output = cols_.Add(col_in[i]);
+				cols_.Add(col_in[i]);
 			}
-
-			return _output;
 		}
 		#endregion
 	}
-
-	//public class OGenCollection<C, R> : OGenCollection<C>
-	//    where C : class, OGenCollectionInterface
-	//    where R : class 
-	//{
-	//    public OGenCollection(
-	//        R root_ref_in
-	//    ) : base (
-	//    ) {
-	//        root_ref_ = root_ref_in;
-	//    }
-
-	//    #region public R root_ref { get; }
-	//    private R root_ref_;
-
-	//    public R root_ref {
-	//        get {
-	//            return root_ref_;
-	//        }
-	//    }
-	//    #endregion
-	//}
-	//public class OGenSimpleCollection<C, R> : OGenSimpleCollection<C>
-	//    where C : class
-	//    where R : class
-	//{
-	//    public OGenSimpleCollection(
-	//        R root_ref_in
-	//    ) : base (
-	//    ) {
-	//        root_ref_ = root_ref_in;
-	//    }
-
-	//    #region public R root_ref { get; }
-	//    private R root_ref_;
-
-	//    public R root_ref {
-	//        get {
-	//            return root_ref_;
-	//        }
-	//    }
-	//    #endregion
-	//}
 }
