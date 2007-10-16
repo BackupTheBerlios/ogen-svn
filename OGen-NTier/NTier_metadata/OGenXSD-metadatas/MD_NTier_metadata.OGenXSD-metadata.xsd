@@ -301,10 +301,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 		<xs:sequence>
 			<xs:element name="copyrightTextLong" type="xs:string" />
+			<!--
+			<xs:element name="copyrightTextLong" type="copyrightTextLongType" />
+			-->
 			<xs:element name="dbs" type="dbsType" />
 			<xs:element name="tables" type="tablesType" />
 		</xs:sequence>
 	</xs:complexType>
+	<!--
+	<xs:complexType name="copyrightTextLongType" mixed="true">>
+		<xs:sequence>
+			<xs:element name="bold" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	-->
 
 	<xs:element name="metadata" type="metadataType" />
 </xs:schema>

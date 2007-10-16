@@ -180,12 +180,41 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 		#region public string CopyrightTextLong { get; set; }
+//		private CopyrightTextLongType copyrighttextlong_;
 		private string copyrighttextlong_;
 
+//		public class CopyrightTextLongType {
+//			[XmlText()]
+//			public string[] Text;
+//		}
+//		public string CopyrightTextLong {
+//			get {
+//				if (
+//					(copyrighttextlong_.Text != null)
+//					&&
+//					(copyrighttextlong_.Text.Length != 0)
+//				) {
+//					string _out = string.Empty;
+//					for (int i = 0; i < copyrighttextlong_.Text.Length; i++) {
+//						_out += copyrighttextlong_.Text[i];
+//					}
+//					return _out;
+//				} else {
+//					return string.Empty;
+//				}
+//			}
+//		}
+
 		[XmlElement("copyrightTextLong")]
+		//[XmlTextAttribute("copyrightTextLong")]
+		//[XmlTextAttribute()]
+		//[XmlText()]
+//		public CopyrightTextLongType CopyrightTextLong__xml {
 		public string CopyrightTextLong {
 			get {
-				return copyrighttextlong_;
+				return (copyrighttextlong_.IndexOf("\r\n") >= 0) 
+					? copyrighttextlong_
+					: copyrighttextlong_.Replace("\n", "\r\n");
 			}
 			set {
 				copyrighttextlong_ = value;
