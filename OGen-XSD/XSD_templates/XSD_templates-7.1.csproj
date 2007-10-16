@@ -9,7 +9,7 @@
             <Settings
                 ApplicationIcon = ""
                 AssemblyKeyContainerName = ""
-                AssemblyName = "XSD_templates"
+                AssemblyName = "OGen.XSD.lib.templates-1.1"
                 AssemblyOriginatorKeyFile = ""
                 DefaultClientScript = "JScript"
                 DefaultHTMLPageLayout = "Grid"
@@ -18,7 +18,7 @@
                 OutputType = "Library"
                 PreBuildEvent = ""
                 PostBuildEvent = ""
-                RootNamespace = "XSD_templates"
+                RootNamespace = "OGen.XSD.lib.templates"
                 RunPostBuildEvent = "OnBuildSuccess"
                 StartupObject = ""
             >

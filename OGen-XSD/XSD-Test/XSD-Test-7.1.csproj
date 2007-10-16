@@ -9,7 +9,7 @@
             <Settings
                 ApplicationIcon = ""
                 AssemblyKeyContainerName = ""
-                AssemblyName = "XSD-Test"
+                AssemblyName = "OGen.XSD.presentationlayer.test-1.1"
                 AssemblyOriginatorKeyFile = ""
                 DefaultClientScript = "JScript"
                 DefaultHTMLPageLayout = "Grid"
@@ -18,7 +18,7 @@
                 OutputType = "Exe"
                 PreBuildEvent = ""
                 PostBuildEvent = ""
-                RootNamespace = "XSD_Test"
+                RootNamespace = "OGen.XSD.presentationlayer.test"
                 RunPostBuildEvent = "OnBuildSuccess"
                 StartupObject = ""
             >

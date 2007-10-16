@@ -14,15 +14,99 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #endregion
 using System;
 using System.Xml.Serialization;
+using System.Collections;
 
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadata {
-	public class XS0_tableSearchUpdatesType : OGenRootrefCollectionInterface<XS__RootMetadata>  {
+#if NET_1_1
+	#region public class XS_tableSearchUpdatesTypeCollection { ... }
+	public class XS_tableSearchUpdatesTypeCollection {
+		public XS_tableSearchUpdatesTypeCollection() {
+			cols_ = new ArrayList();
+		}
+
+		#region public XS__RootMetadata root_ref { get; }
+		private XS__RootMetadata root_ref_;
+
+		public XS__RootMetadata root_ref {
+			get {
+				return root_ref_;
+			}
+			set {
+				root_ref_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((XS_tableSearchUpdatesType)cols_[i]).root_ref = value;
+				}
+			}
+		}
+		#endregion
+
+		#region internal XS_tableSearchUpdatesType[] cols__ { get; set; }
+		private ArrayList cols_;
+
+		internal XS_tableSearchUpdatesType[] cols__ {
+			get {
+				XS_tableSearchUpdatesType[] _output = new XS_tableSearchUpdatesType[cols_.Count];
+				cols_.CopyTo(_output);
+				return _output;
+			}
+			set {
+				cols_.Clear();
+				if (value != null) {
+					for (int i = 0; i < value.Length; i++) {
+						cols_.Add(value[i]);
+					}
+				}
+			}
+		}
+		#endregion
+
+		#region public int Count { get; }
+		public int Count {
+			get {
+				return cols_.Count;
+			}
+		}
+		#endregion
+
+		#region public XS_tableSearchUpdatesType this[int index_in] { get; }
+		public XS_tableSearchUpdatesType this[int index_in] {
+			get {
+				return (XS_tableSearchUpdatesType)cols_[index_in];
+			}
+		}
+		#endregion
+
+		#region public int Add(params XS_tableSearchUpdatesType[] col_in);
+		public int Add(params XS_tableSearchUpdatesType[] col_in) {
+			int _output = -1;
+
+			for (int i = 0; i < col_in.Length; i++) {
+				_output = cols_.Add(col_in[i]);
+			}
+
+			return _output;
+		}
+		#endregion
+	}
+	#endregion
+#endif
+
+	public class XS0_tableSearchUpdatesType
+#if !NET_1_1
+		: OGenRootrefCollectionInterface<XS__RootMetadata> 
+#endif
+	{
 		public XS0_tableSearchUpdatesType (
 		) {
-			tablesearchupdate_ 
-				= new OGenRootrefCollection<XS_tableSearchUpdateType, XS__RootMetadata>();
+			tablesearchupdatecollection_ = new 
+#if !NET_1_1
+				OGenRootrefCollection<XS_tableSearchUpdateType, XS__RootMetadata>()
+#else
+				XS_tableSearchUpdateTypeCollection()
+#endif
+			;
 		}
 
 		#region public XS__RootMetadata root_ref { get; }
@@ -32,24 +116,36 @@ namespace OGen.NTier.lib.metadata.metadata {
 		public XS__RootMetadata root_ref {
 			set {
 				root_ref_ = value;
-				tablesearchupdate_.root_ref = value;
+				tablesearchupdatecollection_.root_ref = value;
 			}
 			get { return root_ref_; }
 		}
 		#endregion
 		#region public OGenRootrefCollection<XS_tableSearchUpdateType, XS__RootMetadata> TableSearchUpdate { get; }
-		private OGenRootrefCollection<XS_tableSearchUpdateType, XS__RootMetadata> tablesearchupdate_;
-			//= new OGenRootrefCollection<XS_tableSearchUpdateType, XS__RootMetadata>();
+		private 
+#if !NET_1_1
+			OGenRootrefCollection<XS_tableSearchUpdateType, XS__RootMetadata>
+#else
+			XS_tableSearchUpdateTypeCollection
+#endif
+			tablesearchupdatecollection_;
 
 		[XmlElement("tableSearchUpdate")]
 		public XS_tableSearchUpdateType[] tablesearchupdate__xml {
-			get { return tablesearchupdate_.cols__; }
-			set { tablesearchupdate_.cols__ = value; }
+			get { return tablesearchupdatecollection_.cols__; }
+			set { tablesearchupdatecollection_.cols__ = value; }
 		}
 
 		[XmlIgnore()]
-		public OGenRootrefCollection<XS_tableSearchUpdateType, XS__RootMetadata> TableSearchUpdate {
-			get { return tablesearchupdate_; }
+		public
+#if !NET_1_1
+			OGenRootrefCollection<XS_tableSearchUpdateType, XS__RootMetadata> TableSearchUpdate
+#else
+			XS_tableSearchUpdateTypeCollection
+#endif
+		XS_tableSearchUpdateTypeCollection
+		{
+			get { return tablesearchupdatecollection_; }
 		}
 		#endregion
 	}

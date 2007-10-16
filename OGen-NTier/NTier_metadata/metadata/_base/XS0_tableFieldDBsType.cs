@@ -14,15 +14,99 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #endregion
 using System;
 using System.Xml.Serialization;
+using System.Collections;
 
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadata {
-	public class XS0_tableFieldDBsType : OGenRootrefCollectionInterface<XS__RootMetadata>  {
+#if NET_1_1
+	#region public class XS_tableFieldDBsTypeCollection { ... }
+	public class XS_tableFieldDBsTypeCollection {
+		public XS_tableFieldDBsTypeCollection() {
+			cols_ = new ArrayList();
+		}
+
+		#region public XS__RootMetadata root_ref { get; }
+		private XS__RootMetadata root_ref_;
+
+		public XS__RootMetadata root_ref {
+			get {
+				return root_ref_;
+			}
+			set {
+				root_ref_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((XS_tableFieldDBsType)cols_[i]).root_ref = value;
+				}
+			}
+		}
+		#endregion
+
+		#region internal XS_tableFieldDBsType[] cols__ { get; set; }
+		private ArrayList cols_;
+
+		internal XS_tableFieldDBsType[] cols__ {
+			get {
+				XS_tableFieldDBsType[] _output = new XS_tableFieldDBsType[cols_.Count];
+				cols_.CopyTo(_output);
+				return _output;
+			}
+			set {
+				cols_.Clear();
+				if (value != null) {
+					for (int i = 0; i < value.Length; i++) {
+						cols_.Add(value[i]);
+					}
+				}
+			}
+		}
+		#endregion
+
+		#region public int Count { get; }
+		public int Count {
+			get {
+				return cols_.Count;
+			}
+		}
+		#endregion
+
+		#region public XS_tableFieldDBsType this[int index_in] { get; }
+		public XS_tableFieldDBsType this[int index_in] {
+			get {
+				return (XS_tableFieldDBsType)cols_[index_in];
+			}
+		}
+		#endregion
+
+		#region public int Add(params XS_tableFieldDBsType[] col_in);
+		public int Add(params XS_tableFieldDBsType[] col_in) {
+			int _output = -1;
+
+			for (int i = 0; i < col_in.Length; i++) {
+				_output = cols_.Add(col_in[i]);
+			}
+
+			return _output;
+		}
+		#endregion
+	}
+	#endregion
+#endif
+
+	public class XS0_tableFieldDBsType
+#if !NET_1_1
+		: OGenRootrefCollectionInterface<XS__RootMetadata> 
+#endif
+	{
 		public XS0_tableFieldDBsType (
 		) {
-			tablefielddb_ 
-				= new OGenRootrefCollection<XS_tableFieldDBType, XS__RootMetadata>();
+			tablefielddbcollection_ = new 
+#if !NET_1_1
+				OGenRootrefCollection<XS_tableFieldDBType, XS__RootMetadata>()
+#else
+				XS_tableFieldDBTypeCollection()
+#endif
+			;
 		}
 
 		#region public XS__RootMetadata root_ref { get; }
@@ -32,24 +116,36 @@ namespace OGen.NTier.lib.metadata.metadata {
 		public XS__RootMetadata root_ref {
 			set {
 				root_ref_ = value;
-				tablefielddb_.root_ref = value;
+				tablefielddbcollection_.root_ref = value;
 			}
 			get { return root_ref_; }
 		}
 		#endregion
 		#region public OGenRootrefCollection<XS_tableFieldDBType, XS__RootMetadata> TableFieldDB { get; }
-		private OGenRootrefCollection<XS_tableFieldDBType, XS__RootMetadata> tablefielddb_;
-			//= new OGenRootrefCollection<XS_tableFieldDBType, XS__RootMetadata>();
+		private 
+#if !NET_1_1
+			OGenRootrefCollection<XS_tableFieldDBType, XS__RootMetadata>
+#else
+			XS_tableFieldDBTypeCollection
+#endif
+			tablefielddbcollection_;
 
 		[XmlElement("tableFieldDB")]
 		public XS_tableFieldDBType[] tablefielddb__xml {
-			get { return tablefielddb_.cols__; }
-			set { tablefielddb_.cols__ = value; }
+			get { return tablefielddbcollection_.cols__; }
+			set { tablefielddbcollection_.cols__ = value; }
 		}
 
 		[XmlIgnore()]
-		public OGenRootrefCollection<XS_tableFieldDBType, XS__RootMetadata> TableFieldDB {
-			get { return tablefielddb_; }
+		public
+#if !NET_1_1
+			OGenRootrefCollection<XS_tableFieldDBType, XS__RootMetadata> TableFieldDB
+#else
+			XS_tableFieldDBTypeCollection
+#endif
+		XS_tableFieldDBTypeCollection
+		{
+			get { return tablefielddbcollection_; }
 		}
 		#endregion
 	}

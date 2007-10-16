@@ -56,28 +56,129 @@ if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_
 <%
 }%>using System;
 using System.Xml.Serialization;
+using System.Collections;
 
 using OGen.lib.collections;
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%> {
-	public class <%=XS0_%><%=_aux_complextype.Name%> : OGenRootrefCollectionInterface<<%=XS__%>RootMetadata> <%=(_aux_complextype_collectionname != string.Empty) ? ", OGenCollectionInterface" : ""%> {
+#if NET_1_1
+	#region public class <%=XS_%><%=_aux_complextype.Name%>Collection { ... }
+	public class <%=XS_%><%=_aux_complextype.Name%>Collection {
+		public <%=XS_%><%=_aux_complextype.Name%>Collection() {
+			cols_ = new ArrayList();
+		}
+
+		#region public <%=XS__%>RootMetadata root_ref { get; }
+		private <%=XS__%>RootMetadata root_ref_;
+
+		public <%=XS__%>RootMetadata root_ref {
+			get {
+				return root_ref_;
+			}
+			set {
+				root_ref_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((<%=XS_%><%=_aux_complextype.Name%>)cols_[i]).root_ref = value;
+				}
+			}
+		}
+		#endregion
+
+		#region internal <%=XS_%><%=_aux_complextype.Name%>[] cols__ { get; set; }
+		private ArrayList cols_;
+
+		internal <%=XS_%><%=_aux_complextype.Name%>[] cols__ {
+			get {
+				<%=XS_%><%=_aux_complextype.Name%>[] _output = new <%=XS_%><%=_aux_complextype.Name%>[cols_.Count];
+				cols_.CopyTo(_output);
+				return _output;
+			}
+			set {
+				cols_.Clear();
+				if (value != null) {
+					for (int i = 0; i < value.Length; i++) {
+						cols_.Add(value[i]);
+					}
+				}
+			}
+		}
+		#endregion
+
+		#region public int Count { get; }
+		public int Count {
+			get {
+				return cols_.Count;
+			}
+		}
+		#endregion
+
+		#region public <%=XS_%><%=_aux_complextype.Name%> this[int index_in] { get; }
+		public <%=XS_%><%=_aux_complextype.Name%> this[int index_in] {
+			get {
+				return (<%=XS_%><%=_aux_complextype.Name%>)cols_[index_in];
+			}
+		}
+		#endregion<%
+		if (_aux_complextype_collectionname != string.Empty) {%>
+		#region public <%=XS_%><%=_aux_complextype.Name%> this[string value_in] { get; }
+		public <%=XS_%><%=_aux_complextype.Name%> this[string <%=_aux_complextype_collectionname%>_in] {
+			get {
+				for (int i = 0; i < cols_.Count; i++) {
+					if (((<%=XS_%><%=_aux_complextype.Name%>)cols_[i]).<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_complextype_collectionname)%> == <%=_aux_complextype_collectionname%>_in) {
+						return (<%=XS_%><%=_aux_complextype.Name%>)cols_[i];
+					}
+				}
+
+				return null;
+			}
+		}
+		#endregion<%
+		}%>
+
+		#region public int Add(params <%=XS_%><%=_aux_complextype.Name%>[] col_in);
+		public int Add(params <%=XS_%><%=_aux_complextype.Name%>[] col_in) {
+			int _output = -1;
+
+			for (int i = 0; i < col_in.Length; i++) {
+				_output = cols_.Add(col_in[i]);
+			}
+
+			return _output;
+		}
+		#endregion
+	}
+	#endregion
+#endif
+
+	public class <%=XS0_%><%=_aux_complextype.Name%>
+#if !NET_1_1
+		: OGenRootrefCollectionInterface<<%=XS__%>RootMetadata> <%=(_aux_complextype_collectionname != string.Empty) ? ", OGenCollectionInterface" : ""%>
+#endif
+	{
 		public <%=XS0_%><%=_aux_complextype.Name%> (
 		) {<%
 			for (int e = 0; e < _aux_elements.Count; e++) {
 				if (_aux_elements[e].MaxOccurs == XS_Element.MaxOccursEnum.unbounded) {
 					__isCollection_nameIt = _aux_elements[e].isCollection_nameIt();%><%=""%>
-			<%=_aux_elements[e].Name.ToLower()%>_ 
-				= new <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata>();<%
+			<%=_aux_elements[e].Name.ToLower()%>collection_ = new 
+#if !NET_1_1
+				<%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata>()
+#else
+				<%=XS_%><%=_aux_elements[e].Type%>Collection()
+#endif
+			;<%
 				}
 			}%>
 		}<%
-		if (_aux_complextype_collectionname != string.Empty) { %>
+		if (_aux_complextype_collectionname != string.Empty) {%>
 		public <%=XS0_%><%=_aux_complextype.Name%> (
 			string <%=_aux_complextype_collectionname.ToLower()%>_in
 		) : this (
 		) {
 			<%=_aux_complextype_collectionname.ToLower()%>_ = <%=_aux_complextype_collectionname.ToLower()%>_in;
 		}
+
+#if !NET_1_1
 		#region public string CollectionName { get; }
 		[XmlIgnore()]
 		public string CollectionName {
@@ -85,7 +186,8 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_El
 				return <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_complextype_collectionname)%>;
 			}
 		}
-		#endregion<%
+		#endregion
+#endif<%
 		}%>
 
 		#region public <%=XS__%>RootMetadata root_ref { get; }
@@ -98,7 +200,7 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_El
 
 				for (int e = 0; e < _aux_elements.Count; e++) {
 					if (_aux_elements[e].MaxOccurs == XS_Element.MaxOccursEnum.unbounded) {%><%=""%>
-				<%=_aux_elements[e].Name.ToLower()%>_.root_ref = value;<%
+				<%=_aux_elements[e].Name.ToLower()%>collection_.root_ref = value;<%
 
 					} else {
 						_aux_ntype = OGen.XSD.lib.metadata.utils.Convert_NType(
@@ -136,18 +238,30 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_El
 		for (int e = 0; e < _aux_elements.Count; e++) {
 			if (_aux_elements[e].MaxOccurs == XS_Element.MaxOccursEnum.unbounded) {%>
 		#region public <%=((__isCollection_nameIt = _aux_elements[e].isCollection_nameIt()) != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%> { get; }
-		private <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata> <%=_aux_elements[e].Name.ToLower()%>_;
-			//= new <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata>();
+		private 
+#if !NET_1_1
+			<%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata>
+#else
+			<%=XS_%><%=_aux_elements[e].Type%>Collection
+#endif
+			<%=_aux_elements[e].Name.ToLower()%>collection_;
 
 		[XmlElement("<%=_aux_elements[e].Name%>")]
 		public <%=XS_%><%=_aux_elements[e].Type%>[] <%=_aux_elements[e].Name.ToLower()%>__xml {
-			get { return <%=_aux_elements[e].Name.ToLower()%>_.cols__; }
-			set { <%=_aux_elements[e].Name.ToLower()%>_.cols__ = value; }
+			get { return <%=_aux_elements[e].Name.ToLower()%>collection_.cols__; }
+			set { <%=_aux_elements[e].Name.ToLower()%>collection_.cols__ = value; }
 		}
 
 		[XmlIgnore()]
-		public <%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%> {
-			get { return <%=_aux_elements[e].Name.ToLower()%>_; }
+		public
+#if !NET_1_1
+			<%=(__isCollection_nameIt != string.Empty) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%>
+#else
+			<%=XS_%><%=_aux_elements[e].Type%>Collection
+#endif
+		<%=XS_%><%=_aux_elements[e].Type%>Collection
+		{
+			get { return <%=_aux_elements[e].Name.ToLower()%>collection_; }
 		}
 		#endregion<%
 
