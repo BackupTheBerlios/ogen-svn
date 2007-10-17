@@ -219,6 +219,7 @@
     <Compile Include="metadata\_base\XS0_tableUpdatesType.cs" />
     <Compile Include="metadata\_base\XS0_tableUpdateType.cs" />
     <Compile Include="metadata\_base\XS0__metadata.cs" />
+    <Compile Include="metadata\_base\XS0__metadataCollection.cs" />
     <Compile Include="someTest\XS_someType1.cs" />
     <Compile Include="someTest\XS_someType2.cs" />
     <Compile Include="someTest\XS__someTest.cs" />
@@ -226,6 +227,7 @@
     <Compile Include="someTest\_base\XS0_someType1.cs" />
     <Compile Include="someTest\_base\XS0_someType2.cs" />
     <Compile Include="someTest\_base\XS0__someTest.cs" />
+    <Compile Include="someTest\_base\XS0__someTestCollection.cs" />
     <Compile Include="XS__RootMetadata.cs">
       <SubType>Code</SubType>
     </Compile>

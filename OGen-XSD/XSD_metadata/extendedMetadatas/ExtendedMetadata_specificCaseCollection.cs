@@ -21,9 +21,9 @@ using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
 #if NET_1_1
-	#region public class ExtendedMetadata_complexTypeKeysCollection { ... }
-	public class ExtendedMetadata_complexTypeKeysCollection {
-		public ExtendedMetadata_complexTypeKeysCollection() {
+	#region public class ExtendedMetadata_specificCaseCollection { ... }
+	public class ExtendedMetadata_specificCaseCollection {
+		public ExtendedMetadata_specificCaseCollection() {
 			cols_ = new ArrayList();
 		}
 
@@ -37,18 +37,18 @@ namespace OGen.XSD.lib.metadata {
 			set {
 				root_ref_ = value;
 				for (int i = 0; i < cols_.Count; i++) {
-					((ExtendedMetadata_complexTypeKeys)cols_[i]).root_ref = value;
+					((ExtendedMetadata_specificCase)cols_[i]).root_ref = value;
 				}
 			}
 		}
 		#endregion
 
-		#region internal ExtendedMetadata_complexTypeKeys[] cols__ { get; set; }
+		#region internal ExtendedMetadata_specificCase[] cols__ { get; set; }
 		private ArrayList cols_;
 
-		internal ExtendedMetadata_complexTypeKeys[] cols__ {
+		internal ExtendedMetadata_specificCase[] cols__ {
 			get {
-				ExtendedMetadata_complexTypeKeys[] _output = new ExtendedMetadata_complexTypeKeys[cols_.Count];
+				ExtendedMetadata_specificCase[] _output = new ExtendedMetadata_specificCase[cols_.Count];
 				cols_.CopyTo(_output);
 				return _output;
 			}
@@ -71,19 +71,19 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public ExtendedMetadata_complexTypeKeys this[int index_in] { get; }
-		public ExtendedMetadata_complexTypeKeys this[int index_in] {
+		#region public ExtendedMetadata_specificCase this[int index_in] { get; }
+		public ExtendedMetadata_specificCase this[int index_in] {
 			get {
-				return (ExtendedMetadata_complexTypeKeys)cols_[index_in];
+				return (ExtendedMetadata_specificCase)cols_[index_in];
 			}
 		}
 		#endregion
-		#region public ExtendedMetadata_complexTypeKeys this[string name_in] { get; }
-		public ExtendedMetadata_complexTypeKeys this[string name_in] {
+		#region public ExtendedMetadata_specificCase this[string word_in] { get; }
+		public ExtendedMetadata_specificCase this[string word_in] {
 			get {
 				for (int i = 0; i < cols_.Count; i++) {
-					if (((ExtendedMetadata_complexTypeKeys)cols_[i]).Name == name_in) {
-						return (ExtendedMetadata_complexTypeKeys)cols_[i];
+					if (((ExtendedMetadata_specificCase)cols_[i]).Word == word_in) {
+						return (ExtendedMetadata_specificCase)cols_[i];
 					}
 				}
 
@@ -92,8 +92,8 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public int Add(params ExtendedMetadata_complexTypeKeys[] col_in);
-		public int Add(params ExtendedMetadata_complexTypeKeys[] col_in) {
+		#region public int Add(params ExtendedMetadata_specificCase[] col_in);
+		public int Add(params ExtendedMetadata_specificCase[] col_in) {
 			int _output = -1;
 
 			for (int i = 0; i < col_in.Length; i++) {
@@ -106,69 +106,4 @@ namespace OGen.XSD.lib.metadata {
 	}
 	#endregion
 #endif
-
-	public class ExtendedMetadata_complexTypeKeys
-#if !NET_1_1
-		: OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata>
-#endif
-	{
-		public ExtendedMetadata_complexTypeKeys(
-		) {
-		}
-		public ExtendedMetadata_complexTypeKeys(
-			string name_in
-		) : this (
-		) {
-			name_ = name_in;
-		}
-
-		#region public string Name { get; set; }
-		private string name_;
-
-		[XmlAttribute("name")]
-		public string Name {
-			get {
-				return name_;
-			}
-			set {
-				name_ = value;
-			}
-		}
-		#endregion
-		#region public string Keys { get; set; }
-		private string keys_;
-
-		[XmlAttribute("keys")]
-		public string Keys {
-			get {
-				return keys_;
-			}
-			set {
-				keys_ = value;
-			}
-		}
-		#endregion
-
-		#region public RootMetadata root_ref { get; }
-		private RootMetadata root_ref_;
-
-		[XmlIgnore()]
-		public RootMetadata root_ref {
-			set {
-				root_ref_ = value;
-			}
-			get { return root_ref_; }
-		}
-		#endregion
-#if !NET_1_1
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get {
-				return Name;
-			}
-		}
-		#endregion
-#endif
-	}
 }

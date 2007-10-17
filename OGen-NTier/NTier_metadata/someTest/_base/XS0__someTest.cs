@@ -19,44 +19,6 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.someTest {
-	public class XS__someTestCollection {
-		public XS__someTestCollection(
-			XS__someTest[] sometestcollection_in
-		) {
-			sometestcollection_ = sometestcollection_in;
-		}
-
-		#region public XS__someTest this[...] { get; }
-		private XS__someTest[] sometestcollection_;
-
-		public XS__someTest this[int index_in] {
-			get {
-				return sometestcollection_[index_in];
-			}
-		}
-		public XS__someTest this[string name_in] {
-			get {
-				// ToDos: later! performance
-
-				for (int i = 0; i < sometestcollection_.Length; i++) {
-					if (sometestcollection_[i].SomeAttrib3 == name_in) {
-						return sometestcollection_[i];
-					}
-				}
-				throw new Exception(string.Format(
-					"{0}.{1}[string name_in]: can't find: {2}",
-					typeof(XS__someTestCollection).Namespace, 
-					typeof(XS__someTestCollection).Name, 
-					name_in
-				));
-			}
-		}
-		#endregion
-		public int Count { get {
-			return sometestcollection_.Length;
-		} }
-	}
-
 	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
 	[System.Xml.Serialization.XmlRootAttribute("someTest", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
 	public class XS0__someTest : XS_someType2, iClaSSe_metadata {

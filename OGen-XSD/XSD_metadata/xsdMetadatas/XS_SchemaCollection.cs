@@ -14,60 +14,53 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #endregion
 
 using System;
+using System.IO;
 using System.Xml.Serialization;
 using System.Collections;
 
 using OGen.lib.collections;
+using OGen.lib.generator;
 
 namespace OGen.XSD.lib.metadata {
-	public class XS_Enumeration
-#if !NET_1_1
-		: OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata>
-#endif
-	{
-		public XS_Enumeration(
+	#region public class XS_SchemaCollection { ... }
+	public class XS_SchemaCollection {
+		public XS_SchemaCollection(
+			XS_Schema[] schemas_in
 		) {
-		}
-		public XS_Enumeration(
-			string value_in
-		) : this (
-		) {
-			value_ = value_in;
+			schemas_ = schemas_in;
 		}
 
-		#region public RootMetadata root_ref { get; }
-		private RootMetadata root_ref_;
+		#region public XS_Schema this[...] { get; }
+		private XS_Schema[] schemas_;
 
-		[XmlIgnore()]
-		public RootMetadata root_ref {
-			set {
-				root_ref_ = value;
-			}
-			get { return root_ref_; }
-		}
-		#endregion
-#if !NET_1_1
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get { return Value; }
-		}
-		#endregion
-#endif
-
-		#region public string Value { get; set; }
-		private string value_;
-
-		//[XmlElement("value")]
-		[XmlAttribute("value")]
-		public string Value {
+		public XS_Schema this[int index_in] {
 			get {
-				return value_;
+				return schemas_[index_in];
 			}
-			set {
-				value_ = value;
+		}
+		public XS_Schema this[string name_in] {
+			get {
+				// ToDos: later! performance
+
+				for (int i = 0; i < schemas_.Length; i++) {
+					if (schemas_[i].XS_Element.Name == name_in) {
+						return schemas_[i];
+					}
+				}
+				throw new Exception(string.Format(
+					"{0}.{1}[string name_in]: can't find: {2}",
+					typeof(XS_SchemaCollection).Namespace,
+					typeof(XS_SchemaCollection).Name,
+					name_in
+				));
 			}
 		}
 		#endregion
+		public int Count {
+			get {
+				return schemas_.Length;
+			}
+		}
 	}
+	#endregion
 }

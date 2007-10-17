@@ -48,9 +48,12 @@
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="extendedMetadatas\ExtendedMetadata.cs" />
     <Compile Include="extendedMetadatas\ExtendedMetadata_caseTypeEnum.cs" />
+    <Compile Include="extendedMetadatas\ExtendedMetadata_complexTypeKeys.cs" />
+    <Compile Include="extendedMetadatas\ExtendedMetadata_complexTypeKeysCollection.cs" />
     <Compile Include="extendedMetadatas\ExtendedMetadata_metadataIndex.cs" />
+    <Compile Include="extendedMetadatas\ExtendedMetadata_metadataIndexCollection.cs" />
     <Compile Include="extendedMetadatas\ExtendedMetadata_specificCase.cs" />
-    <Compile Include="extendedMetadatas\ExtendedMetadata_collection.cs" />
+    <Compile Include="extendedMetadatas\ExtendedMetadata_specificCaseCollection.cs" />
     <Compile Include="RootMetadata.cs" />
     <Compile Include="xsdMetadatas\utils.cs" />
     <Compile Include="xsdMetadatas\XS_Attribute.cs" />
@@ -59,6 +62,7 @@
     <Compile Include="xsdMetadatas\XS_Enumeration.cs" />
     <Compile Include="xsdMetadatas\XS_Restriction.cs" />
     <Compile Include="xsdMetadatas\XS_Schema.cs" />
+    <Compile Include="xsdMetadatas\XS_SchemaCollection.cs" />
     <Compile Include="xsdMetadatas\XS_Sequence.cs" />
     <Compile Include="xsdMetadatas\XS_SimpleType.cs" />
     <None Include="COPYING.MIT" />

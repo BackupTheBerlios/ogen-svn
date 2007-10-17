@@ -126,7 +126,12 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "extendedMetadatas\ExtendedMetadata_collection.cs"
+                    RelPath = "extendedMetadatas\ExtendedMetadata_complexTypeKeys.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "extendedMetadatas\ExtendedMetadata_complexTypeKeysCollection.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -136,7 +141,17 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "extendedMetadatas\ExtendedMetadata_metadataIndexCollection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "extendedMetadatas\ExtendedMetadata_specificCase.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "extendedMetadatas\ExtendedMetadata_specificCaseCollection.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -151,7 +166,17 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "xsdMetadatas\XS_AttributeCollection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "xsdMetadatas\XS_ComplexType.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "xsdMetadatas\XS_ComplexTypeCollection.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -161,7 +186,17 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "xsdMetadatas\XS_ElementCollection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "xsdMetadatas\XS_Enumeration.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "xsdMetadatas\XS_EnumerationCollection.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -176,12 +211,22 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "xsdMetadatas\XS_SchemaCollection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "xsdMetadatas\XS_Sequence.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
                     RelPath = "xsdMetadatas\XS_SimpleType.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "xsdMetadatas\XS_SimpleTypeCollection.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />

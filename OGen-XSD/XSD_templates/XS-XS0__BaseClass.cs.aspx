@@ -51,44 +51,6 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%> {
-	public class <%=XS__%><%=_aux_schema.XS_Element.Name%>Collection {
-		public <%=XS__%><%=_aux_schema.XS_Element.Name%>Collection(
-			<%=XS__%><%=_aux_schema.XS_Element.Name%>[] <%=_aux_schema.XS_Element.Name.ToLower()%>collection_in
-		) {
-			<%=_aux_schema.XS_Element.Name.ToLower()%>collection_ = <%=_aux_schema.XS_Element.Name.ToLower()%>collection_in;
-		}
-
-		#region public <%=XS__%><%=_aux_schema.XS_Element.Name%> this[...] { get; }
-		private <%=XS__%><%=_aux_schema.XS_Element.Name%>[] <%=_aux_schema.XS_Element.Name.ToLower()%>collection_;
-
-		public <%=XS__%><%=_aux_schema.XS_Element.Name%> this[int index_in] {
-			get {
-				return <%=_aux_schema.XS_Element.Name.ToLower()%>collection_[index_in];
-			}
-		}
-		public <%=XS__%><%=_aux_schema.XS_Element.Name%> this[string name_in] {
-			get {
-				// ToDos: later! performance
-
-				for (int i = 0; i < <%=_aux_schema.XS_Element.Name.ToLower()%>collection_.Length; i++) {
-					if (<%=_aux_schema.XS_Element.Name.ToLower()%>collection_[i].<%=_aux_rootmetadata.ExtendedMetadata.MetadataIndex[_aux_schema.XS_Element.Name].Index%> == name_in) {
-						return <%=_aux_schema.XS_Element.Name.ToLower()%>collection_[i];
-					}
-				}
-				throw new Exception(string.Format(
-					"{0}.{1}[string name_in]: can't find: {2}",
-					typeof(<%=XS__%><%=_aux_schema.XS_Element.Name%>Collection).Namespace, 
-					typeof(<%=XS__%><%=_aux_schema.XS_Element.Name%>Collection).Name, 
-					name_in
-				));
-			}
-		}
-		#endregion
-		public int Count { get {
-			return <%=_aux_schema.XS_Element.Name.ToLower()%>collection_.Length;
-		} }
-	}
-
 	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
 	[System.Xml.Serialization.XmlRootAttribute("<%=_aux_schema.XS_Element.Name%>", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
 	public class <%=XS0__%><%=_aux_schema.XS_Element.Name%> : <%=XS_%><%=_aux_schema.XS_Element.Type%>, iClaSSe_metadata {

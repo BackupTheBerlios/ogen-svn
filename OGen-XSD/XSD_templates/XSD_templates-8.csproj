@@ -57,6 +57,7 @@
       <SubType>ASPXCodeBehind</SubType>
     </None>
     <None Include="Web.config" />
+    <None Include="XS-XS0__BaseClassCollection.cs.aspx" />
     <None Include="XS-XS_SomeClass.cs.aspx">
     </None>
   </ItemGroup>

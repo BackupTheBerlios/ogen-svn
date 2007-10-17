@@ -2,7 +2,7 @@
 /*
 
 OGen
-Copyright (C) 2002 Francisco Monteiro
+Copyright (c) 2002 Francisco Monteiro
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
@@ -12,62 +12,48 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 */
 #endregion
-
 using System;
+using System.IO;
 using System.Xml.Serialization;
-using System.Collections;
 
 using OGen.lib.collections;
 
-namespace OGen.XSD.lib.metadata {
-	public class XS_Enumeration
-#if !NET_1_1
-		: OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata>
-#endif
-	{
-		public XS_Enumeration(
+namespace OGen.NTier.lib.metadata.metadata {
+	public class XS__metadataCollection {
+		public XS__metadataCollection(
+			XS__metadata[] metadatacollection_in
 		) {
-		}
-		public XS_Enumeration(
-			string value_in
-		) : this (
-		) {
-			value_ = value_in;
+			metadatacollection_ = metadatacollection_in;
 		}
 
-		#region public RootMetadata root_ref { get; }
-		private RootMetadata root_ref_;
+		#region public XS__metadata this[...] { get; }
+		private XS__metadata[] metadatacollection_;
 
-		[XmlIgnore()]
-		public RootMetadata root_ref {
-			set {
-				root_ref_ = value;
-			}
-			get { return root_ref_; }
-		}
-		#endregion
-#if !NET_1_1
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get { return Value; }
-		}
-		#endregion
-#endif
-
-		#region public string Value { get; set; }
-		private string value_;
-
-		//[XmlElement("value")]
-		[XmlAttribute("value")]
-		public string Value {
+		public XS__metadata this[int index_in] {
 			get {
-				return value_;
+				return metadatacollection_[index_in];
 			}
-			set {
-				value_ = value;
+		}
+		public XS__metadata this[string name_in] {
+			get {
+				// ToDos: later! performance
+
+				for (int i = 0; i < metadatacollection_.Length; i++) {
+					if (metadatacollection_[i].ApplicationName == name_in) {
+						return metadatacollection_[i];
+					}
+				}
+				throw new Exception(string.Format(
+					"{0}.{1}[string name_in]: can't find: {2}",
+					typeof(XS__metadataCollection).Namespace, 
+					typeof(XS__metadataCollection).Name, 
+					name_in
+				));
 			}
 		}
 		#endregion
+		public int Count { get {
+			return metadatacollection_.Length;
+		} }
 	}
 }

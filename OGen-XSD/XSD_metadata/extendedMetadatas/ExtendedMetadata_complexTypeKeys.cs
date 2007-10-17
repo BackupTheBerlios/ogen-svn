@@ -20,47 +20,24 @@ using System.Collections;
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
-	public class XS_SimpleType
+	public class ExtendedMetadata_complexTypeKeys
 #if !NET_1_1
 		: OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata>
 #endif
 	{
-		public XS_SimpleType(
+		public ExtendedMetadata_complexTypeKeys(
 		) {
 		}
-		public XS_SimpleType(
+		public ExtendedMetadata_complexTypeKeys(
 			string name_in
 		) : this (
 		) {
 			name_ = name_in;
 		}
 
-		#region public RootMetadata root_ref { get; }
-		private RootMetadata root_ref_;
-
-		[XmlIgnore()]
-		public RootMetadata root_ref {
-			set {
-				root_ref_ = value;
-
-				if (xs_restriction__ != null) xs_restriction__.root_ref = value;
-			}
-			get { return root_ref_; }
-		}
-		#endregion
-#if !NET_1_1
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get { return Name; }
-		}
-		#endregion
-#endif
-
 		#region public string Name { get; set; }
 		private string name_;
 
-		//[XmlElement("name")]
 		[XmlAttribute("name")]
 		public string Name {
 			get {
@@ -71,28 +48,40 @@ namespace OGen.XSD.lib.metadata {
 			}
 		}
 		#endregion
+		#region public string Keys { get; set; }
+		private string keys_;
 
-		#region public XS_Restriction XS_Restriction { get; set; }
-		private XS_Restriction xs_restriction__;
-
-		[XmlIgnore()]
-		public XS_Restriction XS_Restriction {
+		[XmlAttribute("keys")]
+		public string Keys {
 			get {
-				if (xs_restriction__ == null) {
-					xs_restriction__ = new XS_Restriction();
-				}
-				return xs_restriction__;
+				return keys_;
 			}
 			set {
-				xs_restriction__ = value;
+				keys_ = value;
 			}
 		}
+		#endregion
 
-		[XmlElement("restriction")]
-		public XS_Restriction xs_restriction__xml {
-			get { return xs_restriction__; }
-			set { xs_restriction__ = value; }
+		#region public RootMetadata root_ref { get; }
+		private RootMetadata root_ref_;
+
+		[XmlIgnore()]
+		public RootMetadata root_ref {
+			set {
+				root_ref_ = value;
+			}
+			get { return root_ref_; }
 		}
 		#endregion
+#if !NET_1_1
+		#region public string CollectionName { get; }
+		[XmlIgnore()]
+		public string CollectionName {
+			get {
+				return Name;
+			}
+		}
+		#endregion
+#endif
 	}
 }

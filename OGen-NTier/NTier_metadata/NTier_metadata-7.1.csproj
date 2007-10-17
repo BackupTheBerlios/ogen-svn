@@ -432,6 +432,10 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "metadata\_base\XS0__metadataCollection.cs"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "metadata\_base\XS0_dbConnectionsType.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
@@ -684,6 +688,10 @@
                 <File
                     RelPath = "someTest\_base\XS0__someTest.cs"
                     SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "someTest\_base\XS0__someTestCollection.cs"
                     BuildAction = "Compile"
                 />
                 <File

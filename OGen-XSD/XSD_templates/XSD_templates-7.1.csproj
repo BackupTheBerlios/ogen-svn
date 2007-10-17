@@ -155,6 +155,10 @@
                     BuildAction = "Content"
                 />
                 <File
+                    RelPath = "XS-XS0__BaseClassCollection.cs.aspx"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "XS-XS0__RootMetadata.cs.aspx"
                     BuildAction = "Content"
                 />
