@@ -22,7 +22,7 @@ using OGen.lib.collections;
 namespace OGen.XSD.lib.metadata {
 	public class ExtendedMetadata_complexTypeKeys
 #if !NET_1_1
-		: OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata>
+		: OGenCollectionInterface<string>, OGenRootrefCollectionInterface<RootMetadata>
 #endif
 	{
 		public ExtendedMetadata_complexTypeKeys(

@@ -23,9 +23,9 @@ namespace OGen.lib.collections {
 		}
 	}
 	//public interface OGenSimpleCollectionInterface<R> {
-	//    R root_ref { get; } 
+	//	R root_ref { get; } 
 	//}
-	public interface OGenCollectionInterface {
-		string CollectionName { get; }
+	public interface OGenCollectionInterface<T> {
+		T CollectionName { get; }
 	}
 }

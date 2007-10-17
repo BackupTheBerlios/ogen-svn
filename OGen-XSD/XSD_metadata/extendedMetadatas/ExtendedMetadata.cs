@@ -229,8 +229,8 @@ namespace OGen.XSD.lib.metadata {
 
 		#region public ... ComplexTypeKeys { get; }
 #if !NET_1_1
-		private OGenRootrefCollection<ExtendedMetadata_complexTypeKeys, RootMetadata> complextypekeyscollection_
-			= new OGenRootrefCollection<ExtendedMetadata_complexTypeKeys, RootMetadata>();
+		private OGenRootrefCollection<ExtendedMetadata_complexTypeKeys, RootMetadata, string> complextypekeyscollection_
+			= new OGenRootrefCollection<ExtendedMetadata_complexTypeKeys, RootMetadata, string>();
 #else
 		private ExtendedMetadata_complexTypeKeysCollection complextypekeyscollection_
 			= new ExtendedMetadata_complexTypeKeysCollection();
@@ -245,7 +245,7 @@ namespace OGen.XSD.lib.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefCollection<ExtendedMetadata_complexTypeKeys, RootMetadata>
+			OGenRootrefCollection<ExtendedMetadata_complexTypeKeys, RootMetadata, string>
 #else
 			ExtendedMetadata_complexTypeKeysCollection
 #endif
@@ -255,8 +255,8 @@ namespace OGen.XSD.lib.metadata {
 		#endregion
 		#region public ... SpecificCase { get; }
 #if !NET_1_1
-		private OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata> specificcasecollections_
-			= new OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata>();
+		private OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata, string> specificcasecollections_
+			= new OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata, string>();
 #else
 		private ExtendedMetadata_specificCaseCollection specificcasecollections_
 			= new ExtendedMetadata_specificCaseCollection();
@@ -271,7 +271,7 @@ namespace OGen.XSD.lib.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata>
+			OGenRootrefCollection<ExtendedMetadata_specificCase, RootMetadata, string>
 #else
 			ExtendedMetadata_specificCaseCollection
 #endif
@@ -281,8 +281,8 @@ namespace OGen.XSD.lib.metadata {
 		#endregion
 		#region public ... MetadataIndex { get; }
 #if !NET_1_1
-		private OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata> metadataindexcollection_
-			= new OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata>();
+		private OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata, string> metadataindexcollection_
+			= new OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata, string>();
 #else
 		private ExtendedMetadata_metadataIndexCollection metadataindexcollection_
 			= new ExtendedMetadata_metadataIndexCollection();
@@ -297,7 +297,7 @@ namespace OGen.XSD.lib.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata>
+			OGenRootrefCollection<ExtendedMetadata_metadataIndex, RootMetadata, string>
 #else
 			ExtendedMetadata_metadataIndexCollection
 #endif

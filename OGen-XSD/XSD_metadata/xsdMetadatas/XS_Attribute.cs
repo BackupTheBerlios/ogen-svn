@@ -22,7 +22,7 @@ using OGen.lib.collections;
 namespace OGen.XSD.lib.metadata {
 	public class XS_Attribute
 #if !NET_1_1
-		: OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata>
+		: OGenCollectionInterface<string>, OGenRootrefCollectionInterface<RootMetadata>
 #endif
 	{
 		public XS_Attribute(

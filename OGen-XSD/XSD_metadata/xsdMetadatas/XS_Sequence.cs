@@ -44,8 +44,8 @@ namespace OGen.XSD.lib.metadata {
 
 		#region public ... XS_Element { get; }
 #if !NET_1_1
-		private OGenRootrefCollection<XS_Element, RootMetadata> xs_elementcollection_
-			= new OGenRootrefCollection<XS_Element, RootMetadata>();
+		private OGenRootrefCollection<XS_Element, RootMetadata, string> xs_elementcollection_
+			= new OGenRootrefCollection<XS_Element, RootMetadata, string>();
 #else
 		private XS_ElementCollection xs_elementcollection_
 			= new XS_ElementCollection();
@@ -62,7 +62,7 @@ namespace OGen.XSD.lib.metadata {
 		[XmlIgnore()]
 		public 
 #if !NET_1_1
-		OGenRootrefCollection<XS_Element, RootMetadata>
+		OGenRootrefCollection<XS_Element, RootMetadata, string>
 #else
 		XS_ElementCollection
 #endif

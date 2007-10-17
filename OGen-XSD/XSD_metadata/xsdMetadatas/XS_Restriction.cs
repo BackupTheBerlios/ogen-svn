@@ -58,8 +58,8 @@ namespace OGen.XSD.lib.metadata {
 
 		#region public ... XS_Enumeration { get; }
 #if !NET_1_1
-		private OGenRootrefCollection<XS_Enumeration, RootMetadata> xs_enumerationcollection_
-			= new OGenRootrefCollection<XS_Enumeration, RootMetadata>();
+		private OGenRootrefCollection<XS_Enumeration, RootMetadata, string> xs_enumerationcollection_
+			= new OGenRootrefCollection<XS_Enumeration, RootMetadata, string>();
 #else
 		private XS_EnumerationCollection xs_enumerationcollection_
 			= new XS_EnumerationCollection();
@@ -76,7 +76,7 @@ namespace OGen.XSD.lib.metadata {
 		[XmlIgnore()]
 		public 
 #if !NET_1_1
-			OGenRootrefCollection<XS_Enumeration, RootMetadata>
+			OGenRootrefCollection<XS_Enumeration, RootMetadata, string>
 #else
 			XS_EnumerationCollection
 #endif

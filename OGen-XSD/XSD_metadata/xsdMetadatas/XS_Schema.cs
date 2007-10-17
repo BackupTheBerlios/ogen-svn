@@ -124,8 +124,8 @@ namespace OGen.XSD.lib.metadata {
 
 		#region public ... XS_SimpleType { get; }
 #if !NET_1_1
-		private OGenRootrefCollection<XS_SimpleType, RootMetadata> xs_simpletypecollection_
-			= new OGenRootrefCollection<XS_SimpleType, RootMetadata>();
+		private OGenRootrefCollection<XS_SimpleType, RootMetadata, string> xs_simpletypecollection_
+			= new OGenRootrefCollection<XS_SimpleType, RootMetadata, string>();
 #else
 		private XS_SimpleTypeCollection xs_simpletypecollection_
 			= new XS_SimpleTypeCollection();
@@ -142,7 +142,7 @@ namespace OGen.XSD.lib.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefCollection<XS_SimpleType, RootMetadata>
+			OGenRootrefCollection<XS_SimpleType, RootMetadata, string>
 #else
 			XS_SimpleTypeCollection
 #endif
@@ -152,8 +152,8 @@ namespace OGen.XSD.lib.metadata {
 		#endregion
 		#region public ... XS_ComplexType { get; }
 #if !NET_1_1
-		private OGenRootrefCollection<XS_ComplexType, RootMetadata> xs_complextypecollection_
-			= new OGenRootrefCollection<XS_ComplexType, RootMetadata>();
+		private OGenRootrefCollection<XS_ComplexType, RootMetadata, string> xs_complextypecollection_
+			= new OGenRootrefCollection<XS_ComplexType, RootMetadata, string>();
 #else
 		private XS_ComplexTypeCollection xs_complextypecollection_
 			= new XS_ComplexTypeCollection();
@@ -171,7 +171,7 @@ namespace OGen.XSD.lib.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefCollection<XS_ComplexType, RootMetadata>
+			OGenRootrefCollection<XS_ComplexType, RootMetadata, string>
 #else
 			XS_ComplexTypeCollection
 #endif

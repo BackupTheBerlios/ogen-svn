@@ -29,6 +29,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</copyrightTextLong>
 
+<!--
 	<metadata names="metadata" indexPath="ApplicationName">
 		<specificCase word="db" translation="DB" />
 		<specificCase word="dbCollationName" translation="DBCollationName" />
@@ -37,11 +38,12 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		<complexTypeKeys name="dbType" keys="dbServerType" />
 	</metadata>
 	<metadata names="someTest" indexPath="SomeAttrib3">
-		<!-- ... -->
+		...
 	</metadata>
 	<metadata names="metadata|someTest" indexPath="">
-		<!-- ... -->
+		...
 	</metadata>
+-->
 
 		<metadataIndex metadata="metadata" index="ApplicationName" />
 		<metadataIndex metadata="someTest" index="SomeAttrib3" />
@@ -85,11 +87,31 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		<complexTypeKeys name="dbType" keys="dbServerType" />
 		<complexTypeKeys name="tableDBType" keys="dbServerType" />
 		<complexTypeKeys name="tableFieldDBType" keys="dbServerType" />
+<!--
+	<xs:complexType name="tableFieldDBType">
+		<xs:attribute name="dbServerType" type="xs:string" />
+		...
+	</xs:complexType>
+
+	<xs:complexType name="tableFieldDBsType">
+		<xs:sequence>
+			<xs:element name="tableFieldDB" type="tableFieldDBType" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+-->
 		<complexTypeKeys name="tableFieldRefType" keys="paramName" />
 		<complexTypeKeys name="tableFieldType" keys="name" />
 		<complexTypeKeys name="tableSearchType" keys="name" />
 		<complexTypeKeys name="tableSearchUpdateType" keys="name" />
+
+
+<!-- TESTING... -->
 		<complexTypeKeys name="tableType" keys="name" />
+<!--
+		<complexTypeKeys name="tableType" keys="name|isVirtualTable" />
+-->
+
+
 		<complexTypeKeys name="tableUpdateType" keys="name" />
 		<!--
 		<complexTypeKeys name="tableDBsType" keys="" />

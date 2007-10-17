@@ -22,7 +22,7 @@ using OGen.lib.collections;
 namespace OGen.XSD.lib.metadata {
 	public class XS_Element 
 #if !NET_1_1
-		: OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata>
+		: OGenCollectionInterface<string>, OGenRootrefCollectionInterface<RootMetadata>
 #endif
 	{
 		public XS_Element(
@@ -133,12 +133,34 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public string isCollection_nameIt(...);
-		public string isCollection_nameIt(
+		#region public bool isCollection(...);
+		public bool isCollection(
+			string schemaName_in, 
+
+			out string ntype_out, 
+			out string name_out
 		) {
-			ExtendedMetadata_complexTypeKeys _collection
+			ntype_out = string.Empty;
+			name_out = string.Empty;
+
+			ExtendedMetadata_complexTypeKeys _complextypekeys
 				= root_ref.ExtendedMetadata.ComplexTypeKeys[Type];
-			return (_collection == null) ? string.Empty : _collection.Keys;
+
+			if (_complextypekeys != null) {
+				XS_Schema _schema = root_ref_.SchemaCollection[schemaName_in];
+
+				for (int c = 0; c < _schema.XS_ComplexType.Count; c++) {
+					for (int a = 0; a < _schema.XS_ComplexType[c].XS_Attribute.Count; a++) {
+						if (_schema.XS_ComplexType[c].XS_Attribute[a].Name == _complextypekeys.Keys) {
+							ntype_out = _schema.XS_ComplexType[c].XS_Attribute[a].NType;
+							name_out = _schema.XS_ComplexType[c].XS_Attribute[a].Name;
+							return true;
+						}
+					}
+				}
+			}
+
+			return false;
 		}
 		#endregion
 	}

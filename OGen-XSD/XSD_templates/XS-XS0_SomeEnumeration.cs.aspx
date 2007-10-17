@@ -30,7 +30,7 @@ RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
 );
 XS_Schema _aux_schema = _aux_rootmetadata.SchemaCollection[_arg_SchemaName];
 
-OGenRootrefCollection<XS_Enumeration, RootMetadata> _aux_enumeration 
+OGenRootrefCollection<XS_Enumeration, RootMetadata, string> _aux_enumeration 
 	= _aux_schema.XS_SimpleType[_arg_SimpleTypeName].XS_Restriction.XS_Enumeration;
 
 string XS0_ = _aux_rootmetadata.ExtendedMetadata.PrefixGenerated;

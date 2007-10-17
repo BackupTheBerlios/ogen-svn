@@ -22,7 +22,7 @@ using OGen.lib.collections;
 namespace OGen.XSD.lib.metadata {
 	public class XS_ComplexType
 #if !NET_1_1
-		: OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata>
+		: OGenCollectionInterface<string>, OGenRootrefCollectionInterface<RootMetadata>
 #endif
 	{
 		public XS_ComplexType(
@@ -75,8 +75,8 @@ namespace OGen.XSD.lib.metadata {
 
 		#region public ... XS_Attribute { get; }
 #if !NET_1_1
-		private OGenRootrefCollection<XS_Attribute, RootMetadata> xs_attributecollection_
-			= new OGenRootrefCollection<XS_Attribute, RootMetadata>();
+		private OGenRootrefCollection<XS_Attribute, RootMetadata, string> xs_attributecollection_
+			= new OGenRootrefCollection<XS_Attribute, RootMetadata, string>();
 #else
 		private XS_AttributeCollection xs_attributecollection_
 			= new XS_AttributeCollection();
@@ -93,7 +93,7 @@ namespace OGen.XSD.lib.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefCollection<XS_Attribute, RootMetadata>
+			OGenRootrefCollection<XS_Attribute, RootMetadata, string>
 #else
 			XS_AttributeCollection
 #endif
@@ -125,32 +125,48 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public string isCollection_nameIt(...);
-		public string isCollection_nameIt(
-			string schemaName_in
-		) {
-			XS_Schema _schema = root_ref_.SchemaCollection[schemaName_in];
+		#region public bool mustImplementCollection(...);
+		public bool mustImplementCollection(
+			string schemaName_in, 
 
+			out string keys_ntype_out, 
+			out string keys_name_out
+		) {
+			keys_ntype_out = string.Empty;
+			keys_name_out = string.Empty;
+
+			XS_Schema _schema = root_ref_.SchemaCollection[schemaName_in];
 			for (int c = 0; c < _schema.XS_ComplexType.Count; c++) {
 				for (int e = 0; e < _schema.XS_ComplexType[c].XS_Sequence.XS_Element.Count; e++) {
 					if (
+						// if there's an Element pointing this ComplexType
 						(_schema.XS_ComplexType[c].XS_Sequence.XS_Element[e].Type == Name)
 						&&
+						// and if this Element occurance is unbounded
 						(_schema.XS_ComplexType[c].XS_Sequence.XS_Element[e].MaxOccurs
 							== XS_Element.MaxOccursEnum.unbounded)
 					) {
+						// then this ComplexType must implement a Collection
+
 						ExtendedMetadata_complexTypeKeys _complextypekeys
 							= root_ref_.ExtendedMetadata.ComplexTypeKeys[
 								Name
 							];
-						return (_complextypekeys == null)
-							? string.Empty
-							: _complextypekeys.Keys;
+
+						if (_complextypekeys != null) {
+							for (int a = 0; a < XS_Attribute.Count; a++) {
+								if (XS_Attribute[a].Name == _complextypekeys.Keys) {
+									keys_name_out = XS_Attribute[a].Name;
+									keys_ntype_out = XS_Attribute[a].NType;
+								}
+							}
+						}
+
+						return true;
 					}
 				}
 			}
-
-			return string.Empty;
+			return false;
 		}
 		#endregion
 	}

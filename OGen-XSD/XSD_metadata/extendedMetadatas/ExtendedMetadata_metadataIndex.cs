@@ -23,7 +23,7 @@ using OGen.lib.collections;
 namespace OGen.XSD.lib.metadata {
 	public class ExtendedMetadata_metadataIndex
 #if !NET_1_1
-		: OGenCollectionInterface, OGenRootrefCollectionInterface<RootMetadata>
+		: OGenCollectionInterface<string>, OGenRootrefCollectionInterface<RootMetadata>
 #endif
 	{
 		#region public string Metadata { get; set; }

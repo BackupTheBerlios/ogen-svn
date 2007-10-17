@@ -31,11 +31,16 @@ RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
 XS_Schema _aux_schema = _aux_rootmetadata.SchemaCollection[_arg_SchemaName];
 
 XS_ComplexType _aux_complextype = _aux_schema.XS_ComplexType[_arg_ComplexTypeName];
-OGenCollection<XS_Element> _aux_elements = _aux_complextype.XS_Sequence.XS_Element;
+OGenCollection<XS_Element, string> _aux_elements = _aux_complextype.XS_Sequence.XS_Element;
 
-string _aux_complextype_collectionname = _aux_complextype.isCollection_nameIt(_arg_SchemaName);
+string _aux_complextype_keys_ntype = string.Empty;
+string _aux_complextype_keys_name = string.Empty;
+bool _aux_complextype_mustimplementcollection = _aux_complextype.mustImplementCollection(
+	_arg_SchemaName, 
+	out _aux_complextype_keys_ntype, 
+	out _aux_complextype_keys_name
+);
 
-string __isCollection_nameIt = string.Empty;
 bool _aux_isstandardntype;
 string _aux_ntype;
 
@@ -119,12 +124,12 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_El
 			}
 		}
 		#endregion<%
-		if (_aux_complextype_collectionname != string.Empty) {%>
-		#region public <%=XS_%><%=_aux_complextype.Name%> this[string value_in] { get; }
-		public <%=XS_%><%=_aux_complextype.Name%> this[string <%=_aux_complextype_collectionname%>_in] {
+		if (_aux_complextype_mustimplementcollection) {%>
+		#region public <%=XS_%><%=_aux_complextype.Name%> this[<%=_aux_complextype_keys_ntype%> <%=_aux_complextype_keys_name%>_in] { get; }
+		public <%=XS_%><%=_aux_complextype.Name%> this[<%=_aux_complextype_keys_ntype%> <%=_aux_complextype_keys_name%>_in] {
 			get {
 				for (int i = 0; i < cols_.Count; i++) {
-					if (((<%=XS_%><%=_aux_complextype.Name%>)cols_[i]).<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_complextype_collectionname)%> == <%=_aux_complextype_collectionname%>_in) {
+					if (<%=_aux_complextype_keys_name%>_in.Equals(((<%=XS_%><%=_aux_complextype.Name%>)cols_[i]).<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_complextype_keys_name)%>)) {
 						return (<%=XS_%><%=_aux_complextype.Name%>)cols_[i];
 					}
 				}

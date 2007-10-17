@@ -18,11 +18,11 @@ using System;
 using System.Collections.Generic;
 
 namespace OGen.lib.collections {
-	public class OGenRootrefCollection<C, R> : OGenCollection<C>
+	public class OGenRootrefCollection<C, R, T> : OGenCollection<C, T>
 		where R : class
 		where C : 
 			class,
-			OGenCollectionInterface, 
+			OGenCollectionInterface<T>, 
 			OGenRootrefCollectionInterface<R>
 	{
 		#region public R root_ref { get; }
@@ -41,7 +41,7 @@ namespace OGen.lib.collections {
 		}
 		#endregion
 	}
-	public class OGenRootrefSimpleCollection<C, R> : OGenSimpleCollection<C>
+	public class OGenRootrefSimpleCollection<C, R, T> : OGenSimpleCollection<C>
 		where R : class
 		where C :
 			class,
@@ -64,14 +64,16 @@ namespace OGen.lib.collections {
 		#endregion
 	}
 
-	public class OGenCollection<C> : OGenSimpleCollection<C> 
-		where C : class, OGenCollectionInterface 
+	public class OGenCollection<C, T> : OGenSimpleCollection<C>
+		where C : class, OGenCollectionInterface <T>
 	{
-		#region public C this[string memberName_in] { get; }
-		public C this[string memberName_in] {
+		#region public C this[T memberName_in] { get; }
+		public C this[T memberName_in] {
 			get {
 				for (int i = 0; i < cols_.Count; i++) {
-					if (cols_[i].CollectionName == memberName_in) {
+					if (memberName_in.Equals(
+						cols_[i].CollectionName
+					)) {
 						return cols_[i];
 					}
 				}
