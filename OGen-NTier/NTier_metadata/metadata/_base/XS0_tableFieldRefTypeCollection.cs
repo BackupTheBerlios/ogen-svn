@@ -76,11 +76,11 @@ namespace OGen.NTier.lib.metadata.metadata {
 			}
 		}
 		#endregion
-		#region public XS_tableFieldRefType this[string value_in] { get; }
+		#region public XS_tableFieldRefType this[string paramName_in] { get; }
 		public XS_tableFieldRefType this[string paramName_in] {
 			get {
 				for (int i = 0; i < cols_.Count; i++) {
-					if (((XS_tableFieldRefType)cols_[i]).ParamName == paramName_in) {
+					if (paramName_in.Equals(((XS_tableFieldRefType)cols_[i]).ParamName)) {
 						return (XS_tableFieldRefType)cols_[i];
 					}
 				}

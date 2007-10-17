@@ -433,6 +433,7 @@
                 />
                 <File
                     RelPath = "metadata\_base\XS0__metadataCollection.cs"
+                    SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
@@ -692,6 +693,7 @@
                 />
                 <File
                     RelPath = "someTest\_base\XS0__someTestCollection.cs"
+                    SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File

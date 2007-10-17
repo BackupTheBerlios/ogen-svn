@@ -26,6 +26,29 @@ using OGen.XSD.lib.metadata;
 namespace OGen.XSD.presentationlayer.test {
 	class Program {
 		public static void Main(string[] args) {
+			RootMetadata _root = new RootMetadata(
+				@"X:\OGen.berlios.de\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xml", 
+				@"X:\OGen.berlios.de\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xsd", 
+				@"X:\OGen.berlios.de\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_someTest.OGenXSD-metadata.xsd"
+			);
+			string ntype = string.Empty;
+			string name = string.Empty;
+			bool must = false;
+			for (int c = 0; c < _root.SchemaCollection[0].XS_ComplexType.Count; c++) {
+				must = _root.SchemaCollection[0].XS_ComplexType[c].mustImplementCollection(
+					"metadata",
+					out ntype,
+					out name
+				);
+				Console.WriteLine(
+					"{0}:{1}:{2}", 
+					must, 
+					ntype, 
+					name
+				);
+			}
+			return;
+
 			#region //XmlSchema...
 //			string _filepath = @"c:\test.xml";
 //

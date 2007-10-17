@@ -28,7 +28,7 @@ namespace OGen.NTier.lib.metadata.metadata {
 		) {
 			dbcollection_ = new 
 #if !NET_1_1
-				OGenRootrefCollection<XS_dbType, XS__RootMetadata>()
+				OGenRootrefCollection<XS_dbType, XS__RootMetadata, string>()
 #else
 				XS_dbTypeCollection()
 #endif
@@ -50,7 +50,7 @@ namespace OGen.NTier.lib.metadata.metadata {
 		#region public ... DBCollection { get; }
 		private 
 #if !NET_1_1
-			OGenRootrefCollection<XS_dbType, XS__RootMetadata>
+			OGenRootrefCollection<XS_dbType, XS__RootMetadata, string>
 #else
 			XS_dbTypeCollection
 #endif
@@ -65,7 +65,7 @@ namespace OGen.NTier.lib.metadata.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefCollection<XS_dbType, XS__RootMetadata>
+			OGenRootrefCollection<XS_dbType, XS__RootMetadata, string>
 #else
 			XS_dbTypeCollection
 #endif

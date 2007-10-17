@@ -76,11 +76,11 @@ namespace OGen.NTier.lib.metadata.metadata {
 			}
 		}
 		#endregion
-		#region public XS_dbConnectionType this[string value_in] { get; }
+		#region public XS_dbConnectionType this[string configMode_in] { get; }
 		public XS_dbConnectionType this[string configMode_in] {
 			get {
 				for (int i = 0; i < cols_.Count; i++) {
-					if (((XS_dbConnectionType)cols_[i]).ConfigMode == configMode_in) {
+					if (configMode_in.Equals(((XS_dbConnectionType)cols_[i]).ConfigMode)) {
 						return (XS_dbConnectionType)cols_[i];
 					}
 				}

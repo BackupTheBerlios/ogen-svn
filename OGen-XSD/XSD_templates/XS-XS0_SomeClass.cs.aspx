@@ -33,7 +33,7 @@ XS_Schema _aux_schema = _aux_rootmetadata.SchemaCollection[_arg_SchemaName];
 XS_ComplexType _aux_complextype = _aux_schema.XS_ComplexType[_arg_ComplexTypeName];
 OGenCollection<XS_Element, string> _aux_elements = _aux_complextype.XS_Sequence.XS_Element;
 
-string _aux_complextype_keys_ntype = string.Empty;
+string _aux_complextype_keys_ntype = "String"; // ToDos: now!
 string _aux_complextype_keys_name = string.Empty;
 bool _aux_complextype_mustimplementcollection = _aux_complextype.mustImplementCollection(
 	_arg_SchemaName, 
@@ -42,7 +42,7 @@ bool _aux_complextype_mustimplementcollection = _aux_complextype.mustImplementCo
 );
 
 bool __isCollection = false;
-string __isCollection_ntype = string.Empty;
+string __isCollection_ntype = "String"; // ToDos: now!
 string __isCollection_name = string.Empty;
 
 bool _aux_isstandardntype;
@@ -72,7 +72,7 @@ using OGen.lib.collections;
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%> {
 	public class <%=XS0_%><%=_aux_complextype.Name%>
 #if !NET_1_1
-		: OGenRootrefCollectionInterface<<%=XS__%>RootMetadata> <%=(_aux_complextype_mustimplementcollection) ? ", OGenCollectionInterface" : ""%>
+		: OGenRootrefCollectionInterface<<%=XS__%>RootMetadata> <%=(_aux_complextype_keys_name != string.Empty) ? ", OGenCollectionInterface<" + _aux_complextype_keys_ntype + ">" : ""%>
 #endif
 	{
 		public <%=XS0_%><%=_aux_complextype.Name%> (
@@ -86,7 +86,7 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_El
 					);%><%=""%>
 			<%=_aux_elements[e].Name.ToLower()%>collection_ = new 
 #if !NET_1_1
-				<%=(__isCollection) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata>()
+				<%=(__isCollection) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata, <%=__isCollection_ntype%>>()
 #else
 				<%=XS_%><%=_aux_elements[e].Type%>Collection()
 #endif
@@ -94,9 +94,9 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_El
 				}
 			}%>
 		}<%
-		if (_aux_complextype_mustimplementcollection) {%>
+		if (_aux_complextype_keys_name != string.Empty) {%>
 		public <%=XS0_%><%=_aux_complextype.Name%> (
-			string <%=_aux_complextype_keys_name%>_in
+			<%=_aux_complextype_keys_ntype%> <%=_aux_complextype_keys_name%>_in
 		) : this (
 		) {
 			<%=_aux_complextype_keys_name.ToLower()%>_ = <%=_aux_complextype_keys_name%>_in;
@@ -164,7 +164,7 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_El
 		#region public ... <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%>Collection { get; }
 		private 
 #if !NET_1_1
-			<%=(__isCollection) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata>
+			<%=(__isCollection) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata, <%=__isCollection_ntype%>>
 #else
 			<%=XS_%><%=_aux_elements[e].Type%>Collection
 #endif
@@ -179,7 +179,7 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_El
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			<%=(__isCollection) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata>
+			<%=(__isCollection) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata, <%=__isCollection_ntype%>>
 #else
 			<%=XS_%><%=_aux_elements[e].Type%>Collection
 #endif

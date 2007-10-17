@@ -21,14 +21,14 @@ using OGen.lib.collections;
 namespace OGen.NTier.lib.metadata.metadata {
 	public class XS0_tableSearchUpdateType
 #if !NET_1_1
-		: OGenRootrefCollectionInterface<XS__RootMetadata> , OGenCollectionInterface
+		: OGenRootrefCollectionInterface<XS__RootMetadata> , OGenCollectionInterface<string>
 #endif
 	{
 		public XS0_tableSearchUpdateType (
 		) {
 			tableupdateparameterscollection_ = new 
 #if !NET_1_1
-				OGenRootrefSimpleCollection<XS_tableSearchUpdateParametersType, XS__RootMetadata>()
+				OGenRootrefSimpleCollection<XS_tableSearchUpdateParametersType, XS__RootMetadata, String>()
 #else
 				XS_tableSearchUpdateParametersTypeCollection()
 #endif
@@ -80,7 +80,7 @@ namespace OGen.NTier.lib.metadata.metadata {
 		#region public ... TableUpdateParametersCollection { get; }
 		private 
 #if !NET_1_1
-			OGenRootrefSimpleCollection<XS_tableSearchUpdateParametersType, XS__RootMetadata>
+			OGenRootrefSimpleCollection<XS_tableSearchUpdateParametersType, XS__RootMetadata, String>
 #else
 			XS_tableSearchUpdateParametersTypeCollection
 #endif
@@ -95,7 +95,7 @@ namespace OGen.NTier.lib.metadata.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefSimpleCollection<XS_tableSearchUpdateParametersType, XS__RootMetadata>
+			OGenRootrefSimpleCollection<XS_tableSearchUpdateParametersType, XS__RootMetadata, String>
 #else
 			XS_tableSearchUpdateParametersTypeCollection
 #endif

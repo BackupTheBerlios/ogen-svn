@@ -140,7 +140,7 @@ namespace OGen.XSD.lib.metadata {
 			out string ntype_out, 
 			out string name_out
 		) {
-			ntype_out = string.Empty;
+			ntype_out = "String"; // ToDos: now!
 			name_out = string.Empty;
 
 			ExtendedMetadata_complexTypeKeys _complextypekeys

@@ -124,7 +124,7 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_El
 			}
 		}
 		#endregion<%
-		if (_aux_complextype_mustimplementcollection) {%>
+		if (_aux_complextype_keys_name != string.Empty) {%>
 		#region public <%=XS_%><%=_aux_complextype.Name%> this[<%=_aux_complextype_keys_ntype%> <%=_aux_complextype_keys_name%>_in] { get; }
 		public <%=XS_%><%=_aux_complextype.Name%> this[<%=_aux_complextype_keys_ntype%> <%=_aux_complextype_keys_name%>_in] {
 			get {

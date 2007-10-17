@@ -21,7 +21,7 @@ using OGen.lib.collections;
 namespace OGen.NTier.lib.metadata.metadata {
 	public class XS0_tableUpdateType
 #if !NET_1_1
-		: OGenRootrefCollectionInterface<XS__RootMetadata> , OGenCollectionInterface
+		: OGenRootrefCollectionInterface<XS__RootMetadata> , OGenCollectionInterface<string>
 #endif
 	{
 		public XS0_tableUpdateType (

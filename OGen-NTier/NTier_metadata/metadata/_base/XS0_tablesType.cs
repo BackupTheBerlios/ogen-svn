@@ -28,7 +28,7 @@ namespace OGen.NTier.lib.metadata.metadata {
 		) {
 			tablecollection_ = new 
 #if !NET_1_1
-				OGenRootrefCollection<XS_tableType, XS__RootMetadata>()
+				OGenRootrefCollection<XS_tableType, XS__RootMetadata, string>()
 #else
 				XS_tableTypeCollection()
 #endif
@@ -50,7 +50,7 @@ namespace OGen.NTier.lib.metadata.metadata {
 		#region public ... TableCollection { get; }
 		private 
 #if !NET_1_1
-			OGenRootrefCollection<XS_tableType, XS__RootMetadata>
+			OGenRootrefCollection<XS_tableType, XS__RootMetadata, string>
 #else
 			XS_tableTypeCollection
 #endif
@@ -65,7 +65,7 @@ namespace OGen.NTier.lib.metadata.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefCollection<XS_tableType, XS__RootMetadata>
+			OGenRootrefCollection<XS_tableType, XS__RootMetadata, string>
 #else
 			XS_tableTypeCollection
 #endif

@@ -21,17 +21,17 @@ using OGen.lib.collections;
 namespace OGen.NTier.lib.metadata.metadata {
 	public class XS0_dbConnectionType
 #if !NET_1_1
-		: OGenRootrefCollectionInterface<XS__RootMetadata> , OGenCollectionInterface
+		: OGenRootrefCollectionInterface<XS__RootMetadata> , OGenCollectionInterface<string>
 #endif
 	{
 		public XS0_dbConnectionType (
 		) {
 		}
 		public XS0_dbConnectionType (
-			string configmode_in
+			string configMode_in
 		) : this (
 		) {
-			configmode_ = configmode_in;
+			configmode_ = configMode_in;
 		}
 
 #if !NET_1_1

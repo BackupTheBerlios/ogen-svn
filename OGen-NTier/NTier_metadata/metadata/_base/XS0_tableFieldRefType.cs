@@ -21,17 +21,17 @@ using OGen.lib.collections;
 namespace OGen.NTier.lib.metadata.metadata {
 	public class XS0_tableFieldRefType
 #if !NET_1_1
-		: OGenRootrefCollectionInterface<XS__RootMetadata> , OGenCollectionInterface
+		: OGenRootrefCollectionInterface<XS__RootMetadata> , OGenCollectionInterface<string>
 #endif
 	{
 		public XS0_tableFieldRefType (
 		) {
 		}
 		public XS0_tableFieldRefType (
-			string paramname_in
+			string paramName_in
 		) : this (
 		) {
-			paramname_ = paramname_in;
+			paramname_ = paramName_in;
 		}
 
 #if !NET_1_1

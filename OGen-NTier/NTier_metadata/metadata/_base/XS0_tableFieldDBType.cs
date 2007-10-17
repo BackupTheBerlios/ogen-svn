@@ -21,17 +21,17 @@ using OGen.lib.collections;
 namespace OGen.NTier.lib.metadata.metadata {
 	public class XS0_tableFieldDBType
 #if !NET_1_1
-		: OGenRootrefCollectionInterface<XS__RootMetadata> , OGenCollectionInterface
+		: OGenRootrefCollectionInterface<XS__RootMetadata> , OGenCollectionInterface<string>
 #endif
 	{
 		public XS0_tableFieldDBType (
 		) {
 		}
 		public XS0_tableFieldDBType (
-			string dbservertype_in
+			string dbServerType_in
 		) : this (
 		) {
-			dbservertype_ = dbservertype_in;
+			dbservertype_ = dbServerType_in;
 		}
 
 #if !NET_1_1
