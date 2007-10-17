@@ -29,6 +29,24 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</outputs>
 		<dependencies />
 	</template>
+	<template name="XS-XS0_SomeClassCollection.cs.aspx" 
+			parserType="aspx" 
+			iterationType="ROOT.schema[n].complexType[n]">
+		<arguments>
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
+			<argument name="SchemaFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
+			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
+			<argument name="SchemaName" value="${ROOT.schema[n].element.name}" />
+			<argument name="ComplexTypeName" value="${ROOT.schema[n].complexType[n].name}" />
+		</arguments>
+		<conditions />
+		<outputs>
+			<!-- ${ROOT.metadata.applicationName} -->
+			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/_base/${ROOT.metadata.prefixGenerated}${ROOT.schema[n].complexType[n].name}Collection.cs" 
+				type="File" mode="Replace" />
+		</outputs>
+		<dependencies />
+	</template>
 	<template name="XS-XS0_SomeClass.cs.aspx" 
 			parserType="aspx" 
 			iterationType="ROOT.schema[n].complexType[n]">

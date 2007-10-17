@@ -19,81 +19,88 @@ using System.Collections;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadata {
-	public class XS0_tableFieldRefType
-#if !NET_1_1
-		: OGenRootrefCollectionInterface<XS__RootMetadata> , OGenCollectionInterface
-#endif
-	{
-		public XS0_tableFieldRefType (
-		) {
+	#region public class XS_dbConnectionTypeCollection { ... }
+	public class XS_dbConnectionTypeCollection {
+		public XS_dbConnectionTypeCollection() {
+			cols_ = new ArrayList();
 		}
-		public XS0_tableFieldRefType (
-			string paramname_in
-		) : this (
-		) {
-			paramname_ = paramname_in;
-		}
-
-#if !NET_1_1
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get {
-				return ParamName;
-			}
-		}
-		#endregion
-#endif
 
 		#region public XS__RootMetadata root_ref { get; }
 		private XS__RootMetadata root_ref_;
 
-		[XmlIgnore()]
 		public XS__RootMetadata root_ref {
+			get {
+				return root_ref_;
+			}
 			set {
 				root_ref_ = value;
-			}
-			get { return root_ref_; }
-		}
-		#endregion
-		#region public string TableName { get; set; }
-		private string tablename_;
-
-		[XmlAttribute("tableName")]
-		public string TableName {
-			get {
-				return tablename_;
-			}
-			set {
-				tablename_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((XS_dbConnectionType)cols_[i]).root_ref = value;
+				}
 			}
 		}
 		#endregion
-		#region public string TableFieldName { get; set; }
-		private string tablefieldname_;
 
-		[XmlAttribute("tableFieldName")]
-		public string TableFieldName {
+		#region internal XS_dbConnectionType[] cols__ { get; set; }
+		private ArrayList cols_;
+
+		internal XS_dbConnectionType[] cols__ {
 			get {
-				return tablefieldname_;
+				XS_dbConnectionType[] _output = new XS_dbConnectionType[cols_.Count];
+				cols_.CopyTo(_output);
+				return _output;
 			}
 			set {
-				tablefieldname_ = value;
+				cols_.Clear();
+				if (value != null) {
+					for (int i = 0; i < value.Length; i++) {
+						cols_.Add(value[i]);
+					}
+				}
 			}
 		}
 		#endregion
-		#region public string ParamName { get; set; }
-		private string paramname_;
 
-		[XmlAttribute("paramName")]
-		public string ParamName {
+		#region public int Count { get; }
+		public int Count {
 			get {
-				return paramname_;
+				return cols_.Count;
 			}
-			set {
-				paramname_ = value;
+		}
+		#endregion
+
+		#region public XS_dbConnectionType this[int index_in] { get; }
+		public XS_dbConnectionType this[int index_in] {
+			get {
+				return (XS_dbConnectionType)cols_[index_in];
 			}
+		}
+		#endregion
+		#region public XS_dbConnectionType this[string value_in] { get; }
+		public XS_dbConnectionType this[string configMode_in] {
+			get {
+				for (int i = 0; i < cols_.Count; i++) {
+					if (((XS_dbConnectionType)cols_[i]).ConfigMode == configMode_in) {
+						return (XS_dbConnectionType)cols_[i];
+					}
+				}
+
+				return null;
+			}
+		}
+		#endregion
+
+		#region public int Add(params XS_dbConnectionType[] col_in);
+		public int Add(params XS_dbConnectionType[] col_in) {
+			int _output = -1;
+
+			for (int i = 0; i < col_in.Length; i++) {
+				_output = cols_.Add(col_in[i]);
+			}
+
+			return _output;
 		}
 		#endregion
 	}
+	#endregion
 }

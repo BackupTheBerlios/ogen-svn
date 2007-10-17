@@ -19,78 +19,75 @@ using System.Collections;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadata {
-	public class XS0_tableUpdateType
-#if !NET_1_1
-		: OGenRootrefCollectionInterface<XS__RootMetadata> , OGenCollectionInterface
-#endif
-	{
-		public XS0_tableUpdateType (
-		) {
+	#region public class XS_tableUpdateParametersTypeCollection { ... }
+	public class XS_tableUpdateParametersTypeCollection {
+		public XS_tableUpdateParametersTypeCollection() {
+			cols_ = new ArrayList();
 		}
-		public XS0_tableUpdateType (
-			string name_in
-		) : this (
-		) {
-			name_ = name_in;
-		}
-
-#if !NET_1_1
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get {
-				return Name;
-			}
-		}
-		#endregion
-#endif
 
 		#region public XS__RootMetadata root_ref { get; }
 		private XS__RootMetadata root_ref_;
 
-		[XmlIgnore()]
 		public XS__RootMetadata root_ref {
+			get {
+				return root_ref_;
+			}
 			set {
 				root_ref_ = value;
-				if (tableupdateparameters__ != null) tableupdateparameters__.root_ref = value;
-			}
-			get { return root_ref_; }
-		}
-		#endregion
-		#region public string Name { get; set; }
-		private string name_;
-
-		[XmlAttribute("name")]
-		public string Name {
-			get {
-				return name_;
-			}
-			set {
-				name_ = value;
-			}
-		}
-		#endregion
-		#region public XS_tableUpdateParametersType TableUpdateParameters { get; set; }
-		private XS_tableUpdateParametersType tableupdateparameters__;
-
-		[XmlIgnore()]
-		public XS_tableUpdateParametersType TableUpdateParameters {
-			get {
-				if (tableupdateparameters__ == null) {
-					tableupdateparameters__ = new XS_tableUpdateParametersType();
+				for (int i = 0; i < cols_.Count; i++) {
+					((XS_tableUpdateParametersType)cols_[i]).root_ref = value;
 				}
-				return tableupdateparameters__;
-			}
-			set {
-				tableupdateparameters__ = value;
 			}
 		}
+		#endregion
 
-		[XmlElement("tableUpdateParameters")]
-		public XS_tableUpdateParametersType tableupdateparameters__xml {
-			get { return tableupdateparameters__; }
-			set { tableupdateparameters__ = value; }
+		#region internal XS_tableUpdateParametersType[] cols__ { get; set; }
+		private ArrayList cols_;
+
+		internal XS_tableUpdateParametersType[] cols__ {
+			get {
+				XS_tableUpdateParametersType[] _output = new XS_tableUpdateParametersType[cols_.Count];
+				cols_.CopyTo(_output);
+				return _output;
+			}
+			set {
+				cols_.Clear();
+				if (value != null) {
+					for (int i = 0; i < value.Length; i++) {
+						cols_.Add(value[i]);
+					}
+				}
+			}
+		}
+		#endregion
+
+		#region public int Count { get; }
+		public int Count {
+			get {
+				return cols_.Count;
+			}
+		}
+		#endregion
+
+		#region public XS_tableUpdateParametersType this[int index_in] { get; }
+		public XS_tableUpdateParametersType this[int index_in] {
+			get {
+				return (XS_tableUpdateParametersType)cols_[index_in];
+			}
+		}
+		#endregion
+
+		#region public int Add(params XS_tableUpdateParametersType[] col_in);
+		public int Add(params XS_tableUpdateParametersType[] col_in) {
+			int _output = -1;
+
+			for (int i = 0; i < col_in.Length; i++) {
+				_output = cols_.Add(col_in[i]);
+			}
+
+			return _output;
 		}
 		#endregion
 	}
+	#endregion
 }

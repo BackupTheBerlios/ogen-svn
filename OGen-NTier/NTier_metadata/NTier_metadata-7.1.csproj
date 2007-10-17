@@ -437,7 +437,17 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "metadata\_base\XS0_dbConnectionsTypeCollection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "metadata\_base\XS0_dbConnectionType.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "metadata\_base\XS0_dbConnectionTypeCollection.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -447,12 +457,27 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "metadata\_base\XS0_dbsTypeCollection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "metadata\_base\XS0_dbType.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "metadata\_base\XS0_dbTypeCollection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "metadata\_base\XS0_metadataType.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "metadata\_base\XS0_metadataTypeCollection.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -467,7 +492,17 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "metadata\_base\XS0_tableDBsTypeCollection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "metadata\_base\XS0_tableDBType.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "metadata\_base\XS0_tableDBTypeCollection.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -477,7 +512,17 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "metadata\_base\XS0_tableFieldDBsTypeCollection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "metadata\_base\XS0_tableFieldDBType.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "metadata\_base\XS0_tableFieldDBTypeCollection.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -487,7 +532,17 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "metadata\_base\XS0_tableFieldRefTypeCollection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "metadata\_base\XS0_tableFieldsType.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "metadata\_base\XS0_tableFieldsTypeCollection.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -497,7 +552,17 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "metadata\_base\XS0_tableFieldTypeCollection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "metadata\_base\XS0_tableSearchesType.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "metadata\_base\XS0_tableSearchesTypeCollection.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -507,7 +572,17 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "metadata\_base\XS0_tableSearchParametersTypeCollection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "metadata\_base\XS0_tableSearchType.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "metadata\_base\XS0_tableSearchTypeCollection.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -517,7 +592,17 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "metadata\_base\XS0_tableSearchUpdateParametersTypeCollection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "metadata\_base\XS0_tableSearchUpdatesType.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "metadata\_base\XS0_tableSearchUpdatesTypeCollection.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -527,7 +612,17 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "metadata\_base\XS0_tableSearchUpdateTypeCollection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "metadata\_base\XS0_tablesType.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "metadata\_base\XS0_tablesTypeCollection.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -537,7 +632,17 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "metadata\_base\XS0_tableTypeCollection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "metadata\_base\XS0_tableUpdateParametersType.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "metadata\_base\XS0_tableUpdateParametersTypeCollection.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -547,7 +652,17 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "metadata\_base\XS0_tableUpdatesTypeCollection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "metadata\_base\XS0_tableUpdateType.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "metadata\_base\XS0_tableUpdateTypeCollection.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
@@ -582,7 +697,17 @@
                     BuildAction = "Compile"
                 />
                 <File
+                    RelPath = "someTest\_base\XS0_someType1Collection.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
                     RelPath = "someTest\_base\XS0_someType2.cs"
+                    SubType = "Code"
+                    BuildAction = "Compile"
+                />
+                <File
+                    RelPath = "someTest\_base\XS0_someType2Collection.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />

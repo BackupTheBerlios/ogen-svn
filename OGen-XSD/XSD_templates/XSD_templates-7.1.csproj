@@ -163,6 +163,10 @@
                     BuildAction = "Content"
                 />
                 <File
+                    RelPath = "XS-XS0_SomeClassCollection.cs.aspx"
+                    BuildAction = "Content"
+                />
+                <File
                     RelPath = "XS-XS0_SomeEnumeration.cs.aspx"
                     BuildAction = "Content"
                 />
