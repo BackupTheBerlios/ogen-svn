@@ -19,9 +19,5 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.someTest {
 	public class XS_someType1 : XS0_someType1 {
-
-	//someAttrib1
-	
-
 	}
 }

@@ -19,14 +19,5 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadata {
 	public class XS_tableType : XS0_tableType {
-
-	//name
-	//friendlyName
-	//dbDescription
-	//extendedDescription
-	//isVirtualTable
-	//isConfig
-	
-
 	}
 }

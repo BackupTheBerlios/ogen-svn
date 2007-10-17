@@ -19,11 +19,5 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadata {
 	public class XS_tableFieldRefType : XS0_tableFieldRefType {
-
-	//tableName
-	//tableFieldName
-	//paramName
-	
-
 	}
 }

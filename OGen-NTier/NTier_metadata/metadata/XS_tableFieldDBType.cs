@@ -19,14 +19,5 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadata {
 	public class XS_tableFieldDBType : XS0_tableFieldDBType {
-
-	//dbServerType
-	//dbType
-	//dbDescription
-	//dbDefaultValue
-	//dbCollationName
-	//dbFieldName
-	
-
 	}
 }

@@ -43,8 +43,8 @@ namespace OGen.XSD.lib.metadata {
 			set {
 				root_ref_ = value;
 
-				if (xs_sequence__ != null) xs_sequence__.root_ref = value;
-				xs_attributecollection_.root_ref = value;
+				if (sequence__ != null) sequence__.root_ref = value;
+				attributecollection_.root_ref = value;
 			}
 			get { return root_ref_; }
 		}
@@ -73,21 +73,21 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public ... XS_Attribute { get; }
+		#region public ... Attribute { get; }
 #if !NET_1_1
-		private OGenRootrefCollection<XS_Attribute, RootMetadata, string> xs_attributecollection_
+		private OGenRootrefCollection<XS_Attribute, RootMetadata, string> attributecollection_
 			= new OGenRootrefCollection<XS_Attribute, RootMetadata, string>();
 #else
-		private XS_AttributeCollection xs_attributecollection_
+		private XS_AttributeCollection attributecollection_
 			= new XS_AttributeCollection();
 #endif
 
 		[XmlElement("attribute")]
 		//[XmlArray("attribute")]
 		//[XmlArrayItem(typeof(XS_Attribute))]
-		public XS_Attribute[] xs_attribute__xml {
-			get { return xs_attributecollection_.cols__; }
-			set { xs_attributecollection_.cols__ = value; }
+		public XS_Attribute[] attribute__xml {
+			get { return attributecollection_.cols__; }
+			set { attributecollection_.cols__ = value; }
 		}
 
 		[XmlIgnore()]
@@ -97,31 +97,31 @@ namespace OGen.XSD.lib.metadata {
 #else
 			XS_AttributeCollection
 #endif
-		XS_Attribute {
-			get { return xs_attributecollection_; }
+		Attribute {
+			get { return attributecollection_; }
 		}
 		#endregion
 
-		#region public XS_Sequence XS_Sequence { get; set; }
-		private XS_Sequence xs_sequence__;
+		#region public XS_Sequence Sequence { get; set; }
+		private XS_Sequence sequence__;
 
 		[XmlIgnore()]
-		public XS_Sequence XS_Sequence {
+		public XS_Sequence Sequence {
 			get {
-				if (xs_sequence__ == null) {
-					xs_sequence__ = new XS_Sequence();
+				if (sequence__ == null) {
+					sequence__ = new XS_Sequence();
 				}
-				return xs_sequence__;
+				return sequence__;
 			}
 			set {
-				xs_sequence__ = value;
+				sequence__ = value;
 			}
 		}
 
 		[XmlElement("sequence")]
-		public XS_Sequence xs_sequence__xml {
-			get { return xs_sequence__; }
-			set { xs_sequence__ = value; }
+		public XS_Sequence sequence__xml {
+			get { return sequence__; }
+			set { sequence__ = value; }
 		}
 		#endregion
 
@@ -136,14 +136,14 @@ namespace OGen.XSD.lib.metadata {
 			keys_name_out = string.Empty;
 
 			XS_Schema _schema = root_ref_.SchemaCollection[schemaName_in];
-			for (int c = 0; c < _schema.XS_ComplexType.Count; c++) {
-				for (int e = 0; e < _schema.XS_ComplexType[c].XS_Sequence.XS_Element.Count; e++) {
+			for (int c = 0; c < _schema.ComplexType.Count; c++) {
+				for (int e = 0; e < _schema.ComplexType[c].Sequence.Element.Count; e++) {
 					if (
 						// if there's an Element pointing this ComplexType
-						(_schema.XS_ComplexType[c].XS_Sequence.XS_Element[e].Type == Name)
+						(_schema.ComplexType[c].Sequence.Element[e].Type == Name)
 						&&
 						// and if this Element occurance is unbounded
-						(_schema.XS_ComplexType[c].XS_Sequence.XS_Element[e].MaxOccurs
+						(_schema.ComplexType[c].Sequence.Element[e].MaxOccurs
 							== XS_Element.MaxOccursEnum.unbounded)
 					) {
 						// then this ComplexType must implement a Collection
@@ -154,10 +154,10 @@ namespace OGen.XSD.lib.metadata {
 							];
 
 						if (_complextypekeys != null) {
-							for (int a = 0; a < XS_Attribute.Count; a++) {
-								if (XS_Attribute[a].Name == _complextypekeys.Keys) {
-									keys_name_out = XS_Attribute[a].Name;
-									keys_ntype_out = XS_Attribute[a].NType;
+							for (int a = 0; a < Attribute.Count; a++) {
+								if (Attribute[a].Name == _complextypekeys.Keys) {
+									keys_name_out = Attribute[a].Name;
+									keys_ntype_out = Attribute[a].NType;
 								}
 							}
 						}

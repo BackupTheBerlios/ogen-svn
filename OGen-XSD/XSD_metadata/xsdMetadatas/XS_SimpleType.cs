@@ -43,7 +43,7 @@ namespace OGen.XSD.lib.metadata {
 			set {
 				root_ref_ = value;
 
-				if (xs_restriction__ != null) xs_restriction__.root_ref = value;
+				if (restriction__ != null) restriction__.root_ref = value;
 			}
 			get { return root_ref_; }
 		}
@@ -72,26 +72,26 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public XS_Restriction XS_Restriction { get; set; }
-		private XS_Restriction xs_restriction__;
+		#region public XS_Restriction Restriction { get; set; }
+		private XS_Restriction restriction__;
 
 		[XmlIgnore()]
-		public XS_Restriction XS_Restriction {
+		public XS_Restriction Restriction {
 			get {
-				if (xs_restriction__ == null) {
-					xs_restriction__ = new XS_Restriction();
+				if (restriction__ == null) {
+					restriction__ = new XS_Restriction();
 				}
-				return xs_restriction__;
+				return restriction__;
 			}
 			set {
-				xs_restriction__ = value;
+				restriction__ = value;
 			}
 		}
 
 		[XmlElement("restriction")]
-		public XS_Restriction xs_restriction__xml {
-			get { return xs_restriction__; }
-			set { xs_restriction__ = value; }
+		public XS_Restriction restriction__xml {
+			get { return restriction__; }
+			set { restriction__ = value; }
 		}
 		#endregion
 	}

@@ -19,20 +19,5 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadata {
 	public class XS_metadataType : XS0_metadataType {
-
-	//applicationName
-	//applicationNamespace
-	//subAppName
-	//pseudoReflectionable
-	//sqlScriptOption
-	//guidDatalayer
-	//guidDatalayer_UTs
-	//guidBusinesslayer
-	//guidBusinesslayer_UTs
-	//guidTest
-	//feedbackEmailAddress
-	//copyrightText
-	
-
 	}
 }

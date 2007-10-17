@@ -19,9 +19,5 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadata {
 	public class XS_tableUpdateType : XS0_tableUpdateType {
-
-	//name
-	
-
 	}
 }

@@ -43,7 +43,7 @@ namespace OGen.XSD.lib.metadata {
 				// ToDos: later! performance
 
 				for (int i = 0; i < schemas_.Length; i++) {
-					if (schemas_[i].XS_Element.Name == name_in) {
+					if (schemas_[i].Element.Name == name_in) {
 						return schemas_[i];
 					}
 				}

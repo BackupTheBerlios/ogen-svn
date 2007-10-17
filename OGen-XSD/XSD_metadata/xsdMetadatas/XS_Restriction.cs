@@ -35,7 +35,7 @@ namespace OGen.XSD.lib.metadata {
 			set {
 				root_ref_ = value;
 
-				xs_enumerationcollection_.root_ref = value;
+				enumerationcollection_.root_ref = value;
 			}
 			get { return root_ref_; }
 		}
@@ -56,21 +56,21 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
-		#region public ... XS_Enumeration { get; }
+		#region public ... Enumeration { get; }
 #if !NET_1_1
-		private OGenRootrefCollection<XS_Enumeration, RootMetadata, string> xs_enumerationcollection_
+		private OGenRootrefCollection<XS_Enumeration, RootMetadata, string> enumerationcollection_
 			= new OGenRootrefCollection<XS_Enumeration, RootMetadata, string>();
 #else
-		private XS_EnumerationCollection xs_enumerationcollection_
+		private XS_EnumerationCollection enumerationcollection_
 			= new XS_EnumerationCollection();
 #endif
 
 		[XmlElement("enumeration")]
 		//[XmlArray("enumeration")]
 		//[XmlArrayItem(typeof(XS_Enumeration))]
-		public XS_Enumeration[] xs_enumeration__xml {
-			get { return xs_enumerationcollection_.cols__; }
-			set { xs_enumerationcollection_.cols__ = value; }
+		public XS_Enumeration[] enumeration__xml {
+			get { return enumerationcollection_.cols__; }
+			set { enumerationcollection_.cols__ = value; }
 		}
 
 		[XmlIgnore()]
@@ -80,8 +80,8 @@ namespace OGen.XSD.lib.metadata {
 #else
 			XS_EnumerationCollection
 #endif
-		XS_Enumeration {
-			get { return xs_enumerationcollection_; }
+		Enumeration {
+			get { return enumerationcollection_; }
 		}
 		#endregion
 	}

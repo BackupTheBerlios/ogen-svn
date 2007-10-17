@@ -19,9 +19,5 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadata {
 	public class XS_dbType : XS0_dbType {
-
-	//dbServerType
-	
-
 	}
 }

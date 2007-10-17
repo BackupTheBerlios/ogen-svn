@@ -19,13 +19,5 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadata {
 	public class XS_dbConnectionType : XS0_dbConnectionType {
-
-	//configMode
-	//isDefault
-	//generateSQL
-	//isIndexed_andReadOnly
-	//connectionstring
-	
-
 	}
 }

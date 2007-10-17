@@ -19,11 +19,5 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadata {
 	public class XS_tableSearchType : XS0_tableSearchType {
-
-	//name
-	//isRange
-	//isExplicitUniqueIndex
-	
-
 	}
 }

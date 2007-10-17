@@ -36,27 +36,27 @@ namespace OGen.XSD.lib.metadata {
 			set {
 				root_ref_ = value;
 
-				xs_elementcollection_.root_ref = value;
+				elementcollection_.root_ref = value;
 			}
 			get { return root_ref_; }
 		}
 		#endregion
 
-		#region public ... XS_Element { get; }
+		#region public ... Element { get; }
 #if !NET_1_1
-		private OGenRootrefCollection<XS_Element, RootMetadata, string> xs_elementcollection_
+		private OGenRootrefCollection<XS_Element, RootMetadata, string> elementcollection_
 			= new OGenRootrefCollection<XS_Element, RootMetadata, string>();
 #else
-		private XS_ElementCollection xs_elementcollection_
+		private XS_ElementCollection elementcollection_
 			= new XS_ElementCollection();
 #endif
 
 		[XmlElement("element")]
 		//[XmlArray("element")]
 		//[XmlArrayItem(typeof(XS_Element))]
-		public XS_Element[] xs_element__xml {
-			get { return xs_elementcollection_.cols__; }
-			set { xs_elementcollection_.cols__ = value; }
+		public XS_Element[] element__xml {
+			get { return elementcollection_.cols__; }
+			set { elementcollection_.cols__ = value; }
 		}
 
 		[XmlIgnore()]
@@ -66,8 +66,8 @@ namespace OGen.XSD.lib.metadata {
 #else
 		XS_ElementCollection
 #endif
-		XS_Element {
-			get { return xs_elementcollection_; }
+		Element {
+			get { return elementcollection_; }
 		}
 		#endregion
 	}

@@ -34,8 +34,8 @@ namespace OGen.XSD.presentationlayer.test {
 			string ntype = string.Empty;
 			string name = string.Empty;
 			bool must = false;
-			for (int c = 0; c < _root.SchemaCollection[0].XS_ComplexType.Count; c++) {
-				must = _root.SchemaCollection[0].XS_ComplexType[c].mustImplementCollection(
+			for (int c = 0; c < _root.SchemaCollection[0].ComplexType.Count; c++) {
+				must = _root.SchemaCollection[0].ComplexType[c].mustImplementCollection(
 					"metadata",
 					out ntype,
 					out name
@@ -90,13 +90,13 @@ namespace OGen.XSD.presentationlayer.test {
 			
 			XS_SimpleType _simpletype = new XS_SimpleType();
 			_simpletype.Name = "someEnum";
-			_simpletype.XS_Restriction.Base = "xs:string";
-			_simpletype.XS_Restriction.XS_Enumeration.Add(
+			_simpletype.Restriction.Base = "xs:string";
+			_simpletype.Restriction.Enumeration.Add(
 				new XS_Enumeration("someenum1"), 
 				new XS_Enumeration("someenum2"), 
 				new XS_Enumeration("someenum3")
 			);
-			_schema.XS_SimpleType.Add(
+			_schema.SimpleType.Add(
 				_simpletype
 			);
 
@@ -105,7 +105,7 @@ namespace OGen.XSD.presentationlayer.test {
 			_attrib1.Type = "xs:string";
 			XS_ComplexType _someType1 = new XS_ComplexType();
 			_someType1.Name = "someType1";
-			_someType1.XS_Attribute.Add(
+			_someType1.Attribute.Add(
 				_attrib1
 			);
 
@@ -117,7 +117,7 @@ namespace OGen.XSD.presentationlayer.test {
 			_attrib3.Type = "xs:string";
 			XS_ComplexType _someType2 = new XS_ComplexType();
 			_someType2.Name = "someType2";
-			_someType2.XS_Attribute.Add(
+			_someType2.Attribute.Add(
 				_attrib2, 
 				_attrib3
 			);
@@ -131,12 +131,12 @@ namespace OGen.XSD.presentationlayer.test {
 			XS_Element _element2 = new XS_Element();
 			_element2.Name = "someItem";
 			_element2.Type = "someType1";
-			_someType2.XS_Sequence.XS_Element.Add(
+			_someType2.Sequence.Element.Add(
 				_element1, 
 				_element2
 			);
 
-			_schema.XS_ComplexType.Add(
+			_schema.ComplexType.Add(
 				_someType1, 
 				_someType2
 			);
@@ -144,13 +144,13 @@ namespace OGen.XSD.presentationlayer.test {
 			//XS_Element _someElement = new XS_Element();
 			//_someElement.Name = "someElement";
 			//_someElement.Type = "someType2";
-			//_schema.XS_Element = _someElement;
-			_schema.XS_Element.Name = "someElement";
-			_schema.XS_Element.Type = "someType2";
+			//_schema.Element = _someElement;
+			_schema.Element.Name = "someElement";
+			_schema.Element.Type = "someType2";
 
 Console.WriteLine(
 	"'{0}' == '{1}'", 
-	_schema.XS_SimpleType[0].XS_Restriction.XS_Enumeration[2].Value, 
+	_schema.SimpleType[0].Restriction.Enumeration[2].Value, 
 	_schema.Read_fromRoot("ROOT.simpleType[0].restriction.enumeration[2].value")
 );
 Console.Write("Press any key to continue . . . ");
@@ -162,7 +162,7 @@ Console.ReadLine();
 Console.WriteLine();
 //Console.WriteLine(
 //	"'{0}' == '{1}'", 
-//	_schema.XS_SimpleType[0].XS_Restriction.XS_Enumeration[2].XXX, 
+//	_schema.SimpleType[0].Restriction.Enumeration[2].XXX, 
 //	_schema.Read_fromRoot("ROOT.simpleType[0].restriction.enumeration[2].XXX")
 //);
 //Console.Write("Press any key to continue . . . ");
@@ -210,22 +210,22 @@ public static void notifyme(string message_in) {
 				schema_in.TargetNamespace, 
 				schema_in.ElementFormDefault
 			);
-			for (int i = 0; i < schema_in.XS_SimpleType.Count; i++) {
+			for (int i = 0; i < schema_in.SimpleType.Count; i++) {
 				Console.WriteLine(
 					"\t<xs:simpleType name=\"{0}\" />", 
-					schema_in.XS_SimpleType[i].Name
+					schema_in.SimpleType[i].Name
 				);
 			}
-			for (int i = 0; i < schema_in.XS_ComplexType.Count; i++) {
+			for (int i = 0; i < schema_in.ComplexType.Count; i++) {
 				Console.WriteLine(
 					"\t<xs:complexType name=\"{0}\" />", 
-					schema_in.XS_ComplexType[i].Name
+					schema_in.ComplexType[i].Name
 				);
 			}
 			Console.WriteLine(
 				"\t<xs:element name=\"{0}\" type=\"{1}\" />", 
-				schema_in.XS_Element.Name, 
-				schema_in.XS_Element.Type
+				schema_in.Element.Name, 
+				schema_in.Element.Type
 			);
 			Console.WriteLine("</xs:schema>");
 		}

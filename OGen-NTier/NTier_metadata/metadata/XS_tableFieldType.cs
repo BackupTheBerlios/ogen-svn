@@ -19,26 +19,5 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadata {
 	public class XS_tableFieldType : XS0_tableFieldType {
-
-	//name
-	//isPK
-	//isIdentity
-	//defaultValue
-	//friendlyName
-	//extendedDescription
-	//isListItemValue
-	//isListItemText
-	//isConfig_Name
-	//isConfig_Config
-	//isConfig_Datatype
-	//fkTableName
-	//fkFieldName
-	//isNullable
-	//size
-	//aditionalInfo
-	//numericPrecision
-	//numericScale
-	
-
 	}
 }

@@ -30,8 +30,8 @@ RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
 );
 XS_Schema _aux_schema = _aux_rootmetadata.SchemaCollection[_arg_SchemaName];
 
-XS_ComplexType _aux_complextype = _aux_schema.XS_ComplexType[_arg_ComplexTypeName];
-OGenCollection<XS_Element, string> _aux_elements = _aux_complextype.XS_Sequence.XS_Element;
+XS_ComplexType _aux_complextype = _aux_schema.ComplexType[_arg_ComplexTypeName];
+OGenCollection<XS_Element, string> _aux_elements = _aux_complextype.Sequence.Element;
 
 string _aux_complextype_keys_ntype = "String"; // ToDos: now!
 string _aux_complextype_keys_name = string.Empty;
@@ -69,7 +69,7 @@ using System.Collections;
 
 using OGen.lib.collections;
 
-namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%> {
+namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Element.Name%> {
 	public class <%=XS0_%><%=_aux_complextype.Name%>
 #if !NET_1_1
 		: OGenRootrefCollectionInterface<<%=XS__%>RootMetadata> <%=(_aux_complextype_keys_name != string.Empty) ? ", OGenCollectionInterface<" + _aux_complextype_keys_ntype + ">" : ""%>
@@ -142,17 +142,17 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_El
 		}
 		#endregion<%
 
-		for (int a = 0; a < _aux_complextype.XS_Attribute.Count; a++) {%>
-		#region public <%=_aux_complextype.XS_Attribute[a].NType%> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_complextype.XS_Attribute[a].Name)%> { get; set; }
-		private <%=_aux_complextype.XS_Attribute[a].NType%> <%=_aux_complextype.XS_Attribute[a].Name.ToLower()%>_;
+		for (int a = 0; a < _aux_complextype.Attribute.Count; a++) {%>
+		#region public <%=_aux_complextype.Attribute[a].NType%> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_complextype.Attribute[a].Name)%> { get; set; }
+		private <%=_aux_complextype.Attribute[a].NType%> <%=_aux_complextype.Attribute[a].Name.ToLower()%>_;
 
-		[XmlAttribute("<%=_aux_complextype.XS_Attribute[a].Name%>")]
-		public <%=_aux_complextype.XS_Attribute[a].NType%> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_complextype.XS_Attribute[a].Name)%> {
+		[XmlAttribute("<%=_aux_complextype.Attribute[a].Name%>")]
+		public <%=_aux_complextype.Attribute[a].NType%> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_complextype.Attribute[a].Name)%> {
 			get {
-				return <%=_aux_complextype.XS_Attribute[a].Name.ToLower()%>_;
+				return <%=_aux_complextype.Attribute[a].Name.ToLower()%>_;
 			}
 			set {
-				<%=_aux_complextype.XS_Attribute[a].Name.ToLower()%>_ = value;
+				<%=_aux_complextype.Attribute[a].Name.ToLower()%>_ = value;
 			}
 		}
 		#endregion<%

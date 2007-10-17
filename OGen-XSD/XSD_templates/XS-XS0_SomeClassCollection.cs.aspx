@@ -30,8 +30,8 @@ RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
 );
 XS_Schema _aux_schema = _aux_rootmetadata.SchemaCollection[_arg_SchemaName];
 
-XS_ComplexType _aux_complextype = _aux_schema.XS_ComplexType[_arg_ComplexTypeName];
-OGenCollection<XS_Element, string> _aux_elements = _aux_complextype.XS_Sequence.XS_Element;
+XS_ComplexType _aux_complextype = _aux_schema.ComplexType[_arg_ComplexTypeName];
+OGenCollection<XS_Element, string> _aux_elements = _aux_complextype.Sequence.Element;
 
 string _aux_complextype_keys_ntype = string.Empty;
 string _aux_complextype_keys_name = string.Empty;
@@ -65,7 +65,7 @@ using System.Collections;
 
 using OGen.lib.collections;
 
-namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%> {<%--
+namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Element.Name%> {<%--
 #if NET_1_1--%>
 	#region public class <%=XS_%><%=_aux_complextype.Name%>Collection { ... }
 	public class <%=XS_%><%=_aux_complextype.Name%>Collection {

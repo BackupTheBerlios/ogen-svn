@@ -149,11 +149,11 @@ namespace OGen.XSD.lib.metadata {
 			if (_complextypekeys != null) {
 				XS_Schema _schema = root_ref_.SchemaCollection[schemaName_in];
 
-				for (int c = 0; c < _schema.XS_ComplexType.Count; c++) {
-					for (int a = 0; a < _schema.XS_ComplexType[c].XS_Attribute.Count; a++) {
-						if (_schema.XS_ComplexType[c].XS_Attribute[a].Name == _complextypekeys.Keys) {
-							ntype_out = _schema.XS_ComplexType[c].XS_Attribute[a].NType;
-							name_out = _schema.XS_ComplexType[c].XS_Attribute[a].Name;
+				for (int c = 0; c < _schema.ComplexType.Count; c++) {
+					for (int a = 0; a < _schema.ComplexType[c].Attribute.Count; a++) {
+						if (_schema.ComplexType[c].Attribute[a].Name == _complextypekeys.Keys) {
+							ntype_out = _schema.ComplexType[c].Attribute[a].NType;
+							name_out = _schema.ComplexType[c].Attribute[a].Name;
 							return true;
 						}
 					}

@@ -42,9 +42,6 @@ namespace OGen.XSD.lib.metadata {
 		public RootMetadata root_ref {
 			set {
 				root_ref_ = value;
-
-				//xs_simpletype_.root_ref = value;
-				//xs_complextype_.root_ref = value;
 			}
 			get { return root_ref_; }
 		}

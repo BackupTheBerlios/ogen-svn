@@ -29,7 +29,7 @@ RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
 );
 XS_Schema _aux_schema = _aux_rootmetadata.SchemaCollection[_arg_SchemaName];
 
-XS_ComplexType _aux_complextype = _aux_schema.XS_ComplexType[_arg_ComplexTypeName];
+XS_ComplexType _aux_complextype = _aux_schema.ComplexType[_arg_ComplexTypeName];
 
 string XS0_ = _aux_rootmetadata.ExtendedMetadata.PrefixGenerated;
 string XS_ = _aux_rootmetadata.ExtendedMetadata.Prefix;
@@ -51,14 +51,8 @@ using System.Xml.Serialization;
 
 using OGen.lib.collections;
 
-namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.XS_Element.Name%> {
+namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Element.Name%> {
 	public class <%=XS_%><%=_aux_complextype.Name%> : <%=XS0_%><%=_aux_complextype.Name%> {
-
-	<%for (int a = 0; a < _aux_complextype.XS_Attribute.Count; a++) {
-		%>//<%=_aux_complextype.XS_Attribute[a].Name%>
-	<%
-	}%>
-
 	}
 }<%
 //-----------------------------------------------------------------------------------------
