@@ -15,16 +15,21 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <%@ import namespace="OGen.lib.collections" %><%
 #region arguments...
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
-string _arg_SchemaFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["SchemaFilepath"]);
-string _arg_Schema2Filepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["Schema2Filepath"]);
+//string _arg_Schema1Filepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["Schema1Filepath"]);
+//string _arg_Schema2Filepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["Schema2Filepath"]);
+string _arg_Schema3Filepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["Schema3Filepath"]);
+string _arg_Schema4Filepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["Schema4Filepath"]);
 #endregion
 
 #region varaux...
 RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
 	_arg_MetadataFilepath,
 	true,
-	_arg_SchemaFilepath,
-	_arg_Schema2Filepath
+//	_arg_Schema1Filepath,
+//	_arg_Schema2Filepath
+//,
+	_arg_Schema3Filepath,
+	_arg_Schema4Filepath
 );
 
 string XS0_ = _aux_rootmetadata.ExtendedMetadata.PrefixGenerated;

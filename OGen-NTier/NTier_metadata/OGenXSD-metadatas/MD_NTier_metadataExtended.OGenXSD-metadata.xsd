@@ -72,31 +72,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	</xs:complexType>
 
 	<!--
-		<tableDB dbServerType="PostgreSQL" dbTableName="IHaveAStyle" />
-		<tableDB dbServerType="SQLServer" dbTableName="i_Have_MyOwn_style" />
-		<tableDB dbServerType="MySQL" dbTableName="i_have_a_lower_style" />
-	-->
-	<xs:complexType name="tableDBType">
-		<xs:attribute name="dbServerType" type="xs:string" />
-		<xs:attribute name="dbTableName" type="xs:string" />
-	</xs:complexType>
-	<!--
-		<tableDBs>
-			<tableDB ... />
-			<tableDB ... />
-		</tableDBs>
-	-->
-	<xs:complexType name="tableDBsType">
-		<xs:sequence>
-			<xs:element name="tableDB" type="tableDBType" maxOccurs="unbounded" />
-		</xs:sequence>
-	</xs:complexType>
-
-	<!--
 		<tableField name="Name" isPK="True" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="True" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" aditionalInfo="" numericPrecision="0" numericScale="0" />
 	-->
 	<xs:complexType name="tableFieldType">
 		<xs:attribute name="name" type="xs:string" />
+		<xs:attribute name="defaultValue" type="xs:string" />
 		<xs:attribute name="friendlyName" type="xs:string" />
 		<xs:attribute name="extendedDescription" type="xs:string" />
 		<xs:attribute name="isListItemValue" type="xs:boolean" />
@@ -260,13 +240,23 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<xs:attribute name="guidTest" type="xs:string" />
 		<xs:attribute name="feedbackEmailAddress" type="xs:string" />
 		<xs:attribute name="copyrightText" type="xs:string" />
-		<xs:attribute name="copyrightTextLong" type="xs:string" />
 
 		<xs:sequence>
+			<xs:element name="copyrightTextLong" type="xs:string" />
+			<!--
+			<xs:element name="copyrightTextLong" type="copyrightTextLongType" />
+			-->
 			<xs:element name="dbs" type="dbsType" />
 			<xs:element name="tables" type="tablesType" />
 		</xs:sequence>
 	</xs:complexType>
+	<!--
+	<xs:complexType name="copyrightTextLongType" mixed="true">>
+		<xs:sequence>
+			<xs:element name="bold" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	-->
 
 	<xs:element name="metadataExtended" type="metadataExtendedType" />
 </xs:schema>

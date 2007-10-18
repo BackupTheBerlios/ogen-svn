@@ -18,52 +18,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	elementFormDefault="qualified">
 
 	<!--
-		<dbConnection configMode="DEBUG" isDefault="True" generateSQL="True" isIndexed_andReadOnly="False" connectionstring="Server=127.0.0.1;Port=5432;User ID=postgres;Password=passpub;Database=OGen-NTier_UTs;" />
-		<dbConnection configMode="!DEBUG" isDefault="True" generateSQL="False" isIndexed_andReadOnly="False" connectionstring="Server=127.0.0.1;Port=5432;User ID=postgres;Password=passpub;Database=OGen-NTier_UTs;" />
-	-->
-	<xs:complexType name="dbConnectionType">
-		<xs:attribute name="configMode" type="xs:string" />
-		<xs:attribute name="isDefault" type="xs:boolean" />
-		<xs:attribute name="generateSQL" type="xs:boolean" />
-		<xs:attribute name="isIndexed_andReadOnly" type="xs:boolean" />
-		<xs:attribute name="connectionstring" type="xs:string" />
-	</xs:complexType>
-	<!--
-		<dbConnections>
-			<dbConnection ... />
-			<dbConnection ... />
-		</dbConnections>
-	-->
-	<xs:complexType name="dbConnectionsType">
-		<xs:sequence>
-			<xs:element name="dbConnection" type="dbConnectionType" maxOccurs="unbounded" />
-		</xs:sequence>
-	</xs:complexType>
-
-	<!--
-		<db dbServerType="PostgreSQL">
-			<dbConnections ... />
-		</db>
-	-->
-	<xs:complexType name="dbType">
-		<xs:attribute name="dbServerType" type="xs:string" />
-		<xs:sequence>
-			<xs:element name="dbConnections" type="dbConnectionsType" />
-		</xs:sequence>
-	</xs:complexType>
-	<!--
-		<dbs>
-			<db ... />
-			<db ... />
-		</dbs>
-	-->
-	<xs:complexType name="dbsType">
-		<xs:sequence>
-			<xs:element name="db" type="dbType" maxOccurs="unbounded" />
-		</xs:sequence>
-	</xs:complexType>
-
-	<!--
 		<tableDB dbServerType="PostgreSQL" dbTableName="IHaveAStyle" />
 		<tableDB dbServerType="SQLServer" dbTableName="i_Have_MyOwn_style" />
 		<tableDB dbServerType="MySQL" dbTableName="i_have_a_lower_style" />
@@ -117,7 +71,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<xs:attribute name="name" type="xs:string" />
 		<xs:attribute name="isPK" type="xs:boolean" />
 		<xs:attribute name="isIdentity" type="xs:boolean" />
-		<xs:attribute name="defaultValue" type="xs:string" />
 		<xs:attribute name="fkTableName" type="xs:string" />
 		<xs:attribute name="fkFieldName" type="xs:string" />
 		<xs:attribute name="isNullable" type="xs:boolean" />
@@ -139,16 +92,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<xs:sequence>
 			<xs:element name="tableField" type="tableFieldType" maxOccurs="unbounded" />
 		</xs:sequence>
-	</xs:complexType>
-
-	<!--
-		<tableFieldRef tableName="User" tableFieldName="Login" paramName="Login" />
-		<tableFieldRef tableName="User" tableFieldName="Password" paramName="Password" />
-	-->
-	<xs:complexType name="tableFieldRefType">
-		<xs:attribute name="tableName" type="xs:string" />
-		<xs:attribute name="tableFieldName" type="xs:string" />
-		<xs:attribute name="paramName" type="xs:string" />
 	</xs:complexType>
 
 	<!--
@@ -180,6 +123,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	</xs:complexType>
 
 	<xs:complexType name="metadataDBType">
+		<xs:attribute name="applicationName" type="xs:string" />
+
 		<xs:sequence>
 			<xs:element name="dbs" type="dbsType" />
 			<xs:element name="tables" type="tablesType" />

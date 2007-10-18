@@ -45,6 +45,10 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 	</metadata>
 -->
 
+<!--
+		<metadataIndex metadata="metadataExtended" index="ApplicationName" />
+		<metadataIndex metadata="metadataDB" index="ApplicationName" />
+-->
 		<metadataIndex metadata="metadata" index="ApplicationName" />
 		<metadataIndex metadata="someTest" index="SomeAttrib3" />
 
@@ -87,31 +91,11 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		<complexTypeKeys name="dbType" keys="dbServerType" />
 		<complexTypeKeys name="tableDBType" keys="dbServerType" />
 		<complexTypeKeys name="tableFieldDBType" keys="dbServerType" />
-<!--
-	<xs:complexType name="tableFieldDBType">
-		<xs:attribute name="dbServerType" type="xs:string" />
-		...
-	</xs:complexType>
-
-	<xs:complexType name="tableFieldDBsType">
-		<xs:sequence>
-			<xs:element name="tableFieldDB" type="tableFieldDBType" maxOccurs="unbounded" />
-		</xs:sequence>
-	</xs:complexType>
--->
 		<complexTypeKeys name="tableFieldRefType" keys="paramName" />
 		<complexTypeKeys name="tableFieldType" keys="name" />
 		<complexTypeKeys name="tableSearchType" keys="name" />
 		<complexTypeKeys name="tableSearchUpdateType" keys="name" />
-
-
-<!-- TESTING... -->
 		<complexTypeKeys name="tableType" keys="name" />
-<!--
-		<complexTypeKeys name="tableType" keys="name|isVirtualTable" />
--->
-
-
 		<complexTypeKeys name="tableUpdateType" keys="name" />
 		<!--
 		<complexTypeKeys name="tableDBsType" keys="" />

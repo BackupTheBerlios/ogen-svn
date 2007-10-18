@@ -188,7 +188,19 @@ if (returnValue_in && (_output != null))
 						!_properties[_prop].CanRead
 					) continue;
 
-					_value = _properties[_prop].GetValue(someClass_in, null);
+					try {
+						_value = _properties[_prop].GetValue(someClass_in, null);
+					} catch (Exception _ex) {
+						throw new Exception(string.Format(
+							"\n---\n{0}.{1}.ReflectThrough(\n\t\"{2}\",\n\t\"{3}\",\n\t\"{4}\"\n)\n---\n{5}", 
+							typeof(utils).Namespace, 
+							typeof(utils).Name, 
+							path_in, 
+							iteration_in, 
+							pathTranslated_in, 
+							_ex.Message
+						));
+					}
 
 					if (_value == null) continue;
 

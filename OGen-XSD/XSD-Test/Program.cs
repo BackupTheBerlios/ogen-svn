@@ -25,6 +25,15 @@ using OGen.XSD.lib.metadata;
 
 namespace OGen.XSD.presentationlayer.test {
 	class Program {
+		public static void PressAnyKey() {
+			Console.Write("Press any key to continue . . . ");
+#if !NET_1_1
+			Console.ReadKey(true);
+#else
+			Console.ReadLine();
+#endif
+			Console.WriteLine();
+		}
 		public static void Main(string[] args) {
 			RootMetadata _root = new RootMetadata(
 				@"X:\OGen.berlios.de\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xml", 
@@ -47,6 +56,7 @@ namespace OGen.XSD.presentationlayer.test {
 					name
 				);
 			}
+			PressAnyKey();
 			return;
 
 			#region //XmlSchema...
@@ -153,13 +163,7 @@ Console.WriteLine(
 	_schema.SimpleType[0].Restriction.Enumeration[2].Value, 
 	_schema.Read_fromRoot("ROOT.simpleType[0].restriction.enumeration[2].value")
 );
-Console.Write("Press any key to continue . . . ");
-#if !NET_1_1
-Console.ReadKey(true);
-#else
-Console.ReadLine();
-#endif
-Console.WriteLine();
+PressAnyKey();
 //Console.WriteLine(
 //	"'{0}' == '{1}'", 
 //	_schema.SimpleType[0].Restriction.Enumeration[2].XXX, 
@@ -171,33 +175,15 @@ _schema.IterateThrough_fromRoot(
 	"ROOT.simpleType[n].restriction.enumeration[n]", 
 	notifyme//cClaSSe.dIteration_found
 );
-Console.Write("Press any key to continue . . . ");
-#if !NET_1_1
-Console.ReadKey(true);
-#else
-Console.ReadLine();
-#endif
-Console.WriteLine();
+PressAnyKey();
 
 			string _filepath = @"c:\test.xml";
 			_schema.SaveState_toFile(_filepath);
 			Output(_schema);
-			Console.Write("Press any key to continue . . . ");
-#if !NET_1_1
-			Console.ReadKey(true);
-#else
-			Console.ReadLine();
-#endif
-			Console.WriteLine();
+			PressAnyKey();
 			_schema = XS_Schema.Load_fromFile(_filepath)[0];
 			Output(_schema);
-			Console.Write("Press any key to continue . . . ");
-#if !NET_1_1
-			Console.ReadKey(true);
-#else
-			Console.ReadLine();
-#endif
-			Console.WriteLine();
+			PressAnyKey();
 		}
 
 public static void notifyme(string message_in) {
