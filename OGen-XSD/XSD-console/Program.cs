@@ -64,9 +64,7 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 									["ogenPath"],
 
 								@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xml"
-							)
-/*
-,
+							),
 							System.IO.Path.Combine(
 								#if !NET_1_1
 								System.Configuration.ConfigurationManager.AppSettings
@@ -87,30 +85,29 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 
 								@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadataExtended.OGenXSD-metadata.xsd"
 							)
-*/
 //#if DEBUG
 //// ToDos: here!
-,
-System.IO.Path.Combine(
-	#if !NET_1_1
-	System.Configuration.ConfigurationManager.AppSettings
-	#else
-	System.Configuration.ConfigurationSettings.AppSettings
-	#endif
-		["ogenPath"],
-
-	@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xsd"
-),
-System.IO.Path.Combine(
-	#if !NET_1_1
-	System.Configuration.ConfigurationManager.AppSettings
-	#else
-	System.Configuration.ConfigurationSettings.AppSettings
-	#endif
-		["ogenPath"],
-
-	@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_someTest.OGenXSD-metadata.xsd"
-)
+//,
+//System.IO.Path.Combine(
+//	#if !NET_1_1
+//	System.Configuration.ConfigurationManager.AppSettings
+//	#else
+//	System.Configuration.ConfigurationSettings.AppSettings
+//	#endif
+//		["ogenPath"],
+//
+//	@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xsd"
+//),
+//System.IO.Path.Combine(
+//	#if !NET_1_1
+//	System.Configuration.ConfigurationManager.AppSettings
+//	#else
+//	System.Configuration.ConfigurationSettings.AppSettings
+//	#endif
+//		["ogenPath"],
+//
+//	@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_someTest.OGenXSD-metadata.xsd"
+//)
 //#endif
 						);
 					} catch (Exception _ex) {

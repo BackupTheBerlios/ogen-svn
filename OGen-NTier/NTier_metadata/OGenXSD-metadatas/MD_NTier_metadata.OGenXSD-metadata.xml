@@ -45,12 +45,12 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 	</metadata>
 -->
 
-<!--
 		<metadataIndex metadata="metadataExtended" index="ApplicationName" />
 		<metadataIndex metadata="metadataDB" index="ApplicationName" />
--->
+<!--
 		<metadataIndex metadata="metadata" index="ApplicationName" />
 		<metadataIndex metadata="someTest" index="SomeAttrib3" />
+-->
 
 		<specificCase word="db" translation="DB" />
 		<specificCase word="dbCollationName" translation="DBCollationName" />

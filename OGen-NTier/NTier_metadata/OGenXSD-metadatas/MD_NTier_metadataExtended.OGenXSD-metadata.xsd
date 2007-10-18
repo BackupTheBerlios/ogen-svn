@@ -208,7 +208,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<xs:attribute name="isVirtualTable" type="xs:boolean" />
 		<xs:attribute name="isConfig" type="xs:boolean" />
 		<xs:sequence>
-			<xs:element name="tableDBs" type="tableDBsType" maxOccurs="unbounded" />
 			<xs:element name="tableFields" type="tableFieldsType" maxOccurs="unbounded" />
 			<xs:element name="tableSearches" type="tableSearchesType" maxOccurs="unbounded" />
 			<xs:element name="tableUpdates" type="tableUpdatesType" maxOccurs="unbounded" />
