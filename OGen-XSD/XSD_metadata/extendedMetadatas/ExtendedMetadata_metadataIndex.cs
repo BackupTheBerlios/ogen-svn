@@ -52,6 +52,19 @@ namespace OGen.XSD.lib.metadata {
 			}
 		}
 		#endregion
+		#region public string XMLFilename { get; set; }
+		private string xmlfilename_;
+
+		[XmlAttribute("xmlFilename")]
+		public string XMLFilename {
+			get {
+				return xmlfilename_;
+			}
+			set {
+				xmlfilename_ = value;
+			}
+		}
+		#endregion
 
 		#region public RootMetadata root_ref { get; }
 		private RootMetadata root_ref_;

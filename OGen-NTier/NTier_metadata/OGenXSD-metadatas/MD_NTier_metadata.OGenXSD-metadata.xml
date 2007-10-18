@@ -45,11 +45,11 @@ THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 	</metadata>
 -->
 
-		<metadataIndex metadata="metadataExtended" index="ApplicationName" />
-		<metadataIndex metadata="metadataDB" index="ApplicationName" />
+		<metadataIndex metadata="metadataExtended" index="ApplicationName" xmlFilename="MD_NTier_metadataExtended.OGenXSD-metadata.xsd" />
+		<metadataIndex metadata="metadataDB" index="ApplicationName" xmlFilename="MD_NTier_metadataDB.OGenXSD-metadata.xsd" />
 <!--
-		<metadataIndex metadata="metadata" index="ApplicationName" />
-		<metadataIndex metadata="someTest" index="SomeAttrib3" />
+		<metadataIndex metadata="metadata" index="ApplicationName" xmlFilename="MD_NTier_metadata.OGenXSD-metadata.xsd" />
+		<metadataIndex metadata="someTest" index="SomeAttrib3" xmlFilename="MD_NTier_someTest.OGenXSD-metadata.xsd" />
 -->
 
 		<specificCase word="db" translation="DB" />

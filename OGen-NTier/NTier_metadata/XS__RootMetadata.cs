@@ -16,17 +16,17 @@ using System;
 using System.Xml.Serialization;
 
 using OGen.lib.collections;
-using OGen.NTier.lib.metadata.metadataDB;
 using OGen.NTier.lib.metadata.metadataExtended;
+using OGen.NTier.lib.metadata.metadataDB;
 
 namespace OGen.NTier.lib.metadata {
 	public class XS__RootMetadata : XS0__RootMetadata {
 		public XS__RootMetadata (
-			string[] metadataDBFilepath_in, 
-			string[] metadataExtendedFilepath_in
+			string[] metadataExtendedFilepath_in, 
+			string[] metadataDBFilepath_in
 		) : base (
-			metadataDBFilepath_in, 
-			metadataExtendedFilepath_in
+			metadataExtendedFilepath_in, 
+			metadataDBFilepath_in
 		) {
 		}
 	}

@@ -261,64 +261,6 @@
     <Compile Include="metadataExtended\_base\XS0_tableUpdateTypeCollection.cs" />
     <Compile Include="metadataExtended\_base\XS0__metadataExtended.cs" />
     <Compile Include="metadataExtended\_base\XS0__metadataExtendedCollection.cs" />
-    <Compile Include="metadata\XS_dbConnectionsType.cs" />
-    <Compile Include="metadata\XS_dbConnectionType.cs" />
-    <Compile Include="metadata\XS_dbsType.cs" />
-    <Compile Include="metadata\XS_dbType.cs" />
-    <Compile Include="metadata\XS_metadataType.cs" />
-    <Compile Include="metadata\XS_tableDBsType.cs" />
-    <Compile Include="metadata\XS_tableDBType.cs" />
-    <Compile Include="metadata\XS_tableFieldDBsType.cs" />
-    <Compile Include="metadata\XS_tableFieldDBType.cs" />
-    <Compile Include="metadata\XS_tableFieldRefType.cs" />
-    <Compile Include="metadata\XS_tableFieldsType.cs" />
-    <Compile Include="metadata\XS_tableFieldType.cs" />
-    <Compile Include="metadata\XS_tableSearchesType.cs" />
-    <Compile Include="metadata\XS_tableSearchParametersType.cs" />
-    <Compile Include="metadata\XS_tableSearchType.cs" />
-    <Compile Include="metadata\XS_tableSearchUpdateParametersType.cs" />
-    <Compile Include="metadata\XS_tableSearchUpdatesType.cs" />
-    <Compile Include="metadata\XS_tableSearchUpdateType.cs" />
-    <Compile Include="metadata\XS_tablesType.cs" />
-    <Compile Include="metadata\XS_tableType.cs" />
-    <Compile Include="metadata\XS_tableUpdateParametersType.cs" />
-    <Compile Include="metadata\XS_tableUpdatesType.cs" />
-    <Compile Include="metadata\XS_tableUpdateType.cs" />
-    <Compile Include="metadata\XS__metadata.cs" />
-    <Compile Include="metadata\_base\XS0_dbConnectionsType.cs" />
-    <Compile Include="metadata\_base\XS0_dbConnectionType.cs" />
-    <Compile Include="metadata\_base\XS0_dbsType.cs" />
-    <Compile Include="metadata\_base\XS0_dbType.cs" />
-    <Compile Include="metadata\_base\XS0_metadataType.cs" />
-    <Compile Include="metadata\_base\XS0_sqlScriptOptionEnumeration.cs" />
-    <Compile Include="metadata\_base\XS0_tableDBsType.cs" />
-    <Compile Include="metadata\_base\XS0_tableDBType.cs" />
-    <Compile Include="metadata\_base\XS0_tableFieldDBsType.cs" />
-    <Compile Include="metadata\_base\XS0_tableFieldDBType.cs" />
-    <Compile Include="metadata\_base\XS0_tableFieldRefType.cs" />
-    <Compile Include="metadata\_base\XS0_tableFieldsType.cs" />
-    <Compile Include="metadata\_base\XS0_tableFieldType.cs" />
-    <Compile Include="metadata\_base\XS0_tableSearchesType.cs" />
-    <Compile Include="metadata\_base\XS0_tableSearchParametersType.cs" />
-    <Compile Include="metadata\_base\XS0_tableSearchType.cs" />
-    <Compile Include="metadata\_base\XS0_tableSearchUpdateParametersType.cs" />
-    <Compile Include="metadata\_base\XS0_tableSearchUpdatesType.cs" />
-    <Compile Include="metadata\_base\XS0_tableSearchUpdateType.cs" />
-    <Compile Include="metadata\_base\XS0_tablesType.cs" />
-    <Compile Include="metadata\_base\XS0_tableType.cs" />
-    <Compile Include="metadata\_base\XS0_tableUpdateParametersType.cs" />
-    <Compile Include="metadata\_base\XS0_tableUpdatesType.cs" />
-    <Compile Include="metadata\_base\XS0_tableUpdateType.cs" />
-    <Compile Include="metadata\_base\XS0__metadata.cs" />
-    <Compile Include="metadata\_base\XS0__metadataCollection.cs" />
-    <Compile Include="someTest\XS_someType1.cs" />
-    <Compile Include="someTest\XS_someType2.cs" />
-    <Compile Include="someTest\XS__someTest.cs" />
-    <Compile Include="someTest\_base\XS0_someEnum.cs" />
-    <Compile Include="someTest\_base\XS0_someType1.cs" />
-    <Compile Include="someTest\_base\XS0_someType2.cs" />
-    <Compile Include="someTest\_base\XS0__someTest.cs" />
-    <Compile Include="someTest\_base\XS0__someTestCollection.cs" />
     <Compile Include="XS__RootMetadata.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -362,15 +304,6 @@
       <Project>{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}</Project>
       <Name>OGen_webforms-8</Name>
     </ProjectReference>
-    <Folder Include="metadata" />
-    <Folder Include="metadataDB" />
-    <Folder Include="metadataDB\_base" />
-    <Folder Include="metadataExtended" />
-    <Folder Include="metadataExtended\_base" />
-    <Folder Include="metadata\_base" />
-    <Folder Include="someTest" />
-    <Folder Include="someTest\_base" />
-    <Folder Include="_base" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -16,20 +16,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			iterationType="ROOT.schema[n].simpleType[n]">
 		<arguments>
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
-			<!-- -->
-			<argument name="Schema1Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_metadataDB.OGenXSD-metadata.xsd" />
-			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_metadataExtended.OGenXSD-metadata.xsd" />
-			<!-- -->
-			<!--
-			<argument name="Schema3Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
-			<argument name="Schema4Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
-			-->
 			<argument name="SchemaName" value="${ROOT.schema[n].element.name}" />
 			<argument name="SimpleTypeName" value="${ROOT.schema[n].simpleType[n].name}" />
 		</arguments>
 		<conditions />
 		<outputs>
-			<!-- ${ROOT.metadata.applicationName} -->
 			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/_base/${ROOT.metadata.prefixGenerated}${ROOT.schema[n].simpleType[n].name}.cs" 
 				type="File" mode="Replace" />
 		</outputs>
@@ -40,20 +31,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			iterationType="ROOT.schema[n].complexType[n]">
 		<arguments>
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
-			<!-- -->
-			<argument name="Schema1Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_metadataDB.OGenXSD-metadata.xsd" />
-			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_metadataExtended.OGenXSD-metadata.xsd" />
-			<!-- -->
-			<!--
-			<argument name="Schema3Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
-			<argument name="Schema4Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
-			-->
 			<argument name="SchemaName" value="${ROOT.schema[n].element.name}" />
 			<argument name="ComplexTypeName" value="${ROOT.schema[n].complexType[n].name}" />
 		</arguments>
 		<conditions />
 		<outputs>
-			<!-- ${ROOT.metadata.applicationName} -->
 			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/_base/${ROOT.metadata.prefixGenerated}${ROOT.schema[n].complexType[n].name}Collection.cs" 
 				type="File" mode="Replace" />
 		</outputs>
@@ -64,20 +46,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			iterationType="ROOT.schema[n].complexType[n]">
 		<arguments>
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
-			<!-- -->
-			<argument name="Schema1Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_metadataDB.OGenXSD-metadata.xsd" />
-			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_metadataExtended.OGenXSD-metadata.xsd" />
-			<!-- -->
-			<!--
-			<argument name="Schema3Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
-			<argument name="Schema4Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
-			-->
 			<argument name="SchemaName" value="${ROOT.schema[n].element.name}" />
 			<argument name="ComplexTypeName" value="${ROOT.schema[n].complexType[n].name}" />
 		</arguments>
 		<conditions />
 		<outputs>
-			<!-- ${ROOT.metadata.applicationName} -->
 			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/_base/${ROOT.metadata.prefixGenerated}${ROOT.schema[n].complexType[n].name}.cs" 
 				type="File" mode="Replace" />
 		</outputs>
@@ -88,20 +61,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			iterationType="ROOT.schema[n].complexType[n]">
 		<arguments>
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
-			<!-- -->
-			<argument name="Schema1Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_metadataDB.OGenXSD-metadata.xsd" />
-			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_metadataExtended.OGenXSD-metadata.xsd" />
-			<!-- -->
-			<!--
-			<argument name="Schema3Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
-			<argument name="Schema4Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
-			-->
 			<argument name="SchemaName" value="${ROOT.schema[n].element.name}" />
 			<argument name="ComplexTypeName" value="${ROOT.schema[n].complexType[n].name}" />
 		</arguments>
 		<conditions />
 		<outputs>
-			<!-- ${ROOT.metadata.applicationName} -->
 			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/${ROOT.metadata.prefix}${ROOT.schema[n].complexType[n].name}.cs" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
@@ -114,19 +78,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			iterationType="ROOT.schema[n]">
 		<arguments>
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
-			<!-- -->
-			<argument name="Schema1Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_metadataDB.OGenXSD-metadata.xsd" />
-			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_metadataExtended.OGenXSD-metadata.xsd" />
-			<!-- -->
-			<!--
-			<argument name="Schema3Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
-			<argument name="Schema4Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
-			-->
 			<argument name="SchemaName" value="${ROOT.schema[n].element.name}" />
 		</arguments>
 		<conditions />
 		<outputs>
-			<!-- ${ROOT.metadata.applicationName} -->
 			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/_base/${ROOT.metadata.prefixBaseGenerated}${ROOT.schema[n].element.name}Collection.cs" 
 				type="File" mode="Replace" />
 		</outputs>
@@ -137,19 +92,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			iterationType="ROOT.schema[n]">
 		<arguments>
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
-			<!-- -->
-			<argument name="Schema1Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_metadataDB.OGenXSD-metadata.xsd" />
-			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_metadataExtended.OGenXSD-metadata.xsd" />
-			<!-- -->
-			<!--
-			<argument name="Schema3Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
-			<argument name="Schema4Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
-			-->
 			<argument name="SchemaName" value="${ROOT.schema[n].element.name}" />
 		</arguments>
 		<conditions />
 		<outputs>
-			<!-- ${ROOT.metadata.applicationName} -->
 			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/_base/${ROOT.metadata.prefixBaseGenerated}${ROOT.schema[n].element.name}.cs" 
 				type="File" mode="Replace" />
 		</outputs>
@@ -160,19 +106,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			iterationType="ROOT.schema[n]">
 		<arguments>
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
-			<!-- -->
-			<argument name="Schema1Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_metadataDB.OGenXSD-metadata.xsd" />
-			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_metadataExtended.OGenXSD-metadata.xsd" />
-			<!-- -->
-			<!--
-			<argument name="Schema3Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
-			<argument name="Schema4Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
-			-->
 			<argument name="SchemaName" value="${ROOT.schema[n].element.name}" />
 		</arguments>
 		<conditions />
 		<outputs>
-			<!-- ${ROOT.metadata.applicationName} -->
 			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/${ROOT.metadata.prefixBase}${ROOT.schema[n].element.name}.cs" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>
@@ -196,18 +133,9 @@ iterationType="ROOT.schema">
 
 		<arguments>
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
-			<!-- -->
-			<argument name="Schema1Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_metadataDB.OGenXSD-metadata.xsd" />
-			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_metadataExtended.OGenXSD-metadata.xsd" />
-			<!-- -->
-			<!--
-			<argument name="Schema3Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
-			<argument name="Schema4Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
-			-->
 		</arguments>
 		<conditions />
 		<outputs>
-			<!-- ${ROOT.metadata.applicationName} -->
 			<output to="${CONFIG.outputPath}/_base/${ROOT.metadata.prefixBaseGenerated}RootMetadata.cs" 
 				type="File" mode="Replace" />
 		</outputs>
@@ -229,18 +157,9 @@ iterationType="ROOT.schema">
 
 		<arguments>
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
-			<!-- -->
-			<argument name="Schema1Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_metadataDB.OGenXSD-metadata.xsd" />
-			<argument name="Schema2Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_metadataExtended.OGenXSD-metadata.xsd" />
-			<!-- -->
-			<!--
-			<argument name="Schema3Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xsd" />
-			<argument name="Schema4Filepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_NTier_someTest.OGenXSD-metadata.xsd" />
-			-->
 		</arguments>
 		<conditions />
 		<outputs>
-			<!-- ${ROOT.metadata.applicationName} -->
 			<output to="${CONFIG.outputPath}/${ROOT.metadata.prefixBase}RootMetadata.cs" 
 				type="File" mode="Create_doNotReplace" />
 		</outputs>

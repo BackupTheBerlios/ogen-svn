@@ -36,9 +36,7 @@ namespace OGen.XSD.presentationlayer.test {
 		}
 		public static void Main(string[] args) {
 			RootMetadata _root = new RootMetadata(
-				@"X:\OGen.berlios.de\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xml", 
-				@"X:\OGen.berlios.de\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xsd", 
-				@"X:\OGen.berlios.de\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_someTest.OGenXSD-metadata.xsd"
+				@"X:\OGen.berlios.de\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xml"
 			);
 			string ntype = string.Empty;
 			string name = string.Empty;

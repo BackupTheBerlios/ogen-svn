@@ -9,27 +9,18 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
---%><%@ Page language="c#" contenttype="text/html" %>
+--%><%@ Page language="c#" contenttype="text/plain" %>
 <%//@ import namespace="OGen.lib.datalayer" %>
 <%@ import namespace="OGen.XSD.lib.metadata" %>
 <%@ import namespace="OGen.lib.collections" %><%
 #region arguments...
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
-string _arg_Schema1Filepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["Schema1Filepath"]);
-string _arg_Schema2Filepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["Schema2Filepath"]);
-//string _arg_Schema3Filepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["Schema3Filepath"]);
-//string _arg_Schema4Filepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["Schema4Filepath"]);
 #endregion
 
 #region varaux...
 RootMetadata _aux_rootmetadata = RootMetadata.Load_fromFile(
 	_arg_MetadataFilepath,
-	true,
-	_arg_Schema1Filepath,
-	_arg_Schema2Filepath
-//,
-//	_arg_Schema3Filepath,
-//	_arg_Schema4Filepath
+	true
 );
 
 string XS0_ = _aux_rootmetadata.ExtendedMetadata.PrefixGenerated;

@@ -38,16 +38,9 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 "
 			);
 			#endregion
-			if (args_in.Length == 2) {
-				if (
-					File.Exists(args_in[0])
-					&&
-					File.Exists(args_in[1])
-				) {
-					DoIt(
-						args_in[0], 
-						args_in[1]
-					);
+			if (args_in.Length == 1) {
+				if (File.Exists(args_in[0])) {
+					DoIt(args_in[0]);
 				} else {
 					Console.WriteLine("file doesn't exist");
 				}
@@ -64,51 +57,7 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 									["ogenPath"],
 
 								@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xml"
-							),
-							System.IO.Path.Combine(
-								#if !NET_1_1
-								System.Configuration.ConfigurationManager.AppSettings
-								#else
-								System.Configuration.ConfigurationSettings.AppSettings
-								#endif
-									["ogenPath"],
-
-								@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadataDB.OGenXSD-metadata.xsd"
-							), 
-							System.IO.Path.Combine(
-								#if !NET_1_1
-								System.Configuration.ConfigurationManager.AppSettings
-								#else
-								System.Configuration.ConfigurationSettings.AppSettings
-								#endif
-									["ogenPath"],
-
-								@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadataExtended.OGenXSD-metadata.xsd"
 							)
-//#if DEBUG
-//// ToDos: here!
-//,
-//System.IO.Path.Combine(
-//	#if !NET_1_1
-//	System.Configuration.ConfigurationManager.AppSettings
-//	#else
-//	System.Configuration.ConfigurationSettings.AppSettings
-//	#endif
-//		["ogenPath"],
-//
-//	@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xsd"
-//),
-//System.IO.Path.Combine(
-//	#if !NET_1_1
-//	System.Configuration.ConfigurationManager.AppSettings
-//	#else
-//	System.Configuration.ConfigurationSettings.AppSettings
-//	#endif
-//		["ogenPath"],
-//
-//	@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_someTest.OGenXSD-metadata.xsd"
-//)
-//#endif
 						);
 					} catch (Exception _ex) {
 						Console.WriteLine(_ex.ToString());
@@ -127,8 +76,7 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 		}
 
 		static void DoIt(
-			string filePathExtendedMetadata_in, 
-			params string[] filePath_in
+			string filePathExtendedMetadata_in
 		) {
 			cFGenerator _generator = new cFGenerator();
 			_generator.Open(
@@ -136,8 +84,7 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 				true, 
 				new cFGenerator.dNotifyBack(
 					Notify
-				), 
-				filePath_in
+				)
 			);
 			_generator.Build(new cGenerator.dBuild(Notify));
 		}

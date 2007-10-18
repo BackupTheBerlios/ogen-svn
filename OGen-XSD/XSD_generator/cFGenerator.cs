@@ -24,7 +24,6 @@ namespace OGen.XSD.lib.generator {
 		#region	public cFGenerator();
 		public cFGenerator() {
 			filenameextendedmetadata_ = string.Empty;
-			filename_ = null;
 		}
 		#endregion
 
@@ -34,13 +33,6 @@ namespace OGen.XSD.lib.generator {
 
 		public string FilenameExtendedMetadata {
 			get { return filenameextendedmetadata_; }
-		}
-		#endregion
-		#region public string[] Filename { get; }
-		private string[] filename_;
-
-		public string[] Filename {
-			get { return filename_; }
 		}
 		#endregion
 		#region public bool hasChanges { get; }
@@ -107,8 +99,7 @@ namespace OGen.XSD.lib.generator {
 		public void Open(
 			string filenameextendedmetadata_in,
 			bool force_doNOTsave_in, 
-			dNotifyBack notifyBack_in, 
-			params string[] filename_in
+			dNotifyBack notifyBack_in
 		) {
 			#region Checking...
 			if (this.hasChanges) {
@@ -118,15 +109,13 @@ namespace OGen.XSD.lib.generator {
 			}
 			#endregion
 			filenameextendedmetadata_ = filenameextendedmetadata_in;
-			filename_ = filename_in;
 
 			if (notifyBack_in != null) notifyBack_in("opening...", true);
 			if (notifyBack_in != null) notifyBack_in("- reading metadata from xml files", true);
 
 			rootmetadata_ = RootMetadata.Load_fromFile(
 				filenameextendedmetadata_,
-				false, 
-				filename_
+				false
 			);
 
 			if (notifyBack_in != null) notifyBack_in("... finished", true);
@@ -142,7 +131,6 @@ namespace OGen.XSD.lib.generator {
 			}
 
 			filenameextendedmetadata_ = string.Empty;
-			filename_ = null;
 		}
 		#endregion
 		#region public void Save(...);
@@ -154,7 +142,10 @@ namespace OGen.XSD.lib.generator {
 				);
 				for (int i = 0; i < rootmetadata_.SchemaCollection.Count; i++) {
 					rootmetadata_.SchemaCollection[i].SaveState_toFile(
-						filename_[i]
+						Path.Combine(
+							Path.GetDirectoryName(filenameextendedmetadata_),
+							rootmetadata_.ExtendedMetadata.MetadataIndex[i].XMLFilename
+						)
 					);
 				}
 
@@ -171,14 +162,17 @@ namespace OGen.XSD.lib.generator {
 			#endregion
 			if (notifyBase_in != null) notifyBase_in("generating...", true);
 
-			MetaFile[] _metafiles = new MetaFile[1 + filename_.Length];
+			MetaFile[] _metafiles = new MetaFile[1 + rootmetadata_.ExtendedMetadata.MetadataIndex.Count];
 			_metafiles[0] = new MetaFile(
 				filenameextendedmetadata_,
 				ExtendedMetadata.METADATA
 			);
-			for (int i = 0; i < filename_.Length; i++) {
+			for (int i = 0; i < rootmetadata_.ExtendedMetadata.MetadataIndex.Count; i++) {
 				_metafiles[1 + i] = new MetaFile(
-					filename_[i],
+					Path.Combine(
+						Path.GetDirectoryName(filenameextendedmetadata_), 
+						rootmetadata_.ExtendedMetadata.MetadataIndex[i].XMLFilename
+					),
 					XS_Schema.SCHEMA
 				);
 			}

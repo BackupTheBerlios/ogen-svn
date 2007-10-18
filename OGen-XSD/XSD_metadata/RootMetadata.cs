@@ -23,18 +23,26 @@ using OGen.lib.collections;
 namespace OGen.XSD.lib.metadata {
 	public class RootMetadata : iClaSSe_metadata {
 		public RootMetadata(
-			string metadataFilepath_in, 
-			params string[] schemaFilepath_in
+			string metadataFilepath_in
 		) {
 			extendedmetadata_ = ExtendedMetadata.Load_fromFile(
 				metadataFilepath_in,
 				this
 			);
-
+			string _metadataPath = System.IO.Path.GetDirectoryName(metadataFilepath_in);
+			string[] _schemaFilepath = new string[
+				extendedmetadata_.MetadataIndex.Count
+			];
+			for (int f = 0; f < extendedmetadata_.MetadataIndex.Count; f++) {
+				_schemaFilepath[f] = System.IO.Path.Combine(
+					_metadataPath,
+					extendedmetadata_.MetadataIndex[f].XMLFilename
+				);
+			}
 			schemacollection_ = new XS_SchemaCollection(
 				XS_Schema.Load_fromFile(
 					this, 
-					schemaFilepath_in
+					_schemaFilepath
 				)
 			);
 		}
@@ -54,20 +62,12 @@ namespace OGen.XSD.lib.metadata {
 		#region public static RootMetadata Load_fromFile(...);
 		public static RootMetadata Load_fromFile(
 			string metadataFilepath_in,
-			bool useMetacache_in, 
-			params string[] schemaFilepath_in
+			bool useMetacache_in
 		) {
-			#region string _key = metadataFilepath_in + "|" + schemaFilepath_in[n];
-			string _key = null;
-			if (useMetacache_in) {
-				_key = metadataFilepath_in;
-				for (int i = 0; i < schemaFilepath_in.Length; i++) {
-					_key += string.Format(
-						"|{0}", 
-						schemaFilepath_in[i]
-					);
-				}
-			}
+			#region string _key = metadataFilepath_in;
+			string _key = (useMetacache_in) 
+				? metadataFilepath_in 
+				: null;
 			#endregion
 			if (
 				useMetacache_in
@@ -79,8 +79,7 @@ namespace OGen.XSD.lib.metadata {
 				return (RootMetadata)RootMetadata.Metacache[_key];
 			} else {
 				RootMetadata _rootmetadata = new RootMetadata(
-					metadataFilepath_in, 
-					schemaFilepath_in
+					metadataFilepath_in
 				);
 				if (useMetacache_in) {
 					RootMetadata.Metacache.Add(
