@@ -19,5 +19,21 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadataDB {
 	public class XS__metadataDB : XS0__metadataDB {
+//		#region public static XS__metadataDB[] Load_fromDB(...);
+		public static XS__metadataDB[] Load_fromDB(
+			params string[] connectionstring_in
+		) {
+			return Load_fromDB(
+				null, 
+				connectionstring_in
+			);
+		}
+		public static XS__metadataDB[] Load_fromDB(
+			XS__RootMetadata root_ref_in, 
+			params string[] connectionstring_in
+		) {
+			throw new Exception("// ToDos: here! not implemented");
+		}
+//		#endregion
 	}
 }
