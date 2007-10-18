@@ -132,7 +132,7 @@ namespace OGen.XSD.lib.metadata {
 			out string keys_ntype_out, 
 			out string keys_name_out
 		) {
-			keys_ntype_out = "String"; // ToDos: now!
+			keys_ntype_out = string.Empty;
 			keys_name_out = string.Empty;
 
 			XS_Schema _schema = root_ref_.SchemaCollection[schemaName_in];

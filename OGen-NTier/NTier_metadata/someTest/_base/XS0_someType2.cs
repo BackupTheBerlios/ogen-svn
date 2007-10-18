@@ -28,7 +28,7 @@ namespace OGen.NTier.lib.metadata.someTest {
 		) {
 			somecollectioncollection_ = new 
 #if !NET_1_1
-				OGenRootrefSimpleCollection<XS_someType1, XS__RootMetadata, String>()
+				OGenRootrefSimpleCollection<XS_someType1, XS__RootMetadata>()
 #else
 				XS_someType1Collection()
 #endif
@@ -77,7 +77,7 @@ namespace OGen.NTier.lib.metadata.someTest {
 		#region public ... SomeCollectionCollection { get; }
 		private 
 #if !NET_1_1
-			OGenRootrefSimpleCollection<XS_someType1, XS__RootMetadata, String>
+			OGenRootrefSimpleCollection<XS_someType1, XS__RootMetadata>
 #else
 			XS_someType1Collection
 #endif
@@ -92,7 +92,7 @@ namespace OGen.NTier.lib.metadata.someTest {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefSimpleCollection<XS_someType1, XS__RootMetadata, String>
+			OGenRootrefSimpleCollection<XS_someType1, XS__RootMetadata>
 #else
 			XS_someType1Collection
 #endif

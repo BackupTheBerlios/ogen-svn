@@ -28,14 +28,14 @@ namespace OGen.NTier.lib.metadata.metadata {
 		) {
 			tablesearchparameterscollection_ = new 
 #if !NET_1_1
-				OGenRootrefSimpleCollection<XS_tableSearchParametersType, XS__RootMetadata, String>()
+				OGenRootrefSimpleCollection<XS_tableSearchParametersType, XS__RootMetadata>()
 #else
 				XS_tableSearchParametersTypeCollection()
 #endif
 			;
 			tablesearchupdatescollection_ = new 
 #if !NET_1_1
-				OGenRootrefSimpleCollection<XS_tableSearchUpdatesType, XS__RootMetadata, String>()
+				OGenRootrefSimpleCollection<XS_tableSearchUpdatesType, XS__RootMetadata>()
 #else
 				XS_tableSearchUpdatesTypeCollection()
 #endif
@@ -114,7 +114,7 @@ namespace OGen.NTier.lib.metadata.metadata {
 		#region public ... TableSearchParametersCollection { get; }
 		private 
 #if !NET_1_1
-			OGenRootrefSimpleCollection<XS_tableSearchParametersType, XS__RootMetadata, String>
+			OGenRootrefSimpleCollection<XS_tableSearchParametersType, XS__RootMetadata>
 #else
 			XS_tableSearchParametersTypeCollection
 #endif
@@ -129,7 +129,7 @@ namespace OGen.NTier.lib.metadata.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefSimpleCollection<XS_tableSearchParametersType, XS__RootMetadata, String>
+			OGenRootrefSimpleCollection<XS_tableSearchParametersType, XS__RootMetadata>
 #else
 			XS_tableSearchParametersTypeCollection
 #endif
@@ -141,7 +141,7 @@ namespace OGen.NTier.lib.metadata.metadata {
 		#region public ... TableSearchUpdatesCollection { get; }
 		private 
 #if !NET_1_1
-			OGenRootrefSimpleCollection<XS_tableSearchUpdatesType, XS__RootMetadata, String>
+			OGenRootrefSimpleCollection<XS_tableSearchUpdatesType, XS__RootMetadata>
 #else
 			XS_tableSearchUpdatesTypeCollection
 #endif
@@ -156,7 +156,7 @@ namespace OGen.NTier.lib.metadata.metadata {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefSimpleCollection<XS_tableSearchUpdatesType, XS__RootMetadata, String>
+			OGenRootrefSimpleCollection<XS_tableSearchUpdatesType, XS__RootMetadata>
 #else
 			XS_tableSearchUpdatesTypeCollection
 #endif

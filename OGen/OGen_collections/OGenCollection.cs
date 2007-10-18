@@ -41,7 +41,7 @@ namespace OGen.lib.collections {
 		}
 		#endregion
 	}
-	public class OGenRootrefSimpleCollection<C, R, T> : OGenSimpleCollection<C>
+	public class OGenRootrefSimpleCollection<C, R> : OGenSimpleCollection<C>
 		where R : class
 		where C :
 			class,
