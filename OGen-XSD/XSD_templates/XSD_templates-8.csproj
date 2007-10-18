@@ -88,6 +88,7 @@
     <Content Include="XS-XS__BaseClass.cs.aspx">
     </Content>
     <Content Include="XS-XS__RootMetadata.cs.aspx">
+      <SubType>ASPXCodeBehind</SubType>
     </Content>
   </ItemGroup>
 </Project>
