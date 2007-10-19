@@ -24,7 +24,7 @@ using System.Text;
 using OGen.XSD.lib.metadata;
 
 namespace OGen.XSD.presentationlayer.test {
-	class Program {
+	public class Program {
 		public static void PressAnyKey() {
 			Console.Write("Press any key to continue . . . ");
 #if !NET_1_1
@@ -169,11 +169,11 @@ PressAnyKey();
 //);
 //Console.Write("Press any key to continue . . . ");
 //Console.ReadKey(true); Console.WriteLine();
-_schema.IterateThrough_fromRoot(
-	"ROOT.simpleType[n].restriction.enumeration[n]", 
-	notifyme//cClaSSe.dIteration_found
-);
-PressAnyKey();
+//_schema.IterateThrough_fromRoot(
+//	"ROOT.simpleType[n].restriction.enumeration[n]", 
+//	notifyme//cClaSSe.dIteration_found
+//);
+//PressAnyKey();
 
 			string _filepath = @"c:\test.xml";
 			_schema.SaveState_toFile(_filepath);

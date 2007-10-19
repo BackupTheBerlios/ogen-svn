@@ -20,59 +20,33 @@ using System.Collections;
 
 using OGen.lib.collections;
 
-namespace OGen.XSD.lib.metadata {
-	public class ExtendedMetadata_metadataIndex
-#if !NET_1_1
-		: OGenCollectionInterface<string>, OGenRootrefCollectionInterface<RootMetadata>
-#endif
-	{
-		#region public string Metadata { get; set; }
-		private string metadata_;
+namespace OGen.lib.metadata {
+	public class Metadata {
+		#region public string XMLFilename { get; set; }
+		private string xmlfilename_;
 
-		[XmlAttribute("metadata")]
-		public string Metadata {
+		[XmlAttribute("xmlFilename")]
+		public string XMLFilename {
 			get {
-				return metadata_;
+				return xmlfilename_;
 			}
 			set {
-				metadata_ = value;
+				xmlfilename_ = value;
 			}
 		}
 		#endregion
-		#region public string Index { get; set; }
-		private string index_;
+		#region public string XMLFileType { get; set; }
+		private string xmlfiletype_;
 
-		[XmlAttribute("index")]
-		public string Index {
+		[XmlAttribute("xmlFileType")]
+		public string XMLFileType {
 			get {
-				return index_;
+				return xmlfiletype_;
 			}
 			set {
-				index_ = value;
+				xmlfiletype_ = value;
 			}
 		}
 		#endregion
-
-		#region public RootMetadata root_ref { get; }
-		private RootMetadata root_ref_;
-
-		[XmlIgnore()]
-		public RootMetadata root_ref {
-			set {
-				root_ref_ = value;
-			}
-			get { return root_ref_; }
-		}
-		#endregion
-#if !NET_1_1
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
-			get {
-				return Metadata;
-			}
-		}
-		#endregion
-#endif
 	}
 }

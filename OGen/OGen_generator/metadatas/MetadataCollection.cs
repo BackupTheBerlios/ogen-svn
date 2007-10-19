@@ -20,59 +20,62 @@ using System.Collections;
 
 using OGen.lib.collections;
 
-namespace OGen.XSD.lib.metadata {
-	public class ExtendedMetadata_metadataIndex
-#if !NET_1_1
-		: OGenCollectionInterface<string>, OGenRootrefCollectionInterface<RootMetadata>
-#endif
-	{
-		#region public string Metadata { get; set; }
-		private string metadata_;
+namespace OGen.lib.metadata {
+#if NET_1_1
+	#region public class MetadataCollection { ... }
+	public class MetadataCollection {
+		public MetadataCollection() {
+			cols_ = new ArrayList();
+		}
 
-		[XmlAttribute("metadata")]
-		public string Metadata {
+		#region internal Metadata[] cols__ { get; set; }
+		private ArrayList cols_;
+
+		internal Metadata[] cols__ {
 			get {
-				return metadata_;
+				Metadata[] _output = new Metadata[cols_.Count];
+				cols_.CopyTo(_output);
+				return _output;
 			}
 			set {
-				metadata_ = value;
+				cols_.Clear();
+				if (value != null) {
+					for (int i = 0; i < value.Length; i++) {
+						cols_.Add(value[i]);
+					}
+				}
 			}
 		}
 		#endregion
-		#region public string Index { get; set; }
-		private string index_;
 
-		[XmlAttribute("index")]
-		public string Index {
+		#region public int Count { get; }
+		public int Count {
 			get {
-				return index_;
-			}
-			set {
-				index_ = value;
+				return cols_.Count;
 			}
 		}
 		#endregion
 
-		#region public RootMetadata root_ref { get; }
-		private RootMetadata root_ref_;
-
-		[XmlIgnore()]
-		public RootMetadata root_ref {
-			set {
-				root_ref_ = value;
-			}
-			get { return root_ref_; }
-		}
-		#endregion
-#if !NET_1_1
-		#region public string CollectionName { get; }
-		[XmlIgnore()]
-		public string CollectionName {
+		#region public Metadata this[int index_in] { get; }
+		public Metadata this[int index_in] {
 			get {
-				return Metadata;
+				return (Metadata)cols_[index_in];
 			}
 		}
 		#endregion
-#endif
+
+		#region public int Add(params Metadata[] col_in);
+		public int Add(params Metadata[] col_in) {
+			int _output = -1;
+
+			for (int i = 0; i < col_in.Length; i++) {
+				_output = cols_.Add(col_in[i]);
+			}
+
+			return _output;
+		}
+		#endregion
 	}
+	#endregion
+#endif
 }

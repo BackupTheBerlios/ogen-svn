@@ -82,7 +82,11 @@ namespace OGen.XSD.lib.metadata {
 		public XS_Attribute this[string name_in] {
 			get {
 				for (int i = 0; i < cols_.Count; i++) {
-					if (((name_in.Equals(XS_Attribute)cols_[i]).Name)) {
+					if (
+						name_in.Equals(
+							((XS_Attribute)cols_[i]).Name
+						)
+					) {
 						return (XS_Attribute)cols_[i];
 					}
 				}

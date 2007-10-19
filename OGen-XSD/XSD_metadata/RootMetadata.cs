@@ -18,6 +18,7 @@ using System.IO;
 using System.Xml.Serialization;
 using System.Collections;
 
+using OGen.lib.metadata;
 using OGen.lib.collections;
 
 namespace OGen.XSD.lib.metadata {
@@ -25,20 +26,54 @@ namespace OGen.XSD.lib.metadata {
 		public RootMetadata(
 			string metadataFilepath_in
 		) {
-			extendedmetadata_ = ExtendedMetadata.Load_fromFile(
-				metadataFilepath_in,
-				this
-			);
 			string _metadataPath = System.IO.Path.GetDirectoryName(metadataFilepath_in);
-			string[] _schemaFilepath = new string[
-				extendedmetadata_.MetadataIndex.Count
-			];
-			for (int f = 0; f < extendedmetadata_.MetadataIndex.Count; f++) {
-				_schemaFilepath[f] = System.IO.Path.Combine(
-					_metadataPath,
-					extendedmetadata_.MetadataIndex[f].XMLFilename
-				);
+
+			metadatafiles_ = Metadatas.Load_fromFile(metadataFilepath_in);
+
+			#region string[] _schemaFilepath = new string[(int _total_schema = ...)];
+			#region int _total_schema = ...;
+			int _total_schema = 0;
+			for (int f = 0; f < metadatafiles_.MetadataFiles.Count; f++) {
+				switch (metadatafiles_.MetadataFiles[f].XMLFileType) {
+					case XS_Schema.SCHEMA:
+						_total_schema++;
+						break;
+				}
 			}
+			#endregion
+			string[] _schemaFilepath = new string[
+				_total_schema
+			];
+			#endregion
+			_total_schema = 0;
+			extendedmetadata_ = null;
+			for (int f = 0; f < metadatafiles_.MetadataFiles.Count; f++) {
+				switch (metadatafiles_.MetadataFiles[f].XMLFileType) {
+					case XS_Schema.SCHEMA:
+						_schemaFilepath[_total_schema] = System.IO.Path.Combine(
+							_metadataPath,
+							metadatafiles_.MetadataFiles[f].XMLFilename
+						);
+						_total_schema++;
+						break;
+					case ExtendedMetadata.METADATA:
+						if (extendedmetadata_ != null) {
+							throw new Exception("expected only one ExtendedMetadata");
+						}
+						extendedmetadata_ = ExtendedMetadata.Load_fromFile(
+							System.IO.Path.Combine(
+								_metadataPath,
+								metadatafiles_.MetadataFiles[f].XMLFilename
+							),
+							this
+						);
+						break;
+				}
+			}
+			if (extendedmetadata_ == null) {
+				throw new Exception("expected one ExtendedMetadata");
+			}
+
 			schemacollection_ = new XS_SchemaCollection(
 				XS_Schema.Load_fromFile(
 					this, 
@@ -92,6 +127,13 @@ namespace OGen.XSD.lib.metadata {
 		}
 		#endregion
 
+		#region public Metadatas MetadataFiles { get; }
+		private Metadatas metadatafiles_;
+
+		public Metadatas MetadataFiles {
+			get { return metadatafiles_; }
+		}
+		#endregion
 		#region public ExtendedMetadata ExtendedMetadata { get; }
 		private ExtendedMetadata extendedmetadata_;
 

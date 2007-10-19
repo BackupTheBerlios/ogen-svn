@@ -114,6 +114,9 @@
     <Compile Include="cGenerator.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="metadatas\Metadata.cs" />
+    <Compile Include="metadatas\MetadataCollection.cs" />
+    <Compile Include="metadatas\Metadatas.cs" />
     <Compile Include="utils.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -140,6 +143,7 @@
       <Project>{D66D0E69-852C-4695-9D63-C9AB1A959E0B}</Project>
       <Name>OGen_datalayer__base-8</Name>
     </ProjectReference>
+    <Folder Include="metadatas" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
