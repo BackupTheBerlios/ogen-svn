@@ -23,6 +23,7 @@ using OGen.NTier.lib.metadata.metadataDB;
 
 namespace OGen.NTier.lib.metadata {
 	public class XS0__RootMetadata : iClaSSe_metadata {
+		#region public XS0__RootMetadata(...);
 		public XS0__RootMetadata(
 			string metadataFilepath_in
 		) {
@@ -87,6 +88,7 @@ namespace OGen.NTier.lib.metadata {
 				)
 			);
 		}
+		#endregion
 
 		#region public static Hashtable Metacache { get; }
 		private static Hashtable metacache__;

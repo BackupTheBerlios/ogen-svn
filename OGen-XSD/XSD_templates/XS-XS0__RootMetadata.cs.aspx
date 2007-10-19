@@ -50,6 +50,7 @@ using <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.Sch
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 	public class <%=XS0__%>RootMetadata : iClaSSe_metadata {
+		#region public <%=XS0__%>RootMetadata(...);
 		public <%=XS0__%>RootMetadata(
 			string metadataFilepath_in
 		) {
@@ -106,6 +107,7 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 			);<%
 			}%>
 		}
+		#endregion
 
 		#region public static Hashtable Metacache { get; }
 		private static Hashtable metacache__;
