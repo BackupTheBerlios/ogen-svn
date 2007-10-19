@@ -42,6 +42,7 @@ if ((_aux_rootmetadata.ExtendedMetadata.CopyrightText != string.Empty) && (_aux_
 using System.Xml.Serialization;
 using System.Collections;
 
+using OGen.lib.metadata;
 using OGen.lib.collections;<%
 for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
 using <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.SchemaCollection[s].Element.Name%>;<%
@@ -49,19 +50,61 @@ using <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.Sch
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 	public class <%=XS0__%>RootMetadata : iClaSSe_metadata {
-		public <%=XS0__%>RootMetadata(<%
-		for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
-			string[] <%=_aux_rootmetadata.SchemaCollection[s].Element.Name%>Filepath_in<%=(s == _aux_rootmetadata.SchemaCollection.Count - 1) ? "" : ", " %><%
-		}%>
-		) {<%
-		for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%><%=""%>
+		public <%=XS0__%>RootMetadata(
+			string metadataFilepath_in
+		) {
+			string _metadataPath = System.IO.Path.GetDirectoryName(metadataFilepath_in);
+
+			metadatafiles_ = Metadatas.Load_fromFile(metadataFilepath_in);
+
+			#region int _total_xxx = ...;<%
+			for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
+			int _total_<%=_aux_rootmetadata.SchemaCollection[s].Element.Name.ToLower()%> = 0;<%
+			}
+			%>
+			for (int f = 0; f < metadatafiles_.MetadataFiles.Count; f++) {
+				switch (metadatafiles_.MetadataFiles[f].XMLFileType) {<%
+					for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
+					case <%=XS__%><%=_aux_rootmetadata.SchemaCollection[s].Element.Name%>.<%=_aux_rootmetadata.SchemaCollection[s].Element.Name.ToUpper()%>:
+						_total_<%=_aux_rootmetadata.SchemaCollection[s].Element.Name.ToLower()%>++;
+						break;<%
+					}%>
+				}
+			}
+			#endregion
+			#region string[] _xxxFilepath = new string[_total_xxx];<%
+			for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
+			string[] _<%=_aux_rootmetadata.SchemaCollection[s].Element.Name.ToLower()%>Filepath = new string[
+				_total_<%=_aux_rootmetadata.SchemaCollection[s].Element.Name.ToLower()%>
+			];<%
+			}%>
+			#endregion
+<%
+			for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
+			_total_<%=_aux_rootmetadata.SchemaCollection[s].Element.Name.ToLower()%> = 0;<%
+			}%>
+			for (int f = 0; f < metadatafiles_.MetadataFiles.Count; f++) {
+				switch (metadatafiles_.MetadataFiles[f].XMLFileType) {<%
+					for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
+					case <%=XS__%><%=_aux_rootmetadata.SchemaCollection[s].Element.Name%>.<%=_aux_rootmetadata.SchemaCollection[s].Element.Name.ToUpper()%>:
+						_<%=_aux_rootmetadata.SchemaCollection[s].Element.Name.ToLower()%>Filepath[_total_<%=_aux_rootmetadata.SchemaCollection[s].Element.Name.ToLower()%>] = System.IO.Path.Combine(
+							_metadataPath,
+							metadatafiles_.MetadataFiles[f].XMLFilename
+						);
+						_total_<%=_aux_rootmetadata.SchemaCollection[s].Element.Name.ToLower()%>++;
+						break;<%
+					}%>
+				}
+			}
+<%
+			for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%><%=""%>
 			<%=_aux_rootmetadata.SchemaCollection[s].Element.Name.ToLower()%>collection_ = new <%=XS__%><%=_aux_rootmetadata.SchemaCollection[s].Element.Name%>Collection(
 				<%=XS__%><%=_aux_rootmetadata.SchemaCollection[s].Element.Name%>.Load_fromFile(
 					(<%=XS__%>RootMetadata)this, 
-					<%=_aux_rootmetadata.SchemaCollection[s].Element.Name%>Filepath_in
+					_<%=_aux_rootmetadata.SchemaCollection[s].Element.Name.ToLower()%>Filepath
 				)
 			);<%
-		}%>
+			}%>
 		}
 
 		#region public static Hashtable Metacache { get; }
@@ -77,26 +120,11 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 		}
 		#endregion
 		#region public static <%=XS__%>RootMetadata Load_fromFile(...);
-		public static <%=XS__%>RootMetadata Load_fromFile(<%
-		for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
-			string[] <%=_aux_rootmetadata.SchemaCollection[s].Element.Name%>Filepath_in, <%
-		}%>
+		public static <%=XS__%>RootMetadata Load_fromFile(
+			string metadataFilepath_in, 
 			bool useMetacache_in
 		) {
-			#region string _key = ...;
-			string _key = null;
-			if (useMetacache_in) {<%
-			for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
-				for (int i = 0; i < <%=_aux_rootmetadata.SchemaCollection[s].Element.Name%>Filepath_in.Length; i++) {
-					_key += string.Format(
-						"{0}{1}", 
-						(_key == null) ? "" : "|", 
-						<%=_aux_rootmetadata.SchemaCollection[s].Element.Name%>Filepath_in[i]
-					);
-				}<%
-			}%>
-			}
-			#endregion
+			string _key = metadataFilepath_in;
 			if (
 				useMetacache_in
 				&&
@@ -106,10 +134,8 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 			) {
 				return (<%=XS__%>RootMetadata)<%=XS__%>RootMetadata.Metacache[_key];
 			} else {
-				<%=XS__%>RootMetadata _rootmetadata = new <%=XS__%>RootMetadata(<%
-				for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%><%=""%>
-					<%=_aux_rootmetadata.SchemaCollection[s].Element.Name%>Filepath_in<%=(s == _aux_rootmetadata.SchemaCollection.Count - 1) ? "" : ", "%><%
-				}%>
+				<%=XS__%>RootMetadata _rootmetadata = new <%=XS__%>RootMetadata(
+					metadataFilepath_in
 				);
 				if (useMetacache_in) {
 					<%=XS__%>RootMetadata.Metacache.Add(
@@ -119,6 +145,14 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 				}
 				return _rootmetadata;
 			}
+		}
+		#endregion
+
+		#region public Metadatas MetadataFiles { get; }
+		private Metadatas metadatafiles_;
+
+		public Metadatas MetadataFiles {
+			get { return metadatafiles_; }
 		}
 		#endregion
 

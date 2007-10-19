@@ -22,11 +22,9 @@ using OGen.NTier.lib.metadata.metadataDB;
 namespace OGen.NTier.lib.metadata {
 	public class XS__RootMetadata : XS0__RootMetadata {
 		public XS__RootMetadata (
-			string[] metadataExtendedFilepath_in, 
-			string[] metadataDBFilepath_in
+			string metadataFilepath_in
 		) : base (
-			metadataExtendedFilepath_in, 
-			metadataDBFilepath_in
+			metadataFilepath_in
 		) {
 		}
 	}

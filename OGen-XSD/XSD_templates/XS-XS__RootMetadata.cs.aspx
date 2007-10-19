@@ -48,14 +48,10 @@ using <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_rootmetadata.Sch
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 	public class <%=XS__%>RootMetadata : <%=XS0__%>RootMetadata {
-		public <%=XS__%>RootMetadata (<%
-		for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
-			string[] <%=_aux_rootmetadata.SchemaCollection[s].Element.Name%>Filepath_in<%=(s == _aux_rootmetadata.SchemaCollection.Count - 1) ? "" : ", "%><%
-		}%>
-		) : base (<%
-		for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%><%=""%>
-			<%=_aux_rootmetadata.SchemaCollection[s].Element.Name%>Filepath_in<%=(s == _aux_rootmetadata.SchemaCollection.Count - 1) ? "" : ", "%><%
-		}%>
+		public <%=XS__%>RootMetadata (
+			string metadataFilepath_in
+		) : base (
+			metadataFilepath_in
 		) {
 		}
 	}

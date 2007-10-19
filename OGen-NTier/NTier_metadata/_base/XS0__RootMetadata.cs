@@ -16,6 +16,7 @@ using System;
 using System.Xml.Serialization;
 using System.Collections;
 
+using OGen.lib.metadata;
 using OGen.lib.collections;
 using OGen.NTier.lib.metadata.metadataExtended;
 using OGen.NTier.lib.metadata.metadataDB;
@@ -23,19 +24,66 @@ using OGen.NTier.lib.metadata.metadataDB;
 namespace OGen.NTier.lib.metadata {
 	public class XS0__RootMetadata : iClaSSe_metadata {
 		public XS0__RootMetadata(
-			string[] metadataExtendedFilepath_in, 
-			string[] metadataDBFilepath_in
+			string metadataFilepath_in
 		) {
+			string _metadataPath = System.IO.Path.GetDirectoryName(metadataFilepath_in);
+
+			metadatafiles_ = Metadatas.Load_fromFile(metadataFilepath_in);
+
+			#region int _total_xxx = ...;
+			int _total_metadataextended = 0;
+			int _total_metadatadb = 0;
+			for (int f = 0; f < metadatafiles_.MetadataFiles.Count; f++) {
+				switch (metadatafiles_.MetadataFiles[f].XMLFileType) {
+					case XS__metadataExtended.METADATAEXTENDED:
+						_total_metadataextended++;
+						break;
+					case XS__metadataDB.METADATADB:
+						_total_metadatadb++;
+						break;
+				}
+			}
+			#endregion
+			#region string[] _xxxFilepath = new string[_total_xxx];
+			string[] _metadataextendedFilepath = new string[
+				_total_metadataextended
+			];
+			string[] _metadatadbFilepath = new string[
+				_total_metadatadb
+			];
+			#endregion
+
+			_total_metadataextended = 0;
+			_total_metadatadb = 0;
+			for (int f = 0; f < metadatafiles_.MetadataFiles.Count; f++) {
+				switch (metadatafiles_.MetadataFiles[f].XMLFileType) {
+					case XS__metadataExtended.METADATAEXTENDED:
+						_metadataextendedFilepath[_total_metadataextended] = System.IO.Path.Combine(
+							_metadataPath,
+							metadatafiles_.MetadataFiles[f].XMLFilename
+						);
+						_total_metadataextended++;
+						break;
+					case XS__metadataDB.METADATADB:
+						_metadatadbFilepath[_total_metadatadb] = System.IO.Path.Combine(
+							_metadataPath,
+							metadatafiles_.MetadataFiles[f].XMLFilename
+						);
+						_total_metadatadb++;
+						break;
+				}
+			}
+
 			metadataextendedcollection_ = new XS__metadataExtendedCollection(
 				XS__metadataExtended.Load_fromFile(
 					(XS__RootMetadata)this, 
-					metadataExtendedFilepath_in
+					_metadataextendedFilepath
 				)
 			);
 			metadatadbcollection_ = new XS__metadataDBCollection(
 				XS__metadataDB.Load_fromFile(
 					(XS__RootMetadata)this, 
-					metadataDBFilepath_in
+					_metadatadbFilepath
 				)
 			);
 		}
@@ -54,29 +102,10 @@ namespace OGen.NTier.lib.metadata {
 		#endregion
 		#region public static XS__RootMetadata Load_fromFile(...);
 		public static XS__RootMetadata Load_fromFile(
-			string[] metadataExtendedFilepath_in, 
-			string[] metadataDBFilepath_in, 
+			string metadataFilepath_in, 
 			bool useMetacache_in
 		) {
-			#region string _key = ...;
-			string _key = null;
-			if (useMetacache_in) {
-				for (int i = 0; i < metadataExtendedFilepath_in.Length; i++) {
-					_key += string.Format(
-						"{0}{1}", 
-						(_key == null) ? "" : "|", 
-						metadataExtendedFilepath_in[i]
-					);
-				}
-				for (int i = 0; i < metadataDBFilepath_in.Length; i++) {
-					_key += string.Format(
-						"{0}{1}", 
-						(_key == null) ? "" : "|", 
-						metadataDBFilepath_in[i]
-					);
-				}
-			}
-			#endregion
+			string _key = metadataFilepath_in;
 			if (
 				useMetacache_in
 				&&
@@ -87,8 +116,7 @@ namespace OGen.NTier.lib.metadata {
 				return (XS__RootMetadata)XS__RootMetadata.Metacache[_key];
 			} else {
 				XS__RootMetadata _rootmetadata = new XS__RootMetadata(
-					metadataExtendedFilepath_in, 
-					metadataDBFilepath_in
+					metadataFilepath_in
 				);
 				if (useMetacache_in) {
 					XS__RootMetadata.Metacache.Add(
@@ -98,6 +126,14 @@ namespace OGen.NTier.lib.metadata {
 				}
 				return _rootmetadata;
 			}
+		}
+		#endregion
+
+		#region public Metadatas MetadataFiles { get; }
+		private Metadatas metadatafiles_;
+
+		public Metadatas MetadataFiles {
+			get { return metadatafiles_; }
 		}
 		#endregion
 
