@@ -66,7 +66,8 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Eleme
 		#region public static <%=XS__%><%=_aux_schema.Element.Name%>[] Load_fromFile(...);
 		public static <%=XS__%><%=_aux_schema.Element.Name%>[] Load_fromFile(
 			params string[] filePath_in
-		) {
+		) {<%
+if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
 			return Load_fromFile(
 				null, 
 				filePath_in
@@ -75,7 +76,8 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Eleme
 		public static <%=XS__%><%=_aux_schema.Element.Name%>[] Load_fromFile(
 			<%=XS__%>RootMetadata root_ref_in, 
 			params string[] filePath_in
-		) {
+		) {<%
+}%>
 			FileStream _stream;
 			<%=XS__%><%=_aux_schema.Element.Name%>[] _output 
 				= new <%=XS__%><%=_aux_schema.Element.Name%>[filePath_in.Length];
@@ -99,9 +101,10 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Eleme
 						filePath_in[i],
 						_ex.Message
 					));
-				}
-
-				if (root_ref_in != null) _output[i].root_ref = root_ref_in;
+				}<%
+if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
+				if (root_ref_in != null) _output[i].root_ref = root_ref_in;<%
+}%>
 			}
 			return _output;
 		}

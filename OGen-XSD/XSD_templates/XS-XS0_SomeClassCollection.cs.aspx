@@ -69,6 +69,7 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Eleme
 			cols_ = new ArrayList();
 		}
 
+<%if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
 		#region public <%=XS__%>RootMetadata root_ref { get; }
 		private <%=XS__%>RootMetadata root_ref_;
 
@@ -83,7 +84,8 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Eleme
 				}
 			}
 		}
-		#endregion
+		#endregion<%
+}%>
 
 		#region internal <%=XS_%><%=_aux_complextype.Name%>[] cols__ { get; set; }
 		private ArrayList cols_;

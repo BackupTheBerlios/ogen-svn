@@ -15,6 +15,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	namespace="OGen.NTier.lib.metadata" 
 	caseType="PascalCase"
 	allowSettersOnObjects="false"
+	isSimple="false"
 	prefix="XS_"
 	prefixGenerated="XS0_"
 	prefixBase="XS__"

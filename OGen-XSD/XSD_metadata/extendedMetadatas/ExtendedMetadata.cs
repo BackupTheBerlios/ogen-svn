@@ -119,6 +119,19 @@ namespace OGen.XSD.lib.metadata {
 			}
 		}
 		#endregion
+		#region public bool isSimple { get; set; }
+		private bool issimple_;
+
+		[XmlAttribute("isSimple")]
+		public bool isSimple {
+			get {
+				return issimple_;
+			}
+			set {
+				issimple_ = value;
+			}
+		}
+		#endregion
 		#region public string Prefix { get; set; }
 		private string prefix_;
 

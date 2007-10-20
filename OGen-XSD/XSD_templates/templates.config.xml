@@ -80,7 +80,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
 			<argument name="SchemaName" value="${ROOT.schema[n].element.name}" />
 		</arguments>
-		<conditions />
+		<conditions>
+			<condition eval="ROOT.metadata.isSimple" to="False" />
+		</conditions>
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.schema[n].element.name}/_base/${ROOT.metadata.prefixBaseGenerated}${ROOT.schema[n].element.name}Collection.cs" 
 				type="File" mode="Replace" />
@@ -134,7 +136,9 @@ iterationType="ROOT.schema">
 		<arguments>
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
 		</arguments>
-		<conditions />
+		<conditions>
+			<condition eval="ROOT.metadata.isSimple" to="False" />
+		</conditions>
 		<outputs>
 			<output to="${CONFIG.outputPath}/_base/${ROOT.metadata.prefixBaseGenerated}RootMetadata.cs" 
 				type="File" mode="Replace" />
@@ -158,7 +162,9 @@ iterationType="ROOT.schema">
 		<arguments>
 			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenXSD-metadatas/MD_${ROOT.metadata.applicationName}.OGenXSD-metadata.xml" />
 		</arguments>
-		<conditions />
+		<conditions>
+			<condition eval="ROOT.metadata.isSimple" to="False" />
+		</conditions>
 		<outputs>
 			<output to="${CONFIG.outputPath}/${ROOT.metadata.prefixBase}RootMetadata.cs" 
 				type="File" mode="Create_doNotReplace" />

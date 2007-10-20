@@ -67,8 +67,14 @@ using OGen.lib.collections;
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Element.Name%> {
 	public class <%=XS0_%><%=_aux_complextype.Name%>
-#if !NET_1_1
-		: OGenRootrefCollectionInterface<<%=XS__%>RootMetadata> <%=(_aux_complextype_keys_name != string.Empty) ? ", OGenCollectionInterface<" + _aux_complextype_keys_ntype + ">" : ""%>
+#if !NET_1_1<%
+if (_aux_rootmetadata.ExtendedMetadata.isSimple) {
+	if (_aux_complextype_keys_name != string.Empty) {%>
+		: OGenCollectionInterface<<%=_aux_complextype_keys_ntype%>><%
+	}
+} else {%>
+		: OGenRootrefCollectionInterface<<%=XS__%>RootMetadata> <%=(_aux_complextype_keys_name != string.Empty) ? ", OGenCollectionInterface<" + _aux_complextype_keys_ntype + ">" : ""%><%
+}%>
 #endif
 	{
 		public <%=XS0_%><%=_aux_complextype.Name%> (
@@ -81,8 +87,12 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Eleme
 						out __aux_isCollection_name
 					);%><%=""%>
 			<%=_aux_elements[e].Name.ToLower()%>collection_ = new 
-#if !NET_1_1
-				<%=(__aux_isCollection) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata<%=(__aux_isCollection) ? ", " + __aux_isCollection_ntype : ""%>>()
+#if !NET_1_1<%
+if (_aux_rootmetadata.ExtendedMetadata.isSimple) {%><%=""%>
+				<%=(__aux_isCollection) ? "OGenCollection" : "OGenSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%><%=(__aux_isCollection) ? ", " + __aux_isCollection_ntype : ""%>>()<%
+} else {%><%=""%>
+				<%=(__aux_isCollection) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata<%=(__aux_isCollection) ? ", " + __aux_isCollection_ntype : ""%>>()<%
+}%>
 #else
 				<%=XS_%><%=_aux_elements[e].Type%>Collection()
 #endif
@@ -108,7 +118,9 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Eleme
 		}
 		#endregion
 #endif<%
-		}%>
+		}
+
+if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
 
 		#region public <%=XS__%>RootMetadata root_ref { get; }
 		private <%=XS__%>RootMetadata root_ref_;
@@ -137,6 +149,7 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Eleme
 			get { return root_ref_; }
 		}
 		#endregion<%
+}
 
 		for (int a = 0; a < _aux_complextype.Attribute.Count; a++) {%>
 		#region public <%=_aux_complextype.Attribute[a].NType%> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_complextype.Attribute[a].Name)%> { get; set; }
@@ -159,8 +172,12 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Eleme
 			if (_aux_elements[e].MaxOccurs == XS_Element.MaxOccursEnum.unbounded) {%>
 		#region public ... <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%>Collection { get; }
 		private 
-#if !NET_1_1
-			<%=(__aux_isCollection) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata<%=(__aux_isCollection) ? ", " + __aux_isCollection_ntype : ""%>>
+#if !NET_1_1<%
+if (_aux_rootmetadata.ExtendedMetadata.isSimple) {%><%=""%>
+			<%=(__aux_isCollection) ? "OGenCollection" : "OGenSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%><%=(__aux_isCollection) ? ", " + __aux_isCollection_ntype : ""%>><%
+} else {%><%=""%>
+			<%=(__aux_isCollection) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata<%=(__aux_isCollection) ? ", " + __aux_isCollection_ntype : ""%>><%
+}%>
 #else
 			<%=XS_%><%=_aux_elements[e].Type%>Collection
 #endif
@@ -174,8 +191,12 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Eleme
 
 		[XmlIgnore()]
 		public
-#if !NET_1_1
-			<%=(__aux_isCollection) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata<%=(__aux_isCollection) ? ", " + __aux_isCollection_ntype : ""%>>
+#if !NET_1_1<%
+if (_aux_rootmetadata.ExtendedMetadata.isSimple) {%><%=""%>
+			<%=(__aux_isCollection) ? "OGenCollection" : "OGenSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%><%=(__aux_isCollection) ? ", " + __aux_isCollection_ntype : ""%>><%
+} else {%><%=""%>
+			<%=(__aux_isCollection) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata<%=(__aux_isCollection) ? ", " + __aux_isCollection_ntype : ""%>><%
+}%>
 #else
 			<%=XS_%><%=_aux_elements[e].Type%>Collection
 #endif
