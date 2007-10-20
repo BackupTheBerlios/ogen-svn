@@ -101,57 +101,39 @@
     <Compile Include="AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Templates\cTemplates.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Templates\iTemplates.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Templates\Template\Arguments\Argument\cArgument.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Templates\Template\Arguments\cArguments.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Templates\Template\Arguments\iArguments.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Templates\Template\Conditions\cConditions.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Templates\Template\Conditions\Condition\cCondition.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Templates\Template\Conditions\iConditions.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Templates\Template\cTemplate.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Templates\Template\Dependencies\cDependencies.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Templates\Template\Dependencies\Dependency\cDependency.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Templates\Template\Dependencies\iDependencies.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Templates\Template\Outputs\cOutputs.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Templates\Template\Outputs\iOutputs.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Templates\Template\Outputs\Output\cOutput.cs">
-      <SubType>Code</SubType>
-    </Compile>
+    <Compile Include="Templates-deprecated\cTemplates.cs" />
+    <Compile Include="Templates-deprecated\iTemplates.cs" />
+    <Compile Include="Templates-deprecated\Template\Arguments\Argument\cArgument.cs" />
+    <Compile Include="Templates-deprecated\Template\Arguments\cArguments.cs" />
+    <Compile Include="Templates-deprecated\Template\Arguments\iArguments.cs" />
+    <Compile Include="Templates-deprecated\Template\Conditions\cConditions.cs" />
+    <Compile Include="Templates-deprecated\Template\Conditions\Condition\cCondition.cs" />
+    <Compile Include="Templates-deprecated\Template\Conditions\iConditions.cs" />
+    <Compile Include="Templates-deprecated\Template\cTemplate.cs" />
+    <Compile Include="Templates-deprecated\Template\Dependencies\cDependencies.cs" />
+    <Compile Include="Templates-deprecated\Template\Dependencies\Dependency\cDependency.cs" />
+    <Compile Include="Templates-deprecated\Template\Dependencies\iDependencies.cs" />
+    <Compile Include="Templates-deprecated\Template\Outputs\cOutputs.cs" />
+    <Compile Include="Templates-deprecated\Template\Outputs\iOutputs.cs" />
+    <Compile Include="Templates-deprecated\Template\Outputs\Output\cOutput.cs" />
     <Compile Include="utils.cs">
       <SubType>Code</SubType>
     </Compile>
     <None Include="COPYING.MIT" />
     <Content Include="LICENSE.MIT.txt" />
     <Content Include="LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Templates-deprecated" />
+    <Folder Include="Templates-deprecated\Template" />
+    <Folder Include="Templates-deprecated\Template\Arguments" />
+    <Folder Include="Templates-deprecated\Template\Arguments\Argument" />
+    <Folder Include="Templates-deprecated\Template\Conditions" />
+    <Folder Include="Templates-deprecated\Template\Conditions\Condition" />
+    <Folder Include="Templates-deprecated\Template\Dependencies" />
+    <Folder Include="Templates-deprecated\Template\Dependencies\Dependency" />
+    <Folder Include="Templates-deprecated\Template\Outputs" />
+    <Folder Include="Templates-deprecated\Template\Outputs\Output" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

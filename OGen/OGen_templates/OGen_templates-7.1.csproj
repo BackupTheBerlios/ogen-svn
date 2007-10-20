@@ -121,77 +121,77 @@
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "Templates\cTemplates.cs"
+                    RelPath = "Templates-deprecated\cTemplates.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "Templates\iTemplates.cs"
+                    RelPath = "Templates-deprecated\iTemplates.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "Templates\Template\cTemplate.cs"
+                    RelPath = "Templates-deprecated\Template\cTemplate.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "Templates\Template\Arguments\cArguments.cs"
+                    RelPath = "Templates-deprecated\Template\Arguments\cArguments.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "Templates\Template\Arguments\iArguments.cs"
+                    RelPath = "Templates-deprecated\Template\Arguments\iArguments.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "Templates\Template\Arguments\Argument\cArgument.cs"
+                    RelPath = "Templates-deprecated\Template\Arguments\Argument\cArgument.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "Templates\Template\Conditions\cConditions.cs"
+                    RelPath = "Templates-deprecated\Template\Conditions\cConditions.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "Templates\Template\Conditions\iConditions.cs"
+                    RelPath = "Templates-deprecated\Template\Conditions\iConditions.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "Templates\Template\Conditions\Condition\cCondition.cs"
+                    RelPath = "Templates-deprecated\Template\Conditions\Condition\cCondition.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "Templates\Template\Dependencies\cDependencies.cs"
+                    RelPath = "Templates-deprecated\Template\Dependencies\cDependencies.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "Templates\Template\Dependencies\iDependencies.cs"
+                    RelPath = "Templates-deprecated\Template\Dependencies\iDependencies.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "Templates\Template\Dependencies\Dependency\cDependency.cs"
+                    RelPath = "Templates-deprecated\Template\Dependencies\Dependency\cDependency.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "Templates\Template\Outputs\cOutputs.cs"
+                    RelPath = "Templates-deprecated\Template\Outputs\cOutputs.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "Templates\Template\Outputs\iOutputs.cs"
+                    RelPath = "Templates-deprecated\Template\Outputs\iOutputs.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
                 <File
-                    RelPath = "Templates\Template\Outputs\Output\cOutput.cs"
+                    RelPath = "Templates-deprecated\Template\Outputs\Output\cOutput.cs"
                     SubType = "Code"
                     BuildAction = "Compile"
                 />
