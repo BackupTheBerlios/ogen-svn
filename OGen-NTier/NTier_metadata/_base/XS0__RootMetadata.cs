@@ -302,6 +302,5 @@ namespace OGen.NTier.lib.metadata {
 			}
 		}
 		#endregion
-
 	}
 }

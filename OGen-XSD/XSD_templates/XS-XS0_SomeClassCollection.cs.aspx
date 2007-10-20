@@ -68,8 +68,8 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Eleme
 		public <%=XS_%><%=_aux_complextype.Name%>Collection() {
 			cols_ = new ArrayList();
 		}
-
-<%if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
+<%
+if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
 		#region public <%=XS__%>RootMetadata root_ref { get; }
 		private <%=XS__%>RootMetadata root_ref_;
 

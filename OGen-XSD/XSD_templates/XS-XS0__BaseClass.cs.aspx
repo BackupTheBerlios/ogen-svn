@@ -103,6 +103,7 @@ if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
 					));
 				}<%
 if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
+
 				if (root_ref_in != null) _output[i].root_ref = root_ref_in;<%
 }%>
 			}
