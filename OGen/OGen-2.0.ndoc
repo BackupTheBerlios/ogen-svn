@@ -27,7 +27,7 @@
             <property name="Title" value="OGen Programmer's Reference" />
             <property name="OutputTarget" value="Web" />
             <property name="CopyrightText" value="Copyright (C) 2002 Francisco Monteiro" />
-            <property name="FeedbackEmailAddress" value="francisco.r.monteiro@gmail.com" />
+            <property name="FeedbackEmailAddress" value="fmonteiro@users.berlios.de" />
             <property name="CleanIntermediates" value="True" />
         </documenter>
         <documenter name="MSDN 2003">

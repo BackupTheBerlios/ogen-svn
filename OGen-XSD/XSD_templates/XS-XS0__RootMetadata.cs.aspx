@@ -157,7 +157,6 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 			get { return metadatafiles_; }
 		}
 		#endregion
-
 <%
 		for (int s = 0; s < _aux_rootmetadata.SchemaCollection.Count; s++) {%>
 		#region public <%=XS__%><%=_aux_rootmetadata.SchemaCollection[s].Element.Name%>Collection <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_rootmetadata.SchemaCollection[s].Element.Name)%>Collection { get; }
@@ -268,7 +267,6 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%> {
 			}
 		}
 		#endregion
-
 	}
 }<%
 //-----------------------------------------------------------------------------------------

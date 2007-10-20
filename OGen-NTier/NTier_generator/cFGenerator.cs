@@ -220,7 +220,7 @@ for (int d = 0; d < _metadata_temp.DBs.Count; d++) {
 				Path.GetDirectoryName(filename_)
 			).FullName;
 			#endregion
-			#region string _metadataFilePath = ...;
+			#region string _metadata0 = ...;
 			string _metadata0 = string.Format(
 //				"{0}{1}OGen-metadatas{1}MD0_{2}-{3}.OGen-metadata.xml",
 				"{0}{1}OGen-metadatas{1}MD0_{2}.OGen-metadata.xml", 

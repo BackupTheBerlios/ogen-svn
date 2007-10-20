@@ -139,7 +139,6 @@ namespace OGen.NTier.lib.metadata {
 		}
 		#endregion
 
-
 		#region public XS__metadataExtendedCollection MetadataExtendedCollection { get; }
 		private XS__metadataExtendedCollection metadataextendedcollection_;
 
