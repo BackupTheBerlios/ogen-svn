@@ -47,8 +47,6 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Element.Name%> {
-	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
-	[System.Xml.Serialization.XmlRootAttribute("<%=_aux_schema.Element.Name%>", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
 	public class <%=XS0__%><%=_aux_schema.Element.Name%> : <%=XS_%><%=_aux_schema.Element.Type%>, iClaSSe_metadata {
 
 		public const string <%=_aux_schema.Element.Name.ToUpper()%> = "<%=_aux_schema.Element.Name%>";
@@ -61,7 +59,7 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Eleme
 		public string Root_<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_schema.Element.Name)%> {
 			get { return root_<%=_aux_schema.Element.Name.ToLower()%>_; }
 		}
-		#endregion
+		#endregion<%--
 
 		#region //public <%=XS_%><%=_aux_schema.Element.Type%> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_schema.Element.Name)%> { get; set; }
 //		private <%=XS_%><%=_aux_schema.Element.Type%> <%=_aux_schema.Element.Name.ToLower()%>__;
@@ -84,7 +82,7 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Eleme
 //			get { return <%=_aux_schema.Element.Name.ToLower()%>__; }
 //			set { <%=_aux_schema.Element.Name.ToLower()%>__ = value; }
 //		}
-		#endregion
+		#endregion--%>
 
 		#region public static <%=XS__%><%=_aux_schema.Element.Name%>[] Load_fromFile(...);
 		public static <%=XS__%><%=_aux_schema.Element.Name%>[] Load_fromFile(
@@ -120,7 +118,9 @@ if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
 					_output[i].root_<%=_aux_schema.Element.Name.ToLower()%>_ = ROOT + "." + <%=_aux_schema.Element.Name.ToUpper()%> + "[" + i + "]";
 				} catch (Exception _ex) {
 					throw new Exception(string.Format(
-						"---\nERROR READING XML:\n{0}\n---\n{1}",
+						"\n---\n{0}.{1}.Load_fromFile():\nERROR READING XML:\n{2}\n---\n{3}",
+						typeof(<%=XS0__%><%=_aux_schema.Element.Name%>).Namespace, 
+						typeof(<%=XS0__%><%=_aux_schema.Element.Name%>).Name, 
 						filePath_in[i],
 						_ex.Message
 					));

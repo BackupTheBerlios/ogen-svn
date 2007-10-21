@@ -19,8 +19,6 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadataExtended {
-	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
-	[System.Xml.Serialization.XmlRootAttribute("metadataExtended", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
 	public class XS0__metadataExtended : XS_metadataExtendedType, iClaSSe_metadata {
 
 		public const string METADATAEXTENDED = "metadataExtended";
@@ -33,29 +31,6 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 		public string Root_MetadataExtended {
 			get { return root_metadataextended_; }
 		}
-		#endregion
-
-		#region //public XS_metadataExtendedType MetadataExtended { get; set; }
-//		private XS_metadataExtendedType metadataextended__;
-//
-//		[XmlIgnore()]
-//		public XS_metadataExtendedType MetadataExtended {
-//			get {
-//				if (metadataextended__ == null) {
-//					metadataextended__ = new XS_metadataExtendedType();
-//				}
-//				return metadataextended__;
-//			}
-//			set {
-//				metadataextended__ = value;
-//			}
-//		}
-//
-//		[XmlElement("metadataExtended")]
-//		public XS_metadataExtendedType metadataextended__xml {
-//			get { return metadataextended__; }
-//			set { metadataextended__ = value; }
-//		}
 		#endregion
 
 		#region public static XS__metadataExtended[] Load_fromFile(...);
@@ -90,7 +65,9 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 					_output[i].root_metadataextended_ = ROOT + "." + METADATAEXTENDED + "[" + i + "]";
 				} catch (Exception _ex) {
 					throw new Exception(string.Format(
-						"---\nERROR READING XML:\n{0}\n---\n{1}",
+						"\n---\n{0}.{1}.Load_fromFile():\nERROR READING XML:\n{2}\n---\n{3}",
+						typeof(XS0__metadataExtended).Namespace, 
+						typeof(XS0__metadataExtended).Name, 
 						filePath_in[i],
 						_ex.Message
 					));

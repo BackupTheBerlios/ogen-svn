@@ -18,6 +18,7 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.lib.templates {
+	[System.Xml.Serialization.XmlRootAttribute("templates")]
 	public class XS__templates : XS0__templates {
 		#region public static XS__templates Load_fromURI(...);
 		public static XS__templates Load_fromURI(

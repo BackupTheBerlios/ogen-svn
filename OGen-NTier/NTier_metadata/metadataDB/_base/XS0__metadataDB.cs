@@ -19,8 +19,6 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadataDB {
-	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
-	[System.Xml.Serialization.XmlRootAttribute("metadataDB", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
 	public class XS0__metadataDB : XS_metadataDBType, iClaSSe_metadata {
 
 		public const string METADATADB = "metadataDB";
@@ -33,29 +31,6 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 		public string Root_MetadataDB {
 			get { return root_metadatadb_; }
 		}
-		#endregion
-
-		#region //public XS_metadataDBType MetadataDB { get; set; }
-//		private XS_metadataDBType metadatadb__;
-//
-//		[XmlIgnore()]
-//		public XS_metadataDBType MetadataDB {
-//			get {
-//				if (metadatadb__ == null) {
-//					metadatadb__ = new XS_metadataDBType();
-//				}
-//				return metadatadb__;
-//			}
-//			set {
-//				metadatadb__ = value;
-//			}
-//		}
-//
-//		[XmlElement("metadataDB")]
-//		public XS_metadataDBType metadatadb__xml {
-//			get { return metadatadb__; }
-//			set { metadatadb__ = value; }
-//		}
 		#endregion
 
 		#region public static XS__metadataDB[] Load_fromFile(...);
@@ -90,7 +65,9 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 					_output[i].root_metadatadb_ = ROOT + "." + METADATADB + "[" + i + "]";
 				} catch (Exception _ex) {
 					throw new Exception(string.Format(
-						"---\nERROR READING XML:\n{0}\n---\n{1}",
+						"\n---\n{0}.{1}.Load_fromFile():\nERROR READING XML:\n{2}\n---\n{3}",
+						typeof(XS0__metadataDB).Namespace, 
+						typeof(XS0__metadataDB).Name, 
 						filePath_in[i],
 						_ex.Message
 					));

@@ -18,6 +18,7 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadataDB {
+	[System.Xml.Serialization.XmlRootAttribute("metadataDB")]
 	public class XS__metadataDB : XS0__metadataDB {
 //		#region public static XS__metadataDB[] Load_fromDB(...);
 		public static XS__metadataDB[] Load_fromDB(

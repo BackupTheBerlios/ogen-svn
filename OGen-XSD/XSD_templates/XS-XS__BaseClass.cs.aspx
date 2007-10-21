@@ -47,6 +47,7 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Element.Name%> {
+	[System.Xml.Serialization.XmlRootAttribute("<%=_aux_schema.Element.Name%>")]
 	public class <%=XS__%><%=_aux_schema.Element.Name%> : <%=XS0__%><%=_aux_schema.Element.Name%> {
 	}
 }<%

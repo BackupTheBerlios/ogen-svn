@@ -184,7 +184,7 @@ if (_aux_rootmetadata.ExtendedMetadata.isSimple) {%><%=""%>
 			<%=_aux_elements[e].Name.ToLower()%>collection_;
 
 		[XmlElement("<%=_aux_elements[e].Name%>")]
-		public <%=XS_%><%=_aux_elements[e].Type%>[] <%=_aux_elements[e].Name.ToLower()%>collection<%-- // ToDos: now! --%>__xml {
+		public <%=XS_%><%=_aux_elements[e].Type%>[] <%=_aux_elements[e].Name.ToLower()%>collection__xml {
 			get { return <%=_aux_elements[e].Name.ToLower()%>collection_.cols__; }
 			set { <%=_aux_elements[e].Name.ToLower()%>collection_.cols__ = value; }
 		}
@@ -200,7 +200,7 @@ if (_aux_rootmetadata.ExtendedMetadata.isSimple) {%><%=""%>
 #else
 			<%=XS_%><%=_aux_elements[e].Type%>Collection
 #endif
-		<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%>Collection<%-- // ToDos: now! --%>
+		<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_elements[e].Name)%>Collection
 		{
 			get { return <%=_aux_elements[e].Name.ToLower()%>collection_; }
 		}

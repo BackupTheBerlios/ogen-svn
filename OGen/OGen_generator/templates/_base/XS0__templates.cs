@@ -19,8 +19,6 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.lib.templates {
-	[System.Xml.Serialization.XmlTypeAttribute(Namespace="http://www.w3.org/2001/XMLSchema")]
-	[System.Xml.Serialization.XmlRootAttribute("templates", Namespace="http://www.w3.org/2001/XMLSchema", IsNullable=false)]
 	public class XS0__templates : XS_templatesType, iClaSSe_metadata {
 
 		public const string TEMPLATES = "templates";
@@ -33,29 +31,6 @@ namespace OGen.lib.templates {
 		public string Root_Templates {
 			get { return root_templates_; }
 		}
-		#endregion
-
-		#region //public XS_templatesType Templates { get; set; }
-//		private XS_templatesType templates__;
-//
-//		[XmlIgnore()]
-//		public XS_templatesType Templates {
-//			get {
-//				if (templates__ == null) {
-//					templates__ = new XS_templatesType();
-//				}
-//				return templates__;
-//			}
-//			set {
-//				templates__ = value;
-//			}
-//		}
-//
-//		[XmlElement("templates")]
-//		public XS_templatesType templates__xml {
-//			get { return templates__; }
-//			set { templates__ = value; }
-//		}
 		#endregion
 
 		#region public static XS__templates[] Load_fromFile(...);
@@ -81,7 +56,9 @@ namespace OGen.lib.templates {
 					_output[i].root_templates_ = ROOT + "." + TEMPLATES + "[" + i + "]";
 				} catch (Exception _ex) {
 					throw new Exception(string.Format(
-						"---\nERROR READING XML:\n{0}\n---\n{1}",
+						"\n---\n{0}.{1}.Load_fromFile():\nERROR READING XML:\n{2}\n---\n{3}",
+						typeof(XS0__templates).Namespace, 
+						typeof(XS0__templates).Name, 
 						filePath_in[i],
 						_ex.Message
 					));

@@ -18,6 +18,7 @@ using System.Xml.Serialization;
 using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadataExtended {
+	[System.Xml.Serialization.XmlRootAttribute("metadataExtended")]
 	public class XS__metadataExtended : XS0__metadataExtended {
 	}
 }
