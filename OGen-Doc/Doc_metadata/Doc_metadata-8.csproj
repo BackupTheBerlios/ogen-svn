@@ -116,6 +116,56 @@
     <Compile Include="Document.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="documentation\XS_authorsType.cs" />
+    <Compile Include="documentation\XS_authorType.cs" />
+    <Compile Include="documentation\XS_codeSamplesType.cs" />
+    <Compile Include="documentation\XS_codeSampleType.cs" />
+    <Compile Include="documentation\XS_configsType.cs" />
+    <Compile Include="documentation\XS_configType.cs" />
+    <Compile Include="documentation\XS_documentationType.cs" />
+    <Compile Include="documentation\XS_documentsType.cs" />
+    <Compile Include="documentation\XS_documentType.cs" />
+    <Compile Include="documentation\XS_faqSubjectsType.cs" />
+    <Compile Include="documentation\XS_faqSubjectType.cs" />
+    <Compile Include="documentation\XS_faqType.cs" />
+    <Compile Include="documentation\XS_linksType.cs" />
+    <Compile Include="documentation\XS_linkType.cs" />
+    <Compile Include="documentation\XS_subjectsType.cs" />
+    <Compile Include="documentation\XS_subjectType.cs" />
+    <Compile Include="documentation\XS__documentation.cs" />
+    <Compile Include="documentation\_base\XS0_authorsType.cs" />
+    <Compile Include="documentation\_base\XS0_authorsTypeCollection.cs" />
+    <Compile Include="documentation\_base\XS0_authorType.cs" />
+    <Compile Include="documentation\_base\XS0_authorTypeCollection.cs" />
+    <Compile Include="documentation\_base\XS0_codeSamplesType.cs" />
+    <Compile Include="documentation\_base\XS0_codeSamplesTypeCollection.cs" />
+    <Compile Include="documentation\_base\XS0_codeSampleType.cs" />
+    <Compile Include="documentation\_base\XS0_codeSampleTypeCollection.cs" />
+    <Compile Include="documentation\_base\XS0_configsType.cs" />
+    <Compile Include="documentation\_base\XS0_configsTypeCollection.cs" />
+    <Compile Include="documentation\_base\XS0_configType.cs" />
+    <Compile Include="documentation\_base\XS0_configTypeCollection.cs" />
+    <Compile Include="documentation\_base\XS0_documentationType.cs" />
+    <Compile Include="documentation\_base\XS0_documentationTypeCollection.cs" />
+    <Compile Include="documentation\_base\XS0_documentsType.cs" />
+    <Compile Include="documentation\_base\XS0_documentsTypeCollection.cs" />
+    <Compile Include="documentation\_base\XS0_documentType.cs" />
+    <Compile Include="documentation\_base\XS0_documentTypeCollection.cs" />
+    <Compile Include="documentation\_base\XS0_faqSubjectsType.cs" />
+    <Compile Include="documentation\_base\XS0_faqSubjectsTypeCollection.cs" />
+    <Compile Include="documentation\_base\XS0_faqSubjectType.cs" />
+    <Compile Include="documentation\_base\XS0_faqSubjectTypeCollection.cs" />
+    <Compile Include="documentation\_base\XS0_faqType.cs" />
+    <Compile Include="documentation\_base\XS0_faqTypeCollection.cs" />
+    <Compile Include="documentation\_base\XS0_linksType.cs" />
+    <Compile Include="documentation\_base\XS0_linksTypeCollection.cs" />
+    <Compile Include="documentation\_base\XS0_linkType.cs" />
+    <Compile Include="documentation\_base\XS0_linkTypeCollection.cs" />
+    <Compile Include="documentation\_base\XS0_subjectsType.cs" />
+    <Compile Include="documentation\_base\XS0_subjectsTypeCollection.cs" />
+    <Compile Include="documentation\_base\XS0_subjectType.cs" />
+    <Compile Include="documentation\_base\XS0_subjectTypeCollection.cs" />
+    <Compile Include="documentation\_base\XS0__documentation.cs" />
     <Compile Include="Documents.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -149,6 +199,14 @@
     <None Include="COPYING.MIT" />
     <Content Include="LICENSE.MIT.txt" />
     <Content Include="LICENSE.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="documentation" />
+    <Folder Include="documentation\_base" />
+    <ProjectReference Include="..\..\OGen\OGen_generator\OGen_generator-8.csproj">
+      <Project>{668ACF34-6104-4DD9-BB8A-65D9D94B0BB6}</Project>
+      <Name>OGen_generator-8</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
