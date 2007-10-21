@@ -100,11 +100,6 @@
       <Project>{981BC7DE-D93C-446E-861E-60A20E4E3391}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\..\OGen\OGen_templates\OGen_templates-8.csproj">
-      <Name>OGen_templates</Name>
-      <Project>{8377EF00-063B-451A-8408-FE2F8EAD5C32}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
     <ProjectReference Include="..\..\OGen\OGen_webforms\OGen_webforms-8.csproj">
       <Name>OGen_webforms</Name>
       <Project>{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}</Project>

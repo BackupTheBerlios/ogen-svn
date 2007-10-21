@@ -25,39 +25,39 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	/// </summary>
 	[DOClassAttribute("User", "", "", "", false, false)]
 	public 
-#if NET20
+#if !NET_1_1
 		partial 
 #else
 		abstract 
 #endif
 		class 
-#if NET20
+#if !NET_1_1
 		DO_User 
 #else
 		DO0_User 
 #endif
 		: DO__base {
 		#region public DO_User();
-#if NET20
+#if !NET_1_1
 		///
 		public DO_User
 #else
 		internal DO0_User
 #endif
 		() : base(
-#if NET20
+#if !NET_1_1
 			DO__utils
 #else
 			DO0__utils
 #endif
 			.DBServerType, 
-#if NET20
+#if !NET_1_1
 			DO__utils
 #else
 			DO0__utils
 #endif
 			.DBConnectionstring,
-#if NET20
+#if !NET_1_1
 			DO__utils
 #else
 			DO0__utils
@@ -67,7 +67,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			clrObject();
 			Fields.haschanges_ = false;
 		}
-#if NET20
+#if !NET_1_1
 			/// <summary>
 			/// Making the use of Database Transactions possible on a sequence of operations across multiple DataObjects.
 			/// </summary>
@@ -122,7 +122,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			string logfile_in
 		) {
 			return 
-				#if NET20
+				#if !NET_1_1
 				DO__utils
 				#else
 				DO0__utils
@@ -143,7 +143,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Clears all DO0_User properties, assigning them with their appropriate default property value.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		void clrObject() {
@@ -156,7 +156,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		/// <returns>True if User exists at Database, False if not</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool getObject() {
@@ -170,7 +170,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <param name="IDUser_in">IDUser</param>
 		/// <returns>True if User exists at Database, False if not</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 			bool getObject(
@@ -223,7 +223,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Deletes User from Database.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		void delObject() {
@@ -236,7 +236,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		/// <param name="IDUser_in">IDUser</param>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		void delObject(
@@ -256,7 +256,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		/// <returns>True if User exists at Database, False if not</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool isObject() {
@@ -270,7 +270,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <param name="IDUser_in">IDUser</param>
 		/// <returns>True if User exists at Database, False if not</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool isObject(
@@ -296,7 +296,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <param name="constraintExist_out">returns True if constraint exists and insertion failed, and False if no constraint and insertion was successful</param>
 		/// <returns>insertion sequence/identity seed</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		long insObject(
@@ -332,7 +332,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <param name="forceUpdate_in">assign with True if you wish to force an Update (even if no changes have been made since last time getObject method was run) and False if not</param>
 		/// <param name="constraintExist_out">returns True if constraint exists and Update failed, and False if no constraint and Update was successful</param>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		void updObject(bool forceUpdate_in, out bool constraintExist_out) {
@@ -464,7 +464,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <param name="forceUpdate_in">assign with True if you wish to force an Update (even if no changes have been made since last time getObject method was run) and False if not</param>
 		/// <param name="constraintExist_out">returns True if constraint exists and Update failed, and False if no constraint and Update was successful</param>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		void updObject_SomeUpdateTest(bool forceUpdate_in, out bool constraintExist_out) {

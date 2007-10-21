@@ -43,7 +43,7 @@ namespace OGen.lib.templates {
 			conditioncollection_;
 
 		[XmlElement("condition")]
-		public XS_conditionType[] condition__xml {
+		public XS_conditionType[] conditioncollection__xml {
 			get { return conditioncollection_.cols__; }
 			set { conditioncollection_.cols__ = value; }
 		}

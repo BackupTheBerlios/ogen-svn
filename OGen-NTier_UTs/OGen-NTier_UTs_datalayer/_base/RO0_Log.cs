@@ -25,7 +25,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	public sealed class RO0_Log : RO__base {
 		#region internal RO0_Log();
 		internal RO0_Log(
-#if NET20
+#if !NET_1_1
 			DO_Log 
 #else
 			DO0_Log 
@@ -40,7 +40,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 
 		#region private Properties...
 		private 
-#if NET20
+#if !NET_1_1
 			DO_Log 
 #else
 			DO0_Log 

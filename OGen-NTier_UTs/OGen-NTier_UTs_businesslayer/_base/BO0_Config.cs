@@ -26,25 +26,25 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 	/// </summary>
 	[DOClassAttribute("Config", "", "", "", false, true)]
 	public 
-#if NET20
+#if !NET_1_1
 		partial 
 #else
 		abstract 
 #endif
 		class 
-#if NET20
+#if !NET_1_1
 		BO_Config 
 #else
 		BO0_Config 
 #endif
 		: BO__base {
 		#region public BO_Config(...);
-#if !NET20
+#if NET_1_1
 		internal BO0_Config() {}
 #endif
 
 		///
-#if NET20
+#if !NET_1_1
 		~BO_Config
 #else
 		~BO0_Config
@@ -60,7 +60,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 		private DO_Config mainaggregate__;
 
 		///
-#if NET20
+#if !NET_1_1
 		private 
 #else
 		protected 
@@ -116,7 +116,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		string Name {
@@ -152,7 +152,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		string Config {
@@ -188,7 +188,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		int Type {
@@ -224,7 +224,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		string Description {

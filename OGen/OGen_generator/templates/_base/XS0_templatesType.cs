@@ -43,7 +43,7 @@ namespace OGen.lib.templates {
 			templatecollection_;
 
 		[XmlElement("template")]
-		public XS_templateType[] template__xml {
+		public XS_templateType[] templatecollection__xml {
 			get { return templatecollection_.cols__; }
 			set { templatecollection_.cols__ = value; }
 		}

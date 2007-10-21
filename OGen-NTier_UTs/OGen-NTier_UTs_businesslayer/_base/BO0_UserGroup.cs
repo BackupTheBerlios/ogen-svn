@@ -26,25 +26,25 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 	/// </summary>
 	[DOClassAttribute("UserGroup", "", "", "", false, false)]
 	public 
-#if NET20
+#if !NET_1_1
 		partial 
 #else
 		abstract 
 #endif
 		class 
-#if NET20
+#if !NET_1_1
 		BO_UserGroup 
 #else
 		BO0_UserGroup 
 #endif
 		: BO__base {
 		#region public BO_UserGroup(...);
-#if !NET20
+#if NET_1_1
 		internal BO0_UserGroup() {}
 #endif
 
 		///
-#if NET20
+#if !NET_1_1
 		~BO_UserGroup
 #else
 		~BO0_UserGroup
@@ -60,7 +60,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 		private DO_UserGroup mainaggregate__;
 
 		///
-#if NET20
+#if !NET_1_1
 		private 
 #else
 		protected 
@@ -116,7 +116,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		long IDUser {
@@ -152,7 +152,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		long IDGroup {
@@ -165,7 +165,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 		/// Allows assignement of null and check if null at UserGroup's Relationdate.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool Relationdate_isNull {
@@ -201,7 +201,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		DateTime Relationdate {
@@ -214,7 +214,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 		/// Allows assignement of null and check if null at UserGroup's Defaultrelation.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool Defaultrelation_isNull {
@@ -250,7 +250,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool Defaultrelation {

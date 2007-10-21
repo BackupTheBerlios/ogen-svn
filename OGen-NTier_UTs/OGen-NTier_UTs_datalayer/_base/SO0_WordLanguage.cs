@@ -51,7 +51,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Indicates if changes have been made to FO0_WordLanguage properties since last time getObject method was run.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool hasChanges {
@@ -90,7 +90,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		long IDWord {
@@ -138,7 +138,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		long IDLanguage {
@@ -161,7 +161,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		[XmlIgnore]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool Translation_isNull {
@@ -207,7 +207,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		string Translation {

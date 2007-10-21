@@ -25,39 +25,39 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	/// </summary>
 	[DOClassAttribute("Language", "", "", "", false, false)]
 	public 
-#if NET20
+#if !NET_1_1
 		partial 
 #else
 		abstract 
 #endif
 		class 
-#if NET20
+#if !NET_1_1
 		DO_Language 
 #else
 		DO0_Language 
 #endif
 		: DO__base {
 		#region public DO_Language();
-#if NET20
+#if !NET_1_1
 		///
 		public DO_Language
 #else
 		internal DO0_Language
 #endif
 		() : base(
-#if NET20
+#if !NET_1_1
 			DO__utils
 #else
 			DO0__utils
 #endif
 			.DBServerType, 
-#if NET20
+#if !NET_1_1
 			DO__utils
 #else
 			DO0__utils
 #endif
 			.DBConnectionstring,
-#if NET20
+#if !NET_1_1
 			DO__utils
 #else
 			DO0__utils
@@ -67,7 +67,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			clrObject();
 			Fields.haschanges_ = false;
 		}
-#if NET20
+#if !NET_1_1
 			/// <summary>
 			/// Making the use of Database Transactions possible on a sequence of operations across multiple DataObjects.
 			/// </summary>
@@ -122,7 +122,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			string logfile_in
 		) {
 			return 
-				#if NET20
+				#if !NET_1_1
 				DO__utils
 				#else
 				DO0__utils
@@ -143,7 +143,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Clears all DO0_Language properties, assigning them with their appropriate default property value.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		void clrObject() {
@@ -156,7 +156,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		/// <returns>True if Language exists at Database, False if not</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool getObject() {
@@ -170,7 +170,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <param name="IDLanguage_in">IDLanguage</param>
 		/// <returns>True if Language exists at Database, False if not</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 			bool getObject(
@@ -211,7 +211,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Deletes Language from Database.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		void delObject() {
@@ -224,7 +224,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		/// <param name="IDLanguage_in">IDLanguage</param>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		void delObject(
@@ -244,7 +244,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		/// <returns>True if Language exists at Database, False if not</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool isObject() {
@@ -258,7 +258,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <param name="IDLanguage_in">IDLanguage</param>
 		/// <returns>True if Language exists at Database, False if not</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool isObject(
@@ -283,7 +283,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <param name="selectIdentity_in">assign with True if you wish to retrieve insertion sequence/identity seed and with False if not</param>
 		/// <returns>insertion sequence/identity seed</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		long insObject(
@@ -313,7 +313,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		/// <param name="forceUpdate_in">assign with True if you wish to force an Update (even if no changes have been made since last time getObject method was run) and False if not</param>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		void updObject(bool forceUpdate_in) {

@@ -35,6 +35,29 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 		}
 		#endregion
 
+		#region //public XS_metadataExtendedType MetadataExtended { get; set; }
+//		private XS_metadataExtendedType metadataextended__;
+//
+//		[XmlIgnore()]
+//		public XS_metadataExtendedType MetadataExtended {
+//			get {
+//				if (metadataextended__ == null) {
+//					metadataextended__ = new XS_metadataExtendedType();
+//				}
+//				return metadataextended__;
+//			}
+//			set {
+//				metadataextended__ = value;
+//			}
+//		}
+//
+//		[XmlElement("metadataExtended")]
+//		public XS_metadataExtendedType metadataextended__xml {
+//			get { return metadataextended__; }
+//			set { metadataextended__ = value; }
+//		}
+		#endregion
+
 		#region public static XS__metadataExtended[] Load_fromFile(...);
 		public static XS__metadataExtended[] Load_fromFile(
 			params string[] filePath_in
@@ -94,7 +117,7 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 			_file.Close();
 		}
 		#endregion
-
+		#region public string Read_fromRoot(string what_in);
 		public string Read_fromRoot(string what_in) {
 			return OGen.lib.generator.utils.ReflectThrough(
 				this,
@@ -106,7 +129,8 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 				true
 			);
 		}
-
+		#endregion
+		#region public void IterateThrough_fromRoot(...);
 		public void IterateThrough_fromRoot(
 			string iteration_in, 
 			cClaSSe.dIteration_found iteration_found_in
@@ -121,5 +145,6 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 				true
 			);
 		}
+		#endregion
 	}
 }

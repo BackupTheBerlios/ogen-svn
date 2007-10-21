@@ -63,6 +63,29 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Eleme
 		}
 		#endregion
 
+		#region //public <%=XS_%><%=_aux_schema.Element.Type%> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_schema.Element.Name)%> { get; set; }
+//		private <%=XS_%><%=_aux_schema.Element.Type%> <%=_aux_schema.Element.Name.ToLower()%>__;
+//
+//		[XmlIgnore()]
+//		public <%=XS_%><%=_aux_schema.Element.Type%> <%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_schema.Element.Name)%> {
+//			get {
+//				if (<%=_aux_schema.Element.Name.ToLower()%>__ == null) {
+//					<%=_aux_schema.Element.Name.ToLower()%>__ = new <%=XS_%><%=_aux_schema.Element.Type%>();
+//				}
+//				return <%=_aux_schema.Element.Name.ToLower()%>__;
+//			}
+//			set {
+//				<%=_aux_schema.Element.Name.ToLower()%>__ = value;
+//			}
+//		}
+//
+//		[XmlElement("<%=_aux_schema.Element.Name%>")]
+//		public <%=XS_%><%=_aux_schema.Element.Type%> <%=_aux_schema.Element.Name.ToLower()%>__xml {
+//			get { return <%=_aux_schema.Element.Name.ToLower()%>__; }
+//			set { <%=_aux_schema.Element.Name.ToLower()%>__ = value; }
+//		}
+		#endregion
+
 		#region public static <%=XS__%><%=_aux_schema.Element.Name%>[] Load_fromFile(...);
 		public static <%=XS__%><%=_aux_schema.Element.Name%>[] Load_fromFile(
 			params string[] filePath_in
@@ -126,7 +149,7 @@ if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
 			_file.Close();
 		}
 		#endregion
-
+		#region public string Read_fromRoot(string what_in);
 		public string Read_fromRoot(string what_in) {
 			return OGen.lib.generator.utils.ReflectThrough(
 				this,
@@ -138,7 +161,8 @@ if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
 				true
 			);
 		}
-
+		#endregion
+		#region public void IterateThrough_fromRoot(...);
 		public void IterateThrough_fromRoot(
 			string iteration_in, 
 			cClaSSe.dIteration_found iteration_found_in
@@ -153,6 +177,7 @@ if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
 				true
 			);
 		}
+		#endregion
 	}
 }<%
 //-----------------------------------------------------------------------------------------

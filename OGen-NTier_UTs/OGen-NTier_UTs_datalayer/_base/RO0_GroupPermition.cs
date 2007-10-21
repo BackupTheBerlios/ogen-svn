@@ -25,7 +25,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	public sealed class RO0_GroupPermition : RO__base {
 		#region internal RO0_GroupPermition();
 		internal RO0_GroupPermition(
-#if NET20
+#if !NET_1_1
 			DO_GroupPermition 
 #else
 			DO0_GroupPermition 
@@ -40,7 +40,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 
 		#region private Properties...
 		private 
-#if NET20
+#if !NET_1_1
 			DO_GroupPermition 
 #else
 			DO0_GroupPermition 

@@ -183,7 +183,6 @@ namespace OGen.XSD.lib.generator {
 				System.Configuration.ConfigurationSettings.AppSettings
 				#endif
 					["Templates"],
-				cTemplates.root4xml, 
 				_outputDir,
 				_metafiles
 			).Build(

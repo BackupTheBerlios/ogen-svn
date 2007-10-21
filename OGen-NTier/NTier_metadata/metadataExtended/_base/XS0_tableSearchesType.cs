@@ -57,7 +57,7 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 			tablesearchcollection_;
 
 		[XmlElement("tableSearch")]
-		public XS_tableSearchType[] tablesearch__xml {
+		public XS_tableSearchType[] tablesearchcollection__xml {
 			get { return tablesearchcollection_.cols__; }
 			set { tablesearchcollection_.cols__ = value; }
 		}

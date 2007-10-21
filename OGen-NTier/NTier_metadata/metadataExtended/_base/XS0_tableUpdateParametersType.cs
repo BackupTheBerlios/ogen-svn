@@ -57,7 +57,7 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 			tablefieldrefcollection_;
 
 		[XmlElement("tableFieldRef")]
-		public XS_tableFieldRefType[] tablefieldref__xml {
+		public XS_tableFieldRefType[] tablefieldrefcollection__xml {
 			get { return tablefieldrefcollection_.cols__; }
 			set { tablefieldrefcollection_.cols__ = value; }
 		}

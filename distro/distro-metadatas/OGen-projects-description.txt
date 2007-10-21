@@ -9,7 +9,6 @@
 |OGen        |OGen_webforms          |OGen.lib.presentationlayer.webforms   |t                 |f                |f                |MIT        |f                    |t              |
 |OGen        |OGen_winforms          |OGen.lib.presentationlayer.winforms   |t                 |f                |f                |MIT        |f                    |t              |
 |OGen        |OGen_parser            |OGen.lib.parser                       |t                 |f                |f                |MIT        |f                    |t              |
-|OGen        |OGen_templates         |OGen.lib.templates                    |t                 |f                |f                |MIT        |f                    |t              |
 |OGen        |OGen_generator         |OGen.lib.generator                    |t                 |f                |f                |MIT        |f                    |t              |
 |OGen        |OGen-test.no-svn       |OGen.test                             |f                 |f                |t                |MIT        |f                    |f              |
 |OGen        |OGen-Doc               |-not aplicable-                       |f                 |f                |f                |GNU_FDL    |t                    |f              |

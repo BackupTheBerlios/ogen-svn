@@ -35,6 +35,29 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 		}
 		#endregion
 
+		#region //public XS_metadataDBType MetadataDB { get; set; }
+//		private XS_metadataDBType metadatadb__;
+//
+//		[XmlIgnore()]
+//		public XS_metadataDBType MetadataDB {
+//			get {
+//				if (metadatadb__ == null) {
+//					metadatadb__ = new XS_metadataDBType();
+//				}
+//				return metadatadb__;
+//			}
+//			set {
+//				metadatadb__ = value;
+//			}
+//		}
+//
+//		[XmlElement("metadataDB")]
+//		public XS_metadataDBType metadatadb__xml {
+//			get { return metadatadb__; }
+//			set { metadatadb__ = value; }
+//		}
+		#endregion
+
 		#region public static XS__metadataDB[] Load_fromFile(...);
 		public static XS__metadataDB[] Load_fromFile(
 			params string[] filePath_in
@@ -94,7 +117,7 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 			_file.Close();
 		}
 		#endregion
-
+		#region public string Read_fromRoot(string what_in);
 		public string Read_fromRoot(string what_in) {
 			return OGen.lib.generator.utils.ReflectThrough(
 				this,
@@ -106,7 +129,8 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 				true
 			);
 		}
-
+		#endregion
+		#region public void IterateThrough_fromRoot(...);
 		public void IterateThrough_fromRoot(
 			string iteration_in, 
 			cClaSSe.dIteration_found iteration_found_in
@@ -121,5 +145,6 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 				true
 			);
 		}
+		#endregion
 	}
 }

@@ -64,10 +64,6 @@
       <Project>{981BC7DE-D93C-446E-861E-60A20E4E3391}</Project>
       <Name>OGen_parser</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\OGen\OGen_templates\OGen_templates-8.csproj">
-      <Project>{8377EF00-063B-451A-8408-FE2F8EAD5C32}</Project>
-      <Name>OGen_templates</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\OGen\OGen_webforms\OGen_webforms-8.csproj">
       <Project>{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}</Project>
       <Name>OGen_webforms</Name>

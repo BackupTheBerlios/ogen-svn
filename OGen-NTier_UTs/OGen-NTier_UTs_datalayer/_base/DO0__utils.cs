@@ -25,14 +25,14 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	/// utils DataObject which works as a repository of useful Properties and Methods for DataObjects at OGen.NTier.UTs.lib.datalayer namespace.
 	/// </summary>
 	public 
-#if NET20
+#if !NET_1_1
 		partial class DO__utils 
 #else
 		abstract class DO0__utils 
 #endif
 	{
 		#region public DO__utils(...);
-#if NET20
+#if !NET_1_1
 		///
 		public DO__utils
 #else
@@ -43,7 +43,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		#endregion
 		#region static DO__utils();
 		static 
-#if NET20
+#if !NET_1_1
 			DO__utils
 #else
 			DO0__utils
@@ -99,7 +99,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			get {
 				if (dblogfile__ == string.Empty) {
 					if (
-						#if NET20
+						#if !NET_1_1
 						System.Configuration.ConfigurationManager.AppSettings
 						#else
 						System.Configuration.ConfigurationSettings.AppSettings

@@ -35,6 +35,29 @@ namespace OGen.lib.templates {
 		}
 		#endregion
 
+		#region //public XS_templatesType Templates { get; set; }
+//		private XS_templatesType templates__;
+//
+//		[XmlIgnore()]
+//		public XS_templatesType Templates {
+//			get {
+//				if (templates__ == null) {
+//					templates__ = new XS_templatesType();
+//				}
+//				return templates__;
+//			}
+//			set {
+//				templates__ = value;
+//			}
+//		}
+//
+//		[XmlElement("templates")]
+//		public XS_templatesType templates__xml {
+//			get { return templates__; }
+//			set { templates__ = value; }
+//		}
+		#endregion
+
 		#region public static XS__templates[] Load_fromFile(...);
 		public static XS__templates[] Load_fromFile(
 			params string[] filePath_in
@@ -83,7 +106,7 @@ namespace OGen.lib.templates {
 			_file.Close();
 		}
 		#endregion
-
+		#region public string Read_fromRoot(string what_in);
 		public string Read_fromRoot(string what_in) {
 			return OGen.lib.generator.utils.ReflectThrough(
 				this,
@@ -95,7 +118,8 @@ namespace OGen.lib.templates {
 				true
 			);
 		}
-
+		#endregion
+		#region public void IterateThrough_fromRoot(...);
 		public void IterateThrough_fromRoot(
 			string iteration_in, 
 			cClaSSe.dIteration_found iteration_found_in
@@ -110,5 +134,6 @@ namespace OGen.lib.templates {
 				true
 			);
 		}
+		#endregion
 	}
 }

@@ -57,7 +57,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Indicates if changes have been made to FO0_Logcode properties since last time getObject method was run.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool hasChanges {
@@ -96,7 +96,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		long IDLogcode {
@@ -144,7 +144,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool Warning {
@@ -192,7 +192,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool Error {
@@ -240,7 +240,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		string Code {
@@ -265,7 +265,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		[XmlIgnore]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool Description_isNull {
@@ -311,7 +311,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		string Description {

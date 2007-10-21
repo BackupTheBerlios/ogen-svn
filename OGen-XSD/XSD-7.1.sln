@@ -51,10 +51,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_parser-7.1", "..\OGen\
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_templates-7.1", "..\OGen\OGen_templates\OGen_templates-7.1.csproj", "{8377EF00-063B-451A-8408-FE2F8EAD5C32}"
-	ProjectSection(ProjectDependencies) = postProject
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_winforms-7.1", "..\OGen\OGen_winforms\OGen_winforms-7.1.csproj", "{B3835B3F-C899-416F-BA94-625A4B32A4AC}"
 	ProjectSection(ProjectDependencies) = postProject
 	EndProjectSection
@@ -117,10 +113,6 @@ Global
 		{981BC7DE-D93C-446E-861E-60A20E4E3391}.Debug.Build.0 = Debug|.NET
 		{981BC7DE-D93C-446E-861E-60A20E4E3391}.Release.ActiveCfg = Release|.NET
 		{981BC7DE-D93C-446E-861E-60A20E4E3391}.Release.Build.0 = Release|.NET
-		{8377EF00-063B-451A-8408-FE2F8EAD5C32}.Debug.ActiveCfg = Debug|.NET
-		{8377EF00-063B-451A-8408-FE2F8EAD5C32}.Debug.Build.0 = Debug|.NET
-		{8377EF00-063B-451A-8408-FE2F8EAD5C32}.Release.ActiveCfg = Release|.NET
-		{8377EF00-063B-451A-8408-FE2F8EAD5C32}.Release.Build.0 = Release|.NET
 		{B3835B3F-C899-416F-BA94-625A4B32A4AC}.Debug.ActiveCfg = Debug|.NET
 		{B3835B3F-C899-416F-BA94-625A4B32A4AC}.Debug.Build.0 = Debug|.NET
 		{B3835B3F-C899-416F-BA94-625A4B32A4AC}.Release.ActiveCfg = Release|.NET

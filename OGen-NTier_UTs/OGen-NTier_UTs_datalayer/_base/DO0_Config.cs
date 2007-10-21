@@ -25,39 +25,39 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	/// </summary>
 	[DOClassAttribute("Config", "", "", "", false, true)]
 	public 
-#if NET20
+#if !NET_1_1
 		partial 
 #else
 		abstract 
 #endif
 		class 
-#if NET20
+#if !NET_1_1
 		DO_Config 
 #else
 		DO0_Config 
 #endif
 		: DO__base {
 		#region public DO_Config();
-#if NET20
+#if !NET_1_1
 		///
 		public DO_Config
 #else
 		internal DO0_Config
 #endif
 		() : base(
-#if NET20
+#if !NET_1_1
 			DO__utils
 #else
 			DO0__utils
 #endif
 			.DBServerType, 
-#if NET20
+#if !NET_1_1
 			DO__utils
 #else
 			DO0__utils
 #endif
 			.DBConnectionstring,
-#if NET20
+#if !NET_1_1
 			DO__utils
 #else
 			DO0__utils
@@ -67,7 +67,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			clrObject();
 			Fields.haschanges_ = false;
 		}
-#if NET20
+#if !NET_1_1
 			/// <summary>
 			/// Making the use of Database Transactions possible on a sequence of operations across multiple DataObjects.
 			/// </summary>
@@ -122,7 +122,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			string logfile_in
 		) {
 			return 
-				#if NET20
+				#if !NET_1_1
 				DO__utils
 				#else
 				DO0__utils
@@ -143,7 +143,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Clears all DO0_Config properties, assigning them with their appropriate default property value.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		void clrObject() {
@@ -156,7 +156,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		/// <returns>True if Config exists at Database, False if not</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool getObject() {
@@ -170,7 +170,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <param name="Name_in">Name</param>
 		/// <returns>True if Config exists at Database, False if not</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 			bool getObject(
@@ -221,7 +221,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Deletes Config from Database.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		void delObject() {
@@ -234,7 +234,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		/// <param name="Name_in">Name</param>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		void delObject(
@@ -254,7 +254,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// </summary>
 		/// <returns>True if Config exists at Database, False if not</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool isObject() {
@@ -268,7 +268,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <param name="Name_in">Name</param>
 		/// <returns>True if Config exists at Database, False if not</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool isObject(
@@ -293,7 +293,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// <param name="forceUpdate_in">assign with True if you wish to force an Update (even if no changes have been made since last time getObject method was run) and False if not</param>
 		/// <returns>True if it didn't exist (INSERT), and False if it did exist (UPDATE)</returns>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 			bool setObject(bool forceUpdate_in) {
@@ -320,7 +320,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 					#region DO__utils...._reset();
 					switch (Fields.Name) {
 						case "SomeBoolConfig": {
-#if NET20
+#if !NET_1_1
 							DO__utils
 #else
 							DO0__utils
@@ -329,7 +329,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 							break;
 						}
 						case "SomeIntConfig": {
-#if NET20
+#if !NET_1_1
 							DO__utils
 #else
 							DO0__utils
@@ -338,7 +338,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 							break;
 						}
 						case "SomeMultiLineStringConfig": {
-#if NET20
+#if !NET_1_1
 							DO__utils
 #else
 							DO0__utils
@@ -347,7 +347,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 							break;
 						}
 						case "SomeStringConfig": {
-#if NET20
+#if !NET_1_1
 							DO__utils
 #else
 							DO0__utils

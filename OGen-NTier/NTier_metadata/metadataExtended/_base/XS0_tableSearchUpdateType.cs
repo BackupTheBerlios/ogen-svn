@@ -87,7 +87,7 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 			tableupdateparameterscollection_;
 
 		[XmlElement("tableUpdateParameters")]
-		public XS_tableSearchUpdateParametersType[] tableupdateparameters__xml {
+		public XS_tableSearchUpdateParametersType[] tableupdateparameterscollection__xml {
 			get { return tableupdateparameterscollection_.cols__; }
 			set { tableupdateparameterscollection_.cols__ = value; }
 		}

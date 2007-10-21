@@ -57,7 +57,7 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 			tableupdatecollection_;
 
 		[XmlElement("tableUpdate")]
-		public XS_tableUpdateType[] tableupdate__xml {
+		public XS_tableUpdateType[] tableupdatecollection__xml {
 			get { return tableupdatecollection_.cols__; }
 			set { tableupdatecollection_.cols__ = value; }
 		}

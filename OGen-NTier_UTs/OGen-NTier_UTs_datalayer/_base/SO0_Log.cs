@@ -57,7 +57,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Indicates if changes have been made to FO0_Log properties since last time getObject method was run.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool hasChanges {
@@ -96,7 +96,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		long IDLog {
@@ -144,7 +144,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		long IDLogcode {
@@ -192,7 +192,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		long IDUser_posted {
@@ -240,7 +240,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		DateTime Date_posted {
@@ -288,7 +288,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		string Logdata {

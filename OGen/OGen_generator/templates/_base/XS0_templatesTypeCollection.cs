@@ -26,7 +26,6 @@ namespace OGen.lib.templates {
 		}
 
 
-
 		#region internal XS_templatesType[] cols__ { get; set; }
 		private ArrayList cols_;
 

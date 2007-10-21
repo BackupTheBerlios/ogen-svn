@@ -56,7 +56,7 @@ namespace OGen.NTier.UTs.lib.datalayer.UTs {
 						];
 						if (_dbcon.GeneratedSQL) {
 							dbconnections__[_count++]
-#if NET20
+#if !NET_1_1
 								= DO__utils.DBConnection_createInstance(
 #else
 								= DO0__utils.DBConnection_createInstance(

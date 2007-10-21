@@ -26,25 +26,25 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 	/// </summary>
 	[DOClassAttribute("User", "", "", "", false, false)]
 	public 
-#if NET20
+#if !NET_1_1
 		partial 
 #else
 		abstract 
 #endif
 		class 
-#if NET20
+#if !NET_1_1
 		BO_User 
 #else
 		BO0_User 
 #endif
 		: BO__base {
 		#region public BO_User(...);
-#if !NET20
+#if NET_1_1
 		internal BO0_User() {}
 #endif
 
 		///
-#if NET20
+#if !NET_1_1
 		~BO_User
 #else
 		~BO0_User
@@ -60,7 +60,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 		private DO_User mainaggregate__;
 
 		///
-#if NET20
+#if !NET_1_1
 		private 
 #else
 		protected 
@@ -116,7 +116,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		long IDUser {
@@ -152,7 +152,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		string Login {
@@ -188,7 +188,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		string Password {
@@ -201,7 +201,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 		/// Allows assignement of null and check if null at User's SomeNullValue.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool SomeNullValue_isNull {
@@ -237,7 +237,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		int SomeNullValue {

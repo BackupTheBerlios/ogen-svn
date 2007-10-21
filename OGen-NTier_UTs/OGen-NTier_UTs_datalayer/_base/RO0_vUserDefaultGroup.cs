@@ -25,7 +25,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 	public sealed class RO0_vUserDefaultGroup : RO__base {
 		#region internal RO0_vUserDefaultGroup();
 		internal RO0_vUserDefaultGroup(
-#if NET20
+#if !NET_1_1
 			DO_vUserDefaultGroup 
 #else
 			DO0_vUserDefaultGroup 
@@ -40,7 +40,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 
 		#region private Properties...
 		private 
-#if NET20
+#if !NET_1_1
 			DO_vUserDefaultGroup 
 #else
 			DO0_vUserDefaultGroup 

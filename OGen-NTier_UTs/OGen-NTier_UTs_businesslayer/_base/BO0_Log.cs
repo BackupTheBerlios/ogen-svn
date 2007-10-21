@@ -26,25 +26,25 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 	/// </summary>
 	[DOClassAttribute("Log", "", "", "", false, false)]
 	public 
-#if NET20
+#if !NET_1_1
 		partial 
 #else
 		abstract 
 #endif
 		class 
-#if NET20
+#if !NET_1_1
 		BO_Log 
 #else
 		BO0_Log 
 #endif
 		: BO__base {
 		#region public BO_Log(...);
-#if !NET20
+#if NET_1_1
 		internal BO0_Log() {}
 #endif
 
 		///
-#if NET20
+#if !NET_1_1
 		~BO_Log
 #else
 		~BO0_Log
@@ -60,7 +60,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 		private DO_Log mainaggregate__;
 
 		///
-#if NET20
+#if !NET_1_1
 		private 
 #else
 		protected 
@@ -116,7 +116,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		long IDLog {
@@ -152,7 +152,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		long IDLogcode {
@@ -188,7 +188,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		long IDUser_posted {
@@ -224,7 +224,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		DateTime Date_posted {
@@ -260,7 +260,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		string Logdata {

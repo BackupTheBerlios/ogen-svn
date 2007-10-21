@@ -57,7 +57,7 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 			dbcollection_;
 
 		[XmlElement("db")]
-		public XS_dbType[] db__xml {
+		public XS_dbType[] dbcollection__xml {
 			get { return dbcollection_.cols__; }
 			set { dbcollection_.cols__ = value; }
 		}

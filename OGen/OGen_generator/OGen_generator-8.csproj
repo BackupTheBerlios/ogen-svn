@@ -96,11 +96,6 @@
       <Project>{981BC7DE-D93C-446E-861E-60A20E4E3391}</Project>
       <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
     </ProjectReference>
-    <ProjectReference Include="..\OGen_templates\OGen_templates-8.csproj">
-      <Name>OGen_templates</Name>
-      <Project>{8377EF00-063B-451A-8408-FE2F8EAD5C32}</Project>
-      <Package>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</Package>
-    </ProjectReference>
     <ProjectReference Include="..\OGen_webforms\OGen_webforms-8.csproj">
       <Name>OGen_webforms</Name>
       <Project>{196FD9A0-3C2F-4B84-BDFF-0DADC2A03791}</Project>
@@ -118,40 +113,64 @@
     <Compile Include="metadatas\MetadataCollection.cs" />
     <Compile Include="metadatas\Metadatas.cs" />
     <Compile Include="templates\XS_argumentsType.cs" />
-    <Compile Include="templates\XS_argumentType.cs" />
+    <Compile Include="templates\XS_argumentType.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="templates\XS_conditionsType.cs" />
-    <Compile Include="templates\XS_conditionType.cs" />
+    <Compile Include="templates\XS_conditionType.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="templates\XS_dependenciesType.cs" />
-    <Compile Include="templates\XS_dependencyType.cs" />
+    <Compile Include="templates\XS_dependencyType.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="templates\XS_outputsType.cs" />
-    <Compile Include="templates\XS_outputType.cs" />
-    <Compile Include="templates\XS_templatesType.cs" />
-    <Compile Include="templates\XS_templateType.cs" />
-    <Compile Include="templates\XS__templates.cs" />
+    <Compile Include="templates\XS_outputType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="templates\XS_templatesType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="templates\XS_templateType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="templates\XS__templates.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="templates\_base\XS0_argumentsType.cs" />
-    <Compile Include="templates\_base\XS0_argumentsTypeCollection.cs" />
-    <Compile Include="templates\_base\XS0_argumentType.cs" />
-    <Compile Include="templates\_base\XS0_argumentTypeCollection.cs" />
+    <Compile Include="templates\_base\XS0_argumentType.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="templates\_base\XS0_conditionsType.cs" />
-    <Compile Include="templates\_base\XS0_conditionsTypeCollection.cs" />
-    <Compile Include="templates\_base\XS0_conditionType.cs" />
-    <Compile Include="templates\_base\XS0_conditionTypeCollection.cs" />
+    <Compile Include="templates\_base\XS0_conditionType.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="templates\_base\XS0_dependenciesType.cs" />
-    <Compile Include="templates\_base\XS0_dependenciesTypeCollection.cs" />
-    <Compile Include="templates\_base\XS0_dependencyType.cs" />
-    <Compile Include="templates\_base\XS0_dependencyTypeCollection.cs" />
-    <Compile Include="templates\_base\XS0_outputEnumeration.cs" />
-    <Compile Include="templates\_base\XS0_outputModeEnumeration.cs" />
+    <Compile Include="templates\_base\XS0_dependencyType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="templates\_base\XS0_outputEnumeration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="templates\_base\XS0_outputModeEnumeration.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="templates\_base\XS0_outputsType.cs" />
-    <Compile Include="templates\_base\XS0_outputsTypeCollection.cs" />
-    <Compile Include="templates\_base\XS0_outputType.cs" />
-    <Compile Include="templates\_base\XS0_outputTypeCollection.cs" />
-    <Compile Include="templates\_base\XS0_parserEnumeration.cs" />
-    <Compile Include="templates\_base\XS0_templatesType.cs" />
-    <Compile Include="templates\_base\XS0_templatesTypeCollection.cs" />
-    <Compile Include="templates\_base\XS0_templateType.cs" />
-    <Compile Include="templates\_base\XS0_templateTypeCollection.cs" />
-    <Compile Include="templates\_base\XS0__templates.cs" />
+    <Compile Include="templates\_base\XS0_outputType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="templates\_base\XS0_parserEnumeration.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="templates\_base\XS0_templatesType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="templates\_base\XS0_templateType.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="templates\_base\XS0__templates.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="utils.cs">
       <SubType>Code</SubType>
     </Compile>

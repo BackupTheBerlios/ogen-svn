@@ -121,7 +121,7 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 			tablesearchparameterscollection_;
 
 		[XmlElement("tableSearchParameters")]
-		public XS_tableSearchParametersType[] tablesearchparameters__xml {
+		public XS_tableSearchParametersType[] tablesearchparameterscollection__xml {
 			get { return tablesearchparameterscollection_.cols__; }
 			set { tablesearchparameterscollection_.cols__ = value; }
 		}
@@ -148,7 +148,7 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 			tablesearchupdatescollection_;
 
 		[XmlElement("tableSearchUpdates")]
-		public XS_tableSearchUpdatesType[] tablesearchupdates__xml {
+		public XS_tableSearchUpdatesType[] tablesearchupdatescollection__xml {
 			get { return tablesearchupdatescollection_.cols__; }
 			set { tablesearchupdatescollection_.cols__ = value; }
 		}

@@ -87,11 +87,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				<argument name="xxxxxx" value="xxxxxx" />
 			</arguments>
 	-->
+<!-- -->
 	<xs:complexType name="argumentsType">
 		<xs:sequence>
 			<xs:element name="argument" type="argumentType" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
+<!-- -->
 
 	<!--
 				<condition eval="xxxxxx" to="xxxxxx" />
@@ -107,11 +109,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				<condition eval="xxxxxx" to="xxxxxx" />
 			</conditions>
 	-->
+<!-- -->
 	<xs:complexType name="conditionsType">
 		<xs:sequence>
 			<xs:element name="condition" type="conditionType" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
+<!-- -->
 
 	<!--
 				<output 
@@ -130,11 +134,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				<output ... />
 			</outputs>
 	-->
+<!-- -->
 	<xs:complexType name="outputsType">
 		<xs:sequence>
 			<xs:element name="output" type="outputType" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
+<!-- -->
 
 	<!--
 				<dependency name="xxxxxx" />
@@ -149,11 +155,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				<dependency name="xxxxxx" />
 			</dependencies>
 	-->
+<!-- -->
 	<xs:complexType name="dependenciesType">
 		<xs:sequence>
 			<xs:element name="dependency" type="dependencyType" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
+<!-- -->
 
 	<!--
 		<template name="xxxxxx" parserType="xslt|aspx|none" iterationType="xxxxxx">
@@ -169,9 +177,18 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<xs:attribute name="iterationType" type="xs:string" />
 
 		<xs:sequence>
-			<xs:element name="arguments" type="argumentsType" maxOccurs="unbounded" />
-			<xs:element name="conditions" type="conditionsType" maxOccurs="unbounded" />
-			<xs:element name="dependencies" type="dependenciesType" maxOccurs="unbounded" />
+<!--
+			<xs:element name="arguments" type="argumentType" maxOccurs="unbounded" />
+			<xs:element name="conditions" type="conditionType" maxOccurs="unbounded" />
+			<xs:element name="outputs" type="outputType" maxOccurs="unbounded" />
+			<xs:element name="dependencies" type="dependencyType" maxOccurs="unbounded" />
+-->
+<!-- -->
+			<xs:element name="arguments" type="argumentsType" />
+			<xs:element name="conditions" type="conditionsType" />
+			<xs:element name="outputs" type="outputsType" />
+			<xs:element name="dependencies" type="dependenciesType" />
+<!-- -->
 		</xs:sequence>
 	</xs:complexType>
 	<!--

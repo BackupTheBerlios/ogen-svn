@@ -43,7 +43,7 @@ namespace OGen.lib.templates {
 			outputcollection_;
 
 		[XmlElement("output")]
-		public XS_outputType[] output__xml {
+		public XS_outputType[] outputcollection__xml {
 			get { return outputcollection_.cols__; }
 			set { outputcollection_.cols__ = value; }
 		}

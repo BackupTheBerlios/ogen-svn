@@ -26,27 +26,6 @@ namespace OGen.lib.templates {
 	{
 		public XS0_templateType (
 		) {
-			argumentscollection_ = new 
-#if !NET_1_1
-				OGenSimpleCollection<XS_argumentsType>()
-#else
-				XS_argumentsTypeCollection()
-#endif
-			;
-			conditionscollection_ = new 
-#if !NET_1_1
-				OGenSimpleCollection<XS_conditionsType>()
-#else
-				XS_conditionsTypeCollection()
-#endif
-			;
-			dependenciescollection_ = new 
-#if !NET_1_1
-				OGenSimpleCollection<XS_dependenciesType>()
-#else
-				XS_dependenciesTypeCollection()
-#endif
-			;
 		}
 		public XS0_templateType (
 			string name_in
@@ -104,85 +83,92 @@ namespace OGen.lib.templates {
 			}
 		}
 		#endregion
-		#region public ... ArgumentsCollection { get; }
-		private 
-#if !NET_1_1
-			OGenSimpleCollection<XS_argumentsType>
-#else
-			XS_argumentsTypeCollection
-#endif
-			argumentscollection_;
+		#region public XS_argumentsType Arguments { get; set; }
+		private XS_argumentsType arguments__;
+
+		[XmlIgnore()]
+		public XS_argumentsType Arguments {
+			get {
+				if (arguments__ == null) {
+					arguments__ = new XS_argumentsType();
+				}
+				return arguments__;
+			}
+			set {
+				arguments__ = value;
+			}
+		}
 
 		[XmlElement("arguments")]
-		public XS_argumentsType[] arguments__xml {
-			get { return argumentscollection_.cols__; }
-			set { argumentscollection_.cols__ = value; }
-		}
-
-		[XmlIgnore()]
-		public
-#if !NET_1_1
-			OGenSimpleCollection<XS_argumentsType>
-#else
-			XS_argumentsTypeCollection
-#endif
-		ArgumentsCollection
-		{
-			get { return argumentscollection_; }
+		public XS_argumentsType arguments__xml {
+			get { return arguments__; }
+			set { arguments__ = value; }
 		}
 		#endregion
-		#region public ... ConditionsCollection { get; }
-		private 
-#if !NET_1_1
-			OGenSimpleCollection<XS_conditionsType>
-#else
-			XS_conditionsTypeCollection
-#endif
-			conditionscollection_;
+		#region public XS_conditionsType Conditions { get; set; }
+		private XS_conditionsType conditions__;
+
+		[XmlIgnore()]
+		public XS_conditionsType Conditions {
+			get {
+				if (conditions__ == null) {
+					conditions__ = new XS_conditionsType();
+				}
+				return conditions__;
+			}
+			set {
+				conditions__ = value;
+			}
+		}
 
 		[XmlElement("conditions")]
-		public XS_conditionsType[] conditions__xml {
-			get { return conditionscollection_.cols__; }
-			set { conditionscollection_.cols__ = value; }
-		}
-
-		[XmlIgnore()]
-		public
-#if !NET_1_1
-			OGenSimpleCollection<XS_conditionsType>
-#else
-			XS_conditionsTypeCollection
-#endif
-		ConditionsCollection
-		{
-			get { return conditionscollection_; }
+		public XS_conditionsType conditions__xml {
+			get { return conditions__; }
+			set { conditions__ = value; }
 		}
 		#endregion
-		#region public ... DependenciesCollection { get; }
-		private 
-#if !NET_1_1
-			OGenSimpleCollection<XS_dependenciesType>
-#else
-			XS_dependenciesTypeCollection
-#endif
-			dependenciescollection_;
-
-		[XmlElement("dependencies")]
-		public XS_dependenciesType[] dependencies__xml {
-			get { return dependenciescollection_.cols__; }
-			set { dependenciescollection_.cols__ = value; }
-		}
+		#region public XS_outputsType Outputs { get; set; }
+		private XS_outputsType outputs__;
 
 		[XmlIgnore()]
-		public
-#if !NET_1_1
-			OGenSimpleCollection<XS_dependenciesType>
-#else
-			XS_dependenciesTypeCollection
-#endif
-		DependenciesCollection
-		{
-			get { return dependenciescollection_; }
+		public XS_outputsType Outputs {
+			get {
+				if (outputs__ == null) {
+					outputs__ = new XS_outputsType();
+				}
+				return outputs__;
+			}
+			set {
+				outputs__ = value;
+			}
+		}
+
+		[XmlElement("outputs")]
+		public XS_outputsType outputs__xml {
+			get { return outputs__; }
+			set { outputs__ = value; }
+		}
+		#endregion
+		#region public XS_dependenciesType Dependencies { get; set; }
+		private XS_dependenciesType dependencies__;
+
+		[XmlIgnore()]
+		public XS_dependenciesType Dependencies {
+			get {
+				if (dependencies__ == null) {
+					dependencies__ = new XS_dependenciesType();
+				}
+				return dependencies__;
+			}
+			set {
+				dependencies__ = value;
+			}
+		}
+
+		[XmlElement("dependencies")]
+		public XS_dependenciesType dependencies__xml {
+			get { return dependencies__; }
+			set { dependencies__ = value; }
 		}
 		#endregion
 	}

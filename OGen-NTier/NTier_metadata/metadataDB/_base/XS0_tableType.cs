@@ -121,7 +121,7 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 			tabledbscollection_;
 
 		[XmlElement("tableDBs")]
-		public XS_tableDBsType[] tabledbs__xml {
+		public XS_tableDBsType[] tabledbscollection__xml {
 			get { return tabledbscollection_.cols__; }
 			set { tabledbscollection_.cols__ = value; }
 		}
@@ -148,7 +148,7 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 			tablefieldscollection_;
 
 		[XmlElement("tableFields")]
-		public XS_tableFieldsType[] tablefields__xml {
+		public XS_tableFieldsType[] tablefieldscollection__xml {
 			get { return tablefieldscollection_.cols__; }
 			set { tablefieldscollection_.cols__ = value; }
 		}

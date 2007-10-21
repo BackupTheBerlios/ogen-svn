@@ -43,7 +43,7 @@ namespace OGen.lib.templates {
 			argumentcollection_;
 
 		[XmlElement("argument")]
-		public XS_argumentType[] argument__xml {
+		public XS_argumentType[] argumentcollection__xml {
 			get { return argumentcollection_.cols__; }
 			set { argumentcollection_.cols__ = value; }
 		}

@@ -26,25 +26,25 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 	/// </summary>
 	[DOClassAttribute("Logcode", "", "", "", false, false)]
 	public 
-#if NET20
+#if !NET_1_1
 		partial 
 #else
 		abstract 
 #endif
 		class 
-#if NET20
+#if !NET_1_1
 		BO_Logcode 
 #else
 		BO0_Logcode 
 #endif
 		: BO__base {
 		#region public BO_Logcode(...);
-#if !NET20
+#if NET_1_1
 		internal BO0_Logcode() {}
 #endif
 
 		///
-#if NET20
+#if !NET_1_1
 		~BO_Logcode
 #else
 		~BO0_Logcode
@@ -60,7 +60,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 		private DO_Logcode mainaggregate__;
 
 		///
-#if NET20
+#if !NET_1_1
 		private 
 #else
 		protected 
@@ -116,7 +116,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		long IDLogcode {
@@ -152,7 +152,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool Warning {
@@ -188,7 +188,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool Error {
@@ -224,7 +224,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		string Code {
@@ -237,7 +237,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 		/// Allows assignement of null and check if null at Logcode's Description.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool Description_isNull {
@@ -273,7 +273,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		string Description {

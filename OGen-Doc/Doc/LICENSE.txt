@@ -21,7 +21,6 @@ OGen is licensed under various different licenses.
 	* OGen.lib.presentationlayer.winforms.UTs: MIT
 	* OGen.lib.parser: MIT
 	* OGen.lib.parser.UTs: MIT
-	* OGen.lib.templates: MIT
 	* OGen.lib.generator: MIT
 	* OGen.test: MIT
 	* OGen.NTier.lib.metadata: MIT

@@ -257,7 +257,6 @@ for (int _dbservertype = 0; _dbservertype < metadata_.DBs.Count; _dbservertype++
 				System.Configuration.ConfigurationSettings.AppSettings
 				#endif
 					["Templates"],
-				cTemplates.root4xml,
 				_dbconnectionstrings, 
 				_outputDir, 
 				new MetaFile(

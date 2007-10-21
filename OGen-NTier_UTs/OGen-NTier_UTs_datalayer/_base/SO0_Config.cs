@@ -54,7 +54,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 		/// Indicates if changes have been made to FO0_Config properties since last time getObject method was run.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool hasChanges {
@@ -93,7 +93,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		string Name {
@@ -143,7 +143,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		string Config {
@@ -193,7 +193,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		int Type {
@@ -241,7 +241,7 @@ namespace OGen.NTier.UTs.lib.datalayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		string Description {

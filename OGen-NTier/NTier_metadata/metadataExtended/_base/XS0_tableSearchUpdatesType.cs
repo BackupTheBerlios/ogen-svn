@@ -57,7 +57,7 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 			tablesearchupdatecollection_;
 
 		[XmlElement("tableSearchUpdate")]
-		public XS_tableSearchUpdateType[] tablesearchupdate__xml {
+		public XS_tableSearchUpdateType[] tablesearchupdatecollection__xml {
 			get { return tablesearchupdatecollection_.cols__; }
 			set { tablesearchupdatecollection_.cols__ = value; }
 		}

@@ -57,7 +57,7 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 			dbconnectioncollection_;
 
 		[XmlElement("dbConnection")]
-		public XS_dbConnectionType[] dbconnection__xml {
+		public XS_dbConnectionType[] dbconnectioncollection__xml {
 			get { return dbconnectioncollection_.cols__; }
 			set { dbconnectioncollection_.cols__ = value; }
 		}

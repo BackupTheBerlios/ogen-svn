@@ -168,7 +168,7 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 			tablefieldscollection_;
 
 		[XmlElement("tableFields")]
-		public XS_tableFieldsType[] tablefields__xml {
+		public XS_tableFieldsType[] tablefieldscollection__xml {
 			get { return tablefieldscollection_.cols__; }
 			set { tablefieldscollection_.cols__ = value; }
 		}
@@ -195,7 +195,7 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 			tablesearchescollection_;
 
 		[XmlElement("tableSearches")]
-		public XS_tableSearchesType[] tablesearches__xml {
+		public XS_tableSearchesType[] tablesearchescollection__xml {
 			get { return tablesearchescollection_.cols__; }
 			set { tablesearchescollection_.cols__ = value; }
 		}
@@ -222,7 +222,7 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 			tableupdatescollection_;
 
 		[XmlElement("tableUpdates")]
-		public XS_tableUpdatesType[] tableupdates__xml {
+		public XS_tableUpdatesType[] tableupdatescollection__xml {
 			get { return tableupdatescollection_.cols__; }
 			set { tableupdatescollection_.cols__ = value; }
 		}

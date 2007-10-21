@@ -26,25 +26,25 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 	/// </summary>
 	[DOClassAttribute("Word", "", "", "", false, false)]
 	public 
-#if NET20
+#if !NET_1_1
 		partial 
 #else
 		abstract 
 #endif
 		class 
-#if NET20
+#if !NET_1_1
 		BO_Word 
 #else
 		BO0_Word 
 #endif
 		: BO__base {
 		#region public BO_Word(...);
-#if !NET20
+#if NET_1_1
 		internal BO0_Word() {}
 #endif
 
 		///
-#if NET20
+#if !NET_1_1
 		~BO_Word
 #else
 		~BO0_Word
@@ -60,7 +60,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 		private DO_Word mainaggregate__;
 
 		///
-#if NET20
+#if !NET_1_1
 		private 
 #else
 		protected 
@@ -116,7 +116,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		long IDWord {
@@ -129,7 +129,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 		/// Allows assignement of null and check if null at Word's DeleteThisTestField.
 		/// </summary>
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool DeleteThisTestField_isNull {
@@ -165,7 +165,7 @@ namespace OGen.NTier.UTs.lib.businesslayer {
 			""
 		)]
 		public 
-#if !NET20
+#if NET_1_1
 			virtual 
 #endif
 		bool DeleteThisTestField {

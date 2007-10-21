@@ -43,7 +43,7 @@ namespace OGen.lib.templates {
 			dependencycollection_;
 
 		[XmlElement("dependency")]
-		public XS_dependencyType[] dependency__xml {
+		public XS_dependencyType[] dependencycollection__xml {
 			get { return dependencycollection_.cols__; }
 			set { dependencycollection_.cols__ = value; }
 		}
