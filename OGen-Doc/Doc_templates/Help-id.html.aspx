@@ -10,20 +10,28 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 */%><%@ Page language="c#" contenttype="text/html" %>
-<%@ import namespace="OGen.Doc.lib.metadata" %><%
+<%@ import namespace="OGen.Doc.lib.metadata" %>
+<%@ import namespace="OGen.Doc.lib.metadata.documentation" %><%
 #region arguments...
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_DocumentationName = System.Web.HttpUtility.UrlDecode(Request.QueryString["DocumentationName"]);
 string _arg_IDSubject = System.Web.HttpUtility.UrlDecode(Request.QueryString["IDSubject"]);
 #endregion
 
 #region varaux...
-DocMetadata _aux_doc = new DocMetadata();
-_aux_doc.LoadState_fromFile(_arg_MetadataFilepath);
+XS__RootMetadata _aux_rootmetadata = XS__RootMetadata.Load_fromFile(
+	_arg_MetadataFilepath,
+	true
+);
+XS__documentation _aux_doc
+	= _aux_rootmetadata.DocumentationCollection[
+		_arg_DocumentationName
+	];
 
-Subject _subject = _aux_doc.Subjects[_arg_IDSubject];
-Subject _subject_parent = null;
-Subject _subject_next = _subject.NextSubject();
-Subject[] _howtogethere_fromroot = _subject.HowToGetHere_fromRoot();
+XS_subjectType _subject = _aux_doc.Subjects.SubjectCollection[_arg_IDSubject];
+XS_subjectType _subject_parent = null;
+XS_subjectType _subject_next = _subject.NextSubject();
+XS_subjectType[] _howtogethere_fromroot = _subject.HowToGetHere_fromRoot();
 
 bool _isFirst;
 string _topic;
@@ -120,11 +128,11 @@ bool _topic_found;
 				<td>
 					<br><%
 
-					for (int d = 0; d < _subject.Documents.Count; d++) {%>
+					for (int d = 0; d < _subject.Documents.DocumentCollection.Count; d++) {%>
 					<span class="text">
-						<span class="subtitle"><%=_subject.Documents[d].Name%></span>
+						<span class="subtitle"><%=_subject.Documents.DocumentCollection[d].Name%></span>
 						<br>
-						<%=utils.translate(_subject.Documents[d].Text, _aux_doc)%>
+						<%=utils.translate(_subject.Documents.DocumentCollection[d].Document, _aux_doc)%>
 					</span>
 					<br>
 					<br><%
@@ -151,15 +159,15 @@ bool _topic_found;
 						_isFirst = false;
 					}
 
-					for (int s = 0; s < _aux_doc.Subjects.Count; s++) {
-						if (_aux_doc.Subjects[s].IDSubject_parent == _subject.IDSubject) {
+					for (int s = 0; s < _aux_doc.Subjects.SubjectCollection.Count; s++) {
+						if (_aux_doc.Subjects.SubjectCollection[s].IDSubject_parent == _subject.IDSubject) {
 							if (_isFirst) {
 								%><br><%
 								_isFirst = false;
 							}%>
 					<span class="text">
-						&gt; <a href="Help-<%=_aux_doc.Subjects[s].IDSubject%>.html"><%=_aux_doc.Subjects[s].Name%></a><br>
-						<%=_aux_doc.Subjects[s].Description%>.<br>
+						&gt; <a href="Help-<%=_aux_doc.Subjects.SubjectCollection[s].IDSubject%>.html"><%=_aux_doc.Subjects.SubjectCollection[s].Name%></a><br>
+						<%=_aux_doc.Subjects.SubjectCollection[s].Description%>.<br>
 					</span>
 					<br><%
 						}

@@ -127,6 +127,7 @@ if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
 				}<%
 if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
 
+				_output[i].parent_ref = root_ref_in; // ToDos: now!
 				if (root_ref_in != null) _output[i].root_ref = root_ref_in;<%
 }%>
 			}

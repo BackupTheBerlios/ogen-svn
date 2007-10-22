@@ -58,11 +58,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	</authors>
 	<codeSamples>
 		<codeSample idCodeSample="333333">
-			<codeSample>
+			<code>
 				XXXXXX
 				XXXXXX
 				XXXXXX
-			</codeSample>
+			</code>
 		</codeSample>
 		<codeSample ... />
 		<codeSample ... />
@@ -191,17 +191,17 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 <!--
 		<codeSample idCodeSample="333333">
-			<codeSample>
+			<code>
 				XXXXXX
 				XXXXXX
 				XXXXXX
-			</codeSample>
+			</code>
 		</codeSample>
 -->
 	<xs:complexType name="codeSampleType">
 		<xs:attribute name="idCodeSample" type="xs:string" />
 		<xs:sequence>
-			<xs:element name="codeSample" type="xs:string" />
+			<xs:element name="code" type="xs:string" />
 		</xs:sequence>
 	</xs:complexType>
 <!--
@@ -316,12 +316,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<xs:attribute name="version" type="xs:string" />
 		<xs:attribute name="date" type="xs:string" />
 		<xs:sequence>
-			<xs:element name="configs" type="xs:string" />
-			<xs:element name="subjects" type="xs:string" />
-			<xs:element name="authors" type="xs:string" />
-			<xs:element name="codeSamples" type="xs:string" />
-			<xs:element name="links" type="xs:string" />
-			<xs:element name="faqSubjects" type="xs:string" />
+			<xs:element name="configs" type="configsType" />
+			<xs:element name="subjects" type="subjectsType" />
+			<xs:element name="authors" type="authorsType" />
+			<xs:element name="codeSamples" type="codeSamplesType" />
+			<xs:element name="links" type="linksType" />
+			<xs:element name="faqSubjects" type="faqSubjectsType" />
 		</xs:sequence>
 	</xs:complexType>
 

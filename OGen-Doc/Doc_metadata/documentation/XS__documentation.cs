@@ -17,7 +17,7 @@ using System.Xml.Serialization;
 
 using OGen.lib.collections;
 
-namespace OGen.Doc.lib.documentation {
+namespace OGen.Doc.lib.metadata.documentation {
 	[System.Xml.Serialization.XmlRootAttribute("documentation")]
 	public class XS__documentation : XS0__documentation {
 	}

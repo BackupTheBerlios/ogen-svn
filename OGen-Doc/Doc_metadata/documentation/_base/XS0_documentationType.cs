@@ -18,14 +18,50 @@ using System.Collections;
 
 using OGen.lib.collections;
 
-namespace OGen.Doc.lib.documentation {
+namespace OGen.Doc.lib.metadata.documentation {
 	public class XS0_documentationType
 #if !NET_1_1
+		: OGenRootrefCollectionInterface<XS__RootMetadata> 
 #endif
 	{
 		public XS0_documentationType (
 		) {
 		}
+
+		#region public object parent_ref { get; }
+		private object parent_ref_;
+
+		[XmlIgnore()]
+		public object parent_ref {
+			set {
+				parent_ref_ = value;
+				if (configs__ != null) configs__.parent_ref = this;
+				if (subjects__ != null) subjects__.parent_ref = this;
+				if (authors__ != null) authors__.parent_ref = this;
+				if (codesamples__ != null) codesamples__.parent_ref = this;
+				if (links__ != null) links__.parent_ref = this;
+				if (faqsubjects__ != null) faqsubjects__.parent_ref = this;
+			}
+			get { return parent_ref_; }
+		}
+		#endregion
+		#region public XS__RootMetadata root_ref { get; }
+		private XS__RootMetadata root_ref_;
+
+		[XmlIgnore()]
+		public XS__RootMetadata root_ref {
+			set {
+				root_ref_ = value;
+				if (configs__ != null) configs__.root_ref = value;
+				if (subjects__ != null) subjects__.root_ref = value;
+				if (authors__ != null) authors__.root_ref = value;
+				if (codesamples__ != null) codesamples__.root_ref = value;
+				if (links__ != null) links__.root_ref = value;
+				if (faqsubjects__ != null) faqsubjects__.root_ref = value;
+			}
+			get { return root_ref_; }
+		}
+		#endregion
 		#region public string DocumentationName { get; set; }
 		private string documentationname_;
 
@@ -104,58 +140,136 @@ namespace OGen.Doc.lib.documentation {
 			}
 		}
 		#endregion
-		#region public string Configs { get; set; }
-		private string configs_;
+		#region public XS_configsType Configs { get; set; }
+		private XS_configsType configs__;
+
+		[XmlIgnore()]
+		public XS_configsType Configs {
+			get {
+				if (configs__ == null) {
+					configs__ = new XS_configsType();
+				}
+				return configs__;
+			}
+			set {
+				configs__ = value;
+			}
+		}
 
 		[XmlElement("configs")]
-		public string Configs {
-			get { return configs_; }
-			set { configs_ = value; }
+		public XS_configsType configs__xml {
+			get { return configs__; }
+			set { configs__ = value; }
 		}
 		#endregion
-		#region public string Subjects { get; set; }
-		private string subjects_;
+		#region public XS_subjectsType Subjects { get; set; }
+		private XS_subjectsType subjects__;
+
+		[XmlIgnore()]
+		public XS_subjectsType Subjects {
+			get {
+				if (subjects__ == null) {
+					subjects__ = new XS_subjectsType();
+				}
+				return subjects__;
+			}
+			set {
+				subjects__ = value;
+			}
+		}
 
 		[XmlElement("subjects")]
-		public string Subjects {
-			get { return subjects_; }
-			set { subjects_ = value; }
+		public XS_subjectsType subjects__xml {
+			get { return subjects__; }
+			set { subjects__ = value; }
 		}
 		#endregion
-		#region public string Authors { get; set; }
-		private string authors_;
+		#region public XS_authorsType Authors { get; set; }
+		private XS_authorsType authors__;
+
+		[XmlIgnore()]
+		public XS_authorsType Authors {
+			get {
+				if (authors__ == null) {
+					authors__ = new XS_authorsType();
+				}
+				return authors__;
+			}
+			set {
+				authors__ = value;
+			}
+		}
 
 		[XmlElement("authors")]
-		public string Authors {
-			get { return authors_; }
-			set { authors_ = value; }
+		public XS_authorsType authors__xml {
+			get { return authors__; }
+			set { authors__ = value; }
 		}
 		#endregion
-		#region public string CodeSamples { get; set; }
-		private string codesamples_;
+		#region public XS_codeSamplesType CodeSamples { get; set; }
+		private XS_codeSamplesType codesamples__;
+
+		[XmlIgnore()]
+		public XS_codeSamplesType CodeSamples {
+			get {
+				if (codesamples__ == null) {
+					codesamples__ = new XS_codeSamplesType();
+				}
+				return codesamples__;
+			}
+			set {
+				codesamples__ = value;
+			}
+		}
 
 		[XmlElement("codeSamples")]
-		public string CodeSamples {
-			get { return codesamples_; }
-			set { codesamples_ = value; }
+		public XS_codeSamplesType codesamples__xml {
+			get { return codesamples__; }
+			set { codesamples__ = value; }
 		}
 		#endregion
-		#region public string Links { get; set; }
-		private string links_;
+		#region public XS_linksType Links { get; set; }
+		private XS_linksType links__;
+
+		[XmlIgnore()]
+		public XS_linksType Links {
+			get {
+				if (links__ == null) {
+					links__ = new XS_linksType();
+				}
+				return links__;
+			}
+			set {
+				links__ = value;
+			}
+		}
 
 		[XmlElement("links")]
-		public string Links {
-			get { return links_; }
-			set { links_ = value; }
+		public XS_linksType links__xml {
+			get { return links__; }
+			set { links__ = value; }
 		}
 		#endregion
-		#region public string FAQSubjects { get; set; }
-		private string faqsubjects_;
+		#region public XS_faqSubjectsType FAQSubjects { get; set; }
+		private XS_faqSubjectsType faqsubjects__;
+
+		[XmlIgnore()]
+		public XS_faqSubjectsType FAQSubjects {
+			get {
+				if (faqsubjects__ == null) {
+					faqsubjects__ = new XS_faqSubjectsType();
+				}
+				return faqsubjects__;
+			}
+			set {
+				faqsubjects__ = value;
+			}
+		}
 
 		[XmlElement("faqSubjects")]
-		public string FAQSubjects {
-			get { return faqsubjects_; }
-			set { faqsubjects_ = value; }
+		public XS_faqSubjectsType faqsubjects__xml {
+			get { return faqsubjects__; }
+			set { faqsubjects__ = value; }
 		}
 		#endregion
 	}

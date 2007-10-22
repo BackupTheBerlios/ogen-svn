@@ -56,7 +56,8 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 								#endif
 									["ogenPath"],
 
-								@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xml"
+								//@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xml"
+								@"..\..\OGen-Doc\Doc_metadata\OGenXSD-metadatas\MD_Doc_metadata.OGenXSD-metadata.xml"
 							)
 						);
 					} catch (Exception _ex) {

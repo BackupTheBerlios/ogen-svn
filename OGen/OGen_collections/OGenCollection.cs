@@ -25,6 +25,21 @@ namespace OGen.lib.collections {
 			OGenCollectionInterface<T>, 
 			OGenRootrefCollectionInterface<R>
 	{
+		#region public object parent_ref { get; }
+		private object parent_ref_;
+
+		public object parent_ref {
+			get {
+				return parent_ref_;
+			}
+			set {
+				parent_ref_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((C)cols_[i]).parent_ref = this;
+				}
+			}
+		}
+		#endregion
 		#region public R root_ref { get; }
 		private R root_ref_;
 
@@ -47,6 +62,21 @@ namespace OGen.lib.collections {
 			class,
 			OGenRootrefCollectionInterface<R> 
 	{
+		#region public object parent_ref { get; }
+		private object parent_ref_;
+
+		public object parent_ref {
+			get {
+				return parent_ref_;
+			}
+			set {
+				parent_ref_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((C)cols_[i]).parent_ref = this;
+				}
+			}
+		}
+		#endregion
 		#region public R root_ref { get; }
 		private R root_ref_;
 
@@ -70,16 +100,25 @@ namespace OGen.lib.collections {
 		#region public C this[T memberName_in] { get; }
 		public C this[T memberName_in] {
 			get {
-				for (int i = 0; i < cols_.Count; i++) {
-					if (memberName_in.Equals(
-						cols_[i].CollectionName
-					)) {
-						return cols_[i];
-					}
-				}
-
-				return null;
+				int _index = Search(memberName_in);
+				return (_index == -1)
+					? null
+					: cols_[_index];
 			}
+		}
+		#endregion
+
+		#region public int Search(T memberName_in);
+		public int Search(T memberName_in) {
+			for (int i = 0; i < cols_.Count; i++) {
+				if (memberName_in.Equals(
+					cols_[i].CollectionName
+				)) {
+					return i;
+				}
+			}
+
+			return -1;
 		}
 		#endregion
 	}

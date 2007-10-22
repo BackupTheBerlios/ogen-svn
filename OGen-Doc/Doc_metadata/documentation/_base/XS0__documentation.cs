@@ -18,7 +18,7 @@ using System.Xml.Serialization;
 
 using OGen.lib.collections;
 
-namespace OGen.Doc.lib.documentation {
+namespace OGen.Doc.lib.metadata.documentation {
 	public class XS0__documentation : XS_documentationType, iClaSSe_metadata {
 
 		public const string DOCUMENTATION = "documentation";
@@ -35,6 +35,15 @@ namespace OGen.Doc.lib.documentation {
 
 		#region public static XS__documentation[] Load_fromFile(...);
 		public static XS__documentation[] Load_fromFile(
+			params string[] filePath_in
+		) {
+			return Load_fromFile(
+				null, 
+				filePath_in
+			);
+		}
+		public static XS__documentation[] Load_fromFile(
+			XS__RootMetadata root_ref_in, 
 			params string[] filePath_in
 		) {
 			FileStream _stream;
@@ -63,6 +72,9 @@ namespace OGen.Doc.lib.documentation {
 						_ex.Message
 					));
 				}
+
+				_output[i].parent_ref = root_ref_in; // ToDos: now!
+				if (root_ref_in != null) _output[i].root_ref = root_ref_in;
 			}
 			return _output;
 		}

@@ -234,7 +234,9 @@ namespace OGen.XSD.lib.metadata {
 					_output[i].root_schema_ = ROOT + "." + SCHEMA + "[" + i + "]";
 				} catch (Exception _ex) {
 					throw new Exception(string.Format(
-						"---\nERROR READING XML:\n{0}\n---\n{1}",
+						"\n---\n{0}.{1}.Load_fromFile(): - ERROR READING XML:\n{2}\n---\n{3}",
+						typeof(XS_Schema).Namespace, 
+						typeof(XS_Schema).Name, 
 						filePath_in[i],
 						_ex.Message
 					));

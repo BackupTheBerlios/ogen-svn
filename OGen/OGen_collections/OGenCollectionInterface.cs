@@ -17,6 +17,10 @@ using System;
 
 namespace OGen.lib.collections {
 	public interface OGenRootrefCollectionInterface<R> {
+		object parent_ref {
+			get;
+			set;
+		}
 		R root_ref {
 			get;
 			set;

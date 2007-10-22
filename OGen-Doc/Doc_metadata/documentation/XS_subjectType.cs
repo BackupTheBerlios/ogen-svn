@@ -17,7 +17,101 @@ using System.Xml.Serialization;
 
 using OGen.lib.collections;
 
-namespace OGen.Doc.lib.documentation {
+namespace OGen.Doc.lib.metadata.documentation {
 	public class XS_subjectType : XS0_subjectType {
+		#region public Subject[] HowToGetHere_fromRoot();
+		public XS_subjectType[] HowToGetHere_fromRoot() {
+			XS_subjectType[] HowToGetHere_fromRoot_out;
+
+			int c;
+			XS_subjectType _subject_parent;
+			#region HowToGetHere_fromRoot_out = new XS_subjectType[...];
+			_subject_parent = this;
+			c = 0;
+
+			do {
+				//_arraylist.Add(_subject_parent.IDSubject);
+				c++;
+			} while ((_subject_parent = ((XS_subjectsType)parent_ref).SubjectCollection[_subject_parent.IDSubject_parent]) != null);
+
+			HowToGetHere_fromRoot_out = new XS_subjectType[c];
+			#endregion
+			#region HowToGetHere_fromRoot_out[...] = ...;
+			_subject_parent = this;
+			c = HowToGetHere_fromRoot_out.Length;
+
+			do {
+				c--;
+				HowToGetHere_fromRoot_out[c] = _subject_parent;
+			} while ((_subject_parent = ((XS_subjectsType)parent_ref).SubjectCollection[_subject_parent.IDSubject_parent]) != null);
+			#endregion
+
+			return HowToGetHere_fromRoot_out;
+		}
+		#endregion
+		#region public bool hasDescendants();
+		public bool hasDescendants() {
+			for (int i = 0; i < ((XS_subjectsType)parent_ref).SubjectCollection.Count; i++) {
+				if (((XS_subjectsType)parent_ref).SubjectCollection[i].IDSubject_parent == IDSubject) {
+					return true;
+				}
+			}
+
+			return false;
+		}
+		#endregion
+		#region public XS_subjectType NextSubject();
+		/***************************************************
+		 *                                                 *
+		 *	1 ............... >> 1.1 (SITUATION 1)         *
+		 *                                                 *
+		 *		1.1 ......... >> 1.2 (SITUATION 2)         *
+		 *		1.2 ......... >> 1.3 (situation 2 again)   *
+		 *		1.3 ......... >> 1.3.1 (situation 1 again) *
+		 *                                                 *
+		 *			1.3.1 ... >> 1.3.2 (situation 2 again) *
+		 *			1.3.2 ... >> 2 (SITUATION 3)           *
+		 *                                                 *
+		 *	2 ............... >> null                      *
+		 *                                                 *
+		 ***************************************************/
+		private XS_subjectType nextsubject() {
+			if (parent_ref == null) return null;
+
+			// situation 2:
+			for (int i = ((XS_subjectsType)parent_ref).SubjectCollection.Search(IDSubject) + 1; i < ((XS_subjectsType)parent_ref).SubjectCollection.Count; i++) {
+				if (((XS_subjectsType)parent_ref).SubjectCollection[i].IDSubject_parent == IDSubject_parent) {
+					return ((XS_subjectsType)parent_ref).SubjectCollection[i];
+				}
+			}
+
+			// situation 3:
+			for (int i = 0; i < ((XS_subjectsType)parent_ref).SubjectCollection.Count; i++) {
+				if (((XS_subjectsType)parent_ref).SubjectCollection[i].IDSubject == IDSubject_parent) {
+					return ((XS_subjectsType)parent_ref).SubjectCollection[i].nextsubject();
+				}
+			}
+
+			return null;
+		}
+		public XS_subjectType NextSubject() {
+			// situation 1:
+			for (int i = 0; i < ((XS_subjectsType)parent_ref).SubjectCollection.Count; i++) {
+				if (((XS_subjectsType)parent_ref).SubjectCollection[i].IDSubject_parent == IDSubject) {
+					return ((XS_subjectsType)parent_ref).SubjectCollection[i];
+				}
+			}
+
+			//// situation 2:
+			//for (int i = Parent_ref.Search(IDSubject) + 1; i < Parent_ref.Count; i++) {
+			//	if (Parent_ref[i].IDSubject_parent == IDSubject_parent) {
+			//		return Parent_ref[i];
+			//	}
+			//}
+
+			// situation 3:
+			return nextsubject();
+		}
+		#endregion
 	}
 }

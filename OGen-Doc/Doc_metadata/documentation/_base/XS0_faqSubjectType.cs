@@ -18,17 +18,17 @@ using System.Collections;
 
 using OGen.lib.collections;
 
-namespace OGen.Doc.lib.documentation {
+namespace OGen.Doc.lib.metadata.documentation {
 	public class XS0_faqSubjectType
 #if !NET_1_1
-		: OGenCollectionInterface<string>
+		: OGenRootrefCollectionInterface<XS__RootMetadata> , OGenCollectionInterface<string>
 #endif
 	{
 		public XS0_faqSubjectType (
 		) {
 			faqcollection_ = new 
 #if !NET_1_1
-				OGenCollection<XS_faqType, string>()
+				OGenRootrefCollection<XS_faqType, XS__RootMetadata, string>()
 #else
 				XS_faqTypeCollection()
 #endif
@@ -51,6 +51,31 @@ namespace OGen.Doc.lib.documentation {
 		}
 		#endregion
 #endif
+
+		#region public object parent_ref { get; }
+		private object parent_ref_;
+
+		[XmlIgnore()]
+		public object parent_ref {
+			set {
+				parent_ref_ = value;
+				faqcollection_.parent_ref = this;
+			}
+			get { return parent_ref_; }
+		}
+		#endregion
+		#region public XS__RootMetadata root_ref { get; }
+		private XS__RootMetadata root_ref_;
+
+		[XmlIgnore()]
+		public XS__RootMetadata root_ref {
+			set {
+				root_ref_ = value;
+				faqcollection_.root_ref = value;
+			}
+			get { return root_ref_; }
+		}
+		#endregion
 		#region public string IDFAQSubject { get; set; }
 		private string idfaqsubject_;
 
@@ -106,7 +131,7 @@ namespace OGen.Doc.lib.documentation {
 		#region public ... FAQCollection { get; }
 		private 
 #if !NET_1_1
-			OGenCollection<XS_faqType, string>
+			OGenRootrefCollection<XS_faqType, XS__RootMetadata, string>
 #else
 			XS_faqTypeCollection
 #endif
@@ -121,7 +146,7 @@ namespace OGen.Doc.lib.documentation {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenCollection<XS_faqType, string>
+			OGenRootrefCollection<XS_faqType, XS__RootMetadata, string>
 #else
 			XS_faqTypeCollection
 #endif

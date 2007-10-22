@@ -346,7 +346,9 @@ namespace OGen.XSD.lib.metadata {
 				);
 			} catch (Exception _ex) {
 				throw new Exception(string.Format(
-					"\n---\nERROR READING XML:\n{0}\n---\n{1}",
+						"\n---\n{0}.{1}.Load_fromFile(): - ERROR READING XML:\n{2}\n---\n{3}",
+						typeof(ExtendedMetadata).Namespace, 
+						typeof(ExtendedMetadata).Name, 
 					filePath_in,
 					_ex.Message
 				));

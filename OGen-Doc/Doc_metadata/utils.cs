@@ -14,6 +14,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 #endregion
 using System;
 using System.Text.RegularExpressions;
+using OGen.Doc.lib.metadata.documentation;
 
 namespace OGen.Doc.lib.metadata {
 	public class utils { private utils() {}
@@ -26,7 +27,8 @@ namespace OGen.Doc.lib.metadata {
 
 		public static string translate(
 			string text_in, 
-			DocMetadata root_in
+			XS__documentation root_in
+			//DocMetadata root_in
 		) {
 			string translate_out = text_in;
 			string _translation;
@@ -38,7 +40,7 @@ namespace OGen.Doc.lib.metadata {
 				switch (_matchingfields.Groups["command"].Value.ToLower()) {
 					case "config": {
 						_translation 
-							= root_in.Configs[
+							= root_in.Configs.ConfigCollection[
 								_matchingfields.Groups["params"].Value
 							].Value;
 						
@@ -47,7 +49,7 @@ namespace OGen.Doc.lib.metadata {
 					case "code": {
 						_translation 
 							= "<div class='code'><pre>"
-							+ root_in.CodeSamples[
+							+ root_in.CodeSamples.CodeSampleCollection[
 								_matchingfields.Groups["params"].Value
 							].Code
 							+ "</pre></div>";
@@ -55,7 +57,7 @@ namespace OGen.Doc.lib.metadata {
 						break;
 					}
 					case "link-external": {
-						Link _link = root_in.Links[
+						XS_linkType _link = root_in.Links.LinkCollection[
 							_matchingfields.Groups["params"].Value
 						];
 						_translation = string.Format(

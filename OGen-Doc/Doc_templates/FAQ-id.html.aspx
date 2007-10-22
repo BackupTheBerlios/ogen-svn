@@ -10,19 +10,27 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 */%><%@ Page language="c#" contenttype="text/html" %>
-<%@ import namespace="OGen.Doc.lib.metadata" %><%
+<%@ import namespace="OGen.Doc.lib.metadata" %>
+<%@ import namespace="OGen.Doc.lib.metadata.documentation" %><%
 #region arguments...
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_DocumentationName = System.Web.HttpUtility.UrlDecode(Request.QueryString["DocumentationName"]);
 string _arg_IDFAQSubject = System.Web.HttpUtility.UrlDecode(Request.QueryString["IDFAQSubject"]);
 #endregion
 
 #region varaux...
-DocMetadata _aux_doc = new DocMetadata();
-_aux_doc.LoadState_fromFile(_arg_MetadataFilepath);
+XS__RootMetadata _aux_rootmetadata = XS__RootMetadata.Load_fromFile(
+	_arg_MetadataFilepath,
+	true
+);
+XS__documentation _aux_doc
+	= _aux_rootmetadata.DocumentationCollection[
+		_arg_DocumentationName
+	];
 
-FAQSubject _faqsubject = _aux_doc.FAQSubjects[_arg_IDFAQSubject];
-FAQSubject _faqsubject_parent = null;
-FAQSubject[] _howtogethere_fromroot = _faqsubject.HowToGetHere_fromRoot();
+XS_faqSubjectType _faqsubject = _aux_doc.FAQSubjects.FAQSubjectCollection[_arg_IDFAQSubject];
+XS_faqSubjectType _faqsubject_parent = null;
+XS_faqSubjectType[] _howtogethere_fromroot = _faqsubject.HowToGetHere_fromRoot();
 
 bool _isFirst;
 #endregion
@@ -98,19 +106,16 @@ bool _isFirst;
 				<td>
 					<br><%
 
-					for (int q = 0; q < _faqsubject.Count; q++) {%>
+					for (int q = 0; q < _faqsubject.FAQCollection.Count; q++) {%>
 					<span class="text">
-						<span class="subtitle_question"><%=_faqsubject[q].Question%></span><br>
+						<span class="subtitle_question"><%=_faqsubject.FAQCollection[q].Question%></span><br>
 						<br>
-						<table cellpadding="0" cellspacing="0" width="100%" class="text"><%
-						for (int a = 0; a < _faqsubject[q].Count; a++) {%>
+						<table cellpadding="0" cellspacing="0" width="100%" class="text">
 							<tr>
 								<td width="10"></td>
-								<td>- <%=_faqsubject[q][a].Answer%><br><br></td>
+								<td>- <%=_faqsubject.FAQCollection[q].Answer%><br><br></td>
 								<td width="10"></td>
-							</tr><%
-						}
-						%>
+							</tr>
 						</table>
 					</span><%
 					}%>
@@ -136,15 +141,15 @@ bool _isFirst;
 						_isFirst = false;
 					}
 
-					for (int s = 0; s < _aux_doc.FAQSubjects.Count; s++) {
-						if (_aux_doc.FAQSubjects[s].IDFAQSubject_parent == _faqsubject.IDFAQSubject) {
+					for (int s = 0; s < _aux_doc.FAQSubjects.FAQSubjectCollection.Count; s++) {
+						if (_aux_doc.FAQSubjects.FAQSubjectCollection[s].IDFAQSubject_parent == _faqsubject.IDFAQSubject) {
 							if (_isFirst) {
 								%><br><%
 								_isFirst = false;
 							}%>
 					<span class="text">
-						&gt; <a href="FAQ-<%=_aux_doc.FAQSubjects[s].IDFAQSubject%>.html"><%=_aux_doc.FAQSubjects[s].Name%></a><br>
-						<%=_aux_doc.FAQSubjects[s].Description%>.<br>
+						&gt; <a href="FAQ-<%=_aux_doc.FAQSubjects.FAQSubjectCollection[s].IDFAQSubject%>.html"><%=_aux_doc.FAQSubjects.FAQSubjectCollection[s].Name%></a><br>
+						<%=_aux_doc.FAQSubjects.FAQSubjectCollection[s].Description%>.<br>
 					</span>
 					<br><%
 						}

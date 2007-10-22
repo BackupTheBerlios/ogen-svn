@@ -10,14 +10,22 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 */%><%@ Page language="c#" contenttype="text/html" %>
-<%@ import namespace="OGen.Doc.lib.metadata" %><%
+<%@ import namespace="OGen.Doc.lib.metadata" %>
+<%@ import namespace="OGen.Doc.lib.metadata.documentation" %><%
 #region arguments...
 string _arg_MetadataFilepath = System.Web.HttpUtility.UrlDecode(Request.QueryString["MetadataFilepath"]);
+string _arg_DocumentationName = System.Web.HttpUtility.UrlDecode(Request.QueryString["DocumentationName"]);
 #endregion
 
 #region varaux...
-DocMetadata _aux_doc = new DocMetadata();
-_aux_doc.LoadState_fromFile(_arg_MetadataFilepath);
+XS__RootMetadata _aux_rootmetadata = XS__RootMetadata.Load_fromFile(
+	_arg_MetadataFilepath,
+	true
+);
+XS__documentation _aux_doc 
+	= _aux_rootmetadata.DocumentationCollection[
+		_arg_DocumentationName
+	];
 #endregion
 //-----------------------------------------------------------------------------------------
 %><html>
@@ -46,7 +54,7 @@ _aux_doc.LoadState_fromFile(_arg_MetadataFilepath);
 								<b>Documentation</b>
 								&gt;
 								<a href="Help-0.html">
-									<%=_aux_doc.Subjects["0"].Name%></a>
+									<%=_aux_doc.Subjects.SubjectCollection["0"].Name%></a>
 							</td>
 							<td align="right">
 								<%=_aux_doc.Version%></td>
@@ -63,8 +71,8 @@ _aux_doc.LoadState_fromFile(_arg_MetadataFilepath);
 					<br>
 
 					<span class="text">
-						&gt; <a href="Help-0.html"><%=_aux_doc.Subjects["0"].Name%></a><br>
-						<%=_aux_doc.Subjects["0"].Description%><br>
+						&gt; <a href="Help-0.html"><%=_aux_doc.Subjects.SubjectCollection["0"].Name%></a><br>
+						<%=_aux_doc.Subjects.SubjectCollection["0"].Description%><br>
 					</span>
 					<br>
 <!--
@@ -75,8 +83,8 @@ _aux_doc.LoadState_fromFile(_arg_MetadataFilepath);
 					<br>
 
 					<span class="text">
-						&gt; <a href="FAQ-0.html"><%=_aux_doc.FAQSubjects["0"].Name%></a><br>
-						<%=_aux_doc.FAQSubjects["0"].Description%><br>
+						&gt; <a href="FAQ-0.html"><%=_aux_doc.FAQSubjects.FAQSubjectCollection["0"].Name%></a><br>
+						<%=_aux_doc.FAQSubjects.FAQSubjectCollection["0"].Description%><br>
 					</span>
 					<br>
 -->

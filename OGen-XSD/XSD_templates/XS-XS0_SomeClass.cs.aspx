@@ -122,6 +122,33 @@ if (_aux_rootmetadata.ExtendedMetadata.isSimple) {%><%=""%>
 
 if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%><%=""%>
 
+		#region public object parent_ref { get; }
+		private object parent_ref_;
+
+		[XmlIgnore()]
+		public object parent_ref {
+			set {
+				parent_ref_ = value;<%
+
+				for (int e = 0; e < _aux_elements.Count; e++) {
+					if (_aux_elements[e].MaxOccurs == XS_Element.MaxOccursEnum.unbounded) {%><%=""%>
+				<%=_aux_elements[e].Name.ToLower()%>collection_.parent_ref = this;<%
+
+					} else {
+						_aux_ntype = OGen.XSD.lib.metadata.utils.Convert_NType(
+							_aux_rootmetadata,
+							_aux_elements[e].Type,
+							out _aux_isstandardntype
+						);
+						if (!_aux_isstandardntype) {%>
+				if (<%=_aux_elements[e].Name.ToLower()%>__ != null) <%=_aux_elements[e].Name.ToLower()%>__.parent_ref = this;<%
+						}
+					}
+				}%>
+			}
+			get { return parent_ref_; }
+		}
+		#endregion
 		#region public <%=XS__%>RootMetadata root_ref { get; }
 		private <%=XS__%>RootMetadata root_ref_;
 

@@ -17,6 +17,7 @@ using System.IO;
 using OGen.lib.templates;
 using OGen.lib.generator;
 using OGen.Doc.lib.metadata;
+using OGen.Doc.lib.metadata.documentation;
 
 namespace OGen.Doc.lib.generator {
 	public class cFGenerator {
@@ -47,9 +48,9 @@ namespace OGen.Doc.lib.generator {
 			get { return (filename_ != string.Empty); }
 		}
 		#endregion
-		#region public DocMetadata Metadata { get ; }
-		private DocMetadata metadata_;
-		public DocMetadata Metadata {
+		#region public XS__documentation Metadata { get ; }
+		private XS__documentation metadata_;
+		public XS__documentation Metadata {
 			get { return metadata_; }
 		}
 		#endregion
@@ -70,7 +71,7 @@ namespace OGen.Doc.lib.generator {
 		) {
 			if (notifyBack_in != null) notifyBack_in("creating...", true);
 			#region DocMetadata _metadata_temp = new DocMetadata(); ...;
-			DocMetadata _metadata_temp = new DocMetadata();
+			XS__documentation _metadata_temp = new XS__documentation();
 			_metadata_temp.DocumentationName = documentationName_in;
 			#endregion
 
@@ -112,10 +113,9 @@ namespace OGen.Doc.lib.generator {
 
 			if (notifyBack_in != null) notifyBack_in("opening...", true);
 			if (notifyBack_in != null) notifyBack_in("- reading metadata from xml file", true);
-			metadata_ = new DocMetadata();
-			metadata_.LoadState_fromFile(
+			metadata_ = XS__documentation.Load_fromFile(
 				filename_
-			);
+			)[0];
 			if (notifyBack_in != null) notifyBack_in("... finished", true);
 		}
 		#endregion
@@ -171,7 +171,7 @@ namespace OGen.Doc.lib.generator {
 				_outputDir, 
 				new MetaFile(
 					filename_, 
-					DocMetadata.ROOT
+					XS__documentation.ROOT
 				)
 			).Build(
 				notifyBase_in, 

@@ -16,8 +16,15 @@ using System;
 using System.Xml.Serialization;
 
 using OGen.lib.collections;
+using OGen.Doc.lib.metadata.documentation;
 
-namespace OGen.Doc.lib.metadata.documentation {
-	public class XS_codeSamplesType : XS0_codeSamplesType {
+namespace OGen.Doc.lib.metadata {
+	public class XS__RootMetadata : XS0__RootMetadata {
+		public XS__RootMetadata (
+			string metadataFilepath_in
+		) : base (
+			metadataFilepath_in
+		) {
+		}
 	}
 }

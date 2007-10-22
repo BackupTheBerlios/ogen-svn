@@ -18,25 +18,51 @@ using System.Collections;
 
 using OGen.lib.collections;
 
-namespace OGen.Doc.lib.documentation {
+namespace OGen.Doc.lib.metadata.documentation {
 	public class XS0_authorsType
 #if !NET_1_1
+		: OGenRootrefCollectionInterface<XS__RootMetadata> 
 #endif
 	{
 		public XS0_authorsType (
 		) {
 			authorcollection_ = new 
 #if !NET_1_1
-				OGenCollection<XS_authorType, string>()
+				OGenRootrefCollection<XS_authorType, XS__RootMetadata, string>()
 #else
 				XS_authorTypeCollection()
 #endif
 			;
 		}
+
+		#region public object parent_ref { get; }
+		private object parent_ref_;
+
+		[XmlIgnore()]
+		public object parent_ref {
+			set {
+				parent_ref_ = value;
+				authorcollection_.parent_ref = this;
+			}
+			get { return parent_ref_; }
+		}
+		#endregion
+		#region public XS__RootMetadata root_ref { get; }
+		private XS__RootMetadata root_ref_;
+
+		[XmlIgnore()]
+		public XS__RootMetadata root_ref {
+			set {
+				root_ref_ = value;
+				authorcollection_.root_ref = value;
+			}
+			get { return root_ref_; }
+		}
+		#endregion
 		#region public ... AuthorCollection { get; }
 		private 
 #if !NET_1_1
-			OGenCollection<XS_authorType, string>
+			OGenRootrefCollection<XS_authorType, XS__RootMetadata, string>
 #else
 			XS_authorTypeCollection
 #endif
@@ -51,7 +77,7 @@ namespace OGen.Doc.lib.documentation {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenCollection<XS_authorType, string>
+			OGenRootrefCollection<XS_authorType, XS__RootMetadata, string>
 #else
 			XS_authorTypeCollection
 #endif

@@ -116,9 +116,15 @@
     </Compile>
     <None Include="COPYING.MIT" />
     <Content Include="doc.css" />
-    <Content Include="FAQ-id.html.aspx" />
-    <Content Include="Help-id.html.aspx" />
-    <Content Include="index.html.aspx" />
+    <Content Include="FAQ-id.html.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Help-id.html.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="index.html.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="lib_doc.js" />
     <Content Include="LICENSE.MIT.txt" />
     <Content Include="LICENSE.txt" />

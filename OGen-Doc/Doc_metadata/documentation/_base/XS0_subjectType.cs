@@ -18,10 +18,10 @@ using System.Collections;
 
 using OGen.lib.collections;
 
-namespace OGen.Doc.lib.documentation {
+namespace OGen.Doc.lib.metadata.documentation {
 	public class XS0_subjectType
 #if !NET_1_1
-		: OGenCollectionInterface<string>
+		: OGenRootrefCollectionInterface<XS__RootMetadata> , OGenCollectionInterface<string>
 #endif
 	{
 		public XS0_subjectType (
@@ -44,6 +44,31 @@ namespace OGen.Doc.lib.documentation {
 		}
 		#endregion
 #endif
+
+		#region public object parent_ref { get; }
+		private object parent_ref_;
+
+		[XmlIgnore()]
+		public object parent_ref {
+			set {
+				parent_ref_ = value;
+				if (documents__ != null) documents__.parent_ref = this;
+			}
+			get { return parent_ref_; }
+		}
+		#endregion
+		#region public XS__RootMetadata root_ref { get; }
+		private XS__RootMetadata root_ref_;
+
+		[XmlIgnore()]
+		public XS__RootMetadata root_ref {
+			set {
+				root_ref_ = value;
+				if (documents__ != null) documents__.root_ref = value;
+			}
+			get { return root_ref_; }
+		}
+		#endregion
 		#region public string IDSubject { get; set; }
 		private string idsubject_;
 

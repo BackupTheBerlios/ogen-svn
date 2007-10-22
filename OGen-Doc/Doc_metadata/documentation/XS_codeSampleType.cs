@@ -17,7 +17,7 @@ using System.Xml.Serialization;
 
 using OGen.lib.collections;
 
-namespace OGen.Doc.lib.documentation {
+namespace OGen.Doc.lib.metadata.documentation {
 	public class XS_codeSampleType : XS0_codeSampleType {
 	}
 }

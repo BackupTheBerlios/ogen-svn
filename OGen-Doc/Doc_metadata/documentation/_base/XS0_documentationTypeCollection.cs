@@ -18,13 +18,28 @@ using System.Collections;
 
 using OGen.lib.collections;
 
-namespace OGen.Doc.lib.documentation {
+namespace OGen.Doc.lib.metadata.documentation {
 	#region public class XS_documentationTypeCollection { ... }
 	public class XS_documentationTypeCollection {
 		public XS_documentationTypeCollection() {
 			cols_ = new ArrayList();
 		}
 
+		#region public XS__RootMetadata root_ref { get; }
+		private XS__RootMetadata root_ref_;
+
+		public XS__RootMetadata root_ref {
+			get {
+				return root_ref_;
+			}
+			set {
+				root_ref_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((XS_documentationType)cols_[i]).root_ref = value;
+				}
+			}
+		}
+		#endregion
 
 		#region internal XS_documentationType[] cols__ { get; set; }
 		private ArrayList cols_;

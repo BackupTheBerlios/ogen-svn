@@ -11,9 +11,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 -->
 <templates>
-	<template	name="doc.css" 
+	<template name="doc.css" 
 			parserType="none"
-			iterationType="ROOT:documentation">
+			iterationType="ROOT.documentation[n]">
 		<arguments />
 		<conditions />
 		<dependencies />
@@ -22,9 +22,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				type="File" mode="Replace" />
 		</outputs>
 	</template>
-	<template	name="lib_doc.js" 
+	<template name="lib_doc.js" 
 			parserType="none"
-			iterationType="ROOT:documentation">
+			iterationType="ROOT.documentation[n]">
 		<arguments />
 		<conditions />
 		<dependencies />
@@ -34,11 +34,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</outputs>
 	</template>
 
-	<template	name="index.html.aspx" 
+	<template name="index.html.aspx" 
 			parserType="aspx"
-			iterationType="ROOT:documentation">
+			iterationType="ROOT.documentation[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenDoc-metadatas/MD0_${ROOT:documentation.documentationName}.OGenDoc-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenDoc-metadatas/MD0_${ROOT.documentation[n].documentationName}.OGenDoc-metadata.xml" />
+			<argument name="DocumentationName" value="${ROOT.documentation[n].documentationName}" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -48,11 +49,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<dependencies />
 	</template>
 <!--
-	<template	name="FAQs.html.aspx" 
+	<template name="FAQs.html.aspx" 
 			parserType="aspx"
-			iterationType="ROOT:documentation">
+			iterationType="ROOT.documentation[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenDoc-metadatas/MD0_${ROOT:documentation.documentationName}.OGenDoc-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenDoc-metadatas/MD0_${ROOT.documentation[n].documentationName}.OGenDoc-metadata.xml" />
+			<argument name="DocumentationName" value="${ROOT.documentation[n].documentationName}" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -62,28 +64,46 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<dependencies />
 	</template>
 -->
-	<template	name="FAQ-id.html.aspx" 
+
+
+
+
+<!--
+	<template name="FAQ-id.html.aspx" 
 			parserType="aspx"
-			iterationType="ROOT:documentation.faqSubjects.faqSubject[n]">
+
+
+iterationType="ROOT.documentation[n].faqSubjects.faqSubject[n]">
+
+
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenDoc-metadatas/MD0_${ROOT:documentation.documentationName}.OGenDoc-metadata.xml" />
-			<argument name="IDFAQSubject" value="${ROOT:documentation.faqSubjects.faqSubject[n].idFAQSubject}" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenDoc-metadatas/MD0_${ROOT.documentation[n].documentationName}.OGenDoc-metadata.xml" />
+			<argument name="DocumentationName" value="${ROOT.documentation[n].documentationName}" />
+			<argument name="IDFAQSubject" value="${ROOT.documentation[n].faqSubjects.faqSubject[n].idFAQSubject}" />
 		</arguments>
 		<conditions>
-			<!--condition eval="ROOT:documentation.faqSubjects.faqSubject[n].idFAQSubject_parent" to="" /-->
+-->
+			<!--condition eval="ROOT.documentation[n].faqSubjects.faqSubject[n].idFAQSubject_parent" to="" /-->
+<!--
 		</conditions>
 		<outputs>
-			<output to="${CONFIG.outputPath}/FAQ-${ROOT:documentation.faqSubjects.faqSubject[n].idFAQSubject}.html"
+			<output to="${CONFIG.outputPath}/FAQ-${ROOT.documentation[n].faqSubjects.faqSubject[n].idFAQSubject}.html"
 				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
+-->
+
+
+
+
 <!--
-	<template	name="Help.html.aspx" 
+	<template name="Help.html.aspx" 
 			parserType="aspx"
-			iterationType="ROOT:documentation">
+			iterationType="ROOT.documentation[n]">
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenDoc-metadatas/MD0_${ROOT:documentation.documentationName}.OGenDoc-metadata.xml" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenDoc-metadatas/MD0_${ROOT.documentation[n].documentationName}.OGenDoc-metadata.xml" />
+			<argument name="DocumentationName" value="${ROOT.documentation[n].documentationName}" />
 		</arguments>
 		<conditions />
 		<outputs>
@@ -93,18 +113,33 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<dependencies />
 	</template>
 -->
-	<template	name="Help-id.html.aspx" 
+
+
+
+
+<!--
+	<template name="Help-id.html.aspx" 
 			parserType="aspx"
-			iterationType="ROOT:documentation.subjects.subject[n]">
+
+
+iterationType="ROOT.documentation[n].subjects.subject[n]">
+
+
 		<arguments>
-			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenDoc-metadatas/MD0_${ROOT:documentation.documentationName}.OGenDoc-metadata.xml" />
-			<argument name="IDSubject" value="${ROOT:documentation.subjects.subject[n].idSubject}" />
+			<argument name="MetadataFilepath" value="${CONFIG.outputPath}/OGenDoc-metadatas/MD0_${ROOT.documentation[n].documentationName}.OGenDoc-metadata.xml" />
+			<argument name="DocumentationName" value="${ROOT.documentation[n].documentationName}" />
+			<argument name="IDSubject" value="${ROOT.documentation[n].subjects.subject[n].idSubject}" />
 		</arguments>
 		<conditions />
 		<outputs>
-			<output to="${CONFIG.outputPath}/Help-${ROOT:documentation.subjects.subject[n].idSubject}.html"
+			<output to="${CONFIG.outputPath}/Help-${ROOT.documentation[n].subjects.subject[n].idSubject}.html"
 				type="File" mode="Replace" />
 		</outputs>
 		<dependencies />
 	</template>
+-->
+
+
+
+
 </templates>

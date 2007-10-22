@@ -18,10 +18,10 @@ using System.Collections;
 
 using OGen.lib.collections;
 
-namespace OGen.Doc.lib.documentation {
+namespace OGen.Doc.lib.metadata.documentation {
 	public class XS0_codeSampleType
 #if !NET_1_1
-		: OGenCollectionInterface<string>
+		: OGenRootrefCollectionInterface<XS__RootMetadata> , OGenCollectionInterface<string>
 #endif
 	{
 		public XS0_codeSampleType (
@@ -44,6 +44,29 @@ namespace OGen.Doc.lib.documentation {
 		}
 		#endregion
 #endif
+
+		#region public object parent_ref { get; }
+		private object parent_ref_;
+
+		[XmlIgnore()]
+		public object parent_ref {
+			set {
+				parent_ref_ = value;
+			}
+			get { return parent_ref_; }
+		}
+		#endregion
+		#region public XS__RootMetadata root_ref { get; }
+		private XS__RootMetadata root_ref_;
+
+		[XmlIgnore()]
+		public XS__RootMetadata root_ref {
+			set {
+				root_ref_ = value;
+			}
+			get { return root_ref_; }
+		}
+		#endregion
 		#region public string IDCodeSample { get; set; }
 		private string idcodesample_;
 
@@ -57,13 +80,13 @@ namespace OGen.Doc.lib.documentation {
 			}
 		}
 		#endregion
-		#region public string CodeSample { get; set; }
-		private string codesample_;
+		#region public string Code { get; set; }
+		private string code_;
 
-		[XmlElement("codeSample")]
-		public string CodeSample {
-			get { return codesample_; }
-			set { codesample_ = value; }
+		[XmlElement("code")]
+		public string Code {
+			get { return code_; }
+			set { code_ = value; }
 		}
 		#endregion
 	}
