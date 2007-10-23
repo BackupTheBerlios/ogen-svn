@@ -86,11 +86,11 @@ namespace OGen.lib.templates {
 		#region public string Read_fromRoot(string what_in);
 		public string Read_fromRoot(string what_in) {
 			return OGen.lib.generator.utils.ReflectThrough(
-				this,
-				ROOT_TEMPLATES, 
+				this, 
+				Root_Templates, 
 				null, 
-				what_in,
-				ROOT_TEMPLATES, 
+				what_in, 
+				Root_Templates, 
 				true, 
 				true
 			);
@@ -102,11 +102,11 @@ namespace OGen.lib.templates {
 			cClaSSe.dIteration_found iteration_found_in
 		) {
 			OGen.lib.generator.utils.ReflectThrough(
-				this,
-				ROOT_TEMPLATES, 
+				this, 
+				Root_Templates, 
 				iteration_found_in, 
-				iteration_in,
-				ROOT_TEMPLATES, 
+				iteration_in, 
+				Root_Templates, 
 				false, 
 				true
 			);

@@ -98,11 +98,11 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 		#region public string Read_fromRoot(string what_in);
 		public string Read_fromRoot(string what_in) {
 			return OGen.lib.generator.utils.ReflectThrough(
-				this,
-				ROOT_METADATADB, 
+				this, 
+				Root_MetadataDB, 
 				null, 
-				what_in,
-				ROOT_METADATADB, 
+				what_in, 
+				Root_MetadataDB, 
 				true, 
 				true
 			);
@@ -114,11 +114,11 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 			cClaSSe.dIteration_found iteration_found_in
 		) {
 			OGen.lib.generator.utils.ReflectThrough(
-				this,
-				ROOT_METADATADB, 
+				this, 
+				Root_MetadataDB, 
 				iteration_found_in, 
-				iteration_in,
-				ROOT_METADATADB, 
+				iteration_in, 
+				Root_MetadataDB, 
 				false, 
 				true
 			);

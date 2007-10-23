@@ -98,11 +98,11 @@ namespace OGen.Doc.lib.metadata.documentation {
 		#region public string Read_fromRoot(string what_in);
 		public string Read_fromRoot(string what_in) {
 			return OGen.lib.generator.utils.ReflectThrough(
-				this,
-				ROOT_DOCUMENTATION, 
+				this, 
+				Root_Documentation, 
 				null, 
-				what_in,
-				ROOT_DOCUMENTATION, 
+				what_in, 
+				Root_Documentation, 
 				true, 
 				true
 			);
@@ -114,11 +114,11 @@ namespace OGen.Doc.lib.metadata.documentation {
 			cClaSSe.dIteration_found iteration_found_in
 		) {
 			OGen.lib.generator.utils.ReflectThrough(
-				this,
-				ROOT_DOCUMENTATION, 
+				this, 
+				Root_Documentation, 
 				iteration_found_in, 
-				iteration_in,
-				ROOT_DOCUMENTATION, 
+				iteration_in, 
+				Root_Documentation, 
 				false, 
 				true
 			);

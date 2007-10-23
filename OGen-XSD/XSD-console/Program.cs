@@ -58,6 +58,7 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 
 								//@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xml"
 								@"..\..\OGen-Doc\Doc_metadata\OGenXSD-metadatas\MD_Doc_metadata.OGenXSD-metadata.xml"
+								//@"..\..\OGen\OGen_generator\OGenXSD-metadatas\MD_OGen_templates.OGenXSD-metadata.xml"
 							)
 						);
 					} catch (Exception _ex) {

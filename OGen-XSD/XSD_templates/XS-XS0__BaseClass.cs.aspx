@@ -153,11 +153,15 @@ if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
 		#region public string Read_fromRoot(string what_in);
 		public string Read_fromRoot(string what_in) {
 			return OGen.lib.generator.utils.ReflectThrough(
-				this,
-				ROOT_<%=_aux_schema.Element.Name.ToUpper()%>, 
+				this, <%--
+				// ROOT_<%=_aux_schema.Element.Name.ToUpper()%>,
+				--%>
+				Root_<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_schema.Element.Name)%>, 
 				null, 
-				what_in,
-				ROOT_<%=_aux_schema.Element.Name.ToUpper()%>, 
+				what_in, <%--
+				// ROOT_<%=_aux_schema.Element.Name.ToUpper()%>,
+				--%>
+				Root_<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_schema.Element.Name)%>, 
 				true, 
 				true
 			);
@@ -169,11 +173,15 @@ if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
 			cClaSSe.dIteration_found iteration_found_in
 		) {
 			OGen.lib.generator.utils.ReflectThrough(
-				this,
-				ROOT_<%=_aux_schema.Element.Name.ToUpper()%>, 
+				this, <%--
+				// ROOT_<%=_aux_schema.Element.Name.ToUpper()%>,
+				--%>
+				Root_<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_schema.Element.Name)%>, 
 				iteration_found_in, 
-				iteration_in,
-				ROOT_<%=_aux_schema.Element.Name.ToUpper()%>, 
+				iteration_in, <%--
+				// ROOT_<%=_aux_schema.Element.Name.ToUpper()%>,
+				--%>
+				Root_<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_schema.Element.Name)%>, 
 				false, 
 				true
 			);

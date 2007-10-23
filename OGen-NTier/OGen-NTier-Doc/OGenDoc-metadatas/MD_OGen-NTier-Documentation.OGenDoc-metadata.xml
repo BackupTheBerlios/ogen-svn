@@ -25,6 +25,7 @@ projectURL            ="http://ogen.berlios.de/"
 
 	<configs>
 		<config name="someTest" value="someValue" />
+		<config name="someOtherTest" value="someOtherValue" />
 	</configs>
 	<subjects>
 		<subject idSubject="0" idSubject_parent="" 

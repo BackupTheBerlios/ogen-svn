@@ -111,7 +111,7 @@ XS__documentation _aux_doc
 							</td>
 							<td align="right" valign="top">
 								&gt; <a href="Help-0.html">
-									<%=_aux_doc.Subjects["0"].Name%></a>
+									<%=_aux_doc.Subjects.SubjectCollection["0"].Name%></a>
 							</td>
 						</tr>
 					</table>
