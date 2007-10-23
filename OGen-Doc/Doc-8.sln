@@ -30,6 +30,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayer_SQLServer-8"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OGen_datalayersupport-8", "..\OGen\OGen_datalayersupport\OGen_datalayersupport-8.csproj", "{88D87481-CC3F-49C7-A013-758387F3452E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doc-test-8", "Doc-test\Doc-test-8.csproj", "{D3537355-C003-41A9-8B12-ED4F3D67B99B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -92,6 +94,10 @@ Global
 		{88D87481-CC3F-49C7-A013-758387F3452E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88D87481-CC3F-49C7-A013-758387F3452E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88D87481-CC3F-49C7-A013-758387F3452E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3537355-C003-41A9-8B12-ED4F3D67B99B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3537355-C003-41A9-8B12-ED4F3D67B99B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3537355-C003-41A9-8B12-ED4F3D67B99B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3537355-C003-41A9-8B12-ED4F3D67B99B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

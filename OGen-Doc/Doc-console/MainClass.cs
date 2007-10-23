@@ -18,62 +18,10 @@ using OGen.lib.generator;
 using OGen.Doc.lib.metadata;
 using OGen.Doc.lib.generator;
 
-
-
-
-//using OGen.lib.templates;
-//using OGen.Doc.lib.metadata.documentation;
 namespace OGen.Doc.presentationlayer.console {
 	class MainClass {
 		[STAThread]
 		static void Main(string[] args_in) {
-//			string filename_ = System.IO.Path.Combine(
-//				#if !NET_1_1
-//				System.Configuration.ConfigurationManager.AppSettings
-//				#else
-//				System.Configuration.ConfigurationSettings.AppSettings
-//				#endif
-//					["ogenPath"],
-//
-//				@"..\..\OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen-NTier.OGenDoc-metadata.xml"
-//			);
-//			string _outputDir = System.IO.Directory.GetParent(
-//				Path.GetDirectoryName(filename_)
-//			).FullName;
-//
-//			XS__RootMetadata rootmetadata_ = XS__RootMetadata.Load_fromFile(
-//				filename_, 
-//				false
-//			);
-//
-//			Console.WriteLine(rootmetadata_.Read_fromRoot("ROOT.documentation[0].documentationName"));
-//
-////			MetaFile[] _metafiles = new MetaFile[rootmetadata_.MetadataFiles.MetadataFiles.Count];
-////			for (int i = 0; i < rootmetadata_.MetadataFiles.MetadataFiles.Count; i++) {
-////				_metafiles[i] = new MetaFile(
-////					Path.Combine(
-////						Path.GetDirectoryName(filename_), 
-////						rootmetadata_.MetadataFiles.MetadataFiles[i].XMLFilename
-////					),
-////					XS__documentation.DOCUMENTATION
-////				);
-////			}
-////			cGenerator _generator = new cGenerator(
-////				#if !NET_1_1
-////				System.Configuration.ConfigurationManager.AppSettings
-////				#else
-////				System.Configuration.ConfigurationSettings.AppSettings
-////				#endif
-////					["Templates"],
-////				_outputDir, 
-////				_metafiles
-////			);
-////			_generator.Build(
-////				Notify, 
-////				rootmetadata_
-////			);
-//			return;
-
 			#region Console.WriteLine("Copyright (C) 2002 Francisco Monteiro");
 			Console.WriteLine(
 				@"
@@ -109,7 +57,7 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 						#endif
 							["ogenPath"],
 
-						@"..\..\OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen-NTier.OGenDoc-metadata.xml"
+						@"..\..\OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen.OGenDoc-metadata.xml"
 					)
 				);
 #else

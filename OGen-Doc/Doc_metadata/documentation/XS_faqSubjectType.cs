@@ -19,6 +19,27 @@ using OGen.lib.collections;
 
 namespace OGen.Doc.lib.metadata.documentation {
 	public class XS_faqSubjectType : XS0_faqSubjectType {
+		#region public ... parent_ref_faqSubjectTypeCollection { get; }
+		public
+#if !NET_1_1
+			OGenRootrefCollection<XS_faqSubjectType, XS__RootMetadata, string>
+#else
+			XS_faqSubjectTypeCollection
+#endif
+			parent_ref_faqSubjectTypeCollection {
+
+			get {
+					return (
+#if !NET_1_1
+						OGenRootrefCollection<XS_faqSubjectType, XS__RootMetadata, string>
+#else
+						XS_faqSubjectTypeCollection
+#endif
+					)parent_ref;
+			}
+		}
+		#endregion
+
 		#region public Subject[] HowToGetHere_fromRoot();
 		public XS_faqSubjectType[] HowToGetHere_fromRoot() {
 			XS_faqSubjectType[] HowToGetHere_fromRoot_out;
@@ -32,7 +53,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 			do {
 				//_arraylist.Add(_faqsubject_parent.IDSubject);
 				c++;
-			} while ((_faqsubject_parent = ((XS_faqSubjectsType)parent_ref).FAQSubjectCollection[_faqsubject_parent.IDFAQSubject_parent]) != null);
+			} while ((_faqsubject_parent = parent_ref_faqSubjectTypeCollection[_faqsubject_parent.IDFAQSubject_parent]) != null);
 
 			HowToGetHere_fromRoot_out = new XS_faqSubjectType[c];
 			#endregion
@@ -43,7 +64,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 			do {
 				c--;
 				HowToGetHere_fromRoot_out[c] = _faqsubject_parent;
-			} while ((_faqsubject_parent = ((XS_faqSubjectsType)parent_ref).FAQSubjectCollection[_faqsubject_parent.IDFAQSubject_parent]) != null);
+			} while ((_faqsubject_parent = parent_ref_faqSubjectTypeCollection[_faqsubject_parent.IDFAQSubject_parent]) != null);
 			#endregion
 
 			return HowToGetHere_fromRoot_out;
@@ -51,8 +72,8 @@ namespace OGen.Doc.lib.metadata.documentation {
 		#endregion
 		#region public bool hasDescendants();
 		public bool hasDescendants() {
-			for (int i = 0; i < ((XS_faqSubjectsType)parent_ref).FAQSubjectCollection.Count; i++) {
-				if (((XS_faqSubjectsType)parent_ref).FAQSubjectCollection[i].IDFAQSubject_parent == IDFAQSubject) {
+			for (int i = 0; i < parent_ref_faqSubjectTypeCollection.Count; i++) {
+				if (parent_ref_faqSubjectTypeCollection[i].IDFAQSubject_parent == IDFAQSubject) {
 					return true;
 				}
 			}

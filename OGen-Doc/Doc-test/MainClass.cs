@@ -15,71 +15,62 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 using System;
 using System.IO;
 using System.Xml;
+using OGen.lib.generator;
 using OGen.Doc.lib.metadata;
+using OGen.Doc.lib.generator;
+using OGen.lib.templates;
+using OGen.Doc.lib.metadata.documentation;
 
 namespace Doc_test {
-	class MainClass {
+	public class MainClass {
 		[STAThread]
 		static void Main(string[] args) {
+			string filename_ = System.IO.Path.Combine(
+				#if !NET_1_1
+				System.Configuration.ConfigurationManager.AppSettings
+				#else
+				System.Configuration.ConfigurationSettings.AppSettings
+				#endif
+					["ogenPath"],
+
+				@"..\..\OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen-NTier.OGenDoc-metadata.xml"
+			);
+			string _outputDir = System.IO.Directory.GetParent(
+				Path.GetDirectoryName(filename_)
+			).FullName;
+
+			XS__RootMetadata rootmetadata_ = XS__RootMetadata.Load_fromFile(
+				filename_,
+				false
+			);
+
+			Console.WriteLine(rootmetadata_.Read_fromRoot("ROOT.documentation[0].documentationName"));
+
+//			MetaFile[] _metafiles = new MetaFile[rootmetadata_.MetadataFiles.MetadataFiles.Count];
+//			for (int i = 0; i < rootmetadata_.MetadataFiles.MetadataFiles.Count; i++) {
+//				_metafiles[i] = new MetaFile(
+//					Path.Combine(
+//						Path.GetDirectoryName(filename_), 
+//						rootmetadata_.MetadataFiles.MetadataFiles[i].XMLFilename
+//					),
+//					XS__documentation.DOCUMENTATION
+//				);
+//			}
+//			cGenerator _generator = new cGenerator(
+//				#if !NET_1_1
+//				System.Configuration.ConfigurationManager.AppSettings
+//				#else
+//				System.Configuration.ConfigurationSettings.AppSettings
+//				#endif
+//					["Templates"],
+//				_outputDir, 
+//				_metafiles
+//			);
+//			_generator.Build(
+//				Notify, 
+//				rootmetadata_
+//			);
 			return;
-
-			DocMetadata _metadate;
-
-			_metadate = new DocMetadata();
-			_metadate.LoadState_fromFile(
-				@"C:\Documents and Settings\fmonteiro\My Documents\_RAM-unsorted-COPY\MySharedProjects\OGen-Doc.SVN\Doc-test\OGenDoc-metadatas\MD_OGenNTier.OGenDoc-metadata.xml", 
-				"documentation"
-			);
-			_metadate.SaveState_toFile(
-				@"C:\Documents and Settings\fmonteiro\My Documents\_RAM-unsorted-COPY\MySharedProjects\OGen-Doc.SVN\Doc-test\OGenDoc-metadatas\Documentation-2.xml", 
-				"documentation"
-			);
-			_metadate = null;
-
-			_metadate = new DocMetadata();
-			_metadate.LoadState_fromFile(
-				@"C:\Documents and Settings\fmonteiro\My Documents\_RAM-unsorted-COPY\MySharedProjects\OGen-Doc.SVN\Doc-test\OGenDoc-metadatas\Documentation-2.xml", 
-				"documentation"
-			);
-			_metadate.SaveState_toFile(
-				@"C:\Documents and Settings\fmonteiro\My Documents\_RAM-unsorted-COPY\MySharedProjects\OGen-Doc.SVN\Doc-test\OGenDoc-metadatas\Documentation-3.xml", 
-				"documentation"
-			);
-
-			#region ...
-//			XmlDocument _xmlDoc_in;
-//			if (true) {
-//				_xmlDoc_in = new XmlDocument();
-//				FileStream _xmlFile = new FileStream(
-//					@"C:\Documents and Settings\fmonteiro\My Documents\_RAM-unsorted-COPY\MySharedProjects\OGen-Doc.SVN\Doc-test\OGenDoc-metadatas\Documentation-3.xml", 
-//					FileMode.Open,
-//					FileAccess.Read,
-//					FileShare.ReadWrite
-//				);
-//				_xmlDoc_in.Load(_xmlFile);
-//				_xmlFile.Close(); _xmlFile = null;
-//			}
-//			if (true) {
-//				XmlDocument _xmlDoc_out;
-//
-//				_xmlDoc_out = new XmlDocument();
-//				_xmlDoc_out.AppendChild(
-//					_xmlDoc_in.FirstChild
-//				);
-//
-//				//_xmlDoc_out =_xmlDoc_in;
-//				#region _xmlDoc_out.Save(new FileStream(fileName_in));
-//				FileStream _xmlFile = new FileStream(
-//					@"C:\Documents and Settings\fmonteiro\My Documents\_RAM-unsorted-COPY\MySharedProjects\OGen-Doc.SVN\Doc-test\OGenDoc-metadatas\Documentation-4.xml", 
-//					FileMode.Create,
-//					FileAccess.Write,
-//					FileShare.ReadWrite
-//				);
-//				_xmlDoc_out.Save(_xmlFile);
-//				_xmlFile.Close(); _xmlFile = null;
-//				#endregion
-//			}
-			#endregion
 		}
 	}
 }

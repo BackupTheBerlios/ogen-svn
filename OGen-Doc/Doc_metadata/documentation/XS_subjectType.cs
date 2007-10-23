@@ -19,6 +19,27 @@ using OGen.lib.collections;
 
 namespace OGen.Doc.lib.metadata.documentation {
 	public class XS_subjectType : XS0_subjectType {
+		#region public ... parent_ref_subjectTypeCollection { get; }
+		public
+#if !NET_1_1
+			OGenRootrefCollection<XS_subjectType, XS__RootMetadata, string>
+#else
+			XS_subjectTypeCollection
+#endif
+			parent_ref_subjectTypeCollection {
+
+			get {
+					return (
+#if !NET_1_1
+						OGenRootrefCollection<XS_subjectType, XS__RootMetadata, string>
+#else
+						XS_subjectTypeCollection
+#endif
+					)parent_ref;
+			}
+		}
+		#endregion
+
 		#region public Subject[] HowToGetHere_fromRoot();
 		public XS_subjectType[] HowToGetHere_fromRoot() {
 			XS_subjectType[] HowToGetHere_fromRoot_out;
@@ -32,7 +53,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 			do {
 				//_arraylist.Add(_subject_parent.IDSubject);
 				c++;
-			} while ((_subject_parent = ((XS_subjectsType)parent_ref).SubjectCollection[_subject_parent.IDSubject_parent]) != null);
+			} while ((_subject_parent = parent_ref_subjectTypeCollection[_subject_parent.IDSubject_parent]) != null);
 
 			HowToGetHere_fromRoot_out = new XS_subjectType[c];
 			#endregion
@@ -43,7 +64,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 			do {
 				c--;
 				HowToGetHere_fromRoot_out[c] = _subject_parent;
-			} while ((_subject_parent = ((XS_subjectsType)parent_ref).SubjectCollection[_subject_parent.IDSubject_parent]) != null);
+			} while ((_subject_parent = parent_ref_subjectTypeCollection[_subject_parent.IDSubject_parent]) != null);
 			#endregion
 
 			return HowToGetHere_fromRoot_out;
@@ -51,8 +72,8 @@ namespace OGen.Doc.lib.metadata.documentation {
 		#endregion
 		#region public bool hasDescendants();
 		public bool hasDescendants() {
-			for (int i = 0; i < ((XS_subjectsType)parent_ref).SubjectCollection.Count; i++) {
-				if (((XS_subjectsType)parent_ref).SubjectCollection[i].IDSubject_parent == IDSubject) {
+			for (int i = 0; i < parent_ref_subjectTypeCollection.Count; i++) {
+				if (parent_ref_subjectTypeCollection[i].IDSubject_parent == IDSubject) {
 					return true;
 				}
 			}
@@ -79,16 +100,16 @@ namespace OGen.Doc.lib.metadata.documentation {
 			if (parent_ref == null) return null;
 
 			// situation 2:
-			for (int i = ((XS_subjectsType)parent_ref).SubjectCollection.Search(IDSubject) + 1; i < ((XS_subjectsType)parent_ref).SubjectCollection.Count; i++) {
-				if (((XS_subjectsType)parent_ref).SubjectCollection[i].IDSubject_parent == IDSubject_parent) {
-					return ((XS_subjectsType)parent_ref).SubjectCollection[i];
+			for (int i = parent_ref_subjectTypeCollection.Search(IDSubject) + 1; i < parent_ref_subjectTypeCollection.Count; i++) {
+				if (parent_ref_subjectTypeCollection[i].IDSubject_parent == IDSubject_parent) {
+					return parent_ref_subjectTypeCollection[i];
 				}
 			}
 
 			// situation 3:
-			for (int i = 0; i < ((XS_subjectsType)parent_ref).SubjectCollection.Count; i++) {
-				if (((XS_subjectsType)parent_ref).SubjectCollection[i].IDSubject == IDSubject_parent) {
-					return ((XS_subjectsType)parent_ref).SubjectCollection[i].nextsubject();
+			for (int i = 0; i < parent_ref_subjectTypeCollection.Count; i++) {
+				if (parent_ref_subjectTypeCollection[i].IDSubject == IDSubject_parent) {
+					return parent_ref_subjectTypeCollection[i].nextsubject();
 				}
 			}
 
@@ -96,17 +117,17 @@ namespace OGen.Doc.lib.metadata.documentation {
 		}
 		public XS_subjectType NextSubject() {
 			// situation 1:
-			for (int i = 0; i < ((XS_subjectsType)parent_ref).SubjectCollection.Count; i++) {
-				if (((XS_subjectsType)parent_ref).SubjectCollection[i].IDSubject_parent == IDSubject) {
-					return ((XS_subjectsType)parent_ref).SubjectCollection[i];
+			for (int i = 0; i < parent_ref_subjectTypeCollection.Count; i++) {
+				if (parent_ref_subjectTypeCollection[i].IDSubject_parent == IDSubject) {
+					return parent_ref_subjectTypeCollection[i];
 				}
 			}
 
 			//// situation 2:
-			//for (int i = Parent_ref.Search(IDSubject) + 1; i < Parent_ref.Count; i++) {
-			//	if (Parent_ref[i].IDSubject_parent == IDSubject_parent) {
-			//		return Parent_ref[i];
-			//	}
+			//for (int i = parent_ref_subjectTypeCollection.Search(IDSubject) + 1; i < parent_ref_subjectTypeCollection.Count; i++) {
+			//    if (parent_ref_subjectTypeCollection[i].IDSubject_parent == IDSubject_parent) {
+			//        return parent_ref_subjectTypeCollection[i];
+			//    }
 			//}
 
 			// situation 3:

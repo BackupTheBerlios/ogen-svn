@@ -47,6 +47,7 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 			} else {
 				#if DEBUG
 					try {
+						Console.WriteLine("--- OGen_templates");
 						DoIt(
 							System.IO.Path.Combine(
 								#if !NET_1_1
@@ -56,9 +57,33 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 								#endif
 									["ogenPath"],
 
-								//@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xml"
+								@"..\..\OGen\OGen_generator\OGenXSD-metadatas\MD_OGen_templates.OGenXSD-metadata.xml"
+							)
+						);
+						Console.WriteLine("--- NTier_metadata");
+						DoIt(
+							System.IO.Path.Combine(
+								#if !NET_1_1
+								System.Configuration.ConfigurationManager.AppSettings
+								#else
+								System.Configuration.ConfigurationSettings.AppSettings
+								#endif
+									["ogenPath"],
+
+								@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xml"
+							)
+						);
+						Console.WriteLine("--- Doc_metadata");
+						DoIt(
+							System.IO.Path.Combine(
+								#if !NET_1_1
+								System.Configuration.ConfigurationManager.AppSettings
+								#else
+								System.Configuration.ConfigurationSettings.AppSettings
+								#endif
+									["ogenPath"],
+
 								@"..\..\OGen-Doc\Doc_metadata\OGenXSD-metadatas\MD_Doc_metadata.OGenXSD-metadata.xml"
-								//@"..\..\OGen\OGen_generator\OGenXSD-metadatas\MD_OGen_templates.OGenXSD-metadata.xml"
 							)
 						);
 					} catch (Exception _ex) {
