@@ -93,6 +93,18 @@ namespace OGen.lib.generator {
 				if (iteration_found_in != null) iteration_found_in(path_in);
 			}
 
+//Console.WriteLine(string.Format(
+//	"\n---\n{0}.{1}.ReflectThrough:{7}(\n\tsomeClass_in:\"{2}.{3}\",\n\tpath_in:\"{4}\",\n\titeration_in:\"{5}\",\n\tpathTranslated_in:\"{6}\"\n)\n---", 
+//	typeof(utils).Namespace, 
+//	typeof(utils).Name, 
+//	someClass_in.GetType().Namespace, 
+//	someClass_in.GetType().Name, 
+//	path_in, 
+//	iteration_in, 
+//	pathTranslated_in, 
+//	returnValue_in ? "READ" : "ITERATE"
+//));
+
 //Console.Write("{{{0}}}", path_in.ToUpper());
 
 			PropertyInfo[] _properties;
@@ -101,7 +113,8 @@ namespace OGen.lib.generator {
 			object _value;
 			Array _array;
 			string _output = null;
-			bool _isDefined = false;
+			bool _isAttribute = false;
+			bool _isElement = false;
 			string _attributename = string.Empty;
 
 			_properties = someClass_in.GetType().GetProperties(
@@ -109,11 +122,31 @@ namespace OGen.lib.generator {
 				BindingFlags.Instance
 			);
 			for (int _prop = 0; _prop < _properties.Length; _prop++) {
-				if (Attribute.IsDefined(
+				_isAttribute = Attribute.IsDefined(
+					_properties[_prop], 
+					typeof(System.Xml.Serialization.XmlAttributeAttribute)
+				);
+				_isElement = Attribute.IsDefined(
 					_properties[_prop], 
 					typeof(System.Xml.Serialization.XmlElementAttribute)
-				)) {
-					#region 
+				);
+
+				if (
+					_isElement
+&&
+(
+	(_properties[_prop].PropertyType != typeof(string))
+	&&
+	(_properties[_prop].PropertyType != typeof(decimal))
+	&&
+	(_properties[_prop].PropertyType != typeof(int))
+	&&
+	(_properties[_prop].PropertyType != typeof(bool))
+	&&
+	(_properties[_prop].PropertyType != typeof(DateTime))
+)
+				) {
+					#region XmlElement...
 					_value = _properties[_prop].GetValue(someClass_in, null);
 
 					if (_value == null) continue;
@@ -174,14 +207,19 @@ if (returnValue_in && (_output != null))
 					}
 					#endregion
 				} else if (
-					(_isDefined = Attribute.IsDefined(
-						_properties[_prop], 
-						typeof(System.Xml.Serialization.XmlAttributeAttribute)
-					))
+					_isAttribute
 					||
 					anyAttribute_notJustXml
+					||
+(
+	_isElement
+	&&
+	(
+		(_properties[_prop].PropertyType == typeof(string))
+	)
+)
 				) {
-					#region
+					#region XmlAttribute...
 					if (
 						anyAttribute_notJustXml 
 						&& 
@@ -192,9 +230,11 @@ if (returnValue_in && (_output != null))
 						_value = _properties[_prop].GetValue(someClass_in, null);
 					} catch (Exception _ex) {
 						throw new Exception(string.Format(
-							"\n---\n{0}.{1}.ReflectThrough(\n\t\"{2}\",\n\t\"{3}\",\n\t\"{4}\"\n)\n---\n{5}", 
+							"\n---\n{0}.{1}.ReflectThrough(\n\tsomeClass_in:\"{2}.{3}\",\n\tpath_in:\"{4}\",\n\titeration_in:\"{5}\",\n\tpathTranslated_in:\"{6}\"\n)\n---\n{7}", 
 							typeof(utils).Namespace, 
 							typeof(utils).Name, 
+							someClass_in.GetType().Namespace, 
+							someClass_in.GetType().Name, 
 							path_in, 
 							iteration_in, 
 							pathTranslated_in, 
@@ -204,7 +244,7 @@ if (returnValue_in && (_output != null))
 
 					if (_value == null) continue;
 
-					if (_isDefined) {
+					if (_isAttribute) {
 						_attribute 
 							= (System.Xml.Serialization.XmlAttributeAttribute)Attribute.GetCustomAttributes(
 								_properties[_prop], 
@@ -212,6 +252,14 @@ if (returnValue_in && (_output != null))
 								true
 							)[0];
 						_attributename = _attribute.AttributeName;
+					} else if (_isElement) {
+						_elementAttribute 
+							= (System.Xml.Serialization.XmlElementAttribute)Attribute.GetCustomAttributes(
+								_properties[_prop], 
+								typeof(System.Xml.Serialization.XmlElementAttribute), 
+								true
+							)[0];
+						_attributename = _elementAttribute.ElementName;
 					} else {
 						_attributename = _properties[_prop].Name;
 					}

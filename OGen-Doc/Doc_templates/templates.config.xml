@@ -33,7 +33,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 				type="File" mode="Replace" />
 		</outputs>
 	</template>
-
 	<template name="index.html.aspx" 
 			parserType="aspx"
 			iterationType="ROOT.documentation[n]">
@@ -117,7 +116,6 @@ iterationType="ROOT.documentation[n].faqSubjects.faqSubject[n]">
 
 
 
-<!--
 	<template name="Help-id.html.aspx" 
 			parserType="aspx"
 
@@ -137,9 +135,4 @@ iterationType="ROOT.documentation[n].subjects.subject[n]">
 		</outputs>
 		<dependencies />
 	</template>
--->
-
-
-
-
 </templates>
