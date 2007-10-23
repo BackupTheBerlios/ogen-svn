@@ -33,6 +33,21 @@ namespace OGen.XSD.lib.metadata {
 		public XS_Schema() {
 		}
 
+		#region public object parent_ref { get; }
+		private object parent_ref_;
+
+		[XmlIgnore()]
+		public object parent_ref {
+			set {
+				parent_ref_ = value;
+
+				if (element__ != null) element__.parent_ref = this;
+				simpletypecollection_.parent_ref = this;
+				complextypecollection_.parent_ref = this;
+			}
+			get { return parent_ref_; }
+		}
+		#endregion
 		#region public RootMetadata root_ref { get; }
 		private RootMetadata root_ref_;
 
@@ -242,6 +257,7 @@ namespace OGen.XSD.lib.metadata {
 					));
 				}
 
+				_output[i].parent_ref = root_ref_in; // ToDos: now!
 				if (root_ref_in != null) _output[i].root_ref = root_ref_in;
 			}
 

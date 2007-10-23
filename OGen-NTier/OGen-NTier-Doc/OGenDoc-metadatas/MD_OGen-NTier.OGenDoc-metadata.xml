@@ -28,8 +28,8 @@ projectURL            ="http://ogen.berlios.de/"
 	</configs>
 	<subjects>
 		<subject idSubject="0" idSubject_parent="" 
-			name="Help" 
-			description="
+			name="Help"> 
+			<description>
 help for OGen
 
 
@@ -39,27 +39,31 @@ ToDos: here!
 &lt;br&gt;
 &lt;br&gt;
 &amp;gt; &lt;a href=&quot;http://developer.berlios.de/projects/ogen/&quot;&gt;BerliOS project page&lt;/a&gt;
-
-
-" />
-
+			</description>
+			<documents />
+		</subject>
 		<subject idSubject="1" idSubject_parent="0" 
-			name="what is OGen?"
-			description="OGen is a code generator. It generates code both on text files and database functions (PostgreSQL and SQL Server are currently supported) based on xml metadatas and aspx/xslt templates provided by users.">
+			name="what is OGen?">
+			<description>
+				OGen is a code generator. It generates code both on text files and database functions (PostgreSQL and SQL Server are currently supported) based on xml metadatas and aspx/xslt templates provided by users.
+			</description>
 			<documents>
 				<!--document idDocument="5" 
 					name="description" 
-					description="ToDos: here!" 
-					document="" /-->
+					description="ToDos: here!">
+					<document />
+				</document-->
 				<document idDocument="2" 
 					name="who is it intended to?" 
-					description="" 
-					document="Developers" />
+					description="">
+					<document>
+						Developers
+					</document>
+				</document>
 				<document idDocument="1" 
 					name="license" 
-					description="ToDos: here!" 
-					document="
-
+					description="ToDos: here!">
+					<document>
 OGen is distributed under the permissive
 &lt;a href=&quot;http://www.opensource.org/licenses/mit-license.php&quot;&gt;
 	MIT License&lt;/a&gt;
@@ -88,36 +92,43 @@ with the
 &lt;!--
 &lt;/a&gt;
 --&gt;
-
-" />
+					</document>
+				</document>
 				<document idDocument="3" 
 					name="why?" 
-					description="ToDos: here!" 
-					document="ToDos: here!&lt;br&gt;
+					description="ToDos: here!">
+					<document>
 ToDos: here!&lt;br&gt;
-..." />
+ToDos: here!&lt;br&gt;
+...
+					</document>
+				</document>
 				<document idDocument="4" 
 					name="considerations" 
-					description="ToDos: here!" 
-					document="ToDos: here!&lt;br&gt;
+					description="ToDos: here!">
+					<document>
 ToDos: here!&lt;br&gt;
-..." />
+ToDos: here!&lt;br&gt;
+...
+					</document>
+				</document>
 			</documents>
 		</subject>
 
 
 		<subject idSubject="2" idSubject_parent="0" 
-			name="introduction"
-			description="ToDos: here! a more proper introduction to OGen">
+			name="introduction">
+			<description>ToDos: here! a more proper introduction to OGen</description>
+			<documents />
 		</subject>
 		<subject idSubject="18" idSubject_parent="2" 
-			name="installing OGen"
-			description="">
+			name="installing OGen">
+			<description></description>
 			<documents>
 				<document idDocument="1" 
 					name="dependencies and pre-requisites" 
-					description="" 
-					document="
+					description="">
+					<document>
 &lt;br&gt;
 If you don't plan to build from source or contribute to OGen you'll only need:
 &lt;ul&gt;
@@ -156,12 +167,12 @@ If you're building from source, or plan to contribute you'll &lt;u&gt;also&lt;/u
 		&lt;a href=&quot;http://ndoc.sourceforge.net/&quot;&gt;NDoc&lt;/a&gt;
 	&lt;/li&gt;
 &lt;/ul&gt;
-
-" />
+					</document>
+				</document>
 				<document idDocument="2" 
 					name="installing OGen" 
-					description="" 
-					document="
+					description="">
+					<document>
 &lt;br&gt;
 OGen at BerliOS:
 &lt;a href=&quot;http://developer.berlios.de/projects/ogen/&quot;&gt;
@@ -316,55 +327,65 @@ ToDos: here!&lt;br&gt;
 
 	&lt;/li&gt;
 &lt;/ol&gt;
-
-" />
+					</document>
+				</document>
 			</documents>
 		</subject>
 <!-- ToDos: here!
 		<subject idSubject="37" idSubject_parent="2" 
-			name="configurations"
-			description="ToDos: here!">
+			name="configurations">
+			<description>ToDos: here!</description>
 			<documents />
 		</subject>
 		<subject idSubject="38" idSubject_parent="37" 
-			name="configs"
-			description="ToDos: here!">
+			name="configs">
+			<description>ToDos: here!</description>
 			<documents>
 				<document idDocument="1" 
 					name="defining a config table" 
-					description="ToDos: here!" 
-					document="ToDos: here!&lt;br&gt;
+					description="ToDos: here!">
+					<document>
 ToDos: here!&lt;br&gt;
-..." />
+ToDos: here!&lt;br&gt;
+...
+					</document>
+				</document>
 				<document idDocument="2" 
 					name="using configs" 
-					description="ToDos: here!" 
-					document="ToDos: here!&lt;br&gt;
+					description="ToDos: here!">
+					<document>
 ToDos: here!&lt;br&gt;
-..." />
+ToDos: here!&lt;br&gt;
+...
+					</document>
+				</document>
 			</documents>
 		</subject>
 		<subject idSubject="39" idSubject_parent="37" 
-			name="other configurations"
-			description="ToDos: here!">
+			name="other configurations">
+			<description>ToDos: here!</description>
 			<documents>
 				<document idDocument="1" 
 					name="db connection string" 
-					description="ToDos: here!" 
-					document="ToDos: here!&lt;br&gt;
+					description="ToDos: here!">
+					<document>
 ToDos: here!&lt;br&gt;
-..." />
+ToDos: here!&lt;br&gt;
+...
+					</document>
+				</document>
 			</documents>
 		</subject>
 -->
 		<subject idSubject="19" idSubject_parent="2" 
-			name="generating a new project"
-			description="ToDos: here!">
+			name="generating a new project">
+			<description>ToDos: here!</description>
 			<documents>
 				<document idDocument="1" 
 					name="the new project" 
-					description="" 
-					document="&lt;pre&gt;
+					description="">
+					<document>
+&lt;pre&gt;
     .----------.    .-----------------.    .----------.
     | User     |    | UserGroup       |    | Group    |
     |----------|    |-----------------|    |----------|
@@ -380,12 +401,14 @@ ToDos: here!&lt;br&gt;
                     |*Name     |
                     | Config   |
                     | Type     |
-                    '----------'&lt;/pre&gt;" />
-
+                    '----------'&lt;/pre&gt;
+					</document>
+				</document>
 				<document idDocument="2" 
 					name="creating the database for the project" 
-					description="ToDos: here!" 
-					document="&lt;br&gt;
+					description="ToDos: here!">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/001.png' /&gt;
@@ -426,12 +449,14 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							Creating Tables for the NTierTutorial DB
 						&lt;/div&gt;
-						&lt;br&gt;" />
-
+						&lt;br&gt;
+					</document>
+				</document>
 				<document idDocument="3" 
 					name="setting up a new project for generation" 
-					description="ToDos: here!" 
-					document="&lt;br&gt;
+					description="ToDos: here!">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/006.png' /&gt;
@@ -488,54 +513,69 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							the new project
 						&lt;/div&gt;
-						&lt;br&gt;" />
+						&lt;br&gt;
+					</document>
+				</document>
 			</documents>
 		</subject>
 		<subject idSubject="20" idSubject_parent="2" 
-			name="using Data Objects"
-			description="ToDos: here!">
+			name="using Data Objects">
+			<description>ToDos: here!</description>
 			<documents />
 		</subject>
 		<subject idSubject="21" idSubject_parent="20" 
-			name="the basics"
-			description="the four basic operations over a db table">
+			name="the basics">
+			<description>the four basic operations over a db table</description>
 			<documents>
 				<document idDocument="1" 
 					name="Insert / insObject" 
-					description="" 
-					document="&lt;br&gt;Assigning Fields for Table User, Inserting and retrieving Sequence for IDUser Field:&lt;br&gt;${code::1}" />
+					description="">
+					<document>
+						&lt;br&gt;Assigning Fields for Table User, Inserting and retrieving Sequence for IDUser Field:&lt;br&gt;${code::1}
+					</document>
+				</document>
 				<document idDocument="2" 
 					name="Select / getObject" 
-					description="" 
-					document="&lt;br&gt;Reading Table User Fields, based on IDUser Field:&lt;br&gt;${code::2}" />
+					description="">
+					<document>
+						&lt;br&gt;Reading Table User Fields, based on IDUser Field:&lt;br&gt;${code::2}
+					</document>
+				</document>
 				<document idDocument="3" 
 					name="Update / updObject" 
-					description="" 
-					document="&lt;br&gt;Updating Table User Login Field:&lt;br&gt;${code::3}" />
+					description="">
+					<document>
+						&lt;br&gt;Updating Table User Login Field:&lt;br&gt;${code::3}
+					</document>
+				</document>
 				<document idDocument="4" 
 					name="Delete / delObject" 
-					description="" 
-					document="&lt;br&gt;Deleting User from Table, based on IDUser Field:&lt;br&gt;${code::4}" />
+					description="">
+					<document>
+						&lt;br&gt;Deleting User from Table, based on IDUser Field:&lt;br&gt;${code::4}
+					</document>
+				</document>
 			</documents>
 		</subject>
 		<subject idSubject="22" idSubject_parent="20" 
-			name="searches"
-			description="working with defined searches">
+			name="searches">
+			<description>working with defined searches</description>
 			<documents />
 		</subject>
 		<subject idSubject="23" idSubject_parent="22" 
-			name="search"
-			description="ToDos: here!">
+			name="search">
+			<description>ToDos: here!</description>
 			<documents />
 		</subject>
 		<subject idSubject="24" idSubject_parent="23" 
-			name="defining a search"
-			description="ToDos: here!">
+			name="defining a search">
+			<description>ToDos: here!</description>
 			<documents>
 				<document idDocument="1" 
 					name="openning an existing project" 
-					description="" 
-					document="&lt;br&gt;
+					description="">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/014.png' /&gt;
@@ -556,12 +596,14 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
-
+						&lt;br&gt;
+					</document>
+				</document>
 				<document idDocument="2" 
 					name="defining a search" 
-					description="" 
-					document="&lt;br&gt;
+					description="">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/017.png' /&gt;
@@ -596,12 +638,14 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
-
+						&lt;br&gt;
+					</document>
+				</document>
 				<document idDocument="3" 
 					name="generating" 
-					description="" 
-					document="&lt;br&gt;
+					description="">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/010.png' /&gt;
@@ -622,17 +666,20 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
+						&lt;br&gt;
+					</document>
+				</document>
 			</documents>
 		</subject>
 		<subject idSubject="25" idSubject_parent="23" 
-			name="tweaking a search"
-			description="ToDos: here!">
+			name="tweaking a search">
+			<description>ToDos: here!</description>
 			<documents>
 				<document idDocument="1" 
 					name="tweaking a search" 
-					description="" 
-					document="&lt;br&gt;
+					description="">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/022.png' /&gt;
@@ -646,36 +693,45 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
+						&lt;br&gt;
+					</document>
+				</document>
 			</documents>
 		</subject>
 		<subject idSubject="26" idSubject_parent="23" 
-			name="using a search"
-			description="ToDos: here!">
+			name="using a search">
+			<description>ToDos: here!</description>
 			<documents>
 				<document idDocument="1" 
 					name="to retrieve data" 
-					description="ToDos: here!" 
-					document="&lt;br&gt;ToDos: here!:&lt;br&gt;${code::5}" />
+					description="ToDos: here!">
+					<document>
+						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::5}
+					</document>
+				</document>
 				<document idDocument="1" 
 					name="for deleting" 
-					description="ToDos: here!" 
-					document="&lt;br&gt;ToDos: here!:&lt;br&gt;${code::6}" />
+					description="ToDos: here!">
+					<document>
+						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::6}
+					</document>
+				</document>
 			</documents>
 		</subject>
 		<subject idSubject="27" idSubject_parent="22" 
-			name="range search"
-			description="ToDos: here!">
+			name="range search">
+			<description>ToDos: here!</description>
 			<documents />
 		</subject>
 		<subject idSubject="28" idSubject_parent="27" 
-			name="defining a range search"
-			description="ToDos: here!">
+			name="defining a range search">
+			<description>ToDos: here!</description>
 			<documents>
 				<document idDocument="1" 
 					name="openning an existing project" 
-					description="" 
-					document="&lt;br&gt;
+					description="">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/014.png' /&gt;
@@ -696,12 +752,14 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
-
+						&lt;br&gt;
+					</document>
+				</document>
 				<document idDocument="2" 
 					name="defining a range search" 
-					description="" 
-					document="&lt;br&gt;
+					description="">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/017.png' /&gt;
@@ -736,12 +794,14 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
-
+						&lt;br&gt;
+					</document>
+				</document>
 				<document idDocument="3" 
 					name="generating" 
-					description="" 
-					document="&lt;br&gt;
+					description="">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/010.png' /&gt;
@@ -762,17 +822,20 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
+						&lt;br&gt;
+					</document>
+				</document>
 			</documents>
 		</subject>
 		<subject idSubject="29" idSubject_parent="27" 
-			name="tweaking a range search"
-			description="ToDos: here!">
+			name="tweaking a range search">
+			<description>ToDos: here!</description>
 			<documents>
 				<document idDocument="1" 
 					name="tweaking the search query" 
-					description="" 
-					document="&lt;br&gt;
+					description="">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/026.png' /&gt;
@@ -786,11 +849,14 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
+						&lt;br&gt;
+					</document>
+				</document>
 				<document idDocument="2" 
 					name="tweaking the search order query" 
-					description="ToDos: here!" 
-					document="&lt;br&gt;
+					description="ToDos: here!">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/028.png' /&gt;
@@ -804,27 +870,33 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
+						&lt;br&gt;
+					</document>
+				</document>
 			</documents>
 		</subject>
 		<subject idSubject="30" idSubject_parent="27" 
-			name="using a range search"
-			description="ToDos: here!">
+			name="using a range search">
+			<description>ToDos: here!</description>
 			<documents>
 				<document idDocument="1" 
 					name="to retrieve data" 
-					description="" 
-					document="&lt;br&gt;ToDos: here!:&lt;br&gt;${code::7}" />
+					description="">
+					<document>
+						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::7}
+					</document>
+				</document>
 			</documents>
 		</subject>
 		<subject idSubject="31" idSubject_parent="22" 
-			name="explicit unique index search"
-			description="ToDos: here!">
+			name="explicit unique index search">
+			<description>ToDos: here!</description>
 			<documents>
 				<document idDocument="1" 
 					name="openning an existing project" 
-					description="" 
-					document="&lt;br&gt;
+					description="">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/014.png' /&gt;
@@ -845,12 +917,14 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
-
+						&lt;br&gt;
+					</document>
+				</document>
 				<document idDocument="2" 
 					name="defining an explicit unique index search" 
-					description="" 
-					document="&lt;br&gt;
+					description="">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/017.png' /&gt;
@@ -885,12 +959,14 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
-
+						&lt;br&gt;
+					</document>
+				</document>
 				<document idDocument="3" 
 					name="generating" 
-					description="" 
-					document="&lt;br&gt;
+					description="">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/010.png' /&gt;
@@ -911,12 +987,14 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
-
+						&lt;br&gt;
+					</document>
+				</document>
 				<document idDocument="4" 
 					name="tweaking an explicit unique index search" 
-					description="" 
-					document="&lt;br&gt;
+					description="">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/032.png' /&gt;
@@ -930,22 +1008,27 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
-
+						&lt;br&gt;
+					</document>
+				</document>
 				<document idDocument="5" 
 					name="using an explicit unique index search" 
-					description="" 
-					document="&lt;br&gt;ToDos: here!:&lt;br&gt;${code::8}" />
+					description="">
+					<document>
+						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::8}
+					</document>
+				</document>
 			</documents>
 		</subject>
 		<subject idSubject="32" idSubject_parent="22" 
-			name="update based on a search"
-			description="ToDos: here!">
+			name="update based on a search">
+			<description>ToDos: here!</description>
 			<documents>
 				<document idDocument="1" 
 					name="openning an existing project" 
-					description="ToDos: here!" 
-					document="&lt;br&gt;
+					description="ToDos: here!">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/014.png' /&gt;
@@ -966,12 +1049,14 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
-
+						&lt;br&gt;
+					</document>
+				</document>
 				<document idDocument="2" 
 					name="defining an update based on a search" 
-					description="ToDos: here!" 
-					document="&lt;br&gt;
+					description="ToDos: here!">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/034.png' /&gt;
@@ -1013,12 +1098,14 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
-
+						&lt;br&gt;
+					</document>
+				</document>
 				<document idDocument="3" 
 					name="generating" 
-					description="" 
-					document="&lt;br&gt;
+					description="">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/010.png' /&gt;
@@ -1039,23 +1126,27 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
-
+						&lt;br&gt;
+					</document>
+				</document>
 				<document idDocument="4" 
 					name="using an update based on a search" 
-					description="ToDos: here!" 
-					document="&lt;br&gt;ToDos: here!:&lt;br&gt;${code::9}" />
-
+					description="ToDos: here!">
+					<document>
+						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::9}
+					</document>
+				</document>
 			</documents>
 		</subject>
 		<subject idSubject="33" idSubject_parent="20" 
-			name="views"
-			description="using views">
+			name="views">
+			<description>using views</description>
 			<documents>
 				<document idDocument="1" 
 					name="creating a View" 
-					description="ToDos: here!" 
-					document="&lt;br&gt;
+					description="ToDos: here!">
+					<document>
+						&lt;br&gt;
 
 						&lt;a href='resource_files/vUserGroup.sql'&gt;
 							Here&lt;/a&gt;
@@ -1068,12 +1159,14 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
-
+						&lt;br&gt;
+					</document>
+				</document>
 				<document idDocument="2" 
 					name="openning an existing project" 
-					description="ToDos: here!" 
-					document="&lt;br&gt;
+					description="ToDos: here!">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/014.png' /&gt;
@@ -1094,12 +1187,14 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
-
+						&lt;br&gt;
+					</document>
+				</document>
 				<document idDocument="3" 
 					name="defining a View" 
-					description="ToDos: here!" 
-					document="&lt;br&gt;
+					description="ToDos: here!">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/041.png' /&gt;
@@ -1127,12 +1222,14 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
-
+						&lt;br&gt;
+					</document>
+				</document>
 				<document idDocument="4" 
 					name="generating" 
-					description="" 
-					document="&lt;br&gt;
+					description="">
+					<document>
+						&lt;br&gt;
 
 						&lt;div align='center'&gt;
 							&lt;img src='resource_files/010.png' /&gt;
@@ -1153,92 +1250,118 @@ ToDos: here!&lt;br&gt;
 							&lt;br&gt;
 							ToDos: here!
 						&lt;/div&gt;
-						&lt;br&gt;" />
-
+						&lt;br&gt;
+					</document>
+				</document>
 				<document idDocument="5" 
 					name="using a View" 
-					description="ToDos: here!" 
-					document="&lt;br&gt;ToDos: here!:&lt;br&gt;${code::10}" />
-
+					description="ToDos: here!">
+					<document>
+						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::10}
+					</document>
+				</document>
 				<document idDocument="6" 
 					name="why Views and when should we use them rather than using Searches" 
-					description="ToDos: here!" 
-					document="ToDos: here!&lt;br&gt;
+					description="ToDos: here!">
+					<document>
 ToDos: here!&lt;br&gt;
-..." />
+ToDos: here!&lt;br&gt;
+...
+					</document>
+				</document>
 			</documents>
 		</subject>
 		<subject idSubject="34" idSubject_parent="20" 
-			name="updates"
-			description="ToDos: here!">
+			name="updates">
+			<description>ToDos: here!</description>
 			<documents>
 				<document idDocument="1" 
 					name="defining an update" 
-					description="ToDos: here!" 
-					document="ToDos: here!&lt;br&gt;
+					description="ToDos: here!">
+					<document>
 ToDos: here!&lt;br&gt;
-..." />
+ToDos: here!&lt;br&gt;
+...
+					</document>
+				</document>
 				<document idDocument="2" 
 					name="using an update" 
-					description="ToDos: here!" 
-					document="ToDos: here!&lt;br&gt;
+					description="ToDos: here!">
+					<document>
 ToDos: here!&lt;br&gt;
-..." />
+ToDos: here!&lt;br&gt;
+...
+					</document>
+				</document>
 			</documents>
 		</subject>
 		<subject idSubject="35" idSubject_parent="20" 
-			name="reflection"
-			description="using reflection over data objects to retrieve db metadatas">
+			name="reflection">
+			<description>using reflection over data objects to retrieve db metadatas</description>
 			<documents>
 				<document idDocument="1" 
 					name="using reflection on a DataObject to retrieve specific property Attributes" 
-					description="ToDos: here!" 
-					document="&lt;br&gt;ToDos: here!:&lt;br&gt;${code::11}" />
-
+					description="ToDos: here!">
+					<document>
+						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::11}
+					</document>
+				</document>
 				<document idDocument="2" 
 					name="using reflection on a DataObject to retrieve all properties Attributes and manipulate it's properties" 
-					description="ToDos: here!" 
-					document="&lt;br&gt;ToDos: here!:&lt;br&gt;${code::12}" />
-
+					description="ToDos: here!">
+					<document>
+						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::12}
+					</document>
+				</document>
 				<document idDocument="3" 
 					name="using reflection on an Assembly to retrieve all DataObject properties Attributes" 
-					description="ToDos: here!" 
-					document="&lt;br&gt;ToDos: here!:&lt;br&gt;${code::13}" />
-
+					description="ToDos: here!">
+					<document>
+						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::13}
+					</document>
+				</document>
 			</documents>
 		</subject>
 		<subject idSubject="36" idSubject_parent="20" 
-			name="using DBConnection"
-			description="ToDos: here!">
+			name="using DBConnection">
+			<description>ToDos: here!</description>
 			<documents>
 				<document idDocument="1" 
 					name="executing and retrieving data from an sql query" 
-					description="ToDos: here!" 
-					document="&lt;br&gt;ToDos: here!:&lt;br&gt;${code::14}" />
-
+					description="ToDos: here!">
+					<document>
+						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::14}
+					</document>
+				</document>
 				<document idDocument="2" 
 					name="executing and retrieving data from an sql function or stored procedure" 
-					description="ToDos: here!" 
-					document="&lt;br&gt;ToDos: here!:&lt;br&gt;${code::15}" />
-
+					description="ToDos: here!">
+					<document>
+						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::15}
+					</document>
+				</document>
 				<document idDocument="3" 
 					name="using transactions" 
-					description="ToDos: here!" 
-					document="ToDos: here!&lt;br&gt;
+					description="ToDos: here!">
+					<document>
 ToDos: here!&lt;br&gt;
-..." />
+ToDos: here!&lt;br&gt;
+...
+					</document>
+				</document>
 				<document idDocument="4" 
 					name="using transactions on dataobjects" 
-					description="ToDos: here!" 
-					document="ToDos: here!&lt;br&gt;
+					description="ToDos: here!">
+					<document>
 ToDos: here!&lt;br&gt;
-..." />
-
+ToDos: here!&lt;br&gt;
+...
+					</document>
+				</document>
 				<document idDocument="4" 
 					name="other examples *.cs" 
-					description="" 
-					document="
-
+					description="">
+					<document>
 &lt;ol type=&quot;circle&quot;&gt;
 	&lt;li&gt;
 		&lt;a href=&quot;http://svn.berlios.de/svnroot/repos/ogen/OGen-NTier_UTs/OGen-NTier_UTs_test/HowTos_andFAQ/OGen-NTier__Docs__Develop_HowTo_List_DataObjects.cs&quot;&gt;
@@ -1302,9 +1425,8 @@ ToDos: here!&lt;br&gt;
 			list db table fields (information schema)&lt;/a&gt;
 	&lt;/li&gt;
 &lt;/ol&gt;
-
-" />
-
+					</document>
+				</document>
 			</documents>
 		</subject>
 
@@ -1336,43 +1458,52 @@ ToDos: here!&lt;br&gt;
 
 <!-- ToDos: here!
 		<subject idSubject="40" idSubject_parent="0" 
-			name="advanced help"
-			description="extensive and detailed documentation">
+			name="advanced help">
+			<description>extensive and detailed documentation</description>
 			<documents>
 				<document idDocument="1" 
 					name="ToDos: here!" 
-					description="ToDos: here!" 
-					document="ToDos: here!&lt;br&gt;
+					description="ToDos: here!">
+					<document>
 ToDos: here!&lt;br&gt;
-..." />
+ToDos: here!&lt;br&gt;
+...
+					</document>
+				</document>
 			</documents>
 		</subject>
 
 
 		<subject idSubject="3" idSubject_parent="0" 
-			name="considerations"
-			description="final considerations">
+			name="considerations">
+			<description>final considerations</description>
 			<documents>
 				<document idDocument="1" 
 					name="ToDos: here!" 
-					description="ToDos: here!" 
-					document="ToDos: here!&lt;br&gt;
+					description="ToDos: here!">
+					<document>
 ToDos: here!&lt;br&gt;
-..." />
+ToDos: here!&lt;br&gt;
+...
+					</document>
+				</document>
 			</documents>
 		</subject>
 
 
 		<subject idSubject="4" idSubject_parent="0" 
-			name="reference"
-			description="reference documentation">
+			name="reference">
+			<description>reference documentation</description>
 			<documents>
 				<document idDocument="1" 
 					name="ToDos: here!" 
-					description="ToDos: here!" 
-					document="ToDos: here!&lt;br&gt;
+					description="ToDos: here!">
+					<document>
 ToDos: here!&lt;br&gt;
-..." />
+ToDos: here!&lt;br&gt;
+...
+					</document>
+				</document>
 			</documents>
 		</subject>
 -->
@@ -1441,8 +1572,8 @@ ToDos: here!&lt;br&gt;
 
 
 	<codeSamples>
-		<codeSample idCodeSample="1" 
-codeSample="DO_User _user;
+		<codeSample idCodeSample="1">
+			<code>DO_User _user;
 long IDUser = 0L;
 
 _user = new DO_User();
@@ -1453,10 +1584,10 @@ Console.WriteLine(
   &quot;user inserted, at:\nIDUser = {0}&quot;, 
   IDUser = _user.IDUser
 );
-_user.Dispose(); _user = null;" />
-
-		<codeSample idCodeSample="2" 
-codeSample="_user = new DO_User();
+_user.Dispose(); _user = null;</code>
+		</codeSample>
+		<codeSample idCodeSample="2">
+<code>_user = new DO_User();
 if (
   _user.getObject(IDUser) // based on it's PK
 ) {
@@ -1470,19 +1601,22 @@ if (
     &quot;couldn't read Fields for User: {0}&quot;
     _user.IDUser
   );
-}" />
-
-		<codeSample idCodeSample="3" 
-codeSample="//_user.getObject(IDUser); // comment, no need if you've done it already
+}</code>
+		</codeSample>
+        <codeSample idCodeSample="1">
+			<code>// ...</code>
+		</codeSample>
+		<codeSample idCodeSample="3">
+<code>//_user.getObject(IDUser); // comment, no need if you've done it already
 _user.Login = &quot;francisco&quot;;
-_user.updObject(false); // assigning forceUpdate parameter to false Updates only if changes have been made" />
-
-		<codeSample idCodeSample="4" 
-codeSample="_user.delObject(IDUser); // based on it's PK
-_user.Dispose(); _user = null;" />
-
-		<codeSample idCodeSample="5" 
-codeSample="DO_User _user = new DO_User();
+_user.updObject(false); // assigning forceUpdate parameter to false Updates only if changes have been made</code>
+		</codeSample>
+		<codeSample idCodeSample="4">
+<code>_user.delObject(IDUser); // based on it's PK
+_user.Dispose(); _user = null;</code>
+		</codeSample>
+		<codeSample idCodeSample="5">
+<code>DO_User _user = new DO_User();
 if (_user.getObject_byLogin(
   &quot;fmonteiro&quot;, 
   &quot;password&quot;
@@ -1493,17 +1627,17 @@ if (_user.getObject_byLogin(
   );
 } else {
   Console.WriteLine(&quot;couldn't retrieved User&quot;);
-}" />
-
-		<codeSample idCodeSample="6" 
-codeSample="_user.delObject_byLogin(
+}</code>
+		</codeSample>
+		<codeSample idCodeSample="6">
+<code>_user.delObject_byLogin(
   &quot;fmonteiro&quot;, 
   &quot;password&quot;
 );
-_user.Dispose(); _user = null;" />
-
-		<codeSample idCodeSample="7" 
-codeSample="long IDGroup;
+_user.Dispose(); _user = null;</code>
+		</codeSample>
+		<codeSample idCodeSample="7">
+<code>long IDGroup;
 long IDUser;
 
 
@@ -1542,20 +1676,19 @@ while (_user.Record.Read()) {
   Console.WriteLine(&quot;\t{0}&quot;, _user.Login);
 }
 _user.Record.Close();
-_user.Dispose(); _user = null;" />
-
-		<codeSample idCodeSample="8" 
-codeSample="// ..." />
-
-		<codeSample idCodeSample="9" 
-codeSample="// ..." />
-
-		<codeSample idCodeSample="10" 
-codeSample="// ..." />
-
-
-		<codeSample idCodeSample="11" 
-codeSample="using System;
+_user.Dispose(); _user = null;</code>
+		</codeSample>
+		<codeSample idCodeSample="8">
+			<code>// ...</code>
+		</codeSample>
+		<codeSample idCodeSample="9">
+			<code>// ...</code>
+		</codeSample>
+		<codeSample idCodeSample="10">
+			<code>// ...</code>
+		</codeSample>
+		<codeSample idCodeSample="11">
+<code>using System;
 using System.Reflection;
 using OGenTest.lib.datalayer;
 using Francisco.lib.datalayer;
@@ -1578,12 +1711,10 @@ namespace test {
       );
     }
   }
-}
-" />
-
-
-		<codeSample idCodeSample="12" 
-codeSample="using System;
+}</code>
+		</codeSample>
+		<codeSample idCodeSample="12">
+<code>using System;
 using System.Reflection;
 using OGenTest.lib.datalayer;
 using Francisco.lib.datalayer;
@@ -1641,11 +1772,10 @@ namespace test {
       }
     }
   }
-}
-" />
-
-		<codeSample idCodeSample="13" 
-codeSample="using System;
+}</code>
+		</codeSample>
+		<codeSample idCodeSample="13">
+<code>using System;
 using System.Reflection;
 using OGenTest.lib.datalayer;
 using Francisco.lib.datalayer;
@@ -1735,10 +1865,10 @@ Console.WriteLine();
       }
     }
   }
-}" />
-
-		<codeSample idCodeSample="14" 
-codeSample="using System;
+}</code>
+		</codeSample>
+		<codeSample idCodeSample="14">
+<code>using System;
 using OGen.lib.datalayer;
 using System.Data;
 
@@ -1767,10 +1897,10 @@ namespace test {
       _con.Dispose(); _con = null;
     }
   }
-}" />
-
-		<codeSample idCodeSample="15" 
-codeSample="using System;
+}</code>
+		</codeSample>
+		<codeSample idCodeSample="15">
+<code>using System;
 using OGen.lib.datalayer;
 using System.Data;
 
@@ -1809,8 +1939,8 @@ namespace test {
       _con.Dispose(); _con = null;
     }
   }
-}" />
-
+}</code>
+		</codeSample>
 	</codeSamples>
 	<links>
 		<link idLink="1" name="OGen" description="OGen - open generation" url="http://www.ogen-project.org" />
@@ -1823,34 +1953,40 @@ description="frequently asqued questions on OGen" />
 
 		<faqSubject idFAQSubject="1" idFAQSubject_parent="0" name="1" description="one">
 			<faq idFAQ="1" question="A Question?">
-				<answer answer="An Answer" />
-				<answer answer="Another Answer" />
+				<answer>
+					An Answer
+				</answer>
 			</faq>
 			<faq idFAQ="2" question="Another Question?">
-				<answer answer="An Answer" />
-				<answer answer="Another Answer" />
+				<answer>
+					Another Answer
+				</answer>
 			</faq>
 		</faqSubject>
 		<faqSubject idFAQSubject="2" idFAQSubject_parent="1" name="1.1" description="one.one">
 			<faq idFAQ="3" question="A Question?">
-				<answer answer="An Answer" />
-				<answer answer="Another Answer" />
+				<answer>
+					An Answer
+				</answer>
 			</faq>
 			<faq idFAQ="4" question="Another Question?">
-				<answer answer="An Answer" />
-				<answer answer="Another Answer" />
+				<answer>
+					An Answer
+				</answer>
 			</faq>
 		</faqSubject>
 		<faqSubject idFAQSubject="3" idFAQSubject_parent="1" name="1.2" description="one.two">
 		</faqSubject>
 		<faqSubject idFAQSubject="4" idFAQSubject_parent="0" name="2" description="two">
 			<faq idFAQ="5" question="A Question?">
-				<answer answer="An Answer" />
-				<answer answer="Another Answer" />
+				<answer>
+					An Answer
+				</answer>
 			</faq>
 			<faq idFAQ="6" question="Another Question?">
-				<answer answer="An Answer" />
-				<answer answer="Another Answer" />
+				<answer>
+					An Answer
+				</answer>
 			</faq>
 		</faqSubject>
 		<faqSubject idFAQSubject="5" idFAQSubject_parent="2" name="1.1.1" description="two.one">

@@ -35,6 +35,17 @@ namespace OGen.XSD.lib.metadata {
 			name_ = name_in;
 		}
 
+		#region public object parent_ref { get; }
+		private object parent_ref_;
+
+		[XmlIgnore()]
+		public object parent_ref {
+			set {
+				parent_ref_ = value;
+			}
+			get { return parent_ref_; }
+		}
+		#endregion
 		#region public RootMetadata root_ref { get; }
 		private RootMetadata root_ref_;
 

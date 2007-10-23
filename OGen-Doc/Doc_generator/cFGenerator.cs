@@ -150,16 +150,16 @@ namespace OGen.Doc.lib.generator {
 				Path.GetDirectoryName(filename_)
 			).FullName;
 			#endregion
-			#region string _metadataFilePath = ...;
-			string _metadata0 = string.Format(
-				"{0}{1}OGenDoc-metadatas{1}MD0_{2}.OGenDoc-metadata.xml", 
-				/*00*/ _outputDir, 
-				/*01*/ Path.DirectorySeparatorChar, 
-				/*02*/ metadata_.DocumentationName
-			);
-			#endregion
+//			#region string _metadataFilePath = ...;
+//			string _metadata0 = string.Format(
+//				"{0}{1}OGenDoc-metadatas{1}MD0_{2}.OGenDoc-metadata.xml", 
+//				/*00*/ _outputDir, 
+//				/*01*/ Path.DirectorySeparatorChar, 
+//				/*02*/ metadata_.DocumentationName
+//			);
+//			#endregion
 			if (notifyBase_in != null) notifyBase_in("generating...", true);
-			metadata_.SaveState_toFile(_metadata0);
+//			metadata_.SaveState_toFile(_metadata0);
 
 			new cGenerator(
 				#if !NET_1_1

@@ -31,6 +31,21 @@ namespace OGen.XSD.lib.metadata {
 		//public ExtendedMetadata() {
 		//}
 
+		#region public object parent_ref { get; }
+		private object parent_ref_;
+
+		[XmlIgnore()]
+		public object parent_ref {
+			set {
+				parent_ref_ = value;
+
+				complextypekeyscollection_.parent_ref = this;
+				specificcasecollections_.parent_ref = this;
+				metadataindexcollection_.parent_ref = this;
+			}
+			get { return parent_ref_; }
+		}
+		#endregion
 		#region public RootMetadata root_ref { get; }
 		private RootMetadata root_ref_;
 
@@ -354,6 +369,7 @@ namespace OGen.XSD.lib.metadata {
 				));
 			}
 
+			_output.parent_ref = root_ref_in; // ToDos: now!
 			if (root_ref_in != null) _output.root_ref = root_ref_in;
 			return _output;
 		}
