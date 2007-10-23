@@ -25,16 +25,8 @@ namespace Doc_test {
 	public class MainClass {
 		[STAThread]
 		static void Main(string[] args) {
-			string filename_ = System.IO.Path.Combine(
-				#if !NET_1_1
-				System.Configuration.ConfigurationManager.AppSettings
-				#else
-				System.Configuration.ConfigurationSettings.AppSettings
-				#endif
-					["ogenPath"],
-
-				@"..\..\OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen-NTier.OGenDoc-metadata.xml"
-			);
+			string filename_ 
+				= @"X:\OGen.berlios.de\OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen.OGenDoc-metadata.xml";
 			string _outputDir = System.IO.Directory.GetParent(
 				Path.GetDirectoryName(filename_)
 			).FullName;
@@ -43,6 +35,17 @@ namespace Doc_test {
 				filename_,
 				false
 			);
+			
+Console.WriteLine(OGen.Doc.lib.metadata.utils.translate(
+	@"---${code::1}
+---
+${code::1}
+---
+${code::1}
+---",
+	rootmetadata_.DocumentationCollection[0]
+));
+			
 
 			Console.WriteLine(rootmetadata_.Read_fromRoot("ROOT.documentation[0].documentationName"));
 

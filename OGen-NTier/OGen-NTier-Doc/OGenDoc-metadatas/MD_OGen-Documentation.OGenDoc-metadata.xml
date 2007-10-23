@@ -531,30 +531,22 @@ ToDos: here!&lt;br&gt;
 				<document idDocument="1" 
 					name="Insert / insObject" 
 					description="">
-					<document>
-						&lt;br&gt;Assigning Fields for Table User, Inserting and retrieving Sequence for IDUser Field:&lt;br&gt;${code::1}
-					</document>
+					<document>&lt;br&gt;Assigning Fields for Table User, Inserting and retrieving Sequence for IDUser Field:&lt;br&gt;${code::1}</document>
 				</document>
 				<document idDocument="2" 
 					name="Select / getObject" 
 					description="">
-					<document>
-						&lt;br&gt;Reading Table User Fields, based on IDUser Field:&lt;br&gt;${code::2}
-					</document>
+					<document>&lt;br&gt;Reading Table User Fields, based on IDUser Field:&lt;br&gt;${code::2}</document>
 				</document>
 				<document idDocument="3" 
 					name="Update / updObject" 
 					description="">
-					<document>
-						&lt;br&gt;Updating Table User Login Field:&lt;br&gt;${code::3}
-					</document>
+					<document>&lt;br&gt;Updating Table User Login Field:&lt;br&gt;${code::3}</document>
 				</document>
 				<document idDocument="4" 
 					name="Delete / delObject" 
 					description="">
-					<document>
-						&lt;br&gt;Deleting User from Table, based on IDUser Field:&lt;br&gt;${code::4}
-					</document>
+					<document>&lt;br&gt;Deleting User from Table, based on IDUser Field:&lt;br&gt;${code::4}</document>
 				</document>
 			</documents>
 		</subject>
@@ -706,16 +698,12 @@ ToDos: here!&lt;br&gt;
 				<document idDocument="1" 
 					name="to retrieve data" 
 					description="ToDos: here!">
-					<document>
-						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::5}
-					</document>
+					<document>&lt;br&gt;ToDos: here!:&lt;br&gt;${code::5}</document>
 				</document>
 				<document idDocument="1" 
 					name="for deleting" 
 					description="ToDos: here!">
-					<document>
-						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::6}
-					</document>
+					<document>&lt;br&gt;ToDos: here!:&lt;br&gt;${code::6}</document>
 				</document>
 			</documents>
 		</subject>
@@ -883,9 +871,7 @@ ToDos: here!&lt;br&gt;
 				<document idDocument="1" 
 					name="to retrieve data" 
 					description="">
-					<document>
-						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::7}
-					</document>
+					<document>&lt;br&gt;ToDos: here!:&lt;br&gt;${code::7}</document>
 				</document>
 			</documents>
 		</subject>
@@ -1015,9 +1001,7 @@ ToDos: here!&lt;br&gt;
 				<document idDocument="5" 
 					name="using an explicit unique index search" 
 					description="">
-					<document>
-						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::8}
-					</document>
+					<document>&lt;br&gt;ToDos: here!:&lt;br&gt;${code::8}</document>
 				</document>
 			</documents>
 		</subject>
@@ -1133,9 +1117,7 @@ ToDos: here!&lt;br&gt;
 				<document idDocument="4" 
 					name="using an update based on a search" 
 					description="ToDos: here!">
-					<document>
-						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::9}
-					</document>
+					<document>&lt;br&gt;ToDos: here!:&lt;br&gt;${code::9}</document>
 				</document>
 			</documents>
 		</subject>
@@ -1257,9 +1239,7 @@ ToDos: here!&lt;br&gt;
 				<document idDocument="5" 
 					name="using a View" 
 					description="ToDos: here!">
-					<document>
-						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::10}
-					</document>
+					<document>&lt;br&gt;ToDos: here!:&lt;br&gt;${code::10}</document>
 				</document>
 				<document idDocument="6" 
 					name="why Views and when should we use them rather than using Searches" 
@@ -1303,23 +1283,17 @@ ToDos: here!&lt;br&gt;
 				<document idDocument="1" 
 					name="using reflection on a DataObject to retrieve specific property Attributes" 
 					description="ToDos: here!">
-					<document>
-						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::11}
-					</document>
+					<document>&lt;br&gt;ToDos: here!:&lt;br&gt;${code::11}</document>
 				</document>
 				<document idDocument="2" 
 					name="using reflection on a DataObject to retrieve all properties Attributes and manipulate it's properties" 
 					description="ToDos: here!">
-					<document>
-						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::12}
-					</document>
+					<document>&lt;br&gt;ToDos: here!:&lt;br&gt;${code::12}</document>
 				</document>
 				<document idDocument="3" 
 					name="using reflection on an Assembly to retrieve all DataObject properties Attributes" 
 					description="ToDos: here!">
-					<document>
-						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::13}
-					</document>
+					<document>&lt;br&gt;ToDos: here!:&lt;br&gt;${code::13}</document>
 				</document>
 			</documents>
 		</subject>
@@ -1330,16 +1304,12 @@ ToDos: here!&lt;br&gt;
 				<document idDocument="1" 
 					name="executing and retrieving data from an sql query" 
 					description="ToDos: here!">
-					<document>
-						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::14}
-					</document>
+					<document>&lt;br&gt;ToDos: here!:&lt;br&gt;${code::14}</document>
 				</document>
 				<document idDocument="2" 
 					name="executing and retrieving data from an sql function or stored procedure" 
 					description="ToDos: here!">
-					<document>
-						&lt;br&gt;ToDos: here!:&lt;br&gt;${code::15}
-					</document>
+					<document>&lt;br&gt;ToDos: here!:&lt;br&gt;${code::15}</document>
 				</document>
 				<document idDocument="3" 
 					name="using transactions" 
@@ -1603,9 +1573,6 @@ if (
     _user.IDUser
   );
 }</code>
-		</codeSample>
-        <codeSample idCodeSample="1">
-			<code>// ...</code>
 		</codeSample>
 		<codeSample idCodeSample="3">
 <code>//_user.getObject(IDUser); // comment, no need if you've done it already
