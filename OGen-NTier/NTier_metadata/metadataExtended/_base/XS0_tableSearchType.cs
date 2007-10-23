@@ -59,6 +59,19 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 		#endregion
 #endif
 
+		#region public object parent_ref { get; }
+		private object parent_ref_;
+
+		[XmlIgnore()]
+		public object parent_ref {
+			set {
+				parent_ref_ = value;
+				tablesearchparameterscollection_.parent_ref = this;
+				tablesearchupdatescollection_.parent_ref = this;
+			}
+			get { return parent_ref_; }
+		}
+		#endregion
 		#region public XS__RootMetadata root_ref { get; }
 		private XS__RootMetadata root_ref_;
 

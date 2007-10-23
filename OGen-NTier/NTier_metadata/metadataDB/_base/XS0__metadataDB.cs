@@ -73,6 +73,7 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 					));
 				}
 
+				_output[i].parent_ref = root_ref_in; // ToDos: now!
 				if (root_ref_in != null) _output[i].root_ref = root_ref_in;
 			}
 			return _output;
