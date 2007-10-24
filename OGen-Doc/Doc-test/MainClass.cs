@@ -15,10 +15,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 using System;
 using System.IO;
 using System.Xml;
+using OGen.lib.collections;
 using OGen.lib.generator;
-using OGen.Doc.lib.metadata;
-using OGen.Doc.lib.generator;
 using OGen.lib.templates;
+using OGen.Doc.lib.generator;
+using OGen.Doc.lib.metadata;
 using OGen.Doc.lib.metadata.documentation;
 
 namespace Doc_test {

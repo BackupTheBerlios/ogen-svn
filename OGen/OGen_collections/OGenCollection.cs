@@ -121,6 +121,13 @@ namespace OGen.lib.collections {
 			return -1;
 		}
 		#endregion
+		#region public void Remove(T memberName_in);
+		public void Remove(T memberName_in) {
+			RemoveAt(
+				Search(memberName_in)
+			);
+		}
+		#endregion
 	}
 	public class OGenSimpleCollection<C>
 		where C : class 
@@ -166,11 +173,46 @@ namespace OGen.lib.collections {
 		}
 		#endregion
 
+		#region public void Clear();
+		public void Clear() {
+			cols_.Clear();
+		}
+		#endregion
 		#region public void Add(params C[] col_in);
+		/// <summary>
+		/// adds one or more items to the collection
+		/// </summary>
+		/// <param name="returnIndex_out">index position for last added item in the collection </param>
+		/// <param name="col_in">item(s) to be added to the collection</param>
+		public void Add(out int returnIndex_out, params C[] col_in) {
+			returnIndex_out = -1;
+
+			for (int i = 0; i < col_in.Length - 1; i++) {
+				cols_.Add(col_in[i]);
+			}
+
+			int j = col_in.Length - 1;
+			if (j >= 0) {
+				lock (cols_) {
+					cols_.Add(col_in[j]);
+					returnIndex_out = cols_.Count - 1;
+				}
+			}
+		}
+
+		/// <summary>
+		/// adds one or more items to the collection
+		/// </summary>
+		/// <param name="col_in">item(s) to be added to the collection</param>
 		public void Add(params C[] col_in) {
 			for (int i = 0; i < col_in.Length; i++) {
 				cols_.Add(col_in[i]);
 			}
+		}
+		#endregion
+		#region public void RemoveAt(int index_in);
+		public void RemoveAt(int index_in) {
+			cols_.RemoveAt(index_in);
 		}
 		#endregion
 	}
