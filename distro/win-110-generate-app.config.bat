@@ -9,7 +9,7 @@
 :: THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 :: 
 @ECHO OFF
-SET thisdir=%~d0%~p0
+SET thisdir=%~dp0
 SET parentdir=%thisdir%..
 FOR /f "usebackq tokens=1* delims=^|" %%a IN (`ECHO %parentdir%`) DO (
 	SET parentdir=%%~fa
@@ -24,6 +24,16 @@ IF NOT EXIST "%thisdir%bin" MKDIR "%thisdir%bin"
 SET configtemplate=OGen.Doc.presentationlayer.console
 
 SET configdir=%parentdir%\OGen-Doc\Doc-console
+SET configfile=%configdir%\app.config
+SET templatefile=%parentdir%\OGen-Doc\Doc_templates\templates.config.xml
+IF EXIST "%configdir%" (
+	TYPE "%thisdir%distro-templates\%configtemplate%.exe-1.config">"%configfile%"
+	ECHO     ^<add key="Templates" value="%templatefile%" /^>>>"%configfile%"
+	ECHO     ^<add key="ogenPath" value="%thisdir%bin" /^>>>"%configfile%"
+	TYPE "%thisdir%distro-templates\%configtemplate%.exe-2.config">>"%configfile%"
+	ECHO %configfile%
+)
+SET configdir=%parentdir%\OGen-Doc\Doc-test
 SET configfile=%configdir%\app.config
 SET templatefile=%parentdir%\OGen-Doc\Doc_templates\templates.config.xml
 IF EXIST "%configdir%" (
@@ -61,6 +71,17 @@ IF EXIST "%configdir%" (
 SET configtemplate=OGen.NTier.presentationlayer.console
 
 SET configdir=%parentdir%\OGen-NTier\NTier-console
+SET configfile=%configdir%\app.config
+SET templatefile=%parentdir%\OGen-NTier\NTier_templates\templates.config.xml
+IF EXIST "%configdir%" (
+	TYPE "%thisdir%distro-templates\%configtemplate%.exe-1.config">"%configfile%"
+	ECHO     ^<add key="Templates" value="%templatefile%" /^>>>"%configfile%"
+	ECHO     ^<add key="ogenPath" value="%thisdir%bin" /^>>>"%configfile%"
+	TYPE "%thisdir%distro-templates\%configtemplate%.exe-2.config">>"%configfile%"
+	ECHO %configfile%
+)
+
+SET configdir=%parentdir%\OGen-NTier\NTier-test
 SET configfile=%configdir%\app.config
 SET templatefile=%parentdir%\OGen-NTier\NTier_templates\templates.config.xml
 IF EXIST "%configdir%" (
@@ -135,6 +156,17 @@ IF EXIST "%configdir%" (
 SET configtemplate=OGen.XSD.presentationlayer.console
 
 SET configdir=%parentdir%\OGen-XSD\XSD-console
+SET configfile=%configdir%\app.config
+SET templatefile=%parentdir%\OGen-XSD\XSD_templates\templates.config.xml
+IF EXIST "%configdir%" (
+	TYPE "%thisdir%distro-templates\%configtemplate%.exe-1.config">"%configfile%"
+	ECHO     ^<add key="Templates" value="%templatefile%" /^>>>"%configfile%"
+	ECHO     ^<add key="ogenPath" value="%thisdir%bin" /^>>>"%configfile%"
+	TYPE "%thisdir%distro-templates\%configtemplate%.exe-2.config">>"%configfile%"
+	ECHO %configfile%
+)
+
+SET configdir=%parentdir%\OGen-XSD\XSD-test
 SET configfile=%configdir%\app.config
 SET templatefile=%parentdir%\OGen-XSD\XSD_templates\templates.config.xml
 IF EXIST "%configdir%" (

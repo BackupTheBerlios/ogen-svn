@@ -36,7 +36,16 @@ namespace OGen.XSD.presentationlayer.test {
 		}
 		public static void Main(string[] args) {
 			RootMetadata _root = new RootMetadata(
-				@"X:\OGen.berlios.de\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xml"
+				System.IO.Path.Combine(
+					#if !NET_1_1
+					System.Configuration.ConfigurationManager.AppSettings
+					#else
+					System.Configuration.ConfigurationSettings.AppSettings
+					#endif
+						["ogenPath"],
+
+					@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xml"
+				)
 			);
 			string ntype = string.Empty;
 			string name = string.Empty;

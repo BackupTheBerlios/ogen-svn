@@ -1,6 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
+# SharpDevelop 2.2.1.2648
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSD_metadata-8", "XSD_metadata\XSD_metadata-8.csproj", "{4DF3D49D-AE3E-47F9-A33F-EB335D7B418E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSD-Test-8", "XSD-Test\XSD-Test-8.csproj", "{E91AFBB5-F6BE-47D1-90B1-811EEB9D42DC}"

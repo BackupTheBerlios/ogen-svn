@@ -27,7 +27,16 @@ namespace Doc_test {
 		[STAThread]
 		static void Main(string[] args) {
 			string filename_ 
-				= @"X:\OGen.berlios.de\OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen.OGenDoc-metadata.xml";
+				= System.IO.Path.Combine(
+					#if !NET_1_1
+					System.Configuration.ConfigurationManager.AppSettings
+					#else
+					System.Configuration.ConfigurationSettings.AppSettings
+					#endif
+						["ogenPath"],
+
+					@"..\..\OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen.OGenDoc-metadata.xml"
+				);
 			string _outputDir = System.IO.Directory.GetParent(
 				Path.GetDirectoryName(filename_)
 			).FullName;

@@ -11,7 +11,7 @@
 @ECHO OFF
 IF NOT '%3' == '' GOTO install
 
-SET thisdir=%~d0%~p0
+SET thisdir=%~dp0
 SET proj=%2
 IF '%proj%' == '' GOTO error7
 

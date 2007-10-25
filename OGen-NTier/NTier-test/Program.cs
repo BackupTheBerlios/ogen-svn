@@ -54,13 +54,31 @@ namespace OGen.NTier.presentationlayer.test {
 			Console.ReadLine();
 			return;
 
-			const string _file1 = 
-				//@"X:\OGen.berlios.de\OGen-NTier_UTs\OGen-metadatas\MD_OGen-NTier_UTs.OGen-metadata.xml"
-				@"X:\OGen.berlios.de\OGen-NTier_UTs\OGen-metadatas\xxx_apagar.xml"
+			string _file1 = 
+				System.IO.Path.Combine(
+					#if !NET_1_1
+					System.Configuration.ConfigurationManager.AppSettings
+					#else
+					System.Configuration.ConfigurationSettings.AppSettings
+					#endif
+						["ogenPath"],
+
+					//@"..\..\OGen-NTier_UTs\OGen-metadatas\MD_OGen-NTier_UTs.OGen-metadata.xml"
+					@"..\..\OGen-NTier_UTs\OGen-metadatas\xxx_apagar.xml"
+				)
 			;
-			const string _file2 =
-				//@"X:\OGen.berlios.de\OGen-NTier_UTs\OGen-metadatas\MD0_OGen-NTier_UTs.OGen-metadata.xml"
-				@"X:\OGen.berlios.de\OGen-NTier_UTs\OGen-metadatas\xxx0_apagar.xml"
+			string _file2 =
+				System.IO.Path.Combine(
+					#if !NET_1_1
+					System.Configuration.ConfigurationManager.AppSettings
+					#else
+					System.Configuration.ConfigurationSettings.AppSettings
+					#endif
+						["ogenPath"],
+
+					//@"..\..\OGen-NTier_UTs\OGen-metadatas\MD0_OGen-NTier_UTs.OGen-metadata.xml"
+					@"..\..\OGen-NTier_UTs\OGen-metadatas\xxx0_apagar.xml"
+				)
 			;
 			DBServerTypes _aux_dbservertype = DBServerTypes.SQLServer;
 			cDBMetadata _aux_metadata;
