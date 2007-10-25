@@ -46,6 +46,24 @@ namespace Doc_test {
 				false
 			);
 			
+			Console.WriteLine(
+				"--- instance:  -------------------------------\n{0}\n----------------------------------------------", 
+				//rootmetadata_.DocumentationCollection[0].DocumentationName
+				//rootmetadata_.DocumentationCollection[0].Subjects.SubjectCollection[0].Description
+				rootmetadata_.DocumentationCollection[0].Subjects.SubjectCollection[2].IDSubject
+			);
+			Console.WriteLine(
+				"--- reflection: ------------------------------\n{0}\n----------------------------------------------", 
+				rootmetadata_.Read_fromRoot(
+					//"ROOT.documentation[0].documentationName"
+					//"ROOT.documentation[0].subjects.subject[0].description"
+					"ROOT.documentation[0].subjects.subject[2].idSubject"
+				)
+			);
+			//Console.ReadLine();
+			return;
+
+
 Console.WriteLine(OGen.Doc.lib.metadata.utils.translate(
 	@"---${code::1}
 ---
