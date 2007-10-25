@@ -115,7 +115,6 @@ if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
 					_output[i] = (<%=XS__%><%=_aux_schema.Element.Name%>)new XmlSerializer(typeof(<%=XS__%><%=_aux_schema.Element.Name%>)).Deserialize(
 						_stream
 					);
-					_output[i].root_<%=_aux_schema.Element.Name.ToLower()%>_ = ROOT + "." + <%=_aux_schema.Element.Name.ToUpper()%> + "[" + i + "]";
 				} catch (Exception _ex) {
 					throw new Exception(string.Format(
 						"\n---\n{0}.{1}.Load_fromFile():\nERROR READING XML:\n{2}\n---\n{3}",
@@ -124,13 +123,73 @@ if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
 						filePath_in[i],
 						_ex.Message
 					));
-				}<%
+				}
+				_output[i].root_<%=_aux_schema.Element.Name.ToLower()%>_ = ROOT + "." + <%=_aux_schema.Element.Name.ToUpper()%> + "[" + i + "]";<%
 if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
 
 				_output[i].parent_ref = root_ref_in; // ToDos: now!
 				if (root_ref_in != null) _output[i].root_ref = root_ref_in;<%
 }%>
 			}
+			return _output;
+		}
+		#endregion
+		#region public static <%=XS__%><%=_aux_schema.Element.Name%>[] Load_fromURI(...);
+		public static <%=XS__%><%=_aux_schema.Element.Name%>[] Load_fromURI(
+			params Uri[] filePath_in
+		) {<%
+if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
+			return Load_fromURI(
+				null, 
+				filePath_in
+			);
+		}
+		public static <%=XS__%><%=_aux_schema.Element.Name%>[] Load_fromURI(
+			<%=XS__%>RootMetadata root_ref_in, 
+			params Uri[] filePath_in
+		) {<%
+}%>
+			<%=XS__%><%=_aux_schema.Element.Name%>[] _output 
+				= new <%=XS__%><%=_aux_schema.Element.Name%>[filePath_in.Length];
+
+			for (int i = 0; i < filePath_in.Length; i++) {
+				if (filePath_in[i].IsFile) {
+					_output[i] = <%=XS__%><%=_aux_schema.Element.Name%>.Load_fromFile(
+						filePath_in[i].LocalPath
+					)[0];
+					// no need! everything's been taken care at: <%=XS__%><%=_aux_schema.Element.Name%>.Load_fromFile(...)
+					//_output[i].root_<%=_aux_schema.Element.Name.ToLower()%>_ = ROOT + "." + <%=_aux_schema.Element.Name.ToUpper()%> + "[" + i + "]";<%
+if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
+					//_output[i].parent_ref = root_ref_in; // ToDos: now!
+					//if (root_ref_in != null) _output[i].root_ref = root_ref_in;<%
+}%>
+				} else {
+					try {
+						_output[i] = (<%=XS__%><%=_aux_schema.Element.Name%>)new XmlSerializer(typeof(<%=XS__%><%=_aux_schema.Element.Name%>)).Deserialize(
+							OGen.lib.presentationlayer.webforms.utils.ReadURL(
+								filePath_in[i].ToString()
+							)
+						);
+					} catch (Exception _ex) {
+						throw new Exception(string.Format(
+							"\n---\n{0}.{1}.Load_fromURI():\nERROR READING XML:\n{2}\n---\n{3}",
+							typeof(<%=XS__%><%=_aux_schema.Element.Name%>).Namespace, 
+							typeof(<%=XS__%><%=_aux_schema.Element.Name%>).Name, 
+							//(filePath_in[i].IsFile)
+							//	? filePath_in[i].LocalPath
+							//	: 
+							filePath_in[i].ToString(),
+							_ex.Message
+						));
+					}
+					_output[i].root_<%=_aux_schema.Element.Name.ToLower()%>_ = ROOT + "." + <%=_aux_schema.Element.Name.ToUpper()%> + "[" + i + "]";<%
+if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
+					_output[i].parent_ref = root_ref_in; // ToDos: now!
+					if (root_ref_in != null) _output[i].root_ref = root_ref_in;<%
+}%>
+				}
+			}
+
 			return _output;
 		}
 		#endregion

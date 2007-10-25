@@ -64,14 +64,22 @@ namespace OGen.lib.templates {
 		#region public XS_conditionType this[string eval_in] { get; }
 		public XS_conditionType this[string eval_in] {
 			get {
-				for (int i = 0; i < cols_.Count; i++) {
-					if (eval_in.Equals(((XS_conditionType)cols_[i]).Eval)) {
-						return (XS_conditionType)cols_[i];
-					}
-				}
-
-				return null;
+				int _index = Search(eval_in);
+				return (_index == -1)
+					? null
+					: (XS_conditionType)cols_[_index];
 			}
+		}
+		#endregion
+		#region public int Search(string eval_in);
+		public int Search(string eval_in) {
+			for (int i = 0; i < cols_.Count; i++) {
+				if (eval_in.Equals(((XS_conditionType)cols_[i]).Eval)) {
+					return i;
+				}
+			}
+
+			return -1;
 		}
 		#endregion
 

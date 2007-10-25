@@ -25,6 +25,21 @@ namespace OGen.Doc.lib.metadata.documentation {
 			cols_ = new ArrayList();
 		}
 
+		#region public object parent_ref { get; }
+		private object parent_ref_;
+
+		public object parent_ref {
+			get {
+				return parent_ref_;
+			}
+			set {
+				parent_ref_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((XS_authorType)cols_[i]).parent_ref = this;
+				}
+			}
+		}
+		#endregion
 		#region public XS__RootMetadata root_ref { get; }
 		private XS__RootMetadata root_ref_;
 
@@ -79,14 +94,22 @@ namespace OGen.Doc.lib.metadata.documentation {
 		#region public XS_authorType this[string idAuthor_in] { get; }
 		public XS_authorType this[string idAuthor_in] {
 			get {
-				for (int i = 0; i < cols_.Count; i++) {
-					if (idAuthor_in.Equals(((XS_authorType)cols_[i]).IDAuthor)) {
-						return (XS_authorType)cols_[i];
-					}
-				}
-
-				return null;
+				int _index = Search(idAuthor_in);
+				return (_index == -1)
+					? null
+					: (XS_authorType)cols_[_index];
 			}
+		}
+		#endregion
+		#region public int Search(string idAuthor_in);
+		public int Search(string idAuthor_in) {
+			for (int i = 0; i < cols_.Count; i++) {
+				if (idAuthor_in.Equals(((XS_authorType)cols_[i]).IDAuthor)) {
+					return i;
+				}
+			}
+
+			return -1;
 		}
 		#endregion
 

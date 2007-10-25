@@ -20,20 +20,5 @@ using OGen.lib.collections;
 namespace OGen.lib.templates {
 	[System.Xml.Serialization.XmlRootAttribute("templates")]
 	public class XS__templates : XS0__templates {
-		#region public static XS__templates Load_fromURI(...);
-		public static XS__templates Load_fromURI(
-			Uri filePath_in
-		) {
-			if (filePath_in.IsFile) {
-				XS__templates[] _templates = XS__templates.Load_fromFile(
-					filePath_in.LocalPath
-				);
-
-				return _templates[0];
-			} else {
-				throw new Exception("// ToDos: now! not implemented!");
-			}
-		}
-		#endregion
 	}
 }

@@ -64,14 +64,22 @@ namespace OGen.lib.templates {
 		#region public XS_argumentType this[string name_in] { get; }
 		public XS_argumentType this[string name_in] {
 			get {
-				for (int i = 0; i < cols_.Count; i++) {
-					if (name_in.Equals(((XS_argumentType)cols_[i]).Name)) {
-						return (XS_argumentType)cols_[i];
-					}
-				}
-
-				return null;
+				int _index = Search(name_in);
+				return (_index == -1)
+					? null
+					: (XS_argumentType)cols_[_index];
 			}
+		}
+		#endregion
+		#region public int Search(string name_in);
+		public int Search(string name_in) {
+			for (int i = 0; i < cols_.Count; i++) {
+				if (name_in.Equals(((XS_argumentType)cols_[i]).Name)) {
+					return i;
+				}
+			}
+
+			return -1;
 		}
 		#endregion
 

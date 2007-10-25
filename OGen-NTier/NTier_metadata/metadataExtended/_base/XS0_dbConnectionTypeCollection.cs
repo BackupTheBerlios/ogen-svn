@@ -25,6 +25,21 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 			cols_ = new ArrayList();
 		}
 
+		#region public object parent_ref { get; }
+		private object parent_ref_;
+
+		public object parent_ref {
+			get {
+				return parent_ref_;
+			}
+			set {
+				parent_ref_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((XS_dbConnectionType)cols_[i]).parent_ref = this;
+				}
+			}
+		}
+		#endregion
 		#region public XS__RootMetadata root_ref { get; }
 		private XS__RootMetadata root_ref_;
 
@@ -79,14 +94,22 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 		#region public XS_dbConnectionType this[string configMode_in] { get; }
 		public XS_dbConnectionType this[string configMode_in] {
 			get {
-				for (int i = 0; i < cols_.Count; i++) {
-					if (configMode_in.Equals(((XS_dbConnectionType)cols_[i]).ConfigMode)) {
-						return (XS_dbConnectionType)cols_[i];
-					}
-				}
-
-				return null;
+				int _index = Search(configMode_in);
+				return (_index == -1)
+					? null
+					: (XS_dbConnectionType)cols_[_index];
 			}
+		}
+		#endregion
+		#region public int Search(string configMode_in);
+		public int Search(string configMode_in) {
+			for (int i = 0; i < cols_.Count; i++) {
+				if (configMode_in.Equals(((XS_dbConnectionType)cols_[i]).ConfigMode)) {
+					return i;
+				}
+			}
+
+			return -1;
 		}
 		#endregion
 

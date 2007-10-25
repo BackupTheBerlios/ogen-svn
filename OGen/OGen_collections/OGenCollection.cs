@@ -13,8 +13,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 */
 #endregion
 
+#if !NET_1_1
 using System;
-//using System.Collections;
 using System.Collections.Generic;
 
 namespace OGen.lib.collections {
@@ -217,3 +217,4 @@ namespace OGen.lib.collections {
 		#endregion
 	}
 }
+#endif

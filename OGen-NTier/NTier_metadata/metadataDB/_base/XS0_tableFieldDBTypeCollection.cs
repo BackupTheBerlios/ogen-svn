@@ -25,6 +25,21 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 			cols_ = new ArrayList();
 		}
 
+		#region public object parent_ref { get; }
+		private object parent_ref_;
+
+		public object parent_ref {
+			get {
+				return parent_ref_;
+			}
+			set {
+				parent_ref_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((XS_tableFieldDBType)cols_[i]).parent_ref = this;
+				}
+			}
+		}
+		#endregion
 		#region public XS__RootMetadata root_ref { get; }
 		private XS__RootMetadata root_ref_;
 
@@ -79,14 +94,22 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 		#region public XS_tableFieldDBType this[string dbServerType_in] { get; }
 		public XS_tableFieldDBType this[string dbServerType_in] {
 			get {
-				for (int i = 0; i < cols_.Count; i++) {
-					if (dbServerType_in.Equals(((XS_tableFieldDBType)cols_[i]).DBServerType)) {
-						return (XS_tableFieldDBType)cols_[i];
-					}
-				}
-
-				return null;
+				int _index = Search(dbServerType_in);
+				return (_index == -1)
+					? null
+					: (XS_tableFieldDBType)cols_[_index];
 			}
+		}
+		#endregion
+		#region public int Search(string dbServerType_in);
+		public int Search(string dbServerType_in) {
+			for (int i = 0; i < cols_.Count; i++) {
+				if (dbServerType_in.Equals(((XS_tableFieldDBType)cols_[i]).DBServerType)) {
+					return i;
+				}
+			}
+
+			return -1;
 		}
 		#endregion
 

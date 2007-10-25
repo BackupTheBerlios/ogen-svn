@@ -70,6 +70,21 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Eleme
 		}
 <%
 if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
+		#region public object parent_ref { get; }
+		private object parent_ref_;
+
+		public object parent_ref {
+			get {
+				return parent_ref_;
+			}
+			set {
+				parent_ref_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((<%=XS_%><%=_aux_complextype.Name%>)cols_[i]).parent_ref = this;
+				}
+			}
+		}
+		#endregion
 		#region public <%=XS__%>RootMetadata root_ref { get; }
 		private <%=XS__%>RootMetadata root_ref_;
 
@@ -126,14 +141,22 @@ if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
 		#region public <%=XS_%><%=_aux_complextype.Name%> this[<%=_aux_complextype_keys_ntype%> <%=_aux_complextype_keys_name%>_in] { get; }
 		public <%=XS_%><%=_aux_complextype.Name%> this[<%=_aux_complextype_keys_ntype%> <%=_aux_complextype_keys_name%>_in] {
 			get {
-				for (int i = 0; i < cols_.Count; i++) {
-					if (<%=_aux_complextype_keys_name%>_in.Equals(((<%=XS_%><%=_aux_complextype.Name%>)cols_[i]).<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_complextype_keys_name)%>)) {
-						return (<%=XS_%><%=_aux_complextype.Name%>)cols_[i];
-					}
-				}
-
-				return null;
+				int _index = Search(<%=_aux_complextype_keys_name%>_in);
+				return (_index == -1)
+					? null
+					: (<%=XS_%><%=_aux_complextype.Name%>)cols_[_index];
 			}
+		}
+		#endregion
+		#region public int Search(<%=_aux_complextype_keys_ntype%> <%=_aux_complextype_keys_name%>_in);
+		public int Search(<%=_aux_complextype_keys_ntype%> <%=_aux_complextype_keys_name%>_in) {
+			for (int i = 0; i < cols_.Count; i++) {
+				if (<%=_aux_complextype_keys_name%>_in.Equals(((<%=XS_%><%=_aux_complextype.Name%>)cols_[i]).<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_complextype_keys_name)%>)) {
+					return i;
+				}
+			}
+
+			return -1;
 		}
 		#endregion<%
 		}%>

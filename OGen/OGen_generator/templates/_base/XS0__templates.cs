@@ -53,7 +53,6 @@ namespace OGen.lib.templates {
 					_output[i] = (XS__templates)new XmlSerializer(typeof(XS__templates)).Deserialize(
 						_stream
 					);
-					_output[i].root_templates_ = ROOT + "." + TEMPLATES + "[" + i + "]";
 				} catch (Exception _ex) {
 					throw new Exception(string.Format(
 						"\n---\n{0}.{1}.Load_fromFile():\nERROR READING XML:\n{2}\n---\n{3}",
@@ -63,7 +62,47 @@ namespace OGen.lib.templates {
 						_ex.Message
 					));
 				}
+				_output[i].root_templates_ = ROOT + "." + TEMPLATES + "[" + i + "]";
 			}
+			return _output;
+		}
+		#endregion
+		#region public static XS__templates[] Load_fromURI(...);
+		public static XS__templates[] Load_fromURI(
+			params Uri[] filePath_in
+		) {XS__templates[] _output 
+				= new XS__templates[filePath_in.Length];
+
+			for (int i = 0; i < filePath_in.Length; i++) {
+				if (filePath_in[i].IsFile) {
+					_output[i] = XS__templates.Load_fromFile(
+						filePath_in[i].LocalPath
+					)[0];
+					// no need! everything's been taken care at: XS__templates.Load_fromFile(...)
+					//_output[i].root_templates_ = ROOT + "." + TEMPLATES + "[" + i + "]";
+				} else {
+					try {
+						_output[i] = (XS__templates)new XmlSerializer(typeof(XS__templates)).Deserialize(
+							OGen.lib.presentationlayer.webforms.utils.ReadURL(
+								filePath_in[i].ToString()
+							)
+						);
+					} catch (Exception _ex) {
+						throw new Exception(string.Format(
+							"\n---\n{0}.{1}.Load_fromURI():\nERROR READING XML:\n{2}\n---\n{3}",
+							typeof(XS__templates).Namespace, 
+							typeof(XS__templates).Name, 
+							//(filePath_in[i].IsFile)
+							//	? filePath_in[i].LocalPath
+							//	: 
+							filePath_in[i].ToString(),
+							_ex.Message
+						));
+					}
+					_output[i].root_templates_ = ROOT + "." + TEMPLATES + "[" + i + "]";
+				}
+			}
+
 			return _output;
 		}
 		#endregion

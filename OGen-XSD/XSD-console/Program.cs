@@ -60,6 +60,8 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 								@"..\..\OGen\OGen_generator\OGenXSD-metadatas\MD_OGen_templates.OGenXSD-metadata.xml"
 							)
 						);
+						Console.WriteLine();
+						Console.WriteLine();
 						Console.WriteLine("--- NTier_metadata");
 						DoIt(
 							System.IO.Path.Combine(
@@ -73,6 +75,8 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 								@"..\..\OGen-NTier\NTier_metadata\OGenXSD-metadatas\MD_NTier_metadata.OGenXSD-metadata.xml"
 							)
 						);
+						Console.WriteLine();
+						Console.WriteLine();
 						Console.WriteLine("--- Doc_metadata");
 						DoIt(
 							System.IO.Path.Combine(
@@ -86,6 +90,8 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 								@"..\..\OGen-Doc\Doc_metadata\OGenXSD-metadatas\MD_Doc_metadata.OGenXSD-metadata.xml"
 							)
 						);
+						Console.WriteLine();
+						Console.WriteLine();
 					} catch (Exception _ex) {
 						Console.WriteLine(_ex.ToString());
 					}

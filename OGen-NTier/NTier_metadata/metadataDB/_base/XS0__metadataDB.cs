@@ -62,7 +62,6 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 					_output[i] = (XS__metadataDB)new XmlSerializer(typeof(XS__metadataDB)).Deserialize(
 						_stream
 					);
-					_output[i].root_metadatadb_ = ROOT + "." + METADATADB + "[" + i + "]";
 				} catch (Exception _ex) {
 					throw new Exception(string.Format(
 						"\n---\n{0}.{1}.Load_fromFile():\nERROR READING XML:\n{2}\n---\n{3}",
@@ -72,10 +71,63 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 						_ex.Message
 					));
 				}
+				_output[i].root_metadatadb_ = ROOT + "." + METADATADB + "[" + i + "]";
 
 				_output[i].parent_ref = root_ref_in; // ToDos: now!
 				if (root_ref_in != null) _output[i].root_ref = root_ref_in;
 			}
+			return _output;
+		}
+		#endregion
+		#region public static XS__metadataDB[] Load_fromURI(...);
+		public static XS__metadataDB[] Load_fromURI(
+			params Uri[] filePath_in
+		) {
+			return Load_fromURI(
+				null, 
+				filePath_in
+			);
+		}
+		public static XS__metadataDB[] Load_fromURI(
+			XS__RootMetadata root_ref_in, 
+			params Uri[] filePath_in
+		) {XS__metadataDB[] _output 
+				= new XS__metadataDB[filePath_in.Length];
+
+			for (int i = 0; i < filePath_in.Length; i++) {
+				if (filePath_in[i].IsFile) {
+					_output[i] = XS__metadataDB.Load_fromFile(
+						filePath_in[i].LocalPath
+					)[0];
+					// no need! everything's been taken care at: XS__metadataDB.Load_fromFile(...)
+					//_output[i].root_metadatadb_ = ROOT + "." + METADATADB + "[" + i + "]";
+					//_output[i].parent_ref = root_ref_in; // ToDos: now!
+					//if (root_ref_in != null) _output[i].root_ref = root_ref_in;
+				} else {
+					try {
+						_output[i] = (XS__metadataDB)new XmlSerializer(typeof(XS__metadataDB)).Deserialize(
+							OGen.lib.presentationlayer.webforms.utils.ReadURL(
+								filePath_in[i].ToString()
+							)
+						);
+					} catch (Exception _ex) {
+						throw new Exception(string.Format(
+							"\n---\n{0}.{1}.Load_fromURI():\nERROR READING XML:\n{2}\n---\n{3}",
+							typeof(XS__metadataDB).Namespace, 
+							typeof(XS__metadataDB).Name, 
+							//(filePath_in[i].IsFile)
+							//	? filePath_in[i].LocalPath
+							//	: 
+							filePath_in[i].ToString(),
+							_ex.Message
+						));
+					}
+					_output[i].root_metadatadb_ = ROOT + "." + METADATADB + "[" + i + "]";
+					_output[i].parent_ref = root_ref_in; // ToDos: now!
+					if (root_ref_in != null) _output[i].root_ref = root_ref_in;
+				}
+			}
+
 			return _output;
 		}
 		#endregion

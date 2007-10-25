@@ -27,6 +27,21 @@ namespace OGen.XSD.lib.metadata {
 			cols_ = new ArrayList();
 		}
 
+		#region public object parent_ref { get; }
+		private object parent_ref_;
+
+		public object parent_ref {
+			get {
+				return parent_ref_;
+			}
+			set {
+				parent_ref_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((XS_Element)cols_[i]).parent_ref = this;
+				}
+			}
+		}
+		#endregion
 		#region public RootMetadata root_ref { get; }
 		private RootMetadata root_ref_;
 

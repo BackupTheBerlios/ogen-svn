@@ -46,8 +46,8 @@ namespace OGen.lib.presentationlayer.webforms {
 		}
 		#endregion
 
-		#region public static string ReadURL(...) { ... }
-		public static string ReadURL(
+		#region public static System.IO.Stream ReadURL(...) { ... }
+		public static System.IO.Stream ReadURL(
 			string url_in, 
 			Hashtable parameters_in
 		) {
@@ -56,7 +56,7 @@ namespace OGen.lib.presentationlayer.webforms {
 				+ ConcatenateURLParams(parameters_in, true)
 			);
 		}
-		public static string ReadURL(
+		public static System.IO.Stream ReadURL(
 			string url_in
 		) {
 			WebRequest webrequest = System.Net.HttpWebRequest.Create(url_in);
@@ -76,7 +76,25 @@ namespace OGen.lib.presentationlayer.webforms {
 
 			//webrequest.Credentials = new System.Net.WebRequest() .credentials Credentials
 
-			StreamReader streamreader = new StreamReader(webresponse.GetResponseStream());
+			return ((System.IO.Stream)webresponse.GetResponseStream());
+		}
+		#endregion
+		#region public static string ReadURL_ToString(...) { ... }
+		public static string ReadURL_ToString(
+			string url_in, 
+			Hashtable parameters_in
+		) {
+			return ReadURL_ToString(
+				url_in 
+				+ ConcatenateURLParams(parameters_in, true)
+			);
+		}
+		public static string ReadURL_ToString(
+			string url_in
+		) {
+			StreamReader streamreader = new StreamReader(
+				ReadURL(url_in)
+			);
 			return streamreader.ReadToEnd();
 		}
 		#endregion

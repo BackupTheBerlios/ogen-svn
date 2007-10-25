@@ -398,7 +398,7 @@ if (templates_.TemplateCollection[template_].Outputs.OutputCollection[o].Type ==
 								switch (templates_.TemplateCollection[template_].ParserType) {
 									case XS_ParserEnumeration.aspx:
 									case XS_ParserEnumeration.none: {
-										_parsedOutput = OGen.lib.presentationlayer.webforms.utils.ReadURL(
+										_parsedOutput = OGen.lib.presentationlayer.webforms.utils.ReadURL_ToString(
 											xmltemplatesdir_ + "/" + templates_.TemplateCollection[template_].Name, 
 											_args
 										);
@@ -602,9 +602,10 @@ for (int d = 0; d < dbconnectionstrings_.Count; d++) {
 //                }
 //            }
 
-			templates_ = XS__templates.Load_fromURI(
-				xmltemplatesfileuri_
-			);
+			templates_ = (xmltemplatesfileuri_.IsFile)
+				? XS__templates.Load_fromFile(xmltemplatesfileuri_.LocalPath)[0]
+				: XS__templates.Load_fromURI(xmltemplatesfileuri_)[0]
+			;
 
 			bool _finished;
 			ArrayList _finishedTemplates = new ArrayList(templates_.TemplateCollection.Count);
