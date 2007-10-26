@@ -147,6 +147,7 @@ namespace OGen.lib.generator {
 			int _indexOfSquareBrackets_begin = -1;
 			int _indexOfSquareBrackets_end = -1;
 			string _aux1;
+			bool _aux2 = true;
 
 			_properties = someClass_in.GetType().GetProperties(
 				BindingFlags.Public | 
@@ -190,44 +191,59 @@ namespace OGen.lib.generator {
 						)[0];
 
 					if (_value.GetType().IsArray) {
-						//if (returnValue_in) {
-						//    _aux1 = string.Format(
-						//        "{0}.{1}[",
-						//        path_in,
-						//        _elementAttribute.ElementName
-						//    );
-						//    _indexOfSquareBrackets_begin = _aux1.Length;
-						//    if (
-						//        _aux1
-						//        !=
-						//        iteration_in.Substring(
-						//            0,
-						//            _indexOfSquareBrackets_begin
-						//        )
-						//    ) {
-						//        return null;
-						//    }
-						//    _indexOfSquareBrackets_end
-						//        = iteration_in.IndexOf(
-						//            ']',
-						//            _indexOfSquareBrackets_begin
-						//        );
-						//}
+						if (returnValue_in) {
+							_aux2 = true;
+
+							_aux1 = string.Format(
+								"{0}.{1}[",
+								path_in,
+								_elementAttribute.ElementName
+							);
+							_indexOfSquareBrackets_begin = _aux1.Length;
+							if (
+								_aux1
+								!=
+								iteration_in.Substring(
+									0,
+									_indexOfSquareBrackets_begin
+								)
+							) {
+_aux2 = false;
+//Console.WriteLine(
+//    "{0}?{1}?\n{2}",
+//    path_in,
+//    _elementAttribute.ElementName, 
+//    iteration_in
+//);
+//Console.ReadLine();
+//return null;
+							} else {
+								_indexOfSquareBrackets_end
+									= iteration_in.IndexOf(
+										']',
+										_indexOfSquareBrackets_begin
+									);
+							}
+						}
 
 						_array = (Array)_value;
 						for (
 							int i = 
-								//(returnValue_in)
-								//?
-								//    // performance tweak, goes straight to the iteration 
-								//    // when (returnValue_in == true)
-								//    int.Parse(
-								//        iteration_in.Substring(
-								//            _indexOfSquareBrackets_begin, 
-								//            _indexOfSquareBrackets_end - _indexOfSquareBrackets_begin
-								//        )
-								//    )
-								//: 
+								(
+									returnValue_in
+&&
+_aux2
+								)
+								?
+								    // performance tweak, goes straight to the iteration 
+								    // when (returnValue_in == true)
+								    int.Parse(
+								        iteration_in.Substring(
+								            _indexOfSquareBrackets_begin, 
+								            _indexOfSquareBrackets_end - _indexOfSquareBrackets_begin
+								        )
+								    )
+								: 
 									0
 							;
 
