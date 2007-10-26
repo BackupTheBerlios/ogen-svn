@@ -94,8 +94,8 @@ namespace OGen.lib.generator {
 					returnValue_in
 					&&
 					(
-						//(path_in.Length > iteration_in.Length)
-						//||
+						(path_in.Length > iteration_in.Length)
+						||
 						(path_in != iteration_in.Substring(0, path_in.Length))
 					)
 				)
@@ -130,7 +130,8 @@ namespace OGen.lib.generator {
 //	pathTranslated_in, 
 //	returnValue_in ? "READ" : "ITERATE"
 //);
-//
+//#endif
+//#if DEBUG
 //Console.Write("{{{0}}}", path_in.ToUpper());
 //#endif
 
@@ -143,7 +144,9 @@ namespace OGen.lib.generator {
 			bool _isAttribute = false;
 			bool _isElement = false;
 			string _attributename = string.Empty;
-			int _indexOfSquareBrackets;
+			int _indexOfSquareBrackets_begin = -1;
+			int _indexOfSquareBrackets_end = -1;
+			string _aux1;
 
 			_properties = someClass_in.GetType().GetProperties(
 				BindingFlags.Public | 
@@ -187,46 +190,51 @@ namespace OGen.lib.generator {
 						)[0];
 
 					if (_value.GetType().IsArray) {
-						_array = (Array)_value;
-						for (int i = 0; i < _array.Length; i++) {
-
-							if (returnValue_in) {
-								// performance tweak, goes straight to the iteration 
-								// when (returnValue_in == true)
-
-								_indexOfSquareBrackets = 
-									path_in.Length
-									+ 1 // .
-									+ _elementAttribute.ElementName.Length
-									+ 1 // [
-								;
-								i = int.Parse(
-									iteration_in.Substring(
-										_indexOfSquareBrackets, 
-										iteration_in.IndexOf(']', _indexOfSquareBrackets) - _indexOfSquareBrackets
-									)
-								);
-//#if DEBUG
-//Console.WriteLine(
-//	"\n---\n{0}.{1}.ReflectThrough:{7}:{9}[{8}]|{10}(\n\tpath:\t\"{4}\",\n\titer:\t\"{5}\",\n\tPATH:\t\"{6}\"\n)\n---", 
-//	typeof(utils).Namespace, 
-//	typeof(utils).Name, 
-//	someClass_in.GetType().Namespace, 
-//	someClass_in.GetType().Name, 
-//	path_in, 
-//	iteration_in, 
-//	pathTranslated_in, 
-//	returnValue_in ? "READ" : "ITERATE", 
-//	i, 
-//	_elementAttribute.ElementName, 
-//	iteration_in.Substring(
-//		_indexOfSquareBrackets, 
-//		iteration_in.IndexOf(']', _indexOfSquareBrackets) - _indexOfSquareBrackets
-//	)
-//);
-//#endif
+						if (returnValue_in) {
+							_aux1 = string.Format(
+								"{0}.{1}[", 
+								path_in, 
+								_elementAttribute.ElementName
+							);
+							_indexOfSquareBrackets_begin = _aux1.Length;
+							if (
+								_aux1
+								!=
+								iteration_in.Substring(
+									0, 
+									_indexOfSquareBrackets_begin
+								)
+							) {
+								return null;
 							}
 
+							_indexOfSquareBrackets_end 
+								= iteration_in.IndexOf(
+									']', 
+									_indexOfSquareBrackets_begin
+								);
+
+						}
+
+						_array = (Array)_value;
+						for (
+							int i 
+								= (returnValue_in)
+								?
+									// performance tweak, goes straight to the iteration 
+									// when (returnValue_in == true)
+									int.Parse(
+										iteration_in.Substring(
+											_indexOfSquareBrackets_begin, 
+											_indexOfSquareBrackets_end - _indexOfSquareBrackets_begin
+										)
+									)
+								: 0
+							;
+
+							i < _array.Length;
+							i++
+						) {
 							_output = ReflectThrough(
 								_array.GetValue(i), 
 								string.Format(

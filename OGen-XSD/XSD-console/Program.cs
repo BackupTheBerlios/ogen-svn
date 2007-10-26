@@ -47,6 +47,8 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 			} else {
 				#if DEBUG
 					try {
+						long _begin_ticks = DateTime.Now.Ticks;
+
 						Console.WriteLine("--- OGen_templates");
 						DoIt(
 							System.IO.Path.Combine(
@@ -92,6 +94,9 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 						);
 						Console.WriteLine();
 						Console.WriteLine();
+
+						
+						Console.WriteLine("time: {0}", new DateTime(DateTime.Now.Ticks - _begin_ticks).ToString("HH:mm:ss:fff"));
 					} catch (Exception _ex) {
 						Console.WriteLine(_ex.ToString());
 					}
