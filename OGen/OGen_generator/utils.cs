@@ -89,15 +89,37 @@ namespace OGen.lib.generator {
 			bool returnValue_in, 
 			bool anyAttribute_notJustXml
 		) {
-// ToDos: now! performance, should compare and avoid looking in the wrong direction 
-// --> when (returnValue_in in (true, false)) <--
+			if (
+				(
+					returnValue_in
+					&&
+					(
+						//(path_in.Length > iteration_in.Length)
+						//||
+						(path_in != iteration_in.Substring(0, path_in.Length))
+					)
+				)
+				||
+				(
+					!returnValue_in
+					&&
+					(
+						(pathTranslated_in.Length > iteration_in.Length)
+						||
+						(pathTranslated_in != iteration_in.Substring(0, pathTranslated_in.Length))
+					)
+				)
+			) {
+				// performance tweak, compares path to avoid looking in the wrong direction 
+				return null;
+			}
 
 			if (iteration_in == pathTranslated_in) {
 				if (iteration_found_in != null) iteration_found_in(path_in);
 			}
 
-#if DEBUG
-//Console.WriteLine(string.Format(
+//#if DEBUG
+//Console.WriteLine(
 //	"\n---\n{0}.{1}.ReflectThrough:{7}(\n\tsomeClass_in:\"{2}.{3}\",\n\tpath_in:\"{4}\",\n\titeration_in:\"{5}\",\n\tpathTranslated_in:\"{6}\"\n)\n---", 
 //	typeof(utils).Namespace, 
 //	typeof(utils).Name, 
@@ -107,10 +129,10 @@ namespace OGen.lib.generator {
 //	iteration_in, 
 //	pathTranslated_in, 
 //	returnValue_in ? "READ" : "ITERATE"
-//));
-#endif
-
+//);
+//
 //Console.Write("{{{0}}}", path_in.ToUpper());
+//#endif
 
 			PropertyInfo[] _properties;
 			System.Xml.Serialization.XmlElementAttribute _elementAttribute;
@@ -121,6 +143,7 @@ namespace OGen.lib.generator {
 			bool _isAttribute = false;
 			bool _isElement = false;
 			string _attributename = string.Empty;
+			int _indexOfSquareBrackets;
 
 			_properties = someClass_in.GetType().GetProperties(
 				BindingFlags.Public | 
@@ -165,8 +188,45 @@ namespace OGen.lib.generator {
 
 					if (_value.GetType().IsArray) {
 						_array = (Array)_value;
-// ToDos: now! performance, should go straight to the iteration when (returnValue_in == true)
-for (int i = 0; i < _array.Length; i++) {
+						for (int i = 0; i < _array.Length; i++) {
+
+							if (returnValue_in) {
+								// performance tweak, goes straight to the iteration 
+								// when (returnValue_in == true)
+
+								_indexOfSquareBrackets = 
+									path_in.Length
+									+ 1 // .
+									+ _elementAttribute.ElementName.Length
+									+ 1 // [
+								;
+								i = int.Parse(
+									iteration_in.Substring(
+										_indexOfSquareBrackets, 
+										iteration_in.IndexOf(']', _indexOfSquareBrackets) - _indexOfSquareBrackets
+									)
+								);
+//#if DEBUG
+//Console.WriteLine(
+//	"\n---\n{0}.{1}.ReflectThrough:{7}:{9}[{8}]|{10}(\n\tpath:\t\"{4}\",\n\titer:\t\"{5}\",\n\tPATH:\t\"{6}\"\n)\n---", 
+//	typeof(utils).Namespace, 
+//	typeof(utils).Name, 
+//	someClass_in.GetType().Namespace, 
+//	someClass_in.GetType().Name, 
+//	path_in, 
+//	iteration_in, 
+//	pathTranslated_in, 
+//	returnValue_in ? "READ" : "ITERATE", 
+//	i, 
+//	_elementAttribute.ElementName, 
+//	iteration_in.Substring(
+//		_indexOfSquareBrackets, 
+//		iteration_in.IndexOf(']', _indexOfSquareBrackets) - _indexOfSquareBrackets
+//	)
+//);
+//#endif
+							}
+
 							_output = ReflectThrough(
 								_array.GetValue(i), 
 								string.Format(

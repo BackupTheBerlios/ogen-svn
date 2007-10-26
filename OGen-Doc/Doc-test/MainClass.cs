@@ -24,46 +24,19 @@ using OGen.Doc.lib.metadata.documentation;
 
 namespace Doc_test {
 	public class MainClass {
+		#region //test2
+//		static void Iteration_found(string message_in) {
+//			Console.WriteLine(
+//				"iterating: {0} . . .", 
+//				message_in
+//			);
+//		}
+		#endregion
+
 		[STAThread]
 		static void Main(string[] args) {
-			string filename_ 
-				= System.IO.Path.Combine(
-					#if !NET_1_1
-					System.Configuration.ConfigurationManager.AppSettings
-					#else
-					System.Configuration.ConfigurationSettings.AppSettings
-					#endif
-						["ogenPath"],
 
-					@"..\..\OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen.OGenDoc-metadata.xml"
-				);
-			string _outputDir = System.IO.Directory.GetParent(
-				Path.GetDirectoryName(filename_)
-			).FullName;
-
-			XS__RootMetadata rootmetadata_ = XS__RootMetadata.Load_fromFile(
-				filename_,
-				false
-			);
-			
-			Console.WriteLine(
-				"--- instance:  -------------------------------\n{0}\n----------------------------------------------", 
-				//rootmetadata_.DocumentationCollection[0].DocumentationName
-				//rootmetadata_.DocumentationCollection[0].Subjects.SubjectCollection[0].Description
-				rootmetadata_.DocumentationCollection[0].Subjects.SubjectCollection[2].IDSubject
-			);
-			Console.WriteLine(
-				"--- reflection: ------------------------------\n{0}\n----------------------------------------------", 
-				rootmetadata_.Read_fromRoot(
-					//"ROOT.documentation[0].documentationName"
-					//"ROOT.documentation[0].subjects.subject[0].description"
-					"ROOT.documentation[0].subjects.subject[2].idSubject"
-				)
-			);
-			//Console.ReadLine();
-			return;
-
-
+//			#region test3 - translate bug...
 Console.WriteLine(OGen.Doc.lib.metadata.utils.translate(
 	@"---${code::1}
 ---
@@ -73,10 +46,58 @@ ${code::1}
 ---",
 	rootmetadata_.DocumentationCollection[0]
 ));
-			
 
-			Console.WriteLine(rootmetadata_.Read_fromRoot("ROOT.documentation[0].documentationName"));
+			return;
+//			#endregion
 
+			#region //test2 - performance tweaks...
+//			Console.WriteLine(rootmetadata_.Read_fromRoot("ROOT.documentation[0].documentationName"));
+//			string filename_ 
+//				= System.IO.Path.Combine(
+//					#if !NET_1_1
+//					System.Configuration.ConfigurationManager.AppSettings
+//					#else
+//					System.Configuration.ConfigurationSettings.AppSettings
+//					#endif
+//						["ogenPath"],
+//
+//					@"..\..\OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen.OGenDoc-metadata.xml"
+//				);
+//			string _outputDir = System.IO.Directory.GetParent(
+//				Path.GetDirectoryName(filename_)
+//			).FullName;
+//
+//			XS__RootMetadata rootmetadata_ = XS__RootMetadata.Load_fromFile(
+//				filename_,
+//				false
+//			);
+//			
+//			long _ini = DateTime.Now.Ticks;
+//			Console.WriteLine(
+//				"--- instance:  -------------------------------\n{0}\n----------------------------------------------", 
+//				//rootmetadata_.DocumentationCollection[0].DocumentationName
+//				//rootmetadata_.DocumentationCollection[0].Subjects.SubjectCollection[0].Description
+//				rootmetadata_.DocumentationCollection[0].Subjects.SubjectCollection[2].IDSubject
+//				//rootmetadata_.DocumentationCollection[0].Subjects.SubjectCollection[18].Documents.DocumentCollection[2].IDDocument
+//			);
+//			Console.WriteLine(
+//				"--- reflection: ------------------------------\n{0}\n----------------------------------------------", 
+//				rootmetadata_.Read_fromRoot(
+//					//"ROOT.documentation[0].documentationName"
+//					//"ROOT.documentation[0].subjects.subject[0].description"
+//					"ROOT.documentation[0].subjects.subject[2].idSubject"
+//					//"ROOT.documentation[0].subjects.subject[18].documents.document[2].idDocument"
+//				)
+//			);
+//			rootmetadata_.IterateThrough_fromRoot(
+//				"ROOT.documentation[n].subjects.subject[n]", 
+//				//"ROOT.documentation[n].subjects.subject[n].documents.document[n]", 
+//				Iteration_found
+//			);
+//			Console.WriteLine("468756-781280:1406223:{0}", DateTime.Now.Ticks - _ini);
+//			return;
+			#endregion
+			#region //test1 - generator...
 //			MetaFile[] _metafiles = new MetaFile[rootmetadata_.MetadataFiles.MetadataFiles.Count];
 //			for (int i = 0; i < rootmetadata_.MetadataFiles.MetadataFiles.Count; i++) {
 //				_metafiles[i] = new MetaFile(
@@ -101,7 +122,8 @@ ${code::1}
 //				Notify, 
 //				rootmetadata_
 //			);
-			return;
+//			return;
+			#endregion
 		}
 	}
 }
