@@ -64,6 +64,9 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 						);
 						Console.WriteLine();
 						Console.WriteLine();
+#if DEBUG
+_begin_ticks = DateTime.Now.Ticks;
+#endif
 						Console.WriteLine("--- NTier_metadata");
 						DoIt(
 							System.IO.Path.Combine(
@@ -79,6 +82,7 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 						);
 						Console.WriteLine();
 						Console.WriteLine();
+
 						Console.WriteLine("--- Doc_metadata");
 						DoIt(
 							System.IO.Path.Combine(
@@ -95,7 +99,6 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 						Console.WriteLine();
 						Console.WriteLine();
 
-						
 						Console.WriteLine("time: {0}", new DateTime(DateTime.Now.Ticks - _begin_ticks).ToString("HH:mm:ss:fff"));
 					} catch (Exception _ex) {
 						Console.WriteLine(_ex.ToString());
