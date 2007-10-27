@@ -18,9 +18,41 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	elementFormDefault="qualified">
 
 	<!--
-		<tableDB dbServerType="PostgreSQL" dbTableName="IHaveAStyle" />
-		<tableDB dbServerType="SQLServer" dbTableName="i_Have_MyOwn_style" />
-		<tableDB dbServerType="MySQL" dbTableName="i_have_a_lower_style" />
+		<tables>
+			<table name="Config" friendlyName="" dbDescription="" extendedDescription="" isVirtualTable="False" isConfig="True">
+				<tableDBs>
+					<tableDB dbServerType="PostgreSQL" dbTableName="IHaveAStyle" />
+					<tableDB dbServerType="SQLServer" dbTableName="i_Have_MyOwn_style" />
+
+					<tableDB ... />
+				</tableDBs>
+				<tableFields>
+					<tableField name="Name" isPK="True" isIdentity="False" defaultValue="" friendlyName="" 
+						extendedDescription="" isListItemValue="False" isListItemText="False" 
+						isConfig_Name="True" isConfig_Config="False" isConfig_Datatype="False" 
+						fkTableName="" fkFieldName="" isNullable="False" size="50" aditionalInfo="" 
+						numericPrecision="0" numericScale="0">
+
+						<tableFieldDBs>
+							<tableFieldDB dbServerType="PostgreSQL" dbType="character varying" dbDescription="" dbDefaultValue="" dbCollationName="" dbFieldName="" />
+							<tableFieldDB dbServerType="SQLServer" dbType="varchar" dbDescription="" dbDefaultValue="" dbCollationName="SQL_Latin1_General_CP1_CI_AS" dbFieldName="" />
+
+							<tableFieldDB ... />
+						</tableFieldDBs>
+					</tableField>
+
+					<tableField ... />
+				</tableFields>
+			</table>
+
+			<table ... />
+		</tables>
+	-->
+
+	<!--
+			<tableDB dbServerType="PostgreSQL" dbTableName="IHaveAStyle" />
+			<tableDB dbServerType="SQLServer" dbTableName="i_Have_MyOwn_style" />
+			<tableDB dbServerType="MySQL" dbTableName="i_have_a_lower_style" />
 	-->
 	<xs:complexType name="tableDBType">
 		<xs:attribute name="dbServerType" type="xs:string" />
@@ -39,8 +71,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	</xs:complexType>
 
 	<!--
-		<tableFieldDB dbServerType="PostgreSQL" dbType="character varying" dbDescription="" dbDefaultValue="" dbCollationName="" dbFieldName="" />
-		<tableFieldDB dbServerType="SQLServer" dbType="varchar" dbDescription="" dbDefaultValue="" dbCollationName="SQL_Latin1_General_CP1_CI_AS" dbFieldName="" />
+			<tableFieldDB dbServerType="PostgreSQL" dbType="character varying" dbDescription="" dbDefaultValue="" dbCollationName="" dbFieldName="" />
+			<tableFieldDB dbServerType="SQLServer" dbType="varchar" dbDescription="" dbDefaultValue="" dbCollationName="SQL_Latin1_General_CP1_CI_AS" dbFieldName="" />
 	-->
 	<xs:complexType name="tableFieldDBType">
 		<xs:attribute name="dbServerType" type="xs:string" />
@@ -63,9 +95,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	</xs:complexType>
 
 	<!--
-		<tableField name="Name" isPK="True" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="True" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" aditionalInfo="" numericPrecision="0" numericScale="0">
-			<tableFieldDBs ... />
-		</tableField>
+			<tableField name="Name" isPK="True" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="True" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" aditionalInfo="" numericPrecision="0" numericScale="0">
+				<tableFieldDBs ... />
+			</tableField>
 	-->
 	<xs:complexType name="tableFieldType">
 		<xs:attribute name="name" type="xs:string" />
@@ -83,10 +115,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		</xs:sequence>
 	</xs:complexType>
 	<!--
-		<tableFields>
-			<tableField ... />
-			<tableField ... />
-		</tableFields>
+			<tableFields>
+				<tableField ... />
+				<tableField ... />
+			</tableFields>
 	-->
 	<xs:complexType name="tableFieldsType">
 		<xs:sequence>
@@ -105,8 +137,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<xs:attribute name="dbDescription" type="xs:string" />
 		<xs:attribute name="isVirtualTable" type="xs:boolean" />
 		<xs:sequence>
-			<xs:element name="tableDBs" type="tableDBsType" maxOccurs="unbounded" />
-			<xs:element name="tableFields" type="tableFieldsType" maxOccurs="unbounded" />
+			<xs:element name="tableDBs" type="tableDBsType" />
+			<xs:element name="tableFields" type="tableFieldsType" />
 		</xs:sequence>
 	</xs:complexType>
 

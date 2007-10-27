@@ -46,6 +46,8 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 				}
 			} else {
 #if DEBUG
+				long _begin_ticks = DateTime.Now.Ticks;
+
 				DoIt(
 					//@"\\127.0.0.1\OGen_source$\OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen-NTier.OGenDoc-metadata.xml"
 
@@ -60,6 +62,8 @@ THE SOFTWARE IS PROVIDED ""AS IS"", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMP
 						@"..\..\OGen-NTier\OGen-NTier-Doc\OGenDoc-metadatas\MD_OGen.OGenDoc-metadata.xml"
 					)
 				);
+
+				Console.WriteLine("time: {0}", new DateTime(DateTime.Now.Ticks - _begin_ticks).ToString("HH'H' mm'm' ss's' fff"));
 #else
 				Console.WriteLine("must provide xml file");
 #endif

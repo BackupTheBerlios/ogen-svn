@@ -99,7 +99,7 @@ _begin_ticks = DateTime.Now.Ticks;
 						Console.WriteLine();
 						Console.WriteLine();
 
-						Console.WriteLine("time: {0}", new DateTime(DateTime.Now.Ticks - _begin_ticks).ToString("HH:mm:ss:fff"));
+						Console.WriteLine("time: {0}", new DateTime(DateTime.Now.Ticks - _begin_ticks).ToString("HH'H' mm'm' ss's' fff"));
 					} catch (Exception _ex) {
 						Console.WriteLine(_ex.ToString());
 					}

@@ -26,20 +26,6 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 	{
 		public XS0_tableType (
 		) {
-			tabledbscollection_ = new 
-#if !NET_1_1
-				OGenRootrefSimpleCollection<XS_tableDBsType, XS__RootMetadata>()
-#else
-				XS_tableDBsTypeCollection()
-#endif
-			;
-			tablefieldscollection_ = new 
-#if !NET_1_1
-				OGenRootrefSimpleCollection<XS_tableFieldsType, XS__RootMetadata>()
-#else
-				XS_tableFieldsTypeCollection()
-#endif
-			;
 		}
 		public XS0_tableType (
 			string name_in
@@ -66,8 +52,8 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 		public object parent_ref {
 			set {
 				parent_ref_ = value;
-				tabledbscollection_.parent_ref = this;
-				tablefieldscollection_.parent_ref = this;
+				if (tabledbs__ != null) tabledbs__.parent_ref = this;
+				if (tablefields__ != null) tablefields__.parent_ref = this;
 			}
 			get { return parent_ref_; }
 		}
@@ -79,8 +65,8 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 		public XS__RootMetadata root_ref {
 			set {
 				root_ref_ = value;
-				tabledbscollection_.root_ref = value;
-				tablefieldscollection_.root_ref = value;
+				if (tabledbs__ != null) tabledbs__.root_ref = value;
+				if (tablefields__ != null) tablefields__.root_ref = value;
 			}
 			get { return root_ref_; }
 		}
@@ -124,58 +110,48 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 			}
 		}
 		#endregion
-		#region public ... TableDBsCollection { get; }
-		private 
-#if !NET_1_1
-			OGenRootrefSimpleCollection<XS_tableDBsType, XS__RootMetadata>
-#else
-			XS_tableDBsTypeCollection
-#endif
-			tabledbscollection_;
+		#region public XS_tableDBsType TableDBs { get; set; }
+		private XS_tableDBsType tabledbs__;
+
+		[XmlIgnore()]
+		public XS_tableDBsType TableDBs {
+			get {
+				if (tabledbs__ == null) {
+					tabledbs__ = new XS_tableDBsType();
+				}
+				return tabledbs__;
+			}
+			set {
+				tabledbs__ = value;
+			}
+		}
 
 		[XmlElement("tableDBs")]
-		public XS_tableDBsType[] tabledbscollection__xml {
-			get { return tabledbscollection_.cols__; }
-			set { tabledbscollection_.cols__ = value; }
-		}
-
-		[XmlIgnore()]
-		public
-#if !NET_1_1
-			OGenRootrefSimpleCollection<XS_tableDBsType, XS__RootMetadata>
-#else
-			XS_tableDBsTypeCollection
-#endif
-		TableDBsCollection
-		{
-			get { return tabledbscollection_; }
+		public XS_tableDBsType tabledbs__xml {
+			get { return tabledbs__; }
+			set { tabledbs__ = value; }
 		}
 		#endregion
-		#region public ... TableFieldsCollection { get; }
-		private 
-#if !NET_1_1
-			OGenRootrefSimpleCollection<XS_tableFieldsType, XS__RootMetadata>
-#else
-			XS_tableFieldsTypeCollection
-#endif
-			tablefieldscollection_;
-
-		[XmlElement("tableFields")]
-		public XS_tableFieldsType[] tablefieldscollection__xml {
-			get { return tablefieldscollection_.cols__; }
-			set { tablefieldscollection_.cols__ = value; }
-		}
+		#region public XS_tableFieldsType TableFields { get; set; }
+		private XS_tableFieldsType tablefields__;
 
 		[XmlIgnore()]
-		public
-#if !NET_1_1
-			OGenRootrefSimpleCollection<XS_tableFieldsType, XS__RootMetadata>
-#else
-			XS_tableFieldsTypeCollection
-#endif
-		TableFieldsCollection
-		{
-			get { return tablefieldscollection_; }
+		public XS_tableFieldsType TableFields {
+			get {
+				if (tablefields__ == null) {
+					tablefields__ = new XS_tableFieldsType();
+				}
+				return tablefields__;
+			}
+			set {
+				tablefields__ = value;
+			}
+		}
+
+		[XmlElement("tableFields")]
+		public XS_tableFieldsType tablefields__xml {
+			get { return tablefields__; }
+			set { tablefields__ = value; }
 		}
 		#endregion
 	}
