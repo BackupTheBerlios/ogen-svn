@@ -85,14 +85,39 @@ namespace OGen.lib.generator {
 		#endregion
 
 		public static string ReflectThrough(
+			object someClass_in,
+			string path_in,
+			cClaSSe.dIteration_found iteration_found_in,
+			string iteration_in,
+			string pathTranslated_in,
+			bool returnValue_in,
+			bool anyAttribute_notJustXml
+		) {
+			bool _valueHasBeenFound = false;
+
+			return ReflectThrough(
+				someClass_in,
+				path_in,
+				iteration_found_in,
+				iteration_in,
+				pathTranslated_in,
+				returnValue_in,
+				anyAttribute_notJustXml,
+				out _valueHasBeenFound
+			);
+		}
+		public static string ReflectThrough(
 			object someClass_in, 
 			string path_in, 
 			cClaSSe.dIteration_found iteration_found_in, 
 			string iteration_in, 
 			string pathTranslated_in, 
 			bool returnValue_in, 
-			bool anyAttribute_notJustXml
+			bool anyAttribute_notJustXml, 
+			out bool valueHasBeenFound_out
 		) {
+			valueHasBeenFound_out = false;
+
 #if DEBUG
 const bool _usePerformance = true;
 #endif
@@ -215,6 +240,7 @@ _usePerformance && (
 #endif
 
 (_indexOfSquareBrackets_begin > iteration_in.Length)
+
 						||
 						(
 							_aux1 != iteration_in.Substring(
@@ -295,10 +321,10 @@ _usePerformance &&
 									_elementAttribute.ElementName
 								), 
 								returnValue_in, 
-								anyAttribute_notJustXml
+								anyAttribute_notJustXml,
+								out valueHasBeenFound_out
 							);
-// ToDos: now! property may have been found and have empty string
-if (returnValue_in && (_output != null)) 
+							if (returnValue_in && valueHasBeenFound_out)
 								return _output;
 						}
 					} else {
@@ -317,10 +343,10 @@ if (returnValue_in && (_output != null))
 								_elementAttribute.ElementName
 							), 
 							returnValue_in, 
-							anyAttribute_notJustXml
+							anyAttribute_notJustXml,
+							out valueHasBeenFound_out
 						);
-// ToDos: now! property may have been found and have empty string
-if (returnValue_in && (_output != null)) 
+						if (returnValue_in && valueHasBeenFound_out)
 							return _output;
 					}
 					#endregion
@@ -383,6 +409,7 @@ if (returnValue_in && (_output != null))
 					}
 
 					if (string.Format("{0}.{1}", path_in, _attributename) == iteration_in) {
+						valueHasBeenFound_out = true;
 						return _value.ToString();
 					}
 					#endregion

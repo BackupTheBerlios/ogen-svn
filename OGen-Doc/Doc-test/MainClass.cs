@@ -27,7 +27,7 @@ namespace Doc_test {
 		#region //test2
 //		static void Iteration_found(string message_in) {
 //			Console.WriteLine(
-//				"iterating: {0} . . .", 
+//				"iterating: {0} . . .",
 //				message_in
 //			);
 //		}
@@ -51,8 +51,9 @@ ${code::1}
 //			#endregion
 
 			#region //test2 - performance tweaks...
-//			Console.WriteLine(rootmetadata_.Read_fromRoot("ROOT.documentation[0].documentationName"));
-//			string filename_ 
+//			long _begin_ticks = DateTime.Now.Ticks;
+//
+//			string filename_
 //				= System.IO.Path.Combine(
 //					#if !NET_1_1
 //					System.Configuration.ConfigurationManager.AppSettings
@@ -71,30 +72,34 @@ ${code::1}
 //				filename_,
 //				false
 //			);
-//			
-//			long _ini = DateTime.Now.Ticks;
+//
 //			Console.WriteLine(
-//				"--- instance:  -------------------------------\n{0}\n----------------------------------------------", 
+//				"--- instance:  -------------------------------\n{0}\n----------------------------------------------",
+//				//rootmetadata_.DocumentationCollection[0].Subjects.SubjectCollection.Count
 //				//rootmetadata_.DocumentationCollection[0].DocumentationName
 //				//rootmetadata_.DocumentationCollection[0].Subjects.SubjectCollection[0].Description
-//				rootmetadata_.DocumentationCollection[0].Subjects.SubjectCollection[2].IDSubject
+//				//rootmetadata_.DocumentationCollection[0].Subjects.SubjectCollection[2].IDSubject
 //				//rootmetadata_.DocumentationCollection[0].Subjects.SubjectCollection[18].Documents.DocumentCollection[2].IDDocument
+//				rootmetadata_.DocumentationCollection[0].Subjects.SubjectCollection[19].Documents.DocumentCollection[1].Document
 //			);
 //			Console.WriteLine(
-//				"--- reflection: ------------------------------\n{0}\n----------------------------------------------", 
+//				"--- reflection: ------------------------------\n{0}\n----------------------------------------------",
 //				rootmetadata_.Read_fromRoot(
+//					//"ROOT.documentation[0].subjects.subject.Count"
 //					//"ROOT.documentation[0].documentationName"
 //					//"ROOT.documentation[0].subjects.subject[0].description"
-//					"ROOT.documentation[0].subjects.subject[2].idSubject"
+//					//"ROOT.documentation[0].subjects.subject[2].idSubject"
 //					//"ROOT.documentation[0].subjects.subject[18].documents.document[2].idDocument"
+//					"ROOT.documentation[0].subjects.subject[19].documents.document[1].document"
 //				)
 //			);
 //			rootmetadata_.IterateThrough_fromRoot(
-//				"ROOT.documentation[n].subjects.subject[n]", 
+//				"ROOT.documentation[n].subjects.subject[n]",
 //				//"ROOT.documentation[n].subjects.subject[n].documents.document[n]", 
 //				Iteration_found
 //			);
-//			Console.WriteLine("468756-781280:1406223:{0}", DateTime.Now.Ticks - _ini);
+//
+//			Console.WriteLine("time: {0}", new DateTime(DateTime.Now.Ticks - _begin_ticks).ToString("HH:mm:ss:fff"));
 //			return;
 			#endregion
 			#region //test1 - generator...
