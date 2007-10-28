@@ -160,19 +160,6 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 			}
 		}
 		#endregion
-		#region public string AditionalInfo { get; set; }
-		private string aditionalinfo_;
-
-		[XmlAttribute("aditionalInfo")]
-		public string AditionalInfo {
-			get {
-				return aditionalinfo_;
-			}
-			set {
-				aditionalinfo_ = value;
-			}
-		}
-		#endregion
 		#region public int NumericPrecision { get; set; }
 		private int numericprecision_;
 

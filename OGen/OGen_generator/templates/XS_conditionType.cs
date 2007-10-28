@@ -19,5 +19,17 @@ using OGen.lib.collections;
 
 namespace OGen.lib.templates {
 	public class XS_conditionType : XS0_conditionType {
+		#region public XS_conditionType(...);
+		public XS_conditionType(
+		) : base (
+		) {
+		}
+		public XS_conditionType(
+			string eval_in
+		) : base (
+			eval_in
+		) {
+		}
+		#endregion
 	}
 }

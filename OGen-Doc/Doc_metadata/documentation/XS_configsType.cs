@@ -19,5 +19,11 @@ using OGen.lib.collections;
 
 namespace OGen.Doc.lib.metadata.documentation {
 	public class XS_configsType : XS0_configsType {
+		#region public XS_configsType(...);
+		public XS_configsType(
+		) : base (
+		) {
+		}
+		#endregion
 	}
 }

@@ -19,5 +19,11 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadataDB {
 	public class XS_tableDBsType : XS0_tableDBsType {
+		#region public XS_tableDBsType(...);
+		public XS_tableDBsType(
+		) : base (
+		) {
+		}
+		#endregion
 	}
 }

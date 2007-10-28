@@ -19,5 +19,17 @@ using OGen.lib.collections;
 
 namespace OGen.lib.templates {
 	public class XS_dependencyType : XS0_dependencyType {
+		#region public XS_dependencyType(...);
+		public XS_dependencyType(
+		) : base (
+		) {
+		}
+		public XS_dependencyType(
+			string name_in
+		) : base (
+			name_in
+		) {
+		}
+		#endregion
 	}
 }

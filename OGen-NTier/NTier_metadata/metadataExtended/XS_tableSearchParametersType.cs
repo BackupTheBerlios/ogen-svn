@@ -19,5 +19,11 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadataExtended {
 	public class XS_tableSearchParametersType : XS0_tableSearchParametersType {
+		#region public XS_tableSearchParametersType(...);
+		public XS_tableSearchParametersType(
+		) : base (
+		) {
+		}
+		#endregion
 	}
 }

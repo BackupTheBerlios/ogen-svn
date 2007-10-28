@@ -21,34 +21,49 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<dbs>
 			<db dbServerType="PostgreSQL">
 				<dbConnections>
-					<dbConnection configMode="DEBUG" isDefault="True" generateSQL="True" isIndexed_andReadOnly="False" connectionstring="Server=127.0.0.1;Port=5432;User ID=postgres;Password=passpub;Database=OGen-NTier_UTs;" />
-					<dbConnection configMode="!DEBUG" isDefault="True" generateSQL="False" isIndexed_andReadOnly="False" connectionstring="Server=127.0.0.1;Port=5432;User ID=postgres;Password=passpub;Database=OGen-NTier_UTs;" />
+					<dbConnection configMode="DEBUG" isDefault="True" generateSQL="True" isIndexed_andReadOnly="False" 
+						connectionstring="Server=127.0.0.1;Port=5432;User ID=postgres;Password=passpub;Database=OGen-NTier_UTs;" />
+
+					<dbConnection configMode="!DEBUG" isDefault="True" generateSQL="False" isIndexed_andReadOnly="False" 
+						connectionstring="Server=127.0.0.1;Port=5432;User ID=postgres;Password=passpub;Database=OGen-NTier_UTs;" />
 				</dbConnections>
 			</db>
 
 			<db ... />
 		</dbs>
 		<tables>
-			<table name="Config" friendlyName="" dbDescription="" extendedDescription="" isVirtualTable="False" isConfig="True">
-
-<tableDBs ... />
-
+			<table name="Config" friendlyName="" extendedDescription="" isConfig="True">
 				<tableFields>
-					<tableField name="Name" isPK="True" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="True" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" aditionalInfo="" numericPrecision="0" numericScale="0" />
+					<tableField name="Name" 
+						defaultValue="" 
+						friendlyName="" extendedDescription="" 
+						isListItemValue="False" isListItemText="False" 
+						isConfig_Name="True" isConfig_Config="False" isConfig_Datatype="False" />
 		
 					<tableField ... />
 				</tableFields>
+				<tableSearches>
+					<tableSearch ... >
+						<tableSearchParameters>
+							<tableFieldRef tableName="User" tableFieldName="Login" paramName="Login" />
+							<tableFieldRef tableName="User" tableFieldName="Password" paramName="Password" />
 				
-<tableSearches ... />
-	tableSearches
-		[]tableSearch
-			tableSearchParameters
-				[]tableFieldRef
-			tableSearchUpdates
-				[]tableSearchUpdate
-					tableSearchUpdateParameters
-						[]tableFieldRef
-
+							<tableFieldRef ... />
+						</tableSearchParameters>
+						<tableSearchUpdates>
+							<tableSearchUpdate ... >
+								<tableSearchUpdateParameters>
+									<tableFieldRef tableName="User" tableFieldName="Login" paramName="Login" />
+									<tableFieldRef tableName="User" tableFieldName="Password" paramName="Password" />
+						
+									<tableFieldRef ... />
+								</tableSearchUpdateParameters>
+							</tableSearchUpdate>
+						</tableSearchUpdates>
+					</tableSearche>
+					
+					<tableSearch ... />
+				</tableSearches>
 				<tableUpdates>
 					<tableUpdate name="SomeUpdateTest">
 						<tableUpdateParameters>
@@ -120,7 +135,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 	</xs:complexType>
 
 	<!--
-		<tableField name="Name" isPK="True" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="True" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" aditionalInfo="" numericPrecision="0" numericScale="0" />
+		<tableField name="Name" isPK="True" isIdentity="False" defaultValue="" friendlyName="" extendedDescription="" isListItemValue="False" isListItemText="False" isConfig_Name="True" isConfig_Config="False" isConfig_Datatype="False" fkTableName="" fkFieldName="" isNullable="False" size="50" numericPrecision="0" numericScale="0" />
 	-->
 	<xs:complexType name="tableFieldType">
 		<xs:attribute name="name" type="xs:string" />
@@ -132,7 +147,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 		<xs:attribute name="isConfig_Name" type="xs:boolean" />
 		<xs:attribute name="isConfig_Config" type="xs:boolean" />
 		<xs:attribute name="isConfig_Datatype" type="xs:boolean" />
-		<xs:attribute name="aditionalInfo" type="xs:string" />
 	</xs:complexType>
 	<!--
 		<tableFields>
@@ -242,7 +256,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 	<!--
 		<table name="Config" friendlyName="" dbDescription="" extendedDescription="" isVirtualTable="False" isConfig="True">
-			<tableDBs ... />
 			<tableFields ... />
 			<tableSearches ... />
 			<tableUpdates ... />

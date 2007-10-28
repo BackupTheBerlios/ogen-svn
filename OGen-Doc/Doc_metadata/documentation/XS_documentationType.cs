@@ -19,5 +19,11 @@ using OGen.lib.collections;
 
 namespace OGen.Doc.lib.metadata.documentation {
 	public class XS_documentationType : XS0_documentationType {
+		#region public XS_documentationType(...);
+		public XS_documentationType(
+		) : base (
+		) {
+		}
+		#endregion
 	}
 }

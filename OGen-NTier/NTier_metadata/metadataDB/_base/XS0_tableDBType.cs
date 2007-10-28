@@ -93,5 +93,18 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 			}
 		}
 		#endregion
+		#region public string DBDescription { get; set; }
+		private string dbdescription_;
+
+		[XmlAttribute("dbDescription")]
+		public string DBDescription {
+			get {
+				return dbdescription_;
+			}
+			set {
+				dbdescription_ = value;
+			}
+		}
+		#endregion
 	}
 }

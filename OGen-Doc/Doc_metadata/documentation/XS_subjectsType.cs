@@ -19,5 +19,11 @@ using OGen.lib.collections;
 
 namespace OGen.Doc.lib.metadata.documentation {
 	public class XS_subjectsType : XS0_subjectsType {
+		#region public XS_subjectsType(...);
+		public XS_subjectsType(
+		) : base (
+		) {
+		}
+		#endregion
 	}
 }

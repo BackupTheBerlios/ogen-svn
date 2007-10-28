@@ -19,5 +19,17 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadataExtended {
 	public class XS_tableSearchUpdateType : XS0_tableSearchUpdateType {
+		#region public XS_tableSearchUpdateType(...);
+		public XS_tableSearchUpdateType(
+		) : base (
+		) {
+		}
+		public XS_tableSearchUpdateType(
+			string name_in
+		) : base (
+			name_in
+		) {
+		}
+		#endregion
 	}
 }

@@ -19,5 +19,17 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadataExtended {
 	public class XS_tableFieldType : XS0_tableFieldType {
+		#region public XS_tableFieldType(...);
+		public XS_tableFieldType(
+		) : base (
+		) {
+		}
+		public XS_tableFieldType(
+			string name_in
+		) : base (
+			name_in
+		) {
+		}
+		#endregion
 	}
 }

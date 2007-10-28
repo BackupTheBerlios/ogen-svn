@@ -19,5 +19,17 @@ using OGen.lib.collections;
 
 namespace OGen.Doc.lib.metadata.documentation {
 	public class XS_faqType : XS0_faqType {
+		#region public XS_faqType(...);
+		public XS_faqType(
+		) : base (
+		) {
+		}
+		public XS_faqType(
+			string idFAQ_in
+		) : base (
+			idFAQ_in
+		) {
+		}
+		#endregion
 	}
 }

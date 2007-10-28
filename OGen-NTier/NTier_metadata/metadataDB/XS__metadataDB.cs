@@ -52,60 +52,107 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 		) {
 			XS__metadataDB _output = new XS__metadataDB();
 
-			bool _exist_getTables;
-			bool _exist_getTableFields;
+			bool _getTables_exists;
+			bool _getTableFields_exists;
 			DBConnection _connection;
 			cDBTable[] _tables_aux;
 			cDBTableField[] _fields_aux;
 			XS_tableType _table;
+			XS_tableDBType _tabledb;
 			XS_tableFieldType _field;
-			int _table_searchindex;
+			XS_tableFieldDBType _fielddb;
+			int _searchindex;
 			const string OGEN_SP0__GETTABLEFIELDS = "OGen_sp0__getTableFields";
 			const string OGEN_SP0__GETTABLES = "OGen_sp0__getTables";
 
-			for (int _con_index = 0; _con_index < dbConnectionParam_in.Length; _con_index++) {
-				_exist_getTables = false;
-				_exist_getTableFields = false;
-
+			for (int c = 0; c < dbConnectionParam_in.Length; c++) {
+				#region notifyBack_in(...);
+				if (notifyBack_in != null) {
+					notifyBack_in(
+						string.Format(
+							"#{0}/{1} - {2}",
+							c + 1,
+							dbConnectionParam_in.Length,
+							dbConnectionParam_in[c].DBServerType.ToString()
+						),
+						true
+					);
+				}
+				#endregion
 				_connection = DBConnectionsupport.CreateInstance(
-					dbConnectionParam_in[_con_index].DBServerType,
-					dbConnectionParam_in[_con_index].Connectionstring
+					dbConnectionParam_in[c].DBServerType,
+					dbConnectionParam_in[c].Connectionstring
 				);
-				_exist_getTables = _connection.SQLStoredProcedure_exists(OGEN_SP0__GETTABLES);
-				_exist_getTableFields = _connection.SQLStoredProcedure_exists(OGEN_SP0__GETTABLEFIELDS);
+
+				#region _tables_aux = ...;
+				_getTables_exists = _connection.SQLStoredProcedure_exists(OGEN_SP0__GETTABLES);
 				_tables_aux = _connection.getTables(
 					subAppName_in,
-					_exist_getTables 
+					_getTables_exists 
 						? OGEN_SP0__GETTABLES
 						: string.Empty
 				);
+				#endregion
+				#region _fields_aux = ...;
+				_getTableFields_exists = _connection.SQLStoredProcedure_exists(OGEN_SP0__GETTABLEFIELDS);
 				_fields_aux = _connection.getTableFields(
 					// _tables_aux[t].Name, // get's specific table fields
 					string.Empty, // get's fields for all tables
-					_exist_getTables 
+					_getTableFields_exists
 						? OGEN_SP0__GETTABLEFIELDS
 						: string.Empty
 				);
-
+				#endregion
 				for (int t = 0; t < _tables_aux.Length; t++) {
-					_table_searchindex = _output.Tables.TableCollection.Search(
+					#region _table = ...; _table.Name = ...;
+					_searchindex = _output.Tables.TableCollection.Search(
 						_tables_aux[t].Name
 					);
-					_table = (_table_searchindex >= 0) 
-						? _output.Tables.TableCollection[_table_searchindex]
-						: new XS_tableType();
-
-					_table.Name = _tables_aux[t].Name;
+					if (_searchindex >= 0) {
+						_table = _output.Tables.TableCollection[_searchindex];
+					} else {
+						_table = new XS_tableType(
+							_tables_aux[t].Name
+						);
+						_output.Tables.TableCollection.Add(_table);
+					}
+					#endregion
 					_table.isVirtualTable = _tables_aux[t].isVirtualTable;
-					_table.DBDescription = _tables_aux[t].DBDescription;
+
+					#region _tabledb = ...; _tabledb.DBServerType = ...;
+					_searchindex = _table.TableDBs.TableDBCollection.Search(
+						dbConnectionParam_in[c].DBServerType.ToString()
+					);
+					if (_searchindex >= 0) {
+						_tabledb = _table.TableDBs.TableDBCollection[_searchindex];
+					} else {
+						_tabledb = new XS_tableDBType(
+							dbConnectionParam_in[c].DBServerType.ToString()
+						);
+						_table.TableDBs.TableDBCollection.Add(_tabledb);
+					}
+					#endregion
+					_tabledb.DBTableName = _tables_aux[t].Name;
+					_tabledb.DBDescription = _tables_aux[t].DBDescription;
 
 					for (int f = 0; f < _fields_aux.Length; f++) {
 						if (_tables_aux[t].Name != _fields_aux[f].TableName) {
 							continue;
 						}
 
-						_field = new XS_tableFieldType();
-						_field.Name = _fields_aux[f].Name;
+						#region _field = ...; _field.Name = ...;
+						_searchindex = _table.TableFields.TableFieldCollection.Search(
+							_fields_aux[f].Name
+						);
+						if (_searchindex >= 0) {
+							_field = _table.TableFields.TableFieldCollection[_searchindex];
+						} else {
+							_field = new XS_tableFieldType(
+								_fields_aux[f].Name
+							);
+							_table.TableFields.TableFieldCollection.Add(_field);
+						}
+						#endregion
 						_field.isPK = _fields_aux[f].isPK;
 						_field.isIdentity = _fields_aux[f].isIdentity;
 						_field.isNullable = _fields_aux[f].isNullable;
@@ -114,17 +161,25 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 						_field.Size = _fields_aux[f].Size;
 						_field.FKTableName = _fields_aux[f].FK_TableName;
 						_field.FKFieldName = _fields_aux[f].FK_FieldName;
-//						_field.DBDescription = _fields_aux[f].DBDescription;
-//						_field.DBDefaultValue = _fields_aux[f].DBDefaultValue;
-//						_field.DBCollationName = _fields_aux[f].DBCollationName;
 
-						_table.TableFields.TableFieldCollection.Add(
-							_field
+						#region _fielddb = ...; _fielddb.DBServerType = ...;
+						_searchindex = _field.TableFieldDBs.TableFieldDBCollection.Search(
+							dbConnectionParam_in[c].DBServerType.ToString()
 						);
+						if (_searchindex >= 0) {
+							_fielddb = _field.TableFieldDBs.TableFieldDBCollection[_searchindex];
+						} else {
+							_fielddb = new XS_tableFieldDBType(
+								dbConnectionParam_in[c].DBServerType.ToString()
+							);
+						}
+						#endregion
+						_fielddb.DBType = _fields_aux[f].DBType_inDB_name;
+						_fielddb.DBDescription = _fields_aux[f].DBDescription;
+						_fielddb.DBDefaultValue = _fields_aux[f].DBDefaultValue;
+						_fielddb.DBCollationName = _fields_aux[f].DBCollationName;
+						_fielddb.DBFieldName = _fields_aux[f].Name;
 					}
-					_output.Tables.TableCollection.Add(
-						_table
-					);
 				}
 			}
 

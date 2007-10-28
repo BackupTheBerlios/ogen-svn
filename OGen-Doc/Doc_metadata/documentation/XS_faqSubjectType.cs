@@ -19,6 +19,19 @@ using OGen.lib.collections;
 
 namespace OGen.Doc.lib.metadata.documentation {
 	public class XS_faqSubjectType : XS0_faqSubjectType {
+		#region public XS_faqSubjectType(...);
+		public XS_faqSubjectType(
+		) : base (
+		) {
+		}
+		public XS_faqSubjectType(
+			string idFAQSubject_in
+		) : base (
+			idFAQSubject_in
+		) {
+		}
+		#endregion
+
 		#region public ... parent_ref_faqSubjectTypeCollection { get; }
 		public
 #if !NET_1_1

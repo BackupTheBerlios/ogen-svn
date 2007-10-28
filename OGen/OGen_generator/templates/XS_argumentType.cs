@@ -19,5 +19,17 @@ using OGen.lib.collections;
 
 namespace OGen.lib.templates {
 	public class XS_argumentType : XS0_argumentType {
+		#region public XS_argumentType(...);
+		public XS_argumentType(
+		) : base (
+		) {
+		}
+		public XS_argumentType(
+			string name_in
+		) : base (
+			name_in
+		) {
+		}
+		#endregion
 	}
 }

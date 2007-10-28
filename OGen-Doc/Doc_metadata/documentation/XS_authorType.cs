@@ -19,5 +19,17 @@ using OGen.lib.collections;
 
 namespace OGen.Doc.lib.metadata.documentation {
 	public class XS_authorType : XS0_authorType {
+		#region public XS_authorType(...);
+		public XS_authorType(
+		) : base (
+		) {
+		}
+		public XS_authorType(
+			string idAuthor_in
+		) : base (
+			idAuthor_in
+		) {
+		}
+		#endregion
 	}
 }

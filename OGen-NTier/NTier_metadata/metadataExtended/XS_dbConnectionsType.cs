@@ -19,5 +19,11 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadataExtended {
 	public class XS_dbConnectionsType : XS0_dbConnectionsType {
+		#region public XS_dbConnectionsType(...);
+		public XS_dbConnectionsType(
+		) : base (
+		) {
+		}
+		#endregion
 	}
 }

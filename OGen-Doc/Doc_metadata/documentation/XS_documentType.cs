@@ -19,5 +19,17 @@ using OGen.lib.collections;
 
 namespace OGen.Doc.lib.metadata.documentation {
 	public class XS_documentType : XS0_documentType {
+		#region public XS_documentType(...);
+		public XS_documentType(
+		) : base (
+		) {
+		}
+		public XS_documentType(
+			string idDocument_in
+		) : base (
+			idDocument_in
+		) {
+		}
+		#endregion
 	}
 }

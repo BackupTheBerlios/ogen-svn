@@ -19,5 +19,11 @@ using OGen.lib.collections;
 
 namespace OGen.lib.templates {
 	public class XS_outputsType : XS0_outputsType {
+		#region public XS_outputsType(...);
+		public XS_outputsType(
+		) : base (
+		) {
+		}
+		#endregion
 	}
 }

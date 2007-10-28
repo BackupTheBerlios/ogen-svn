@@ -28,6 +28,14 @@ XS_Schema _aux_schema = _aux_rootmetadata.SchemaCollection[_arg_SchemaName];
 
 XS_ComplexType _aux_complextype = _aux_schema.ComplexType[_arg_ComplexTypeName];
 
+string _aux_complextype_keys_ntype = string.Empty;
+string _aux_complextype_keys_name = string.Empty;
+bool _aux_complextype_mustimplementcollection = _aux_complextype.mustImplementCollection(
+	_arg_SchemaName, 
+	out _aux_complextype_keys_ntype, 
+	out _aux_complextype_keys_name
+);
+
 string XS0_ = _aux_rootmetadata.ExtendedMetadata.PrefixGenerated;
 string XS_ = _aux_rootmetadata.ExtendedMetadata.Prefix;
 string XS0__ = _aux_rootmetadata.ExtendedMetadata.PrefixBaseGenerated;
@@ -50,6 +58,20 @@ using OGen.lib.collections;
 
 namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Element.Name%> {
 	public class <%=XS_%><%=_aux_complextype.Name%> : <%=XS0_%><%=_aux_complextype.Name%> {
+		#region public <%=XS_%><%=_aux_complextype.Name%>(...);
+		public <%=XS_%><%=_aux_complextype.Name%>(
+		) : base (
+		) {
+		}<%
+		if (_aux_complextype_keys_name != string.Empty) {%>
+		public <%=XS_%><%=_aux_complextype.Name%>(
+			<%=_aux_complextype_keys_ntype%> <%=_aux_complextype_keys_name%>_in
+		) : base (
+			<%=_aux_complextype_keys_name%>_in
+		) {
+		}<%
+		}%>
+		#endregion
 	}
 }<%
 //-----------------------------------------------------------------------------------------

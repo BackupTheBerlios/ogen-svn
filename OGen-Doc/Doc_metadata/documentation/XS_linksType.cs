@@ -19,5 +19,11 @@ using OGen.lib.collections;
 
 namespace OGen.Doc.lib.metadata.documentation {
 	public class XS_linksType : XS0_linksType {
+		#region public XS_linksType(...);
+		public XS_linksType(
+		) : base (
+		) {
+		}
+		#endregion
 	}
 }

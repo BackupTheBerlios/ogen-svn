@@ -184,18 +184,5 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 			}
 		}
 		#endregion
-		#region public string AditionalInfo { get; set; }
-		private string aditionalinfo_;
-
-		[XmlAttribute("aditionalInfo")]
-		public string AditionalInfo {
-			get {
-				return aditionalinfo_;
-			}
-			set {
-				aditionalinfo_ = value;
-			}
-		}
-		#endregion
 	}
 }

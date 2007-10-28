@@ -19,5 +19,17 @@ using OGen.lib.collections;
 
 namespace OGen.Doc.lib.metadata.documentation {
 	public class XS_codeSampleType : XS0_codeSampleType {
+		#region public XS_codeSampleType(...);
+		public XS_codeSampleType(
+		) : base (
+		) {
+		}
+		public XS_codeSampleType(
+			string idCodeSample_in
+		) : base (
+			idCodeSample_in
+		) {
+		}
+		#endregion
 	}
 }

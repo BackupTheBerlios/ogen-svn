@@ -374,7 +374,7 @@ namespace OGen.NTier.lib.metadata {
 			cDBTableField[] _fields_aux = _connection.getTableFields(
 				// _tables_aux[t].Name, // get's specific table fields
 				string.Empty, // get's fields for all tables
-				_exist_getTables 
+				_exist_getTableFields//_exist_getTables 
 					? OGEN_SP0__GETTABLEFIELDS
 					: string.Empty
 			);

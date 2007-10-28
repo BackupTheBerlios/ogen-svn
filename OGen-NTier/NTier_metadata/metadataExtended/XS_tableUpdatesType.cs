@@ -19,5 +19,11 @@ using OGen.lib.collections;
 
 namespace OGen.NTier.lib.metadata.metadataExtended {
 	public class XS_tableUpdatesType : XS0_tableUpdatesType {
+		#region public XS_tableUpdatesType(...);
+		public XS_tableUpdatesType(
+		) : base (
+		) {
+		}
+		#endregion
 	}
 }
