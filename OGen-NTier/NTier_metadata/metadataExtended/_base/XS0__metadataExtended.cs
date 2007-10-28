@@ -25,7 +25,7 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 		public const string ROOT = "ROOT";
 		public const string ROOT_METADATAEXTENDED = ROOT + "." + METADATAEXTENDED;
 		#region public string Root_MetadataExtended { get; }
-		private string root_metadataextended_ = null;
+		protected string root_metadataextended_ = null;
 
 		[XmlIgnore()]
 		public string Root_MetadataExtended {

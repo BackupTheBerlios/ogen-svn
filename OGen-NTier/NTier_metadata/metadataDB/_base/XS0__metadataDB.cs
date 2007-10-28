@@ -25,7 +25,7 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 		public const string ROOT = "ROOT";
 		public const string ROOT_METADATADB = ROOT + "." + METADATADB;
 		#region public string Root_MetadataDB { get; }
-		private string root_metadatadb_ = null;
+		protected string root_metadatadb_ = null;
 
 		[XmlIgnore()]
 		public string Root_MetadataDB {

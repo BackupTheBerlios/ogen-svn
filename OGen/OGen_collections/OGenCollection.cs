@@ -94,8 +94,43 @@ namespace OGen.lib.collections {
 		#endregion
 	}
 
+	public class OGenCollection<C> : OGenCollection<C, string>
+		where C : class, OGenCollectionInterface<string>
+	{
+		#region public int Search(string memberName_in, bool caseSensitive_in);
+		public int Search(string memberName_in, bool caseSensitive_in) {
+			for (int i = 0; i < cols_.Count; i++) {
+				if (
+					(
+						caseSensitive_in
+						&&
+						(
+							memberName_in.ToLower() 
+							== 
+							cols_[i].CollectionName.ToLower()
+						)
+					)
+					||
+					(
+						!caseSensitive_in
+						&&
+						(
+							memberName_in
+							==
+							cols_[i].CollectionName
+						)
+					)
+				) {
+					return i;
+				}
+			}
+
+			return -1;
+		}
+		#endregion
+	}
 	public class OGenCollection<C, T> : OGenSimpleCollection<C>
-		where C : class, OGenCollectionInterface <T>
+		where C : class, OGenCollectionInterface<T>
 	{
 		#region public C this[T memberName_in] { get; }
 		public C this[T memberName_in] {

@@ -53,7 +53,7 @@ namespace <%=_aux_rootmetadata.ExtendedMetadata.Namespace%>.<%=_aux_schema.Eleme
 		public const string ROOT = "ROOT";
 		public const string ROOT_<%=_aux_schema.Element.Name.ToUpper()%> = ROOT + "." + <%=_aux_schema.Element.Name.ToUpper()%>;
 		#region public string Root_<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_schema.Element.Name)%> { get; }
-		private string root_<%=_aux_schema.Element.Name.ToLower()%>_ = null;
+		protected string root_<%=_aux_schema.Element.Name.ToLower()%>_ = null;
 
 		[XmlIgnore()]
 		public string Root_<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_schema.Element.Name)%> {

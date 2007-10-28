@@ -25,7 +25,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		public const string ROOT = "ROOT";
 		public const string ROOT_DOCUMENTATION = ROOT + "." + DOCUMENTATION;
 		#region public string Root_Documentation { get; }
-		private string root_documentation_ = null;
+		protected string root_documentation_ = null;
 
 		[XmlIgnore()]
 		public string Root_Documentation {

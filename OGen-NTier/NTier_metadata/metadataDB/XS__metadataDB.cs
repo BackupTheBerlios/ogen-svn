@@ -38,6 +38,7 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 				subAppName_in, 
 
 				null,
+				0, 
 
 				dbConnectionParam_in
 			);
@@ -47,10 +48,17 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 			string subAppName_in, 
 
 			XS__RootMetadata root_ref_in, 
+			int index_in, 
 
 			params DBConnectionParam[] dbConnectionParam_in
 		) {
+			#region XS__metadataDB _output = ...;
 			XS__metadataDB _output = new XS__metadataDB();
+
+			_output.root_metadatadb_ = ROOT + "." + METADATADB + "[" + index_in.ToString() + "]";
+			_output.parent_ref = root_ref_in; // ToDos: now!
+			if (root_ref_in != null) _output.root_ref = root_ref_in;
+			#endregion
 
 			bool _getTables_exists;
 			bool _getTableFields_exists;
@@ -106,7 +114,8 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 				for (int t = 0; t < _tables_aux.Length; t++) {
 					#region _table = ...; _table.Name = ...;
 					_searchindex = _output.Tables.TableCollection.Search(
-						_tables_aux[t].Name
+						_tables_aux[t].Name, 
+						true
 					);
 					if (_searchindex >= 0) {
 						_table = _output.Tables.TableCollection[_searchindex];

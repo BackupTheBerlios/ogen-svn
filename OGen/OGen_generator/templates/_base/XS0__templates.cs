@@ -25,7 +25,7 @@ namespace OGen.lib.templates {
 		public const string ROOT = "ROOT";
 		public const string ROOT_TEMPLATES = ROOT + "." + TEMPLATES;
 		#region public string Root_Templates { get; }
-		private string root_templates_ = null;
+		protected string root_templates_ = null;
 
 		[XmlIgnore()]
 		public string Root_Templates {
