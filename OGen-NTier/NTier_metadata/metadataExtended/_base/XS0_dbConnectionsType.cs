@@ -28,7 +28,7 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 		) {
 			dbconnectioncollection_ = new 
 #if !NET_1_1
-				OGenRootrefCollection<XS_dbConnectionType, XS__RootMetadata, string>()
+				OGenRootrefCollection<XS_dbConnectionType, XS__RootMetadata>()
 #else
 				XS_dbConnectionTypeCollection()
 #endif
@@ -62,7 +62,7 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 		#region public ... DBConnectionCollection { get; }
 		private 
 #if !NET_1_1
-			OGenRootrefCollection<XS_dbConnectionType, XS__RootMetadata, string>
+			OGenRootrefCollection<XS_dbConnectionType, XS__RootMetadata>
 #else
 			XS_dbConnectionTypeCollection
 #endif
@@ -77,7 +77,7 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefCollection<XS_dbConnectionType, XS__RootMetadata, string>
+			OGenRootrefCollection<XS_dbConnectionType, XS__RootMetadata>
 #else
 			XS_dbConnectionTypeCollection
 #endif

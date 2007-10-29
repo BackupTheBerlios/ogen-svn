@@ -101,7 +101,36 @@ namespace OGen.Doc.lib.metadata.documentation {
 			}
 		}
 		#endregion
-		#region public int Search(string idLink_in);
+		#region public int Search(...);
+		public int Search(string idLink_in, bool caseSensitive_in) {
+			for (int i = 0; i < cols_.Count; i++) {
+				if (
+					(
+						caseSensitive_in
+						&&
+						(
+							idLink_in.ToLower() 
+							== 
+							((XS_linkType)cols_[i]).IDLink.ToLower()
+						)
+					)
+					||
+					(
+						!caseSensitive_in
+						&&
+						(
+							idLink_in
+							==
+							((XS_linkType)cols_[i]).IDLink
+						)
+					)
+				) {
+					return i;
+				}
+			}
+
+			return -1;
+		}
 		public int Search(string idLink_in) {
 			for (int i = 0; i < cols_.Count; i++) {
 				if (idLink_in.Equals(((XS_linkType)cols_[i]).IDLink)) {

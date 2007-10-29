@@ -28,7 +28,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		) {
 			authorcollection_ = new 
 #if !NET_1_1
-				OGenRootrefCollection<XS_authorType, XS__RootMetadata, string>()
+				OGenRootrefCollection<XS_authorType, XS__RootMetadata>()
 #else
 				XS_authorTypeCollection()
 #endif
@@ -62,7 +62,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		#region public ... AuthorCollection { get; }
 		private 
 #if !NET_1_1
-			OGenRootrefCollection<XS_authorType, XS__RootMetadata, string>
+			OGenRootrefCollection<XS_authorType, XS__RootMetadata>
 #else
 			XS_authorTypeCollection
 #endif
@@ -77,7 +77,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefCollection<XS_authorType, XS__RootMetadata, string>
+			OGenRootrefCollection<XS_authorType, XS__RootMetadata>
 #else
 			XS_authorTypeCollection
 #endif

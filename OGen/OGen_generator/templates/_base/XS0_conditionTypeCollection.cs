@@ -71,7 +71,36 @@ namespace OGen.lib.templates {
 			}
 		}
 		#endregion
-		#region public int Search(string eval_in);
+		#region public int Search(...);
+		public int Search(string eval_in, bool caseSensitive_in) {
+			for (int i = 0; i < cols_.Count; i++) {
+				if (
+					(
+						caseSensitive_in
+						&&
+						(
+							eval_in.ToLower() 
+							== 
+							((XS_conditionType)cols_[i]).Eval.ToLower()
+						)
+					)
+					||
+					(
+						!caseSensitive_in
+						&&
+						(
+							eval_in
+							==
+							((XS_conditionType)cols_[i]).Eval
+						)
+					)
+				) {
+					return i;
+				}
+			}
+
+			return -1;
+		}
 		public int Search(string eval_in) {
 			for (int i = 0; i < cols_.Count; i++) {
 				if (eval_in.Equals(((XS_conditionType)cols_[i]).Eval)) {

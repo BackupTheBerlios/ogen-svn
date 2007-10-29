@@ -28,7 +28,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		) {
 			subjectcollection_ = new 
 #if !NET_1_1
-				OGenRootrefCollection<XS_subjectType, XS__RootMetadata, string>()
+				OGenRootrefCollection<XS_subjectType, XS__RootMetadata>()
 #else
 				XS_subjectTypeCollection()
 #endif
@@ -62,7 +62,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		#region public ... SubjectCollection { get; }
 		private 
 #if !NET_1_1
-			OGenRootrefCollection<XS_subjectType, XS__RootMetadata, string>
+			OGenRootrefCollection<XS_subjectType, XS__RootMetadata>
 #else
 			XS_subjectTypeCollection
 #endif
@@ -77,7 +77,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefCollection<XS_subjectType, XS__RootMetadata, string>
+			OGenRootrefCollection<XS_subjectType, XS__RootMetadata>
 #else
 			XS_subjectTypeCollection
 #endif

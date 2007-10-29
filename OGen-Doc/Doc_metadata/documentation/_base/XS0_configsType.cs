@@ -28,7 +28,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		) {
 			configcollection_ = new 
 #if !NET_1_1
-				OGenRootrefCollection<XS_configType, XS__RootMetadata, string>()
+				OGenRootrefCollection<XS_configType, XS__RootMetadata>()
 #else
 				XS_configTypeCollection()
 #endif
@@ -62,7 +62,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		#region public ... ConfigCollection { get; }
 		private 
 #if !NET_1_1
-			OGenRootrefCollection<XS_configType, XS__RootMetadata, string>
+			OGenRootrefCollection<XS_configType, XS__RootMetadata>
 #else
 			XS_configTypeCollection
 #endif
@@ -77,7 +77,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefCollection<XS_configType, XS__RootMetadata, string>
+			OGenRootrefCollection<XS_configType, XS__RootMetadata>
 #else
 			XS_configTypeCollection
 #endif

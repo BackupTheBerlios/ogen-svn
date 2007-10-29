@@ -101,7 +101,36 @@ namespace OGen.Doc.lib.metadata.documentation {
 			}
 		}
 		#endregion
-		#region public int Search(string idFAQSubject_in);
+		#region public int Search(...);
+		public int Search(string idFAQSubject_in, bool caseSensitive_in) {
+			for (int i = 0; i < cols_.Count; i++) {
+				if (
+					(
+						caseSensitive_in
+						&&
+						(
+							idFAQSubject_in.ToLower() 
+							== 
+							((XS_faqSubjectType)cols_[i]).IDFAQSubject.ToLower()
+						)
+					)
+					||
+					(
+						!caseSensitive_in
+						&&
+						(
+							idFAQSubject_in
+							==
+							((XS_faqSubjectType)cols_[i]).IDFAQSubject
+						)
+					)
+				) {
+					return i;
+				}
+			}
+
+			return -1;
+		}
 		public int Search(string idFAQSubject_in) {
 			for (int i = 0; i < cols_.Count; i++) {
 				if (idFAQSubject_in.Equals(((XS_faqSubjectType)cols_[i]).IDFAQSubject)) {

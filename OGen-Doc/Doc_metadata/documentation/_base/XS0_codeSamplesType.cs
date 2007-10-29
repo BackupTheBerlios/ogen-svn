@@ -28,7 +28,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		) {
 			codesamplecollection_ = new 
 #if !NET_1_1
-				OGenRootrefCollection<XS_codeSampleType, XS__RootMetadata, string>()
+				OGenRootrefCollection<XS_codeSampleType, XS__RootMetadata>()
 #else
 				XS_codeSampleTypeCollection()
 #endif
@@ -62,7 +62,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		#region public ... CodeSampleCollection { get; }
 		private 
 #if !NET_1_1
-			OGenRootrefCollection<XS_codeSampleType, XS__RootMetadata, string>
+			OGenRootrefCollection<XS_codeSampleType, XS__RootMetadata>
 #else
 			XS_codeSampleTypeCollection
 #endif
@@ -77,7 +77,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefCollection<XS_codeSampleType, XS__RootMetadata, string>
+			OGenRootrefCollection<XS_codeSampleType, XS__RootMetadata>
 #else
 			XS_codeSampleTypeCollection
 #endif

@@ -148,7 +148,38 @@ if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%>
 			}
 		}
 		#endregion
-		#region public int Search(<%=_aux_complextype_keys_ntype%> <%=_aux_complextype_keys_name%>_in);
+		#region public int Search(...);<%
+		if (_aux_complextype_keys_ntype == "string") {%>
+		public int Search(string <%=_aux_complextype_keys_name%>_in, bool caseSensitive_in) {
+			for (int i = 0; i < cols_.Count; i++) {
+				if (
+					(
+						caseSensitive_in
+						&&
+						(
+							<%=_aux_complextype_keys_name%>_in.ToLower() 
+							== 
+							((XS_<%=_aux_complextype.Name%>)cols_[i]).<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_complextype_keys_name)%>.ToLower()
+						)
+					)
+					||
+					(
+						!caseSensitive_in
+						&&
+						(
+							<%=_aux_complextype_keys_name%>_in
+							==
+							((XS_<%=_aux_complextype.Name%>)cols_[i]).<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_complextype_keys_name)%>
+						)
+					)
+				) {
+					return i;
+				}
+			}
+
+			return -1;
+		}<%
+		}%>
 		public int Search(<%=_aux_complextype_keys_ntype%> <%=_aux_complextype_keys_name%>_in) {
 			for (int i = 0; i < cols_.Count; i++) {
 				if (<%=_aux_complextype_keys_name%>_in.Equals(((<%=XS_%><%=_aux_complextype.Name%>)cols_[i]).<%=_aux_rootmetadata.ExtendedMetadata.CaseTranslate(_aux_complextype_keys_name)%>)) {

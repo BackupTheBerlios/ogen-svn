@@ -28,7 +28,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		) {
 			linkcollection_ = new 
 #if !NET_1_1
-				OGenRootrefCollection<XS_linkType, XS__RootMetadata, string>()
+				OGenRootrefCollection<XS_linkType, XS__RootMetadata>()
 #else
 				XS_linkTypeCollection()
 #endif
@@ -62,7 +62,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		#region public ... LinkCollection { get; }
 		private 
 #if !NET_1_1
-			OGenRootrefCollection<XS_linkType, XS__RootMetadata, string>
+			OGenRootrefCollection<XS_linkType, XS__RootMetadata>
 #else
 			XS_linkTypeCollection
 #endif
@@ -77,7 +77,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefCollection<XS_linkType, XS__RootMetadata, string>
+			OGenRootrefCollection<XS_linkType, XS__RootMetadata>
 #else
 			XS_linkTypeCollection
 #endif

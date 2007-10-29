@@ -28,7 +28,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		) {
 			documentcollection_ = new 
 #if !NET_1_1
-				OGenRootrefCollection<XS_documentType, XS__RootMetadata, string>()
+				OGenRootrefCollection<XS_documentType, XS__RootMetadata>()
 #else
 				XS_documentTypeCollection()
 #endif
@@ -62,7 +62,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		#region public ... DocumentCollection { get; }
 		private 
 #if !NET_1_1
-			OGenRootrefCollection<XS_documentType, XS__RootMetadata, string>
+			OGenRootrefCollection<XS_documentType, XS__RootMetadata>
 #else
 			XS_documentTypeCollection
 #endif
@@ -77,7 +77,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefCollection<XS_documentType, XS__RootMetadata, string>
+			OGenRootrefCollection<XS_documentType, XS__RootMetadata>
 #else
 			XS_documentTypeCollection
 #endif

@@ -101,7 +101,36 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 			}
 		}
 		#endregion
-		#region public int Search(string paramName_in);
+		#region public int Search(...);
+		public int Search(string paramName_in, bool caseSensitive_in) {
+			for (int i = 0; i < cols_.Count; i++) {
+				if (
+					(
+						caseSensitive_in
+						&&
+						(
+							paramName_in.ToLower() 
+							== 
+							((XS_tableFieldRefType)cols_[i]).ParamName.ToLower()
+						)
+					)
+					||
+					(
+						!caseSensitive_in
+						&&
+						(
+							paramName_in
+							==
+							((XS_tableFieldRefType)cols_[i]).ParamName
+						)
+					)
+				) {
+					return i;
+				}
+			}
+
+			return -1;
+		}
 		public int Search(string paramName_in) {
 			for (int i = 0; i < cols_.Count; i++) {
 				if (paramName_in.Equals(((XS_tableFieldRefType)cols_[i]).ParamName)) {

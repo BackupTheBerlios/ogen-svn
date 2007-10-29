@@ -28,7 +28,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		) {
 			faqcollection_ = new 
 #if !NET_1_1
-				OGenRootrefCollection<XS_faqType, XS__RootMetadata, string>()
+				OGenRootrefCollection<XS_faqType, XS__RootMetadata>()
 #else
 				XS_faqTypeCollection()
 #endif
@@ -131,7 +131,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		#region public ... FAQCollection { get; }
 		private 
 #if !NET_1_1
-			OGenRootrefCollection<XS_faqType, XS__RootMetadata, string>
+			OGenRootrefCollection<XS_faqType, XS__RootMetadata>
 #else
 			XS_faqTypeCollection
 #endif
@@ -146,7 +146,7 @@ namespace OGen.Doc.lib.metadata.documentation {
 		[XmlIgnore()]
 		public
 #if !NET_1_1
-			OGenRootrefCollection<XS_faqType, XS__RootMetadata, string>
+			OGenRootrefCollection<XS_faqType, XS__RootMetadata>
 #else
 			XS_faqTypeCollection
 #endif

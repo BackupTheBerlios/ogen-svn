@@ -91,7 +91,7 @@ if (_aux_rootmetadata.ExtendedMetadata.isSimple) {
 if (_aux_rootmetadata.ExtendedMetadata.isSimple) {%><%=""%>
 				<%=(__aux_isCollection) ? "OGenCollection" : "OGenSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%><%=(__aux_isCollection) ? ", " + __aux_isCollection_ntype : ""%>>()<%
 } else {%><%=""%>
-				<%=(__aux_isCollection) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata<%=(__aux_isCollection) ? ", " + __aux_isCollection_ntype : ""%>>()<%
+				<%=(__aux_isCollection) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata<%=(__aux_isCollection && (__aux_isCollection_ntype != "string")) ? ", " + __aux_isCollection_ntype : ""%>>()<%
 }%>
 #else
 				<%=XS_%><%=_aux_elements[e].Type%>Collection()
@@ -203,7 +203,7 @@ if (!_aux_rootmetadata.ExtendedMetadata.isSimple) {%><%=""%>
 if (_aux_rootmetadata.ExtendedMetadata.isSimple) {%><%=""%>
 			<%=(__aux_isCollection) ? "OGenCollection" : "OGenSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%><%=(__aux_isCollection) ? ", " + __aux_isCollection_ntype : ""%>><%
 } else {%><%=""%>
-			<%=(__aux_isCollection) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata<%=(__aux_isCollection) ? ", " + __aux_isCollection_ntype : ""%>><%
+			<%=(__aux_isCollection) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata<%=(__aux_isCollection && (__aux_isCollection_ntype != "string")) ? ", " + __aux_isCollection_ntype : ""%>><%
 }%>
 #else
 			<%=XS_%><%=_aux_elements[e].Type%>Collection
@@ -222,7 +222,7 @@ if (_aux_rootmetadata.ExtendedMetadata.isSimple) {%><%=""%>
 if (_aux_rootmetadata.ExtendedMetadata.isSimple) {%><%=""%>
 			<%=(__aux_isCollection) ? "OGenCollection" : "OGenSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%><%=(__aux_isCollection) ? ", " + __aux_isCollection_ntype : ""%>><%
 } else {%><%=""%>
-			<%=(__aux_isCollection) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata<%=(__aux_isCollection) ? ", " + __aux_isCollection_ntype : ""%>><%
+			<%=(__aux_isCollection) ? "OGenRootrefCollection" : "OGenRootrefSimpleCollection"%><<%=XS_%><%=_aux_elements[e].Type%>, <%=XS__%>RootMetadata<%=(__aux_isCollection && (__aux_isCollection_ntype != "string")) ? ", " + __aux_isCollection_ntype : ""%>><%
 }%>
 #else
 			<%=XS_%><%=_aux_elements[e].Type%>Collection
