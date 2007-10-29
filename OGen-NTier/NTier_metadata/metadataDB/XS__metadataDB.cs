@@ -114,9 +114,8 @@ namespace OGen.NTier.lib.metadata.metadataDB {
 				for (int t = 0; t < _tables_aux.Length; t++) {
 					#region _table = ...; _table.Name = ...;
 					_searchindex = _output.Tables.TableCollection.Search(
-						_tables_aux[t].Name
-//						,
-//						true
+						_tables_aux[t].Name,
+						true
 					);
 					if (_searchindex >= 0) {
 						_table = _output.Tables.TableCollection[_searchindex];

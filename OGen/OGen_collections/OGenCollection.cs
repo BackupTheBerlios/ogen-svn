@@ -18,6 +18,44 @@ using System;
 using System.Collections.Generic;
 
 namespace OGen.lib.collections {
+	public class OGenRootrefCollection<C, R> : OGenCollection<C>
+		where R : class
+		where C : 
+			class,
+			OGenCollectionInterface<string>, 
+			OGenRootrefCollectionInterface<R>
+	{
+		#region public object parent_ref { get; }
+		private object parent_ref_;
+
+		public object parent_ref {
+			get {
+				return parent_ref_;
+			}
+			set {
+				parent_ref_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((C)cols_[i]).parent_ref = this;
+				}
+			}
+		}
+		#endregion
+		#region public R root_ref { get; }
+		private R root_ref_;
+
+		public R root_ref {
+			get {
+				return root_ref_;
+			}
+			set {
+				root_ref_ = value;
+				for (int i = 0; i < cols_.Count; i++) {
+					((C)cols_[i]).root_ref = value;
+				}
+			}
+		}
+		#endregion
+	}
 	public class OGenRootrefCollection<C, R, T> : OGenCollection<C, T>
 		where R : class
 		where C : 
