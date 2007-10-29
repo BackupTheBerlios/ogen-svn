@@ -172,6 +172,45 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 			}
 		}
 		#endregion
+		#region public string ConfigName { get; set; }
+		private string configname_;
+
+		[XmlAttribute("configName")]
+		public string ConfigName {
+			get {
+				return configname_;
+			}
+			set {
+				configname_ = value;
+			}
+		}
+		#endregion
+		#region public string ConfigConfig { get; set; }
+		private string configconfig_;
+
+		[XmlAttribute("configConfig")]
+		public string ConfigConfig {
+			get {
+				return configconfig_;
+			}
+			set {
+				configconfig_ = value;
+			}
+		}
+		#endregion
+		#region public string ConfigDatatype { get; set; }
+		private string configdatatype_;
+
+		[XmlAttribute("configDatatype")]
+		public string ConfigDatatype {
+			get {
+				return configdatatype_;
+			}
+			set {
+				configdatatype_ = value;
+			}
+		}
+		#endregion
 		#region public ... TableFieldsCollection { get; }
 		private 
 #if !NET_1_1

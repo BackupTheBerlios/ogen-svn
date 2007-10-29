@@ -31,5 +31,42 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 		) {
 		}
 		#endregion
+
+		#region public bool isConfig_Name { get; }
+		[XmlIgnore()]
+		public bool isConfig_Name {
+			get {
+				return (
+					((XS_tableType)((XS_tableFieldsType)((XS_tableFieldsTypeCollection)parent_ref).parent_ref).parent_ref).ConfigName
+					==
+					Name
+				);
+			}
+		}
+		#endregion
+		#region public bool isConfig_Config { get; }
+		[XmlIgnore()]
+		public bool isConfig_Config {
+			get {
+				return (
+					((XS_tableType)((XS_tableFieldsType)((XS_tableFieldsTypeCollection)parent_ref).parent_ref).parent_ref).ConfigConfig
+					==
+					Name
+				);
+			}
+		}
+		#endregion
+		#region public bool isConfig_Datatype { get; }
+		[XmlIgnore()]
+		public bool isConfig_Datatype {
+			get {
+				return (
+					((XS_tableType)((XS_tableFieldsType)((XS_tableFieldsTypeCollection)parent_ref).parent_ref).parent_ref).ConfigDatatype
+					==
+					Name
+				);
+			}
+		}
+		#endregion
 	}
 }

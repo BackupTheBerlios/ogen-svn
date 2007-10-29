@@ -145,44 +145,5 @@ namespace OGen.NTier.lib.metadata.metadataExtended {
 			}
 		}
 		#endregion
-		#region public bool isConfig_Name { get; set; }
-		private bool isconfig_name_;
-
-		[XmlAttribute("isConfig_Name")]
-		public bool isConfig_Name {
-			get {
-				return isconfig_name_;
-			}
-			set {
-				isconfig_name_ = value;
-			}
-		}
-		#endregion
-		#region public bool isConfig_Config { get; set; }
-		private bool isconfig_config_;
-
-		[XmlAttribute("isConfig_Config")]
-		public bool isConfig_Config {
-			get {
-				return isconfig_config_;
-			}
-			set {
-				isconfig_config_ = value;
-			}
-		}
-		#endregion
-		#region public bool isConfig_Datatype { get; set; }
-		private bool isconfig_datatype_;
-
-		[XmlAttribute("isConfig_Datatype")]
-		public bool isConfig_Datatype {
-			get {
-				return isconfig_datatype_;
-			}
-			set {
-				isconfig_datatype_ = value;
-			}
-		}
-		#endregion
 	}
 }
