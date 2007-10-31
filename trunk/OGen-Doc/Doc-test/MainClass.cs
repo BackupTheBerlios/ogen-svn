@@ -37,17 +37,17 @@ namespace Doc_test {
 		static void Main(string[] args) {
 
 //			#region test3 - translate bug...
-Console.WriteLine(OGen.Doc.lib.metadata.utils.translate(
-	@"---${code::1}
----
-${code::1}
----
-${code::1}
----",
-	rootmetadata_.DocumentationCollection[0]
-));
-
-			return;
+//Console.WriteLine(OGen.Doc.lib.metadata.utils.translate(
+//	@"---${code::1}
+//---
+//${code::1}
+//---
+//${code::1}
+//---",
+//	rootmetadata_.DocumentationCollection[0]
+//));
+//
+//			return;
 //			#endregion
 
 			#region //test2 - performance tweaks...
