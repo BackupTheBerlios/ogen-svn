@@ -1,0 +1,6 @@
+
+unfortunately BerliOS will be closed on 31.12.2011, 
+
+further OGen development will take place at GitHub
+
+https://github.com/ogen-project/ogen
